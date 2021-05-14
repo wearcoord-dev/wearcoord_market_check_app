@@ -17,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
+Route::get('/main', function () {
     return view('layouts.main');
 });
+
+// /main/以降にアクセスしても404にしない
+
+Route::get('/main/{any}', static function () {
+    return view('layouts.main');
+})->where('any', '.*');
 
 Auth::routes();
 

@@ -1,4 +1,4 @@
-import { memo, React, useState } from "react";
+import { memo, React, useCallback, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -7,7 +7,7 @@ import AccessibilityRoundedIcon from '@material-ui/icons/AccessibilityRounded';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -23,6 +23,11 @@ export const Navbar = memo(() => {
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
+    const history = useHistory();
+
+    const onClickMain = useCallback(() => history.push("/main"), [history]);
+    const onClickMycoord = useCallback(() => history.push("/main/mycoord"), [history]);
+
     return (
         <>
             <BottomNavigation
@@ -35,22 +40,18 @@ export const Navbar = memo(() => {
             >
                 <BottomNavigationAction
                     // value='main'
-                    component={Link}
-                    to="/home"
                     label="ホーム"
                     icon={<HomeRoundedIcon />}
+                    onClick={onClickMain}
                 />
                 <BottomNavigationAction
                     // value='mycoord'
-                    component={Link}
-                    to="/mycoord"
                     label="MYコーデ"
                     icon={<AccessibilityRoundedIcon />}
+                    onClick={onClickMycoord}
                 />
                 <BottomNavigationAction
                     // value='item'
-                    component={Link}
-                    to="/"
                     label="アイテム"
                     icon={<SearchRoundedIcon />}
                 />

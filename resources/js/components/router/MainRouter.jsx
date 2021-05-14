@@ -1,13 +1,26 @@
 import { memo } from "react";
 import { Route, Switch } from "react-router";
 import { MainLayout } from "../templates/MainLayout";
+import { PageRoute } from "./loops/PageRoute";
 
 export const MainRouter = memo(() => {
     return (
         <Switch>
-            <Route>
+            {/* <Route>
                 <MainLayout></MainLayout>
-            </Route>
+            </Route> */}
+            <Route path="/main" render={({ match: { url } }) => (
+                <Switch>
+                    {PageRoute.map((route) => (
+                        <Route
+                            key={route.path}
+                            exact={route.exact}
+                            path={`${url}${route.path}`}>
+                            <MainLayout>{route.children}</MainLayout>
+                        </Route>
+                    ))}
+                </Switch>
+            )} />
         </Switch>
     )
 })
