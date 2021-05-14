@@ -24,11 +24,8 @@
 
 
     <!-- Styles -->
-    {{-- <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/components/header/header.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/components/myCoord/myCoord.css') }}" rel="stylesheet"> --}}
 
 </head>
 <body>

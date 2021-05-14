@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { MainRouter } from './router/MainRouter';
 
 function App() {
     return (
-        <>
-        <p>testです！</p>
-        </>
+        <div>
+            <BrowserRouter>
+                <MainRouter />
+            </BrowserRouter>
+        </div>
     );
 }
 
