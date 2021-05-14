@@ -1,5 +1,5 @@
 ## React使用ライブラリ
-- Material UI. 
+- Material UI.  
 @material-ui/core.  
 @material-ui/icons.  
 
