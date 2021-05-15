@@ -8885,6 +8885,12 @@ var Navbar = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (
   var onClickMycoord = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     return history.push("/main/mycoord");
   }, [history]);
+  var onClickItem = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    return history.push("/main/selectwear");
+  }, [history]);
+  var onClickFavorite = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    return history.push("/main/favorite");
+  }, [history]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_material_ui_core_BottomNavigation__WEBPACK_IMPORTED_MODULE_4__.default, {
       value: value,
@@ -8906,15 +8912,56 @@ var Navbar = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_BottomNavigationAction__WEBPACK_IMPORTED_MODULE_5__.default // value='item'
       , {
         label: "\u30A2\u30A4\u30C6\u30E0",
-        icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_icons_SearchRounded__WEBPACK_IMPORTED_MODULE_8__.default, {})
+        icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_icons_SearchRounded__WEBPACK_IMPORTED_MODULE_8__.default, {}),
+        onClick: onClickItem
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_BottomNavigationAction__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "\u304A\u6C17\u306B\u5165\u308A",
-        icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_icons_FavoriteBorderRounded__WEBPACK_IMPORTED_MODULE_9__.default, {})
+        icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_icons_FavoriteBorderRounded__WEBPACK_IMPORTED_MODULE_9__.default, {}),
+        onClick: onClickFavorite
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_BottomNavigationAction__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "\u30AB\u30FC\u30C8",
         icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_icons_ShoppingCartRounded__WEBPACK_IMPORTED_MODULE_10__.default, {})
       })]
     })
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/organisms/layouts/mycoord/MainMycoord.jsx":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/organisms/layouts/mycoord/MainMycoord.jsx ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MainMycoord": () => (/* binding */ MainMycoord)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../hooks/mycoord/useOpenBtnFunc */ "./resources/js/hooks/mycoord/useOpenBtnFunc.js");
+/* harmony import */ var _button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../button/OpenLeftBtn */ "./resources/js/components/organisms/button/OpenLeftBtn.jsx");
+/* harmony import */ var _button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../button/OpenRightBtn */ "./resources/js/components/organisms/button/OpenRightBtn.jsx");
+/* harmony import */ var _Mannequin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mannequin */ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+var MainMycoord = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  var _useOpenBtnFunc = (0,_hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__.useOpenBtnFunc)(),
+      openBtnFunc = _useOpenBtnFunc.openBtnFunc;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return openBtnFunc();
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__.OpenLeftBtn, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Mannequin__WEBPACK_IMPORTED_MODULE_4__.Mannequin, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__.OpenRightBtn, {})]
   });
 });
 
@@ -8944,6 +8991,29 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
         className: "mannequinImg"
       })
     })
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/organisms/layouts/mycoord/SelectWear.jsx":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/organisms/layouts/mycoord/SelectWear.jsx ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SelectWear": () => (/* binding */ SelectWear)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+    children: "\u30C1\u30A7\u30F3\u30B8\u30A6\u30A7\u30A2"
   });
 });
 
@@ -9053,13 +9123,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mycoord": () => (/* binding */ Mycoord)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/mycoord/useOpenBtnFunc */ "./resources/js/hooks/mycoord/useOpenBtnFunc.js");
-/* harmony import */ var _organisms_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../organisms/button/OpenLeftBtn */ "./resources/js/components/organisms/button/OpenLeftBtn.jsx");
-/* harmony import */ var _organisms_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../organisms/button/OpenRightBtn */ "./resources/js/components/organisms/button/OpenRightBtn.jsx");
-/* harmony import */ var _organisms_layouts_mycoord_Mannequin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../organisms/layouts/mycoord/Mannequin */ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
+/* harmony import */ var _organisms_layouts_mycoord_MainMycoord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../organisms/layouts/mycoord/MainMycoord */ "./resources/js/components/organisms/layouts/mycoord/MainMycoord.jsx");
+/* harmony import */ var _organisms_layouts_mycoord_SelectWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../organisms/layouts/mycoord/SelectWear */ "./resources/js/components/organisms/layouts/mycoord/SelectWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -9067,16 +9133,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Mycoord = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
-  var _useOpenBtnFunc = (0,_hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__.useOpenBtnFunc)(),
-      openBtnFunc = _useOpenBtnFunc.openBtnFunc;
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    return openBtnFunc();
-  });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "displayFlex",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__.OpenLeftBtn, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_layouts_mycoord_Mannequin__WEBPACK_IMPORTED_MODULE_4__.Mannequin, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__.OpenRightBtn, {})]
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_organisms_layouts_mycoord_MainMycoord__WEBPACK_IMPORTED_MODULE_1__.MainMycoord, {})
     })
   });
 });
@@ -9174,7 +9234,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Favorite__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/Favorite */ "./resources/js/components/pages/Favorite.jsx");
 /* harmony import */ var _pages_Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/Cart */ "./resources/js/components/pages/Cart.jsx");
 /* harmony import */ var _pages_Page404__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/Page404 */ "./resources/js/components/pages/Page404.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _organisms_layouts_mycoord_SelectWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/layouts/mycoord/SelectWear */ "./resources/js/components/organisms/layouts/mycoord/SelectWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -9185,27 +9247,31 @@ __webpack_require__.r(__webpack_exports__);
 var PageRoute = [{
   path: "/",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
 }, {
   path: "/mycoord",
+  exact: true,
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
+}, {
+  path: "/selectwear",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_layouts_mycoord_SelectWear__WEBPACK_IMPORTED_MODULE_6__.SelectWear, {})
 }, {
   path: "/item",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
 }, {
   path: "/favorite",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
 }, {
   path: "/cart",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
 }, {
   path: "*",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
 }];
 
 /***/ }),

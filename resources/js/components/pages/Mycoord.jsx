@@ -1,21 +1,15 @@
-import { memo, useEffect } from "react";
-import { useOpenBtnFunc } from "../../hooks/mycoord/useOpenBtnFunc";
-import { OpenLeftBtn } from "../organisms/button/OpenLeftBtn";
-import { OpenRightBtn } from "../organisms/button/OpenRightBtn";
-import { Mannequin } from "../organisms/layouts/mycoord/Mannequin"
+import { memo } from "react";
+import { Route, Switch } from "react-router";
+import { MainMycoord } from "../organisms/layouts/mycoord/MainMycoord";
+import { SelectWear } from "../organisms/layouts/mycoord/SelectWear";
 
 export const Mycoord = memo(() => {
-    const { openBtnFunc } = useOpenBtnFunc();
-
-    useEffect(() => openBtnFunc());
 
     return (
         <>
-        <div className="displayFlex">
-        <OpenLeftBtn />
-        <Mannequin />
-        <OpenRightBtn />
-        </div>
+            <div className="displayFlex">
+                <MainMycoord />
+            </div>
         </>
     )
 })

@@ -4,6 +4,7 @@ import { Item } from "../../pages/Item";
 import { Favorite } from "../../pages/Favorite";
 import { Cart } from "../../pages/Cart";
 import { Page404 } from "../../pages/Page404";
+import { SelectWear } from "../../organisms/layouts/mycoord/SelectWear";
 
 export const PageRoute = [
   {
@@ -13,8 +14,13 @@ export const PageRoute = [
   },
   {
     path: "/mycoord",
-    exact: false,
+    exact: true,
     children: <Mycoord />
+  },
+  {
+    path: "/selectwear",
+    exact: false,
+    children: <SelectWear />
   },
   {
     path: "/item",

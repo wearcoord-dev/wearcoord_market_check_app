@@ -27,6 +27,8 @@ export const Navbar = memo(() => {
 
     const onClickMain = useCallback(() => history.push("/main"), [history]);
     const onClickMycoord = useCallback(() => history.push("/main/mycoord"), [history]);
+    const onClickItem = useCallback(() => history.push("/main/selectwear"), [history]);
+    const onClickFavorite = useCallback(() => history.push("/main/favorite"), [history]);
 
     return (
         <>
@@ -54,8 +56,13 @@ export const Navbar = memo(() => {
                     // value='item'
                     label="アイテム"
                     icon={<SearchRoundedIcon />}
+                    onClick={onClickItem}
                 />
-                <BottomNavigationAction label="お気に入り" icon={<FavoriteBorderRoundedIcon />} />
+                <BottomNavigationAction
+                label="お気に入り"
+                icon={<FavoriteBorderRoundedIcon/>}
+                onClick={onClickFavorite}
+                />
                 <BottomNavigationAction label="カート" icon={<ShoppingCartRoundedIcon />} />
             </BottomNavigation>
         </>
