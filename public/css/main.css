@@ -58,3 +58,7 @@ input {
   cursor: pointer;
   color: #484848;
 }
+
+.headerTop {
+  height: 50px;
+}

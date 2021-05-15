@@ -1,0 +1,213 @@
+.displayNone {
+    display: none !important;
+}
+
+.displayFlex{
+    display: flex;
+}
+
+.justifyCenter{
+    justify-content: center;
+}
+
+.w100{
+    width: 100%;
+}
+
+.mannequinImg {
+    height: 400px;
+    background-image: url('../../../img/mannequin/mannequin_done3.png');
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    // min-width: 100px;
+    max-width: 400px;
+    background-position-x: 47%;
+}
+
+// アコーディオン
+
+
+/* Chrome、Safari以外 */
+summary {
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Chrome、Safari */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* オープン時にアニメーションを設定 */
+details[open] .detailsBottom {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* 透明 */
+        transform: translateY(-10px);
+        /* 上から表示 */
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// wrapper
+
+.selectWearContainer {
+    display: flex;
+    height: 500px;
+}
+
+.btnDesign {
+    width: 70px;
+    // height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddddd;
+    color: #484848;
+    cursor: pointer;
+
+    .sideFontAwesome {
+        font-size: 2rem;
+    }
+
+    .btnText {
+        padding-top: 5px;
+    }
+
+    .detailsBtn {
+        color: #484848;
+        text-align: center;
+        padding: 10px;
+        display: block;
+    }
+
+    .detailsBtn2 {
+        color: #484848;
+        text-align: center;
+        display: block;
+    }
+
+    .searchBtn {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+    }
+
+    hr {
+        width: 80%;
+    }
+
+    .detailsBottom {
+        text-align: center;
+    }
+}
+
+.left {
+    border-radius: 0 10px 10px 0;
+}
+
+.right {
+    border-radius: 10px 0 0 10px;
+    margin: 0 0 0 auto;
+}
+
+.selectWearContainer{
+    display: flex;
+}
+
+.leftContainer{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.centerContainer{
+    width: 40%;
+    min-width: 200px;
+    margin: auto;
+}
+
+.rightContainer{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#controller{
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    top: 80px;
+
+    .wearLi{
+      text-align: center;
+    }
+
+    .wearImg{
+      width: 80px;
+    }
+  }
+
+#controller2{
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    top: 160px;
+    z-index: 100;
+
+    .wearLi{
+      text-align: center;
+    }
+
+    .wearImg{
+      width: 130px;
+    }
+  }
+
+#controller3{
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    top: 270px;
+
+    .wearLi{
+      text-align: center;
+    }
+
+    .wearImg{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+#controller4{
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    top: 420px;
+
+    .wearLi{
+      text-align: center;
+    }
+
+    .wearImg{
+      width: 80%;
+      object-fit: contain;
+    }
+  }
+

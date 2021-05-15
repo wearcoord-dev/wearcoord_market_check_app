@@ -8,6 +8,7 @@ export const MainLayout = memo((props) => {
     return (
         <>
             <Header></Header>
+            <div className="headerTop"></div>
             {children}
             <Navbar></Navbar>
         </>

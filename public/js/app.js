@@ -8532,6 +8532,244 @@ if (document.getElementById('app')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/atoms/button/OpenBtn.jsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/atoms/button/OpenBtn.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OpenBtn": () => (/* binding */ OpenBtn)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var OpenBtn = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
+  var name = props.name,
+      icon = props.icon;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("details", {
+        className: "btnDesign right",
+        id: "btn" + name,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("summary", {
+          children: [icon, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "btnText",
+            id: "btnTitle" + name,
+            children: name
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "detailsBottom",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("form", {
+            action: "/main/home",
+            className: "detailsBtn",
+            method: "get",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+              type: "submit",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: "material-icons-outlined",
+                children: "shopping_cart"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                className: "btnText",
+                children: "\u8CB7\u3046"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "hidden",
+                name: "type",
+                value: name
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("form", {
+            action: "{{ route('searchmysetsGetCaps') }}",
+            className: "detailsBtn2",
+            method: "get",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+              className: "searchBtn",
+              type: "submit",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "hidden",
+                name: "type",
+                value: "caps"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: "material-icons-outlined",
+                children: "screen_search_desktop"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                className: "btnText",
+                children: "\u9078\u3076"
+              })]
+            })
+          })]
+        })]
+      })
+    })
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/organisms/button/OpenLeftBtn.jsx":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/organisms/button/OpenLeftBtn.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OpenLeftBtn": () => (/* binding */ OpenLeftBtn)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var OpenLeftBtn = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "leftContainer",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("details", {
+        className: "btnDesign left",
+        id: "btnBand",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("summary", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            className: "material-icons-outlined",
+            children: "circle"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "btnText",
+            id: "btnTitleBand",
+            children: "Band"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "detailsBottom",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: "",
+            className: "detailsBtn",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+              className: "btnText",
+              children: "\u6E96\u5099\u4E2D"
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("details", {
+        className: "btnDesign left",
+        id: "btnInner",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("summary", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+            className: "fas fa-tshirt sideFontAwesome"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "btnText",
+            id: "btnTitleInner",
+            children: "Inner"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "detailsBottom",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("form", {
+            action: "{{ route('removeInner') }}",
+            className: "detailsBtn",
+            id: "innerRemoveBtn",
+            method: "post",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+              type: "submit",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: "material-icons-outlined",
+                children: "accessibility"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                className: "btnText",
+                children: "\u30A4\u30F3\u30CA\u30FC\u3092\u8131\u3050"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "hidden",
+                name: "innerUrl",
+                value: "mannequin_done3.png"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "hidden",
+                name: "innerUrl",
+                value: "manekin_female_10001000.png"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("form", {
+            action: "{{ route('searchmysetsGetInner') }}",
+            className: "detailsBtn",
+            method: "get",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+              type: "submit",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                className: "material-icons-outlined",
+                children: "screen_search_desktop"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+                className: "btnText",
+                children: "\u9078\u3076"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "hidden",
+                name: "type",
+                value: "inner"
+              })]
+            })
+          })]
+        })]
+      })]
+    })
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/organisms/button/OpenRightBtn.jsx":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/organisms/button/OpenRightBtn.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OpenRightBtn": () => (/* binding */ OpenRightBtn)
+/* harmony export */ });
+/* harmony import */ var _atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../atoms/button/OpenBtn */ "./resources/js/components/atoms/button/OpenBtn.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var OpenRightBtn = function OpenRightBtn() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "rightContainer",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__.OpenBtn, {
+      name: 'Caps',
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "material-icons-outlined",
+        children: "face"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__.OpenBtn, {
+      name: 'Tops',
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-tshirt sideFontAwesome"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__.OpenBtn, {
+      name: 'Pants',
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+        className: "material-icons-outlined",
+        children: "airline_seat_legroom_extra"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__.OpenBtn, {
+      name: 'Socks',
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-socks sideFontAwesome"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_atoms_button_OpenBtn__WEBPACK_IMPORTED_MODULE_0__.OpenBtn, {
+      name: 'Shoes',
+      icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-shoe-prints sideFontAwesome"
+      })
+    })]
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/organisms/layouts/Header.jsx":
 /*!**************************************************************!*\
   !*** ./resources/js/components/organisms/layouts/Header.jsx ***!
@@ -8682,6 +8920,35 @@ var Navbar = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (
 
 /***/ }),
 
+/***/ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Mannequin": () => (/* binding */ Mannequin)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "centerContainer",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mannequinImg"
+      })
+    })
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/pages/Cart.jsx":
 /*!************************************************!*\
   !*** ./resources/js/components/pages/Cart.jsx ***!
@@ -8786,12 +9053,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mycoord": () => (/* binding */ Mycoord)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/mycoord/useOpenBtnFunc */ "./resources/js/hooks/mycoord/useOpenBtnFunc.js");
+/* harmony import */ var _organisms_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../organisms/button/OpenLeftBtn */ "./resources/js/components/organisms/button/OpenLeftBtn.jsx");
+/* harmony import */ var _organisms_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../organisms/button/OpenRightBtn */ "./resources/js/components/organisms/button/OpenRightBtn.jsx");
+/* harmony import */ var _organisms_layouts_mycoord_Mannequin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../organisms/layouts/mycoord/Mannequin */ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
 
 
 var Mycoord = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  var _useOpenBtnFunc = (0,_hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__.useOpenBtnFunc)(),
+      openBtnFunc = _useOpenBtnFunc.openBtnFunc;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return openBtnFunc();
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "displayFlex",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__.OpenLeftBtn, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_layouts_mycoord_Mannequin__WEBPACK_IMPORTED_MODULE_4__.Mannequin, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_organisms_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__.OpenRightBtn, {})]
+    })
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Page404.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/components/pages/Page404.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Page404": () => (/* binding */ Page404)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var Page404 = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-    children: "Mycoord\u3067\u3059"
+    children: "404\u3067\u3059"
   });
 });
 
@@ -8809,34 +9118,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MainRouter": () => (/* binding */ MainRouter)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _templates_MainLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../templates/MainLayout */ "./resources/js/components/templates/MainLayout.jsx");
-/* harmony import */ var _loops_PageRoute__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loops/PageRoute */ "./resources/js/components/router/loops/PageRoute.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _pages_Page404__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/Page404 */ "./resources/js/components/pages/Page404.jsx");
+/* harmony import */ var _templates_MainLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../templates/MainLayout */ "./resources/js/components/templates/MainLayout.jsx");
+/* harmony import */ var _loops_PageRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loops/PageRoute */ "./resources/js/components/router/loops/PageRoute.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
 
 
 var MainRouter = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_4__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router__WEBPACK_IMPORTED_MODULE_5__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_5__.Route, {
       path: "/main",
       render: function render(_ref) {
         var url = _ref.match.url;
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-          children: _loops_PageRoute__WEBPACK_IMPORTED_MODULE_2__.PageRoute.map(function (route) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_4__.Route, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_5__.Switch, {
+          children: _loops_PageRoute__WEBPACK_IMPORTED_MODULE_3__.PageRoute.map(function (route) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_5__.Route, {
               exact: route.exact,
               path: "".concat(url).concat(route.path),
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_templates_MainLayout__WEBPACK_IMPORTED_MODULE_1__.MainLayout, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_templates_MainLayout__WEBPACK_IMPORTED_MODULE_2__.MainLayout, {
                 children: route.children
               })
             }, route.path);
           })
         });
       }
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      path: "*",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_1__.Page404, {})
+    })]
   });
 });
 
@@ -8858,7 +9173,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages/Item */ "./resources/js/components/pages/Item.jsx");
 /* harmony import */ var _pages_Favorite__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/Favorite */ "./resources/js/components/pages/Favorite.jsx");
 /* harmony import */ var _pages_Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/Cart */ "./resources/js/components/pages/Cart.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _pages_Page404__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/Page404 */ "./resources/js/components/pages/Page404.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -8868,23 +9185,27 @@ __webpack_require__.r(__webpack_exports__);
 var PageRoute = [{
   path: "/",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
 }, {
   path: "/mycoord",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
 }, {
   path: "/item",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
 }, {
   path: "/favorite",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
 }, {
   path: "/cart",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
+}, {
+  path: "*",
+  exact: false,
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
 }];
 
 /***/ }),
@@ -8913,9 +9234,174 @@ __webpack_require__.r(__webpack_exports__);
 var MainLayout = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
   var children = props.children;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_organisms_layouts_Header__WEBPACK_IMPORTED_MODULE_1__.Header, {}), children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_organisms_layouts_Navbar__WEBPACK_IMPORTED_MODULE_2__.Navbar, {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_organisms_layouts_Header__WEBPACK_IMPORTED_MODULE_1__.Header, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "headerTop"
+    }), children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_organisms_layouts_Navbar__WEBPACK_IMPORTED_MODULE_2__.Navbar, {})]
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/hooks/mycoord/useOpenBtnFunc.js":
+/*!******************************************************!*\
+  !*** ./resources/js/hooks/mycoord/useOpenBtnFunc.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useOpenBtnFunc": () => (/* binding */ useOpenBtnFunc)
+/* harmony export */ });
+var useOpenBtnFunc = function useOpenBtnFunc() {
+  var openBtnFunc = function openBtnFunc() {
+    var btnCaps = document.getElementById('btnCaps');
+    var btnTops = document.getElementById('btnTops');
+    var btnPants = document.getElementById('btnPants');
+    var btnSocks = document.getElementById('btnSocks');
+    var btnShoes = document.getElementById('btnShoes');
+    var btnBand = document.getElementById('btnBand');
+    var btnInner = document.getElementById('btnInner');
+    var btnTitleCaps = document.getElementById('btnTitleCaps');
+    var btnTitleTops = document.getElementById('btnTitleTops');
+    var btnTitlePants = document.getElementById('btnTitlePants');
+    var btnTitleSocks = document.getElementById('btnTitleSocks');
+    var btnTitleShoes = document.getElementById('btnTitleShoes');
+    var btnTitleBand = document.getElementById('btnTitleBand');
+    var btnTitleInner = document.getElementById('btnTitleInner');
+
+    function toggleDisplay() {
+      if (btnCaps.open == false && btnTops.open == false && btnPants.open == false && btnSocks.open == false && btnShoes.open == false && btnBand.open == false && btnInner.open == false) {
+        btnTitleCaps.classList.remove('displayNone');
+        btnTitleTops.classList.remove('displayNone');
+        btnTitlePants.classList.remove('displayNone');
+        btnTitleSocks.classList.remove('displayNone');
+        btnTitleShoes.classList.remove('displayNone');
+        btnTitleBand.classList.remove('displayNone');
+        btnTitleInner.classList.remove('displayNone');
+      }
+
+      ;
+
+      if (btnTitleCaps.classList.contains('displayNone')) {
+        btnTitleCaps.classList.remove('displayNone');
+      } else {
+        btnTitleCaps.classList.add('displayNone');
+      }
+
+      if (btnTitleTops.classList.contains('displayNone')) {
+        btnTitleTops.classList.remove('displayNone');
+      } else {
+        btnTitleTops.classList.add('displayNone');
+      }
+
+      if (btnTitlePants.classList.contains('displayNone')) {
+        btnTitlePants.classList.remove('displayNone');
+      } else {
+        btnTitlePants.classList.add('displayNone');
+      }
+
+      if (btnTitleSocks.classList.contains('displayNone')) {
+        btnTitleSocks.classList.remove('displayNone');
+      } else {
+        btnTitleSocks.classList.add('displayNone');
+      }
+
+      if (btnTitleShoes.classList.contains('displayNone')) {
+        btnTitleShoes.classList.remove('displayNone');
+      } else {
+        btnTitleShoes.classList.add('displayNone');
+      }
+
+      if (btnTitleBand.classList.contains('displayNone')) {
+        btnTitleBand.classList.remove('displayNone');
+      } else {
+        btnTitleBand.classList.add('displayNone');
+      }
+
+      if (btnTitleInner.classList.contains('displayNone')) {
+        btnTitleInner.classList.remove('displayNone');
+      } else {
+        btnTitleInner.classList.add('displayNone');
+      }
+    }
+
+    btnCaps.onclick = function () {
+      btnTops.open = false;
+      btnPants.open = false;
+      btnSocks.open = false;
+      btnShoes.open = false;
+      btnBand.open = false;
+      btnInner.open = false;
+      console.log('ok');
+      toggleDisplay();
+    };
+
+    btnTops.onclick = function () {
+      btnCaps.open = false;
+      btnPants.open = false;
+      btnSocks.open = false;
+      btnShoes.open = false;
+      btnBand.open = false;
+      btnInner.open = false;
+      toggleDisplay();
+    };
+
+    btnPants.onclick = function () {
+      btnCaps.open = false;
+      btnTops.open = false;
+      btnSocks.open = false;
+      btnShoes.open = false;
+      btnBand.open = false;
+      btnInner.open = false;
+      toggleDisplay();
+    };
+
+    btnSocks.onclick = function () {
+      btnCaps.open = false;
+      btnTops.open = false;
+      btnPants.open = false;
+      btnShoes.open = false;
+      btnBand.open = false;
+      btnInner.open = false;
+      toggleDisplay();
+    };
+
+    btnShoes.onclick = function () {
+      btnCaps.open = false;
+      btnTops.open = false;
+      btnPants.open = false;
+      btnSocks.open = false;
+      btnBand.open = false;
+      btnInner.open = false;
+      toggleDisplay();
+    };
+
+    btnBand.onclick = function () {
+      btnCaps.open = false;
+      btnTops.open = false;
+      btnPants.open = false;
+      btnSocks.open = false;
+      btnShoes.open = false;
+      btnInner.open = false;
+      toggleDisplay();
+    };
+
+    btnInner.onclick = function () {
+      btnCaps.open = false;
+      btnTops.open = false;
+      btnPants.open = false;
+      btnSocks.open = false;
+      btnShoes.open = false;
+      btnBand.open = false;
+      toggleDisplay();
+    };
+  };
+
+  return {
+    openBtnFunc: openBtnFunc
+  };
+};
 
 /***/ }),
 

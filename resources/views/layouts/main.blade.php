@@ -26,6 +26,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components/mycoord/mycoord.css') }}" rel="stylesheet">
 
 </head>
 <body>

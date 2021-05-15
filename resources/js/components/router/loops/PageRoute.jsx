@@ -3,6 +3,7 @@ import { Mycoord } from "../../pages/Mycoord";
 import { Item } from "../../pages/Item";
 import { Favorite } from "../../pages/Favorite";
 import { Cart } from "../../pages/Cart";
+import { Page404 } from "../../pages/Page404";
 
 export const PageRoute = [
   {
@@ -29,5 +30,10 @@ export const PageRoute = [
     path: "/cart",
     exact: false,
     children: <Cart />
+  },
+  {
+    path: "*",
+    exact: false,
+    children: <Page404 />
   },
 ]

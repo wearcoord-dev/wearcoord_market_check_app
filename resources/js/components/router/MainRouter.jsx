@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { Route, Switch } from "react-router";
+import { Page404 } from "../pages/Page404";
 import { MainLayout } from "../templates/MainLayout";
 import { PageRoute } from "./loops/PageRoute";
 
@@ -21,6 +22,9 @@ export const MainRouter = memo(() => {
                     ))}
                 </Switch>
             )} />
+            <Route path="*">
+                <Page404 />
+            </Route>
         </Switch>
     )
 })
