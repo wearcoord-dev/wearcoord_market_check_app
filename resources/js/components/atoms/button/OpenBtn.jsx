@@ -1,7 +1,13 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
+import { useHistory } from "react-router-dom";
+
 
 export const OpenBtn = memo((props) => {
     const { name, icon } = props;
+
+    const history = useHistory();
+
+    const toSelectWear =useCallback(() => history.push("/main/selectwear") );
 
     return (
         <>
@@ -23,7 +29,7 @@ export const OpenBtn = memo((props) => {
 
                         </form>
                         <hr />
-                        <form action="{{ route('searchmysetsGetCaps') }}" className="detailsBtn2" method="get">
+                        <div onClick={toSelectWear} className="detailsBtn2" method="get">
                             <button className="searchBtn" type="submit">
                                 <input type="hidden" name="type" value="caps" />
                                 <span className="material-icons-outlined">
@@ -31,7 +37,7 @@ export const OpenBtn = memo((props) => {
                 </span>
                                 <p className="btnText">選ぶ</p>
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </details>
             </div>

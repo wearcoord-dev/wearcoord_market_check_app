@@ -4,7 +4,7 @@ import { Item } from "../../pages/Item";
 import { Favorite } from "../../pages/Favorite";
 import { Cart } from "../../pages/Cart";
 import { Page404 } from "../../pages/Page404";
-import { SelectWear } from "../../organisms/layouts/mycoord/SelectWear";
+import { SelectWear } from "../../organisms/layouts/selectWear/SelectWear";
 
 export const PageRoute = [
   {
