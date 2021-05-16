@@ -1,10 +1,12 @@
-import { memo } from "react";
+import { Button, Popover } from "@material-ui/core";
+import { memo, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
 import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
+import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 
 export const SelectWear = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
@@ -12,10 +14,24 @@ export const SelectWear = memo(() => {
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
 
-    const onClickFetchCaps = (props) => {getCaps(props);}
+    const onClickFetchCaps = (props) => { getCaps(props); }
     const onClickFetchTops = () => getTops();
     const onClickFetchPants = () => getPants();
     const onClickFetchShoes = () => getShoes();
+
+
+    const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
     return (
         <>
@@ -123,8 +139,10 @@ export const SelectWear = memo(() => {
             </div>
 
             <br />
-            <div style={{ position: "absolute",
-    bottom: "100px" }}>
+            <div style={{
+                position: "absolute",
+                bottom: "100px"
+            }}>
                 <button onClick={onClickFetchCaps} color="red" brand="nike">
                     <input type="hidden" category="tshirt" />
                     Caps</button>
@@ -135,6 +153,28 @@ export const SelectWear = memo(() => {
                 <br />
                 <button onClick={onClickFetchShoes}>Shoes</button>
             </div>
+
+            <Button style={{ position: "absolute", bottom: "200px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+        Open Popover
+      </Button>
+
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+                transformOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+            >
+                <WearSearch />
+
+            </Popover>
         </>
     )
 })
