@@ -1,7 +1,8 @@
-import { Box, Container, Paper, Tab, Tabs, Typography } from "@material-ui/core"
+import { Box, Container, Icon, Paper, Tab, Tabs, Typography } from "@material-ui/core"
 import { memo, useState } from "react"
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
 
 
 function TabPanel(props) {
@@ -66,11 +67,11 @@ export const WearSearch = memo(() => {
                     centered
                     aria-label="simple tabs example"
                 >
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                    <Tab label="Item four" {...a11yProps(3)} />
-                    <Tab label="Item five" {...a11yProps(4)} />
+                    <Tab icon={<Face />} {...a11yProps(0)} />
+                    <Tab icon={<Icon className="fas fa-tshirt" />} {...a11yProps(1)} />
+                    <Tab icon={<AirlineSeatLegroomExtra />} {...a11yProps(2)} />
+                    <Tab icon={<Icon className="fas fa-socks" />} {...a11yProps(3)} />
+                    <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(4)} />
                 </Tabs>
                 <TabPanel value={value} index={0}>
                     Item One

@@ -11,6 +11,18 @@
   justify-content: center;
 }
 
+.MuiIcon-root {
+  width: auto !important;
+}
+
+.MuiContainer-root {
+  padding: 0 !important;
+}
+
+.MuiTabs-root {
+  border-bottom: solid 1px lightgray;
+}
+
 .w100 {
   width: 100%;
 }
