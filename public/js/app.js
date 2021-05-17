@@ -13730,7 +13730,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
+  var setValueColor = props.setValueColor; // radioのonChangeイベント発生時
+
+  var handleInputChange = function handleInputChange(props) {
+    var color = props.target.value;
+    setValueColor(color);
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
       className: "searchTitle",
@@ -13742,7 +13749,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "black",
         className: "radioInputColor",
         name: "color",
-        value: "black"
+        value: "black",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "black",
         style: {
@@ -13754,7 +13762,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "white",
         className: "radioInputColor",
         name: "color",
-        value: "white"
+        value: "white",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "white",
         style: {
@@ -13766,7 +13775,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "navy",
         className: "radioInputColor",
         name: "color",
-        value: "navy"
+        value: "navy",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "navy",
         style: {
@@ -13778,7 +13788,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "pink",
         className: "radioInputColor",
         name: "color",
-        value: "pink"
+        value: "pink",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "pink",
         style: {
@@ -13790,7 +13801,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "red",
         className: "radioInputColor",
         name: "color",
-        value: "red"
+        value: "red",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "red",
         style: {
@@ -13802,7 +13814,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "orange",
         className: "radioInputColor",
         name: "color",
-        value: "orange"
+        value: "orange",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "orange",
         style: {
@@ -13814,7 +13827,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "yellow",
         className: "radioInputColor",
         name: "color",
-        value: "yellow"
+        value: "yellow",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "yellow",
         style: {
@@ -13826,7 +13840,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "green",
         className: "radioInputColor",
         name: "color",
-        value: "green"
+        value: "green",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "green",
         style: {
@@ -13838,7 +13853,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "blue",
         className: "radioInputColor",
         name: "color",
-        value: "blue"
+        value: "blue",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "blue",
         style: {
@@ -13850,7 +13866,8 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         id: "purple",
         className: "radioInputColor",
         name: "color",
-        value: "purple"
+        value: "purple",
+        onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
         htmlFor: "purple",
         style: {
@@ -13905,11 +13922,16 @@ var SearchItemCaps = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       value = _useState2[0],
-      setValue = _useState2[1]; // const { getCaps, userCaps, loading, error } = useAllCaps();
+      setValue = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      valueColor = _useState4[0],
+      setValueColor = _useState4[1]; // const { getCaps, userCaps, loading, error } = useAllCaps();
   // const onClickFetchCaps = (props) => { getCaps(props); }
+  // console.log(valueColor);
 
 
-  console.log(value);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
@@ -13919,9 +13941,15 @@ var SearchItemCaps = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         type: "hidden",
         id: "getbrand",
         value: value
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "hidden",
+        id: "getcolor",
+        value: valueColor
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchBrand__WEBPACK_IMPORTED_MODULE_2__.SearchBrand, {
         setValue: setValue
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_3__.SearchColor, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_3__.SearchColor, {
+        setValueColor: setValueColor
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         type: "button",
         onClick: onClickFetchCaps,
         children: "\u9001\u4FE1"
@@ -14621,7 +14649,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
                 className: "wearImg",
-                src: wear.url,
+                src: "/img/rakutenlist/asics/male/506269/".concat(wear.color, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -15321,17 +15349,26 @@ var useAllCaps = function useAllCaps() {
     setError(false); // console.log(props.target.attributes[0].value);
     // console.log(props.target.attributes[1].value);
     // console.log(props.target.children[0].attributes[1].value);
+    // console.log(props.target.form[2].value);
 
-    console.log(props);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/caps").then(function (res) {
-      // console.log(res);
-      var data = res.data.map(function (caps) {
+    var brand = props.target.form[1].value;
+    var color = props.target.form[2].value;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/caps", {
+      params: {
+        brand: brand,
+        color: color
+      }
+    }).then(function (res) {
+      console.log(res.data.DBitems);
+      var data = res.data.DBitems.map(function (caps) {
         return {
           id: caps.id,
-          url: caps.url
+          url: caps.whiteImg // color: caps.color,
+
         };
       });
       setUserCaps(data);
+      console.log(data);
     })["catch"](function () {
       setError(true);
     })["finally"](function () {
