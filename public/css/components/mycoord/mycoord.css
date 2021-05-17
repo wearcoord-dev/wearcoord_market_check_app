@@ -144,7 +144,7 @@ details[open] .detailsBottom {
   width: 100%;
   left: 0px;
   position: absolute;
-  top: 80px;
+  top: 40px;
 }
 
 #controller .wearLi {
@@ -152,14 +152,14 @@ details[open] .detailsBottom {
 }
 
 #controller .wearImg {
-  width: 80px;
+  width: 60px;
 }
 
 #controller2 {
   width: 100%;
   left: 0px;
   position: absolute;
-  top: 160px;
+  top: 110px;
   z-index: 100;
 }
 

@@ -58,7 +58,7 @@ export const SelectWear = memo(() => {
                     </>
                 )) : (
                     <div style={{ textAlign: "center", margin: "auto" }}>
-                        <img style={{ width: "28%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src='/img/rakutenlist/asics/male/506269/red/chitosesports-b_10018514.png' alt="" />
+                        <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src='/img/rakutenlist/asics/male/506269/red/chitosesports-b_10018514.png' alt="" />
                     </div>
                 )}
             </div>
@@ -84,7 +84,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <div>
-                            <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "66px", objectPosition: "124px", zIndex: "100", left: "0" }} src='img/rakutenlist/asics/male/508759/blue/chitosesports_10043147navy.png' alt="" />
+                            <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "110px", objectPosition: "124px", zIndex: "100", left: "0" }} src='/img/rakutenlist/asics/male/508759/blue/sportsman_11351608.png' alt="" />
                         </div>
                     )}
             </div>

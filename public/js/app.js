@@ -14523,6 +14523,35 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
 
 /***/ }),
 
+/***/ "./resources/js/components/organisms/layouts/selectWear/MainSelectWear.jsx":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/organisms/layouts/selectWear/MainSelectWear.jsx ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MainSelectWear": () => (/* binding */ MainSelectWear)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _SelectWear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectWear */ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var MainSelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "mannequinImg",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectWear__WEBPACK_IMPORTED_MODULE_1__.SelectWear, {})
+    })
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx ***!
@@ -14662,7 +14691,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
           style: {
-            width: "28%",
+            width: "15%",
             height: "50px",
             objectFit: "cover",
             objectPosition: "bottom"
@@ -14706,12 +14735,12 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             height: "130px",
             objectFit: "contain",
             position: "absolute",
-            top: "66px",
+            top: "110px",
             objectPosition: "124px",
             zIndex: "100",
             left: "0"
           },
-          src: "img/rakutenlist/asics/male/508759/blue/chitosesports_10043147navy.png",
+          src: "/img/rakutenlist/asics/male/508759/blue/sportsman_11351608.png",
           alt: ""
         })
       })
@@ -15063,7 +15092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Favorite__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/Favorite */ "./resources/js/components/pages/Favorite.jsx");
 /* harmony import */ var _pages_Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/Cart */ "./resources/js/components/pages/Cart.jsx");
 /* harmony import */ var _pages_Page404__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/Page404 */ "./resources/js/components/pages/Page404.jsx");
-/* harmony import */ var _organisms_layouts_selectWear_SelectWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/layouts/selectWear/SelectWear */ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx");
+/* harmony import */ var _organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/layouts/selectWear/MainSelectWear */ "./resources/js/components/organisms/layouts/selectWear/MainSelectWear.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -15084,7 +15113,7 @@ var PageRoute = [{
 }, {
   path: "/selectwear",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_layouts_selectWear_SelectWear__WEBPACK_IMPORTED_MODULE_6__.SelectWear, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__.MainSelectWear, {})
 }, {
   path: "/item",
   exact: false,
