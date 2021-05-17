@@ -3,6 +3,7 @@ import { memo, useState } from "react"
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
+import { SearchItemCaps } from "./SearchItemCaps";
 
 
 function TabPanel(props) {
@@ -17,8 +18,8 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
+                <Box p={2}>
+                    <>{children}</>
                 </Box>
             )}
         </div>
@@ -47,7 +48,8 @@ const useStyles = makeStyles({
     },
 });
 
-export const WearSearch = memo(() => {
+export const WearSearch = memo((props) => {
+    const { onClickFetchCaps } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -74,19 +76,19 @@ export const WearSearch = memo(() => {
                     <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(4)} />
                 </Tabs>
                 <TabPanel value={value} index={0}>
-                    Item One
+                    <SearchItemCaps onClickFetchCaps={onClickFetchCaps} />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    Item Two
+                    <div>test2</div>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    Item Three
+                <div>test3</div>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                    Item four
+                <div>test4</div>
                 </TabPanel>
                 <TabPanel value={value} index={4}>
-                    Item five
+                <div>test5</div>
                 </TabPanel>
             </Paper>
         </Container>

@@ -14,7 +14,8 @@ export const SelectWear = memo(() => {
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
 
-    const onClickFetchCaps = (props) => { getCaps(props); }
+    const onClickFetchCaps = (props) => {
+        getCaps(props); }
     const onClickFetchTops = () => getTops();
     const onClickFetchPants = () => getPants();
     const onClickFetchShoes = () => getShoes();
@@ -143,9 +144,9 @@ export const SelectWear = memo(() => {
                 position: "absolute",
                 bottom: "100px"
             }}>
-                <button onClick={onClickFetchCaps} color="red" brand="nike">
+                {/* <button onClick={onClickFetchCaps} color="red" brand="nike">
                     <input type="hidden" category="tshirt" />
-                    Caps</button>
+                    Caps</button> */}
                 <br />
                 <button onClick={onClickFetchTops}>Tops</button>
                 <br />
@@ -172,7 +173,7 @@ export const SelectWear = memo(() => {
                     horizontal: 'center',
                 }}
             >
-                <WearSearch />
+                <WearSearch onClickFetchCaps={onClickFetchCaps} />
 
             </Popover>
         </>

@@ -11,18 +11,6 @@
   justify-content: center;
 }
 
-.MuiIcon-root {
-  width: auto !important;
-}
-
-.MuiContainer-root {
-  padding: 0 !important;
-}
-
-.MuiTabs-root {
-  border-bottom: solid 1px lightgray;
-}
-
 .w100 {
   width: 100%;
 }
@@ -214,4 +202,73 @@ details[open] .detailsBottom {
 #controller4 .wearImg {
   width: 80%;
   object-fit: contain;
+}
+
+.MuiIcon-root {
+  width: auto !important;
+}
+
+.MuiContainer-root {
+  padding: 0 !important;
+}
+
+.MuiTabs-root {
+  border-bottom: solid 1px lightgray;
+}
+
+.radioInputLabel {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  transition: all .2s;
+}
+
+.radioInputLabelColor {
+  display: inline-block;
+  border-radius: 3px;
+  transition: all .2s;
+  width: 50px;
+  height: 20px;
+  border: 1px solid lightgrey;
+}
+
+.radioInput:checked + .radioInputLabel {
+  background: #216496;
+  color: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+  border: 1px solid #216496;
+}
+
+.radioInputColor:checked + .radioInputLabelColor {
+  box-shadow: 0 0 16px rgba(33, 100, 150, 0.7);
+}
+
+.slide_x {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+/*スクロールバー全体*/
+::-webkit-scrollbar {
+  height: 2px;
+}
+
+/*スクロールバーの軌道*/
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/*スクロールバーの動く部分*/
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 50, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.searchTitle {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.6rem;
+  padding: 10px;
 }

@@ -10,14 +10,15 @@ export const useAllCaps = () => {
   const getCaps = (props) => {
     setLoading(true);
     setError(false);
-    console.log(props.target.attributes[0].value);
-    console.log(props.target.attributes[1].value);
-    console.log(props.target.children[0].attributes[1].value);
+    // console.log(props.target.attributes[0].value);
+    // console.log(props.target.attributes[1].value);
+    // console.log(props.target.children[0].attributes[1].value);
+    console.log(props);
 
 
 
     axios.get("/api/caps").then((res) => {
-        console.log(res);
+        // console.log(res);
       const data = res.data.map((caps) => ({
         id: caps.id,
         url: caps.url,
