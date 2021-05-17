@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,20 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/main', function () {
     return view('layouts.main');
 });
 
+Auth::routes();
+
 // /main/以降にアクセスしても404にしない
 
 Route::get('/main/{any}', static function () {
     return view('layouts.main');
-})->where('any', '.*');
+})->where('any', '.*')->middleware(['auth']);
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,15 +2,15 @@
     display: none !important;
 }
 
-.displayFlex{
+.displayFlex {
     display: flex;
 }
 
-.justifyCenter{
+.justifyCenter {
     justify-content: center;
 }
 
-.w100{
+.w100 {
     width: 100%;
 }
 
@@ -123,91 +123,164 @@ details[open] .detailsBottom {
     margin: 0 0 0 auto;
 }
 
-.selectWearContainer{
+.selectWearContainer {
     display: flex;
 }
 
-.leftContainer{
+.leftContainer {
     width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.centerContainer{
+.centerContainer {
     width: 40%;
     min-width: 200px;
     margin: auto;
 }
 
-.rightContainer{
+.rightContainer {
     width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-#controller{
+#controller {
     width: 100%;
     left: 0px;
     position: absolute;
-    top: 80px;
+    top: 40px;
 
-    .wearLi{
-      text-align: center;
+    .wearLi {
+        text-align: center;
     }
 
-    .wearImg{
-      width: 80px;
+    .wearImg {
+        width: 60px;
     }
-  }
+}
 
-#controller2{
+#controller2 {
     width: 100%;
     left: 0px;
     position: absolute;
-    top: 160px;
+    top: 110px;
     z-index: 100;
 
-    .wearLi{
-      text-align: center;
+    .wearLi {
+        text-align: center;
     }
 
-    .wearImg{
-      width: 130px;
+    .wearImg {
+        width: 130px;
     }
-  }
+}
 
-#controller3{
+#controller3 {
     width: 100%;
     left: 0px;
     position: absolute;
     top: 270px;
 
-    .wearLi{
-      text-align: center;
+    .wearLi {
+        text-align: center;
     }
 
-    .wearImg{
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
+    .wearImg {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
-  }
+}
 
-#controller4{
+#controller4 {
     width: 100%;
     left: 0px;
     position: absolute;
     top: 420px;
 
-    .wearLi{
-      text-align: center;
+    .wearLi {
+        text-align: center;
     }
 
-    .wearImg{
-      width: 80%;
-      object-fit: contain;
+    .wearImg {
+        width: 80%;
+        object-fit: contain;
     }
-  }
+}
 
+
+// 検索BOX
+
+.MuiIcon-root {
+    width: auto !important;
+}
+
+.MuiContainer-root {
+    padding: 0 !important;
+}
+
+.MuiTabs-root {
+    border-bottom: solid 1px lightgray;
+}
+
+.radioInputLabel{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: all .2s;
+}
+
+.radioInputLabelColor{
+    display: inline-block;
+    border-radius: 3px;
+    transition: all .2s;
+    width: 50px;
+    height: 20px;
+    border: 1px solid lightgrey;
+}
+
+.radioInput:checked + .radioInputLabel {
+    background: #216496;
+    color: #fff;
+    box-shadow: 0 0 1px rgba(0,0,0,.7);
+    border: 1px solid #216496;
+}
+
+.radioInputColor:checked + .radioInputLabelColor {
+    box-shadow: 0 0 16px rgba(33,100,150,.7);
+
+}
+
+.slide_x{
+    // display: flex;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+/*スクロールバー全体*/
+::-webkit-scrollbar {
+    height: 2px;
+}
+
+/*スクロールバーの軌道*/
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+}
+
+/*スクロールバーの動く部分*/
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 50, .5);
+  border-radius: 10px;
+  box-shadow:0 0 0 1px rgba(255, 255, 255, .3);
+}
+
+.searchTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 10px;
+}

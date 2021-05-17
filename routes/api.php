@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,29 +20,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get( '/caps', function ( Request $request ) {
+Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsData"])->name('getCapsData');
 
-    $caps = collect([
-        [
-            'id'  => 1,
-            'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
-        ],
-        [
-            'id'  => 2,
-            'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
-        ],
-        [
-            'id'  => 3,
-            'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
-        ],
-        [
-            'id'  => 4,
-            'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
-        ],
-    ]);
 
-    return response()->json( $caps );
-} );
+// Route::get( '/caps', function ( Request $request ) {
+
+//     $brand = $request->input('brand');
+//     $color = $request->input('color');
+
+//     $allCaps = DB::table('caps_rakuten_apis')->whereNotNull( $color . 'Img')->get();
+//     ddd($allCaps);
+
+
+
+//     $caps = collect([
+//         [
+//             'id'  => 1,
+//             'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
+//         ],
+//         [
+//             'id'  => 2,
+//             'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
+//         ],
+//         [
+//             'id'  => 3,
+//             'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
+//         ],
+//         [
+//             'id'  => 4,
+//             'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
+//         ],
+//     ]);
+
+//     return response()->json( $allCaps );
+// } );
 
 Route::get( '/tops', function ( Request $request ) {
 

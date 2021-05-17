@@ -1,10 +1,12 @@
-import { memo } from "react";
+import { Button, Popover } from "@material-ui/core";
+import { memo, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
 import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
+import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 
 export const SelectWear = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
@@ -12,10 +14,25 @@ export const SelectWear = memo(() => {
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
 
-    const onClickFetchCaps = (props) => {getCaps(props);}
+    const onClickFetchCaps = (props) => {
+        getCaps(props); }
     const onClickFetchTops = () => getTops();
     const onClickFetchPants = () => getPants();
     const onClickFetchShoes = () => getShoes();
+
+
+    const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
     return (
         <>
@@ -32,14 +49,16 @@ export const SelectWear = memo(() => {
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={wear.url} alt="" />
+                                    <img className="wearImg" src={`/img/rakutenlist/${wear.brand}/male/${wear.category}/${wear.color}/${wear.url}`} alt="" />
+                                    {/* <img className="wearImg" src={wear.url} alt="" /> */}
+                                    {/* <img src="{{ asset('/img/rakutenlist/' . $brand . '/' . $user->gender . '/' . $category . '/' . $color . '/' . $DBitem->{$color . 'Img'}) }}" alt="{{$item['itemName']}}"></img> */}
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </>
                 )) : (
                     <div style={{ textAlign: "center", margin: "auto" }}>
-                        <img style={{ width: "28%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src='/img/rakutenlist/asics/male/506269/red/chitosesports-b_10018514.png' alt="" />
+                        <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src='/img/rakutenlist/asics/male/506269/red/chitosesports-b_10018514.png' alt="" />
                     </div>
                 )}
             </div>
@@ -65,7 +84,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <div>
-                            <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "66px", objectPosition: "124px", zIndex: "100", left: "0" }} src='img/rakutenlist/asics/male/508759/blue/chitosesports_10043147navy.png' alt="" />
+                            <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "110px", objectPosition: "124px", zIndex: "100", left: "0" }} src='/img/rakutenlist/asics/male/508759/blue/sportsman_11351608.png' alt="" />
                         </div>
                     )}
             </div>
@@ -123,11 +142,13 @@ export const SelectWear = memo(() => {
             </div>
 
             <br />
-            <div style={{ position: "absolute",
-    bottom: "100px" }}>
-                <button onClick={onClickFetchCaps} color="red" brand="nike">
+            <div style={{
+                position: "absolute",
+                bottom: "100px"
+            }}>
+                {/* <button onClick={onClickFetchCaps} color="red" brand="nike">
                     <input type="hidden" category="tshirt" />
-                    Caps</button>
+                    Caps</button> */}
                 <br />
                 <button onClick={onClickFetchTops}>Tops</button>
                 <br />
@@ -135,6 +156,28 @@ export const SelectWear = memo(() => {
                 <br />
                 <button onClick={onClickFetchShoes}>Shoes</button>
             </div>
+
+            <Button style={{ position: "absolute", bottom: "200px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+        Open Popover
+      </Button>
+
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+                transformOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                }}
+            >
+                <WearSearch onClickFetchCaps={onClickFetchCaps} />
+
+            </Popover>
         </>
     )
 })

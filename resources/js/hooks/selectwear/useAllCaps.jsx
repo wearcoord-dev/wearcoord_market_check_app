@@ -10,18 +10,34 @@ export const useAllCaps = () => {
   const getCaps = (props) => {
     setLoading(true);
     setError(false);
-    console.log(props.target.attributes[0].value);
-    console.log(props.target.attributes[1].value);
-    console.log(props.target.children[0].attributes[1].value);
+    // console.log(props.target.attributes[0].value);
+    // console.log(props.target.attributes[1].value);
+    // console.log(props.target.children[0].attributes[1].value);
+    // console.log(props.target.form[2].value);
+    const brand = props.target.form[1].value;
+    const color = props.target.form[2].value;
 
 
+    axios.get("/api/caps",{
+        params: {
+            brand: brand,
+            color: color,
+          }
+    }).then((res) => {
+        console.log(res.data);
+        const getColor = res.data.color;
+        const getBrand = res.data.brand;
+        const getCategory = res.data.category;
 
-    axios.get("/api/caps").then((res) => {
-        console.log(res);
-      const data = res.data.map((caps) => ({
-        id: caps.id,
+      const data = res.data.DBitems.map((caps) => ({
+        id: caps.db.id,
         url: caps.url,
+        brand: getBrand,
+        color: getColor,
+        category: getCategory,
       }));
+
+      console.log(data);
       setUserCaps(data);
     }).catch(() => {
       setError(true);
