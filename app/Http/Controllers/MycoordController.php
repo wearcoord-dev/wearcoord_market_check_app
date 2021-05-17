@@ -27,8 +27,8 @@ class MycoordController extends Controller
         $getItems = Rakuten::SearchRakutenAPI($category, $encodeBrand, $encodeColor);
 
         // wearcoord管理DBでフィルター
-        $sortDBitems = Rakuten::searchRakutenDB($type, $getItems);
-        $myDBitems = Rakuten::searchRakutenDBItems($type, $sortDBitems, $color);
+        $sortDBitems = Rakuten::searchRakutenDB($type, $getItems, $color);
+        $myDBitems = Rakuten::searchRakutenDBItems($type, $sortDBitems, $color, $brand, $category);
 
 
 

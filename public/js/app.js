@@ -14649,7 +14649,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
                 className: "wearImg",
-                src: "/img/rakutenlist/asics/male/506269/".concat(wear.color, "/").concat(wear.url),
+                src: "/img/rakutenlist/".concat(wear.brand, "/male/").concat(wear.category, "/").concat(wear.color, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -15359,16 +15359,21 @@ var useAllCaps = function useAllCaps() {
         color: color
       }
     }).then(function (res) {
-      console.log(res.data.DBitems);
+      console.log(res.data);
+      var getColor = res.data.color;
+      var getBrand = res.data.brand;
+      var getCategory = res.data.category;
       var data = res.data.DBitems.map(function (caps) {
         return {
-          id: caps.id,
-          url: caps.whiteImg // color: caps.color,
-
+          id: caps.db.id,
+          url: caps.url,
+          brand: getBrand,
+          color: getColor,
+          category: getCategory
         };
       });
-      setUserCaps(data);
       console.log(data);
+      setUserCaps(data);
     })["catch"](function () {
       setError(true);
     })["finally"](function () {

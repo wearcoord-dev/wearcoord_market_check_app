@@ -24,15 +24,21 @@ export const useAllCaps = () => {
             color: color,
           }
     }).then((res) => {
-        console.log(res.data.DBitems);
+        console.log(res.data);
+        const getColor = res.data.color;
+        const getBrand = res.data.brand;
+        const getCategory = res.data.category;
 
       const data = res.data.DBitems.map((caps) => ({
-        id: caps.id,
-        url: caps.whiteImg,
-        // color: caps.color,
+        id: caps.db.id,
+        url: caps.url,
+        brand: getBrand,
+        color: getColor,
+        category: getCategory,
       }));
+
+      console.log(data);
       setUserCaps(data);
-              console.log(data);
     }).catch(() => {
       setError(true);
     }).finally(() => {

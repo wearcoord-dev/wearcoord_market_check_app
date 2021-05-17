@@ -67,19 +67,22 @@ class Rakuten
         return ['items' => $items];
     }
 
-    public static function searchRakutenDB($type, $getItems)
+    public static function searchRakutenDB($type, $getItems, $color)
     {
         $wearType = $type;
+        $wearColor = $color;
 
 
         foreach ($getItems as $getItem) {
+            // ddd($getItem);
+
             $result = array_filter(
                 $getItem,
-                function ($element) use ($wearType) {
+                function ($element) use ($wearType, $wearColor) {
 
                     if ($wearType == 'caps') {
 
-                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->first();
+                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->whereNotNull( $wearColor .'Img')->first();
 
                         return $item;
                     }
@@ -115,17 +118,23 @@ class Rakuten
         return ['result' => $result];
     }
 
-    public static function searchRakutenDBItems($type, $sortDBitems, $color)
+    public static function searchRakutenDBItems($type, $sortDBitems, $color, $brand, $category)
     {
         $wearType = $type;
         $DBitems = [];
+        $color = $color;
 
         foreach($sortDBitems as $sortDBitem){
 
             foreach($sortDBitem as $item){
+                // ddd($sortDBitem);
 
                     if ($wearType == 'caps') {
-                        $DBitems[] = DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first();
+                        // $DBitems[] = DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first();
+                        $DBitems[] = array('url' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->value( $color . 'Img'), 'db' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first());
+
+                        // ddd($DBitems);
+
                     }
 
                     if ($wearType == 'tops') {
@@ -147,6 +156,6 @@ class Rakuten
 
         }
         // ddd($DBitems);
-        return ['DBitems' => $DBitems];
+        return ['DBitems' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category];
     }
 }
