@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Library;
+
 use RakutenRws_Client;
 use Illuminate\Support\Facades\DB;
 
@@ -25,14 +26,30 @@ class Rakuten
         $brand = $brand;
         $color = $color;
 
+        if ($brand) {
+            $tagId = $brand;
+
+            if ($color) {
+                $tagId = $brand .  "," . $color;
+            }
+        } else if ($color) {
+            $tagId = $color;
+        }
+
+        // ddd($tagId);
+
+
         // IchibaItemSearch API から、指定条件で検索
         if (!empty($keyword)) {
             $response = $client->execute('IchibaItemSearch', array(
                 //入力パラメーター
                 'genreId' => $keyword,
-                'tagId' => $brand .  "," . $color,
+                'tagId' => $tagId,
                 'affiliateId' => '1f1115bc.a4b49059.1f1115bd.9475decf',
             ));
+
+                    // ddd($response);
+
 
             // レスポンスが正しいかを isOk() で確認することができます
             if ($response->isOk()) {
@@ -41,10 +58,9 @@ class Rakuten
                 foreach ($response as $item) {
                     //画像サイズを変えたかったのでURLを整形します
                     // $str = str_replace("_ex=128x128", "_ex=175x175", $item['mediumImageUrls'][0]['imageUrl']);
-                    if(isset($item['mediumImageUrls'][0]['imageUrl']))
-                    {
+                    if (isset($item['mediumImageUrls'][0]['imageUrl'])) {
                         $str = $item['mediumImageUrls'][0]['imageUrl'];
-                    }else{
+                    } else {
                         $str = null;
                     }
 
@@ -74,7 +90,7 @@ class Rakuten
 
 
         foreach ($getItems as $getItem) {
-            // ddd($getItem);
+            // ddd($wearColor);
 
             $result = array_filter(
                 $getItem,
@@ -82,7 +98,7 @@ class Rakuten
 
                     if ($wearType == 'caps') {
 
-                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->whereNotNull( $wearColor .'Img')->first();
+                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->whereNotNull($wearColor . 'Img')->first();
 
                         return $item;
                     }
@@ -124,36 +140,35 @@ class Rakuten
         $DBitems = [];
         $color = $color;
 
-        foreach($sortDBitems as $sortDBitem){
+        foreach ($sortDBitems as $sortDBitem) {
 
-            foreach($sortDBitem as $item){
+            foreach ($sortDBitem as $item) {
                 // ddd($sortDBitem);
 
-                    if ($wearType == 'caps') {
-                        // $DBitems[] = DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first();
-                        $DBitems[] = array('url' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->value( $color . 'Img'), 'db' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first());
+                if ($wearType == 'caps') {
+                    // $DBitems[] = DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull( $color .'Img')->first();
+                    $DBitems[] = array('url' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull($color . 'Img')->value($color . 'Img'), 'db' => DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->whereNotNull($color . 'Img')->first());
 
-                        // ddd($DBitems);
+                    // ddd($DBitems);
 
-                    }
+                }
 
-                    if ($wearType == 'tops') {
-                        $DBitems[] = DB::table('tops_rakuten_apis')->where('itemId', $item['itemCode'])->first();
-                    }
+                if ($wearType == 'tops') {
+                    $DBitems[] = DB::table('tops_rakuten_apis')->where('itemId', $item['itemCode'])->first();
+                }
 
-                    if ($wearType == 'pants') {
-                        $DBitems[] = DB::table('pants_rakuten_apis')->where('itemId', $item['itemCode'])->first();
-                    }
+                if ($wearType == 'pants') {
+                    $DBitems[] = DB::table('pants_rakuten_apis')->where('itemId', $item['itemCode'])->first();
+                }
 
-                    if ($wearType == 'socks') {
-                        $DBitems[] = DB::table('socks_rakuten_apis')->where('itemId', $item['itemCode'])->first();
-                    }
+                if ($wearType == 'socks') {
+                    $DBitems[] = DB::table('socks_rakuten_apis')->where('itemId', $item['itemCode'])->first();
+                }
 
-                    if ($wearType == 'shoes') {
-                        $DBitems[] = DB::table('shoes_rakuten_apis')->where('itemId', $item['itemCode'])->first();
-                    }
+                if ($wearType == 'shoes') {
+                    $DBitems[] = DB::table('shoes_rakuten_apis')->where('itemId', $item['itemCode'])->first();
+                }
             }
-
         }
         // ddd($DBitems);
         return ['DBitems' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category];

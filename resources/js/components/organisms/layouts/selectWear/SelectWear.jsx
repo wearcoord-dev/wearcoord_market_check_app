@@ -1,4 +1,4 @@
-import { Button, Popover } from "@material-ui/core";
+import { Button, Popover, Popper } from "@material-ui/core";
 import { memo, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -49,7 +49,8 @@ export const SelectWear = memo(() => {
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={`/img/rakutenlist/${wear.brand}/male/${wear.category}/${wear.color}/${wear.url}`} alt="" />
+                                    {/* <img className="wearImg" src={`/img/rakutenlist/${wear.brand}/male/${wear.category}/${wear.color}/${wear.url}`} alt="" /> */}
+                                    <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
                                     {/* <img className="wearImg" src={wear.url} alt="" /> */}
                                     {/* <img src="{{ asset('/img/rakutenlist/' . $brand . '/' . $user->gender . '/' . $category . '/' . $color . '/' . $DBitem->{$color . 'Img'}) }}" alt="{{$item['itemName']}}"></img> */}
                                 </SwiperSlide>
@@ -161,23 +162,25 @@ export const SelectWear = memo(() => {
         Open Popover
       </Button>
 
-            <Popover
+            <Popper
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                }}
-                transformOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                }}
+                placement={'top'}
+                // anchorOrigin={{
+                //     vertical: 'bottom',
+                //     horizontal: 'center',
+                // }}
+                // transformOrigin={{
+                //     vertical: 'bottom',
+                //     horizontal: 'center',
+                // }}
+                style={{ width: "100%" }}
             >
                 <WearSearch onClickFetchCaps={onClickFetchCaps} />
 
-            </Popover>
+            </Popper>
         </>
     )
 })
