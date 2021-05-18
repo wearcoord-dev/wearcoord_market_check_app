@@ -20,7 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsData"])->name('getCapsData');
+Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
+
+// Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
 
 // Route::get( '/caps', function ( Request $request ) {

@@ -24,19 +24,19 @@ export const useAllCaps = () => {
             color: color,
           }
     }).then((res) => {
-        console.log(res.data);
+        console.log(res.data.item);
         const getColor = res.data.color;
         const getBrand = res.data.brand;
         const getCategory = res.data.category;
 
-      const data = res.data.DBitems.map((caps) => ({
-        id: caps.db.id,
+      const data = res.data.item.map((caps) => ({
+        id: caps.id,
         url: caps.url,
         brand: getBrand,
         color: getColor,
         category: getCategory,
-      }));
-
+      }
+      ));
       console.log(data);
       setUserCaps(data);
     }).catch(() => {
