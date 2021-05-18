@@ -16371,15 +16371,10 @@ var useAllCaps = function useAllCaps() {
       var getColor = res.data.color;
       var getBrand = res.data.brand;
       var getCategory = res.data.category;
-
-      if (!getColor) {
-        console.log('ng');
-      }
-
       var data = res.data.item.map(function (caps) {
         return {
           id: caps.id,
-          url: caps[getColor],
+          url: caps.url,
           brand: getBrand,
           color: getColor,
           category: getCategory

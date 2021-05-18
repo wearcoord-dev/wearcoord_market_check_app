@@ -29,13 +29,9 @@ export const useAllCaps = () => {
         const getBrand = res.data.brand;
         const getCategory = res.data.category;
 
-        if(!getColor){
-            console.log('ng');
-        }
-
       const data = res.data.item.map((caps) => ({
         id: caps.id,
-        url: caps[getColor],
+        url: caps.url,
         brand: getBrand,
         color: getColor,
         category: getCategory,
