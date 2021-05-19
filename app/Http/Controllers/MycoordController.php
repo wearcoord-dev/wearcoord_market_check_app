@@ -13,12 +13,15 @@ use App\Library\Database;
 
 class MycoordController extends Controller
 {
+
+    // 楽天APIを経由して検索
+
     public function getCapsData(Request $request)
     {
         $brand = $request->input('brand');
         $color = $request->input('color');
-        $category = "506269";
-        $type = 'caps';
+        $category = $request->input('category');
+        $type = $request->input('type');
 
         // 楽天管理タグにエンコード
         $encodeColor = Encodes::encodeRakutenColorTag($color);
@@ -37,6 +40,8 @@ class MycoordController extends Controller
         // $allCaps = DB::table('caps_rakuten_apis')->whereNotNull($color . 'Img')->get();
         // ddd($allCaps);
     }
+
+    // wearcoordのDBだけで検索
 
     public function getCapsDBData(Request $request)
     {
@@ -63,8 +68,8 @@ class MycoordController extends Controller
         define("RAKUTEN_APPLICATION_ID", config('app.rakuten_id'));
         define("RAKUTEN_APPLICATION_SEACRET", config('app.rakuten_key'));
 
-        $category = "506269";
-        $type = "caps";
+        $category = "508803";
+        $type = "tops";
 
         $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
@@ -72,7 +77,7 @@ class MycoordController extends Controller
 
             $encodeColor = Encodes::encodeRakutenColorTag($color);
 
-            $brands = ['yonex', 'nike', 'adidas', 'gosen', 'mizuno', 'asics', 'diadora', 'babolat', 'prince', 'fila', 'ellesse', 'oakley', 'lecoq', 'lacoste', 'newbalance', 'underarmour', 'srixon', 'lotto', 'armani'];
+            $brands = ['yonex', 'nike', 'adidas', 'gosen', 'mizuno', 'asics', 'diadora', 'babolat', 'prince', 'fila', 'ellesse', 'oakley', 'lecoq', 'lacoste', 'newbalance', 'underarmour', 'srixon', 'lotto', 'armani', 'hydrogen'];
 
             foreach ($brands as $brand) {
 
@@ -92,8 +97,8 @@ class MycoordController extends Controller
                 foreach ($sortDBitems as $sortDBitem) {
 
                     foreach ($sortDBitem as $item) {
-                        DB::table('caps_rakuten_apis')->where('itemId', $item['itemCode'])->update([
-                            'brand' => $brand
+                        DB::table( $type . '_rakuten_apis')->where('itemId', $item['itemCode'])->update([
+                            'category' => $category
                         ]);
                     }
                 }
@@ -101,11 +106,13 @@ class MycoordController extends Controller
         }
     }
 
+    // DBの画像の名前に色を追加する
+
     public static function addColorImgDB()
     {
         $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
-        $type = "caps";
+        $type = "tops";
 
         foreach ($colors as $color) {
 
