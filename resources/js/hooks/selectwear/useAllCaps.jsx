@@ -13,15 +13,19 @@ export const useAllCaps = () => {
     // console.log(props.target.attributes[0].value);
     // console.log(props.target.attributes[1].value);
     // console.log(props.target.children[0].attributes[1].value);
-    // console.log(props.target.form[2].value);
+    // console.log(props.target.form[3].value);
     const brand = props.target.form[1].value;
     const color = props.target.form[2].value;
+    const category = props.target.form[3].value;
+    const type = props.target.form[4].value;
 
 
     axios.get("/api/caps",{
         params: {
             brand: brand,
             color: color,
+            category: category,
+            type: type,
           }
     }).then((res) => {
         console.log(res.data.item);
@@ -30,7 +34,7 @@ export const useAllCaps = () => {
         const getCategory = res.data.category;
 
       const data = res.data.item.map((caps) => ({
-        id: caps.id,
+        id: caps.db.id,
         url: caps.url,
         brand: getBrand,
         color: getColor,

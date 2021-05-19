@@ -108,6 +108,9 @@ class Encodes
             case 'armani':
                 $brand = 1005489;
                 break;
+            case 'hydrogen':
+                $brand = 1002257;
+                break;
             default:
                 $brand = $brand;
                 break;

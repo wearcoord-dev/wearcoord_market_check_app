@@ -14920,6 +14920,14 @@ var SearchItemCaps = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         type: "hidden",
         id: "getcolor",
         value: valueColor
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "hidden",
+        id: "getCategory",
+        value: "506269"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        type: "hidden",
+        id: "type",
+        value: "caps"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchBrand__WEBPACK_IMPORTED_MODULE_2__.SearchBrand, {
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_3__.SearchColor, {
@@ -16357,14 +16365,18 @@ var useAllCaps = function useAllCaps() {
     setError(false); // console.log(props.target.attributes[0].value);
     // console.log(props.target.attributes[1].value);
     // console.log(props.target.children[0].attributes[1].value);
-    // console.log(props.target.form[2].value);
+    // console.log(props.target.form[3].value);
 
     var brand = props.target.form[1].value;
     var color = props.target.form[2].value;
+    var category = props.target.form[3].value;
+    var type = props.target.form[4].value;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/caps", {
       params: {
         brand: brand,
-        color: color
+        color: color,
+        category: category,
+        type: type
       }
     }).then(function (res) {
       console.log(res.data.item);
@@ -16373,7 +16385,7 @@ var useAllCaps = function useAllCaps() {
       var getCategory = res.data.category;
       var data = res.data.item.map(function (caps) {
         return {
-          id: caps.id,
+          id: caps.db.id,
           url: caps.url,
           brand: getBrand,
           color: getColor,
