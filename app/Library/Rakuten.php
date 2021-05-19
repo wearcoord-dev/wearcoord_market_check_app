@@ -98,7 +98,7 @@ class Rakuten
 
                     if ($wearType == 'caps') {
 
-                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->whereNotNull($wearColor . 'Img')->first();
+                        $item = DB::table('caps_rakuten_apis')->where('itemId', $element['itemCode'])->whereNotNull($wearColor)->first();
 
                         return $item;
                     }

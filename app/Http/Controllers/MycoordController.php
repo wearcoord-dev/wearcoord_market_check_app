@@ -58,10 +58,12 @@ class MycoordController extends Controller
     public static function addBrandDB()
     {
 
+        // 使うとき/Library/Rakuten側をOFFにする
+
         define("RAKUTEN_APPLICATION_ID", config('app.rakuten_id'));
         define("RAKUTEN_APPLICATION_SEACRET", config('app.rakuten_key'));
 
-        $category = "565818";
+        $category = "506269";
         $type = "caps";
 
         $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
@@ -95,6 +97,33 @@ class MycoordController extends Controller
                         ]);
                     }
                 }
+            }
+        }
+    }
+
+    public static function addColorImgDB()
+    {
+        $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+        $type = "caps";
+
+        foreach ($colors as $color) {
+
+            $items = DB::table($type . '_rakuten_apis')->whereNotNull($color)->get();
+
+            foreach ($items as $item) {
+                // $imgName = $item->$color;
+                $txt = $color . '_' . $item->$color;
+                // ddd($txt);
+
+                // $test = DB::table($type . '_rakuten_apis')->where('id', $item->id)->value($color);
+                // ddd($test);
+
+
+                DB::table($type . '_rakuten_apis')->where('id', $item->id)->update([
+                    $color => $txt
+                ]);
+                // ddd($item->$color);
             }
         }
     }

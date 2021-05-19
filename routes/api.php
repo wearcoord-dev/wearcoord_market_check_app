@@ -24,6 +24,8 @@ Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsDBDa
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
+// Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
+
 
 // Route::get( '/caps', function ( Request $request ) {
 
