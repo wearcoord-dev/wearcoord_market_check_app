@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
 import { SearchItemCaps } from "./SearchItemCaps";
+import { SearchItemTops } from "./SearchItemTops";
 
 
 function TabPanel(props) {
@@ -49,7 +50,7 @@ const useStyles = makeStyles({
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps } = props;
+    const { onClickFetchCaps, onClickFetchTops } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -59,39 +60,39 @@ export const WearSearch = memo((props) => {
 
     return (
         <>
-        <Container>
-            <Paper className={classes.root}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    centered
-                    aria-label="simple tabs example"
-                >
-                    <Tab icon={<Face />} {...a11yProps(0)} />
-                    <Tab icon={<Icon className="fas fa-tshirt" />} {...a11yProps(1)} />
-                    <Tab icon={<AirlineSeatLegroomExtra />} {...a11yProps(2)} />
-                    <Tab icon={<Icon className="fas fa-socks" />} {...a11yProps(3)} />
-                    <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(4)} />
-                </Tabs>
-                <TabPanel value={value} index={0}>
-                    <SearchItemCaps onClickFetchCaps={onClickFetchCaps} />
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    <div>test2</div>
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                <div>test3</div>
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                <div>test4</div>
-                </TabPanel>
-                <TabPanel value={value} index={4}>
-                <div>test5</div>
-                </TabPanel>
-            </Paper>
-        </Container>
+            <Container>
+                <Paper className={classes.root}>
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        centered
+                        aria-label="simple tabs example"
+                    >
+                        <Tab icon={<Face />} {...a11yProps(0)} />
+                        <Tab icon={<Icon className="fas fa-tshirt" />} {...a11yProps(1)} />
+                        <Tab icon={<AirlineSeatLegroomExtra />} {...a11yProps(2)} />
+                        <Tab icon={<Icon className="fas fa-socks" />} {...a11yProps(3)} />
+                        <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(4)} />
+                    </Tabs>
+                    <TabPanel value={value} index={0}>
+                        <SearchItemCaps onClickFetchCaps={onClickFetchCaps} />
+                    </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <SearchItemTops onClickFetchTops={onClickFetchTops} />
+                    </TabPanel>
+                    <TabPanel value={value} index={2}>
+                        <div>test3</div>
+                    </TabPanel>
+                    <TabPanel value={value} index={3}>
+                        <div>test4</div>
+                    </TabPanel>
+                    <TabPanel value={value} index={4}>
+                        <div>test5</div>
+                    </TabPanel>
+                </Paper>
+            </Container>
         </>
     )
 })

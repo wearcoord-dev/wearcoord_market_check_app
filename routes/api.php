@@ -22,65 +22,34 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
 
+Route::get('/tops', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
+
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
 
+// Route::get( '/tops', function ( Request $request ) {
 
-// Route::get( '/caps', function ( Request $request ) {
-
-//     $brand = $request->input('brand');
-//     $color = $request->input('color');
-
-//     $allCaps = DB::table('caps_rakuten_apis')->whereNotNull( $color . 'Img')->get();
-//     ddd($allCaps);
-
-
-
-//     $caps = collect([
+//     $tops = collect([
 //         [
 //             'id'  => 1,
-//             'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
+//             'url' => '/img/rakutenlist/asics/male/508759/black/chitosesports_10038396.png',
 //         ],
 //         [
 //             'id'  => 2,
-//             'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
+//             'url' => '/img/rakutenlist/asics/male/508759/blue/2041a102_11blue.png',
 //         ],
 //         [
 //             'id'  => 3,
-//             'url' => '/img/rakutenlist/adidas/male/506269/black/aozoraya-sp_10136470.png',
+//             'url' => '/img/rakutenlist/asics/male/508759/green/chitosesports-b_10013876.png',
 //         ],
 //         [
 //             'id'  => 4,
-//             'url' => '/img/rakutenlist/adidas/male/506269/blue/la-foresta_10075792.png',
+//             'url' => '/img/rakutenlist/fila/male/508759/red/la-foresta_10076503.png',
 //         ],
 //     ]);
-
-//     return response()->json( $allCaps );
+//     return response()->json( $tops );
 // } );
-
-Route::get( '/tops', function ( Request $request ) {
-
-    $tops = collect([
-        [
-            'id'  => 1,
-            'url' => '/img/rakutenlist/asics/male/508759/black/chitosesports_10038396.png',
-        ],
-        [
-            'id'  => 2,
-            'url' => '/img/rakutenlist/asics/male/508759/blue/2041a102_11blue.png',
-        ],
-        [
-            'id'  => 3,
-            'url' => '/img/rakutenlist/asics/male/508759/green/chitosesports-b_10013876.png',
-        ],
-        [
-            'id'  => 4,
-            'url' => '/img/rakutenlist/fila/male/508759/red/la-foresta_10076503.png',
-        ],
-    ]);
-    return response()->json( $tops );
-} );
 
 Route::get( '/pants', function ( Request $request ) {
 

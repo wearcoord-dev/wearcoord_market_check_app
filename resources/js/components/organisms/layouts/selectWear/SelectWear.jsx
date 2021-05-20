@@ -16,7 +16,7 @@ export const SelectWear = memo(() => {
 
     const onClickFetchCaps = (props) => {
         getCaps(props); }
-    const onClickFetchTops = () => getTops();
+    const onClickFetchTops = (props) => getTops(props);
     const onClickFetchPants = () => getPants();
     const onClickFetchShoes = () => getShoes();
 
@@ -75,7 +75,7 @@ export const SelectWear = memo(() => {
                             >
                                 {userTops.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={wear.url} alt="" />
+                                        <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -175,7 +175,10 @@ export const SelectWear = memo(() => {
                 // }}
                 style={{ width: "100%" }}
             >
-                <WearSearch onClickFetchCaps={onClickFetchCaps} />
+                <WearSearch
+                onClickFetchCaps={onClickFetchCaps}
+                onClickFetchTops={onClickFetchTops}
+                />
 
             </Popper>
         </>
