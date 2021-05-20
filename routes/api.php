@@ -24,6 +24,8 @@ Route::get('/caps', [App\Http\Controllers\MycoordController::class, "getCapsDBDa
 
 Route::get('/tops', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
 
+Route::get('/pants', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
+
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
@@ -51,29 +53,29 @@ Route::get('/tops', [App\Http\Controllers\MycoordController::class, "getCapsDBDa
 //     return response()->json( $tops );
 // } );
 
-Route::get( '/pants', function ( Request $request ) {
+// Route::get( '/pants', function ( Request $request ) {
 
-    $pants = collect([
-        [
-            'id'  => 1,
-            'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports_10030744.png',
-        ],
-        [
-            'id'  => 2,
-            'url' => '/img/rakutenlist/fila/male/508772/red/amuse37_10002360.png',
-        ],
-        [
-            'id'  => 3,
-            'url' => '/img/rakutenlist/asics/male/508772/white/aozoraya-sp_10142640.png',
-        ],
-        [
-            'id'  => 4,
-            'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports-b_10016753.png',
-        ],
-    ]);
+//     $pants = collect([
+//         [
+//             'id'  => 1,
+//             'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports_10030744.png',
+//         ],
+//         [
+//             'id'  => 2,
+//             'url' => '/img/rakutenlist/fila/male/508772/red/amuse37_10002360.png',
+//         ],
+//         [
+//             'id'  => 3,
+//             'url' => '/img/rakutenlist/asics/male/508772/white/aozoraya-sp_10142640.png',
+//         ],
+//         [
+//             'id'  => 4,
+//             'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports-b_10016753.png',
+//         ],
+//     ]);
 
-    return response()->json( $pants );
-} );
+//     return response()->json( $pants );
+// } );
 
 Route::get( '/shoes', function ( Request $request ) {
 
