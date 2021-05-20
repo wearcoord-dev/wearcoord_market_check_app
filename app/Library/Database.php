@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\DB;
 
 class Database
 {
-    public static function searchDB($color, $brand, $category)
+    public static function searchDB($color, $brand, $category, $type)
     {
         if ($brand) {
-            $item = DB::table('caps_rakuten_apis')->where('brand', $brand)->get();
+            $item = DB::table( $type . '_rakuten_apis')->where('brand', $brand)->get();
 
             // 先に見つけた画像だけ取得
             $DBitems = [];
@@ -48,7 +48,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
             if ($color) {
-                $item = DB::table('caps_rakuten_apis')->where('brand', $brand)->whereNotNull($color)->get();
+                $item = DB::table( $type . '_rakuten_apis')->where('brand', $brand)->whereNotNull($color)->get();
 
                 // urlに画像を入れる
                 $DBitems = [];
@@ -58,7 +58,7 @@ class Database
                 }
             }
         } else if ($color) {
-            $item = DB::table('caps_rakuten_apis')->whereNotNull($color)->get();
+            $item = DB::table( $type . '_rakuten_apis')->whereNotNull($color)->get();
 
             // urlに画像を入れる
             $DBitems = [];

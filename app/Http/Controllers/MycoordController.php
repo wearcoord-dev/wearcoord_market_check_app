@@ -47,11 +47,11 @@ class MycoordController extends Controller
     {
         $brand = $request->input('brand');
         $color = $request->input('color');
-        $category = "506269";
-        $type = 'caps';
+        $category = $request->input('category');
+        $type = $request->input('type');
 
         // wearcoord管理DBでフィルター
-        $myDBitems = Database::searchDB($color, $brand, $category);
+        $myDBitems = Database::searchDB($color, $brand, $category, $type);
 
         // ddd($myDBitems);
 
