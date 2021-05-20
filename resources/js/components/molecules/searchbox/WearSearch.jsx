@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
 import { SearchItemCaps } from "./SearchItemCaps";
 import { SearchItemTops } from "./SearchItemTops";
+import { SearchItemPants } from "./SearchItemPants";
 
 
 function TabPanel(props) {
@@ -50,7 +51,7 @@ const useStyles = makeStyles({
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -83,7 +84,7 @@ export const WearSearch = memo((props) => {
                         <SearchItemTops onClickFetchTops={onClickFetchTops} />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        <div>test3</div>
+                        <SearchItemPants onClickFetchPants={onClickFetchPants} />
                     </TabPanel>
                     <TabPanel value={value} index={3}>
                         <div>test4</div>
