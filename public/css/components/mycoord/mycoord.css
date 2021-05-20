@@ -171,11 +171,15 @@ details[open] .detailsBottom {
   width: 130px;
 }
 
+.popper {
+  z-index: 1000;
+}
+
 #controller3 {
   width: 100%;
   left: 0px;
   position: absolute;
-  top: 270px;
+  top: 220px;
 }
 
 #controller3 .wearLi {

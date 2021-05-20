@@ -15919,7 +15919,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
                 className: "wearImg",
-                src: wear.url,
+                src: "/img/rakutenlist/male/".concat(wear.category, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -15983,19 +15983,10 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           alt: ""
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
       style: {
         position: "absolute",
         bottom: "100px"
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-        onClick: onClickFetchShoes,
-        children: "Shoes"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
-      style: {
-        position: "absolute",
-        bottom: "200px"
       },
       "aria-describedby": id,
       variant: "contained",
@@ -16007,7 +15998,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
       open: open,
       anchorEl: anchorEl,
       onClose: handleClose,
-      placement: 'top' // anchorOrigin={{
+      placement: 'top',
+      className: "popper" // anchorOrigin={{
       //     vertical: 'bottom',
       //     horizontal: 'center',
       // }}
@@ -16617,18 +16609,36 @@ var useAllPants = function useAllPants() {
       errorPants = _useState6[0],
       setError = _useState6[1];
 
-  var getPants = function getPants() {
+  var getPants = function getPants(props) {
     setLoading(true);
     setError(false);
     console.log("pantsだよ");
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/pants").then(function (res) {
-      console.log(res);
-      var data = res.data.map(function (pants) {
+    var brand = props.target.form[1].value;
+    var color = props.target.form[2].value;
+    var category = props.target.form[3].value;
+    var type = props.target.form[4].value;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/pants", {
+      params: {
+        brand: brand,
+        color: color,
+        category: category,
+        type: type
+      }
+    }).then(function (res) {
+      console.log(res.data.item);
+      var getColor = res.data.color;
+      var getBrand = res.data.brand;
+      var getCategory = res.data.category;
+      var data = res.data.item.map(function (wear) {
         return {
-          id: pants.id,
-          url: pants.url
+          id: wear.db.id,
+          url: wear.url,
+          brand: getBrand,
+          color: getColor,
+          category: getCategory
         };
       });
+      console.log(data);
       setUserPants(data);
     })["catch"](function () {
       setError(true);

@@ -101,7 +101,7 @@ export const SelectWear = memo(() => {
                             >
                                 {userPants.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={wear.url} alt="" />
+                                        <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -140,22 +140,8 @@ export const SelectWear = memo(() => {
             </div>
 
             <br />
-            <div style={{
-                position: "absolute",
-                bottom: "100px"
-            }}>
-                {/* <button onClick={onClickFetchCaps} color="red" brand="nike">
-                    <input type="hidden" category="tshirt" />
-                    Caps</button> */}
-                {/* <br />
-                <button onClick={onClickFetchTops}>Tops</button>
-                <br />
-                <button onClick={onClickFetchPants}>Pants</button> */}
-                <br />
-                <button onClick={onClickFetchShoes}>Shoes</button>
-            </div>
 
-            <Button style={{ position: "absolute", bottom: "200px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
         Open Popover
       </Button>
 
@@ -165,6 +151,7 @@ export const SelectWear = memo(() => {
                 anchorEl={anchorEl}
                 onClose={handleClose}
                 placement={'top'}
+                className="popper"
                 // anchorOrigin={{
                 //     vertical: 'bottom',
                 //     horizontal: 'center',
