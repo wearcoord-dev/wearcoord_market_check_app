@@ -26,6 +26,8 @@ Route::get('/tops', [App\Http\Controllers\MycoordController::class, "getCapsDBDa
 
 Route::get('/pants', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
 
+Route::get('/shoes', [App\Http\Controllers\MycoordController::class, "getCapsDBData"])->name('getCapsDBData');
+
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
@@ -77,26 +79,26 @@ Route::get('/pants', [App\Http\Controllers\MycoordController::class, "getCapsDBD
 //     return response()->json( $pants );
 // } );
 
-Route::get( '/shoes', function ( Request $request ) {
+// Route::get( '/shoes', function ( Request $request ) {
 
-    $shoes = collect([
-        [
-            'id'  => 1,
-            'url' => '/img/rakutenlist/fila/male/208025/white/esports_11472884.png',
-        ],
-        [
-            'id'  => 2,
-            'url' => '/img/rakutenlist/asics/male/208025/black/chitosesports_10047743.png',
-        ],
-        [
-            'id'  => 3,
-            'url' => '/img/rakutenlist/adidas/male/208025/red/everracket_10038980.png',
-        ],
-        [
-            'id'  => 4,
-            'url' => '/img/rakutenlist/adidas/male/208025/red/sportsauthority_10328602.png',
-        ],
-    ]);
+//     $shoes = collect([
+//         [
+//             'id'  => 1,
+//             'url' => '/img/rakutenlist/fila/male/208025/white/esports_11472884.png',
+//         ],
+//         [
+//             'id'  => 2,
+//             'url' => '/img/rakutenlist/asics/male/208025/black/chitosesports_10047743.png',
+//         ],
+//         [
+//             'id'  => 3,
+//             'url' => '/img/rakutenlist/adidas/male/208025/red/everracket_10038980.png',
+//         ],
+//         [
+//             'id'  => 4,
+//             'url' => '/img/rakutenlist/adidas/male/208025/red/sportsauthority_10328602.png',
+//         ],
+//     ]);
 
-    return response()->json( $shoes );
-} );
+//     return response()->json( $shoes );
+// } );
