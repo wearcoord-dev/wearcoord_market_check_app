@@ -3,7 +3,7 @@ import { SearchBrand } from "./SearchBrand";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemTops = memo((props) => {
-    const { onClickFetchCaps } = props;
+    const { onClickFetchTops } = props;
     const [value, setValue] = useState("");
     const [valueColor, setValueColor] = useState("");
 
@@ -17,7 +17,7 @@ export const SearchItemTops = memo((props) => {
                 <input type="hidden" id="type" value="tops" />
                 <SearchBrand setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
-                <button type="button"  onClick={onClickFetchCaps}>送信</button>
+                <button type="button"  onClick={onClickFetchTops}>送信</button>
             </form>
         </>
     )

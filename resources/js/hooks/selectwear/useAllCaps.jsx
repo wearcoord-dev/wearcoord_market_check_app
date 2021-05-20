@@ -10,10 +10,7 @@ export const useAllCaps = () => {
   const getCaps = (props) => {
     setLoading(true);
     setError(false);
-    // console.log(props.target.attributes[0].value);
-    // console.log(props.target.attributes[1].value);
-    // console.log(props.target.children[0].attributes[1].value);
-    // console.log(props.target.form[3].value);
+    
     const brand = props.target.form[1].value;
     const color = props.target.form[2].value;
     const category = props.target.form[3].value;
