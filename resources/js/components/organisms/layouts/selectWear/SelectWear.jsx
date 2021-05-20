@@ -49,10 +49,7 @@ export const SelectWear = memo(() => {
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
-                                    {/* <img className="wearImg" src={`/img/rakutenlist/${wear.brand}/male/${wear.category}/${wear.color}/${wear.url}`} alt="" /> */}
                                     <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
-                                    {/* <img className="wearImg" src={wear.url} alt="" /> */}
-                                    {/* <img src="{{ asset('/img/rakutenlist/' . $brand . '/' . $user->gender . '/' . $category . '/' . $color . '/' . $DBitem->{$color . 'Img'}) }}" alt="{{$item['itemName']}}"></img> */}
                                 </SwiperSlide>
                             ))}
                         </Swiper>
