@@ -1,5 +1,5 @@
 import { Button, Popover, Popper } from "@material-ui/core";
-import { memo, useState } from "react";
+import { memo, useContext, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
@@ -7,12 +7,16 @@ import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
 import { WearSearch } from "../../../molecules/searchbox/WearSearch";
+import { UserContext } from "../../../providers/UserProvider";
 
 export const SelectWear = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
+
+    const context = useContext(UserContext);
+    // console.log(context);
 
     const onClickFetchCaps = (props) => {
         getCaps(props);
@@ -36,7 +40,7 @@ export const SelectWear = memo(() => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
       };
 
-    console.log(anchorEl);
+    // console.log(anchorEl);
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;

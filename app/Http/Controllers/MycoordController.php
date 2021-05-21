@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\Encodes;
+use App\Library\Rakuten;
+use App\Library\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Library\Rakuten;
-use App\Library\Encodes;
-use App\Library\Database;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -49,6 +51,9 @@ class MycoordController extends Controller
         $color = $request->input('color');
         $category = $request->input('category');
         $type = $request->input('type');
+
+        
+
 
         // wearcoord管理DBでフィルター
         $myDBitems = Database::searchDB($color, $brand, $category, $type);

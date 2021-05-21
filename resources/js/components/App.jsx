@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { UserProvider } from './providers/UserProvider';
 import { MainRouter } from './router/MainRouter';
 
 function App() {
     return (
         <div>
-            <BrowserRouter>
-                <MainRouter />
-            </BrowserRouter>
+            <UserProvider>
+                <BrowserRouter>
+                    <MainRouter />
+                </BrowserRouter>
+            </UserProvider>
         </div>
     );
 }
