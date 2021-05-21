@@ -15881,16 +15881,19 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       anchorEl = _useState2[0],
-      setAnchorEl = _useState2[1];
+      setAnchorEl = _useState2[1]; // const handleClick = (event) => {
+  //     setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //     setAnchorEl(null);
+  // };
+
 
   var handleClick = function handleClick(event) {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
-  var handleClose = function handleClose() {
-    setAnchorEl(null);
-  };
-
+  console.log(anchorEl);
   var open = Boolean(anchorEl);
   var id = open ? 'simple-popover' : undefined;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
@@ -16081,8 +16084,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
       id: id,
       open: open,
-      anchorEl: anchorEl,
-      onClose: handleClose,
+      anchorEl: anchorEl // onClose={handleClose}
+      ,
       placement: 'top',
       className: "popper" // anchorOrigin={{
       //     vertical: 'bottom',

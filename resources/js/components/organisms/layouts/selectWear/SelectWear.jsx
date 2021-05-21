@@ -15,7 +15,8 @@ export const SelectWear = memo(() => {
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
 
     const onClickFetchCaps = (props) => {
-        getCaps(props); }
+        getCaps(props);
+    }
     const onClickFetchTops = (props) => getTops(props);
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
@@ -23,16 +24,22 @@ export const SelectWear = memo(() => {
 
     const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    // const handleClick = (event) => {
+    //     setAnchorEl(event.currentTarget);
+    // };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    // const handleClose = () => {
+    //     setAnchorEl(null);
+    // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+    const handleClick = (event) => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
+      };
+
+    console.log(anchorEl);
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
 
     return (
         <>
@@ -142,14 +149,14 @@ export const SelectWear = memo(() => {
             <br />
 
             <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        Open Popover
+                Open Popover
       </Button>
 
             <Popper
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
-                onClose={handleClose}
+                // onClose={handleClose}
                 placement={'top'}
                 className="popper"
                 // anchorOrigin={{
@@ -163,10 +170,10 @@ export const SelectWear = memo(() => {
                 style={{ width: "100%" }}
             >
                 <WearSearch
-                onClickFetchCaps={onClickFetchCaps}
-                onClickFetchTops={onClickFetchTops}
-                onClickFetchPants={onClickFetchPants}
-                onClickFetchShoes={onClickFetchShoes}
+                    onClickFetchCaps={onClickFetchCaps}
+                    onClickFetchTops={onClickFetchTops}
+                    onClickFetchPants={onClickFetchPants}
+                    onClickFetchShoes={onClickFetchShoes}
                 />
 
             </Popper>
