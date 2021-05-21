@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('lp.mainLp');
 });
 
 Route::get('/main', function () {
@@ -36,6 +36,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/user', function () {
 
     $user = Auth::user();
+
+    $user = [
+        'id' => $user->id,
+        'gender' => $user->gender,
+    ];
 
     return response()->json($user);
 });
