@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/main', function () {
     return view('layouts.main');
-});
+})->middleware(['auth']);
 
 Auth::routes();
 
@@ -32,3 +32,10 @@ Route::get('/main/{any}', static function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', function () {
+
+    $user = Auth::user();
+
+    return response()->json($user);
+});

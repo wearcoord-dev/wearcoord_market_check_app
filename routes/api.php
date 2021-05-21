@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -32,28 +34,13 @@ Route::get('/shoes', [App\Http\Controllers\MycoordController::class, "getCapsDBD
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
 
-// Route::get( '/tops', function ( Request $request ) {
+// Route::get('/user', function (Request $request) {
 
-//     $tops = collect([
-//         [
-//             'id'  => 1,
-//             'url' => '/img/rakutenlist/asics/male/508759/black/chitosesports_10038396.png',
-//         ],
-//         [
-//             'id'  => 2,
-//             'url' => '/img/rakutenlist/asics/male/508759/blue/2041a102_11blue.png',
-//         ],
-//         [
-//             'id'  => 3,
-//             'url' => '/img/rakutenlist/asics/male/508759/green/chitosesports-b_10013876.png',
-//         ],
-//         [
-//             'id'  => 4,
-//             'url' => '/img/rakutenlist/fila/male/508759/red/la-foresta_10076503.png',
-//         ],
-//     ]);
-//     return response()->json( $tops );
-// } );
+//     $user = Auth::user();
+//     ddd($user);
+
+//     return response()->json($user);
+// });
 
 // Route::get( '/pants', function ( Request $request ) {
 
