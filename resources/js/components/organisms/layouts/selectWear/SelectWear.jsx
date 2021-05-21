@@ -17,6 +17,7 @@ export const SelectWear = memo(() => {
 
     const context = useContext(UserContext);
     // console.log(context);
+    // console.log('表示してるぞ！！');
 
     const onClickFetchCaps = (props) => {
         getCaps(props);

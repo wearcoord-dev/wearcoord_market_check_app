@@ -9,7 +9,8 @@ export const UserProvider = memo((props) => {
 
     useEffect(() => getUser(),[]);
 
-    const contextName = userInfo;
+    const contextItem = userInfo;
+    const contextName = contextItem.data;
     console.log(`これは${contextName}`);
 
     return (
