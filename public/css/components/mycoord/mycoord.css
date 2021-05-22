@@ -23,7 +23,7 @@
   background-repeat: no-repeat;
   background-position: center;
   max-width: 400px;
-  background-position-x: 47%;
+  background-position-x: 38%;
 }
 
 /* Chrome、Safari以外 */
@@ -179,7 +179,7 @@ details[open] .detailsBottom {
   width: 100%;
   left: 0px;
   position: absolute;
-  top: 220px;
+  top: 230px;
 }
 
 #controller3 .wearLi {
