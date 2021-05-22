@@ -23,7 +23,10 @@ export const SearchItemCaps = memo((props) => {
                 <input type="hidden" id="type" value="caps" />
                 <SearchBrand setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
-                <button type="button"  onClick={onClickFetchCaps}>送信</button>
+
+                <div className="divBtn">
+                    <button  className="submitBtn" type="button" onClick={onClickFetchCaps}>送信</button>
+                </div>
             </form>
         </>
     )

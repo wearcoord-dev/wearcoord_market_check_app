@@ -17,7 +17,9 @@ export const SearchItemShoes = memo((props) => {
                 <input type="hidden" id="type" value="shoes" />
                 <SearchBrand setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
-                <button type="button"  onClick={onClickFetchShoes}>送信</button>
+                <div className="divBtn">
+                    <button className="submitBtn" type="button" onClick={onClickFetchShoes}>送信</button>
+                </div>
             </form>
         </>
     )

@@ -25,9 +25,11 @@ export const SearchItemTops = memo((props) => {
                 <SearchBrand setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
 
-                {context.contextName.gender == 'male' ? <SearchCategoryTops  setValueCategory={setValueCategory} />  : <SearchCategoryTopsFemale   setValueCategory={setValueCategory} />}
+                {context.contextName.gender == 'male' ? <SearchCategoryTops setValueCategory={setValueCategory} /> : <SearchCategoryTopsFemale setValueCategory={setValueCategory} />}
 
-                <button type="button"  onClick={onClickFetchTops}>送信</button>
+                <div className="divBtn">
+                    <button className="submitBtn" type="button" onClick={onClickFetchTops}>送信</button>
+                </div>
             </form>
         </>
     )

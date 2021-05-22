@@ -14942,10 +14942,14 @@ var SearchItemCaps = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_4__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchCaps,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchCaps,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15024,10 +15028,14 @@ var SearchItemPants = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_2__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchPants,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchPants,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15106,10 +15114,14 @@ var SearchItemShoes = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_2__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchShoes,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchShoes,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15204,10 +15216,14 @@ var SearchItemTops = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         setValueCategory: setValueCategory
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_female_SearchCategoryTopsFemale__WEBPACK_IMPORTED_MODULE_5__.SearchCategoryTopsFemale, {
         setValueCategory: setValueCategory
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchTops,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchTops,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
