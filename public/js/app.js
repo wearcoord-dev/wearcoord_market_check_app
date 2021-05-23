@@ -14942,10 +14942,14 @@ var SearchItemCaps = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_4__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchCaps,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchCaps,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -14965,9 +14969,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SearchItemPants": () => (/* binding */ SearchItemPants)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _SearchBrand__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBrand */ "./resources/js/components/molecules/searchbox/SearchBrand.jsx");
-/* harmony import */ var _SearchColor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchColor */ "./resources/js/components/molecules/searchbox/SearchColor.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _providers_UserProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../providers/UserProvider */ "./resources/js/components/providers/UserProvider.jsx");
+/* harmony import */ var _female_SearchCategoryPantsFemale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./female/SearchCategoryPantsFemale */ "./resources/js/components/molecules/searchbox/female/SearchCategoryPantsFemale.jsx");
+/* harmony import */ var _male_SearchCategoryPants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./male/SearchCategoryPants */ "./resources/js/components/molecules/searchbox/male/SearchCategoryPants.jsx");
+/* harmony import */ var _SearchBrand__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchBrand */ "./resources/js/components/molecules/searchbox/SearchBrand.jsx");
+/* harmony import */ var _SearchColor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchColor */ "./resources/js/components/molecules/searchbox/SearchColor.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -14979,6 +14986,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -14999,35 +15009,49 @@ var SearchItemPants = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
       valueColor = _useState4[0],
       setValueColor = _useState4[1];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      valueCategory = _useState6[0],
+      setValueCategory = _useState6[1];
+
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_1__.UserContext);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "hidden",
         wear: "pants"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "hidden",
         id: "getbrand",
         value: value
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "hidden",
         id: "getcolor",
         value: valueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "hidden",
         id: "getCategory",
-        value: "508772"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        value: valueCategory
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
         type: "hidden",
         id: "type",
         value: "pants"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchBrand__WEBPACK_IMPORTED_MODULE_1__.SearchBrand, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchBrand__WEBPACK_IMPORTED_MODULE_4__.SearchBrand, {
         setValue: setValue
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_2__.SearchColor, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_5__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchPants,
-        children: "\u9001\u4FE1"
+      }), context.contextName.gender == 'male' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_male_SearchCategoryPants__WEBPACK_IMPORTED_MODULE_3__.SearchCategoryPants, {
+        setValueCategory: setValueCategory
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_female_SearchCategoryPantsFemale__WEBPACK_IMPORTED_MODULE_2__.SearchCategoryPantsFemale, {
+        setValueCategory: setValueCategory
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchPants,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15106,10 +15130,14 @@ var SearchItemShoes = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
         setValue: setValue
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_SearchColor__WEBPACK_IMPORTED_MODULE_2__.SearchColor, {
         setValueColor: setValueColor
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchShoes,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchShoes,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15204,10 +15232,14 @@ var SearchItemTops = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
         setValueCategory: setValueCategory
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_female_SearchCategoryTopsFemale__WEBPACK_IMPORTED_MODULE_5__.SearchCategoryTopsFemale, {
         setValueCategory: setValueCategory
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-        type: "button",
-        onClick: onClickFetchTops,
-        children: "\u9001\u4FE1"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "divBtn",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "submitBtn",
+          type: "button",
+          onClick: onClickFetchTops,
+          children: "\u9001\u4FE1"
+        })
       })]
     })
   });
@@ -15402,6 +15434,77 @@ var WearSearch = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
 
 /***/ }),
 
+/***/ "./resources/js/components/molecules/searchbox/female/SearchCategoryPantsFemale.jsx":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/molecules/searchbox/female/SearchCategoryPantsFemale.jsx ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SearchCategoryPantsFemale": () => (/* binding */ SearchCategoryPantsFemale)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var SearchCategoryPantsFemale = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
+  var setValueCategory = props.setValueCategory; // radioのonChangeイベント発生時
+
+  var handleInputChange = function handleInputChange(props) {
+    var category = props.target.value;
+    setValueCategory(category);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      className: "searchTitle",
+      children: "Category : "
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "slide_x",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "half",
+        className: "radioInput",
+        name: "category",
+        value: "508820",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "half",
+        className: "radioInputLabel",
+        children: "\u30CF\u30FC\u30D5\u30FB\u30B7\u30E7\u30FC\u30C8"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "long",
+        className: "radioInput",
+        name: "category",
+        value: "565928",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "long",
+        className: "radioInputLabel",
+        children: "\u30ED\u30F3\u30B0"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "long",
+        className: "radioInput",
+        name: "category",
+        value: "565816",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "long",
+        className: "radioInputLabel",
+        children: "\u30B9\u30AB\u30FC\u30C8\u30FB\u30B9\u30B3\u30FC\u30C8"
+      })]
+    })]
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/molecules/searchbox/female/SearchCategoryTopsFemale.jsx":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/molecules/searchbox/female/SearchCategoryTopsFemale.jsx ***!
@@ -15455,6 +15558,66 @@ var SearchCategoryTopsFemale = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0_
         htmlFor: "outer",
         className: "radioInputLabel",
         children: "\u30A2\u30A6\u30BF\u30FC"
+      })]
+    })]
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/molecules/searchbox/male/SearchCategoryPants.jsx":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/molecules/searchbox/male/SearchCategoryPants.jsx ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SearchCategoryPants": () => (/* binding */ SearchCategoryPants)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var SearchCategoryPants = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
+  var setValueCategory = props.setValueCategory; // radioのonChangeイベント発生時
+
+  var handleInputChange = function handleInputChange(props) {
+    var category = props.target.value;
+    setValueCategory(category);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      className: "searchTitle",
+      children: "Category : "
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "slide_x",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "half",
+        className: "radioInput",
+        name: "category",
+        value: "508772",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "half",
+        className: "radioInputLabel",
+        children: "\u30CF\u30FC\u30D5\u30FB\u30B7\u30E7\u30FC\u30C8"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "long",
+        className: "radioInput",
+        name: "category",
+        value: "565926",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "long",
+        className: "radioInputLabel",
+        children: "\u30ED\u30F3\u30B0"
       })]
     })]
   });
