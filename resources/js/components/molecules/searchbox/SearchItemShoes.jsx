@@ -1,4 +1,5 @@
-import { memo, useState } from "react";
+import { memo, useContext, useState } from "react";
+import { UserContext } from "../../providers/UserProvider";
 import { SearchBrand } from "./SearchBrand";
 import { SearchColor } from "./SearchColor";
 
@@ -7,13 +8,15 @@ export const SearchItemShoes = memo((props) => {
     const [value, setValue] = useState("");
     const [valueColor, setValueColor] = useState("");
 
+    const context = useContext(UserContext);
+
     return (
         <>
             <form>
                 <input type="hidden" wear="shoes" />
                 <input type="hidden" id="getbrand" value={value} />
                 <input type="hidden" id="getcolor" value={valueColor} />
-                <input type="hidden" id="getCategory" value="208025" />
+                {context.contextName.gender == 'male' ? <input type="hidden" id="getCategory" value="208025" /> : <input type="hidden" id="getCategory" value="565819" />}
                 <input type="hidden" id="type" value="shoes" />
                 <SearchBrand setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />

@@ -22,8 +22,8 @@ export const SearchCategoryPantsFemale = memo((props) => {
                 <input type="radio" id="long" className="radioInput" name="category" value="565928" onChange={handleInputChange} />
                 <label htmlFor="long" className="radioInputLabel">ロング</label>
 
-                <input type="radio" id="long" className="radioInput" name="category" value="565816" onChange={handleInputChange} />
-                <label htmlFor="long" className="radioInputLabel">スカート・スコート</label>
+                <input type="radio" id="skirt" className="radioInput" name="category" value="565816" onChange={handleInputChange} />
+                <label htmlFor="skirt" className="radioInputLabel">スカート・スコート</label>
             </div>
         </>
     )
