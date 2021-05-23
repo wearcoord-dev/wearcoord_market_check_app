@@ -153,7 +153,7 @@ export const SelectWear = memo(() => {
 
             <br />
 
-            <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "absolute", bottom: "70px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 Open Popover
       </Button>
 
@@ -172,13 +172,14 @@ export const SelectWear = memo(() => {
                 //     vertical: 'bottom',
                 //     horizontal: 'center',
                 // }}
-                style={{ width: "100%" }}
+                style={{ width: "100%"}}
             >
                 <WearSearch
                     onClickFetchCaps={onClickFetchCaps}
                     onClickFetchTops={onClickFetchTops}
                     onClickFetchPants={onClickFetchPants}
                     onClickFetchShoes={onClickFetchShoes}
+                    handleClick={handleClick}
                 />
 
             </Popper>

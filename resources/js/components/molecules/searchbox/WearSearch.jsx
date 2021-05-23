@@ -7,6 +7,7 @@ import { SearchItemCaps } from "./SearchItemCaps";
 import { SearchItemTops } from "./SearchItemTops";
 import { SearchItemPants } from "./SearchItemPants";
 import { SearchItemShoes } from "./SearchItemShoes";
+import CloseIcon from '@material-ui/icons/Close';
 
 
 function TabPanel(props) {
@@ -49,10 +50,20 @@ const useStyles = makeStyles({
         // bottom: "200px",
         // width: "90%"
     },
+    closeBtn: {
+        width: "40px",
+        height: "40px",
+        backgroundColor: "#216496",
+        borderRadius: "50%",
+        position: "absolute",
+        top: "-30px",
+        right: "10px",
+        fontSize: "10px",
+    }
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -64,6 +75,7 @@ export const WearSearch = memo((props) => {
         <>
             <Container>
                 <Paper className={classes.root}>
+                    <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white"}} /></button>
                     <Tabs
                         value={value}
                         onChange={handleChange}

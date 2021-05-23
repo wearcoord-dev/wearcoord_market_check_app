@@ -9817,6 +9817,36 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/Close.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Close.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+}), 'Close');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/FavoriteBorderRounded.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@material-ui/icons/FavoriteBorderRounded.js ***!
@@ -15268,19 +15298,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Box/Box.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Paper/Paper.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Tabs/Tabs.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Tab/Tab.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Tabs/Tabs.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Tab/Tab.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons */ "./node_modules/@material-ui/icons/esm/Face.js");
-/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/icons */ "./node_modules/@material-ui/icons/esm/AirlineSeatLegroomExtra.js");
+/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/icons */ "./node_modules/@material-ui/icons/esm/Face.js");
+/* harmony import */ var _material_ui_icons__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/icons */ "./node_modules/@material-ui/icons/esm/AirlineSeatLegroomExtra.js");
 /* harmony import */ var _SearchItemCaps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SearchItemCaps */ "./resources/js/components/molecules/searchbox/SearchItemCaps.jsx");
 /* harmony import */ var _SearchItemTops__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchItemTops */ "./resources/js/components/molecules/searchbox/SearchItemTops.jsx");
 /* harmony import */ var _SearchItemPants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchItemPants */ "./resources/js/components/molecules/searchbox/SearchItemPants.jsx");
 /* harmony import */ var _SearchItemShoes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchItemShoes */ "./resources/js/components/molecules/searchbox/SearchItemShoes.jsx");
+/* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/icons/Close */ "./node_modules/@material-ui/icons/Close.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -15303,6 +15334,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -15357,13 +15389,24 @@ var useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__.default
     // bottom: "200px",
     // width: "90%"
 
+  },
+  closeBtn: {
+    width: "40px",
+    height: "40px",
+    backgroundColor: "#216496",
+    borderRadius: "50%",
+    position: "absolute",
+    top: "-30px",
+    right: "10px",
+    fontSize: "10px"
   }
 });
 var WearSearch = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
   var onClickFetchCaps = props.onClickFetchCaps,
       onClickFetchTops = props.onClickFetchTops,
       onClickFetchPants = props.onClickFetchPants,
-      onClickFetchShoes = props.onClickFetchShoes;
+      onClickFetchShoes = props.onClickFetchShoes,
+      handleClick = props.handleClick;
   var classes = useStyles();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
@@ -15379,27 +15422,36 @@ var WearSearch = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__.default, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
         className: classes.root,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: classes.closeBtn,
+          type: "button",
+          onClick: handleClick,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_11__.default, {
+            style: {
+              color: "white"
+            }
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
           value: value,
           onChange: handleChange,
           indicatorColor: "primary",
           textColor: "primary",
           centered: true,
           "aria-label": "simple tabs example",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, _objectSpread({
-            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_icons__WEBPACK_IMPORTED_MODULE_13__.default, {})
-          }, a11yProps(0))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, _objectSpread({
-            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, _objectSpread({
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_icons__WEBPACK_IMPORTED_MODULE_14__.default, {})
+          }, a11yProps(0))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, _objectSpread({
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
               className: "fas fa-tshirt"
             })
-          }, a11yProps(1))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, _objectSpread({
-            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_icons__WEBPACK_IMPORTED_MODULE_15__.default, {})
-          }, a11yProps(2))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, _objectSpread({
-            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+          }, a11yProps(1))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, _objectSpread({
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_icons__WEBPACK_IMPORTED_MODULE_16__.default, {})
+          }, a11yProps(2))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, _objectSpread({
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
               className: "fas fa-socks"
             })
-          }, a11yProps(3))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, _objectSpread({
-            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+          }, a11yProps(3))), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, _objectSpread({
+            icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
               className: "fas fa-shoe-prints"
             })
           }, a11yProps(4)))]
@@ -16395,7 +16447,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
       style: {
         position: "absolute",
-        bottom: "100px"
+        bottom: "70px"
       },
       "aria-describedby": id,
       variant: "contained",
@@ -16424,7 +16476,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
         onClickFetchCaps: onClickFetchCaps,
         onClickFetchTops: onClickFetchTops,
         onClickFetchPants: onClickFetchPants,
-        onClickFetchShoes: onClickFetchShoes
+        onClickFetchShoes: onClickFetchShoes,
+        handleClick: handleClick
       })
     })]
   });
