@@ -39,6 +39,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group row genderArea">
+                            <div class="genderText">ウェアの嗜好</div>
+                            <div class="genderBox">
+                                <label class="genderRadiobox" for="male">
+                                    <input type="radio" id="male" value="male" name="gender" required>
+                                    男性向け
+                                </label>
+                                <label class="genderRadiobox" for="female">
+                                    <input type="radio" id="female" value="female" name="gender">
+                                    女性向け</label>
+                            </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
