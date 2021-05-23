@@ -16233,7 +16233,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                 className: "wearImg",
-                src: "/img/rakutenlist/male/".concat(wear.category, "/").concat(wear.url),
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -16277,7 +16277,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                 className: "wearImg",
-                src: "/img/rakutenlist/male/".concat(wear.category, "/").concat(wear.url),
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -16321,7 +16321,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                 className: "wearImg",
-                src: "/img/rakutenlist/male/".concat(wear.category, "/").concat(wear.url),
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);
@@ -16364,7 +16364,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               className: "wearLi",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                 className: "wearImg",
-                src: "/img/rakutenlist/male/".concat(wear.category, "/").concat(wear.url),
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
               })
             }, wear.id);

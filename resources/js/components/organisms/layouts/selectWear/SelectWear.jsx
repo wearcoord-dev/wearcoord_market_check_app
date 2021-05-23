@@ -61,7 +61,7 @@ export const SelectWear = memo(() => {
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
+                                    <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
@@ -87,7 +87,7 @@ export const SelectWear = memo(() => {
                             >
                                 {userTops.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
+                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -113,7 +113,7 @@ export const SelectWear = memo(() => {
                             >
                                 {userPants.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
+                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
@@ -139,7 +139,7 @@ export const SelectWear = memo(() => {
                             >
                                 {userShoes.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/male/${wear.category}/${wear.url}`} alt="" />
+                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
