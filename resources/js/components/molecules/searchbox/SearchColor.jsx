@@ -44,6 +44,9 @@ export const SearchColor = memo((props) => {
                 <input type="radio" id="purple" className="radioInputColor" name="color" value="purple" onChange={handleInputChange} />
                 <label htmlFor="purple" style={{ background: "purple" }} className="radioInputLabelColor"></label>
 
+                <input type="radio" id="gray" className="radioInputColor" name="color" value="gray" onChange={handleInputChange} />
+                <label htmlFor="gray" style={{ background: "gray" }} className="radioInputLabelColor"></label>
+
             </div>
         </>
     )

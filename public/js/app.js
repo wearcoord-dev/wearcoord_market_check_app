@@ -14883,6 +14883,19 @@ var SearchColor = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
           background: "purple"
         },
         className: "radioInputLabelColor"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "radio",
+        id: "gray",
+        className: "radioInputColor",
+        name: "color",
+        value: "gray",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        htmlFor: "gray",
+        style: {
+          background: "gray"
+        },
+        className: "radioInputLabelColor"
       })]
     })]
   });
