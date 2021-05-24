@@ -16460,7 +16460,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
       style: {
         position: "absolute",
-        bottom: "70px"
+        bottom: "100px"
       },
       "aria-describedby": id,
       variant: "contained",
