@@ -120,7 +120,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <div>
-                            <img style={{ width: "100%", height: "180px", objectFit: "contain", position: "absolute", top: "190px", objectPosition: "100px", left: "0" }} src='/img/rakutenlist/asics/male/508772/white/sportsman_11351615.png' alt="" />
+                            <img style={{ width: "100%", height: "180px", objectFit: "contain", position: "absolute", top: "220px", objectPosition: "100px", left: "0" }} src='/img/rakutenlist/asics/male/508772/white/sportsman_11351615.png' alt="" />
                         </div>
                     )}
             </div>
@@ -146,7 +146,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <div>
-                            <img style={{ width: "100%", height: "100px", objectFit: "contain", position: "absolute", top: "320px", objectPosition: "140px", left: "0" }} src='/img/rakutenlist/adidas/male/208025/yellow/mathy-mathy_10198030.png' alt="" />
+                            <img style={{ width: "100%", height: "100px", objectFit: "contain", position: "absolute", top: "360px", objectPosition: "140px", left: "0" }} src='/img/rakutenlist/adidas/male/208025/yellow/mathy-mathy_10198030.png' alt="" />
                         </div>
                     )}
             </div>
