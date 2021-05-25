@@ -19,7 +19,7 @@ export const SearchBrand = memo((props) => {
 
     return (
         <>
-            <p className="searchTitle">Brand : </p>
+            {/* <p className="searchTitle">Brand : </p> */}
             <div className="slide_x">
                 {/* <input type="hidden" id="getbrand" value={userBrand} /> */}
 

@@ -13,7 +13,7 @@ export const SearchCategoryPants = memo((props) => {
 
     return (
         <>
-            <p className="searchTitle">Category : </p>
+            {/* <p className="searchTitle">Category : </p> */}
             <div className="slide_x">
 
                 <input type="radio" id="half" className="radioInput" name="category" value="508772" onChange={handleInputChange} />

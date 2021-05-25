@@ -12,7 +12,7 @@ export const SearchColor = memo((props) => {
 
     return (
         <>
-                 <p className="searchTitle">Color : </p>
+                 {/* <p className="searchTitle">Color : </p> */}
             <div className="slide_x">
                 <input type="radio" id="black" className="radioInputColor" name="color" value="black" onChange={handleInputChange} />
                 <label htmlFor="black" style={{ background: "black" }} className="radioInputLabelColor"></label>
