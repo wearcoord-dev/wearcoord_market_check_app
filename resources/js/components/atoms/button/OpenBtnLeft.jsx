@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
 
-export const OpenBtn = memo((props) => {
+export const OpenBtnLeft = memo((props) => {
     const { name, icon } = props;
 
     const history = useHistory();
@@ -12,7 +12,7 @@ export const OpenBtn = memo((props) => {
     return (
         <>
             <div>
-                <details className="btnDesign right" id={"btn" + name} >
+                <details className="btnDesign left" id={"btn" + name} >
                     <summary>
                         {icon}
                         <p className="btnText" id={"btnTitle" + name}>{name}</p>
@@ -28,16 +28,6 @@ export const OpenBtn = memo((props) => {
                             </button>
 
                         </form>
-                        {/* <hr />
-                        <div onClick={toSelectWear} className="detailsBtn2" method="get">
-                            <button className="searchBtn" type="submit">
-                                <input type="hidden" name="type" value="caps" />
-                                <span className="material-icons-outlined">
-                                    screen_search_desktop
-                </span>
-                                <p className="btnText">選ぶ</p>
-                            </button>
-                        </div> */}
                     </div>
                 </details>
             </div>
