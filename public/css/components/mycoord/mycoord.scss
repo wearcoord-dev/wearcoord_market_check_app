@@ -292,6 +292,14 @@ details[open] .detailsBottom {
     margin: 14px 0;
 }
 
+@media (max-height: 700px) {
+    .tabpanel{
+        height: 120px;
+        overflow: auto;
+    }
+  }
+
+
 /*スクロールバー全体*/
 ::-webkit-scrollbar {
     height: 2px;
@@ -327,5 +335,5 @@ details[open] .detailsBottom {
     border-radius: 8px;
     color: white;
     width: 80%;
-    margin: 10px 0 30px;
+    margin: 10px 0;
 }
