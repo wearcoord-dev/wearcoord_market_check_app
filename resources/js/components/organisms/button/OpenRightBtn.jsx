@@ -12,7 +12,7 @@ export const OpenRightBtn = () => {
                     airline_seat_legroom_extra
     </span>} />
 
-        <OpenBtn name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} />
+        {/* <OpenBtn name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} /> */}
 
         <OpenBtn name={'Shoes'} icon={<i className="fas fa-shoe-prints sideFontAwesome"></i>} />
     </div>

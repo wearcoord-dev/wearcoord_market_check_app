@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { OpenBtnLeft } from "../../atoms/button/OpenBtnLeft";
 
 export const OpenLeftBtn = memo(() => {
     return (
@@ -48,6 +49,8 @@ export const OpenLeftBtn = memo(() => {
                         </form>
                     </div>
                 </details>
+
+                <OpenBtnLeft name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} />
             </div>
         </>
     )

@@ -179,7 +179,7 @@ details[open] .detailsBottom {
     }
 }
 
-.popper{
+.popper {
     z-index: 1000;
     bottom: 580px !important;
     left: -5px !important;
@@ -218,6 +218,29 @@ details[open] .detailsBottom {
     }
 }
 
+.bottomLeftBtn {
+    display: flex;
+    width: 40%;
+    height: 60px;
+    min-width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddddd;
+    color: #484848;
+    line-height: 1.5;
+    border-radius: 0 10px 10px 0;
+
+    .searchBtn {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .btnText {
+        line-height: 2;
+    }
+}
+
 
 // 検索BOX
 
@@ -233,14 +256,14 @@ details[open] .detailsBottom {
     border-bottom: solid 1px lightgray;
 }
 
-.radioInputLabel{
+.radioInputLabel {
     display: inline-block;
     padding: 0.5rem 1rem;
     border-radius: 3px;
     transition: all .2s;
 }
 
-.radioInputLabelColor{
+.radioInputLabelColor {
     display: inline-block;
     border-radius: 3px;
     transition: all .2s;
@@ -249,19 +272,19 @@ details[open] .detailsBottom {
     border: 1px solid lightgrey;
 }
 
-.radioInput:checked + .radioInputLabel {
+.radioInput:checked+.radioInputLabel {
     background: #216496;
     color: #fff;
-    box-shadow: 0 0 1px rgba(0,0,0,.7);
+    box-shadow: 0 0 1px rgba(0, 0, 0, .7);
     border: 1px solid #216496;
 }
 
-.radioInputColor:checked + .radioInputLabelColor {
-    box-shadow: 0 0 16px rgba(33,100,150,.7);
+.radioInputColor:checked+.radioInputLabelColor {
+    box-shadow: 0 0 16px rgba(33, 100, 150, .7);
 
 }
 
-.slide_x{
+.slide_x {
     // display: flex;
     overflow: auto;
     white-space: nowrap;
@@ -274,29 +297,29 @@ details[open] .detailsBottom {
 
 /*スクロールバーの軌道*/
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
-//   box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    //   box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
 }
 
 /*スクロールバーの動く部分*/
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 50, .5);
-  border-radius: 10px;
-  box-shadow:0 0 0 1px rgba(255, 255, 255, .3);
+    background-color: rgba(0, 0, 50, .5);
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
 }
 
-.searchTitle{
+.searchTitle {
     text-align: center;
     font-weight: bold;
     font-size: 1.6rem;
     padding: 10px;
 }
 
-.divBtn{
+.divBtn {
     text-align: center;
 }
 
-.submitBtn{
+.submitBtn {
     background-color: #216496;
     padding: 4px 0px;
     border-radius: 8px;
@@ -304,4 +327,3 @@ details[open] .detailsBottom {
     width: 80%;
     margin: 10px 0;
 }
-

@@ -210,6 +210,29 @@ details[open] .detailsBottom {
   object-fit: contain;
 }
 
+.bottomLeftBtn {
+  display: flex;
+  width: 40%;
+  height: 60px;
+  min-width: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: #dddddd;
+  color: #484848;
+  line-height: 1.5;
+  border-radius: 0 10px 10px 0;
+}
+
+.bottomLeftBtn .searchBtn {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.bottomLeftBtn .btnText {
+  line-height: 2;
+}
+
 .MuiIcon-root {
   width: auto !important;
 }
