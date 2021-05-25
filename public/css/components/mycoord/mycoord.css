@@ -173,8 +173,8 @@ details[open] .detailsBottom {
 
 .popper {
   z-index: 1000;
-  bottom: 580px !important;
   left: -5px !important;
+  top: 80px !important;
 }
 
 #controller3 {
