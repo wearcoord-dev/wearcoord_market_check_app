@@ -15460,6 +15460,7 @@ function TabPanel(props) {
     id: "simple-tabpanel-".concat(index),
     "aria-labelledby": "simple-tab-".concat(index)
   }, other), {}, {
+    className: "tabpanel",
     children: value === index && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
       p: 2,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
