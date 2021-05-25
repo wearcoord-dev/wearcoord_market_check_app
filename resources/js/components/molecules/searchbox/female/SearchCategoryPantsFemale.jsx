@@ -13,7 +13,7 @@ export const SearchCategoryPantsFemale = memo((props) => {
 
     return (
         <>
-            <p className="searchTitle">Category : </p>
+            {/* <p className="searchTitle">Category : </p> */}
             <div className="slide_x">
 
                 <input type="radio" id="half" className="radioInput" name="category" value="508820" onChange={handleInputChange} />
