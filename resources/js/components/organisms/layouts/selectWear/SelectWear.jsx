@@ -36,6 +36,7 @@ export const SelectWear = memo(() => {
             "tops" : userTops[activeIndexTops],
             "pants" : userPants[activeIndexPants],
             "shoes" : userShoes[activeIndexShoes],
+            "userid": context.contextName,
         }
 
 
@@ -72,10 +73,11 @@ export const SelectWear = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
-    console.log(userCaps[activeIndex]);
-    console.log(userTops[activeIndexTops]);
-    console.log(userPants[activeIndexPants]);
-    console.log(userShoes[activeIndexShoes]);
+    // console.log(userCaps[activeIndex]);
+    // console.log(userTops[activeIndexTops]);
+    // console.log(userPants[activeIndexPants]);
+    // console.log(userShoes[activeIndexShoes]);
+    // console.log(context.contextName);
 
     return (
         <>

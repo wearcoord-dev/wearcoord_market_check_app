@@ -52,7 +52,7 @@ class MycoordController extends Controller
         $category = $request->input('category');
         $type = $request->input('type');
 
-        
+
 
 
         // wearcoord管理DBでフィルター
@@ -138,5 +138,38 @@ class MycoordController extends Controller
                 // ddd($item->$color);
             }
         }
+    }
+
+    public function registerWear(Request $request)
+    {
+        $user_id = $request->input('userid');
+        $caps = $request->input('caps');
+        $tops = $request->input('tops');
+        $pants = $request->input('pants');
+        $shoes = $request->input('shoes');
+
+        $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
+
+        if(isset($checkList)){
+            DB::table('userSelectCoord')->where('user_id', $user_id)->update([
+                'user_id' => $user_id,
+                'caps' => $caps,
+                'tops' => $tops,
+                'pants' => $pants,
+                'shoes' => $shoes,
+            ]);
+        }else{
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => $caps,
+                'tops' => $tops,
+                'pants' => $pants,
+                'shoes' => $shoes,
+            ]);
+        }
+
+        // ddd($caps);
+
+        return 'OK';
     }
 }
