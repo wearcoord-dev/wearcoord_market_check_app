@@ -16324,6 +16324,12 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
 
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_7__.UserContext); // console.log(context);
   // console.log('表示してるぞ！！');
+  // 着ているウェアを取得
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      activeIndex = _useState2[0],
+      setActiveIndex = _useState2[1];
 
   var onClickFetchCaps = function onClickFetchCaps(props) {
     getCaps(props);
@@ -16341,10 +16347,10 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     return getShoes(props);
   };
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      anchorEl = _useState2[0],
-      setAnchorEl = _useState2[1]; // const handleClick = (event) => {
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      anchorEl = _useState4[0],
+      setAnchorEl = _useState4[1]; // const handleClick = (event) => {
   //     setAnchorEl(event.currentTarget);
   // };
   // const handleClose = () => {
@@ -16354,11 +16360,16 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
 
   var handleClick = function handleClick(event) {
     setAnchorEl(anchorEl ? null : event.currentTarget);
-  }; // console.log(anchorEl);
-
+  };
 
   var open = Boolean(anchorEl);
-  var id = open ? 'simple-popover' : undefined;
+  var id = open ? 'simple-popover' : undefined; // console.log(activeIndex);
+
+  var getActiveIndex = function getActiveIndex(swiper) {
+    setActiveIndex(swiper.activeIndex);
+  };
+
+  console.log(userCaps[activeIndex]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       style: {
@@ -16377,6 +16388,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           id: "controller",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndex,
           children: userCaps.map(function (wear) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
               className: "wearLi",

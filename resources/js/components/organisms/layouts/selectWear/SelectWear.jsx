@@ -19,6 +19,9 @@ export const SelectWear = memo(() => {
     // console.log(context);
     // console.log('表示してるぞ！！');
 
+    // 着ているウェアを取得
+    const [ activeIndex, setActiveIndex ] = useState(0);
+
     const onClickFetchCaps = (props) => {
         getCaps(props);
     }
@@ -41,10 +44,16 @@ export const SelectWear = memo(() => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
       };
 
-    // console.log(anchorEl);
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+
+    // console.log(activeIndex);
+
+    const getActiveIndex = (swiper) => {
+        setActiveIndex(swiper.activeIndex);
+    }
+
+    console.log(userCaps[activeIndex]);
 
     return (
         <>
@@ -58,6 +67,7 @@ export const SelectWear = memo(() => {
                         <Swiper id="controller"
                             slidesPerView={3}
                             centeredSlides={true}
+                            onSlideChangeTransitionEnd={getActiveIndex}
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
