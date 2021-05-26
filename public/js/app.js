@@ -16259,19 +16259,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SelectWear": () => (/* binding */ SelectWear)
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Popper/Popper.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Popper/Popper.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper.js");
-/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper-slide.js");
+/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper.js");
+/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper-slide.js");
 /* harmony import */ var swiper_swiper_bundle_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/swiper-bundle.css */ "./node_modules/swiper/swiper-bundle.css");
 /* harmony import */ var _hooks_selectwear_useAllCaps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllCaps */ "./resources/js/hooks/selectwear/useAllCaps.jsx");
 /* harmony import */ var _hooks_selectwear_useAllPants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllPants */ "./resources/js/hooks/selectwear/useAllPants.jsx");
 /* harmony import */ var _hooks_selectwear_useAllShoes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllShoes */ "./resources/js/hooks/selectwear/useAllShoes.jsx");
 /* harmony import */ var _hooks_selectwear_useAllTops__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllTops */ "./resources/js/hooks/selectwear/useAllTops.jsx");
-/* harmony import */ var _molecules_searchbox_WearSearch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../molecules/searchbox/WearSearch */ "./resources/js/components/molecules/searchbox/WearSearch.jsx");
-/* harmony import */ var _providers_UserProvider__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../providers/UserProvider */ "./resources/js/components/providers/UserProvider.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _hooks_selectwear_useRegisterWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../hooks/selectwear/useRegisterWear */ "./resources/js/hooks/selectwear/useRegisterWear.jsx");
+/* harmony import */ var _molecules_searchbox_WearSearch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../molecules/searchbox/WearSearch */ "./resources/js/components/molecules/searchbox/WearSearch.jsx");
+/* harmony import */ var _providers_UserProvider__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../providers/UserProvider */ "./resources/js/components/providers/UserProvider.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -16283,6 +16284,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -16322,11 +16324,33 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
       loadingShoes = _useAllShoes.loadingShoes,
       errorShoes = _useAllShoes.errorShoes;
 
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_7__.UserContext); // console.log(context);
-  // console.log('表示してるぞ！！');
+  var _useRegisterWear = (0,_hooks_selectwear_useRegisterWear__WEBPACK_IMPORTED_MODULE_6__.useRegisterWear)(),
+      RegisterWear = _useRegisterWear.RegisterWear;
+
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_8__.UserContext); // 着ているウェアを取得
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      activeIndex = _useState2[0],
+      setActiveIndex = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      activeIndexTops = _useState4[0],
+      setActiveIndexTops = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      activeIndexPants = _useState6[0],
+      setActiveIndexPants = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      activeIndexShoes = _useState8[0],
+      setActiveIndexShoes = _useState8[1];
 
   var onClickFetchCaps = function onClickFetchCaps(props) {
-    getCaps(props);
+    return getCaps(props);
   };
 
   var onClickFetchTops = function onClickFetchTops(props) {
@@ -16341,46 +16365,72 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     return getShoes(props);
   };
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      anchorEl = _useState2[0],
-      setAnchorEl = _useState2[1]; // const handleClick = (event) => {
-  //     setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //     setAnchorEl(null);
-  // };
+  var onClickRegisterWear = function onClickRegisterWear() {
+    var obj = {
+      "caps": userCaps[activeIndex],
+      "tops": userTops[activeIndexTops],
+      "pants": userPants[activeIndexPants],
+      "shoes": userShoes[activeIndexShoes]
+    };
+    RegisterWear(obj);
+  };
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      anchorEl = _useState10[0],
+      setAnchorEl = _useState10[1];
 
   var handleClick = function handleClick(event) {
     setAnchorEl(anchorEl ? null : event.currentTarget);
-  }; // console.log(anchorEl);
-
+  };
 
   var open = Boolean(anchorEl);
-  var id = open ? 'simple-popover' : undefined;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+  var id = open ? 'simple-popover' : undefined; // console.log(activeIndex);
+  // console.log(activeIndexTops);
+
+  var getActiveIndex = function getActiveIndex(swiper) {
+    setActiveIndex(swiper.activeIndex);
+  };
+
+  var getActiveIndexTops = function getActiveIndexTops(swiper) {
+    setActiveIndexTops(swiper.activeIndex);
+  };
+
+  var getActiveIndexPants = function getActiveIndexPants(swiper) {
+    setActiveIndexPants(swiper.activeIndex);
+  };
+
+  var getActiveIndexShoes = function getActiveIndexShoes(swiper) {
+    setActiveIndexShoes(swiper.activeIndex);
+  };
+
+  console.log(userCaps[activeIndex]);
+  console.log(userTops[activeIndexTops]);
+  console.log(userPants[activeIndexPants]);
+  console.log(userShoes[activeIndexShoes]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       style: {
         display: "flex",
         overflowX: "scroll"
       },
-      children: userCaps.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      children: userCaps.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      }) : loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_9__.Swiper, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.Swiper, {
           id: "controller",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndex,
           children: userCaps.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_11__.SwiperSlide, {
               className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
                 className: "wearImg",
                 src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
@@ -16388,12 +16438,12 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             }, wear.id);
           })
         })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         style: {
           textAlign: "center",
           margin: "auto"
         },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
           style: {
             width: "15%",
             height: "50px",
@@ -16404,27 +16454,28 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           alt: ""
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       style: {
         display: "flex",
         overflowX: "scroll"
       },
-      children: userTops.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      children: userTops.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingTops ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      }) : loadingTops ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_9__.Swiper, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.Swiper, {
           id: "controller2",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexTops,
           children: userTops.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_11__.SwiperSlide, {
               className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
                 className: "wearImg",
                 src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
@@ -16432,8 +16483,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             }, wear.id);
           })
         })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
           style: {
             width: "100%",
             height: "130px",
@@ -16448,27 +16499,28 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           alt: ""
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       style: {
         display: "flex",
         overflowX: "scroll"
       },
-      children: userPants.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      children: userPants.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingPants ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      }) : loadingPants ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_9__.Swiper, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.Swiper, {
           id: "controller3",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexPants,
           children: userPants.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_11__.SwiperSlide, {
               className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
                 className: "wearImg",
                 src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
@@ -16476,8 +16528,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             }, wear.id);
           })
         })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
           style: {
             width: "100%",
             height: "180px",
@@ -16491,27 +16543,28 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           alt: ""
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       style: {
         display: "flex",
         overflowX: "scroll"
       },
-      children: userShoes.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      children: userShoes.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingShoes ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+      }) : loadingShoes ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_9__.Swiper, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.Swiper, {
           id: "controller4",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexShoes,
           children: userShoes.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_11__.SwiperSlide, {
               className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
                 className: "wearImg",
                 src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
                 alt: ""
@@ -16519,8 +16572,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             }, wear.id);
           })
         })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
           style: {
             width: "100%",
             height: "100px",
@@ -16534,7 +16587,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           alt: ""
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
       style: {
         position: "absolute",
         bottom: "100px"
@@ -16543,8 +16596,18 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
       variant: "contained",
       color: "primary",
       onClick: handleClick,
-      children: "Open Popover"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+      children: "\u30A6\u30A7\u30A2\u3092\u63A2\u3059"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+      style: {
+        position: "absolute",
+        bottom: "100px",
+        right: "0"
+      },
+      color: "primary",
+      variant: "contained",
+      onClick: onClickRegisterWear,
+      children: "\u3053\u306E\u30A6\u30A7\u30A2\u3092\u7740\u308B"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
       id: id,
       open: open,
       anchorEl: anchorEl // onClose={handleClose}
@@ -16562,7 +16625,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
       style: {
         width: "100%"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_molecules_searchbox_WearSearch__WEBPACK_IMPORTED_MODULE_6__.WearSearch, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_molecules_searchbox_WearSearch__WEBPACK_IMPORTED_MODULE_7__.WearSearch, {
         onClickFetchCaps: onClickFetchCaps,
         onClickFetchTops: onClickFetchTops,
         onClickFetchPants: onClickFetchPants,
@@ -17437,6 +17500,39 @@ var useAllTops = function useAllTops() {
     userTops: userTops,
     loadingTops: loadingTops,
     errorTops: errorTops
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/js/hooks/selectwear/useRegisterWear.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/hooks/selectwear/useRegisterWear.jsx ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useRegisterWear": () => (/* binding */ useRegisterWear)
+/* harmony export */ });
+var useRegisterWear = function useRegisterWear() {
+  var RegisterWear = function RegisterWear(props) {
+    console.log('OK');
+    console.log(props);
+    axios.post("/api/registerwear", {
+      params: {}
+    }).then(function (res) {
+      setUserProfiles(data);
+    })["catch"](function () {
+      setError(true);
+    })["finally"](function () {
+      setLoading(false);
+    });
+  };
+
+  return {
+    RegisterWear: RegisterWear
   };
 };
 

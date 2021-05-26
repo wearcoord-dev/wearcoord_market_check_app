@@ -6,6 +6,7 @@ import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
 import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
+import { useRegisterWear } from "../../../../hooks/selectwear/useRegisterWear";
 import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 
@@ -14,37 +15,67 @@ export const SelectWear = memo(() => {
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
+    const { RegisterWear } = useRegisterWear();
 
     const context = useContext(UserContext);
-    // console.log(context);
-    // console.log('表示してるぞ！！');
 
-    const onClickFetchCaps = (props) => {
-        getCaps(props);
-    }
+    // 着ているウェアを取得
+    const [ activeIndex, setActiveIndex ] = useState(0);
+    const [ activeIndexTops, setActiveIndexTops ] = useState(0);
+    const [ activeIndexPants, setActiveIndexPants ] = useState(0);
+    const [ activeIndexShoes, setActiveIndexShoes ] = useState(0);
+
+    const onClickFetchCaps = (props) => getCaps(props);
     const onClickFetchTops = (props) => getTops(props);
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
 
+    const onClickRegisterWear = () =>{
+        const obj = {
+            "caps" : userCaps[activeIndex],
+            "tops" : userTops[activeIndexTops],
+            "pants" : userPants[activeIndexPants],
+            "shoes" : userShoes[activeIndexShoes],
+        }
+
+
+        RegisterWear(obj);
+    }
+
+
 
     const [anchorEl, setAnchorEl] = useState(null);
-
-    // const handleClick = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-
-    // const handleClose = () => {
-    //     setAnchorEl(null);
-    // };
 
     const handleClick = (event) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
       };
 
-    // console.log(anchorEl);
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+
+    // console.log(activeIndex);
+    // console.log(activeIndexTops);
+
+    const getActiveIndex = (swiper) => {
+        setActiveIndex(swiper.activeIndex);
+    }
+
+    const getActiveIndexTops = (swiper) => {
+        setActiveIndexTops(swiper.activeIndex);
+    }
+
+    const getActiveIndexPants = (swiper) => {
+        setActiveIndexPants(swiper.activeIndex);
+    }
+
+    const getActiveIndexShoes = (swiper) => {
+        setActiveIndexShoes(swiper.activeIndex);
+    }
+
+    console.log(userCaps[activeIndex]);
+    console.log(userTops[activeIndexTops]);
+    console.log(userPants[activeIndexPants]);
+    console.log(userShoes[activeIndexShoes]);
 
     return (
         <>
@@ -58,6 +89,7 @@ export const SelectWear = memo(() => {
                         <Swiper id="controller"
                             slidesPerView={3}
                             centeredSlides={true}
+                            onSlideChangeTransitionEnd={getActiveIndex}
                         >
                             {userCaps.map((wear) => (
                                 <SwiperSlide className="wearLi" key={wear.id}  >
@@ -84,7 +116,8 @@ export const SelectWear = memo(() => {
                             <Swiper id="controller2"
                                 slidesPerView={3}
                                 centeredSlides={true}
-                            >
+                                onSlideChangeTransitionEnd={getActiveIndexTops}
+                                >
                                 {userTops.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
                                         <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
@@ -110,6 +143,7 @@ export const SelectWear = memo(() => {
                             <Swiper id="controller3"
                                 slidesPerView={3}
                                 centeredSlides={true}
+                                onSlideChangeTransitionEnd={getActiveIndexPants}
                             >
                                 {userPants.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
@@ -136,6 +170,7 @@ export const SelectWear = memo(() => {
                             <Swiper id="controller4"
                                 slidesPerView={3}
                                 centeredSlides={true}
+                                onSlideChangeTransitionEnd={getActiveIndexShoes}
                             >
                                 {userShoes.map((wear) => (
                                     <SwiperSlide className="wearLi" key={wear.id}  >
@@ -154,8 +189,16 @@ export const SelectWear = memo(() => {
             <br />
 
             <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                Open Popover
+                ウェアを探す
       </Button>
+
+            <Button
+            style={{ position: "absolute", bottom: "100px", right: "0" }} color="primary"
+            variant="contained"
+            onClick={onClickRegisterWear}
+             >
+                このウェアを着る
+            </Button>
 
             <Popper
                 id={id}
