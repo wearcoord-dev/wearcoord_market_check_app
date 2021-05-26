@@ -6,6 +6,7 @@ import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
 import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
+import { useRegisterWear } from "../../../../hooks/selectwear/useRegisterWear";
 import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 
@@ -14,6 +15,7 @@ export const SelectWear = memo(() => {
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
+    const { RegisterWear } = useRegisterWear();
 
     const context = useContext(UserContext);
 
@@ -27,6 +29,19 @@ export const SelectWear = memo(() => {
     const onClickFetchTops = (props) => getTops(props);
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
+
+    const onClickRegisterWear = () =>{
+        const obj = {
+            "caps" : userCaps[activeIndex],
+            "tops" : userTops[activeIndexTops],
+            "pants" : userPants[activeIndexPants],
+            "shoes" : userShoes[activeIndexShoes],
+        }
+
+
+        RegisterWear(obj);
+    }
+
 
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -174,8 +189,16 @@ export const SelectWear = memo(() => {
             <br />
 
             <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                Open Popover
+                ウェアを探す
       </Button>
+
+            <Button
+            style={{ position: "absolute", bottom: "100px", right: "0" }} color="primary"
+            variant="contained"
+            onClick={onClickRegisterWear}
+             >
+                このウェアを着る
+            </Button>
 
             <Popper
                 id={id}
