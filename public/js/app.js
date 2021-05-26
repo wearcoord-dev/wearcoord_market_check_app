@@ -16322,17 +16322,30 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
       loadingShoes = _useAllShoes.loadingShoes,
       errorShoes = _useAllShoes.errorShoes;
 
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_7__.UserContext); // console.log(context);
-  // console.log('表示してるぞ！！');
-  // 着ているウェアを取得
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserProvider__WEBPACK_IMPORTED_MODULE_7__.UserContext); // 着ているウェアを取得
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       activeIndex = _useState2[0],
       setActiveIndex = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      activeIndexTops = _useState4[0],
+      setActiveIndexTops = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      activeIndexPants = _useState6[0],
+      setActiveIndexPants = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      activeIndexShoes = _useState8[0],
+      setActiveIndexShoes = _useState8[1];
+
   var onClickFetchCaps = function onClickFetchCaps(props) {
-    getCaps(props);
+    return getCaps(props);
   };
 
   var onClickFetchTops = function onClickFetchTops(props) {
@@ -16347,16 +16360,10 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     return getShoes(props);
   };
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      anchorEl = _useState4[0],
-      setAnchorEl = _useState4[1]; // const handleClick = (event) => {
-  //     setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //     setAnchorEl(null);
-  // };
-
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      anchorEl = _useState10[0],
+      setAnchorEl = _useState10[1];
 
   var handleClick = function handleClick(event) {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -16364,12 +16371,28 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
 
   var open = Boolean(anchorEl);
   var id = open ? 'simple-popover' : undefined; // console.log(activeIndex);
+  // console.log(activeIndexTops);
 
   var getActiveIndex = function getActiveIndex(swiper) {
     setActiveIndex(swiper.activeIndex);
   };
 
+  var getActiveIndexTops = function getActiveIndexTops(swiper) {
+    setActiveIndexTops(swiper.activeIndex);
+  };
+
+  var getActiveIndexPants = function getActiveIndexPants(swiper) {
+    setActiveIndexPants(swiper.activeIndex);
+  };
+
+  var getActiveIndexShoes = function getActiveIndexShoes(swiper) {
+    setActiveIndexShoes(swiper.activeIndex);
+  };
+
   console.log(userCaps[activeIndex]);
+  console.log(userTops[activeIndexTops]);
+  console.log(userPants[activeIndexPants]);
+  console.log(userShoes[activeIndexShoes]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       style: {
@@ -16433,6 +16456,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           id: "controller2",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexTops,
           children: userTops.map(function (wear) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
               className: "wearLi",
@@ -16477,6 +16501,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           id: "controller3",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexPants,
           children: userPants.map(function (wear) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
               className: "wearLi",
@@ -16520,6 +16545,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           id: "controller4",
           slidesPerView: 3,
           centeredSlides: true,
+          onSlideChangeTransitionEnd: getActiveIndexShoes,
           children: userShoes.map(function (wear) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_10__.SwiperSlide, {
               className: "wearLi",
