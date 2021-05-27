@@ -3,12 +3,12 @@ import { useState } from "react";
 
 export const useAllPants = () => {
     const [userPants, setUserPants] = useState([]);
-    const [loadingPants, setLoading] = useState(false);
-    const [errorPants, setError] = useState(false);
+    const [loadingPants, setLoadingPants] = useState(false);
+    const [errorPants, setErrorPants] = useState(false);
 
     const getPants = (props) => {
-        setLoading(true);
-        setError(false);
+        setLoadingPants(true);
+        setErrorPants(false);
         console.log("pantsだよ");
         const brand = props.target.form[1].value;
         const color = props.target.form[2].value;
@@ -39,9 +39,9 @@ export const useAllPants = () => {
             console.log(data);
             setUserPants(data);
         }).catch(() => {
-            setError(true);
+            setErrorPants(true);
         }).finally(() => {
-            setLoading(false);
+            setLoadingPants(false);
         });
     };
 

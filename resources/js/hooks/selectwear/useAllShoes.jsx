@@ -3,12 +3,12 @@ import { useState } from "react";
 
 export const useAllShoes = () => {
     const [userShoes, setUserShoes] = useState([]);
-    const [loadingShoes, setLoading] = useState(false);
-    const [errorShoes, setError] = useState(false);
+    const [loadingShoes, setLoadingShoes] = useState(false);
+    const [errorShoes, setErrorShoes] = useState(false);
 
     const getShoes = (props) => {
-        setLoading(true);
-        setError(false);
+        setLoadingShoes(true);
+        setErrorShoes(false);
         console.log("shoesだよ");
         const brand = props.target.form[1].value;
         const color = props.target.form[2].value;
@@ -38,9 +38,9 @@ export const useAllShoes = () => {
             console.log(data);
             setUserShoes(data);
         }).catch(() => {
-            setError(true);
+            setErrorShoes(true);
         }).finally(() => {
-            setLoading(false);
+            setLoadingShoes(false);
         });
     };
 

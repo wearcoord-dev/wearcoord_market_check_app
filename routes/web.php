@@ -44,3 +44,6 @@ Route::get('/user', function () {
 
     return response()->json($user);
 });
+
+Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear');
+
