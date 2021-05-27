@@ -3,11 +3,11 @@ import { useState } from "react";
 
 export const useAllTops = () => {
   const [userTops, setUserTops] = useState([]);
-  const [loadingTops, setLoading] = useState(false);
+  const [loadingTops, setLoadingTops] = useState(false);
   const [errorTops, setError] = useState(false);
 
   const getTops = (props) => {
-    setLoading(true);
+    setLoadingTops(true);
     setError(false);
     console.log("topsだよ");
     const brand = props.target.form[1].value;
@@ -42,7 +42,7 @@ export const useAllTops = () => {
     }).catch(() => {
       setError(true);
     }).finally(() => {
-      setLoading(false);
+      setLoadingTops(false);
     });
   };
 

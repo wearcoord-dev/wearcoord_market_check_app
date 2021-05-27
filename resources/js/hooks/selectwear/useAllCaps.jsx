@@ -4,13 +4,13 @@ import { useState } from "react";
 export const useAllCaps = () => {
 
   const [userCaps, setUserCaps] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [loadingCaps, setLoadingCaps] = useState(false);
+  const [errorCaps, setErrorCaps] = useState(false);
 
   const getCaps = (props) => {
-    setLoading(true);
-    setError(false);
-    
+    setLoadingCaps(true);
+    setErrorCaps(false);
+
     const brand = props.target.form[1].value;
     const color = props.target.form[2].value;
     const category = props.target.form[3].value;
@@ -41,11 +41,11 @@ export const useAllCaps = () => {
       console.log(data);
       setUserCaps(data);
     }).catch(() => {
-      setError(true);
+        setErrorCaps(true);
     }).finally(() => {
-      setLoading(false);
+        setLoadingCaps(false);
     });
   };
 
-  return { getCaps, userCaps, loading, error }
+  return { getCaps, userCaps, loadingCaps, errorCaps }
 };

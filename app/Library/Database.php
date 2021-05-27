@@ -75,7 +75,7 @@ class Database
             // urlに画像を入れる
             $DBitems = [];
             foreach ($item as $i) {
-                
+
                 $url = $i->black;
 
                 if (!$url) {
@@ -117,5 +117,25 @@ class Database
 
 
         return ['item' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category];
+    }
+
+    public static function createUrlAndCategory($id, $type)
+    {
+        $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'gray'];
+
+        $testdesu = null;
+
+        foreach($colors as $color){
+
+            if(!$testdesu){
+                $testdesu = DB::table( $type . '_rakuten_apis')->where('id', $id)->whereNotNull($color)->first();
+                if($testdesu){
+                    if($testdesu->$color){
+                        $data = array( 'category' => $testdesu->category, 'url' => $testdesu->$color );
+                    }
+                }
+            }
+        }
+        return [ $type . 'Data' => $data ];
     }
 }

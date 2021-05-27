@@ -32,6 +32,9 @@ Route::get('/shoes', [App\Http\Controllers\MycoordController::class, "getCapsDBD
 
 Route::get('/registerwear', [App\Http\Controllers\MycoordController::class, "registerWear"])->name('registerWear');
 
+Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear');
+
+
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');

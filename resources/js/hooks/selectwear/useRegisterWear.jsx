@@ -1,6 +1,9 @@
 import axios from "axios";
+import { useHistory } from "react-router";
 
 export const useRegisterWear = () => {
+    const history = useHistory();
+
 
     const RegisterWear = (props) => {
         console.log('OK');
@@ -23,6 +26,7 @@ export const useRegisterWear = () => {
               }
         }).then((res) => {
             console.log(res);
+            history.push("/main/mycoord");
           }).catch(() => {
           }).finally(() => {
           });
