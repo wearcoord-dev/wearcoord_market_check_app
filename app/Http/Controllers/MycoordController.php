@@ -185,12 +185,14 @@ class MycoordController extends Controller
         $topsData = Database::createUrlAndCategory($userWear->tops, 'tops');
         $pantsData = Database::createUrlAndCategory($userWear->pants, 'pants');
         $shoesData = Database::createUrlAndCategory($userWear->shoes, 'shoes');
+        $mannequin = $userWear->mannequin;
 
         $wearData = [
             $capsData,
             $topsData,
             $pantsData,
             $shoesData,
+            "mannequin" => $mannequin,
         ];
 
 

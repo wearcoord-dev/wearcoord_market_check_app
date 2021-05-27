@@ -1,33 +1,51 @@
-import { memo, useContext, useEffect } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../providers/UserWear";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
 
 
 export const Mannequin = memo(() => {
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
+    const [ mannequinUrl, setUrl ] = useState(null);
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
     // console.log(userCheck);
 
     useEffect(() => {
-            if(userCheck !== undefined){
+        if (userCheck !== undefined) {
             // console.log('useEffectが実行されました')
             GetWear(context)
         }
-        }, [userCheck]);
+    }, [userCheck]);
 
-    // console.log(userWearInfo);
+    console.log(userWearInfo);
+
+    useEffect(() => {
+        if(userWearInfo){
+            const url = {backgroundImage:'url( ../../../img/mannequin/' + userWearInfo.mannequin + ')'}
+            setUrl(url);
+        }
+    }, [userWearInfo]);
+
+    console.log(mannequinUrl);
 
 
 
     return (
         <>
-        <div className="centerContainer">
-        <div className="mannequinImg" style={{     backgroundImage: "url('../../../img/mannequin/mannequin_done3.png')"
- }}>
-        </div>
-        </div>
+            {userWearInfo ? (errorWear ? (
+                <p>error</p>
+            ) : loadingWear ? (
+                <p>loading</p>
+            ) : (
+                // <p>{userWearInfo.mannequin}</p>
+                <div className="centerContainer">
+                    {mannequinUrl ? ( <div className="mannequinImg" style={{'backgroundImage' : mannequinUrl.backgroundImage
+                    }}>
+                    </div> ) : <p>ng</p>}
+
+                </div>
+            )) : <p></p>}
         </>
     )
 })
