@@ -11,7 +11,7 @@ export const UserProvider = memo((props) => {
 
     const contextItem = userInfo;
     const contextName = contextItem.data;
-    console.log(`これは${contextName}`);
+    // console.log(`これは${contextName}`);
 
     return (
         <>

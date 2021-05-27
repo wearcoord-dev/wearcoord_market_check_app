@@ -42,17 +42,16 @@ export const SelectWear = memo(() => {
         }
         RegisterWear(obj);
     }
-    const userData = {
-        "userData": context.contextName,
-    }
+    const userCheck = context.contextName;
     console.log(context);
 
 
     useEffect(() => {
+        if(userCheck !== undefined){
         console.log('useEffectが実行されました')
-
-        GetWear(userData)
-    }, []);
+        GetWear(context)
+    }
+    }, [userCheck]);
 
     // if(userWearInfo){
     //     console.log(userWearInfo[1].capsData.url);

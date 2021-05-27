@@ -17,7 +17,6 @@
 
 .mannequinImg {
   height: 400px;
-  background-image: url("../../../img/mannequin/mannequin_done3.png");
   object-fit: cover;
   background-size: cover;
   background-repeat: no-repeat;
