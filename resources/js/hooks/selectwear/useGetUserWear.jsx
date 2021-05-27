@@ -13,9 +13,9 @@ export const useGetUserWear = () => {
         setErrorWear(false);
 
 
-        console.log('OK');
+        // console.log('OK');
         console.log(props);
-        const userid = props.userData.id;
+        const userid = props.contextName.id;
 
         axios.get("/getwear", {
             params: {

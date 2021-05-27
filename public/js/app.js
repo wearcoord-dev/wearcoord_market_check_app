@@ -16164,10 +16164,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _hooks_mycoord_useOpenBtnFunc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../hooks/mycoord/useOpenBtnFunc */ "./resources/js/hooks/mycoord/useOpenBtnFunc.js");
-/* harmony import */ var _button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../button/OpenLeftBtn */ "./resources/js/components/organisms/button/OpenLeftBtn.jsx");
-/* harmony import */ var _button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../button/OpenRightBtn */ "./resources/js/components/organisms/button/OpenRightBtn.jsx");
-/* harmony import */ var _Mannequin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Mannequin */ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _providers_UserWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../providers/UserWear */ "./resources/js/components/providers/UserWear.jsx");
+/* harmony import */ var _button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../button/OpenLeftBtn */ "./resources/js/components/organisms/button/OpenLeftBtn.jsx");
+/* harmony import */ var _button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../button/OpenRightBtn */ "./resources/js/components/organisms/button/OpenRightBtn.jsx");
+/* harmony import */ var _Mannequin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Mannequin */ "./resources/js/components/organisms/layouts/mycoord/Mannequin.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -16183,8 +16185,10 @@ var MainMycoord = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return openBtnFunc();
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_2__.OpenLeftBtn, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Mannequin__WEBPACK_IMPORTED_MODULE_4__.Mannequin, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_3__.OpenRightBtn, {})]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_button_OpenLeftBtn__WEBPACK_IMPORTED_MODULE_3__.OpenLeftBtn, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_2__.UserWear, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Mannequin__WEBPACK_IMPORTED_MODULE_5__.Mannequin, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_button_OpenRightBtn__WEBPACK_IMPORTED_MODULE_4__.OpenRightBtn, {})]
   });
 });
 
@@ -16202,16 +16206,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Mannequin": () => (/* binding */ Mannequin)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _providers_UserWear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../providers/UserWear */ "./resources/js/components/providers/UserWear.jsx");
+/* harmony import */ var _hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../hooks/selectwear/useGetUserWear */ "./resources/js/hooks/selectwear/useGetUserWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
 var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  var _useGetUserWear = (0,_hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_2__.useGetUserWear)(),
+      GetWear = _useGetUserWear.GetWear,
+      userWearInfo = _useGetUserWear.userWearInfo,
+      loadingWear = _useGetUserWear.loadingWear,
+      errorWear = _useGetUserWear.errorWear;
+
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_1__.AppContext);
+  var userCheck = context.contextName; // console.log(userCheck);
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (userCheck !== undefined) {
+      // console.log('useEffectが実行されました')
+      GetWear(context);
+    }
+  }, [userCheck]); // console.log(userWearInfo);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "centerContainer",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "mannequinImg"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "mannequinImg",
+        style: {
+          backgroundImage: "url('../../../img/mannequin/mannequin_done3.png')"
+        }
       })
     })
   });
@@ -16231,17 +16258,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MainSelectWear": () => (/* binding */ MainSelectWear)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _SelectWear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectWear */ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../hooks/selectwear/useGetUserWear */ "./resources/js/hooks/selectwear/useGetUserWear.jsx");
+/* harmony import */ var _providers_UserWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../providers/UserWear */ "./resources/js/components/providers/UserWear.jsx");
+/* harmony import */ var _SelectWear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectWear */ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 
 
 
 var MainSelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  var _useGetUserWear = (0,_hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_1__.useGetUserWear)(),
+      GetWear = _useGetUserWear.GetWear,
+      userWearInfo = _useGetUserWear.userWearInfo,
+      loadingWear = _useGetUserWear.loadingWear,
+      errorWear = _useGetUserWear.errorWear;
+
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_2__.AppContext);
+  var userCheck = context.contextName; // console.log(userCheck);
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (userCheck !== undefined) {
+      // console.log('useEffectが実行されました')
+      GetWear(context);
+    }
+  }, [userCheck]); // console.log(userWearInfo);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "mannequinImg",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_SelectWear__WEBPACK_IMPORTED_MODULE_1__.SelectWear, {})
+      style: {
+        backgroundImage: "url('../../../img/mannequin/mannequin_done3.png')"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SelectWear__WEBPACK_IMPORTED_MODULE_3__.SelectWear, {})
     })
   });
 });
@@ -16384,14 +16434,14 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     RegisterWear(obj);
   };
 
-  var userData = {
-    "userData": context.contextName
-  };
+  var userCheck = context.contextName;
   console.log(context);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log('useEffectが実行されました');
-    GetWear(userData);
-  }, []); // if(userWearInfo){
+    if (userCheck !== undefined) {
+      console.log('useEffectが実行されました');
+      GetWear(context);
+    }
+  }, [userCheck]); // if(userWearInfo){
   //     console.log(userWearInfo[1].capsData.url);
   // }
 
@@ -16896,8 +16946,8 @@ var UserProvider = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
     return getUser();
   }, []);
   var contextItem = userInfo;
-  var contextName = contextItem.data;
-  console.log("\u3053\u308C\u306F".concat(contextName));
+  var contextName = contextItem.data; // console.log(`これは${contextName}`);
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(UserContext.Provider, {
       value: {
@@ -16907,6 +16957,52 @@ var UserProvider = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(func
     })
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/providers/UserWear.jsx":
+/*!********************************************************!*\
+  !*** ./resources/js/components/providers/UserWear.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AppContext": () => (/* binding */ AppContext),
+/* harmony export */   "UserWear": () => (/* binding */ UserWear)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _hooks_user_useGetUserInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/user/useGetUserInfo */ "./resources/js/hooks/user/useGetUserInfo.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var AppContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+var UserWear = function UserWear(props) {
+  var children = props.children;
+
+  var _useGetUserInfo = (0,_hooks_user_useGetUserInfo__WEBPACK_IMPORTED_MODULE_1__.useGetUserInfo)(),
+      getUser = _useGetUserInfo.getUser,
+      userInfo = _useGetUserInfo.userInfo;
+
+  console.log('表示されてるぞ！');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return getUser();
+  }, []);
+  var contextItem = userInfo;
+  var contextName = contextItem.data;
+  console.log("\u3053\u308C\u306F".concat(contextName));
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(AppContext.Provider, {
+      value: {
+        contextName: contextName
+      },
+      children: children
+    })
+  });
+};
 
 /***/ }),
 
@@ -17628,10 +17724,10 @@ var useGetUserWear = function useGetUserWear() {
 
   var GetWear = function GetWear(props) {
     setLoadingWear(true);
-    setErrorWear(false);
-    console.log('OK');
+    setErrorWear(false); // console.log('OK');
+
     console.log(props);
-    var userid = props.userData.id;
+    var userid = props.contextName.id;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/getwear", {
       params: {
         id: userid
