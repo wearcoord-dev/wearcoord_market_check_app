@@ -65,18 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['gender'] == "male"){
-            $url = "mannequin_male.png";
-        }else{
-            $url = "";
-        };
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
-
         ]);
     }
 }

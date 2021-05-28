@@ -9,19 +9,19 @@ export const Mannequin = memo(() => {
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    // console.log(userCheck);
+    console.log(userCheck);
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました')
+            console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
 
-    console.log(userWearInfo);
 
     useEffect(() => {
         if(userWearInfo){
+
             const url = {backgroundImage:'url( ../../../img/mannequin/' + userWearInfo.mannequin + ')'}
             setUrl(url);
         }

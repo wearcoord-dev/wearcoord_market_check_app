@@ -22,7 +22,7 @@ export const useGetUserWear = () => {
                 id: userid,
               }
         }).then((res) => {
-            // console.log(res.data);
+            console.log(res);
             setUserWearInfo(res.data);
           }).catch(() => {
             setErrorWear(true);

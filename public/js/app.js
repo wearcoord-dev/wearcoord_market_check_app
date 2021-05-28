@@ -16239,15 +16239,14 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
       setUrl = _useState2[1];
 
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_1__.AppContext);
-  var userCheck = context.contextName; // console.log(userCheck);
-
+  var userCheck = context.contextName;
+  console.log(userCheck);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
-      // console.log('useEffectが実行されました')
+      console.log('useEffectが実行されました');
       GetWear(context);
     }
   }, [userCheck]);
-  console.log(userWearInfo);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userWearInfo) {
       var url = {
@@ -17768,7 +17767,7 @@ var useGetUserWear = function useGetUserWear() {
         id: userid
       }
     }).then(function (res) {
-      // console.log(res.data);
+      console.log(res);
       setUserWearInfo(res.data);
     })["catch"](function () {
       setErrorWear(true);
