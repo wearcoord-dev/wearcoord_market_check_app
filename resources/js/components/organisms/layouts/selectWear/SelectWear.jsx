@@ -43,7 +43,7 @@ export const SelectWear = memo(() => {
         RegisterWear(obj);
     }
     const userCheck = context.contextName;
-    console.log(context);
+    // console.log(context);
 
 
     useEffect(() => {

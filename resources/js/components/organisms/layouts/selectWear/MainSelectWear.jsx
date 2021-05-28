@@ -1,30 +1,49 @@
-import { memo, useContext, useEffect } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
-import { AppContext } from "../../../providers/UserWear";
+import { ValueContext } from "../../../providers/SecondWear";
 import { SelectWear } from "./SelectWear";
 
 export const MainSelectWear = memo(() => {
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
+    const [mannequinUrl, setUrl] = useState(null);
 
-    const context = useContext(AppContext);
+
+    const context = useContext(ValueContext);
     const userCheck = context.contextName;
-    // console.log(userCheck);
+    console.log(userCheck);
 
     useEffect(() => {
-            if(userCheck !== undefined){
-            // console.log('useEffectが実行されました')
+        if (userCheck !== undefined) {
+            console.log('useEffectが実行されました')
             GetWear(context)
         }
-        }, [userCheck]);
+    }, [userCheck]);
 
-    // console.log(userWearInfo);
+    useEffect(() => {
+        if (userWearInfo) {
+
+            const url = { backgroundImage: 'url( ../../../img/mannequin/' + userWearInfo.mannequin + ')' }
+            setUrl(url);
+        }
+    }, [userWearInfo]);
+
+    // console.log(`ここが${userWearInfo}だぞ！`);
 
     return (
         <>
-            <div className="mannequinImg"  style={{     backgroundImage: "url('../../../img/mannequin/mannequin_done3.png')"
- }}>
-                <SelectWear />
-            </div>
+            {userWearInfo ? (errorWear ? (
+                <p>error</p>
+            ) : loadingWear ? (
+                <p>loading</p>
+            ) : (
+                // <p>{userWearInfo.mannequin}</p>
+                <div>
+                    {mannequinUrl ? (<div className="mannequinImg" style={{'backgroundImage' : mannequinUrl.backgroundImage
+                    }}>
+                        <SelectWear />
+                    </div>) : <p>ng</p>}
+                </div>
+            )) : <p></p>}
         </>
     )
 })

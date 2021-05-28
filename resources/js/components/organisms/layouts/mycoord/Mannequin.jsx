@@ -9,7 +9,7 @@ export const Mannequin = memo(() => {
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    console.log(userCheck);
+    // console.log(userCheck);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -27,7 +27,9 @@ export const Mannequin = memo(() => {
         }
     }, [userWearInfo]);
 
-    console.log(mannequinUrl);
+    // console.log(mannequinUrl);
+    // console.log(`ここが${userWearInfo}だぞ！`);
+
 
 
 

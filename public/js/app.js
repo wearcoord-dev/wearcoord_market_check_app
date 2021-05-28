@@ -16239,8 +16239,8 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
       setUrl = _useState2[1];
 
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_1__.AppContext);
-  var userCheck = context.contextName;
-  console.log(userCheck);
+  var userCheck = context.contextName; // console.log(userCheck);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
       console.log('useEffectが実行されました');
@@ -16254,8 +16254,9 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
       };
       setUrl(url);
     }
-  }, [userWearInfo]);
-  console.log(mannequinUrl);
+  }, [userWearInfo]); // console.log(mannequinUrl);
+  // console.log(`ここが${userWearInfo}だぞ！`);
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: "error"
@@ -16293,9 +16294,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../hooks/selectwear/useGetUserWear */ "./resources/js/hooks/selectwear/useGetUserWear.jsx");
-/* harmony import */ var _providers_UserWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../providers/UserWear */ "./resources/js/components/providers/UserWear.jsx");
+/* harmony import */ var _providers_SecondWear__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../providers/SecondWear */ "./resources/js/components/providers/SecondWear.jsx");
 /* harmony import */ var _SelectWear__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectWear */ "./resources/js/components/organisms/layouts/selectWear/SelectWear.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -16309,24 +16322,48 @@ var MainSelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(fu
       loadingWear = _useGetUserWear.loadingWear,
       errorWear = _useGetUserWear.errorWear;
 
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_2__.AppContext);
-  var userCheck = context.contextName; // console.log(userCheck);
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      mannequinUrl = _useState2[0],
+      setUrl = _useState2[1];
 
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_2__.ValueContext);
+  var userCheck = context.contextName;
+  console.log(userCheck);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
-      // console.log('useEffectが実行されました')
+      console.log('useEffectが実行されました');
       GetWear(context);
     }
-  }, [userCheck]); // console.log(userWearInfo);
+  }, [userCheck]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (userWearInfo) {
+      var url = {
+        backgroundImage: 'url( ../../../img/mannequin/' + userWearInfo.mannequin + ')'
+      };
+      setUrl(url);
+    }
+  }, [userWearInfo]); // console.log(`ここが${userWearInfo}だぞ！`);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "mannequinImg",
-      style: {
-        backgroundImage: "url('../../../img/mannequin/mannequin_done3.png')"
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SelectWear__WEBPACK_IMPORTED_MODULE_3__.SelectWear, {})
-    })
+    children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      children: "error"
+    }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      children: "loading"
+    }) :
+    /*#__PURE__*/
+    // <p>{userWearInfo.mannequin}</p>
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: mannequinUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "mannequinImg",
+        style: {
+          'backgroundImage': mannequinUrl.backgroundImage
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SelectWear__WEBPACK_IMPORTED_MODULE_3__.SelectWear, {})
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        children: "ng"
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {})
   });
 });
 
@@ -16468,8 +16505,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     RegisterWear(obj);
   };
 
-  var userCheck = context.contextName;
-  console.log(context);
+  var userCheck = context.contextName; // console.log(context);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
       console.log('useEffectが実行されました');
@@ -16949,6 +16986,52 @@ var Page404 = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function 
 
 /***/ }),
 
+/***/ "./resources/js/components/providers/SecondWear.jsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/providers/SecondWear.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ValueContext": () => (/* binding */ ValueContext),
+/* harmony export */   "SecondWear": () => (/* binding */ SecondWear)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _hooks_user_useGetUserInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/user/useGetUserInfo */ "./resources/js/hooks/user/useGetUserInfo.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var ValueContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+var SecondWear = function SecondWear(props) {
+  var children = props.children;
+
+  var _useGetUserInfo = (0,_hooks_user_useGetUserInfo__WEBPACK_IMPORTED_MODULE_1__.useGetUserInfo)(),
+      getUser = _useGetUserInfo.getUser,
+      userInfo = _useGetUserInfo.userInfo; // console.log('表示されてるぞ！');
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    return getUser();
+  }, []);
+  var contextItem = userInfo;
+  var contextName = contextItem.data; // console.log(`これは${contextName}`);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(ValueContext.Provider, {
+      value: {
+        contextName: contextName
+      },
+      children: children
+    })
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/providers/UserProvider.jsx":
 /*!************************************************************!*\
   !*** ./resources/js/components/providers/UserProvider.jsx ***!
@@ -17109,7 +17192,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_Cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../pages/Cart */ "./resources/js/components/pages/Cart.jsx");
 /* harmony import */ var _pages_Page404__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/Page404 */ "./resources/js/components/pages/Page404.jsx");
 /* harmony import */ var _organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/layouts/selectWear/MainSelectWear */ "./resources/js/components/organisms/layouts/selectWear/MainSelectWear.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _providers_SecondWear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../providers/SecondWear */ "./resources/js/components/providers/SecondWear.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -17121,31 +17206,33 @@ __webpack_require__.r(__webpack_exports__);
 var PageRoute = [{
   path: "/",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
 }, {
   path: "/mycoord",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
 }, {
   path: "/selectwear",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__.MainSelectWear, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_7__.SecondWear, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__.MainSelectWear, {})
+  })
 }, {
   path: "/item",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
 }, {
   path: "/favorite",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
 }, {
   path: "/cart",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
 }, {
   path: "*",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
 }];
 
 /***/ }),
@@ -17759,8 +17846,8 @@ var useGetUserWear = function useGetUserWear() {
   var GetWear = function GetWear(props) {
     setLoadingWear(true);
     setErrorWear(false); // console.log('OK');
+    // console.log(props);
 
-    console.log(props);
     var userid = props.contextName.id;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/getwear", {
       params: {
