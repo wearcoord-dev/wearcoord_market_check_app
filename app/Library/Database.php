@@ -125,6 +125,10 @@ class Database
 
         $testdesu = null;
 
+        if(!$id){
+            return null;
+        }
+
         foreach($colors as $color){
 
             if(!$testdesu){

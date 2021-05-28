@@ -181,16 +181,52 @@ class MycoordController extends Controller
 
         $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
 
-        $capsData = Database::createUrlAndCategory($userWear->caps, 'caps');
-        $topsData = Database::createUrlAndCategory($userWear->tops, 'tops');
-        $pantsData = Database::createUrlAndCategory($userWear->pants, 'pants');
-        $shoesData = Database::createUrlAndCategory($userWear->shoes, 'shoes');
+
+        if(!$userWear){
+            $gender = DB::table('users')->where('id', $user_id)->value('gender');
+
+            if($gender == "male"){
+                $url = "mens_170_model.png";
+            }else{
+                $url = "female_mannequin.png";
+            }
+
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 1,
+                'tops' => 2,
+                'pants' => 3,
+                'shoes' => 20,
+                'mannequin' => $url,
+            ]);
+
+            $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
+
+        }
+
+
+        $types = ['caps', 'tops', 'pants', 'shoes'];
+
+        foreach($types as $type){
+                ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type);
+        }
+
+
+
+        // $topsData = Database::createUrlAndCategory($userWear->tops, 'tops');
+        // $pantsData = Database::createUrlAndCategory($userWear->pants, 'pants');
+        // $shoesData = Database::createUrlAndCategory($userWear->shoes, 'shoes');
+        $mannequin = $userWear->mannequin;
+
+        // ddd($capsData);
+
 
         $wearData = [
             $capsData,
             $topsData,
             $pantsData,
             $shoesData,
+            "mannequin" => $mannequin,
         ];
 
 
