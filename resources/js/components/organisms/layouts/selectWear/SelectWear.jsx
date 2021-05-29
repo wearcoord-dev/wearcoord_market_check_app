@@ -168,7 +168,7 @@ export const SelectWear = memo(() => {
                             ) : (
                                 <>
                                     <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "110px", objectPosition: "124px", zIndex: "100", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "120px", objectPosition: "124px", zIndex: "100", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
                                     </div>
                                     <p></p>
                                 </>
@@ -206,7 +206,7 @@ export const SelectWear = memo(() => {
                             ) : (
                                 <>
                                     <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "180px", objectFit: "contain", position: "absolute", top: "220px", objectPosition: "100px", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                        <img style={{ width: "100%", height: "180px", objectFit: "contain", position: "absolute", top: "240px", objectPosition: "100px", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
                                     </div>
                                     <p></p>
                                 </>

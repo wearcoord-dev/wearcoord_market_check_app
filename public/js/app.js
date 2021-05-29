@@ -16656,7 +16656,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
                 height: "130px",
                 objectFit: "contain",
                 position: "absolute",
-                top: "110px",
+                top: "120px",
                 objectPosition: "124px",
                 zIndex: "100",
                 left: "0"
@@ -16716,7 +16716,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
                 height: "180px",
                 objectFit: "contain",
                 position: "absolute",
-                top: "220px",
+                top: "240px",
                 objectPosition: "100px",
                 left: "0"
               },
