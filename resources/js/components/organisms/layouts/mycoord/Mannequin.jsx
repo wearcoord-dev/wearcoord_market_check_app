@@ -47,7 +47,7 @@ export const Mannequin = memo(() => {
                     </div> ) : <p>ng</p>}
 
                 </div>
-            )) : <p></p>}
+            )) : <div style={{ width: "40%", height: "50vh" }}></div>}
         </>
     )
 })
