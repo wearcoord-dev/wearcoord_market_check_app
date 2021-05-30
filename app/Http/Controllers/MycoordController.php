@@ -241,4 +241,15 @@ class MycoordController extends Controller
             'mannequin' => $url,
         ]);
     }
+
+    public function removeInner(Request $request)
+    {
+        $user_id = $request->input('id');
+
+        DB::table('userSelectCoord')->where('user_id', $user_id)->update([
+            'mannequin' => "mens_170_model.png",
+        ]);
+
+        return response()->json('OK');
+    }
 }

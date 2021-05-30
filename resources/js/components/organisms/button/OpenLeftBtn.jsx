@@ -1,9 +1,20 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useContext } from "react";
 import { useHistory } from "react-router";
+import { useRemoveInner } from "../../../hooks/selectwear/useRemoveInner";
 import { OpenBtnLeft } from "../../atoms/button/OpenBtnLeft";
+import { UserContext } from "../../providers/UserProvider";
 
 export const OpenLeftBtn = memo(() => {
+    const { RemoveInner } = useRemoveInner();
     const history = useHistory();
+    const context = useContext(UserContext);
+    // console.log("表示してるぞお！！")
+    // console.log(context.contextName);
+    const user = context.contextName;
+
+    const removeInner = () => {
+        RemoveInner(user);
+    };
 
     const toSelectInner = useCallback(() => history.push("/main/selectinner"));
 
@@ -31,7 +42,7 @@ export const OpenLeftBtn = memo(() => {
                         <p className="btnText" id="btnTitleInner">Inner</p>
                     </summary>
                     <div className="detailsBottom">
-                        <form action="{{ route('removeInner') }}" className="detailsBtn" id="innerRemoveBtn" method="post">
+                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn" method="post">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     accessibility
@@ -40,7 +51,7 @@ export const OpenLeftBtn = memo(() => {
                                 <input type="hidden" name="innerUrl" value="mannequin_done3.png" />
                                 <input type="hidden" name="innerUrl" value="manekin_female_10001000.png" />
                             </button>
-                        </form>
+                        </div>
                         <hr />
                         <div onClick={toSelectInner} className="detailsBtn" method="get">
                             <button type="submit">
