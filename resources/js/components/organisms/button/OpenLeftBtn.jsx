@@ -1,7 +1,12 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
+import { useHistory } from "react-router";
 import { OpenBtnLeft } from "../../atoms/button/OpenBtnLeft";
 
 export const OpenLeftBtn = memo(() => {
+    const history = useHistory();
+
+    const toSelectInner = useCallback(() => history.push("/main/selectinner"));
+
     return (
         <>
             <div className="leftContainer">
@@ -37,7 +42,7 @@ export const OpenLeftBtn = memo(() => {
                             </button>
                         </form>
                         <hr />
-                        <form action="{{ route('searchmysetsGetInner') }}" className="detailsBtn" method="get">
+                        <div onClick={toSelectInner} className="detailsBtn" method="get">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     screen_search_desktop
@@ -46,7 +51,7 @@ export const OpenLeftBtn = memo(() => {
                                 <input type="hidden" name="type" value="inner" />
 
                             </button>
-                        </form>
+                        </div>
                     </div>
                 </details>
 

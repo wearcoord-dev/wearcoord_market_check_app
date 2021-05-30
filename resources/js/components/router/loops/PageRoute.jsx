@@ -5,6 +5,7 @@ import { Favorite } from "../../pages/Favorite";
 import { Cart } from "../../pages/Cart";
 import { Page404 } from "../../pages/Page404";
 import { MainSelectWear } from "../../organisms/layouts/selectWear/MainSelectWear";
+import { MainSelectInnerWear } from "../../organisms/layouts/selectWear/MainSelectInnerWear";
 import { SecondWear } from "../../providers/SecondWear";
 
 export const PageRoute = [
@@ -22,6 +23,12 @@ export const PageRoute = [
     path: "/selectwear",
     exact: false,
     children: (<SecondWear><MainSelectWear /></SecondWear>
+    )
+  },
+  {
+    path: "/selectinner",
+    exact: false,
+    children: (<SecondWear><MainSelectInnerWear /></SecondWear>
     )
   },
   {

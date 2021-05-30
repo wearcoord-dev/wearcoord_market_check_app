@@ -34,6 +34,8 @@ Route::get('/registerwear', [App\Http\Controllers\MycoordController::class, "reg
 
 Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear');
 
+Route::get('/registerinner', [App\Http\Controllers\MycoordController::class, "registerInner"])->name('registerInner');
+
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 

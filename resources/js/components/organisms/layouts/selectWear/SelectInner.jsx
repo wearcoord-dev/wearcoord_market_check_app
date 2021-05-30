@@ -7,16 +7,19 @@ import { useAllPants } from "../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
+import { useRegisterInner } from "../../../../hooks/selectwear/useRegisterInner";
 import { useRegisterWear } from "../../../../hooks/selectwear/useRegisterWear";
+import { InnerSearch } from "../../../molecules/searchbox/InnerSearch";
 import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 
-export const SelectWear = memo(() => {
+export const SelectInner = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
-    const { RegisterWear } = useRegisterWear();
+    // const { RegisterWear } = useRegisterWear();
+    const { RegisterInner } = useRegisterInner();
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
 
     const context = useContext(UserContext);
@@ -32,16 +35,21 @@ export const SelectWear = memo(() => {
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
 
-    const onClickRegisterWear = () => {
-        const obj = {
-            "caps": userCaps[activeIndex],
-            "tops": userTops[activeIndexTops],
-            "pants": userPants[activeIndexPants],
-            "shoes": userShoes[activeIndexShoes],
-            "userid": context.contextName,
-        }
-        RegisterWear(obj);
-    }
+    const onClickFetchInner = (props) => (
+        RegisterInner(props)
+    );
+
+
+    // const onClickRegisterWear = () => {
+    //     const obj = {
+    //         "caps": userCaps[activeIndex],
+    //         "tops": userTops[activeIndexTops],
+    //         "pants": userPants[activeIndexPants],
+    //         "shoes": userShoes[activeIndexShoes],
+    //         "userid": context.contextName,
+    //     }
+    //     RegisterWear(obj);
+    // }
     const userCheck = context.contextName;
     // console.log(context);
 
@@ -261,16 +269,16 @@ export const SelectWear = memo(() => {
 }</div> */}
 
             <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                ウェアを探す
+                インナーを探す
       </Button>
 
-            <Button
+            {/* <Button
                 style={{ position: "absolute", bottom: "100px", right: "0" }} color="primary"
                 variant="contained"
                 onClick={onClickRegisterWear}
             >
-                このウェアを着る
-            </Button>
+                このインナーを着る
+            </Button> */}
 
             <Popper
                 id={id}
@@ -281,12 +289,18 @@ export const SelectWear = memo(() => {
                 className="popper"
                 style={{ width: "100%" }}
             >
-                <WearSearch
+                {/* <WearSearch
                     onClickFetchCaps={onClickFetchCaps}
                     onClickFetchTops={onClickFetchTops}
                     onClickFetchPants={onClickFetchPants}
                     onClickFetchShoes={onClickFetchShoes}
                     handleClick={handleClick}
+                /> */}
+
+                <InnerSearch
+                handleClick={handleClick}
+                onClickFetchInner={onClickFetchInner}
+
                 />
 
             </Popper>

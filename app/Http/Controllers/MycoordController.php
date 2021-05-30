@@ -181,13 +181,13 @@ class MycoordController extends Controller
 
         $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
 
-
-        if(!$userWear){
+        // データが無かったら作成
+        if (!$userWear) {
             $gender = DB::table('users')->where('id', $user_id)->value('gender');
 
-            if($gender == "male"){
+            if ($gender == "male") {
                 $url = "mens_170_model.png";
-            }else{
+            } else {
                 $url = "female_mannequin.png";
             }
 
@@ -201,14 +201,13 @@ class MycoordController extends Controller
             ]);
 
             $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
-
         }
 
 
         $types = ['caps', 'tops', 'pants', 'shoes'];
 
-        foreach($types as $type){
-                ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type);
+        foreach ($types as $type) {
+            ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type);
         }
 
 
@@ -228,13 +227,18 @@ class MycoordController extends Controller
             $shoesData,
             "mannequin" => $mannequin,
         ];
-
-
-
-
         // ddd($wearData);
 
-
         return response()->json($wearData);
+    }
+
+    public function registerInner(Request $request)
+    {
+        $url = $request->input('url');
+        $user_id = $request->input('id');
+
+        DB::table('userSelectCoord')->where('user_id', $user_id)->update([
+            'mannequin' => $url,
+        ]);
     }
 }
