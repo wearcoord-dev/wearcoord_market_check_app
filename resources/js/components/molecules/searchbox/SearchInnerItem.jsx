@@ -5,6 +5,8 @@ import Img3 from "/img/mannequin/mens_170_totalinner_short_black_socks_model.png
 import Img4 from "/img/mannequin/mens_170_totalinner_short_white_socks_model.png";
 import Img5 from "/img/mannequin/mens_170_underinner_long_black_socks_model.png";
 import Img6 from "/img/mannequin/mens_170_underinner_short_white_socks_model.png";
+import Img7 from "/img/mannequin/mens_170_totalinner_long_white_socks_model2.png";
+import Img8 from "/img/mannequin/mens_170_underinner_short_black_socks_model.png";
 
 export const SearchInnerItem = memo((props) => {
 
@@ -68,6 +70,18 @@ export const SearchInnerItem = memo((props) => {
                 <label htmlFor="6" className="radioInputLabel">
                 <img style={style} src={Img6} alt="" />
                 <p style={{textAlign: "center"}}>Type6</p>
+                </label>
+
+                <input type="radio" id="7" className="radioInput" name="brand" value="mens_170_totalinner_long_white_socks_model2.png" onChange={handleInputChange} />
+                <label htmlFor="7" className="radioInputLabel">
+                <img style={style} src={Img7} alt="" />
+                <p style={{textAlign: "center"}}>Type7</p>
+                </label>
+
+                <input type="radio" id="8" className="radioInput" name="brand" value="mens_170_underinner_short_black_socks_model.png" onChange={handleInputChange} />
+                <label htmlFor="8" className="radioInputLabel">
+                <img style={style} src={Img8} alt="" />
+                <p style={{textAlign: "center"}}>Type8</p>
                 </label>
 
             </div>
