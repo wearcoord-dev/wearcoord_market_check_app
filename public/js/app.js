@@ -15159,7 +15159,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_mannequin_mens_170_totalinner_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_short_white_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_short_white_socks_model.png");
 /* harmony import */ var _img_mannequin_mens_170_underinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_long_black_socks_model.png */ "./public/img/mannequin/mens_170_underinner_long_black_socks_model.png");
 /* harmony import */ var _img_mannequin_mens_170_underinner_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_short_white_socks_model.png */ "./public/img/mannequin/mens_170_underinner_short_white_socks_model.png");
-/* harmony import */ var _img_mannequin_mens_170_totalinner_long_white_socks_model2_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_long_white_socks_model2.png */ "./public/img/mannequin/mens_170_totalinner_long_white_socks_model2.png");
+/* harmony import */ var _img_mannequin_mens_170_underinner_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_long_white_socks_model.png */ "./public/img/mannequin/mens_170_underinner_long_white_socks_model.png");
 /* harmony import */ var _img_mannequin_mens_170_underinner_short_black_socks_model_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_short_black_socks_model.png */ "./public/img/mannequin/mens_170_underinner_short_black_socks_model.png");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
@@ -15319,14 +15319,14 @@ var SearchInnerItem = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
         id: "7",
         className: "radioInput",
         name: "brand",
-        value: "mens_170_totalinner_long_white_socks_model2.png",
+        value: "mens_170_underinner_long_white_socks_model.png",
         onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("label", {
         htmlFor: "7",
         className: "radioInputLabel",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("img", {
           style: style,
-          src: _img_mannequin_mens_170_totalinner_long_white_socks_model2_png__WEBPACK_IMPORTED_MODULE_7__.default,
+          src: _img_mannequin_mens_170_underinner_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_7__.default,
           alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
           style: {
@@ -26110,21 +26110,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./public/img/mannequin/mens_170_totalinner_long_white_socks_model2.png":
-/*!******************************************************************************!*\
-  !*** ./public/img/mannequin/mens_170_totalinner_long_white_socks_model2.png ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/mens_170_totalinner_long_white_socks_model2.png?ec4d8eb62ece6221ffabbe3dbcc1650d");
-
-/***/ }),
-
 /***/ "./public/img/mannequin/mens_170_totalinner_short_black_socks_model.png":
 /*!******************************************************************************!*\
   !*** ./public/img/mannequin/mens_170_totalinner_short_black_socks_model.png ***!
@@ -26167,6 +26152,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/mens_170_underinner_long_black_socks_model.png?93077b4e1a6f1501872943bbcfd6a78f");
+
+/***/ }),
+
+/***/ "./public/img/mannequin/mens_170_underinner_long_white_socks_model.png":
+/*!*****************************************************************************!*\
+  !*** ./public/img/mannequin/mens_170_underinner_long_white_socks_model.png ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/mens_170_underinner_long_white_socks_model.png?c77314c5fdfecc0d90ed23021a92c56d");
 
 /***/ }),
 
