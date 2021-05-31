@@ -48,8 +48,6 @@ export const OpenLeftBtn = memo(() => {
                                     accessibility
                     </span>
                                 <p className="btnText">インナーを脱ぐ</p>
-                                <input type="hidden" name="innerUrl" value="mannequin_done3.png" />
-                                <input type="hidden" name="innerUrl" value="manekin_female_10001000.png" />
                             </button>
                         </div>
                         <hr />
