@@ -8,7 +8,7 @@ export const Header = memo(() => {
                 <a className="titleIcon" href="">
                     <img className="titleImg" src={Logo} alt="" />
                 </a>
-                <a className="settingIcon" href="">
+                <a className="settingIcon" href="/home">
                     <span className="material-icons-outlined">
                         settings
                     </span>

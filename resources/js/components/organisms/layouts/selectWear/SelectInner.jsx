@@ -289,13 +289,6 @@ export const SelectInner = memo(() => {
                 className="popper"
                 style={{ width: "100%" }}
             >
-                {/* <WearSearch
-                    onClickFetchCaps={onClickFetchCaps}
-                    onClickFetchTops={onClickFetchTops}
-                    onClickFetchPants={onClickFetchPants}
-                    onClickFetchShoes={onClickFetchShoes}
-                    handleClick={handleClick}
-                /> */}
 
                 <InnerSearch
                 handleClick={handleClick}
