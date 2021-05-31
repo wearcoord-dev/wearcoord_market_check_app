@@ -16473,14 +16473,6 @@ var OpenLeftBtn = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
                 className: "btnText",
                 children: "\u30A4\u30F3\u30CA\u30FC\u3092\u8131\u3050"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "hidden",
-                name: "innerUrl",
-                value: "mannequin_done3.png"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "hidden",
-                name: "innerUrl",
-                value: "manekin_female_10001000.png"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -19104,12 +19096,15 @@ var useRemoveInner = function useRemoveInner() {
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_1__.useHistory)();
 
   var RemoveInner = function RemoveInner(props) {
-    console.log('OK');
-    console.log(props.id);
+    // console.log('OK');
+    // console.log(props.id);
+    // console.log(props.gender);
     var id = props.id;
+    var gender = props.gender;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/removeinner", {
       params: {
-        id: id
+        id: id,
+        gender: gender
       }
     }).then(function (res) {
       console.log(res);

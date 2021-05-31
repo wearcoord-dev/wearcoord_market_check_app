@@ -245,10 +245,20 @@ class MycoordController extends Controller
     public function removeInner(Request $request)
     {
         $user_id = $request->input('id');
+        $gender = $request->input('gender');
 
-        DB::table('userSelectCoord')->where('user_id', $user_id)->update([
-            'mannequin' => "mens_170_model.png",
-        ]);
+        if($gender == 'male'){
+            DB::table('userSelectCoord')->where('user_id', $user_id)->update(
+                [
+                'mannequin' => "mens_170_model.png",
+            ]);
+        }else{
+            DB::table('userSelectCoord')->where('user_id', $user_id)->update(
+                [
+                'mannequin' => "female_mannequin.png",
+            ]);
+        };
+
 
         return response()->json('OK');
     }

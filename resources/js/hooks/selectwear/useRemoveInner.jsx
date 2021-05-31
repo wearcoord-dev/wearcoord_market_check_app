@@ -5,14 +5,17 @@ export const useRemoveInner = () => {
     const history = useHistory();
 
     const RemoveInner = (props) => {
-        console.log('OK');
-        console.log(props.id);
+        // console.log('OK');
+        // console.log(props.id);
+        // console.log(props.gender);
 
         const id = props.id;
+        const gender = props.gender;
 
         axios.get("/api/removeinner", {
             params: {
                 id: id,
+                gender: gender,
               }
         }).then((res) => {
             console.log(res);
