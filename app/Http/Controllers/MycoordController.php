@@ -188,7 +188,7 @@ class MycoordController extends Controller
             if ($gender == "male") {
                 $url = "mens_170_model.png";
             } else {
-                $url = "female_mannequin.png";
+                $url = "woman_manekin1.png";
             }
 
             DB::table('userSelectCoord')->insert([
@@ -255,7 +255,7 @@ class MycoordController extends Controller
         }else{
             DB::table('userSelectCoord')->where('user_id', $user_id)->update(
                 [
-                'mannequin' => "female_mannequin.png",
+                'mannequin' => "woman_manekin1.png",
             ]);
         };
 

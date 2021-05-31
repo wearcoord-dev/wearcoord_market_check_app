@@ -15449,6 +15449,94 @@ var SearchInnerItem = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
 
 /***/ }),
 
+/***/ "./resources/js/components/molecules/searchbox/SearchInnerItemFemale.jsx":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/molecules/searchbox/SearchInnerItemFemale.jsx ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SearchInnerItemFemale": () => (/* binding */ SearchInnerItemFemale)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _img_mannequin_mens_170_totalinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_long_black_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_long_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_totalinner_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_long_white_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_long_white_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_totalinner_short_black_socks_model_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_short_black_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_short_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_totalinner_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_short_white_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_short_white_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_underinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_long_black_socks_model.png */ "./public/img/mannequin/mens_170_underinner_long_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_underinner_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_short_white_socks_model.png */ "./public/img/mannequin/mens_170_underinner_short_white_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_underinner_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_long_white_socks_model.png */ "./public/img/mannequin/mens_170_underinner_long_white_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_underinner_short_black_socks_model_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_short_black_socks_model.png */ "./public/img/mannequin/mens_170_underinner_short_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_long_black_socks_model.png */ "./public/img/mannequin/mens_170_long_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_long_white_socks_model.png */ "./public/img/mannequin/mens_170_long_white_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_short_black_socks_model_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_short_black_socks_model.png */ "./public/img/mannequin/mens_170_short_black_socks_model.png");
+/* harmony import */ var _img_mannequin_mens_170_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_short_white_socks_model.png */ "./public/img/mannequin/mens_170_short_white_socks_model.png");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var SearchInnerItemFemale = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (props) {
+  var setValueId = props.setValueId; // radioのonChangeイベント発生時
+
+  var handleInputChange = function handleInputChange(props) {
+    var id = props.target.value;
+    console.log(props.target.value); // name属性の値を取得
+    // const name = props.target.name;
+    // console.log(props.target.name);
+
+    setValueId(id);
+  };
+
+  var style = {
+    width: "150px",
+    height: "150px",
+    objectFit: "contain"
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
+      className: "slide_x",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("input", {
+        type: "radio",
+        id: "1",
+        className: "radioInput",
+        name: "brand",
+        value: "mens_170_totalinner_long_black_socks_model.png",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("label", {
+        htmlFor: "1",
+        className: "radioInputLabel",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
+          style: style,
+          src: _img_mannequin_mens_170_totalinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_1__.default,
+          alt: ""
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("p", {
+          style: {
+            textAlign: "center"
+          },
+          children: "Type1"
+        })]
+      })]
+    })
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/molecules/searchbox/SearchItemCaps.jsx":
 /*!************************************************************************!*\
   !*** ./resources/js/components/molecules/searchbox/SearchItemCaps.jsx ***!
@@ -15563,7 +15651,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchBrand__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBrand */ "./resources/js/components/molecules/searchbox/SearchBrand.jsx");
 /* harmony import */ var _SearchColor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SearchColor */ "./resources/js/components/molecules/searchbox/SearchColor.jsx");
 /* harmony import */ var _SearchInnerItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SearchInnerItem */ "./resources/js/components/molecules/searchbox/SearchInnerItem.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SearchInnerItemFemale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SearchInnerItemFemale */ "./resources/js/components/molecules/searchbox/SearchInnerItemFemale.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15575,6 +15664,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -15602,25 +15692,28 @@ var SearchItemInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(f
   console.log(context.contextName.id);
   console.log('表示してるぞ！！');
   var userid = context.contextName.id;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+  var gender = context.contextName.gender;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         type: "hidden",
         id: "type",
         value: "inner"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         type: "hidden",
         id: "getUrl",
         value: valueId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
         type: "hidden",
         id: "userid",
         value: userid
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SearchInnerItem__WEBPACK_IMPORTED_MODULE_5__.SearchInnerItem, {
+      }), gender == 'male' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SearchInnerItem__WEBPACK_IMPORTED_MODULE_5__.SearchInnerItem, {
         setValueId: setValueId
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SearchInnerItemFemale__WEBPACK_IMPORTED_MODULE_6__.SearchInnerItemFemale, {
+        setValueId: setValueId
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: "divBtn",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
           className: "submitBtn",
           type: "button",
           onClick: onClickFetchInner,
@@ -16587,7 +16680,7 @@ var Header = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function (
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
         className: "settingIcon",
-        href: "",
+        href: "/home",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "material-icons-outlined",
           children: "settings"
@@ -16894,8 +16987,8 @@ var MainSelectInnerWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.mem
       setUrl = _useState2[1];
 
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_2__.ValueContext);
-  var userCheck = context.contextName;
-  console.log(userCheck);
+  var userCheck = context.contextName; // console.log(userCheck);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
       console.log('useEffectが実行されました');
@@ -18202,9 +18295,9 @@ var UserWear = function UserWear(props) {
 
   var _useGetUserInfo = (0,_hooks_user_useGetUserInfo__WEBPACK_IMPORTED_MODULE_1__.useGetUserInfo)(),
       getUser = _useGetUserInfo.getUser,
-      userInfo = _useGetUserInfo.userInfo;
+      userInfo = _useGetUserInfo.userInfo; // console.log('表示されてるぞ！');
 
-  console.log('表示されてるぞ！');
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return getUser();
   }, []);

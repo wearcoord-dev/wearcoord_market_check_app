@@ -6,7 +6,7 @@ export const AppContext = createContext({});
 export const UserWear = ((props) => {
     const { children } = props;
     const { getUser, userInfo } = useGetUserInfo();
-    console.log('表示されてるぞ！');
+    // console.log('表示されてるぞ！');
 
     useEffect(() => getUser(),[]);
 
