@@ -15461,8 +15461,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SearchInnerItemFemale": () => (/* binding */ SearchInnerItemFemale)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _img_mannequin_mens_170_totalinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_long_black_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_long_black_socks_model.png");
-/* harmony import */ var _img_mannequin_mens_170_totalinner_long_white_socks_model_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_long_white_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_long_white_socks_model.png");
+/* harmony import */ var _img_mannequin_woman_inner_manekin1_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../img/mannequin/woman_inner_manekin1.png */ "./public/img/mannequin/woman_inner_manekin1.png");
+/* harmony import */ var _img_mannequin_woman_totalinner_manekin1_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../img/mannequin/woman_totalinner_manekin1.png */ "./public/img/mannequin/woman_totalinner_manekin1.png");
 /* harmony import */ var _img_mannequin_mens_170_totalinner_short_black_socks_model_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_short_black_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_short_black_socks_model.png");
 /* harmony import */ var _img_mannequin_mens_170_totalinner_short_white_socks_model_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_totalinner_short_white_socks_model.png */ "./public/img/mannequin/mens_170_totalinner_short_white_socks_model.png");
 /* harmony import */ var _img_mannequin_mens_170_underinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../img/mannequin/mens_170_underinner_long_black_socks_model.png */ "./public/img/mannequin/mens_170_underinner_long_black_socks_model.png");
@@ -15515,20 +15515,40 @@ var SearchInnerItemFemale = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.m
         id: "1",
         className: "radioInput",
         name: "brand",
-        value: "mens_170_totalinner_long_black_socks_model.png",
+        value: "woman_inner_manekin1.png",
         onChange: handleInputChange
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("label", {
         htmlFor: "1",
         className: "radioInputLabel",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
           style: style,
-          src: _img_mannequin_mens_170_totalinner_long_black_socks_model_png__WEBPACK_IMPORTED_MODULE_1__.default,
+          src: _img_mannequin_woman_inner_manekin1_png__WEBPACK_IMPORTED_MODULE_1__.default,
           alt: ""
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("p", {
           style: {
             textAlign: "center"
           },
           children: "Type1"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("input", {
+        type: "radio",
+        id: "2",
+        className: "radioInput",
+        name: "brand",
+        value: "woman_totalinner_manekin1.png",
+        onChange: handleInputChange
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("label", {
+        htmlFor: "2",
+        className: "radioInputLabel",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("img", {
+          style: style,
+          src: _img_mannequin_woman_totalinner_manekin1_png__WEBPACK_IMPORTED_MODULE_2__.default,
+          alt: ""
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)("p", {
+          style: {
+            textAlign: "center"
+          },
+          children: "Type2"
         })]
       })]
     })
@@ -26433,6 +26453,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/mens_170_underinner_short_white_socks_model.png?31dce7db4f4053a23461f20186dff451");
+
+/***/ }),
+
+/***/ "./public/img/mannequin/woman_inner_manekin1.png":
+/*!*******************************************************!*\
+  !*** ./public/img/mannequin/woman_inner_manekin1.png ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/woman_inner_manekin1.png?7bfc2cd7f89355fe439840a7e7f2dd13");
+
+/***/ }),
+
+/***/ "./public/img/mannequin/woman_totalinner_manekin1.png":
+/*!************************************************************!*\
+  !*** ./public/img/mannequin/woman_totalinner_manekin1.png ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/woman_totalinner_manekin1.png?1453f40fe151151943ed0a2d92adebbb");
 
 /***/ }),
 
