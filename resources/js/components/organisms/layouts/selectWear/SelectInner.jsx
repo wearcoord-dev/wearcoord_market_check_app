@@ -268,7 +268,7 @@ export const SelectInner = memo(() => {
                     {userWearInfo.map((wear) => (<p>aaa</p>))}</>)
 }</div> */}
 
-            <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "fixed", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 インナーを探す
       </Button>
 
