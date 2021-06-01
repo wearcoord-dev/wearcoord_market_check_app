@@ -17831,7 +17831,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       style: {
         display: "flex",
-        overflowX: "scroll"
+        height: "120px",
+        marginTop: "16px"
       },
       children: userTops.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
         style: {
@@ -17876,11 +17877,8 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
                 width: "100%",
                 height: "130px",
                 objectFit: "contain",
-                position: "absolute",
-                top: "120px",
-                objectPosition: "124px",
                 zIndex: "100",
-                left: "0"
+                position: "relative"
               },
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[1].topsData.category, "/").concat(userWearInfo[1].topsData.url),
               alt: ""
@@ -17891,7 +17889,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       style: {
         display: "flex",
-        overflowX: "scroll"
+        height: "140px"
       },
       children: userPants.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
         style: {
@@ -17934,12 +17932,9 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
               style: {
                 width: "100%",
-                height: "180px",
+                height: "170px",
                 objectFit: "contain",
-                position: "absolute",
-                top: "240px",
-                objectPosition: "100px",
-                left: "0"
+                position: "relative"
               },
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[2].pantsData.category, "/").concat(userWearInfo[2].pantsData.url),
               alt: ""
@@ -17994,11 +17989,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               style: {
                 width: "100%",
                 height: "100px",
-                objectFit: "contain",
-                position: "absolute",
-                top: "360px",
-                objectPosition: "140px",
-                left: "0"
+                objectFit: "contain"
               },
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[3].shoesData.category, "/").concat(userWearInfo[3].shoesData.url),
               alt: ""

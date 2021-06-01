@@ -22,6 +22,7 @@
   background-repeat: no-repeat;
   background-position: center;
   max-width: 400px;
+  margin: auto;
 }
 
 /* Chrome、Safari以外 */
@@ -140,13 +141,11 @@ details[open] .detailsBottom {
 
 #controller {
   width: 100%;
-  left: 0px;
-  position: absolute;
-  top: 40px;
 }
 
 #controller .wearLi {
   text-align: center;
+  height: 50px;
 }
 
 #controller .wearImg {
@@ -155,10 +154,8 @@ details[open] .detailsBottom {
 
 #controller2 {
   width: 100%;
-  left: 0px;
-  position: absolute;
-  top: 120px;
   z-index: 100;
+  height: 130px;
 }
 
 #controller2 .wearLi {
@@ -177,9 +174,6 @@ details[open] .detailsBottom {
 
 #controller3 {
   width: 100%;
-  left: 0px;
-  position: absolute;
-  top: 240px;
 }
 
 #controller3 .wearLi {
@@ -188,15 +182,12 @@ details[open] .detailsBottom {
 
 #controller3 .wearImg {
   width: 100%;
-  height: 180px;
+  height: 170px;
   object-fit: cover;
 }
 
 #controller4 {
   width: 100%;
-  left: 0px;
-  position: absolute;
-  top: 370px;
 }
 
 #controller4 .wearLi {
