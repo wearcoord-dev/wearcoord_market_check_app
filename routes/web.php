@@ -47,3 +47,8 @@ Route::get('/user', function () {
 
 Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear');
 
+// 外部参照用
+
+Route::get('/viewtest/studio1', function () {
+    return view('check.one');
+});

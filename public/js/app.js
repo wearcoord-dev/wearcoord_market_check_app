@@ -17612,7 +17612,7 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
       style: {
-        position: "absolute",
+        position: "fixed",
         bottom: "100px"
       },
       "aria-describedby": id,
