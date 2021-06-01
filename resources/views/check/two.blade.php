@@ -95,6 +95,7 @@
     <script>
       var swiper = new Swiper(".mySwiper", {
         allowTouchMove: false,
+        loop: true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
