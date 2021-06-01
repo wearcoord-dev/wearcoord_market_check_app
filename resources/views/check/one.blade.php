@@ -62,7 +62,7 @@
         .swiper-slide img {
           display: block;
           width: 100%;
-          height: 100%;
+          /* height: 100%; */
           object-fit: cover;
         }
 
@@ -77,21 +77,63 @@
 
     <div class="swiper-container mySwiper swiper-container-h">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">Horizontal Slide 1</div>
+        <div class="swiper-slide">
+            <div class="swiper-container mySwiper2 swiper-container-v">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{{asset('img/test/red/360_NBA_030.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/red/360_NBA_003.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/red/360_NBA_012.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/red/360_NBA_021.jpg')}}" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
         <div class="swiper-slide">
           <div class="swiper-container mySwiper2 swiper-container-v">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">Vertical Slide 1</div>
-              <div class="swiper-slide">Vertical Slide 2</div>
-              <div class="swiper-slide">Vertical Slide 3</div>
-              <div class="swiper-slide">Vertical Slide 4</div>
-              <div class="swiper-slide">Vertical Slide 5</div>
+              <div class="swiper-slide">
+                <img src="{{asset('img/test/yellow/360_EAC_030.jpg')}}" alt="">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{asset('img/test/yellow/360_EAC_003.jpg')}}" alt="">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{asset('img/test/yellow/360_EAC_012.jpg')}}" alt="">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{asset('img/test/yellow/360_EAC_021.jpg')}}" alt="">
+              </div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
         </div>
-        <div class="swiper-slide">Horizontal Slide 3</div>
-        <div class="swiper-slide">Horizontal Slide 4</div>
+        <div class="swiper-slide">
+            <div class="swiper-container mySwiper2 swiper-container-v">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/blue/360_RAY_030.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/blue/360_RAY_003.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/blue/360_RAY_012.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{asset('img/test/blue/360_RAY_021.jpg')}}" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
