@@ -273,7 +273,7 @@ export const SelectWear = memo(() => {
                 onClick={onClickRegisterWear}
             >
             <CheckCircleOutlineIcon style={{paddingRight: "6px"}} />
-                コーデを確定
+                ウェアを確定
             </Button>
 
             <Popper
