@@ -10,6 +10,8 @@ import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
 import { useRegisterWear } from "../../../../hooks/selectwear/useRegisterWear";
 import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import SearchIcon from '@material-ui/icons/Search';
 
 export const SelectWear = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
@@ -260,8 +262,9 @@ export const SelectWear = memo(() => {
                     {userWearInfo.map((wear) => (<p>aaa</p>))}</>)
 }</div> */}
 
-            <Button style={{ position: "absolute", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                ウェアを探す
+            <Button style={{ position: "absolute", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <SearchIcon style={{paddingRight: "6px"}} />
+                着替える
       </Button>
 
             <Button
@@ -269,7 +272,8 @@ export const SelectWear = memo(() => {
                 variant="contained"
                 onClick={onClickRegisterWear}
             >
-                このウェアを着る
+            <CheckCircleOutlineIcon style={{paddingRight: "6px"}} />
+                コーデを確定
             </Button>
 
             <Popper

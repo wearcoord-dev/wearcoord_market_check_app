@@ -88,8 +88,8 @@ export const WearSearch = memo((props) => {
                         <Tab icon={<Face />} {...a11yProps(0)} />
                         <Tab icon={<Icon className="fas fa-tshirt" />} {...a11yProps(1)} />
                         <Tab icon={<AirlineSeatLegroomExtra />} {...a11yProps(2)} />
-                        <Tab icon={<Icon className="fas fa-socks" />} {...a11yProps(3)} />
-                        <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(4)} />
+                        {/* <Tab icon={<Icon className="fas fa-socks" />} {...a11yProps(3)} /> */}
+                        <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={value} index={0}>
                         <SearchItemCaps onClickFetchCaps={onClickFetchCaps} />
@@ -100,10 +100,10 @@ export const WearSearch = memo((props) => {
                     <TabPanel value={value} index={2}>
                         <SearchItemPants onClickFetchPants={onClickFetchPants} />
                     </TabPanel>
-                    <TabPanel value={value} index={3}>
+                    {/* <TabPanel value={value} index={3}>
                         <div>test4</div>
-                    </TabPanel>
-                    <TabPanel value={value} index={4}>
+                    </TabPanel> */}
+                    <TabPanel value={value} index={3}>
                         <SearchItemShoes onClickFetchShoes={onClickFetchShoes} />
                     </TabPanel>
                 </Paper>
