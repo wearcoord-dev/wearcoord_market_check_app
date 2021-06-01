@@ -21,7 +21,7 @@
         html,
         body {
           position: relative;
-          height: 100%;
+          /* height: 100%; */
         }
 
         body {
@@ -35,7 +35,7 @@
 
         .swiper-container {
           width: 100%;
-          height: 100%;
+          /* height: 100%; */
         }
 
         .swiper-slide {
