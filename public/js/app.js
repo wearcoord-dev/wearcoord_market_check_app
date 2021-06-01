@@ -18079,7 +18079,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
         style: {
           paddingRight: "6px"
         }
-      }), "\u30B3\u30FC\u30C7\u3092\u78BA\u5B9A"]
+      }), "\u30A6\u30A7\u30A2\u3092\u78BA\u5B9A"]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
       id: id,
       open: open,
