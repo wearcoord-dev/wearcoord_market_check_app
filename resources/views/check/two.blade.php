@@ -80,8 +80,8 @@
             <div  id="target2" class="swiper-slide">
               <img style="width: 100%; object-fit: contain" class="rollerblade-img" src="{{asset('img/test/yellow/360_EAC_030.jpg')}}">
             </div>
-          <div  id="target" class="swiper-slide">
-            <img style="width: 100%; object-fit: contain" class="rollerblade-img" src="{{asset('img/test/blue/360_RAY_030.jpg')}}">
+            <div  id="target1" class="swiper-slide">
+                <img style="width: 100%; object-fit: contain" class="rollerblade-img" src="{{asset('img/test/blue/360_RAY_030.jpg')}}">
           </div>
         </div>
         <div class="swiper-button-next"></div>
@@ -95,7 +95,7 @@
     <script>
       var swiper = new Swiper(".mySwiper", {
         allowTouchMove: false,
-        loop: true,
+        // loop: true,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -119,25 +119,25 @@
     'img/test/blue/360_RAY_021.jpg',
   ]
 
-  $("#target").rollerblade({imageArray:arrayOfImages});
+  $("#target1").rollerblade({imageArray:arrayOfImages});
 
-  var arrayOfImages = [
+  var arrayOfImages2 = [
     'img/test/yellow/360_EAC_030.jpg',
     'img/test/yellow/360_EAC_003.jpg',
     'img/test/yellow/360_EAC_012.jpg',
     'img/test/yellow/360_EAC_021.jpg',
   ]
 
-  $("#target2").rollerblade({imageArray:arrayOfImages});
+  $("#target2").rollerblade({imageArray:arrayOfImages2});
 
-  var arrayOfImages = [
+  var arrayOfImages3 = [
     'img/test/red/360_NBA_030.jpg',
     'img/test/red/360_NBA_003.jpg',
     'img/test/red/360_NBA_012.jpg',
     'img/test/red/360_NBA_021.jpg',
   ]
 
-  $("#target3").rollerblade({imageArray:arrayOfImages});
+  $("#target3").rollerblade({imageArray:arrayOfImages3});
 
   // OR you can create the array directly in the options object, as so:
 
