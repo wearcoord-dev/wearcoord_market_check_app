@@ -52,3 +52,7 @@ Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegis
 Route::get('/viewtest/studio1', function () {
     return view('check.one');
 });
+
+Route::get('/studio2', function () {
+    return view('check.two');
+});
