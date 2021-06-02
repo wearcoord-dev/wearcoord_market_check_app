@@ -45,7 +45,7 @@ Route::get('/user', function () {
     return response()->json($user);
 });
 
-Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear');
+Route::get('/getwear', [App\Http\Controllers\MycoordController::class, "getRegisterWear"])->name('getRegisterWear')->middleware(['auth']);
 
 // 外部参照用
 
