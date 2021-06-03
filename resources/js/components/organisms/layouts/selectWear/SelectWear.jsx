@@ -257,11 +257,6 @@ export const SelectWear = memo(() => {
 
             <br />
 
-            {/* <div>{
-                loadingWear ? ( <p>loading wear</p>) :  (<>
-                    {userWearInfo.map((wear) => (<p>aaa</p>))}</>)
-}</div> */}
-
             <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
             <SearchIcon style={{paddingRight: "6px"}} />
                 着替える
