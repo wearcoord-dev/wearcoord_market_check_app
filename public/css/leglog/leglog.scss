@@ -19,6 +19,11 @@ input, button, textarea, select {
     justify-content: center;
 }
 
+.subtext{
+    color: red;
+    font-size: 12px;
+}
+
 .genderArea{
     display: flex;
     justify-content: space-evenly;
@@ -29,6 +34,7 @@ input, button, textarea, select {
 .wearSet{
     width: 100%;
     display: inline-block;
+    border-radius: 20px;
 }
 
 .radioInput:checked+.genderRadiobox {

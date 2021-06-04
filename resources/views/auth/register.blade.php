@@ -41,6 +41,7 @@
 
                         <div class="form-group row genderArea">
                             <div class="genderText">ウェアの嗜好</div>
+                            <p class="subtext">※1つ選択してください</p>
                             <details>
                                 <summary>クリックで展開</summary>
                                 <div class="genderBox">
@@ -52,23 +53,7 @@
                                     <details>
                                         <summary>Prince</summary>
                                         <div class="coordWrapper">
-                                            <input type="radio"
-                                             class="radioInput" id="1" value="1" name="coorditem" required>
-                                            <label class="genderRadiobox" for="1">
-                                                <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
 
-                                            <input type="radio"
-                                             class="radioInput" id="prince2" value="prince2" name="coorditem" required>
-                                            <label class="genderRadiobox" for="prince2">
-                                                <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
-
-                                            <input type="radio"
-                                             class="radioInput" id="prince3" value="prince3" name="coorditem" required>
-                                            <label class="genderRadiobox" for="prince3">
-                                                <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
 
                                         </div>
                                     </details>
@@ -78,7 +63,7 @@
                                         <summary>Diadora</summary>
 
                                         <div class="coordWrapper">
-                                            <input type="radio"
+                                            {{-- <input type="radio"
                                              class="radioInput" id="diadora1" value="2" name="coorditem" required>
                                             <label class="genderRadiobox" for="diadora1">
                                                 <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
@@ -88,7 +73,7 @@
                                              class="radioInput" id="diadora2" value="diadora2" name="coorditem" required>
                                             <label class="genderRadiobox" for="diadora2">
                                                 <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
+                                            </label> --}}
                                         </div>
 
                                     </details>
@@ -102,15 +87,58 @@
                                         <summary>Prince</summary>
                                         <div class="coordWrapper">
                                             <input type="radio"
-                                            class="radioInput" id="prince4" value="prince4" name="coorditem">
-                                            <label class="genderRadiobox" for="prince4">
-                                                <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
+                                            class="radioInput" id="1" value="1" name="coorditem" required>
+                                           <label class="genderRadiobox" for="1">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/1.png')}}" alt="">
+                                           </label>
+
                                             <input type="radio"
-                                            class="radioInput" id="prince5" value="prince5" name="coorditem">
-                                            <label class="genderRadiobox" for="prince5">
-                                                <img class="wearSet" src="{{asset('img/lp/adidas.png')}}" alt="">
-                                            </label>
+                                            class="radioInput" id="3" value="3" name="coorditem" >
+                                           <label class="genderRadiobox" for="3">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/3.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="4" value="4" name="coorditem" >
+                                           <label class="genderRadiobox" for="4">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/4.png')}}" alt="">
+                                           </label>
+                                        </div>
+                                    </details>
+
+                                    {{-- diadoraブランド --}}
+                                    <details>
+                                        <summary>Diadora</summary>
+                                        <div class="coordWrapper">
+                                            <input type="radio"
+                                            class="radioInput" id="2" value="2" name="coorditem" >
+                                           <label class="genderRadiobox" for="2">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/2.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="5" value="5" name="coorditem" >
+                                           <label class="genderRadiobox" for="5">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/5.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="6" value="6" name="coorditem" >
+                                           <label class="genderRadiobox" for="6">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/6.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="7" value="7" name="coorditem" >
+                                           <label class="genderRadiobox" for="7">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/7.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="8" value="8" name="coorditem" >
+                                           <label class="genderRadiobox" for="8">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/8.png')}}" alt="">
+                                           </label>
                                         </div>
                                     </details>
 
