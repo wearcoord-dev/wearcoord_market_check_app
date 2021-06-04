@@ -1,7 +1,7 @@
 import { memo, useContext, useState } from "react";
 import { useAllCaps } from "../../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../../providers/UserProvider";
-import { SearchBrand } from "./SearchBrand";
+import { SearchBrandCaps } from "./searchBrand/SearchBrandCaps";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemCaps = memo((props) => {
@@ -21,7 +21,7 @@ export const SearchItemCaps = memo((props) => {
                 <input type="hidden" id="getcolor" value={valueColor} />
                 {context.contextName.gender == 'male' ? <input type="hidden" id="getCategory" value="506269" /> : <input type="hidden" id="getCategory" value="565818" />}
                 <input type="hidden" id="type" value="caps" />
-                <SearchBrand setValue={setValue} />
+                <SearchBrandCaps setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
 
                 <div className="divBtn">
