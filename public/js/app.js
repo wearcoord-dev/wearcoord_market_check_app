@@ -17607,6 +17607,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
   var _useGetUserWear = (0,_hooks_selectwear_useGetUserWear__WEBPACK_IMPORTED_MODULE_2__.useGetUserWear)(),
       GetWear = _useGetUserWear.GetWear,
@@ -17620,8 +17621,8 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
       setUrl = _useState2[1];
 
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_providers_UserWear__WEBPACK_IMPORTED_MODULE_1__.AppContext);
-  var userCheck = context.contextName; // console.log(userCheck);
-
+  var userCheck = context.contextName;
+  console.log(userCheck);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (userCheck !== undefined) {
       console.log('useEffectが実行されました');
@@ -17643,16 +17644,171 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
       children: "error"
     }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: "loading"
-    }) :
-    /*#__PURE__*/
-    // <p>{userWearInfo.mannequin}</p>
-    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "centerContainer",
-      children: mannequinUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: mannequinUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "mannequinImg",
         style: {
           'backgroundImage': mannequinUrl.backgroundImage
-        }
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          style: {
+            display: "flex",
+            overflowX: "scroll"
+          },
+          children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            style: {
+              color: "red"
+            },
+            children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
+          }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "Loading..."
+          }) :
+          /*#__PURE__*/
+          // capsdataがnullなら代替
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                textAlign: "center",
+                margin: "auto"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                style: {
+                  width: "15%",
+                  height: "50px",
+                  objectFit: "cover",
+                  objectPosition: "bottom"
+                },
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
+                alt: ""
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                width: "15%",
+                height: "50px",
+                margin: "auto"
+              }
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          style: {
+            display: "flex"
+          },
+          children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            style: {
+              color: "red"
+            },
+            children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
+          }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "Loading..."
+          }) :
+          /*#__PURE__*/
+          // topsdataがnullなら代替
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: userWearInfo[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                textAlign: "center",
+                margin: "auto",
+                height: "120px",
+                marginTop: "16px"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                style: {
+                  width: "100%",
+                  height: "130px",
+                  objectFit: "contain",
+                  zIndex: "100",
+                  position: "relative"
+                },
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[1].topsData.category, "/").concat(userWearInfo[1].topsData.url),
+                alt: ""
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                width: "100%",
+                height: "130px",
+                margin: "auto"
+              }
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          style: {
+            display: "flex"
+          },
+          children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            style: {
+              color: "red"
+            },
+            children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
+          }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "Loading..."
+          }) :
+          /*#__PURE__*/
+          // pantsdataがnullなら代替
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: userWearInfo[2] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                textAlign: "center",
+                margin: "auto",
+                height: "140px"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                style: {
+                  width: "100%",
+                  height: "170px",
+                  objectFit: "contain",
+                  position: "relative"
+                },
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[2].pantsData.category, "/").concat(userWearInfo[2].pantsData.url),
+                alt: ""
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                width: "100%",
+                height: "170px",
+                margin: "auto"
+              }
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          style: {
+            display: "flex",
+            overflowX: "scroll"
+          },
+          children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            style: {
+              color: "red"
+            },
+            children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
+          }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "Loading..."
+          }) :
+          /*#__PURE__*/
+          // shoesdataがnullなら代替
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: userWearInfo[3] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                textAlign: "center",
+                margin: "auto"
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                style: {
+                  width: "100%",
+                  height: "100px",
+                  objectFit: "contain"
+                },
+                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[3].shoesData.category, "/").concat(userWearInfo[3].shoesData.url),
+                alt: ""
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              style: {
+                width: "100%",
+                height: "100px",
+                margin: "auto"
+              }
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {})
+        })]
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         children: "ng"
       })
@@ -17854,11 +18010,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SelectInner": () => (/* binding */ SelectInner)
 /* harmony export */ });
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Popper/Popper.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Popper/Popper.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper.js");
-/* harmony import */ var swiper_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! swiper/react */ "./node_modules/swiper/esm/react/swiper-slide.js");
 /* harmony import */ var swiper_swiper_bundle_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/swiper-bundle.css */ "./node_modules/swiper/swiper-bundle.css");
 /* harmony import */ var _hooks_selectwear_useAllCaps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllCaps */ "./resources/js/hooks/selectwear/useAllCaps.jsx");
 /* harmony import */ var _hooks_selectwear_useAllPants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../hooks/selectwear/useAllPants */ "./resources/js/hooks/selectwear/useAllPants.jsx");
@@ -18038,262 +18192,159 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         display: "flex",
         overflowX: "scroll"
       },
-      children: userCaps.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_13__.Swiper, {
-          id: "controller",
-          slidesPerView: 3,
-          centeredSlides: true,
-          onSlideChangeTransitionEnd: getActiveIndex,
-          children: userCaps.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_14__.SwiperSlide, {
-              className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-                className: "wearImg",
-                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
-                alt: ""
-              })
-            }, wear.id);
-          })
-        })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) :
+      /*#__PURE__*/
+      // capsdataがnullなら代替
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+        children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
-            color: "red"
+            textAlign: "center",
+            margin: "auto"
           },
-          children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-        }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
-          children: "Loading..."
-        }) :
-        /*#__PURE__*/
-        // capsdataがnullなら代替
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-          children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-            style: {
-              textAlign: "center",
-              margin: "auto"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-              style: {
-                width: "15%",
-                height: "50px",
-                objectFit: "cover",
-                objectPosition: "bottom"
-              },
-              src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
-              alt: ""
-            })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
             style: {
               width: "15%",
               height: "50px",
-              margin: "auto"
-            }
+              objectFit: "cover",
+              objectPosition: "bottom"
+            },
+            src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
+            alt: ""
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
-      })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            width: "15%",
+            height: "50px",
+            margin: "auto"
+          }
+        })
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       style: {
-        display: "flex",
-        overflowX: "scroll"
+        display: "flex"
       },
-      children: userTops.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingTops ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_13__.Swiper, {
-          id: "controller2",
-          slidesPerView: 3,
-          centeredSlides: true,
-          onSlideChangeTransitionEnd: getActiveIndexTops,
-          children: userTops.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_14__.SwiperSlide, {
-              className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-                className: "wearImg",
-                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
-                alt: ""
-              })
-            }, wear.id);
-          })
-        })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) :
+      /*#__PURE__*/
+      // topsdataがnullなら代替
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+        children: userWearInfo[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
-            color: "red"
+            textAlign: "center",
+            margin: "auto",
+            height: "120px",
+            marginTop: "16px"
           },
-          children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-        }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
-          children: "Loading..."
-        }) :
-        /*#__PURE__*/
-        // topsdataがnullなら代替
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-          children: userWearInfo[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-            style: {
-              textAlign: "center",
-              margin: "auto"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-              style: {
-                width: "100%",
-                height: "130px",
-                objectFit: "contain",
-                zIndex: "100",
-                position: "relative"
-              },
-              src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[1].topsData.category, "/").concat(userWearInfo[1].topsData.url),
-              alt: ""
-            })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
             style: {
               width: "100%",
               height: "130px",
-              margin: "auto"
-            }
+              objectFit: "contain",
+              zIndex: "100",
+              position: "relative"
+            },
+            src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[1].topsData.category, "/").concat(userWearInfo[1].topsData.url),
+            alt: ""
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
-      })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            width: "100%",
+            height: "130px",
+            margin: "auto"
+          }
+        })
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       style: {
-        display: "flex",
-        overflowX: "scroll"
+        display: "flex"
       },
-      children: userPants.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingPants ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_13__.Swiper, {
-          id: "controller3",
-          slidesPerView: 3,
-          centeredSlides: true,
-          onSlideChangeTransitionEnd: getActiveIndexPants,
-          children: userPants.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_14__.SwiperSlide, {
-              className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-                className: "wearImg",
-                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
-                alt: ""
-              })
-            }, wear.id);
-          })
-        })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) :
+      /*#__PURE__*/
+      // pantsdataがnullなら代替
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+        children: userWearInfo[2] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
-            color: "red"
+            textAlign: "center",
+            margin: "auto",
+            height: "140px"
           },
-          children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-        }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
-          children: "Loading..."
-        }) :
-        /*#__PURE__*/
-        // pantsdataがnullなら代替
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-          children: userWearInfo[2] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-            style: {
-              textAlign: "center",
-              margin: "auto"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-              style: {
-                width: "100%",
-                height: "170px",
-                objectFit: "contain",
-                position: "relative"
-              },
-              src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[2].pantsData.category, "/").concat(userWearInfo[2].pantsData.url),
-              alt: ""
-            })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
             style: {
               width: "100%",
               height: "170px",
-              margin: "auto"
-            }
+              objectFit: "contain",
+              position: "relative"
+            },
+            src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[2].pantsData.category, "/").concat(userWearInfo[2].pantsData.url),
+            alt: ""
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
-      })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            width: "100%",
+            height: "170px",
+            margin: "auto"
+          }
+        })
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       style: {
         display: "flex",
         overflowX: "scroll"
       },
-      children: userShoes.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         style: {
           color: "red"
         },
         children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-      }) : loadingShoes ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         children: "Loading..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_13__.Swiper, {
-          id: "controller4",
-          slidesPerView: 3,
-          centeredSlides: true,
-          onSlideChangeTransitionEnd: getActiveIndexShoes,
-          children: userShoes.map(function (wear) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(swiper_react__WEBPACK_IMPORTED_MODULE_14__.SwiperSlide, {
-              className: "wearLi",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-                className: "wearImg",
-                src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(wear.category, "/").concat(wear.url),
-                alt: ""
-              })
-            }, wear.id);
-          })
-        })
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
+      }) :
+      /*#__PURE__*/
+      // shoesdataがnullなら代替
+      (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
+        children: userWearInfo[3] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
-            color: "red"
+            textAlign: "center",
+            margin: "auto"
           },
-          children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
-        }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
-          children: "Loading..."
-        }) :
-        /*#__PURE__*/
-        // shoesdataがnullなら代替
-        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-          children: userWearInfo[3] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
-            style: {
-              textAlign: "center",
-              margin: "auto"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
-              style: {
-                width: "100%",
-                height: "100px",
-                objectFit: "contain"
-              },
-              src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[3].shoesData.category, "/").concat(userWearInfo[3].shoesData.url),
-              alt: ""
-            })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
             style: {
               width: "100%",
               height: "100px",
-              margin: "auto"
-            }
+              objectFit: "contain"
+            },
+            src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[3].shoesData.category, "/").concat(userWearInfo[3].shoesData.url),
+            alt: ""
           })
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          style: {
+            width: "100%",
+            height: "100px",
+            margin: "auto"
+          }
+        })
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
       style: {
         position: "fixed",
         bottom: "100px"
@@ -18303,7 +18354,7 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
       color: "primary",
       onClick: handleClick,
       children: "\u30A4\u30F3\u30CA\u30FC\u3092\u63A2\u3059"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
       id: id,
       open: open,
       anchorEl: anchorEl // onClose={handleClose}
