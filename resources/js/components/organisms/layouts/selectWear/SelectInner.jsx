@@ -55,10 +55,10 @@ export const SelectInner = memo(() => {
 
 
     useEffect(() => {
-        if(userCheck !== undefined){
-        console.log('useEffectが実行されました')
-        GetWear(context)
-    }
+        if (userCheck !== undefined) {
+            console.log('useEffectが実行されました')
+            GetWear(context)
+        }
     }, [userCheck]);
 
     // if(userWearInfo){
@@ -126,25 +126,15 @@ export const SelectInner = memo(() => {
                     ) : loadingWear ? (
                         <p>Loading...</p>
                     ) : (
+
+                        // capsdataがnullなら代替
                         <>
-                             {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                 <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                             </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                         </>
                     )) : <></>}
                 </>}
-
-                {/* {userWearInfo ? (errorWear ? (
-                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        <div style={{ textAlign: "center", margin: "auto" }}>
-                        <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`}  alt="" />
-                    </div>
-                    </>
-                )) : <></>} */}
             </div>
 
             <div style={{ display: "flex", overflowX: "scroll" }}>
@@ -174,11 +164,12 @@ export const SelectInner = memo(() => {
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+
+                                // topsdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", position: "absolute", top: "120px", objectPosition: "124px", zIndex: "100", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                    </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
@@ -207,16 +198,16 @@ export const SelectInner = memo(() => {
                         </>
                     )) : (
                         <>
-                        {userWearInfo ? (errorWear ? (
+                            {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+                                // pantsdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "180px", objectFit: "contain", position: "absolute", top: "240px", objectPosition: "100px", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                    </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
@@ -245,16 +236,17 @@ export const SelectInner = memo(() => {
                         </>
                     )) : (
                         <>
-                        {userWearInfo ? (errorWear ? (
+                            {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+                                
+                                // shoesdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "100px", objectFit: "contain", position: "absolute", top: "360px", objectPosition: "140px", left: "0" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                                    </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
@@ -291,8 +283,8 @@ export const SelectInner = memo(() => {
             >
 
                 <InnerSearch
-                handleClick={handleClick}
-                onClickFetchInner={onClickFetchInner}
+                    handleClick={handleClick}
+                    onClickFetchInner={onClickFetchInner}
 
                 />
 
