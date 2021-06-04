@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Library\Encodes;
 use App\Library\Rakuten;
 use App\Library\Database;
+use App\Library\FirstCoordList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -189,19 +190,11 @@ class MycoordController extends Controller
             if ($gender == "male") {
                 $url = "mens_170_model.png";
             } else {
-                $url = "woman_manekin1.png";
+                $url = "woman_totalinner_manekin1.png";
             }
 
-            // DB::table('userSelectCoord')->insert([
-            //     'user_id' => $user_id,
-            //     'caps' => 1,
-            //     'tops' => 2,
-            //     'pants' => 3,
-            //     'shoes' => 20,
-            //     'mannequin' => $url,
-            // ]);
-
-            Database::createFirstCoord($url, $user_id, $coordId);
+            // 新規登録で選んだコーデを反映
+            FirstCoordList::createFirstCoord($url, $user_id, $coordId);
 
 
             $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
@@ -214,11 +207,6 @@ class MycoordController extends Controller
             ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type);
         }
 
-
-
-        // $topsData = Database::createUrlAndCategory($userWear->tops, 'tops');
-        // $pantsData = Database::createUrlAndCategory($userWear->pants, 'pants');
-        // $shoesData = Database::createUrlAndCategory($userWear->shoes, 'shoes');
         $mannequin = $userWear->mannequin;
 
         // ddd($capsData);
