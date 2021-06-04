@@ -17414,7 +17414,7 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
           children: "Loading..."
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+          children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             style: {
               textAlign: "center",
               margin: "auto"
@@ -17429,6 +17429,12 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
               alt: ""
             })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
+            style: {
+              width: "15%",
+              height: "50px",
+              margin: "auto"
+            }
           })
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {})
       })
@@ -17863,8 +17869,11 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           children: "\u30C7\u30FC\u30BF\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
         }) : loadingWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
           children: "Loading..."
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        }) :
+        /*#__PURE__*/
+        // capsdataがnullなら代替
+        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+          children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             style: {
               textAlign: "center",
               margin: "auto"
@@ -17879,6 +17888,12 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
               alt: ""
             })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+            style: {
+              width: "15%",
+              height: "50px",
+              margin: "auto"
+            }
           })
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {})
       })

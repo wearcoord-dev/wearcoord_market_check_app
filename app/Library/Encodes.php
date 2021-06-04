@@ -124,7 +124,7 @@ class Encodes
     {
 
         if($data == "1"){
-            $gender = "male";
+            $gender = "female";
             $coordId = 1;
         }
 

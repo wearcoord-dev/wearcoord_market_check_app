@@ -127,9 +127,9 @@ export const SelectInner = memo(() => {
                         <p>Loading...</p>
                     ) : (
                         <>
-                            <div style={{ textAlign: "center", margin: "auto" }}>
+                             {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                 <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
-                            </div>
+                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                         </>
                     )) : <></>}
                 </>}
