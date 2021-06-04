@@ -2,7 +2,7 @@ import { memo, useContext, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchCategoryPantsFemale } from "./female/SearchCategoryPantsFemale";
 import { SearchCategoryPants } from "./male/SearchCategoryPants";
-import { SearchBrand } from "./SearchBrand";
+import { SearchBrandPants } from "./searchBrand/SearchBrandPants";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemPants = memo((props) => {
@@ -22,7 +22,7 @@ export const SearchItemPants = memo((props) => {
                 <input type="hidden" id="getcolor" value={valueColor} />
                 <input type="hidden" id="getCategory" value={valueCategory} />
                 <input type="hidden" id="type" value="pants" />
-                <SearchBrand setValue={setValue} />
+                <SearchBrandPants setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
 
                 {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} />}
