@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Library;
+
 use Illuminate\Support\Facades\DB;
 
 class Encodes
@@ -117,5 +118,44 @@ class Encodes
         }
 
         return $brand;
+    }
+
+    public static function encodeFirstSelectCoord($data)
+    {
+
+        if($data == "1"){
+            $gender = "female";
+            $coordId = 1;
+        }
+        if($data == "2"){
+            $gender = "female";
+            $coordId = 2;
+        }
+        if($data == "3"){
+            $gender = "female";
+            $coordId = 3;
+        }
+        if($data == "4"){
+            $gender = "female";
+            $coordId = 4;
+        }
+        if($data == "5"){
+            $gender = "female";
+            $coordId = 5;
+        }
+        if($data == "6"){
+            $gender = "female";
+            $coordId = 6;
+        }
+        if($data == "7"){
+            $gender = "female";
+            $coordId = 7;
+        }
+        if($data == "8"){
+            $gender = "female";
+            $coordId = 8;
+        }
+
+        return ["gender" => $gender, "coordId" => $coordId];
     }
 }

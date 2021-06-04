@@ -49,10 +49,10 @@ export const SelectWear = memo(() => {
 
 
     useEffect(() => {
-        if(userCheck !== undefined){
-        console.log('useEffectが実行されました')
-        GetWear(context)
-    }
+        if (userCheck !== undefined) {
+            console.log('useEffectが実行されました')
+            GetWear(context)
+        }
     }, [userCheck]);
 
     // if(userWearInfo){
@@ -120,25 +120,15 @@ export const SelectWear = memo(() => {
                     ) : loadingWear ? (
                         <p>Loading...</p>
                     ) : (
+
+                        // capsdataがnullなら代替
                         <>
-                            <div style={{ textAlign: "center", margin: "auto" }}>
+                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                 <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
-                            </div>
+                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                         </>
                     )) : <></>}
                 </>}
-
-                {/* {userWearInfo ? (errorWear ? (
-                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        <div style={{ textAlign: "center", margin: "auto" }}>
-                        <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`}  alt="" />
-                    </div>
-                    </>
-                )) : <></>} */}
             </div>
 
             <div style={{ display: "flex", height: "120px", marginTop: "16px" }}>
@@ -201,7 +191,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <>
-                        {userWearInfo ? (errorWear ? (
+                            {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
                             ) : loadingWear ? (
                                 <p>Loading...</p>
@@ -239,7 +229,7 @@ export const SelectWear = memo(() => {
                         </>
                     )) : (
                         <>
-                        {userWearInfo ? (errorWear ? (
+                            {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
                             ) : loadingWear ? (
                                 <p>Loading...</p>
@@ -258,7 +248,7 @@ export const SelectWear = memo(() => {
             <br />
 
             <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-            <SearchIcon style={{paddingRight: "6px"}} />
+                <SearchIcon style={{ paddingRight: "6px" }} />
                 着替える
       </Button>
 
@@ -267,7 +257,7 @@ export const SelectWear = memo(() => {
                 variant="contained"
                 onClick={onClickRegisterWear}
             >
-            <CheckCircleOutlineIcon style={{paddingRight: "6px"}} />
+                <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
                 ウェアを確定
             </Button>
 

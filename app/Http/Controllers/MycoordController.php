@@ -184,6 +184,7 @@ class MycoordController extends Controller
         // データが無かったら作成
         if (!$userWear) {
             $gender = DB::table('users')->where('id', $user_id)->value('gender');
+            $coordId = DB::table('users')->where('id', $user_id)->value('registerCoord');
 
             if ($gender == "male") {
                 $url = "mens_170_model.png";
@@ -191,14 +192,17 @@ class MycoordController extends Controller
                 $url = "woman_manekin1.png";
             }
 
-            DB::table('userSelectCoord')->insert([
-                'user_id' => $user_id,
-                'caps' => 1,
-                'tops' => 2,
-                'pants' => 3,
-                'shoes' => 20,
-                'mannequin' => $url,
-            ]);
+            // DB::table('userSelectCoord')->insert([
+            //     'user_id' => $user_id,
+            //     'caps' => 1,
+            //     'tops' => 2,
+            //     'pants' => 3,
+            //     'shoes' => 20,
+            //     'mannequin' => $url,
+            // ]);
+
+            Database::createFirstCoord($url, $user_id, $coordId);
+
 
             $userWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
         }

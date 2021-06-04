@@ -9,7 +9,7 @@ class Database
     public static function searchDB($color, $brand, $category, $type)
     {
         if ($brand) {
-            $item = DB::table( $type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->get();
+            $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->get();
 
             // 先に見つけた画像だけ取得
             $DBitems = [];
@@ -35,7 +35,7 @@ class Database
                                                 $url = $i->orange;
                                                 if (!$url) {
                                                     $url = $i->purple;
-                                                    if(!$url){
+                                                    if (!$url) {
                                                         $url = $i->gray;
                                                     }
                                                 }
@@ -51,7 +51,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
             if ($color) {
-                $item = DB::table( $type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->get();
+                $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->get();
 
                 // urlに画像を入れる
                 $DBitems = [];
@@ -61,7 +61,7 @@ class Database
                 }
             }
         } else if ($color) {
-            $item = DB::table( $type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->get();
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->get();
 
             // urlに画像を入れる
             $DBitems = [];
@@ -69,8 +69,8 @@ class Database
                 $url = $i->$color;
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
-        }else if($category){
-            $item = DB::table( $type . '_rakuten_apis')->where('category', $category)->get();
+        } else if ($category) {
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->get();
 
             // urlに画像を入れる
             $DBitems = [];
@@ -96,7 +96,7 @@ class Database
                                                 $url = $i->orange;
                                                 if (!$url) {
                                                     $url = $i->purple;
-                                                    if(!$url){
+                                                    if (!$url) {
                                                         $url = $i->gray;
                                                     }
                                                 }
@@ -125,21 +125,107 @@ class Database
 
         $testdesu = null;
 
-        if(!$id){
+        if (!$id) {
             return null;
         }
 
-        foreach($colors as $color){
 
-            if(!$testdesu){
-                $testdesu = DB::table( $type . '_rakuten_apis')->where('id', $id)->whereNotNull($color)->first();
-                if($testdesu){
-                    if($testdesu->$color){
-                        $data = array( 'category' => $testdesu->category, 'url' => $testdesu->$color );
+        if (!$testdesu) {
+            $testdesu = DB::table($type . '_rakuten_apis')->where('id', $id)->first();
+            if ($testdesu) {
+                foreach ($colors as $color) {
+                    if ($testdesu->$color) {
+                        $data = array('category' => $testdesu->category, 'url' => $testdesu->$color);
                     }
                 }
             }
         }
-        return [ $type . 'Data' => $data ];
+        // ddd($data);
+        return [$type . 'Data' => $data];
+    }
+
+    public static function createFirstCoord($url, $user_id, $coordId)
+    {
+
+        if ($coordId == 1) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 602,
+                'pants' => 362,
+                'shoes' => 143,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 2) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 614,
+                'pants' => 376,
+                'shoes' => 138,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 3) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 562,
+                'pants' => 362,
+                'shoes' => 144,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 4) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 347,
+                'pants' => 376,
+                'shoes' => 141,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 5) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 617,
+                'pants' => 374,
+                'shoes' => 132,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 6) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 614,
+                'pants' => 374,
+                'shoes' => 132,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 7) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 606,
+                'pants' => 367,
+                'shoes' => 130,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 8) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 616,
+                'pants' => 374,
+                'shoes' => 127,
+                'mannequin' => $url,
+            ]);
+        }
     }
 }

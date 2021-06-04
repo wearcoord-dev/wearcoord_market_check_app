@@ -1,3 +1,9 @@
+input, button, textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 .genderBox{
     display: flex;
     justify-content: space-evenly;
@@ -5,14 +11,45 @@
 
   .genderRadiobox{
     margin: 10px 10px;
+    width: 50%;
   }
 
 .genderText{
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+
+.subtext{
+    color: red;
+    font-size: 12px;
 }
 
 .genderArea{
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
+    text-align: center;
+}
+
+.wearSet{
+    width: 100%;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.radioInput:checked+.genderRadiobox {
+    background: #216496;
+    color: #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .7);
+    border: 1px solid #216496;
+    border-radius: 20px;
+}
+
+// .radioInput:checked+.genderRadiobox {
+//     box-shadow: 0 0 16px rgba(33, 100, 150, .7);
+// }
+
+.coordWrapper{
+    overflow: auto;
+    white-space: nowrap;
 }
