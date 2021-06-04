@@ -158,11 +158,12 @@ export const SelectWear = memo(() => {
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+
+                                // topsdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
+                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                         <img style={{ width: "100%", height: "130px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
@@ -196,11 +197,12 @@ export const SelectWear = memo(() => {
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+
+                                // pantsdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
+                                    {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                         <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
@@ -234,11 +236,12 @@ export const SelectWear = memo(() => {
                             ) : loadingWear ? (
                                 <p>Loading...</p>
                             ) : (
+
+                                // shoesdataがnullなら代替
                                 <>
-                                    <div style={{ textAlign: "center", margin: "auto" }}>
+                                    {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
                                         <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
-                                    </div>
-                                    <p></p>
+                                    </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </>
