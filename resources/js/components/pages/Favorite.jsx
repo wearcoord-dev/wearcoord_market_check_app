@@ -6,16 +6,16 @@ import { UserContext } from "../providers/UserProvider";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        flexWrap: 'wrap',
+        // flexWrap: 'wrap',
         justifyContent: 'space-around',
-        overflow: 'hidden',
+        // overflow: 'hidden',
     },
     gridList: {
         // width: 500,
         // height: 450,
     },
     gridListTile: {
-        // width: 500,
+        width: '100% !important',
         height: 'auto !important',
         backgroundColor: theme.palette.background.paper,
     },
@@ -43,7 +43,7 @@ export const Favorite = memo(() => {
             <p>favoriteです</p>
             {userCoordData ? (
                 <div className={classes.root}>
-                    <GridList cellHeight={160} className={classes.gridList} cols={3}>
+                    <GridList cellHeight={160} className={classes.gridList}>
                         {userCoordData.map((data) => (
 
                             <GridListTile className={classes.gridListTile} key={data.id}>

@@ -20827,15 +20827,15 @@ var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_4__.default)(funct
   return {
     root: {
       display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden'
+      // flexWrap: 'wrap',
+      justifyContent: 'space-around' // overflow: 'hidden',
+
     },
     gridList: {// width: 500,
       // height: 450,
     },
     gridListTile: {
-      // width: 500,
+      width: '100% !important',
       height: 'auto !important',
       backgroundColor: theme.palette.background.paper
     }
@@ -20867,7 +20867,6 @@ var Favorite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
         cellHeight: 160,
         className: classes.gridList,
-        cols: 3,
         children: [userCoordData.map(function (data) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
             className: classes.gridListTile,
