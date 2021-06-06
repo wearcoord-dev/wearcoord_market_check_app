@@ -7,6 +7,10 @@
   display: flex;
 }
 
+.relative {
+  position: relative;
+}
+
 .justifyCenter {
   justify-content: center;
 }
@@ -219,6 +223,32 @@ details[open] .detailsBottom {
 }
 
 .bottomLeftBtn .btnText {
+  line-height: 2;
+}
+
+.bottomRightBtn {
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  display: flex;
+  width: 40%;
+  height: 60px;
+  min-width: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: #dddddd;
+  color: #484848;
+  line-height: 1.5;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.bottomRightBtn .searchBtn {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.bottomRightBtn .btnText {
   line-height: 2;
 }
 
