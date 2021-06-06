@@ -8,7 +8,7 @@ export const Mycoord = memo(() => {
 
     return (
         <>
-            <div className="displayFlex">
+            <div className="displayFlex relative">
                 <MainMycoord />
             </div>
             <BottomChoiceBtn />

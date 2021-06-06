@@ -51,6 +51,19 @@ Route::get('/removeinner', [App\Http\Controllers\MycoordController::class, "remo
 //     return response()->json($user);
 // });
 
+Route::get('/registercoord', function (Request $request) {
+ddd($request);
+});
+
+Route::post('/registercoord', [App\Http\Controllers\MycoordController::class, "registerCoord"]);
+
+// Route::post('/registercoord', function (Request $request) {
+
+//     // ddd($request);
+
+//     return response()->json($request['imgUrl']);
+// });
+
 // Route::get( '/pants', function ( Request $request ) {
 
 //     $pants = collect([

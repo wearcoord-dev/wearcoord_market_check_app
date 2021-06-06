@@ -1,11 +1,31 @@
 import { memo, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../providers/UserWear";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
+import html2canvas from 'html2canvas';
+import { Fade, makeStyles, Modal } from "@material-ui/core";
+import Backdrop from '@material-ui/core/Backdrop';
+import { useRegisterCoord } from "../../../../hooks/mycoord/useRegisterCoord";
+
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 
 export const Mannequin = memo(() => {
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
     const [mannequinUrl, setUrl] = useState(null);
+    const { RegisterCoord } = useRegisterCoord();
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
@@ -30,7 +50,27 @@ export const Mannequin = memo(() => {
     // console.log(mannequinUrl);
     // console.log(`ここが${userWearInfo}だぞ！`);
 
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
 
+    const handleOpen = () => {
+        html2canvas(document.querySelector("#centerContainer"), { backgroundColor: null }).then(function (canvas) {
+            // document.body.appendChild(canvas);
+            document.getElementById('canvas_img_url').setAttribute("value", canvas.toDataURL());
+            document.getElementById('canvas_img_test').setAttribute("src", canvas.toDataURL());
+        });
+
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const registerCoord = (props) => {
+        console.log("OK");
+        RegisterCoord(props,context);
+    }
 
 
     return (
@@ -40,8 +80,8 @@ export const Mannequin = memo(() => {
             ) : loadingWear ? (
                 <p>loading</p>
             ) : (
-                <div className="centerContainer">
-                    {mannequinUrl ? (<div className="mannequinImg" style={{
+                <div className="centerContainer" id="centerContainer">
+                    {mannequinUrl ? (<div id="mannequinImgCanvas" className="mannequinImg" style={{
                         'backgroundImage': mannequinUrl.backgroundImage
                     }}>
 
@@ -55,7 +95,7 @@ export const Mannequin = memo(() => {
                                 // capsdataがnullなら代替
                                 <>
                                     {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                                        <img style={{ width: "30%", height: "50px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                                     </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
@@ -71,7 +111,7 @@ export const Mannequin = memo(() => {
                                 // topsdataがnullなら代替
                                 <>
                                     {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto", height: "120px", marginTop: "16px" }}>
-                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                        <img style={{ width: "70%", height: "130px", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
@@ -87,7 +127,7 @@ export const Mannequin = memo(() => {
                                 // pantsdataがnullなら代替
                                 <>
                                     {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto", height: "140px" }}>
-                                        <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                        <img style={{ width: "100%", height: "170px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
@@ -103,7 +143,7 @@ export const Mannequin = memo(() => {
                                 // shoesdataがnullなら代替
                                 <>
                                     {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                                        <img style={{ width: "50%", height: "100px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
@@ -113,6 +153,42 @@ export const Mannequin = memo(() => {
 
                 </div>
             )) : <div style={{ width: "40%", height: "50vh" }}></div>}
+
+            <div><input type="hidden" id="mannequinImgCanvas" name="canvas_img" value=""></input></div>
+            {/* <img id="canvas_img_test" src="" alt="" /> */}
+            <div onClick={handleOpen} className="bottomRightBtn">
+                <div className="searchBtn">
+                    <span className="material-icons-outlined">
+                        screen_search_desktop
+                </span>
+                    <p className="btnText">コーデを登録する</p>
+                </div>
+            </div>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <form action="">
+                            <img style={{ height: "200px" }} id="canvas_img_test" src="" alt="" />
+                            <input type="hidden" id="canvas_img_url" value=""></input>
+                            <input type="hidden" name="userId" value={userCheck}></input>
+
+                            <button type="button" onClick={registerCoord}>登録する</button>
+                        </form>
+                    </div>
+                </Fade>
+            </Modal>
         </>
     )
 })

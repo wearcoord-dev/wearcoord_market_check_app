@@ -239,19 +239,51 @@ class MycoordController extends Controller
         $user_id = $request->input('id');
         $gender = $request->input('gender');
 
-        if($gender == 'male'){
+        if ($gender == 'male') {
             DB::table('userSelectCoord')->where('user_id', $user_id)->update(
                 [
-                'mannequin' => "mens_170_model.png",
-            ]);
-        }else{
+                    'mannequin' => "mens_170_model.png",
+                ]
+            );
+        } else {
             DB::table('userSelectCoord')->where('user_id', $user_id)->update(
                 [
-                'mannequin' => "woman_manekin1.png",
-            ]);
+                    'mannequin' => "woman_manekin1.png",
+                ]
+            );
         };
 
-
         return response()->json('OK');
+    }
+
+    public function registerCoord(Request $request)
+    {
+        // return response()->json($request);
+        $imgUrl = $request['imgUrl'];
+        $userId = $request['userId'];
+
+        $userWear = DB::table('userSelectCoord')->where('user_id', $userId)->first();
+
+        DB::table('userCreateCoord')->insert([
+            'user_id' => $userId,
+            'caps' => $userWear->caps,
+            'tops' => $userWear->tops,
+            'pants' => $userWear->pants,
+            'shoes' => $userWear->shoes,
+            'mannequin' => $userWear->mannequin,
+            'img' => $imgUrl,
+            'created_at' => now(),
+        ]);
+
+        return 'ok!';
+    }
+
+    public function getRegisterCoord(Request $request)
+    {
+        $user_id = $request['id'];
+
+        $userWear = DB::table('userCreateCoord')->where('user_id', $user_id)->get();
+
+        return response()->json($userWear);
     }
 }

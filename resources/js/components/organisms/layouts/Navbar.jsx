@@ -27,7 +27,7 @@ export const Navbar = memo(() => {
 
     const onClickMain = useCallback(() => history.push("/main"), [history]);
     const onClickMycoord = useCallback(() => history.push("/main/mycoord"), [history]);
-    const onClickItem = useCallback(() => history.push("/main/selectwear"), [history]);
+    const onClickItem = useCallback(() => history.push("/main/item"), [history]);
     const onClickFavorite = useCallback(() => history.push("/main/favorite"), [history]);
 
     return (
