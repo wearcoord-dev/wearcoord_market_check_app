@@ -258,7 +258,6 @@ class MycoordController extends Controller
 
     public function registerCoord(Request $request)
     {
-
         // return response()->json($request);
         $imgUrl = $request['imgUrl'];
         $userId = $request['userId'];
@@ -276,7 +275,15 @@ class MycoordController extends Controller
             'created_at' => now(),
         ]);
 
-
         return 'ok!';
+    }
+
+    public function getRegisterCoord(Request $request)
+    {
+        $user_id = $request['id'];
+
+        $userWear = DB::table('userCreateCoord')->where('user_id', $user_id)->get();
+
+        return response()->json($userWear);
     }
 }
