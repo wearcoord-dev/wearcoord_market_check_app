@@ -2887,6 +2887,323 @@ var Fade = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function F
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/GridList/GridList.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/GridList/GridList.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => (/* binding */ styles),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+
+
+
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    overflowY: 'auto',
+    listStyle: 'none',
+    padding: 0,
+    WebkitOverflowScrolling: 'touch' // Add iOS momentum scrolling.
+
+  }
+};
+var GridList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.forwardRef(function GridList(props, ref) {
+  var _props$cellHeight = props.cellHeight,
+      cellHeight = _props$cellHeight === void 0 ? 180 : _props$cellHeight,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$cols = props.cols,
+      cols = _props$cols === void 0 ? 2 : _props$cols,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'ul' : _props$component,
+      _props$spacing = props.spacing,
+      spacing = _props$spacing === void 0 ? 4 : _props$spacing,
+      style = props.style,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["cellHeight", "children", "classes", "className", "cols", "component", "spacing", "style"]);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__.default)(classes.root, className),
+    ref: ref,
+    style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+      margin: -spacing / 2
+    }, style)
+  }, other), react__WEBPACK_IMPORTED_MODULE_2__.Children.map(children, function (child) {
+    if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.isValidElement(child)) {
+      return null;
+    }
+
+    if (true) {
+      if ((0,react_is__WEBPACK_IMPORTED_MODULE_3__.isFragment)(child)) {
+        console.error(["Material-UI: The GridList component doesn't accept a Fragment as a child.", 'Consider providing an array instead.'].join('\n'));
+      }
+    }
+
+    var childCols = child.props.cols || 1;
+    var childRows = child.props.rows || 1;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.cloneElement(child, {
+      style: (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+        width: "".concat(100 / cols * childCols, "%"),
+        height: cellHeight === 'auto' ? 'auto' : cellHeight * childRows + spacing,
+        padding: spacing / 2
+      }, child.props.style)
+    });
+  }));
+});
+ true ? GridList.propTypes = {
+  /**
+   * Number of px for one cell height.
+   * You can set `'auto'` if you want to let the children determine the height.
+   */
+  cellHeight: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().number), prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOf(['auto'])]),
+
+  /**
+   * Grid Tiles that will be in Grid List.
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node.isRequired),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object.isRequired),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+
+  /**
+   * Number of columns.
+   */
+  cols: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().elementType),
+
+  /**
+   * Number of px for the spacing between tiles.
+   */
+  spacing: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number),
+
+  /**
+   * @ignore
+   */
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object)
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_6__.default)(styles, {
+  name: 'MuiGridList'
+})(GridList));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/GridListTile/GridListTile.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/GridListTile/GridListTile.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "styles": () => (/* binding */ styles),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _utils_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/debounce */ "./node_modules/@material-ui/core/esm/utils/debounce.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _utils_isMuiElement__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/isMuiElement */ "./node_modules/@material-ui/core/esm/utils/isMuiElement.js");
+
+
+
+
+
+
+
+
+
+var styles = {
+  /* Styles applied to the root element. */
+  root: {
+    boxSizing: 'border-box',
+    flexShrink: 0
+  },
+
+  /* Styles applied to the `div` element that wraps the children. */
+  tile: {
+    position: 'relative',
+    display: 'block',
+    // In case it's not rendered with a div.
+    height: '100%',
+    overflow: 'hidden'
+  },
+
+  /* Styles applied to an `img` element child, if needed to ensure it covers the tile. */
+  imgFullHeight: {
+    height: '100%',
+    transform: 'translateX(-50%)',
+    position: 'relative',
+    left: '50%'
+  },
+
+  /* Styles applied to an `img` element child, if needed to ensure it covers the tile. */
+  imgFullWidth: {
+    width: '100%',
+    position: 'relative',
+    transform: 'translateY(-50%)',
+    top: '50%'
+  }
+};
+
+var fit = function fit(imgEl, classes) {
+  if (!imgEl || !imgEl.complete) {
+    return;
+  }
+
+  if (imgEl.width / imgEl.height > imgEl.parentElement.offsetWidth / imgEl.parentElement.offsetHeight) {
+    var _imgEl$classList, _imgEl$classList2;
+
+    (_imgEl$classList = imgEl.classList).remove.apply(_imgEl$classList, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__.default)(classes.imgFullWidth.split(' ')));
+
+    (_imgEl$classList2 = imgEl.classList).add.apply(_imgEl$classList2, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__.default)(classes.imgFullHeight.split(' ')));
+  } else {
+    var _imgEl$classList3, _imgEl$classList4;
+
+    (_imgEl$classList3 = imgEl.classList).remove.apply(_imgEl$classList3, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__.default)(classes.imgFullHeight.split(' ')));
+
+    (_imgEl$classList4 = imgEl.classList).add.apply(_imgEl$classList4, (0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_2__.default)(classes.imgFullWidth.split(' ')));
+  }
+};
+
+function ensureImageCover(imgEl, classes) {
+  if (!imgEl) {
+    return;
+  }
+
+  if (imgEl.complete) {
+    fit(imgEl, classes);
+  } else {
+    imgEl.addEventListener('load', function () {
+      fit(imgEl, classes);
+    });
+  }
+}
+
+var GridListTile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.forwardRef(function GridListTile(props, ref) {
+  // cols rows default values are for docs only
+  var children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$cols = props.cols,
+      cols = _props$cols === void 0 ? 1 : _props$cols,
+      _props$component = props.component,
+      Component = _props$component === void 0 ? 'li' : _props$component,
+      _props$rows = props.rows,
+      rows = _props$rows === void 0 ? 1 : _props$rows,
+      other = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__.default)(props, ["children", "classes", "className", "cols", "component", "rows"]);
+
+  var imgRef = react__WEBPACK_IMPORTED_MODULE_3__.useRef(null);
+  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
+    ensureImageCover(imgRef.current, classes);
+  });
+  react__WEBPACK_IMPORTED_MODULE_3__.useEffect(function () {
+    var handleResize = (0,_utils_debounce__WEBPACK_IMPORTED_MODULE_6__.default)(function () {
+      fit(imgRef.current, classes);
+    });
+    window.addEventListener('resize', handleResize);
+    return function () {
+      handleResize.clear();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [classes]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(Component, (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__.default)({
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_5__.default)(classes.root, className),
+    ref: ref
+  }, other), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: classes.tile
+  }, react__WEBPACK_IMPORTED_MODULE_3__.Children.map(children, function (child) {
+    if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.isValidElement(child)) {
+      return null;
+    }
+
+    if (child.type === 'img' || (0,_utils_isMuiElement__WEBPACK_IMPORTED_MODULE_7__.default)(child, ['Image'])) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.cloneElement(child, {
+        ref: imgRef
+      });
+    }
+
+    return child;
+  })));
+});
+ true ? GridListTile.propTypes = {
+  /**
+   * Theoretically you can pass any node as children, but the main use case is to pass an img,
+   * in which case GridListTile takes care of making the image "cover" available space
+   * (similar to `background-size: cover` or to `object-fit: cover`).
+   */
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node),
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().object.isRequired),
+
+  /**
+   * @ignore
+   */
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+
+  /**
+   * Width of the tile in number of grid cells.
+   */
+  cols: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().elementType),
+
+  /**
+   * Height of the tile in number of grid cells.
+   */
+  rows: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number)
+} : 0;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_styles_withStyles__WEBPACK_IMPORTED_MODULE_8__.default)(styles, {
+  name: 'MuiGridListTile'
+})(GridListTile));
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/Icon/Icon.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/Icon/Icon.js ***!
@@ -20492,6 +20809,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Favorite": () => (/* binding */ Favorite)
 /* harmony export */ });
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/GridList/GridList.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/GridListTile/GridListTile.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _hooks_mycoord_useGetRegisterCoord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/mycoord/useGetRegisterCoord */ "./resources/js/hooks/mycoord/useGetRegisterCoord.jsx");
 /* harmony import */ var _providers_UserProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../providers/UserProvider */ "./resources/js/components/providers/UserProvider.jsx");
@@ -20502,7 +20822,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var useStyles = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_4__.default)(function (theme) {
+  return {
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden'
+    },
+    gridList: {// width: 500,
+      // height: 450,
+    },
+    gridListTile: {
+      // width: 500,
+      height: 'auto !important',
+      backgroundColor: theme.palette.background.paper
+    }
+  };
+});
 var Favorite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  var classes = useStyles();
+
   var _useGetRegisterCoord = (0,_hooks_mycoord_useGetRegisterCoord__WEBPACK_IMPORTED_MODULE_1__.useGetRegisterCoord)(),
       GetRegisterCoord = _useGetRegisterCoord.GetRegisterCoord,
       userCoordData = _useGetRegisterCoord.userCoordData,
@@ -20522,15 +20863,25 @@ var Favorite = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: "favorite\u3067\u3059"
     }), userCoordData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      children: userCoordData.map(function (data) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            children: data.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: data.img,
-            alt: ""
-          })]
-        }, data.id);
+      className: classes.root,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
+        cellHeight: 160,
+        className: classes.gridList,
+        cols: 3,
+        children: [userCoordData.map(function (data) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
+            className: classes.gridListTile,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+              children: data.id
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              style: {
+                height: '200px'
+              },
+              src: data.img,
+              alt: ""
+            })]
+          }, data.id);
+        }), ";"]
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
       children: "\u3042\u308A\u307E\u305B\u3093"
