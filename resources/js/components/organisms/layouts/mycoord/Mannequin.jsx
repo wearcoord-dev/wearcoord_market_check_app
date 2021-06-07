@@ -82,10 +82,11 @@ export const Mannequin = memo(() => {
             ) : (
                 <div className="centerContainer" id="centerContainer">
                     {mannequinUrl ? (<div id="mannequinImgCanvas" className="mannequinImg" style={{
-                        'backgroundImage': mannequinUrl.backgroundImage
+                        'backgroundImage': mannequinUrl.backgroundImage,
+                        maxWidth:'200px',
                     }}>
 
-                        <div style={{ display: "flex", overflowX: "scroll" }}>
+                        <div style={{ display: "flex" }}>
                             {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
                             ) : loadingWear ? (
@@ -94,8 +95,8 @@ export const Mannequin = memo(() => {
 
                                 // capsdataがnullなら代替
                                 <>
-                                    {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "30%", height: "50px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                                    {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                                        <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                                     </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}

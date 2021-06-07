@@ -19764,12 +19764,12 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
         id: "mannequinImgCanvas",
         className: "mannequinImg",
         style: {
-          'backgroundImage': mannequinUrl.backgroundImage
+          'backgroundImage': mannequinUrl.backgroundImage,
+          maxWidth: '200px'
         },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           style: {
-            display: "flex",
-            overflowX: "scroll"
+            display: "flex"
           },
           children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
             style: {
@@ -19785,12 +19785,12 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
             children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               style: {
                 textAlign: "center",
-                margin: "auto"
+                margin: "auto",
+                height: "50px"
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 style: {
-                  width: "30%",
-                  height: "50px"
+                  width: "60px"
                 },
                 src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
                 alt: ""
@@ -20359,8 +20359,7 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       style: {
-        display: "flex",
-        overflowX: "scroll"
+        display: "flex"
       },
       children: userWearInfo ? errorWear ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("p", {
         style: {
@@ -20376,14 +20375,12 @@ var SelectInner = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(funct
         children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
           style: {
             textAlign: "center",
-            margin: "auto"
+            margin: "auto",
+            height: "50px"
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("img", {
             style: {
-              width: "15%",
-              height: "50px",
-              objectFit: "cover",
-              objectPosition: "bottom"
+              width: "60px"
             },
             src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
             alt: ""
@@ -20732,8 +20729,7 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
       style: {
-        display: "flex",
-        overflowX: "scroll"
+        display: "flex"
       },
       children: userCaps.length ? error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
         style: {
@@ -20774,14 +20770,12 @@ var SelectWear = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functi
           children: userWearInfo[0] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             style: {
               textAlign: "center",
-              margin: "auto"
+              margin: "auto",
+              height: "50px"
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
               style: {
-                width: "15%",
-                height: "50px",
-                objectFit: "cover",
-                objectPosition: "bottom"
+                width: "60px"
               },
               src: "/img/rakutenlist/".concat(context.contextName.gender, "/").concat(userWearInfo[0].capsData.category, "/").concat(userWearInfo[0].capsData.url),
               alt: ""
