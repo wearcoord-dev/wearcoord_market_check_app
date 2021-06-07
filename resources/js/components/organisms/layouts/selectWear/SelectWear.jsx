@@ -95,7 +95,7 @@ export const SelectWear = memo(() => {
 
     return (
         <>
-            <div style={{ display: "flex", overflowX: "scroll" }}>
+            <div style={{ display: "flex" }}>
                 {userCaps.length ? (error ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
                 ) : loading ? (
@@ -123,8 +123,8 @@ export const SelectWear = memo(() => {
 
                         // capsdataがnullなら代替
                         <>
-                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                <img style={{ width: "15%", height: "50px", objectFit: "cover", objectPosition: "bottom" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                                <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                             </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                         </>
                     )) : <></>}
