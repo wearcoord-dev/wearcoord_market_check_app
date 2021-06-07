@@ -1,4 +1,4 @@
-import { GridList, GridListTile, makeStyles } from "@material-ui/core";
+import { CircularProgress, GridList, GridListTile, makeStyles } from "@material-ui/core";
 import { memo, useContext, useEffect } from "react";
 import { useGetRegisterCoord } from "../../hooks/mycoord/useGetRegisterCoord";
 import { UserContext } from "../providers/UserProvider";
@@ -6,18 +6,20 @@ import { UserContext } from "../providers/UserProvider";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        // flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        // overflow: 'hidden',
+        justifyContent: 'center',
+        width: '90%',
+        margin: '0 auto 70px',
     },
     gridList: {
         // width: 500,
         // height: 450,
+        justifyContent: 'center',
     },
     gridListTile: {
-        width: '100% !important',
+        width: '40% !important',
         height: 'auto !important',
         backgroundColor: theme.palette.background.paper,
+        margin: '10px',
     },
 }));
 
@@ -40,20 +42,18 @@ export const Favorite = memo(() => {
 
     return (
         <>
-            <p>favoriteです</p>
             {userCoordData ? (
                 <div className={classes.root}>
                     <GridList cellHeight={160} className={classes.gridList}>
                         {userCoordData.map((data) => (
 
                             <GridListTile className={classes.gridListTile} key={data.id}>
-                                <p>{data.id}</p>
-                                <img style={{ height: '200px' }} src={data.img} alt="" />
+                                <img style={{ height: '200px', objectFit: 'contain', }} src={data.img} alt="" />
                             </GridListTile>
                         ))};
                   </GridList>
                 </div>
-            ) : <p>ありません</p>}
+            ) : loadingRegisterCoord ? <CircularProgress /> : (<p>データがありません</p>)}
 
         </>
     )
