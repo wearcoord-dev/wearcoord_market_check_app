@@ -127,7 +127,7 @@ export const Mannequin = memo(() => {
                                 // pantsdataがnullなら代替
                                 <>
                                     {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto", height: "140px" }}>
-                                        <img style={{ width: "100%", height: "170px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                        <img style={{ width: "90%", height: "170px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}

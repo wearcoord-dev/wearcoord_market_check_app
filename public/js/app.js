@@ -19866,7 +19866,7 @@ var Mannequin = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(functio
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
                 style: {
-                  width: "100%",
+                  width: "90%",
                   height: "170px",
                   position: "relative"
                 },
