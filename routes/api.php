@@ -52,10 +52,14 @@ Route::get('/removeinner', [App\Http\Controllers\MycoordController::class, "remo
 // });
 
 Route::get('/registercoord', function (Request $request) {
-ddd($request);
 });
 
 Route::post('/registercoord', [App\Http\Controllers\MycoordController::class, "registerCoord"]);
+
+Route::get('/registerface', function (Request $request) {
+});
+
+Route::post('/registerface', [App\Http\Controllers\UserController::class, "registerFace"]);
 
 // Route::post('/registercoord', function (Request $request) {
 

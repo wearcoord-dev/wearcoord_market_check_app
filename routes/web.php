@@ -40,6 +40,7 @@ Route::get('/user', function () {
     $user = [
         'id' => $user->id,
         'gender' => $user->gender,
+        'faceImg' => $user->faceImg,
     ];
 
     return response()->json($user);
