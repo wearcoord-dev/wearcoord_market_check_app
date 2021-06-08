@@ -95,7 +95,9 @@ export const SelectWear = memo(() => {
 
     return (
         <>
-            <div style={{ display: "flex" }}>
+            <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "20px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
+
+            <div style={{ display: "flex", position: "relative" }}>
                 {userCaps.length ? (error ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
                 ) : loading ? (
