@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     gridListTile: {
-        width: '40% !important',
+        width: '150px !important',
         height: 'auto !important',
         backgroundColor: theme.palette.background.paper,
         margin: '10px',
@@ -42,6 +42,7 @@ export const Favorite = memo(() => {
 
     return (
         <>
+        <p style={{ textAlign:'center' }}>お気に入り登録したコーデ一覧</p>
             {userCoordData ? (
                 <div className={classes.root}>
                     <GridList cellHeight={160} className={classes.gridList}>
@@ -53,8 +54,7 @@ export const Favorite = memo(() => {
                         ))};
                   </GridList>
                 </div>
-            ) : loadingRegisterCoord ? <CircularProgress /> : (<p>データがありません</p>)}
-
+            ) : loadingRegisterCoord ? <CircularProgress /> : (<p></p>)}
         </>
     )
 })
