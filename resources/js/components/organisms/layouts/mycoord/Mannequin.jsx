@@ -114,8 +114,8 @@ export const Mannequin = memo(() => {
 
                                 // topsdataがnullなら代替
                                 <>
-                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto", height: "120px", marginTop: "16px" }}>
-                                        <img style={{ width: "70%", height: "130px", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto", height: "115px", marginTop: "16px" }}>
+                                        <img style={{ width: "125px", height: "125px", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}

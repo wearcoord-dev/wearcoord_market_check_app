@@ -133,7 +133,7 @@ export const SelectWear = memo(() => {
                 </>}
             </div>
 
-            <div style={{ display: "flex", height: "120px", marginTop: "16px" }}>
+            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>
                 {userTops.length ?
                     (error ? (
                         <p style={{ color: "red" }}>データの取得に失敗しました</p>
@@ -164,7 +164,7 @@ export const SelectWear = memo(() => {
                                 // topsdataがnullなら代替
                                 <>
                                     {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "130px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                        <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
