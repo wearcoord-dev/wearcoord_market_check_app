@@ -21300,10 +21300,33 @@ var Page404 = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function 
 
 /***/ }),
 
-/***/ "./resources/js/components/pages/Settings.jsx":
-/*!****************************************************!*\
-  !*** ./resources/js/components/pages/Settings.jsx ***!
-  \****************************************************/
+/***/ "./resources/js/components/pages/setPage/SetUserFace.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/pages/setPage/SetUserFace.jsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SetUserFace": () => (/* binding */ SetUserFace)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var SetUserFace = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+    children: "setuserface\u3067\u3059"
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/setPage/Settings.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/components/pages/setPage/Settings.jsx ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21324,6 +21347,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var Settings = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function () {
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_3__.useHistory)();
+  var onClickFace = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
+    return history.push("/main/settings/face");
+  }, [history]);
 
   var onClickLogout = function onClickLogout(e) {
     e.preventDefault();
@@ -21340,10 +21366,21 @@ var Settings = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.memo)(function
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
       children: "settings\u3067\u3059"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-      href: "/logout",
-      onClick: onClickLogout,
-      children: "\u30ED\u30B0\u30A2\u30A6\u30C8"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        onClick: onClickFace,
+        children: "\u30D5\u30A7\u30A4\u30B9"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: "\u9000\u4F1A\u3059\u308B"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        href: "/logout",
+        onClick: onClickLogout,
+        children: "\u30ED\u30B0\u30A2\u30A6\u30C8"
+      })
     })]
   });
 });
@@ -21558,8 +21595,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../organisms/layouts/selectWear/MainSelectWear */ "./resources/js/components/organisms/layouts/selectWear/MainSelectWear.jsx");
 /* harmony import */ var _organisms_layouts_selectWear_MainSelectInnerWear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../organisms/layouts/selectWear/MainSelectInnerWear */ "./resources/js/components/organisms/layouts/selectWear/MainSelectInnerWear.jsx");
 /* harmony import */ var _providers_SecondWear__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../providers/SecondWear */ "./resources/js/components/providers/SecondWear.jsx");
-/* harmony import */ var _pages_Settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../pages/Settings */ "./resources/js/components/pages/Settings.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _pages_setPage_Settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../pages/setPage/Settings */ "./resources/js/components/pages/setPage/Settings.jsx");
+/* harmony import */ var _pages_setPage_SetUserFace__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../pages/setPage/SetUserFace */ "./resources/js/components/pages/setPage/SetUserFace.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -21574,43 +21613,47 @@ __webpack_require__.r(__webpack_exports__);
 var PageRoute = [{
   path: "/",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Home__WEBPACK_IMPORTED_MODULE_0__.Home, {})
 }, {
   path: "/mycoord",
   exact: true,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Mycoord__WEBPACK_IMPORTED_MODULE_1__.Mycoord, {})
 }, {
   path: "/selectwear",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_8__.SecondWear, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__.MainSelectWear, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_8__.SecondWear, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_organisms_layouts_selectWear_MainSelectWear__WEBPACK_IMPORTED_MODULE_6__.MainSelectWear, {})
   })
 }, {
   path: "/selectinner",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_8__.SecondWear, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_organisms_layouts_selectWear_MainSelectInnerWear__WEBPACK_IMPORTED_MODULE_7__.MainSelectInnerWear, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_providers_SecondWear__WEBPACK_IMPORTED_MODULE_8__.SecondWear, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_organisms_layouts_selectWear_MainSelectInnerWear__WEBPACK_IMPORTED_MODULE_7__.MainSelectInnerWear, {})
   })
 }, {
   path: "/item",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Item__WEBPACK_IMPORTED_MODULE_2__.Item, {})
 }, {
   path: "/favorite",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Favorite__WEBPACK_IMPORTED_MODULE_3__.Favorite, {})
 }, {
   path: "/cart",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Cart__WEBPACK_IMPORTED_MODULE_4__.Cart, {})
 }, {
   path: "/settings",
+  exact: true,
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_setPage_Settings__WEBPACK_IMPORTED_MODULE_9__.Settings, {})
+}, {
+  path: "/settings/face",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Settings__WEBPACK_IMPORTED_MODULE_9__.Settings, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_setPage_SetUserFace__WEBPACK_IMPORTED_MODULE_10__.SetUserFace, {})
 }, {
   path: "*",
   exact: false,
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_pages_Page404__WEBPACK_IMPORTED_MODULE_5__.Page404, {})
 }];
 
 /***/ }),
