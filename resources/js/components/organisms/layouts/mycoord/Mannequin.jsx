@@ -87,6 +87,8 @@ export const Mannequin = memo(() => {
                         maxWidth:'200px',
                     }}>
 
+                        <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "20px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
+
                         <div style={{ display: "flex" }}>
                             {userWearInfo ? (errorWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
@@ -97,7 +99,7 @@ export const Mannequin = memo(() => {
                                 // capsdataがnullなら代替
                                 <>
                                     {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                                        <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                                        <img style={{ width: "60px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                                     </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}

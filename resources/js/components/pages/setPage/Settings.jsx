@@ -2,6 +2,17 @@ import axios from "axios";
 import { memo, useCallback } from "react";
 import { useHistory } from "react-router";
 
+const styles = {
+    btnWrap: {
+      textAlign: "center",
+      margin: "20px"
+    },
+    button: {
+      fontSize: "20px",
+      padding: "10px 0"
+    },
+  };
+
 export const Settings = memo(() => {
     const history = useHistory();
 
@@ -25,15 +36,15 @@ export const Settings = memo(() => {
 
     return (
         <>
-            <p>settingsです</p>
-            <div>
-                <button onClick={onClickFace}>フェイス</button>
+            <p style={{ textAlign: "center" }}>Settings</p>
+            <div style={ styles.btnWrap }>
+                <button style={ styles.button } onClick={onClickFace}>マネキン顔画像の変更</button>
             </div>
-            <div>
-                <button >退会する</button>
+            <div style={ styles.btnWrap }>
+                <button style={ styles.button }>退会する</button>
             </div>
-            <div>
-                <button href="/logout" onClick={onClickLogout}>ログアウト</button>
+            <div style={ styles.btnWrap }>
+                <button style={ styles.button } href="/logout" onClick={onClickLogout}>ログアウト</button>
             </div>
         </>
     )
