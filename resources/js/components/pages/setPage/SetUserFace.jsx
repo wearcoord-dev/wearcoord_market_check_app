@@ -25,7 +25,7 @@ export const SetUserFace = memo(() => {
 
     const imgRef = useRef(null);
     const previewCanvasRef = useRef(null);
-    const [crop, setCrop] = useState({ unit: '%', width: 30 });
+    const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 1 / 1 });
     const [completedCrop, setCompletedCrop] = useState(null);
 
     function generateDownload(canvas, crop) {
