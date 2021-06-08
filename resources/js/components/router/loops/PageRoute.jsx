@@ -7,6 +7,8 @@ import { Page404 } from "../../pages/Page404";
 import { MainSelectWear } from "../../organisms/layouts/selectWear/MainSelectWear";
 import { MainSelectInnerWear } from "../../organisms/layouts/selectWear/MainSelectInnerWear";
 import { SecondWear } from "../../providers/SecondWear";
+import { Settings } from "../../pages/setPage/Settings";
+import { SetUserFace } from "../../pages/setPage/SetUserFace";
 
 export const PageRoute = [
   {
@@ -45,6 +47,16 @@ export const PageRoute = [
     path: "/cart",
     exact: false,
     children: <Cart />
+  },
+  {
+    path: "/settings",
+    exact: true,
+    children: <Settings />
+  },
+  {
+    path: "/settings/face",
+    exact: false,
+    children: <SetUserFace />
   },
   {
     path: "*",
