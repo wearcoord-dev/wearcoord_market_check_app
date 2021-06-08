@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 import { Fade, makeStyles, Modal } from "@material-ui/core";
 import Backdrop from '@material-ui/core/Backdrop';
 import { useRegisterCoord } from "../../../../hooks/mycoord/useRegisterCoord";
+import AddBoxIcon from '@material-ui/icons/AddBox';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -159,9 +160,7 @@ export const Mannequin = memo(() => {
             {/* <img id="canvas_img_test" src="" alt="" /> */}
             <div onClick={handleOpen} className="bottomRightBtn">
                 <div className="searchBtn">
-                    <span className="material-icons-outlined">
-                        screen_search_desktop
-                </span>
+                    <AddBoxIcon style={{ color: '#484848', fontSize: 20 }} />
                     <p className="btnText">コーデを登録する</p>
                 </div>
             </div>
