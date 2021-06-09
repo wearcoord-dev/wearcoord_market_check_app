@@ -14,42 +14,16 @@ import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 
 export const SelectInner = memo(() => {
-    const { getCaps, userCaps, loading, error } = useAllCaps();
-    const { getTops, userTops, loadingTops, errorTops } = useAllTops();
-    const { getPants, userPants, loadingPants, errorPants } = useAllPants();
-    const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
-    // const { RegisterWear } = useRegisterWear();
     const { RegisterInner } = useRegisterInner();
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
 
     const context = useContext(UserContext);
 
-    // 着ているウェアを取得
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [activeIndexTops, setActiveIndexTops] = useState(0);
-    const [activeIndexPants, setActiveIndexPants] = useState(0);
-    const [activeIndexShoes, setActiveIndexShoes] = useState(0);
-
-    const onClickFetchCaps = (props) => getCaps(props);
-    const onClickFetchTops = (props) => getTops(props);
-    const onClickFetchPants = (props) => getPants(props);
-    const onClickFetchShoes = (props) => getShoes(props);
 
     const onClickFetchInner = (props) => (
         RegisterInner(props)
     );
 
-
-    // const onClickRegisterWear = () => {
-    //     const obj = {
-    //         "caps": userCaps[activeIndex],
-    //         "tops": userTops[activeIndexTops],
-    //         "pants": userPants[activeIndexPants],
-    //         "shoes": userShoes[activeIndexShoes],
-    //         "userid": context.contextName,
-    //     }
-    //     RegisterWear(obj);
-    // }
     const userCheck = context.contextName;
     // console.log(context);
 
@@ -60,10 +34,6 @@ export const SelectInner = memo(() => {
             GetWear(context)
         }
     }, [userCheck]);
-
-    // if(userWearInfo){
-    //     console.log(userWearInfo[1].capsData.url);
-    // }
 
     const [anchorEl, setAnchorEl] = useState(null);
 
