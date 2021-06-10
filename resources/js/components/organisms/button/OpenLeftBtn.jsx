@@ -17,6 +17,7 @@ export const OpenLeftBtn = memo(() => {
     };
 
     const toSelectInner = useCallback(() => history.push("/main/selectinner"));
+    const toSelectSocks = useCallback(() => history.push("/main/selectsocks"));
 
     return (
         <>
@@ -64,7 +65,35 @@ export const OpenLeftBtn = memo(() => {
                     </div>
                 </details>
 
-                <OpenBtnLeft name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} />
+                <details className="btnDesign left" id="btnSocks" >
+                    <summary>
+                        <i className="fas fa-socks sideFontAwesome"></i>
+                        <p className="btnText" id="btnTitleSocks">Socks</p>
+                    </summary>
+                    <div className="detailsBottom">
+                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn" method="post">
+                            <button type="submit">
+                                <span className="material-icons-outlined">
+                                    accessibility
+                    </span>
+                                <p className="btnText">ソックスを脱ぐ</p>
+                            </button>
+                        </div>
+                        <hr />
+                        <div onClick={toSelectSocks} className="detailsBtn" method="get">
+                            <button type="submit">
+                                <span className="material-icons-outlined">
+                                    screen_search_desktop
+                </span>
+                                <p className="btnText">選ぶ</p>
+                                <input type="hidden" name="type" value="inner" />
+
+                            </button>
+                        </div>
+                    </div>
+                </details>
+
+                {/* <OpenBtnLeft name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} /> */}
             </div>
         </>
     )

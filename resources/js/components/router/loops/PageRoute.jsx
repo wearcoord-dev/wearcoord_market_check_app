@@ -6,6 +6,7 @@ import { Cart } from "../../pages/Cart";
 import { Page404 } from "../../pages/Page404";
 import { MainSelectWear } from "../../organisms/layouts/selectWear/MainSelectWear";
 import { MainSelectInnerWear } from "../../organisms/layouts/selectWear/MainSelectInnerWear";
+import { MainSelectSocksWear } from "../../organisms/layouts/selectWear/MainSelectSocksWear";
 import { SecondWear } from "../../providers/SecondWear";
 import { Settings } from "../../pages/setPage/Settings";
 import { SetUserFace } from "../../pages/setPage/SetUserFace";
@@ -31,6 +32,12 @@ export const PageRoute = [
     path: "/selectinner",
     exact: false,
     children: (<SecondWear><MainSelectInnerWear /></SecondWear>
+    )
+  },
+  {
+    path: "/selectsocks",
+    exact: false,
+    children: (<SecondWear><MainSelectSocksWear /></SecondWear>
     )
   },
   {

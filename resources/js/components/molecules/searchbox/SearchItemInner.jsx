@@ -3,8 +3,8 @@ import { useAllCaps } from "../../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrand } from "./SearchBrand";
 import { SearchColor } from "./SearchColor";
-import { SearchInnerItem } from "./SearchInnerItem";
-import { SearchInnerItemFemale } from "./SearchInnerItemFemale";
+import { SearchInnerItem } from "./male/SearchInnerItem";
+import { SearchInnerItemFemale } from "./female/SearchInnerItemFemale";
 
 export const SearchItemInner = memo((props) => {
     const { onClickFetchInner } = props;
@@ -24,7 +24,7 @@ export const SearchItemInner = memo((props) => {
                 {/* <input type="hidden" wear="caps" /> */}
                 <input type="hidden" id="getUrl" value={valueId} />
                 <input type="hidden" id="userid" value={userid} />
-           
+
                 {gender == 'male' ? <SearchInnerItem setValueId={setValueId}/> : <SearchInnerItemFemale setValueId={setValueId} />}
 
                 <div className="divBtn">
