@@ -5,7 +5,7 @@ import { useRemoveCaps } from "../../../hooks/selectwear/useRemoveCaps";
 import { UserContext } from "../../providers/UserProvider";
 
 export const OpenBtnCaps = memo((props) => {
-    const { name, icon } = props;
+    const { name, icon, item } = props;
     const { RemoveCaps } = useRemoveCaps();
     const context = useContext(UserContext);
     const user = context.contextName;

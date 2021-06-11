@@ -24,7 +24,7 @@ export const Navbar = memo(() => {
     const [value, setValue] = useState(null);
 
     const history = useHistory();
-    console.log(`ここは${value}`);
+    // console.log(`ここは${value}`);
 
     // const onClickMain = useCallback(() => history.push("/main"), [history]);
     // const onClickMycoord = useCallback(() => history.push("/main/mycoord"), [history]);
