@@ -256,6 +256,19 @@ class MycoordController extends Controller
         return response()->json('OK');
     }
 
+    public function removeCaps(Request $request)
+    {
+        $user_id = $request->input('id');
+
+        DB::table('userSelectCoord')->where('user_id', $user_id)->update(
+            [
+                'caps' => null,
+            ]
+        );
+
+        return response()->json('OK');
+    }
+
     public function registerCoord(Request $request)
     {
         // return response()->json($request);
