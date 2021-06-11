@@ -155,6 +155,166 @@ class Encodes
             $gender = "female";
             $coordId = 8;
         }
+        if($data == "9"){
+            $gender = "male";
+            $coordId = 9;
+        }
+        if($data == "10"){
+            $gender = "male";
+            $coordId = 10;
+        }
+        if($data == "11"){
+            $gender = "male";
+            $coordId = 11;
+        }
+        if($data == "12"){
+            $gender = "male";
+            $coordId = 12;
+        }
+        if($data == "13"){
+            $gender = "male";
+            $coordId = 13;
+        }
+        if($data == "14"){
+            $gender = "male";
+            $coordId = 14;
+        }
+        if($data == "15"){
+            $gender = "male";
+            $coordId = 15;
+        }
+        if($data == "16"){
+            $gender = "male";
+            $coordId = 16;
+        }
+        if($data == "17"){
+            $gender = "male";
+            $coordId = 17;
+        }
+        if($data == "18"){
+            $gender = "male";
+            $coordId = 18;
+        }
+        if($data == "19"){
+            $gender = "male";
+            $coordId = 19;
+        }
+        if($data == "20"){
+            $gender = "male";
+            $coordId = 20;
+        }
+        if($data == "21"){
+            $gender = "male";
+            $coordId = 21;
+        }
+        if($data == "22"){
+            $gender = "male";
+            $coordId = 22;
+        }
+        if($data == "23"){
+            $gender = "male";
+            $coordId = 23;
+        }
+        if($data == "24"){
+            $gender = "male";
+            $coordId = 24;
+        }
+        if($data == "25"){
+            $gender = "male";
+            $coordId = 25;
+        }
+        if($data == "26"){
+            $gender = "male";
+            $coordId = 26;
+        }
+        if($data == "27"){
+            $gender = "male";
+            $coordId = 27;
+        }
+        if($data == "28"){
+            $gender = "male";
+            $coordId = 28;
+        }
+        if($data == "29"){
+            $gender = "male";
+            $coordId = 29;
+        }
+        if($data == "30"){
+            $gender = "male";
+            $coordId = 30;
+        }
+        if($data == "31"){
+            $gender = "male";
+            $coordId = 31;
+        }
+        if($data == "32"){
+            $gender = "male";
+            $coordId = 32;
+        }
+        if($data == "33"){
+            $gender = "male";
+            $coordId = 33;
+        }
+        if($data == "34"){
+            $gender = "male";
+            $coordId = 34;
+        }
+        if($data == "35"){
+            $gender = "male";
+            $coordId = 35;
+        }
+        if($data == "36"){
+            $gender = "male";
+            $coordId = 36;
+        }
+        if($data == "37"){
+            $gender = "male";
+            $coordId = 37;
+        }
+        if($data == "38"){
+            $gender = "male";
+            $coordId = 38;
+        }
+        if($data == "39"){
+            $gender = "male";
+            $coordId = 39;
+        }
+        if($data == "40"){
+            $gender = "male";
+            $coordId = 40;
+        }
+        if($data == "41"){
+            $gender = "male";
+            $coordId = 41;
+        }
+        if($data == "42"){
+            $gender = "male";
+            $coordId = 42;
+        }
+        if($data == "43"){
+            $gender = "male";
+            $coordId = 43;
+        }
+        if($data == "44"){
+            $gender = "male";
+            $coordId = 44;
+        }
+        if($data == "45"){
+            $gender = "male";
+            $coordId = 45;
+        }
+        if($data == "46"){
+            $gender = "male";
+            $coordId = 46;
+        }
+        if($data == "47"){
+            $gender = "male";
+            $coordId = 47;
+        }
+        if($data == "48"){
+            $gender = "male";
+            $coordId = 48;
+        }
 
         return ["gender" => $gender, "coordId" => $coordId];
     }
