@@ -38,6 +38,8 @@ Route::get('/registerinner', [App\Http\Controllers\MycoordController::class, "re
 
 Route::get('/removeinner', [App\Http\Controllers\MycoordController::class, "removeInner"])->name('removeInner');
 
+Route::get('/removecaps', [App\Http\Controllers\MycoordController::class, "removeCaps"])->name('removeCaps');
+
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 

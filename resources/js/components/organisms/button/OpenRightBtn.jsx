@@ -1,10 +1,11 @@
 import { OpenBtn } from "../../atoms/button/OpenBtn"
+import { OpenBtnCaps } from "../../atoms/button/OpenBtnCaps"
 
 export const OpenRightBtn = () => {
     return (
         <div className="rightContainer">
 
-        <OpenBtn name={'Caps'} icon={<span className="material-icons-outlined">face</span>} />
+        <OpenBtnCaps name={'Caps'} icon={<span className="material-icons-outlined">face</span>} />
 
         <OpenBtn name={'Tops'} icon={<i className="fas fa-tshirt sideFontAwesome"></i>} />
 
