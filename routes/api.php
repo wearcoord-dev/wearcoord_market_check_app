@@ -65,6 +65,11 @@ Route::get('/registerface', function (Request $request) {
 
 Route::post('/registerface', [App\Http\Controllers\UserController::class, "registerFace"]);
 
+Route::get('/addcart', function (Request $request) {
+});
+
+Route::post('/addcart', [App\Http\Controllers\UserController::class, "addCart"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

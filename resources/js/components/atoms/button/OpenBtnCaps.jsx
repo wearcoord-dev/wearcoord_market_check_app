@@ -5,6 +5,7 @@ import { useRemoveCaps } from "../../../hooks/selectwear/useRemoveCaps";
 import { UserContext } from "../../providers/UserProvider";
 import { useGetItem } from "../../../hooks/mycoord/useGetItem";
 import { Backdrop, Fade, makeStyles, Modal } from "@material-ui/core";
+import { usePostItemToCart } from "../../../hooks/mycoord/usePostItemToCart";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -29,6 +30,7 @@ export const OpenBtnCaps = memo((props) => {
     const user = context.contextName;
     const { GetItem, userItemInfo, loadingItem, errorItem } = useGetItem();
     const [htmltext, sethtmltext] = useState();
+    const { PostItemToCart } = usePostItemToCart();
 
     useEffect(() => {
         if (userItemInfo) {
@@ -55,6 +57,15 @@ export const OpenBtnCaps = memo((props) => {
         setOpen(false);
     };
 
+    const onClickCart = () => {
+        const user = context.contextName;
+        if(item){
+            PostItemToCart(type, item, user);
+        }else{
+            alert('capsがありません');
+        }
+    }
+
     return (
         <>
             <div>
@@ -71,8 +82,8 @@ export const OpenBtnCaps = memo((props) => {
                             </button>
                         </div>
                         <hr />
-                        <div action="/main/home" className="detailsBtn" method="get">
-                            <button type="submit">
+                        <div className="detailsBtn" >
+                            <button onClick={onClickCart} type="button">
                                 <span className="material-icons-outlined">
                                     shopping_cart
                 </span>
@@ -114,7 +125,7 @@ export const OpenBtnCaps = memo((props) => {
                                         <p>{userItemInfo[0].brand}</p>
                                         <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
                                     </>
-                                ) : <p></p>}
+                                ) : <p>ウェアがありません</p>}
                             </>
                         ) : <div></div>}
                     </div>

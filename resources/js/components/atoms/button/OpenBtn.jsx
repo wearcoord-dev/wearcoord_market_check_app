@@ -1,8 +1,10 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useGetItem } from "../../../hooks/mycoord/useGetItem";
 import { makeStyles } from '@material-ui/core/styles';
 import { Backdrop, Fade, Modal } from "@material-ui/core";
+import { UserContext } from "../../providers/UserProvider";
+import { usePostItemToCart } from "../../../hooks/mycoord/usePostItemToCart";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -23,15 +25,20 @@ export const OpenBtn = memo((props) => {
     const [open, setOpen] = useState(false);
     const { name, icon, item, type } = props;
     const { GetItem, userItemInfo, loadingItem, errorItem } = useGetItem();
+    const { PostItemToCart } = usePostItemToCart();
     const [ htmltext, sethtmltext ] = useState();
+    const context = useContext(UserContext);
 
-    const history = useHistory();
-
-    const toSelectWear = useCallback(() => history.push("/main/selectwear"));
+    // console.log(context.contextName);
 
     const onClickInfo = () => {
         GetItem(type, item);
         setOpen(true);
+    }
+
+    const onClickCart = () => {
+        const user = context.contextName;
+        PostItemToCart(type, item, user);
     }
 
     useEffect(() => {
@@ -53,8 +60,8 @@ export const OpenBtn = memo((props) => {
                         <p className="btnText" id={"btnTitle" + name}>{name}</p>
                     </summary>
                     <div className="detailsBottom">
-                        <div action="/main/home" className="detailsBtn" method="get">
-                            <button type="submit">
+                        <div  className="detailsBtn">
+                            <button onClick={onClickCart} type="button">
                                 <span className="material-icons-outlined">
                                     shopping_cart
                 </span>
@@ -64,7 +71,7 @@ export const OpenBtn = memo((props) => {
                         </div>
                         <hr />
                         <div className="detailsBtn2" >
-                            <button onClick={onClickInfo} className="searchBtn" type="submit">
+                            <button onClick={onClickInfo} className="searchBtn" type="button">
                                 <span className="material-icons-outlined">
                                     screen_search_desktop
                 </span>
