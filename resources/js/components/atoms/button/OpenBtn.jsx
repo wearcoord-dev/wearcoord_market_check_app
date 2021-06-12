@@ -38,7 +38,6 @@ export const OpenBtn = memo((props) => {
         if (userItemInfo) {
         sethtmltext(userItemInfo[0].moshimoLink);
         }
-
     }, [userItemInfo])
 
     const handleClose = () => {
