@@ -114,7 +114,7 @@ export const OpenBtnCaps = memo((props) => {
                                         <p>{userItemInfo[0].brand}</p>
                                         <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
                                     </>
-                                ) : <p></p>}
+                                ) : <p>ウェアがありません</p>}
                             </>
                         ) : <div></div>}
                     </div>
