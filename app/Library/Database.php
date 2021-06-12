@@ -135,7 +135,9 @@ class Database
             if ($testdesu) {
                 foreach ($colors as $color) {
                     if ($testdesu->$color) {
-                        $data = array('category' => $testdesu->category, 'url' => $testdesu->$color);
+                        $data = array('category' => $testdesu->category, 'url' => $testdesu->$color,
+                        'id' => $id
+                    );
                     }
                 }
             }

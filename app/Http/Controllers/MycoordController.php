@@ -299,4 +299,14 @@ class MycoordController extends Controller
 
         return response()->json($userWear);
     }
+
+    public function getItem(Request $request)
+    {
+        $id = $request['id'];
+        $type = $request['type'];
+
+        $userItem = DB::table( $type . '_rakuten_apis')->where('id', $id)->get();
+
+        return response()->json($userItem);
+    }
 }

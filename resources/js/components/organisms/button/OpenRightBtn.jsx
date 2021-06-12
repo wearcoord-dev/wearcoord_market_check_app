@@ -1,21 +1,30 @@
 import { OpenBtn } from "../../atoms/button/OpenBtn"
 import { OpenBtnCaps } from "../../atoms/button/OpenBtnCaps"
 
-export const OpenRightBtn = () => {
+export const OpenRightBtn = (props) => {
+    const { capsID, topsID, pantsID, shoesID } = props;
+    // console.log(capsID);
+    // console.log(topsID);
+    // console.log(pantsID);
+    // console.log(shoesID);
+
     return (
         <div className="rightContainer">
 
-        <OpenBtnCaps name={'Caps'} icon={<span className="material-icons-outlined">face</span>} />
+        <OpenBtnCaps item={capsID} name={'Caps'} type={'caps'} icon={<span className="material-icons-outlined"
+        >face</span>} />
 
-        <OpenBtn name={'Tops'} icon={<i className="fas fa-tshirt sideFontAwesome"></i>} />
+        <OpenBtn item={topsID} name={'Tops'} type={'tops'} icon={<i className="fas fa-tshirt sideFontAwesome"
+        ></i>} />
 
-        <OpenBtn name={'Pants'} icon={<span className="material-icons-outlined">
+        <OpenBtn item={pantsID} name={'Pants'} type={'pants'} icon={<span className="material-icons-outlined"
+        >
                     airline_seat_legroom_extra
     </span>} />
 
         {/* <OpenBtn name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} /> */}
 
-        <OpenBtn name={'Shoes'} icon={<i className="fas fa-shoe-prints sideFontAwesome"></i>} />
+        <OpenBtn item={shoesID} name={'Shoes'} type={'shoes'} icon={<i className="fas fa-shoe-prints sideFontAwesome"></i>} />
     </div>
     )
 }

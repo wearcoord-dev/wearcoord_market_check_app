@@ -1,20 +1,59 @@
-import { memo, useCallback, useContext } from "react";
+import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { useRemoveCaps } from "../../../hooks/selectwear/useRemoveCaps";
 import { UserContext } from "../../providers/UserProvider";
+import { useGetItem } from "../../../hooks/mycoord/useGetItem";
+import { Backdrop, Fade, makeStyles, Modal } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
 
 export const OpenBtnCaps = memo((props) => {
-    const { name, icon } = props;
+    const classes = useStyles();
+    const [open, setOpen] = useState(false);
+    const { name, icon, item, type } = props;
     const { RemoveCaps } = useRemoveCaps();
     const context = useContext(UserContext);
     const user = context.contextName;
+    const { GetItem, userItemInfo, loadingItem, errorItem } = useGetItem();
+    const [htmltext, sethtmltext] = useState();
+
+    useEffect(() => {
+        if (userItemInfo) {
+
+            // capがあったら取得
+            if (userItemInfo[0]) {
+                sethtmltext(userItemInfo[0].moshimoLink);
+            }
+        }
+    }, [userItemInfo])
 
     const removeCaps = () => {
         RemoveCaps(user);
     };
 
     const history = useHistory();
+
+    const onClickInfo = () => {
+        GetItem(type, item);
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <>
@@ -32,19 +71,55 @@ export const OpenBtnCaps = memo((props) => {
                             </button>
                         </div>
                         <hr />
-                        <form action="/main/home" className="detailsBtn" method="get">
+                        <div action="/main/home" className="detailsBtn" method="get">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     shopping_cart
                 </span>
-                                <p className="btnText">買う</p>
+                                <p className="btnText">カートに入れる</p>
                                 <input type="hidden" name="type" value={name} />
                             </button>
-
-                        </form>
+                        </div>
+                        <hr />
+                        <div className="detailsBtn2" >
+                            <button onClick={onClickInfo} className="searchBtn" type="submit">
+                                <span className="material-icons-outlined">
+                                    screen_search_desktop
+                </span>
+                                <p className="btnText">情報を見る</p>
+                            </button>
+                        </div>
                     </div>
                 </details>
             </div>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        {userItemInfo ? (
+                            <>
+                                {userItemInfo[0] ? (
+                                    <>
+                                        <p>{userItemInfo[0].brand}</p>
+                                        <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
+                                    </>
+                                ) : <p></p>}
+                            </>
+                        ) : <div></div>}
+                    </div>
+                </Fade>
+            </Modal>
         </>
     )
 })
