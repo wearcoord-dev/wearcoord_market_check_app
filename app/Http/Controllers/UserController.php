@@ -43,4 +43,25 @@ class UserController extends Controller
 
         return 1;
     }
+
+    public function getCartItem(Request $request)
+    {
+        $type = $request['type'];
+        $userId = $request['id'];
+        $DBitems = [];
+
+        $checkItems = DB::table('userCart')->where('user_id', $userId)->where('type', $type)->get();
+
+        foreach($checkItems as $checkItem){
+
+            $getItem = DB::table( $type . '_rakuten_apis')->where('id', $checkItem->id)->first();
+
+            // nullじゃなければ格納
+            if($getItem){
+                $DBitems[] = $getItem;
+            }
+        }
+
+        return response()->json($DBitems);
+    }
 }

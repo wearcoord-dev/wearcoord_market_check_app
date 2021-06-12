@@ -70,6 +70,8 @@ Route::get('/addcart', function (Request $request) {
 
 Route::post('/addcart', [App\Http\Controllers\UserController::class, "addCart"]);
 
+Route::get('/getcartitem', [App\Http\Controllers\UserController::class, "getCartItem"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

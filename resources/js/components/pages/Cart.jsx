@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { CartBox } from '../molecules/cart/CartBox';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -20,7 +21,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box p={3}>
-            <Typography>{children}</Typography>
+            {children}
           </Box>
         )}
       </div>
@@ -81,16 +82,24 @@ export const Cart = memo(() => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          Item One
+          <CartBox
+          type={'caps'}
+           />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+        <CartBox
+          type={'tops'}
+           />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
+        <CartBox
+          type={'pants'}
+           />
         </TabPanel>
         <TabPanel value={value} index={3}>
-          Item Four
+        <CartBox
+          type={'shoes'}
+           />
         </TabPanel>
         {/* <TabPanel value={value} index={4}>
           Item Five
