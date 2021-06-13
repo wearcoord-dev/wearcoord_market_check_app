@@ -8,7 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     root: {
       minWidth: 275,
-      margin: "10px 0",
+      margin: "10px auto",
+      maxWidth: "300px",
     },
   });
 
