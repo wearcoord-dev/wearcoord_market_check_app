@@ -1,4 +1,4 @@
-import { memo, useContext, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandShoes } from "./searchBrand/SearchBrandShoes";
 import { SearchColor } from "./SearchColor";
@@ -10,20 +10,34 @@ export const SearchItemShoes = memo((props) => {
 
     const context = useContext(UserContext);
 
+    useEffect((props) => {
+        console.log(props);
+        // if (props !== undefined) {
+            let category = "";
+
+        if(context.contextName.gender){
+            category = "208025";
+        }else{
+            category = "565819";
+        }
+
+        const data = {
+            wear : "shoes",
+            brand : value,
+            color : valueColor,
+            category: category,
+        }
+
+        onClickFetchShoes(data);
+        // }
+    }, [value, valueColor]);
+
     return (
         <>
-            <form>
-                <input type="hidden" wear="shoes" />
-                <input type="hidden" id="getbrand" value={value} />
-                <input type="hidden" id="getcolor" value={valueColor} />
-                {context.contextName.gender == 'male' ? <input type="hidden" id="getCategory" value="208025" /> : <input type="hidden" id="getCategory" value="565819" />}
-                <input type="hidden" id="type" value="shoes" />
+            <div>
                 <SearchBrandShoes setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
-                <div className="divBtn">
-                    <button className="submitBtn" type="button" onClick={onClickFetchShoes}>送信</button>
-                </div>
-            </form>
+            </div>
         </>
     )
 })

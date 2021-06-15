@@ -1,4 +1,4 @@
-import { memo, useContext, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { useAllCaps } from "../../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandCaps } from "./searchBrand/SearchBrandCaps";
@@ -13,21 +13,35 @@ export const SearchItemCaps = memo((props) => {
     // console.log(context.contextName.id);
     // console.log('表示してるぞ！！');
 
+    useEffect((props) => {
+        console.log(props);
+        // if (props !== undefined) {
+            let category = "";
+
+        if(context.contextName.gender){
+            category = "506269";
+        }else{
+            category = "565818";
+        }
+
+        const data = {
+            wear : "caps",
+            brand : value,
+            color : valueColor,
+            category: category,
+        }
+
+        onClickFetchCaps(data);
+        // }
+    }, [value, valueColor]);
+
     return (
         <>
-            <form>
-                <input type="hidden" wear="caps" />
-                <input type="hidden" id="getbrand" value={value} />
-                <input type="hidden" id="getcolor" value={valueColor} />
-                {context.contextName.gender == 'male' ? <input type="hidden" id="getCategory" value="506269" /> : <input type="hidden" id="getCategory" value="565818" />}
-                <input type="hidden" id="type" value="caps" />
-                <SearchBrandCaps setValue={setValue} />
+            <div>
+                <SearchBrandCaps setValue={setValue}
+                 />
                 <SearchColor setValueColor={setValueColor} />
-
-                <div className="divBtn">
-                    <button  className="submitBtn" type="button" onClick={onClickFetchCaps}>送信</button>
-                </div>
-            </form>
+            </div>
         </>
     )
 })
