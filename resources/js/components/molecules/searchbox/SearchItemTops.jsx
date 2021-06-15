@@ -1,4 +1,4 @@
-import { memo, useContext, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandTops } from "./searchBrand/SearchBrandTops";
 import { SearchColor } from "./SearchColor";
@@ -14,23 +14,27 @@ export const SearchItemTops = memo((props) => {
 
     const context = useContext(UserContext);
 
+    useEffect((props) => {
+        console.log(props);
+
+        const data = {
+            wear : "tops",
+            brand : value,
+            color : valueColor,
+            category: valueCategory,
+        }
+
+        onClickFetchTops(data);
+    }, [value, valueColor]);
+
     return (
         <>
-            <form>
-                <input type="hidden" wear="tops" />
-                <input type="hidden" id="getbrand" value={value} />
-                <input type="hidden" id="getcolor" value={valueColor} />
-                <input type="hidden" id="getCategory" value={valueCategory} />
-                <input type="hidden" id="type" value="tops" />
+            <div>
                 <SearchBrandTops setValue={setValue} />
                 <SearchColor setValueColor={setValueColor} />
 
                 {context.contextName.gender == 'male' ? <SearchCategoryTops setValueCategory={setValueCategory} /> : <SearchCategoryTopsFemale setValueCategory={setValueCategory} />}
-
-                <div className="divBtn">
-                    <button className="submitBtn" type="button" onClick={onClickFetchTops}>送信</button>
-                </div>
-            </form>
+            </div>
         </>
     )
 })
