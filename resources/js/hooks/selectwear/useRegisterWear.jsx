@@ -9,12 +9,32 @@ export const useRegisterWear = () => {
         console.log('OK');
         // console.log(props);
         // console.log(props.caps.id);
-        const caps = props.caps.id;
-        const tops = props.tops.id;
-        const pants = props.pants.id;
-        const shoes = props.shoes.id;
+        let caps = '';
+        let tops = '';
+        let pants = '';
+        let shoes = '';
+        if(props.caps){
+            caps = props.caps.id;
+        }else{
+            caps = null;
+        }
+        if(props.tops){
+            tops = props.tops.id;
+        }else{
+            tops = null;
+        }
+        if(props.pants){
+            pants = props.pants.id;
+        }else{
+            pants = null;
+        }
+        if(props.shoes){
+            shoes = props.shoes.id;
+        }else{
+            shoes = null;
+        }
+
         const userid = props.userid.id;
-        // console.log(userid.id);
 
         axios.get("/api/registerwear", {
             params: {
