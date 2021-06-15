@@ -146,10 +146,37 @@ class MycoordController extends Controller
     public function registerWear(Request $request)
     {
         $user_id = $request->input('userid');
-        $caps = $request->input('caps');
-        $tops = $request->input('tops');
-        $pants = $request->input('pants');
-        $shoes = $request->input('shoes');
+        // $caps = $request->input('caps');
+        // $tops = $request->input('tops');
+        // $pants = $request->input('pants');
+        // $shoes = $request->input('shoes');
+
+        // ウェアが選択されていれば反映、なければ前のデータを取得
+
+        if($request->input('caps')){
+            $caps = $request->input('caps');
+        }else{
+            $caps = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('caps');
+        }
+
+        if($request->input('tops')){
+            $tops = $request->input('tops');
+        }else{
+            $tops = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('tops');
+        }
+
+        if($request->input('pants')){
+            $pants = $request->input('pants');
+        }else{
+            $pants = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('pants');
+        }
+
+        if($request->input('shoes')){
+            $shoes = $request->input('shoes');
+        }else{
+            $shoes = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('shoes');
+        }
+
 
         $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
 
