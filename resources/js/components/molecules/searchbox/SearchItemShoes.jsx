@@ -15,7 +15,7 @@ export const SearchItemShoes = memo((props) => {
         // if (props !== undefined) {
             let category = "";
 
-        if(context.contextName.gender){
+        if(context.contextName.gender == 'male'){
             category = "208025";
         }else{
             category = "565819";
