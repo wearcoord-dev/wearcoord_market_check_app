@@ -304,8 +304,11 @@ class MycoordController extends Controller
 
         $userWear = DB::table('userSelectCoord')->where('user_id', $userId)->first();
 
+        $userGender = DB::table('users')->where('id', $userId)->value('gender');
+
         DB::table('userCreateCoord')->insert([
             'user_id' => $userId,
+            'gender' => $userGender,
             'caps' => $userWear->caps,
             'tops' => $userWear->tops,
             'pants' => $userWear->pants,

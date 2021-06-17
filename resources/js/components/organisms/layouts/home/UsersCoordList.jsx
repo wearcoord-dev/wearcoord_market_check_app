@@ -1,6 +1,7 @@
-import { memo, useEffect } from "react";
+import { memo, useContext, useEffect } from "react";
 import { useGetUserCoord } from "../../../../hooks/home/useGetUserCoord";
 import { makeStyles } from '@material-ui/core/styles';
+import { UserContext } from "../../../providers/UserProvider";
 
 
 const useStyles = makeStyles({
@@ -36,12 +37,16 @@ const useStyles = makeStyles({
 export const UsersCoordList = memo(() => {
     const { GetUserCoord, userCoordList, loadingUserCoordList, errorUserCoordList } = useGetUserCoord();
     const classes = useStyles();
-
+    const context = useContext(UserContext);
+    const userData = context.contextName;
 
     useEffect(() => {
-        console.log('useEffectが実行されました');
-        GetUserCoord();
-    }, []);
+        if (userData !== undefined) {
+            // console.log('useEffectが実行されました');
+            const gender = userData.gender;
+            GetUserCoord(gender);
+        }
+    }, [userData]);
 
     return (
         <>
