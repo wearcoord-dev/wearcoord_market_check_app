@@ -18,4 +18,12 @@ class MainHomeController extends Controller
 
 }
 
+public function getRecoCoord(Request $request)
+{
+    $gender = $request['gender'];
+    $recoWear = DB::table('wc_recommend_outfits')->where('gender', $gender)->orderBy('id', 'desc')->take(5)->get();
+
+    return response()->json($recoWear);
+}
+
 }

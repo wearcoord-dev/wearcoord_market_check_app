@@ -74,6 +74,8 @@ Route::get('/getcartitem', [App\Http\Controllers\UserController::class, "getCart
 
 Route::get('/getusercoord', [App\Http\Controllers\MainHomeController::class, "getUserCoord"]);
 
+Route::get('/getrecocoord', [App\Http\Controllers\MainHomeController::class, "getRecoCoord"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);
