@@ -4,7 +4,6 @@ import { UsersCoordList } from "../organisms/layouts/home/UsersCoordList";
 export const Home = memo(() => {
     return (
         <>
-        <p>homedayo</p>
         <UsersCoordList />
         </>
     )
