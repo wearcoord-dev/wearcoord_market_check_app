@@ -11,7 +11,8 @@ class MainHomeController extends Controller
 
     public function getUserCoord(Request $request)
 {
-    $userWear = DB::table('userCreateCoord')->orderBy('id', 'desc')->take(5)->get();
+    $gender = $request['gender'];
+    $userWear = DB::table('userCreateCoord')->where('gender', $gender)->orderBy('id', 'desc')->take(5)->get();
 
     return response()->json($userWear);
 

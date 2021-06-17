@@ -8,7 +8,7 @@ export const useGetUserCoord = () => {
 
 
 
-    const GetUserCoord = () => {
+    const GetUserCoord = (gender) => {
         setLoadingUserCoordList(true);
         setErrorUserCoordList(false);
 
@@ -17,9 +17,10 @@ export const useGetUserCoord = () => {
 
         axios.get("/api/getusercoord", {
             params: {
+                gender: gender,
               }
         }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setUserCoordList(res.data);
           }).catch(() => {
             setErrorUserCoordList(true);
