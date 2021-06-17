@@ -1,7 +1,11 @@
 import { memo } from "react";
+import { UsersCoordList } from "../organisms/layouts/home/UsersCoordList";
 
 export const Home = memo(() => {
     return (
-        <p>homeです</p>
+        <>
+        <p>homedayo</p>
+        <UsersCoordList />
+        </>
     )
 })
