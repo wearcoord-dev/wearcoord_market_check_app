@@ -52,7 +52,7 @@ export const UsersCoordList = memo(() => {
         <>
         <div>
             <div className={classes.h2parrent}>
-                <h2 className={classes.h2title}>ユーザーの最新コーデ</h2>
+                <h2 className={classes.h2title}>みんなの最新コーデ</h2>
             </div>
             <div>
                 {userCoordList ? (errorUserCoordList ? (<p>データの取得に失敗しました</p>) : loadingUserCoordList ? (<p>Loading...</p>) : (
