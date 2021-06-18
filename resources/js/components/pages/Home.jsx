@@ -6,9 +6,11 @@ import { WcRecommendList } from "../organisms/layouts/home/WcRecommendList";
 export const Home = memo(() => {
     return (
         <>
-        <HomeTopSection />
-        <UsersCoordList />
-        <WcRecommendList />
+            <div style={{ marginBottom: "70px" }}>
+                <HomeTopSection />
+                <UsersCoordList />
+                <WcRecommendList />
+            </div>
         </>
     )
 })
