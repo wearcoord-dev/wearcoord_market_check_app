@@ -29,7 +29,6 @@ export const OpenBtn = memo((props) => {
     const [ htmltext, sethtmltext ] = useState();
     const context = useContext(UserContext);
 
-    // console.log(context.contextName);
 
     const onClickInfo = () => {
         GetItem(type, item);
@@ -37,6 +36,7 @@ export const OpenBtn = memo((props) => {
     }
 
     const onClickCart = () => {
+        alert(item);
         const user = context.contextName;
         PostItemToCart(type, item, user);
     }

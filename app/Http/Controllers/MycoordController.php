@@ -153,27 +153,27 @@ class MycoordController extends Controller
 
         // ウェアが選択されていれば反映、なければ前のデータを取得
 
-        if($request->input('caps')){
+        if ($request->input('caps')) {
             $caps = $request->input('caps');
-        }else{
+        } else {
             $caps = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('caps');
         }
 
-        if($request->input('tops')){
+        if ($request->input('tops')) {
             $tops = $request->input('tops');
-        }else{
+        } else {
             $tops = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('tops');
         }
 
-        if($request->input('pants')){
+        if ($request->input('pants')) {
             $pants = $request->input('pants');
-        }else{
+        } else {
             $pants = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('pants');
         }
 
-        if($request->input('shoes')){
+        if ($request->input('shoes')) {
             $shoes = $request->input('shoes');
-        }else{
+        } else {
             $shoes = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('shoes');
         }
 
@@ -335,7 +335,16 @@ class MycoordController extends Controller
         $id = $request['id'];
         $type = $request['type'];
 
-        $userItem = DB::table( $type . '_rakuten_apis')->where('id', $id)->get();
+        $userItem = DB::table($type . '_rakuten_apis')->where('id', $id)->get();
+
+        return response()->json($userItem);
+    }
+
+    public function getUserFavCoord(Request $request)
+    {
+        $id = $request['id'];
+
+        $userItem = DB::table('userCreateCoord')->where('id', $id)->first();
 
         return response()->json($userItem);
     }

@@ -10,6 +10,7 @@ import { MainSelectSocksWear } from "../../organisms/layouts/selectWear/MainSele
 import { SecondWear } from "../../providers/SecondWear";
 import { Settings } from "../../pages/setPage/Settings";
 import { SetUserFace } from "../../pages/setPage/SetUserFace";
+import { Details } from "../../pages/Details";
 
 export const PageRoute = [
   {
@@ -64,6 +65,11 @@ export const PageRoute = [
     path: "/settings/face",
     exact: false,
     children: <SetUserFace />
+  },
+  {
+    path: "/detail",
+    exact: false,
+    children: <Details />
   },
   {
     path: "*",
