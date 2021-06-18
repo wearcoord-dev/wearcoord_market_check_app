@@ -54,7 +54,7 @@ class UserController extends Controller
 
         foreach($checkItems as $checkItem){
 
-            $getItem = DB::table( $type . '_rakuten_apis')->where('id', $checkItem->id)->first();
+            $getItem = DB::table( $type . '_rakuten_apis')->where('id', $checkItem->item_id)->first();
 
             // nullじゃなければ格納
             if($getItem){

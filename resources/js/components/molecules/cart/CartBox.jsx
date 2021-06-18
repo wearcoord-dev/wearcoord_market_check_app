@@ -11,6 +11,9 @@ const useStyles = makeStyles({
       margin: "10px auto",
       maxWidth: "300px",
     },
+    cardwrap:{
+        margin: "70px 0",
+    }
   });
 
 export const CartBox = memo((props) => {
@@ -30,6 +33,7 @@ export const CartBox = memo((props) => {
 
     return (
         <>
+        <div className={classes.cardwrap}>
             {userItemCartInfo ? (
                 <>
                     {userItemCartInfo.map((item) => (
@@ -40,6 +44,7 @@ export const CartBox = memo((props) => {
                     ))}
                 </>
             ) : <p>ありません</p>}
+        </div>
         </>
     )
 })

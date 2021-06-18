@@ -1,8 +1,10 @@
 import { CircularProgress, makeStyles } from "@material-ui/core";
-import { memo, useContext, useEffect } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { useGetUserFavCoord } from "../../../../hooks/favorite/useGetUserFavCoord";
+import { useOpenBtnFuncFav } from "../../../../hooks/favorite/useOpenBtnFuncFav";
 import { UserContext } from "../../../providers/UserProvider";
 import { OpenRightBtn } from "../../button/OpenRightBtn";
+import { OpenRightBtnFav } from "../../button/OpenRightBtnFav";
 
 const useStyles = makeStyles((theme) => ({
     imgbox: {
@@ -28,6 +30,12 @@ export const Detail = memo((props) => {
     const classes = useStyles();
     const context = useContext(UserContext);
     const userCheck = context.contextName;
+    const { openBtnFuncFav } = useOpenBtnFuncFav();
+
+    const [ capsIDValue, setCapsID] = useState(null);
+    const [ topsIDValue, setTopsID] = useState(null);
+    const [ pantsIDValue, setPantsID] = useState(null);
+    const [ shoesIDValue, setShoesID] = useState(null);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -36,7 +44,29 @@ export const Detail = memo((props) => {
         }
     }, [userCheck]);
 
-    console.log(userCoordList);
+    useEffect(() => {
+        if (userCoordList) {
+
+            // nullかどうか
+            if(userCoordList.caps){
+                let capsID = userCoordList.caps;
+                setCapsID(capsID);
+            }
+            let topsID = userCoordList.tops;
+            let pantsID = userCoordList.pants;
+            let shoesID = userCoordList.shoes;
+
+            setTopsID(topsID);
+            setPantsID(pantsID);
+            setShoesID(shoesID);
+        }
+    }, [userCoordList]);
+
+    useEffect(() => {
+        if (userCoordList) {
+        openBtnFuncFav()
+        }
+    },[userCoordList]);
 
     return (
         <>
@@ -46,7 +76,12 @@ export const Detail = memo((props) => {
                     <div className={classes.imgbox}>
                         <img className={classes.img} src={userCoordList.img} alt="" />
                     </div>
-                    <OpenRightBtn />
+                    <OpenRightBtnFav
+                        capsID={capsIDValue}
+                        topsID={topsIDValue}
+                        pantsID={pantsIDValue}
+                        shoesID={shoesIDValue}
+                    />
                 </div>
             ) : loadingUserCoordList ? <CircularProgress /> : (<p></p>)}
         </>
