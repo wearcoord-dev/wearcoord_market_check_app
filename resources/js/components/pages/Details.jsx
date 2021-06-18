@@ -8,15 +8,15 @@ export const Details = memo(() => {
     console.log(location.state.id);
     // const history = useHistory();
     // console.log(history.location.state.id);
+    const coordid = location.state.id;
 
     return (
         <>
-            <div className="displayFlex relative">
-                <UserWear>
-                    {/* <p>{JSON.stringify(props)}</p> */}
-                    <Detail />
-                </UserWear>
-            </div>
+            <UserWear>
+                <Detail
+                    coordid={coordid}
+                />
+            </UserWear>
         </>
     )
 })
