@@ -36,7 +36,6 @@ export const OpenBtn = memo((props) => {
     }
 
     const onClickCart = () => {
-        alert(item);
         const user = context.contextName;
         PostItemToCart(type, item, user);
     }
