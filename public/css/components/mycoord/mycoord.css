@@ -135,6 +135,15 @@ details[open] .detailsBottom {
   width: 40%;
   min-width: 200px;
   margin: auto;
+  position: relative;
+}
+
+.clickCover {
+  height: 400px;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .rightContainer {

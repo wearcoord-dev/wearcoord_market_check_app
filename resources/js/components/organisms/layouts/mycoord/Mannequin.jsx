@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../providers/UserWear";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
 import html2canvas from 'html2canvas';
@@ -6,6 +6,7 @@ import { Fade, makeStyles, Modal } from "@material-ui/core";
 import Backdrop from '@material-ui/core/Backdrop';
 import { useRegisterCoord } from "../../../../hooks/mycoord/useRegisterCoord";
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,14 +28,18 @@ export const Mannequin = memo(() => {
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
     const [mannequinUrl, setUrl] = useState(null);
     const { RegisterCoord } = useRegisterCoord();
+    const history = useHistory();
+
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    console.log(userCheck);
+    // console.log(userCheck);
+
+    const toSelectWear =useCallback(() => history.push("/main/selectwear") );
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
+            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -69,7 +74,7 @@ export const Mannequin = memo(() => {
     };
 
     const registerCoord = (props) => {
-        console.log("OK");
+        // console.log("OK");
         RegisterCoord(props,context);
     }
 
@@ -78,10 +83,11 @@ export const Mannequin = memo(() => {
         <>
             {userWearInfo ? (errorWear ? (
                 <p>error</p>
-            ) : loadingWear ? (
-                <p>loading</p>
-            ) : (
-                <div className="centerContainer" id="centerContainer">
+                ) : loadingWear ? (
+                    <p>loading</p>
+                    ) : (
+                        <div className="centerContainer" id="centerContainer">
+                    <div className="clickCover" onClick={toSelectWear} ></div>
                     {mannequinUrl ? (<div id="mannequinImgCanvas" className="mannequinImg" style={{
                         'backgroundImage': mannequinUrl.backgroundImage,
                         maxWidth:'200px',
