@@ -20,7 +20,7 @@ export const useGetUserFavCoord = () => {
                 id: coordid,
               }
         }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setUserCoordList(res.data);
           }).catch(() => {
             setErrorUserCoordList(true);

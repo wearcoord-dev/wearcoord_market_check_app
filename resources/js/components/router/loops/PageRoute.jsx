@@ -10,8 +10,9 @@ import { MainSelectSocksWear } from "../../organisms/layouts/selectWear/MainSele
 import { SecondWear } from "../../providers/SecondWear";
 import { Settings } from "../../pages/setPage/Settings";
 import { SetUserFace } from "../../pages/setPage/SetUserFace";
-import { Details } from "../../pages/Details";
-import { WcDetails } from "../../pages/WcDetails";
+import { Details } from "../../pages/details/Details";
+import { WcDetails } from "../../pages/details/WcDetails";
+import { LarossoDetails } from "../../pages/details/LarossoDetails";
 
 export const PageRoute = [
   {
@@ -76,6 +77,11 @@ export const PageRoute = [
     path: "/wcdetail",
     exact: false,
     children: <WcDetails />
+  },
+  {
+    path: "/larosso2021",
+    exact: false,
+    children: <LarossoDetails />
   },
   {
     path: "*",

@@ -357,4 +357,27 @@ class MycoordController extends Controller
 
         return response()->json($userItem);
     }
+
+    public function getLarosso2021(Request $request)
+    {
+        $gender = $request['gender'];
+        $type = $request['type'];
+
+        $category = '';
+
+        if($type == 'tops'){
+            if($gender == 'male'){
+                $category = '508759';
+            }
+        }
+        if($type == 'pants'){
+            if($gender == 'male'){
+                $category = '508772';
+            }
+        }
+
+        $userItem = DB::table($type . '_rakuten_apis')->where('brand', 'ralosso')->where('category', $category)->get();
+
+        return response()->json($userItem);
+    }
 }
