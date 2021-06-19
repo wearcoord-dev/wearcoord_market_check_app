@@ -11,6 +11,7 @@ import { SecondWear } from "../../providers/SecondWear";
 import { Settings } from "../../pages/setPage/Settings";
 import { SetUserFace } from "../../pages/setPage/SetUserFace";
 import { Details } from "../../pages/Details";
+import { WcDetails } from "../../pages/WcDetails";
 
 export const PageRoute = [
   {
@@ -70,6 +71,11 @@ export const PageRoute = [
     path: "/detail",
     exact: false,
     children: <Details />
+  },
+  {
+    path: "/wcdetail",
+    exact: false,
+    children: <WcDetails />
   },
   {
     path: "*",
