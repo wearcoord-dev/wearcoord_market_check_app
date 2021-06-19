@@ -370,6 +370,11 @@ class MycoordController extends Controller
                 $category = '508759';
             }
         }
+        if($type == 'pants'){
+            if($gender == 'male'){
+                $category = '508772';
+            }
+        }
 
         $userItem = DB::table($type . '_rakuten_apis')->where('brand', 'ralosso')->where('category', $category)->get();
 

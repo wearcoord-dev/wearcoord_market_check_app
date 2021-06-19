@@ -14,11 +14,12 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
 import { LarossoWearSearch } from "./components/LarossoWearSearch";
 import { useGetLarossoItem } from "../../../../../hooks/home/larosso/useGetLarossoItem";
+import { useGetLarossoPants } from "../../../../../hooks/home/larosso/useGetLarossoPants";
 
 export const LarossoSelect = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getLarossoItem, userTops, loadingLarossoTops, errorLarossoTops } = useGetLarossoItem();
-    const { getPants, userPants, loadingPants, errorPants } = useAllPants();
+    const { getLarossoPants, userPants, loadingLarossoPants, errorLarossoPants } = useGetLarossoPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const { RegisterWear } = useRegisterWear();
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
@@ -39,7 +40,15 @@ export const LarossoSelect = memo(() => {
         }
         getLarossoItem(data);
     };
-    const onClickFetchPants = (props) => getPants(props);
+
+    const onClickFetchPants = (props) => {
+        const data = {
+             "type" : "pants",
+             "gender" : props,
+        }
+        getLarossoPants(data);
+    };
+    // const onClickFetchPants = (props) => getPants(props);
     // const onClickFetchShoes = (props) => getShoes(props);
 
     const onClickRegisterWear = () => {
@@ -87,7 +96,7 @@ export const LarossoSelect = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
-    console.log(userTops);
+    // console.log(userPants);
 
     return (
         <>
@@ -172,7 +181,7 @@ export const LarossoSelect = memo(() => {
                 {userPants.length ?
                     (error ? (
                         <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                    ) : loadingPants ? (
+                    ) : loadingLarossoPants ? (
                         <p>Loading...</p>
                     ) : (
                         <>

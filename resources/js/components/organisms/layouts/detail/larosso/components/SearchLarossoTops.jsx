@@ -8,7 +8,6 @@ export const SearchLarossoTops = memo((props) => {
 
     useEffect(() => {
         if (context !== undefined) {
-            // console.log('useEffectが実行されました');
             const gender = context.contextName.gender;
             onClickFetchTops(gender);
         };

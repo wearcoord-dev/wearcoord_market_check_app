@@ -9,6 +9,7 @@ import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
 // import { SearchItemShoes } from "./SearchItemShoes";
 import CloseIcon from '@material-ui/icons/Close';
 import { SearchLarossoTops } from "./SearchLarossoTops";
+import { SearchLarossoPants } from "./SearchLarossoPants";
 
 
 function TabPanel(props) {
@@ -96,13 +97,14 @@ export const LarossoWearSearch = memo((props) => {
                         {/* <SearchItemCaps onClickFetchCaps={onClickFetchCaps} /> */}
                     {/* </TabPanel> */}
                     <TabPanel value={value} index={0}>
-                        {/* <SearchItemTops onClickFetchTops={onClickFetchTops} /> */}
                         <SearchLarossoTops
                         onClickFetchTops={onClickFetchTops}
                          />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        {/* <SearchItemPants onClickFetchPants={onClickFetchPants} /> */}
+                    <SearchLarossoPants
+                        onClickFetchPants={onClickFetchPants}
+                         />
                     </TabPanel>
                     {/* <TabPanel value={value} index={3}>
                         <div>test4</div>
