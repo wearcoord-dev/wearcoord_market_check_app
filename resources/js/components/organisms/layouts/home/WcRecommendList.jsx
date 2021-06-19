@@ -2,6 +2,7 @@ import { memo, useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
 import { useGetRecoCoord } from "../../../../hooks/home/useGetRecoCoord";
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -39,6 +40,7 @@ export const WcRecommendList = memo(() => {
     const classes = useStyles();
     const context = useContext(UserContext);
     const userData = context.contextName;
+    const history = useHistory();
 
     useEffect(() => {
         if (userData !== undefined) {
@@ -47,6 +49,14 @@ export const WcRecommendList = memo(() => {
             GetRecoCoord(gender);
         }
     }, [userData]);
+
+    const onClickDetailCoord = (props) => {
+        console.log(props);
+        history.push({
+            pathname: '/main/wcdetail',
+            state: { id: props }
+        });
+    }
 
     return (
         <>
@@ -59,8 +69,10 @@ export const WcRecommendList = memo(() => {
                     <>
                         <ul className={classes.ul}>
                             {recoCoordList.map((item) => (
-                                <li className={classes.li} key={item.id}>
-                                    <img className={classes.img} src={item.outfitSetImg} alt="" />
+                                <li className={classes.li} key={item.id}
+                                onClick={onClickDetailCoord.bind(this, item.id)}
+                                >
+                                    <img className={classes.img} src={item.img} alt="" />
                                 </li>
                             ))}
                         </ul>

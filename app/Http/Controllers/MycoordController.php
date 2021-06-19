@@ -348,4 +348,13 @@ class MycoordController extends Controller
 
         return response()->json($userItem);
     }
+
+    public function getWcFavCoord(Request $request)
+    {
+        $id = $request['id'];
+
+        $userItem = DB::table('wc_recommend_outfits')->where('id', $id)->first();
+
+        return response()->json($userItem);
+    }
 }

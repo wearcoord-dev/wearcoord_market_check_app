@@ -76,8 +76,9 @@ Route::get('/getusercoord', [App\Http\Controllers\MainHomeController::class, "ge
 
 Route::get('/getrecocoord', [App\Http\Controllers\MainHomeController::class, "getRecoCoord"]);
 
-
 Route::get('/getuserfavcoord', [App\Http\Controllers\MycoordController::class, "getUserFavCoord"]);
+
+Route::get('/getwcfavcoord', [App\Http\Controllers\MycoordController::class, "getWcFavCoord"]);
 
 // Route::post('/registercoord', function (Request $request) {
 
