@@ -2,6 +2,7 @@ import { memo, useContext, useEffect } from "react";
 import { useGetUserCoord } from "../../../../hooks/home/useGetUserCoord";
 import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -39,6 +40,7 @@ export const UsersCoordList = memo(() => {
     const classes = useStyles();
     const context = useContext(UserContext);
     const userData = context.contextName;
+    const history = useHistory();
 
     useEffect(() => {
         if (userData !== undefined) {
@@ -47,6 +49,13 @@ export const UsersCoordList = memo(() => {
             GetUserCoord(gender);
         }
     }, [userData]);
+
+    const onClickDetailCoord = (props) => {
+        history.push({
+            pathname: '/main/detail',
+            state: { id: props }
+        });
+    }
 
     return (
         <>
@@ -59,7 +68,9 @@ export const UsersCoordList = memo(() => {
                     <>
                         <ul className={classes.ul}>
                             {userCoordList.map((item) => (
-                                <li className={classes.li} key={item.id}>
+                                <li className={classes.li} key={item.id}
+                                onClick={onClickDetailCoord.bind(this, item.id)}
+                                >
                                     <img className={classes.img} src={item.img} alt="" />
                                 </li>
                             ))}
