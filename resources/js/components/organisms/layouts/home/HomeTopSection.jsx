@@ -1,6 +1,7 @@
 import { memo } from "react";
 import banner1 from "/img/banner/lalosso-banner.png";
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -30,6 +31,14 @@ const useStyles = makeStyles({
 
 export const HomeTopSection = memo(() => {
     const classes = useStyles();
+    const history = useHistory();
+
+
+const onClickLarossoCoord = () => {
+    history.push({
+        pathname: '/main/larosso2021',
+    });
+}
 
     return (
         <>
@@ -37,9 +46,11 @@ export const HomeTopSection = memo(() => {
                 <h2 className={classes.h2title}>最新ラロッソウェア特集</h2>
             </div>
             <div>
-                <a className={classes.wrapper}>
+                <div className={classes.wrapper}
+                onClick={onClickLarossoCoord}
+                >
                     <img className={classes.img} src={banner1} alt="" />
-                </a>
+                </div>
             </div>
         </>
     )

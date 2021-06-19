@@ -20,7 +20,7 @@ export const useGetWcFavCoord = () => {
                 id: coordid,
               }
         }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setWcCoordList(res.data);
           }).catch(() => {
             setErrorWcCoordList(true);

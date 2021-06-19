@@ -80,6 +80,8 @@ Route::get('/getuserfavcoord', [App\Http\Controllers\MycoordController::class, "
 
 Route::get('/getwcfavcoord', [App\Http\Controllers\MycoordController::class, "getWcFavCoord"]);
 
+Route::get('/getlarosso2021', [App\Http\Controllers\MycoordController::class, "getLarosso2021"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

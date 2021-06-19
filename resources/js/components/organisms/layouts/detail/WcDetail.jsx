@@ -38,7 +38,7 @@ export const WcDetail = memo((props) => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました');
+            // console.log('useEffectが実行されました');
             GetWcFavCoord(coordid);
         }
     }, [userCheck]);
