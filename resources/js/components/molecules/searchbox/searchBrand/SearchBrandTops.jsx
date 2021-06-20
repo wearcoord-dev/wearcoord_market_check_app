@@ -84,6 +84,10 @@ export const SearchBrandTops = memo((props) => {
                 <input type="radio" id="lacoste" className="radioInput" name="brand" value="lacoste" onChange={handleInputChange}
                 onClick={onClickInput} />
                 <label htmlFor="lacoste" className="radioInputLabel">Lacoste</label>
+
+                <input type="radio" id="yuuchan" className="radioInput" name="brand" value="yuuchan" onChange={handleInputChange}
+                onClick={onClickInput} />
+                <label htmlFor="yuuchan" className="radioInputLabel">yuuchan</label>
             </div>
         </>
     )
