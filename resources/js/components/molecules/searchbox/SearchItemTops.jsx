@@ -25,7 +25,7 @@ export const SearchItemTops = memo((props) => {
         }
 
         onClickFetchTops(data);
-    }, [value, valueColor]);
+    }, [value, valueColor,valueCategory]);
 
     return (
         <>

@@ -25,7 +25,7 @@ export const SearchItemPants = memo((props) => {
         }
 
         onClickFetchPants(data);
-    }, [value, valueColor]);
+    }, [value, valueColor,valueCategory]);
 
     return (
         <>
