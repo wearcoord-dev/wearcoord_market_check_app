@@ -97,17 +97,37 @@ export const SelectWear = memo(() => {
     // console.log(userShoes[activeIndexShoes]);
     // console.log(context.contextName);
 
-    const [colorArray, setColorArray] = useState();
+    const [colorArray, setColorArray] = useState([]);
 
     const onClickColor = () => {
-        setColorArray(COLORS);
+        // setColorArray(COLORS);
+        const data = {
+            'wear' : 'tops',
+            'category' : '508759',
+            'color' : 'black',
+        }
+        getTops(data);
+        setColorArray(userTops);
+        console.log('発火したよ〜');
     }
+    console.log(`ここは${userTops}`);
 
     const handleWaypointEnter = () => {
         // getTops()
         // setColorArray(colorArray.concat(userTops));
-        setColorArray(colorArray.concat(COLORS));
+        console.log('発火');
+        const data = {
+            'wear' : 'tops',
+            'category' : '508759',
+            'color' : 'black',
+        }
+        getTops(data);
+        // console.log(userTops);
     }
+
+    useEffect(() => {
+        setColorArray([...colorArray, ...userTops]);
+    }, [userTops]);
 
     const colorComponent = (
         // colorArray ?
@@ -146,12 +166,13 @@ export const SelectWear = memo(() => {
         //             )) : <></>}
         //         </>
         //     )
-        
-colorArray ? (
+
+colorArray.length ? (
     colorArray
         .map((item, key) => (
             <div key={key}>
-                <div className={item} style={{ width: "200px", height: "200px" }} />
+                <div style={{ width: "200px", height: "200px" }} />
+                <p>{item.id}</p>
             </div>
         ))
         .concat(<Waypoint key={-1} horizontal onEnter={handleWaypointEnter} />)
@@ -163,7 +184,7 @@ colorArray ? (
 
     )
 
-console.log(colorArray);
+console.log(`これは${colorArray}`);
 
 return (
     <>
@@ -205,7 +226,7 @@ return (
             </>}
         </div>
 
-        <div style={{ display: "flex", overflowX: "auto" }}>{colorComponent}</div>
+        <div style={{ display: "flex", overflowX: "auto", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
 
 
         {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
