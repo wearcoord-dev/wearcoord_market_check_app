@@ -74,7 +74,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
         } else if ($category) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->paginate(15);
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->paginate();
 
             // urlに画像を入れる
             $DBitems = [];

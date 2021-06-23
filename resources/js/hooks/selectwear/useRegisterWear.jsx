@@ -6,9 +6,9 @@ export const useRegisterWear = () => {
 
 
     const RegisterWear = (props) => {
-        console.log('OK');
+        // console.log('OKだよ');
         // console.log(props);
-        // console.log(props.caps.id);
+        // console.log(props.tops);
         let caps = '';
         let tops = '';
         let pants = '';

@@ -33,15 +33,31 @@ export const SelectWear = memo(() => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
+    const [dataTops, setDataTops] = useState({});
+    const [pageTops, setPageTops] = useState(1);
+
+
     const onClickFetchCaps = (props) => getCaps(props);
-    const onClickFetchTops = (props) => getTops(props);
+    const onClickFetchTops = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'tops',
+            'page': 1,
+        }
+        setDataTops(data);
+        setTopsArray([]);
+        getTops(data);
+    };
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
 
     const onClickRegisterWear = () => {
         const obj = {
             "caps": userCaps[activeIndex],
-            "tops": userTops[activeIndexTops],
+            "tops": topsArray[activeIndexTops],
             "pants": userPants[activeIndexPants],
             "shoes": userShoes[activeIndexShoes],
             "userid": context.contextName,
@@ -49,8 +65,6 @@ export const SelectWear = memo(() => {
         RegisterWear(obj);
     }
     const userCheck = context.contextName;
-    // console.log(context);
-
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -58,10 +72,6 @@ export const SelectWear = memo(() => {
             GetWear(context)
         }
     }, [userCheck]);
-
-    // if(userWearInfo){
-    //     console.log(userWearInfo[1].capsData.url);
-    // }
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -71,9 +81,6 @@ export const SelectWear = memo(() => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-    // console.log(activeIndex);
-    // console.log(activeIndexTops);
 
     const getActiveIndex = (swiper) => {
         setActiveIndex(swiper.activeIndex);
@@ -91,260 +98,228 @@ export const SelectWear = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
-    // console.log(userCaps[activeIndex]);
-    // console.log(userTops[activeIndexTops]);
-    // console.log(userPants[activeIndexPants]);
-    // console.log(userShoes[activeIndexShoes]);
-    // console.log(context.contextName);
-
-    const [colorArray, setColorArray] = useState([]);
-
-    const onClickColor = () => {
-        // setColorArray(COLORS);
-        const data = {
-            'wear' : 'tops',
-            'category' : '508759',
-            'color' : 'black',
-        }
-        getTops(data);
-        setColorArray(userTops);
-        console.log('発火したよ〜');
-    }
-    console.log(`ここは${userTops}`);
+    const [topsArray, setTopsArray] = useState([]);
 
     const handleWaypointEnter = () => {
-        // getTops()
-        // setColorArray(colorArray.concat(userTops));
-        console.log('発火');
+
+        // console.log('発火');
+
+        setPageTops(pageTops + 1);
+
+        const newPage = dataTops.page + 1;
+
         const data = {
-            'wear' : 'tops',
-            'category' : '508759',
-            'color' : 'black',
+            'brand': dataTops.brand,
+            'color': dataTops.color,
+            'category': dataTops.category,
+            'wear': 'tops',
+            'page': newPage,
         }
+        setDataTops(data);
         getTops(data);
-        // console.log(userTops);
     }
 
     useEffect(() => {
-        setColorArray([...colorArray, ...userTops]);
+        setTopsArray([...topsArray, ...userTops]);
     }, [userTops]);
 
     const colorComponent = (
-        // colorArray ?
-        //     (error ? (
-        //         <p style={{ color: "red" }}>データの取得に失敗しました</p>
-        //     ) : loadingTops ? (
-        //         <p>Loading...</p>
-        //     ) : (
-        //         <>
-        //             <Swiper id="controller2"
-        //                 slidesPerView={3}
-        //                 centeredSlides={true}
-        //                 onSlideChangeTransitionEnd={getActiveIndexTops}
-        //             >
-        //                 {colorArray.map((wear, key) => (
-        //                     <SwiperSlide className="wearLi" key={wear.id}  >
-        //                         <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-        //                     </SwiperSlide>
-        //                 )).concat(<Waypoint key={-1} horizontal onEnter={handleWaypointEnter} />)}
-        //             </Swiper>
-        //         </>
-        //     )) : (
-        //         <>
-        //             {userWearInfo ? (errorWear ? (
-        //                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
-        //             ) : loadingWear ? (
-        //                 <p>Loading...</p>
-        //             ) : (
 
-        //                 // topsdataがnullなら代替
-        //                 <>
-        //                     {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
-        //                         <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
-        //                     </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
-        //                 </>
-        //             )) : <></>}
-        //         </>
-        //     )
+        topsArray.length ? (
+            <>
+                <Swiper id="controller2"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexTops}
+                    onReachEnd={handleWaypointEnter}
+                >
+                    {topsArray.map((wear) => (
+                        <SwiperSlide className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
 
-colorArray.length ? (
-    colorArray
-        .map((item, key) => (
-            <div key={key}>
-                <div style={{ width: "200px", height: "200px" }} />
-                <p>{item.id}</p>
-            </div>
-        ))
-        .concat(<Waypoint key={-1} horizontal onEnter={handleWaypointEnter} />)
-) : (
-    <>
-    <div onClick={onClickColor} >ボタン</div>
-    </>
-)
-
-    )
-
-console.log(`これは${colorArray}`);
-
-return (
-    <>
-        <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
-
-        <div style={{ display: "flex", position: "relative" }}>
-            {userCaps.length ? (error ? (
-                <p style={{ color: "red" }}>データの取得に失敗しました</p>
-            ) : loading ? (
-                <p>Loading...</p>
-            ) : (
-                <>
-                    <Swiper id="controller"
-                        slidesPerView={3}
-                        centeredSlides={true}
-                        onSlideChangeTransitionEnd={getActiveIndex}
-                    >
-                        {userCaps.map((wear) => (
-                            <SwiperSlide className="wearLi" key={wear.id}  >
-                                <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </>
-            )) : <>
+        ) : (
+            <>
                 {userWearInfo ? (errorWear ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
                 ) : loadingWear ? (
                     <p>Loading...</p>
                 ) : (
 
-                    // capsdataがnullなら代替
+                    // topsdataがnullなら代替
                     <>
-                        {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                            <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
-                        </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
+                        {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                        </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                     </>
                 )) : <></>}
-            </>}
-        </div>
+            </>
+        )
 
-        <div style={{ display: "flex", overflowX: "auto", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
+    )
+
+    return (
+        <>
+            <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
+
+            <div style={{ display: "flex", position: "relative" }}>
+                {userCaps.length ? (error ? (
+                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                ) : loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <>
+                        <Swiper id="controller"
+                            slidesPerView={3}
+                            centeredSlides={true}
+                            onSlideChangeTransitionEnd={getActiveIndex}
+                        >
+                            {userCaps.map((wear) => (
+                                <SwiperSlide className="wearLi" key={wear.id}  >
+                                    <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </>
+                )) : <>
+                    {userWearInfo ? (errorWear ? (
+                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                    ) : loadingWear ? (
+                        <p>Loading...</p>
+                    ) : (
+
+                        // capsdataがnullなら代替
+                        <>
+                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                                <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
+                        </>
+                    )) : <></>}
+                </>}
+            </div>
+
+            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
 
 
-        {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
+            {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
         {colorComponent}
         </div> */}
 
-        <div style={{ display: "flex", height: "140px" }}>
-            {userPants.length ?
-                (error ? (
-                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingPants ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        <Swiper id="controller3"
-                            slidesPerView={3}
-                            centeredSlides={true}
-                            onSlideChangeTransitionEnd={getActiveIndexPants}
-                        >
-                            {userPants.map((wear) => (
-                                <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </>
-                )) : (
-                    <>
-                        {userWearInfo ? (errorWear ? (
-                            <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                        ) : loadingWear ? (
-                            <p>Loading...</p>
-                        ) : (
+            <div style={{ display: "flex", height: "140px" }}>
+                {userPants.length ?
+                    (error ? (
+                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                    ) : loadingPants ? (
+                        <p>Loading...</p>
+                    ) : (
+                        <>
+                            <Swiper id="controller3"
+                                slidesPerView={3}
+                                centeredSlides={true}
+                                onSlideChangeTransitionEnd={getActiveIndexPants}
+                            >
+                                {userPants.map((wear) => (
+                                    <SwiperSlide className="wearLi" key={wear.id}  >
+                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </>
+                    )) : (
+                        <>
+                            {userWearInfo ? (errorWear ? (
+                                <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                            ) : loadingWear ? (
+                                <p>Loading...</p>
+                            ) : (
 
-                            // pantsdataがnullなら代替
-                            <>
-                                {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                    <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
-                                </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
-                            </>
-                        )) : <></>}
-                    </>
-                )}
-        </div>
+                                // pantsdataがnullなら代替
+                                <>
+                                    {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                    </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
+                                </>
+                            )) : <></>}
+                        </>
+                    )}
+            </div>
 
-        <div style={{ display: "flex", overflowX: "scroll" }}>
-            {userShoes.length ?
-                (error ? (
-                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingShoes ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        <Swiper id="controller4"
-                            slidesPerView={3}
-                            centeredSlides={true}
-                            onSlideChangeTransitionEnd={getActiveIndexShoes}
-                        >
-                            {userShoes.map((wear) => (
-                                <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </>
-                )) : (
-                    <>
-                        {userWearInfo ? (errorWear ? (
-                            <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                        ) : loadingWear ? (
-                            <p>Loading...</p>
-                        ) : (
+            <div style={{ display: "flex", overflowX: "scroll" }}>
+                {userShoes.length ?
+                    (error ? (
+                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                    ) : loadingShoes ? (
+                        <p>Loading...</p>
+                    ) : (
+                        <>
+                            <Swiper id="controller4"
+                                slidesPerView={3}
+                                centeredSlides={true}
+                                onSlideChangeTransitionEnd={getActiveIndexShoes}
+                            >
+                                {userShoes.map((wear) => (
+                                    <SwiperSlide className="wearLi" key={wear.id}  >
+                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </>
+                    )) : (
+                        <>
+                            {userWearInfo ? (errorWear ? (
+                                <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                            ) : loadingWear ? (
+                                <p>Loading...</p>
+                            ) : (
 
-                            // shoesdataがnullなら代替
-                            <>
-                                {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                    <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
-                                </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
-                            </>
-                        )) : <></>}
-                    </>
-                )}
-        </div>
+                                // shoesdataがnullなら代替
+                                <>
+                                    {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                                    </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
+                                </>
+                            )) : <></>}
+                        </>
+                    )}
+            </div>
 
-        <br />
+            <br />
 
-        <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-            <SearchIcon style={{ paddingRight: "6px" }} />
-            着替える
-        </Button>
+            <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                <SearchIcon style={{ paddingRight: "6px" }} />
+                着替える
+            </Button>
 
-        <Button
-            style={{ position: "fixed", bottom: "100px", right: "0" }} color="primary"
-            variant="contained"
-            onClick={onClickRegisterWear}
-        >
-            <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
-            ウェアを確定
-        </Button>
+            <Button
+                style={{ position: "fixed", bottom: "100px", right: "0" }} color="primary"
+                variant="contained"
+                onClick={onClickRegisterWear}
+            >
+                <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
+                ウェアを確定
+            </Button>
 
-        <Popper
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            // onClose={handleClose}
-            placement={'top'}
-            className="popper"
-            style={{ width: "100%" }}
-        >
-            <WearSearch
-                onClickFetchCaps={onClickFetchCaps}
-                onClickFetchTops={onClickFetchTops}
-                onClickFetchPants={onClickFetchPants}
-                onClickFetchShoes={onClickFetchShoes}
-                handleClick={handleClick}
-            />
+            <Popper
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                // onClose={handleClose}
+                placement={'top'}
+                className="popper"
+                style={{ width: "100%" }}
+            >
+                <WearSearch
+                    onClickFetchCaps={onClickFetchCaps}
+                    onClickFetchTops={onClickFetchTops}
+                    onClickFetchPants={onClickFetchPants}
+                    onClickFetchShoes={onClickFetchShoes}
+                    handleClick={handleClick}
+                />
 
-        </Popper>
-    </>
-)
+            </Popper>
+        </>
+    )
 })
