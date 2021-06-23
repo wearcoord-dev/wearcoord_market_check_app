@@ -30,10 +30,6 @@ export const SelectWear = memo(() => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
-    // 無限スクロール
-    const [dataTops, setDataTops] = useState({});
-    const [pageTops, setPageTops] = useState(1);
-
 
     const onClickFetchCaps = (props) => getCaps(props);
     const onClickFetchTops = (props) => {
@@ -98,12 +94,13 @@ export const SelectWear = memo(() => {
 
     // 無限スクロール実装
 
+    // tops
+
+    const [dataTops, setDataTops] = useState({});
+    const [pageTops, setPageTops] = useState(1);
     const [topsArray, setTopsArray] = useState([]);
 
     const onChangeEndTops = () => {
-
-        // console.log('発火');
-
 
         const newPage = dataTops.page + 1;
 
@@ -158,7 +155,6 @@ export const SelectWear = memo(() => {
                 )) : <></>}
             </>
         )
-
     )
 
     return (
