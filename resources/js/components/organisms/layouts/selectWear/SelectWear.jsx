@@ -57,14 +57,26 @@ export const SelectWear = memo(() => {
         setTopsArray([]);
         getTops(data);
     };
-    const onClickFetchPants = (props) => getPants(props);
+    const onClickFetchPants = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'pants',
+            'page': 1,
+        }
+        setDataPants(data);
+        setPantsArray([]);
+        getPants(data);
+    }
     const onClickFetchShoes = (props) => getShoes(props);
 
     const onClickRegisterWear = () => {
         const obj = {
             "caps": capsArray[activeIndexCaps],
             "tops": topsArray[activeIndexTops],
-            "pants": userPants[activeIndexPants],
+            "pants": pantsArray[activeIndexPants],
             "shoes": userShoes[activeIndexShoes],
             "userid": context.contextName,
         }
@@ -155,12 +167,12 @@ export const SelectWear = memo(() => {
                 ) : loadingWear ? (
                     <p>Loading...</p>
                 ) : (
-                        // capsdataがnullなら代替
-                        <>
-                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                                <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
-                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
-                        </>
+                    // capsdataがnullなら代替
+                    <>
+                        {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                            <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                        </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
+                    </>
                 )) : <></>}
             </>
         )
@@ -227,6 +239,67 @@ export const SelectWear = memo(() => {
         )
     )
 
+    // pants
+
+    const [dataPants, setDataPants] = useState({});
+    const [pantsArray, setPantsArray] = useState([]);
+
+    const onChangeEndPants = () => {
+
+        const newPage = dataPants.page + 1;
+
+        const data = {
+            'brand': dataPants.brand,
+            'color': dataPants.color,
+            'category': dataPants.category,
+            'wear': 'pants',
+            'page': newPage,
+        }
+        setDataPants(data);
+        getPants(data);
+    }
+
+    useEffect(() => {
+        setPantsArray([...pantsArray, ...userPants]);
+    }, [userPants]);
+
+    const pantsComponent = (
+
+        pantsArray.length ? (
+            <>
+                <Swiper id="controller3"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexPants}
+                    onReachEnd={onChangeEndPants}
+                >
+                    {pantsArray.map((wear) => (
+                        <SwiperSlide className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
+
+        ) : (
+            <>
+                {userWearInfo ? (errorWear ? (
+                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                ) : loadingWear ? (
+                    <p>Loading...</p>
+                ) : (
+
+                    // pantsdataがnullなら代替
+                    <>
+                        {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                        </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
+                    </>
+                )) : <></>}
+            </>
+        )
+    )
+
     return (
         <>
             <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
@@ -236,44 +309,7 @@ export const SelectWear = memo(() => {
             <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
 
 
-            <div style={{ display: "flex", height: "140px" }}>
-                {userPants.length ?
-                    (error ? (
-                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                    ) : loadingPants ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <>
-                            <Swiper id="controller3"
-                                slidesPerView={3}
-                                centeredSlides={true}
-                                onSlideChangeTransitionEnd={getActiveIndexPants}
-                            >
-                                {userPants.map((wear) => (
-                                    <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </>
-                    )) : (
-                        <>
-                            {userWearInfo ? (errorWear ? (
-                                <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
-                                <p>Loading...</p>
-                            ) : (
-
-                                // pantsdataがnullなら代替
-                                <>
-                                    {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
-                                    </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
-                                </>
-                            )) : <></>}
-                        </>
-                    )}
-            </div>
+            <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
 
             <div style={{ display: "flex", overflowX: "scroll" }}>
                 {userShoes.length ?
