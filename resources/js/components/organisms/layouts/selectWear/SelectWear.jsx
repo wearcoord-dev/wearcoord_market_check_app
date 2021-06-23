@@ -70,14 +70,26 @@ export const SelectWear = memo(() => {
         setPantsArray([]);
         getPants(data);
     }
-    const onClickFetchShoes = (props) => getShoes(props);
+    const onClickFetchShoes = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'shoes',
+            'page': 1,
+        }
+        setDataShoes(data);
+        setShoesArray([]);
+        getShoes(data);
+    }
 
     const onClickRegisterWear = () => {
         const obj = {
             "caps": capsArray[activeIndexCaps],
             "tops": topsArray[activeIndexTops],
             "pants": pantsArray[activeIndexPants],
-            "shoes": userShoes[activeIndexShoes],
+            "shoes": shoesArray[activeIndexShoes],
             "userid": context.contextName,
         }
         RegisterWear(obj);
@@ -300,6 +312,67 @@ export const SelectWear = memo(() => {
         )
     )
 
+    // shoes
+
+    const [dataShoes, setDataShoes] = useState({});
+    const [shoesArray, setShoesArray] = useState([]);
+
+    const onChangeEndShoes = () => {
+
+        const newPage = dataShoes.page + 1;
+
+        const data = {
+            'brand': dataShoes.brand,
+            'color': dataShoes.color,
+            'category': dataShoes.category,
+            'wear': 'shoes',
+            'page': newPage,
+        }
+        setDataShoes(data);
+        getShoes(data);
+    }
+
+    useEffect(() => {
+        setShoesArray([...shoesArray, ...userShoes]);
+    }, [userShoes]);
+
+    const shoesComponent = (
+
+        shoesArray.length ? (
+            <>
+                <Swiper id="controller4"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexShoes}
+                    onReachEnd={onChangeEndShoes}
+                >
+                    {shoesArray.map((wear) => (
+                        <SwiperSlide className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
+
+        ) : (
+            <>
+                {userWearInfo ? (errorWear ? (
+                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                ) : loadingWear ? (
+                    <p>Loading...</p>
+                ) : (
+
+                    // shoesdataがnullなら代替
+                    <>
+                        {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                        </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
+                    </>
+                )) : <></>}
+            </>
+        )
+    )
+
     return (
         <>
             <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
@@ -311,44 +384,7 @@ export const SelectWear = memo(() => {
 
             <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
 
-            <div style={{ display: "flex", overflowX: "scroll" }}>
-                {userShoes.length ?
-                    (error ? (
-                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                    ) : loadingShoes ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <>
-                            <Swiper id="controller4"
-                                slidesPerView={3}
-                                centeredSlides={true}
-                                onSlideChangeTransitionEnd={getActiveIndexShoes}
-                            >
-                                {userShoes.map((wear) => (
-                                    <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </>
-                    )) : (
-                        <>
-                            {userWearInfo ? (errorWear ? (
-                                <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
-                                <p>Loading...</p>
-                            ) : (
-
-                                // shoesdataがnullなら代替
-                                <>
-                                    {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
-                                    </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
-                                </>
-                            )) : <></>}
-                        </>
-                    )}
-            </div>
+            <div style={{ display: "flex", overflowX: "scroll" }}>{shoesComponent}</div>
 
             <br />
 
