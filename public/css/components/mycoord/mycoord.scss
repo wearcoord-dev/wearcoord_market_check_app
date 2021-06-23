@@ -337,6 +337,10 @@ details[open] .detailsBottom {
     margin: 14px 0;
 }
 
+.MuiBox-root{
+    padding: 0 16px 16px 16px !important;
+}
+
 @media (max-height: 700px) {
     .tabpanel{
         height: 120px;
