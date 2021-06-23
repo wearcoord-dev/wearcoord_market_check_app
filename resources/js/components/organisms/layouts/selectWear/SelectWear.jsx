@@ -12,9 +12,6 @@ import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
-import { Waypoint } from 'react-waypoint';
-
-const COLORS = ["red", "blue", "green", "yellow", "pink"];
 
 
 export const SelectWear = memo(() => {
@@ -33,6 +30,7 @@ export const SelectWear = memo(() => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
+    // 無限スクロール
     const [dataTops, setDataTops] = useState({});
     const [pageTops, setPageTops] = useState(1);
 
@@ -68,7 +66,7 @@ export const SelectWear = memo(() => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
+            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -98,13 +96,14 @@ export const SelectWear = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
+    // 無限スクロール実装
+
     const [topsArray, setTopsArray] = useState([]);
 
-    const handleWaypointEnter = () => {
+    const onChangeEndTops = () => {
 
         // console.log('発火');
 
-        setPageTops(pageTops + 1);
 
         const newPage = dataTops.page + 1;
 
@@ -116,6 +115,7 @@ export const SelectWear = memo(() => {
             'page': newPage,
         }
         setDataTops(data);
+        setPageTops(newPage);
         getTops(data);
     }
 
@@ -123,7 +123,7 @@ export const SelectWear = memo(() => {
         setTopsArray([...topsArray, ...userTops]);
     }, [userTops]);
 
-    const colorComponent = (
+    const topsComponent = (
 
         topsArray.length ? (
             <>
@@ -131,7 +131,7 @@ export const SelectWear = memo(() => {
                     slidesPerView={3}
                     centeredSlides={true}
                     onSlideChangeTransitionEnd={getActiveIndexTops}
-                    onReachEnd={handleWaypointEnter}
+                    onReachEnd={onChangeEndTops}
                 >
                     {topsArray.map((wear) => (
                         <SwiperSlide className="wearLi" key={wear.id}  >
@@ -201,11 +201,11 @@ export const SelectWear = memo(() => {
                 </>}
             </div>
 
-            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
+            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
 
 
             {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
-        {colorComponent}
+        {topsComponent}
         </div> */}
 
             <div style={{ display: "flex", height: "140px" }}>
