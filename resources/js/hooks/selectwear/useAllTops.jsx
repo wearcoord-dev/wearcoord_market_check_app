@@ -14,6 +14,8 @@ export const useAllTops = () => {
     const color = props.color;
     const category = props.category;
     const type = props.wear;
+    const page = props.page;
+
 
 
     axios.get("/api/tops", {
@@ -22,6 +24,7 @@ export const useAllTops = () => {
             color: color,
             category: category,
             type: type,
+            page: page,
           }
     }).then((res) => {
         console.log(res.data.item);

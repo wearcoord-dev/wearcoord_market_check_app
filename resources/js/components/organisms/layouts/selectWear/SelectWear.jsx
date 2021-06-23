@@ -12,6 +12,10 @@ import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
+import { Waypoint } from 'react-waypoint';
+
+const COLORS = ["red", "blue", "green", "yellow", "pink"];
+
 
 export const SelectWear = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
@@ -29,15 +33,31 @@ export const SelectWear = memo(() => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
+    const [dataTops, setDataTops] = useState({});
+    const [pageTops, setPageTops] = useState(1);
+
+
     const onClickFetchCaps = (props) => getCaps(props);
-    const onClickFetchTops = (props) => getTops(props);
+    const onClickFetchTops = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'tops',
+            'page': 1,
+        }
+        setDataTops(data);
+        setTopsArray([]);
+        getTops(data);
+    };
     const onClickFetchPants = (props) => getPants(props);
     const onClickFetchShoes = (props) => getShoes(props);
 
     const onClickRegisterWear = () => {
         const obj = {
             "caps": userCaps[activeIndex],
-            "tops": userTops[activeIndexTops],
+            "tops": topsArray[activeIndexTops],
             "pants": userPants[activeIndexPants],
             "shoes": userShoes[activeIndexShoes],
             "userid": context.contextName,
@@ -45,8 +65,6 @@ export const SelectWear = memo(() => {
         RegisterWear(obj);
     }
     const userCheck = context.contextName;
-    // console.log(context);
-
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -54,10 +72,6 @@ export const SelectWear = memo(() => {
             GetWear(context)
         }
     }, [userCheck]);
-
-    // if(userWearInfo){
-    //     console.log(userWearInfo[1].capsData.url);
-    // }
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -67,9 +81,6 @@ export const SelectWear = memo(() => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-    // console.log(activeIndex);
-    // console.log(activeIndexTops);
 
     const getActiveIndex = (swiper) => {
         setActiveIndex(swiper.activeIndex);
@@ -87,11 +98,68 @@ export const SelectWear = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
-    // console.log(userCaps[activeIndex]);
-    // console.log(userTops[activeIndexTops]);
-    // console.log(userPants[activeIndexPants]);
-    // console.log(userShoes[activeIndexShoes]);
-    // console.log(context.contextName);
+    const [topsArray, setTopsArray] = useState([]);
+
+    const handleWaypointEnter = () => {
+
+        // console.log('発火');
+
+        setPageTops(pageTops + 1);
+
+        const newPage = dataTops.page + 1;
+
+        const data = {
+            'brand': dataTops.brand,
+            'color': dataTops.color,
+            'category': dataTops.category,
+            'wear': 'tops',
+            'page': newPage,
+        }
+        setDataTops(data);
+        getTops(data);
+    }
+
+    useEffect(() => {
+        setTopsArray([...topsArray, ...userTops]);
+    }, [userTops]);
+
+    const colorComponent = (
+
+        topsArray.length ? (
+            <>
+                <Swiper id="controller2"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexTops}
+                    onReachEnd={handleWaypointEnter}
+                >
+                    {topsArray.map((wear) => (
+                        <SwiperSlide className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
+
+        ) : (
+            <>
+                {userWearInfo ? (errorWear ? (
+                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                ) : loadingWear ? (
+                    <p>Loading...</p>
+                ) : (
+
+                    // topsdataがnullなら代替
+                    <>
+                        {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                        </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
+                    </>
+                )) : <></>}
+            </>
+        )
+
+    )
 
     return (
         <>
@@ -133,44 +201,12 @@ export const SelectWear = memo(() => {
                 </>}
             </div>
 
-            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>
-                {userTops.length ?
-                    (error ? (
-                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                    ) : loadingTops ? (
-                        <p>Loading...</p>
-                    ) : (
-                        <>
-                            <Swiper id="controller2"
-                                slidesPerView={3}
-                                centeredSlides={true}
-                                onSlideChangeTransitionEnd={getActiveIndexTops}
-                            >
-                                {userTops.map((wear) => (
-                                    <SwiperSlide className="wearLi" key={wear.id}  >
-                                        <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </>
-                    )) : (
-                        <>
-                            {userWearInfo ? (errorWear ? (
-                                <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
-                                <p>Loading...</p>
-                            ) : (
+            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
 
-                                // topsdataがnullなら代替
-                                <>
-                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
-                                    </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
-                                </>
-                            )) : <></>}
-                        </>
-                    )}
-            </div>
+
+            {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
+        {colorComponent}
+        </div> */}
 
             <div style={{ display: "flex", height: "140px" }}>
                 {userPants.length ?
@@ -255,7 +291,7 @@ export const SelectWear = memo(() => {
             <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 <SearchIcon style={{ paddingRight: "6px" }} />
                 着替える
-      </Button>
+            </Button>
 
             <Button
                 style={{ position: "fixed", bottom: "100px", right: "0" }} color="primary"

@@ -6,10 +6,14 @@ use Illuminate\Support\Facades\DB;
 
 class Database
 {
-    public static function searchDB($color, $brand, $category, $type)
+    public static function searchDB($color, $brand, $category, $type, $page)
     {
+        if(empty($page)){
+            $page = 1;
+        }
+
         if ($brand) {
-            $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->get();
+            $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->paginate(15);
 
             // 先に見つけた画像だけ取得
             $DBitems = [];
@@ -51,7 +55,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
             if ($color) {
-                $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->get();
+                $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->paginate(15);
 
                 // urlに画像を入れる
                 $DBitems = [];
@@ -61,7 +65,7 @@ class Database
                 }
             }
         } else if ($color) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->get();
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->paginate(15);
 
             // urlに画像を入れる
             $DBitems = [];
@@ -70,7 +74,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
         } else if ($category) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->get();
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->paginate();
 
             // urlに画像を入れる
             $DBitems = [];

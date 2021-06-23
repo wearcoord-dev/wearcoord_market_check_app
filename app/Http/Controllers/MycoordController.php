@@ -52,12 +52,13 @@ class MycoordController extends Controller
         $color = $request->input('color');
         $category = $request->input('category');
         $type = $request->input('type');
+        $page = $request->input('page');
 
 
 
 
         // wearcoord管理DBでフィルター
-        $myDBitems = Database::searchDB($color, $brand, $category, $type);
+        $myDBitems = Database::searchDB($color, $brand, $category, $type, $page);
 
         // ddd($myDBitems);
 
