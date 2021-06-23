@@ -10,12 +10,12 @@ export const useAllCaps = () => {
   const getCaps = (props) => {
     setLoadingCaps(true);
     setErrorCaps(false);
-    console.log(props.wear);
 
     const brand = props.brand;
     const color = props.color;
     const category = props.category;
     const type = props.wear;
+    const page = props.page;
 
 
     axios.get("/api/caps",{
@@ -24,6 +24,7 @@ export const useAllCaps = () => {
             color: color,
             category: category,
             type: type,
+            page: page,
           }
     }).then((res) => {
         console.log(res.data.item);

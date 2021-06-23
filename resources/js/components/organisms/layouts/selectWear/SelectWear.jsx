@@ -12,9 +12,6 @@ import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
-import { Waypoint } from 'react-waypoint';
-
-const COLORS = ["red", "blue", "green", "yellow", "pink"];
 
 
 export const SelectWear = memo(() => {
@@ -28,16 +25,25 @@ export const SelectWear = memo(() => {
     const context = useContext(UserContext);
 
     // 着ているウェアを取得
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndexCaps, setActiveIndexCaps] = useState(0);
     const [activeIndexTops, setActiveIndexTops] = useState(0);
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
-    const [dataTops, setDataTops] = useState({});
-    const [pageTops, setPageTops] = useState(1);
 
+    const onClickFetchCaps = (props) => {
 
-    const onClickFetchCaps = (props) => getCaps(props);
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'caps',
+            'page': 1,
+        }
+        setDataCaps(data);
+        setCapsArray([]);
+        getCaps(data);
+    }
     const onClickFetchTops = (props) => {
 
         const data = {
@@ -56,7 +62,7 @@ export const SelectWear = memo(() => {
 
     const onClickRegisterWear = () => {
         const obj = {
-            "caps": userCaps[activeIndex],
+            "caps": capsArray[activeIndexCaps],
             "tops": topsArray[activeIndexTops],
             "pants": userPants[activeIndexPants],
             "shoes": userShoes[activeIndexShoes],
@@ -68,7 +74,7 @@ export const SelectWear = memo(() => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
+            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -82,8 +88,8 @@ export const SelectWear = memo(() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const getActiveIndex = (swiper) => {
-        setActiveIndex(swiper.activeIndex);
+    const getActiveIndexCaps = (swiper) => {
+        setActiveIndexCaps(swiper.activeIndex);
     }
 
     const getActiveIndexTops = (swiper) => {
@@ -98,13 +104,74 @@ export const SelectWear = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
+    // 無限スクロール実装
+
+    // caps
+
+    const [dataCaps, setDataCaps] = useState({});
+    const [capsArray, setCapsArray] = useState([]);
+
+    const onChangeEndCaps = () => {
+
+        const newPage = dataCaps.page + 1;
+
+        const data = {
+            'brand': dataCaps.brand,
+            'color': dataCaps.color,
+            'category': dataCaps.category,
+            'wear': 'caps',
+            'page': newPage,
+        }
+        setDataCaps(data);
+        getCaps(data);
+    }
+
+    useEffect(() => {
+        setCapsArray([...capsArray, ...userCaps]);
+    }, [userCaps]);
+
+    const capsComponent = (
+
+        capsArray.length ? (
+            <>
+                <Swiper id="controller"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexCaps}
+                    onReachEnd={onChangeEndCaps}
+                >
+                    {capsArray.map((wear) => (
+                        <SwiperSlide className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
+
+        ) : (
+            <>
+                {userWearInfo ? (errorWear ? (
+                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
+                ) : loadingWear ? (
+                    <p>Loading...</p>
+                ) : (
+                        // capsdataがnullなら代替
+                        <>
+                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                                <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
+                        </>
+                )) : <></>}
+            </>
+        )
+    )
+
+    // tops
+
+    const [dataTops, setDataTops] = useState({});
     const [topsArray, setTopsArray] = useState([]);
 
-    const handleWaypointEnter = () => {
-
-        // console.log('発火');
-
-        setPageTops(pageTops + 1);
+    const onChangeEndTops = () => {
 
         const newPage = dataTops.page + 1;
 
@@ -123,7 +190,7 @@ export const SelectWear = memo(() => {
         setTopsArray([...topsArray, ...userTops]);
     }, [userTops]);
 
-    const colorComponent = (
+    const topsComponent = (
 
         topsArray.length ? (
             <>
@@ -131,7 +198,7 @@ export const SelectWear = memo(() => {
                     slidesPerView={3}
                     centeredSlides={true}
                     onSlideChangeTransitionEnd={getActiveIndexTops}
-                    onReachEnd={handleWaypointEnter}
+                    onReachEnd={onChangeEndTops}
                 >
                     {topsArray.map((wear) => (
                         <SwiperSlide className="wearLi" key={wear.id}  >
@@ -158,55 +225,16 @@ export const SelectWear = memo(() => {
                 )) : <></>}
             </>
         )
-
     )
 
     return (
         <>
             <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
 
-            <div style={{ display: "flex", position: "relative" }}>
-                {userCaps.length ? (error ? (
-                    <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loading ? (
-                    <p>Loading...</p>
-                ) : (
-                    <>
-                        <Swiper id="controller"
-                            slidesPerView={3}
-                            centeredSlides={true}
-                            onSlideChangeTransitionEnd={getActiveIndex}
-                        >
-                            {userCaps.map((wear) => (
-                                <SwiperSlide className="wearLi" key={wear.id}  >
-                                    <img className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wear.category}/${wear.url}`} alt="" />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </>
-                )) : <>
-                    {userWearInfo ? (errorWear ? (
-                        <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                    ) : loadingWear ? (
-                        <p>Loading...</p>
-                    ) : (
+            <div style={{ display: "flex", position: "relative" }}>{capsComponent}</div>
 
-                        // capsdataがnullなら代替
-                        <>
-                            {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                                <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
-                            </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
-                        </>
-                    )) : <></>}
-                </>}
-            </div>
+            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
 
-            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{colorComponent}</div>
-
-
-            {/* <div style={{ display: "flex", height: "115px", marginTop: "16px", overflowX: "auto" }}>
-        {colorComponent}
-        </div> */}
 
             <div style={{ display: "flex", height: "140px" }}>
                 {userPants.length ?
