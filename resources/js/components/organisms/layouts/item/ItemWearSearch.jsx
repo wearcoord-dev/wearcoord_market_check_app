@@ -3,6 +3,7 @@ import { memo, useState } from "react";
 import CloseIcon from '@material-ui/icons/Close';
 import PropTypes from 'prop-types';
 import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
+import { ItemSearchCaps } from "./search/ItemSearchCaps";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,7 +56,7 @@ const useStyles = makeStyles({
 });
 
 export const ItemWearSearch = memo((props) => {
-    const { handleClick } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes,handleClick } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -82,7 +83,7 @@ export const ItemWearSearch = memo((props) => {
                         <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={value} index={0}>
-                        {/* <SearchItemCaps onClickFetchCaps={onClickFetchCaps} /> */}
+                        <ItemSearchCaps onClickFetchCaps={onClickFetchCaps} />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         {/* <SearchItemTops onClickFetchTops={onClickFetchTops} /> */}

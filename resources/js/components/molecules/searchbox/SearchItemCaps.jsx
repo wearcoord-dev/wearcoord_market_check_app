@@ -17,13 +17,13 @@ export const SearchItemCaps = memo((props) => {
     useEffect((props) => {
         console.log(props);
         // if (props !== undefined) {
-            let category = "";
+        //     let category = "";
 
-        if(context.contextName.gender == 'male'){
-            category = "506269";
-        }else{
-            category = "565818";
-        }
+        // if(context.contextName.gender == 'male'){
+        //     category = "506269";
+        // }else{
+        //     category = "565818";
+        // }
 
         const data = {
             wear : "caps",
