@@ -5,6 +5,7 @@ import { ItemWearSearch } from "../organisms/layouts/item/ItemWearSearch";
 import { useAllCaps } from "../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../providers/UserProvider";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useAllTops } from "../../hooks/selectwear/useAllTops";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const Item = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
+    const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const context = useContext(UserContext);
     const classes = useStyles();
 
@@ -43,6 +45,20 @@ export const Item = memo(() => {
         getCaps(data);
     }
 
+    const onClickFetchTops = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'tops',
+            'page': 1,
+        }
+        setDataList(data);
+        setDataArray([]);
+        getTops(data);
+    }
+
     // 無限スクロール用
 
     // 検索条件保存
@@ -53,6 +69,10 @@ export const Item = memo(() => {
     useEffect(() => {
         setDataArray([...dataArray, ...userCaps]);
     }, [userCaps]);
+
+    useEffect(() => {
+        setDataArray([...dataArray, ...userTops]);
+    }, [userTops]);
 
     const loadMore = () => {
 
@@ -69,7 +89,10 @@ export const Item = memo(() => {
 
         if (dataList.wear == 'caps') {
             getCaps(data);
-            // setDataArray([...dataArray, ...userCaps]);
+        }
+
+        if (dataList.wear == 'tops') {
+            getTops(data);
         }
     }
 
@@ -138,7 +161,7 @@ export const Item = memo(() => {
             >
                 <ItemWearSearch
                     onClickFetchCaps={onClickFetchCaps}
-                    // onClickFetchTops={onClickFetchTops}
+                    onClickFetchTops={onClickFetchTops}
                     // onClickFetchPants={onClickFetchPants}
                     // onClickFetchShoes={onClickFetchShoes}
                     handleClick={handleClick}
