@@ -4,11 +4,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import { ItemWearSearch } from "../organisms/layouts/item/ItemWearSearch";
 import { useAllCaps } from "../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../providers/UserProvider";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        paddingBottom: '100px',
+        paddingBottom: '150px',
     },
     paper: {
         padding: theme.spacing(2),
@@ -49,7 +50,11 @@ export const Item = memo(() => {
     // 追加したアイテムの保存
     const [dataArray, setDataArray] = useState([]);
 
-    const onChangeEndCaps = () => {
+    useEffect(() => {
+        setDataArray([...dataArray, ...userCaps]);
+    }, [userCaps]);
+
+    const loadMore = () => {
 
         const newPage = dataList.page + 1;
 
@@ -64,13 +69,13 @@ export const Item = memo(() => {
 
         if (dataList.wear == 'caps') {
             getCaps(data);
-            setDataArray([...dataArray, ...userCaps]);
+            // setDataArray([...dataArray, ...userCaps]);
         }
     }
 
-    useEffect(() => {
-        setDataArray([...dataArray, ...userCaps]);
-    }, [userCaps]);
+    console.log(dataArray);
+
+
 
     // 検索フォーム
 
@@ -83,26 +88,38 @@ export const Item = memo(() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    //各スクロール要素
+    const items = (
+        dataArray.length ? (
+            <>
+                {dataArray.map((item) => (
+                    <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
+                        <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
+                    </Grid>
+                ))}
+            </>
+
+        ) : (
+            <>
+                <p style={{ margin: '10px' }}>検索結果がここに反映されます</p>
+            </>
+        )
+    );
+
     return (
         <>
-            <div className={classes.root}>
-                <Grid style={{ justifyContent: 'center' }} container spacing={1}>
-                    {dataArray.length ? (
-                        <>
-                            {dataArray.map((item) => (
-                                <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
-                                    <img style={{width: "100%"}} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
-                                </Grid>
-                            ))}
-                        </>
-
-                    ) : (
-                        <>
-                            <p style={{ margin: '10px' }}>検索結果がここに反映されます</p>
-                        </>
-                    )}
-                </Grid>
-            </div>
+            <InfiniteScroll
+                dataLength={dataArray.length}
+                next={loadMore}
+                hasMore={true}
+                style={{ overflow: 'visible' }}
+                >
+                <div className={classes.root}>
+                    <Grid style={{ justifyContent: 'center' }} container spacing={1}>
+                        {items}
+                    </Grid>
+                </div>
+            </InfiniteScroll>
 
 
             <Button style={{ position: "fixed", bottom: "100px", left: "50%", transform: "translateX(-50%)" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
