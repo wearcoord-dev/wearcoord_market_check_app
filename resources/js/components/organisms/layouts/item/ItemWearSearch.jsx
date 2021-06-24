@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { AirlineSeatLegroomExtra, Face } from "@material-ui/icons";
 import { ItemSearchCaps } from "./search/ItemSearchCaps";
 import { ItemSearchTops } from "./search/ItemSearchTops";
+import { ItemSearchPants } from "./search/ItemSearchPants";
+import { ItemSearchShoes } from "./search/ItemSearchShoes";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -90,13 +92,13 @@ export const ItemWearSearch = memo((props) => {
                         <ItemSearchTops onClickFetchTops={onClickFetchTops} />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        {/* <SearchItemPants onClickFetchPants={onClickFetchPants} /> */}
+                        <ItemSearchPants onClickFetchPants={onClickFetchPants} />
                     </TabPanel>
                     {/* <TabPanel value={value} index={3}>
                         <div>test4</div>
                     </TabPanel> */}
                     <TabPanel value={value} index={3}>
-                        {/* <SearchItemShoes onClickFetchShoes={onClickFetchShoes} /> */}
+                        <ItemSearchShoes onClickFetchShoes={onClickFetchShoes} />
                     </TabPanel>
                 </Paper>
             </Container>

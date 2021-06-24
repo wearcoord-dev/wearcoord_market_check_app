@@ -6,6 +6,8 @@ import { useAllCaps } from "../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../providers/UserProvider";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAllTops } from "../../hooks/selectwear/useAllTops";
+import { useAllPants } from "../../hooks/selectwear/useAllPants";
+import { useAllShoes } from "../../hooks/selectwear/useAllShoes";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
 export const Item = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
+    const { getPants, userPants, loadingPants, errorPants } = useAllPants();
+    const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const context = useContext(UserContext);
     const classes = useStyles();
 
@@ -59,6 +63,33 @@ export const Item = memo(() => {
         getTops(data);
     }
 
+    const onClickFetchPants = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'pants',
+            'page': 1,
+        }
+        setDataList(data);
+        setDataArray([]);
+        getPants(data);
+    }
+    const onClickFetchShoes = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'shoes',
+            'page': 1,
+        }
+        setDataList(data);
+        setDataArray([]);
+        getShoes(data);
+    }
+
     // 無限スクロール用
 
     // 検索条件保存
@@ -73,6 +104,14 @@ export const Item = memo(() => {
     useEffect(() => {
         setDataArray([...dataArray, ...userTops]);
     }, [userTops]);
+
+    useEffect(() => {
+        setDataArray([...dataArray, ...userPants]);
+    }, [userPants]);
+
+    useEffect(() => {
+        setDataArray([...dataArray, ...userShoes]);
+    }, [userShoes]);
 
     const loadMore = () => {
 
@@ -93,6 +132,14 @@ export const Item = memo(() => {
 
         if (dataList.wear == 'tops') {
             getTops(data);
+        }
+
+        if (dataList.wear == 'pants') {
+            getPants(data);
+        }
+
+        if (dataList.wear == 'shoes') {
+            getShoes(data);
         }
     }
 
@@ -162,8 +209,8 @@ export const Item = memo(() => {
                 <ItemWearSearch
                     onClickFetchCaps={onClickFetchCaps}
                     onClickFetchTops={onClickFetchTops}
-                    // onClickFetchPants={onClickFetchPants}
-                    // onClickFetchShoes={onClickFetchShoes}
+                    onClickFetchPants={onClickFetchPants}
+                    onClickFetchShoes={onClickFetchShoes}
                     handleClick={handleClick}
                 />
             </Popper>
