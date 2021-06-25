@@ -9,6 +9,8 @@ import { useAllTops } from "../../hooks/selectwear/useAllTops";
 import { useAllPants } from "../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../hooks/selectwear/useAllShoes";
 import { useGetItemDetail } from "../../hooks/item/useGetItemDetail";
+import { useRegisterWearItem } from "../../hooks/item/useRegisterWearItem";
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -158,11 +160,20 @@ export const Item = memo(() => {
 
     console.log(dataArray);
 
+    // モーダル表示
+
     const { GetItemDetail, itemGetDetail, loadingItemDetail, errorItemDetail } = useGetItemDetail();
+    const { RegisterWearItem, itemRegisterWear, loadingRegisterWear, errorRegisterWear } = useRegisterWearItem();
 
-    const [modalId, setModalId] = useState(false);
-
-
+    // モーダルで表示したウェアを着せる
+    const onClickWearItem = (id, type) => {
+        const data = {
+            'id': id,
+            'type': type,
+            'user': context.contextName.id,
+        }
+        RegisterWearItem(data);
+    }
 
 
     // 検索フォーム
@@ -176,15 +187,13 @@ export const Item = memo(() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    // モーダルで展開する情報取得
     const onClickInfo = (id, type) => {
-        // console.log(id);
-        // console.log(type);
         const data = {
             'id': id,
             'type': type,
         }
         GetItemDetail(data);
-        setModalId(id);
         setOpen(true);
     }
 
@@ -245,6 +254,10 @@ export const Item = memo(() => {
                         {dataArray ? (itemGetDetail ? (
                             <>
                                 <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
+                                <Button style={{ left: "50%", transform: "translateX(-50%)" }} aria-describedby={id} variant="contained" color="primary" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
+                                    <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
+                                    ウェアを着る
+                                </Button>
                             </>) : (<p></p>)
                         ) : <div></div>}
                     </div>
