@@ -231,7 +231,7 @@ export const Item = memo(() => {
                 style={{ overflow: 'visible' }}
             >
                 <div className={classes.root}>
-                    <Grid style={{ justifyContent: 'center' }} container spacing={1}>
+                    <Grid style={{ justifyContent: 'center', width: '100%', margin: '0' }} container spacing={1}>
                         {items}
                     </Grid>
                 </div>
