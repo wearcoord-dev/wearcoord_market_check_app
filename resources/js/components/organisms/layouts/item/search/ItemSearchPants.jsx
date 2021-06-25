@@ -39,7 +39,7 @@ export const ItemSearchPants = memo((props) => {
 
                 {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} />}
 
-                <Button style={{ position: "fixed", bottom: "-36px", left: "50%", transform: "translateX(-50%)", width: "250px" }} variant="contained" color="primary" onClick={handleClick}>
+                <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px' }} variant="contained" color="primary" onClick={handleClick}>
                     <SearchIcon style={{ paddingRight: "6px" }} />
                     検索する
                 </Button>
