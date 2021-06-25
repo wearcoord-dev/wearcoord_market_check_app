@@ -42,6 +42,8 @@ Route::get('/removecaps', [App\Http\Controllers\MycoordController::class, "remov
 
 Route::get('/getitem', [App\Http\Controllers\MycoordController::class, "getItem"])->name('getItem');
 
+Route::get('/getitemdetail', [App\Http\Controllers\ItemController::class, "getItemDetail"])->name('getItemDetail');
+
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 

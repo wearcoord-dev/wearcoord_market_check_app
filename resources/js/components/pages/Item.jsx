@@ -1,4 +1,4 @@
-import { Button, Grid, makeStyles, Popper } from "@material-ui/core";
+import { Backdrop, Button, Fade, Grid, makeStyles, Modal, Popper } from "@material-ui/core";
 import { memo, useContext, useEffect, useState } from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import { ItemWearSearch } from "../organisms/layouts/item/ItemWearSearch";
@@ -8,6 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAllTops } from "../../hooks/selectwear/useAllTops";
 import { useAllPants } from "../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../hooks/selectwear/useAllShoes";
+import { useGetItemDetail } from "../../hooks/item/useGetItemDetail";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,6 +25,17 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(255, 255, 255, .7)',
         borderRadius: '10px',
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    item: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    }
 }));
 
 export const Item = memo(() => {
@@ -33,6 +45,7 @@ export const Item = memo(() => {
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const context = useContext(UserContext);
     const classes = useStyles();
+    const [openModal, setOpen] = useState(false);
 
 
     const onClickFetchCaps = (props) => {
@@ -145,6 +158,11 @@ export const Item = memo(() => {
 
     console.log(dataArray);
 
+    const { GetItemDetail, itemGetDetail, loadingItemDetail, errorItemDetail } = useGetItemDetail();
+
+    const [modalId, setModalId] = useState(false);
+
+
 
 
     // 検索フォーム
@@ -158,13 +176,31 @@ export const Item = memo(() => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    const onClickInfo = (id, type) => {
+        // console.log(id);
+        // console.log(type);
+        const data = {
+            'id': id,
+            'type': type,
+        }
+        GetItemDetail(data);
+        setModalId(id);
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     //各スクロール要素
     const items = (
         dataArray.length ? (
             <>
                 {dataArray.map((item) => (
                     <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
-                        <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
+                        <button onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
+                            <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
+                        </button>
                     </Grid>
                 ))}
             </>
@@ -176,6 +212,7 @@ export const Item = memo(() => {
         )
     );
 
+
     return (
         <>
             <InfiniteScroll
@@ -183,13 +220,36 @@ export const Item = memo(() => {
                 next={loadMore}
                 hasMore={true}
                 style={{ overflow: 'visible' }}
-                >
+            >
                 <div className={classes.root}>
                     <Grid style={{ justifyContent: 'center' }} container spacing={1}>
                         {items}
                     </Grid>
                 </div>
             </InfiniteScroll>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openModal}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={openModal}>
+                    <div className={classes.item}>
+                        {dataArray ? (itemGetDetail ? (
+                            <>
+                                <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
+                            </>) : (<p></p>)
+                        ) : <div></div>}
+                    </div>
+                </Fade>
+            </Modal>
 
 
             <Button style={{ position: "fixed", bottom: "100px", left: "50%", transform: "translateX(-50%)" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>

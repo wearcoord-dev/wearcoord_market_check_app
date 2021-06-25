@@ -4,8 +4,6 @@ import { SearchColor } from "../../../../molecules/searchbox/SearchColor";
 import { UserContext } from "../../../../providers/UserProvider";
 import SearchIcon from '@material-ui/icons/Search';
 import { Button } from "@material-ui/core";
-import { SearchCategoryTops } from "../../../../molecules/searchbox/male/SearchCategoryTops";
-import { SearchCategoryTopsFemale } from "../../../../molecules/searchbox/female/SearchCategoryTopsFemale";
 import { SearchCategoryPants } from "../../../../molecules/searchbox/male/SearchCategoryPants";
 import { SearchCategoryPantsFemale } from "../../../../molecules/searchbox/female/SearchCategoryPantsFemale";
 
