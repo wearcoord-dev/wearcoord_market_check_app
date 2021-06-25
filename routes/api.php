@@ -84,6 +84,11 @@ Route::get('/getwcfavcoord', [App\Http\Controllers\MycoordController::class, "ge
 
 Route::get('/getlarosso2021', [App\Http\Controllers\MycoordController::class, "getLarosso2021"]);
 
+Route::get('/registerwearitem', function (Request $request) {
+});
+
+Route::post('/registerwearitem', [App\Http\Controllers\ItemController::class, "registerWearItem"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

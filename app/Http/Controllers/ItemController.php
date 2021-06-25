@@ -16,4 +16,19 @@ class ItemController extends Controller
 
         return response()->json($userItem);
     }
+
+    public function registerWearItem(Request $request)
+    {
+        $id = $request['id'];
+        $type = $request['type'];
+        $userid = $request['user'];
+
+        DB::table('userSelectCoord')->where('user_id', $userid )->update(
+            [
+                $type => $id,
+            ]
+        );
+
+        return 'ok';
+    }
 }
