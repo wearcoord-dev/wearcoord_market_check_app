@@ -31,8 +31,6 @@ export const ItemSearchShoes = memo((props) => {
             category: category,
         }
 
-        // console.log(data);
-
         onClickFetchShoes(data);
     }
 
