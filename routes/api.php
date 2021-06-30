@@ -89,6 +89,11 @@ Route::get('/registerwearitem', function (Request $request) {
 
 Route::post('/registerwearitem', [App\Http\Controllers\ItemController::class, "registerWearItem"]);
 
+Route::get('/deletecartitem', function (Request $request) {
+});
+
+Route::post('/deletecartitem', [App\Http\Controllers\ItemController::class, "deleteCartItem"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

@@ -4,6 +4,7 @@ import { useGetCartItem } from "../../../hooks/cart/useGetCartItem";
 import { UserContext } from "../../providers/UserProvider";
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import { useDeleteCartItem } from "../../../hooks/cart/useDeleteCartItem";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '300px',
         left: "50%",
         transform: "translateX(-50%)"
+    },
+    h2: {
+        padding: '10px 0',
+        textAlign: 'center',
+        fontWeight: 'bold',
     }
 }));
 
@@ -44,6 +50,7 @@ export const CartBox = memo((props) => {
     const [open, setOpen] = useState(false);
     const [getid, setGetid] = useState('');
     const [getHtml, setGetHtml] = useState('');
+    const { DeleteCartItem } = useDeleteCartItem();
 
     const handleOpen = (id, html) => {
         setOpen(true);
@@ -56,7 +63,12 @@ export const CartBox = memo((props) => {
     };
 
     const onClickDelete = () => {
-        console.log('delete');
+        const data = {
+            'id': getid,
+            'user': context.contextName.id,
+            'type': type,
+        };
+        DeleteCartItem(data);
     }
 
     useEffect(() => {
@@ -101,7 +113,7 @@ export const CartBox = memo((props) => {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">このアイテムをカートから削除しますか？</h2>
+                        <h2 className={classes.h2} id="transition-modal-title">このアイテムをカートから削除しますか？</h2>
                         <div style={{ display: "flex", justifyContent: "center" }} dangerouslySetInnerHTML={{ __html: getHtml }}></div>
                         <Button className={classes.btn} variant="contained" color="primary" onClick={onClickDelete}>
                             <DeleteForeverIcon style={{ paddingRight: "6px" }} />

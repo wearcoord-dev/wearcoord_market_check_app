@@ -31,4 +31,15 @@ class ItemController extends Controller
 
         return 'ok';
     }
+
+    public function deleteCartItem(Request $request)
+    {
+        $id = $request['id'];
+        $type = $request['type'];
+        $userid = $request['user'];
+
+        $userItem = DB::table('userCart')->where('type', $type)->where('user_id', $userid)->where('item_id', $id)->delete();
+
+        return 'ok';
+    }
 }
