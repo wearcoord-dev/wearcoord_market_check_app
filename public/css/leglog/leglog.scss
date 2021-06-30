@@ -80,6 +80,7 @@ input {
     height: 100vh;
     width: 100%;
     filter: grayscale(40%);
+    top: 0;
 }
 
 .regibtn {
@@ -91,16 +92,24 @@ input {
     }
 }
 
-.loginbtn{
+.loginbtn {
     background-color: #216496;
     color: white;
 }
 
-.resetbtn{
+.resetbtn {
     background-color: #216496;
     color: white;
 }
 
-.form-group.row{
+.form-group.row {
     padding: 10px 0;
+}
+
+.navindex{
+    z-index: 1000;
+}
+
+.backgroundRegi{
+    background-color: lightgray;
 }
