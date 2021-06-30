@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="default">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navindex">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
@@ -79,7 +79,7 @@
 
         <div class="background"></div>
 
-        <main class="py-4">
+        <main class="py-4 backgroundRegi">
             @yield('content')
         </main>
     </div>
