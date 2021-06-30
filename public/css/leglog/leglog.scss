@@ -1,10 +1,13 @@
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }
 
-input{
+input {
     background-color: transparent;
     border: none;
     outline: none;
@@ -15,34 +18,35 @@ input{
     color: #484848;
 }
 
-.genderBox{
+.genderBox {
     display: flex;
     justify-content: space-evenly;
-  }
+}
 
-  .genderRadiobox{
+.genderRadiobox {
     margin: 10px 10px;
     width: 50%;
-  }
+}
 
-.genderText{
+.genderText {
     display: flex;
     justify-content: center;
 }
 
-.subtext{
+.subtext {
     color: red;
     font-size: 12px;
 }
 
-.genderArea{
+.genderArea {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     text-align: center;
+    padding: 20px 0;
 }
 
-.wearSet{
+.wearSet {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -62,7 +66,41 @@ input{
 //     box-shadow: 0 0 16px rgba(33, 100, 150, .7);
 // }
 
-.coordWrapper{
+.coordWrapper {
     overflow: auto;
     white-space: nowrap;
+}
+
+.background {
+    background-image: url('../../img/lp/tenniswoman.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    filter: grayscale(40%);
+}
+
+.regibtn {
+    padding: 20px 0;
+
+    .registerbtn {
+        background-color: #216496;
+        color: white;
+    }
+}
+
+.loginbtn{
+    background-color: #216496;
+    color: white;
+}
+
+.resetbtn{
+    background-color: #216496;
+    color: white;
+}
+
+.form-group.row{
+    padding: 10px 0;
 }
