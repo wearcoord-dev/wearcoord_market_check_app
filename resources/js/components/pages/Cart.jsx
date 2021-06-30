@@ -67,7 +67,7 @@ export const Cart = memo(() => {
             // scrollButtons="off"
             aria-label="scrollable prevent tabs example"
             centered
-            style={{backgroundColor: '#0080E4', position: "fixed", width: "100%", zIndex: "100"}}
+            style={{backgroundColor: '#0080E4', position: "fixed", width: "100%", zIndex: "100", top: "50px"}}
           >
             <Tab icon={<span className="material-icons-outlined"
         >face</span>} aria-label="caps" {...a11yProps(0)} />
