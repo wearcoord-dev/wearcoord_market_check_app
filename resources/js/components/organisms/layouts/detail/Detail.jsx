@@ -2,9 +2,13 @@ import { CircularProgress, makeStyles } from "@material-ui/core";
 import { memo, useContext, useEffect, useState } from "react";
 import { useGetUserFavCoord } from "../../../../hooks/favorite/useGetUserFavCoord";
 import { useOpenBtnFuncFav } from "../../../../hooks/favorite/useOpenBtnFuncFav";
+import { BtnLeft } from "../../../atoms/button/BtnLeft";
 import { UserContext } from "../../../providers/UserProvider";
 import { OpenRightBtn } from "../../button/OpenRightBtn";
 import { OpenRightBtnFav } from "../../button/OpenRightBtnFav";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
+
 
 const useStyles = makeStyles((theme) => ({
     imgbox: {
@@ -16,8 +20,11 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         justifyContent: "center",
     },
-    rightbox: {
+    leftbox: {
         width: "30%",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
     },
     img: {
         width: "100%",
@@ -32,10 +39,10 @@ export const Detail = memo((props) => {
     const userCheck = context.contextName;
     const { openBtnFuncFav } = useOpenBtnFuncFav();
 
-    const [ capsIDValue, setCapsID] = useState(null);
-    const [ topsIDValue, setTopsID] = useState(null);
-    const [ pantsIDValue, setPantsID] = useState(null);
-    const [ shoesIDValue, setShoesID] = useState(null);
+    const [capsIDValue, setCapsID] = useState(null);
+    const [topsIDValue, setTopsID] = useState(null);
+    const [pantsIDValue, setPantsID] = useState(null);
+    const [shoesIDValue, setShoesID] = useState(null);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -48,7 +55,7 @@ export const Detail = memo((props) => {
         if (userCoordList) {
 
             // nullかどうか
-            if(userCoordList.caps){
+            if (userCoordList.caps) {
                 let capsID = userCoordList.caps;
                 setCapsID(capsID);
             }
@@ -64,15 +71,35 @@ export const Detail = memo((props) => {
 
     useEffect(() => {
         if (userCoordList) {
-        openBtnFuncFav()
+            openBtnFuncFav()
         }
-    },[userCoordList]);
+    }, [userCoordList]);
+
+    console.log(userCoordList);
 
     return (
         <>
             {userCoordList ? (
                 <div className="displayFlex relative">
-                    <div className={classes.rightbox}></div>
+                    <div className={classes.leftbox}>
+
+                        {userCoordList ? (context ? (userCoordList.user_id == context.contextName.id ? <BtnLeft
+                            icon={<DeleteForeverIcon fontSize={"large"} />}
+                            text={'削除する'}
+                            type={'delete'}
+                            id={userCoordList.id}
+                            img={userCoordList.img}
+                        /> : <BtnLeft
+                            icon={<AccessibilityIcon fontSize={"large"} />}
+                            text={'着る'}
+                            type={'wear'}
+                            id={userCoordList.id}
+                            capsID={capsIDValue}
+                            topsID={topsIDValue}
+                            pantsID={pantsIDValue}
+                            shoesID={shoesIDValue}
+                        />) : <p></p>) : <p></p>}
+                    </div>
                     <div className={classes.imgbox}>
                         <img className={classes.img} src={userCoordList.img} alt="" />
                     </div>

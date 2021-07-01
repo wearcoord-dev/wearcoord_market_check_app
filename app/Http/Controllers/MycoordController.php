@@ -381,4 +381,13 @@ class MycoordController extends Controller
 
         return response()->json($userItem);
     }
+
+    public function deleteCoord(Request $request)
+    {
+        $id = $request['id'];
+
+        DB::table('userCreateCoord')->where('id', $id)->delete();
+
+        return 'ok';
+    }
 }
