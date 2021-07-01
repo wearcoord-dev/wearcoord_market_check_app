@@ -2,8 +2,11 @@ import { CircularProgress, makeStyles } from "@material-ui/core";
 import { memo, useContext, useEffect, useState } from "react";
 import { useGetWcFavCoord } from "../../../../hooks/favorite/useGetWcFavCoord";
 import { useOpenBtnFuncFav } from "../../../../hooks/favorite/useOpenBtnFuncFav";
+import { BtnLeft } from "../../../atoms/button/BtnLeft";
 import { UserContext } from "../../../providers/UserProvider";
 import { OpenRightBtnFav } from "../../button/OpenRightBtnFav";
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
+
 
 const useStyles = makeStyles((theme) => ({
     imgbox: {
@@ -15,8 +18,11 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         justifyContent: "center",
     },
-    rightbox: {
+    leftbox: {
         width: "30%",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
     },
     img: {
         width: "100%",
@@ -25,16 +31,16 @@ const useStyles = makeStyles((theme) => ({
 
 export const WcDetail = memo((props) => {
     const { coordid } = props;
-    const { GetWcFavCoord,  wcCoordList, loadingWcCoordList, errorWcCoordList } = useGetWcFavCoord(null);
+    const { GetWcFavCoord, wcCoordList, loadingWcCoordList, errorWcCoordList } = useGetWcFavCoord(null);
     const classes = useStyles();
     const context = useContext(UserContext);
     const userCheck = context.contextName;
     const { openBtnFuncFav } = useOpenBtnFuncFav();
 
-    const [ capsIDValue, setCapsID] = useState(null);
-    const [ topsIDValue, setTopsID] = useState(null);
-    const [ pantsIDValue, setPantsID] = useState(null);
-    const [ shoesIDValue, setShoesID] = useState(null);
+    const [capsIDValue, setCapsID] = useState(null);
+    const [topsIDValue, setTopsID] = useState(null);
+    const [pantsIDValue, setPantsID] = useState(null);
+    const [shoesIDValue, setShoesID] = useState(null);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -47,7 +53,7 @@ export const WcDetail = memo((props) => {
         if (wcCoordList) {
 
             // nullかどうか
-            if(wcCoordList.caps){
+            if (wcCoordList.caps) {
                 let capsID = wcCoordList.caps;
                 setCapsID(capsID);
             }
@@ -63,15 +69,28 @@ export const WcDetail = memo((props) => {
 
     useEffect(() => {
         if (wcCoordList) {
-        openBtnFuncFav()
+            openBtnFuncFav()
         }
-    },[wcCoordList]);
+    }, [wcCoordList]);
 
     return (
         <>
             {wcCoordList ? (
                 <div className="displayFlex relative">
-                    <div className={classes.rightbox}></div>
+                    <div className={classes.leftbox}>
+                        {wcCoordList ? (context ? <BtnLeft
+                            icon={<AccessibilityIcon fontSize={"large"} />}
+                            text={'着る'}
+                            type={'wear'}
+                            id={wcCoordList.id}
+                            img={wcCoordList.img}
+                            capsID={capsIDValue}
+                            topsID={topsIDValue}
+                            pantsID={pantsIDValue}
+                            shoesID={shoesIDValue}
+                            userid={context.contextName.id}
+                        /> : <p></p>) : <p></p>}
+                    </div>
                     <div className={classes.imgbox}>
                         <img className={classes.img} src={wcCoordList.img} alt="" />
                     </div>
