@@ -390,4 +390,36 @@ class MycoordController extends Controller
 
         return 'ok';
     }
+
+    public function copyCoord(Request $request)
+    {
+        $id = $request['id'];
+        $user_id = $request['userid'];
+        $caps = $request['caps'];
+        $tops = $request['tops'];
+        $pants = $request['pants'];
+        $shoes = $request['shoes'];
+
+        $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
+
+        if (isset($checkList)) {
+            DB::table('userSelectCoord')->where('user_id', $user_id)->update([
+                'user_id' => $user_id,
+                'caps' => $caps,
+                'tops' => $tops,
+                'pants' => $pants,
+                'shoes' => $shoes,
+            ]);
+        } else {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => $caps,
+                'tops' => $tops,
+                'pants' => $pants,
+                'shoes' => $shoes,
+            ]);
+        }
+
+        return 'ok';
+    }
 }

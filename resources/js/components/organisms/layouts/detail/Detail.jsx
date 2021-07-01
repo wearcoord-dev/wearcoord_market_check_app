@@ -43,6 +43,7 @@ export const Detail = memo((props) => {
     const [topsIDValue, setTopsID] = useState(null);
     const [pantsIDValue, setPantsID] = useState(null);
     const [shoesIDValue, setShoesID] = useState(null);
+    const [mannequinData, setInnerUrl] = useState(null);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -62,10 +63,12 @@ export const Detail = memo((props) => {
             let topsID = userCoordList.tops;
             let pantsID = userCoordList.pants;
             let shoesID = userCoordList.shoes;
+            let mannequinUrlData = userCoordList.mannequin;
 
             setTopsID(topsID);
             setPantsID(pantsID);
             setShoesID(shoesID);
+            setInnerUrl(mannequinUrlData);
         }
     }, [userCoordList]);
 
@@ -94,10 +97,13 @@ export const Detail = memo((props) => {
                             text={'着る'}
                             type={'wear'}
                             id={userCoordList.id}
+                            img={userCoordList.img}
                             capsID={capsIDValue}
                             topsID={topsIDValue}
                             pantsID={pantsIDValue}
                             shoesID={shoesIDValue}
+                            mannequin={mannequinData}
+                            userid={context.contextName.id}
                         />) : <p></p>) : <p></p>}
                     </div>
                     <div className={classes.imgbox}>

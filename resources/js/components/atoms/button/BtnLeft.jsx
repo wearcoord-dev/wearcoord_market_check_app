@@ -3,6 +3,7 @@ import { memo, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { useDeleteCoord } from "../../../hooks/mycoord/useDeleteCoord";
+import { useCopyCoord } from "../../../hooks/mycoord/useCopyCoord";
 
 const useStyles = makeStyles((theme) => ({
     innerbox: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const BtnLeft = memo((props) => {
     const classes = useStyles();
-    const { text, icon, type, id, capsID, topsID, pantsID, shoesID, img } = props;
+    const { text, icon, type, id, capsID, topsID, pantsID, shoesID, img, userid, mannequin } = props;
 
     const history = useHistory();
 
@@ -54,6 +55,7 @@ export const BtnLeft = memo((props) => {
     const [openwear, setOpenWear] = useState(false);
 
     const { DeleteCoord } = useDeleteCoord();
+    const { CopyCoord } = useCopyCoord();
 
 
     // const handleOpen = () => {
@@ -68,7 +70,7 @@ export const BtnLeft = memo((props) => {
         setOpenWear(false);
     };
 
-    const toSelectWear = useCallback(() => history.push("/main/selectwear"));
+    // const toSelectWear = useCallback(() => history.push("/main/selectwear"));
 
     const onClickWear = () => {
 
@@ -84,10 +86,21 @@ export const BtnLeft = memo((props) => {
     const onClickDelete = () => {
         const data = {
             'id': id,
-            // 'user': context.contextName.id,
-            // 'type': type,
         };
         DeleteCoord(data);
+    }
+
+    const onClickCopy = () => {
+        const data = {
+            'id': id,
+            'userid': userid,
+            'caps': capsID,
+            'tops': topsID,
+            'pants': pantsID,
+            'shoes': shoesID,
+            'mannequin': mannequin,
+        };
+        CopyCoord(data);
     }
 
     return (
@@ -118,7 +131,7 @@ export const BtnLeft = memo((props) => {
                             <img className={classes.img} src={img} alt="" />
                         </div>
                         <Button className={classes.btn} variant="contained" color="primary" onClick={onClickDelete}>
-                            <DeleteForeverIcon style={{ paddingRight: "6px" }} />
+                            {icon}
                             削除する
                         </Button>
                     </div>
@@ -139,8 +152,14 @@ export const BtnLeft = memo((props) => {
             >
                 <Fade in={openwear}>
                     <div className={classes.paper}>
-                        <h2 id="transition-modal-title">Transition modal</h2>
-                        <p id="transition-modal-description">react-transition-group animates me.</p>
+                    <h2 className={classes.h2} id="transition-modal-title">このコーデを着てみますか？</h2>
+                        <div className={classes.center}>
+                            <img className={classes.img} src={img} alt="" />
+                        </div>
+                        <Button className={classes.btn} variant="contained" color="primary" onClick={onClickCopy}>
+                            {icon}
+                            着る
+                        </Button>
                     </div>
                 </Fade>
             </Modal>

@@ -99,6 +99,11 @@ Route::get('/deletecoord', function (Request $request) {
 
 Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
 
+Route::get('/copycoord', function (Request $request) {
+});
+
+Route::post('/copycoord', [App\Http\Controllers\MycoordController::class, "copyCoord"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);
