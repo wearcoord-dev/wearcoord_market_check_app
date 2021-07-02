@@ -7,6 +7,7 @@ import Img5 from "/img/mannequin/mens_170_underinner_long_black_socks_model.png"
 import Img6 from "/img/mannequin/mens_170_underinner_short_white_socks_model.png";
 import Img7 from "/img/mannequin/mens_170_underinner_long_white_socks_model.png";
 import Img8 from "/img/mannequin/mens_170_underinner_short_black_socks_model.png";
+import Img9 from "/img/mannequin/mannequin_done3.png";
 
 export const SearchInnerItem = memo((props) => {
 
@@ -82,6 +83,12 @@ export const SearchInnerItem = memo((props) => {
                 <label htmlFor="8" className="radioInputLabel">
                 <img style={style} src={Img8} alt="" />
                 <p style={{textAlign: "center"}}>Type8</p>
+                </label>
+
+                <input type="radio" id="9" className="radioInput" name="brand" value="mannequin_done3.png" onChange={handleInputChange} />
+                <label htmlFor="9" className="radioInputLabel">
+                <img style={style} src={Img9} alt="" />
+                <p style={{textAlign: "center"}}>Type9</p>
                 </label>
 
             </div>
