@@ -4,6 +4,7 @@ import { SearchBrandTops } from "./searchBrand/SearchBrandTops";
 import { SearchColor } from "./SearchColor";
 import { SearchCategoryTops } from "./male/SearchCategoryTops";
 import { SearchCategoryTopsFemale } from "./female/SearchCategoryTopsFemale";
+import { SearchBrandTopsFemale } from "./female/SearchBrandTopsFemale";
 
 export const SearchItemTops = memo((props) => {
     const { onClickFetchTops } = props;
@@ -30,7 +31,7 @@ export const SearchItemTops = memo((props) => {
     return (
         <>
             <div>
-                <SearchBrandTops setValue={setValue} />
+                {context.contextName.gender == 'male' ? <SearchBrandTops setValue={setValue} /> : <SearchBrandTopsFemale setValue={setValue} />}
                 <SearchColor setValueColor={setValueColor} />
 
                 {context.contextName.gender == 'male' ? <SearchCategoryTops setValueCategory={setValueCategory} /> : <SearchCategoryTopsFemale setValueCategory={setValueCategory} />}
