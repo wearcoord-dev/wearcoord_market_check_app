@@ -1,20 +1,48 @@
+import { makeStyles } from "@material-ui/core";
 import { memo, useCallback, useContext, useEffect, useRef, useState } from "react";
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useCreateUserFace } from "../../../hooks/user/useCreateUserFace";
 import { UserContext } from "../../providers/UserProvider";
+import sampleimg from "../../../../../public/img/others/face/face_crop_sample.png"
+import noimg from "../../../../../public/img/others/face/noimg.png"
 
-// export const SetUserFace = memo(() => {
-//     return (
-//         <>
-//         <p>setuserfaceです</p>
-//         </>
-//     )
-// })
+const useStyles = makeStyles({
+    faceref: {
+        display: 'flex',
+        alignItems: 'flex-end',
+    },
+    imgbox: {
+        width: '50%',
+        textAlign: 'center',
+    },
+    img: {
+        width: '50%',
+    },
+    imgp: {
+        padding: '10px 0',
+    },
+    canvaswrap: {
+        display: "flex",
+        justifyContent: "center",
+        margin: "20px auto",
+        width: '30%',
+        flexDirection: 'column',
+    },
+    uploadwrap: {
+        textAlign: 'center',
+        padding: '10px 0',
+    },
+    iconimg: {
+        width: '100%',
+        maxWidth: '50px',
+    }
+});
 
 
 
 export const SetUserFace = memo(() => {
+    const classes = useStyles();
     const { CreateUserFace } = useCreateUserFace();
     const context = useContext(UserContext);
 
@@ -85,14 +113,29 @@ export const SetUserFace = memo(() => {
         setTrimmedSrc(canvas.toDataURL(contentType));
     }, [completedCrop]);
 
+    console.log(completedCrop);
+
     return (
         <div className="App">
             {context.contextName ? (
-                <p style={{ width: "200px", margin: "auto" }}>
-                    <img style={{ width: "100%", borderRadius: "50%" }} src={context.contextName.faceImg} alt="" />
-                </p>
+                <div className={classes.faceref}>
+                    <div className={classes.imgbox}>
+
+                        {context.contextName.faceImg ? <img className={classes.img} src={context.contextName.faceImg} alt="" /> : (
+                            <div style={{ height: '80px' }}>
+                                <img className={classes.iconimg} src={noimg} alt="" />
+                                <p>画像が登録されていません</p>
+                            </div>
+                        )}
+                        <p className={classes.imgp}>現在の登録済み画像</p>
+                    </div>
+                    <div className={classes.imgbox}>
+                        <img className={classes.img} src={sampleimg} alt="" />
+                        <p className={classes.imgp}>切り抜き参考サイズ</p>
+                    </div>
+                </div>
             ) : <p>画像がありません</p>}
-            <div>
+            <div className={classes.uploadwrap}>
                 <input type="file" accept="image/*" onChange={onSelectFile} />
             </div>
             <ReactCrop
@@ -103,29 +146,35 @@ export const SetUserFace = memo(() => {
                 onComplete={(c) => setCompletedCrop(c)}
                 style={{ width: "300px", display: "flex", margin: "auto" }}
             />
-            <div style={{ display: "flex", justifyContent: "center", margin: "20px" }}>
-                <canvas
-                    ref={previewCanvasRef}
-                    // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
-                    style={{
-                        width: Math.round(completedCrop?.width ?? 0),
-                        height: Math.round(completedCrop?.height ?? 0),
-                        borderRadius: "50%"
-                    }}
-                />
-            </div>
-            <div style={{ textAlign: "center" }}>
-                <button
-                    style={{ backgroundColor: "#484848", color: "white", padding: "10px 50px", display: "inline-block", borderRadius: "10px", fontSize: "20px" }}
-                    type="button"
-                    disabled={!completedCrop?.width || !completedCrop?.height}
-                    onClick={() =>
-                        generateDownload(previewCanvasRef.current, completedCrop)
-                    }
-                >
-                    Faceを登録
-        </button>
-            </div>
+            {completedCrop !== null ? (
+                <>
+                    <div className={classes.canvaswrap}>
+                        <canvas
+                            ref={previewCanvasRef}
+                            // Rounding is important so the canvas width and height matches/is a multiple for sharpness.
+                            style={{
+                                // width: Math.round(completedCrop?.width ?? 0),
+                                // height: Math.round(completedCrop?.height ?? 0),
+                                width: '100%',
+                                borderRadius: "50%"
+                            }}
+                        />
+                        <p className={classes.imgp}>選択されたサイズ</p>
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                        <button
+                            style={{ backgroundColor: "#484848", color: "white", padding: "10px 50px", display: "inline-block", borderRadius: "10px", fontSize: "20px" }}
+                            type="button"
+                            disabled={!completedCrop?.width || !completedCrop?.height}
+                            onClick={() =>
+                                generateDownload(previewCanvasRef.current, completedCrop)
+                            }
+                        >
+                            Faceを登録
+                        </button>
+                    </div>
+                </>
+            ) : <></>}
             <div style={{ marginBottom: "100px" }}></div>
         </div>
     );
