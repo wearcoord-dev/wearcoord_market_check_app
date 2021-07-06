@@ -64,4 +64,15 @@ class UserController extends Controller
 
         return response()->json($DBitems);
     }
+
+    public function registerFirstCheck(Request $request)
+    {
+        $id = $request['id'];
+
+            DB::table('users')->where('id', $id)->update([
+                'firstcheck' => 1,
+            ]);
+
+        return 'ok';
+    }
 }

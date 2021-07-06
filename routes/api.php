@@ -104,6 +104,11 @@ Route::get('/copycoord', function (Request $request) {
 
 Route::post('/copycoord', [App\Http\Controllers\MycoordController::class, "copyCoord"]);
 
+Route::get('/registerfirstcheck', function (Request $request) {
+});
+
+Route::post('/registerfirstcheck', [App\Http\Controllers\UserController::class, "registerFirstCheck"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);
