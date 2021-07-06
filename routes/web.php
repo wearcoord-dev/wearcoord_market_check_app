@@ -41,6 +41,7 @@ Route::get('/user', function () {
         'id' => $user->id,
         'gender' => $user->gender,
         'faceImg' => $user->faceImg,
+        'firstcheck' => $user->firstcheck,
     ];
 
     return response()->json($user);
