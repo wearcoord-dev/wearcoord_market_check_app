@@ -6,12 +6,15 @@ import { WcRecommendList } from "../organisms/layouts/home/WcRecommendList";
 import { UserContext } from "../providers/UserProvider";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
-import img1 from '../../../../public/img/others/intro/one.jpg'
-import img2 from '../../../../public/img/others/intro/two.jpg'
-import img3 from '../../../../public/img/others/intro/three.jpg'
-import img4 from '../../../../public/img/others/intro/four.jpg'
-import img5 from '../../../../public/img/others/intro/five.jpg'
 import { useRegisterFirstStep } from "../../hooks/user/useRegisterFirstStep";
+import { PageOne } from "../organisms/layouts/introguide/PageOne";
+import { PageTwo } from "../organisms/layouts/introguide/PageTwo";
+import { PageThree } from "../organisms/layouts/introguide/PageThree";
+import { PageFour } from "../organisms/layouts/introguide/Pagefour";
+import { PageFive } from "../organisms/layouts/introguide/PageFive";
+import { PageSix } from "../organisms/layouts/introguide/PageSix";
+import { PageEnd } from "../organisms/layouts/introguide/PageEnd";
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -31,6 +34,13 @@ const useStyles = makeStyles((theme) => ({
     },
     img: {
         width: '250px',
+    },
+    icon: {
+        fontSize: '60px',
+        position: 'absolute',
+        top: '50px',
+        fontSize: '60px',
+        right: '0',
     }
 }));
 
@@ -54,17 +64,36 @@ export const Home = memo(() => {
 
     const body = (
         <div className={classes.paper}>
+                <CancelIcon color="primary" className={classes.icon} onClick={handleClose} />
             <Swiper
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             >
-                <SwiperSlide className={classes.swiperbox}><img className={classes.img} src={img1} alt="" /></SwiperSlide>
-                <SwiperSlide className={classes.swiperbox}><img className={classes.img} src={img2} alt="" /></SwiperSlide>
-                <SwiperSlide className={classes.swiperbox}><img className={classes.img} src={img3} alt="" /></SwiperSlide>
-                <SwiperSlide className={classes.swiperbox}><img className={classes.img} src={img4} alt="" /></SwiperSlide>
-                <SwiperSlide className={classes.swiperbox}><img className={classes.img} src={img5} alt="" /></SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageOne />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageTwo />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageThree />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageFour />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageFive />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageSix />
+                </SwiperSlide>
+                <SwiperSlide className={classes.swiperbox}>
+                    <PageEnd
+                        handleClose={handleClose}
+                    />
+                </SwiperSlide>
             </Swiper>
         </div>
     );
