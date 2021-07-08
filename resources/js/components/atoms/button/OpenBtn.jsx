@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Backdrop, Fade, Modal } from "@material-ui/core";
 import { UserContext } from "../../providers/UserProvider";
 import { usePostItemToCart } from "../../../hooks/mycoord/usePostItemToCart";
+import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -26,7 +27,7 @@ export const OpenBtn = memo((props) => {
     const { name, icon, item, type } = props;
     const { GetItem, userItemInfo, loadingItem, errorItem } = useGetItem();
     const { PostItemToCart } = usePostItemToCart();
-    const [ htmltext, sethtmltext ] = useState();
+    const [htmltext, sethtmltext] = useState();
     const context = useContext(UserContext);
 
 
@@ -42,7 +43,7 @@ export const OpenBtn = memo((props) => {
 
     useEffect(() => {
         if (userItemInfo) {
-        sethtmltext(userItemInfo[0].moshimoLink);
+            sethtmltext(userItemInfo[0].moshimoLink);
         }
     }, [userItemInfo])
 
@@ -58,26 +59,38 @@ export const OpenBtn = memo((props) => {
                         {icon}
                         <p className="btnText" id={"btnTitle" + name}>{name}</p>
                     </summary>
-                    <div className="detailsBottom">
-                        <div  className="detailsBtn">
-                            <button onClick={onClickCart} type="button">
-                                <span className="material-icons-outlined">
-                                    shopping_cart
-                </span>
-                                <p className="btnText">カートに入れる</p>
-                                <input type="hidden" name="type" value={name} />
-                            </button>
-                        </div>
-                        <hr />
-                        <div className="detailsBtn2" >
-                            <button onClick={onClickInfo} className="searchBtn" type="button">
-                                <span className="material-icons-outlined">
-                                    screen_search_desktop
-                </span>
-                                <p className="btnText">情報を見る</p>
-                            </button>
-                        </div>
-                    </div>
+                    {item !== null ? (
+                        <>
+                            <div className="detailsBottom">
+                                <div className="detailsBtn">
+                                    <button onClick={onClickCart} type="button">
+                                        <span className="material-icons-outlined">
+                                            shopping_cart
+                                        </span>
+                                        <p className="btnText">カートに入れる</p>
+                                        <input type="hidden" name="type" value={name} />
+                                    </button>
+                                </div>
+                                <hr />
+                                <div className="detailsBtn2" >
+                                    <button onClick={onClickInfo} className="searchBtn" type="button">
+                                        <span className="material-icons-outlined">
+                                            screen_search_desktop
+                                        </span>
+                                        <p className="btnText">情報を見る</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="detailsBtn">
+                            <p><RemoveCircleIcon fontSize={"large"} /></p>
+                            <p>No Data</p>
+                            </div>
+                        </>
+                    )}
+
                 </details>
             </div>
             <Modal
@@ -94,12 +107,12 @@ export const OpenBtn = memo((props) => {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                    {userItemInfo ? (
-                        <>
-                            <p>{userItemInfo[0].brand}</p>
-                            <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
-                        </>
-                    ) : <div></div>}
+                        {userItemInfo ? (
+                            <>
+                                <p>{userItemInfo[0].brand}</p>
+                                <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
+                            </>
+                        ) : <div></div>}
                     </div>
                 </Fade>
             </Modal>
