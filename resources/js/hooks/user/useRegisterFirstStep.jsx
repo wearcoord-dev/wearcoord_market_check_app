@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export const useRegisterFirstStep = () => {
+    const history = useHistory();
 
     const RegisterFirstStep = (id) => {
         const header = {
@@ -21,6 +23,7 @@ export const useRegisterFirstStep = () => {
 
         axios.post(url, setData, header).then((res) => {
             console.log(res);
+            history.go(0);
         }).catch(() => {
         }).finally(() => {
         });

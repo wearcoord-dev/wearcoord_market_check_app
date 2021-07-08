@@ -435,6 +435,37 @@
                                         </div>
                                     </details>
 
+                                    {{-- Elleseブランド --}}
+                                    <details>
+                                        <summary>Ellese</summary>
+                                        <div class="coordWrapper">
+                                            <input type="radio"
+                                            class="radioInput" id="49" value="49" name="coorditem" >
+                                           <label class="genderRadiobox" for="49">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/49.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="50" value="50" name="coorditem" >
+                                           <label class="genderRadiobox" for="50">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/50.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="51" value="51" name="coorditem" >
+                                           <label class="genderRadiobox" for="51">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/51.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="52" value="52" name="coorditem" >
+                                           <label class="genderRadiobox" for="52">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/52.png')}}" alt="">
+                                           </label>
+
+                                        </div>
+                                    </details>
+
                                 </details>
                             </details>
                         </div>

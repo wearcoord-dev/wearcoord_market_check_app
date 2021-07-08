@@ -469,5 +469,45 @@ class FirstCoordList
                 'mannequin' => $url,
             ]);
         }
+        if ($coordId == 49) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 626,
+                'pants' => 357,
+                'shoes' => 59,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 50) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 625,
+                'pants' => 357,
+                'shoes' => 143,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 51) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 61,
+                'tops' => 623,
+                'pants' => 230,
+                'shoes' => 185,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 52) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 622,
+                'pants' => 140,
+                'shoes' => 122,
+                'mannequin' => $url,
+            ]);
+        }
     }
 }
