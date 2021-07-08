@@ -13,29 +13,29 @@ class FirstCoordList
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
                 'caps' => null,
-                'tops' => 602,
-                'pants' => 362,
-                'shoes' => 143,
+                'tops' => 597,
+                'pants' => 256,
+                'shoes' => 140,
                 'mannequin' => $url,
             ]);
         }
         if ($coordId == 2) {
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
-                'caps' => null,
-                'tops' => 614,
-                'pants' => 376,
-                'shoes' => 138,
+                'caps' => 63,
+                'tops' => 628,
+                'pants' => 374,
+                'shoes' => 57,
                 'mannequin' => $url,
             ]);
         }
         if ($coordId == 3) {
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
-                'caps' => null,
-                'tops' => 562,
-                'pants' => 362,
-                'shoes' => 144,
+                'caps' => 63,
+                'tops' => 602,
+                'pants' => 251,
+                'shoes' => 132,
                 'mannequin' => $url,
             ]);
         }
@@ -43,9 +43,9 @@ class FirstCoordList
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
                 'caps' => null,
-                'tops' => 347,
-                'pants' => 376,
-                'shoes' => 141,
+                'tops' => 582,
+                'pants' => 249,
+                'shoes' => 124,
                 'mannequin' => $url,
             ]);
         }
@@ -53,9 +53,9 @@ class FirstCoordList
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
                 'caps' => null,
-                'tops' => 617,
-                'pants' => 374,
-                'shoes' => 132,
+                'tops' => 607,
+                'pants' => 233,
+                'shoes' => 58,
                 'mannequin' => $url,
             ]);
         }
@@ -63,32 +63,32 @@ class FirstCoordList
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
                 'caps' => null,
-                'tops' => 614,
+                'tops' => 616,
                 'pants' => 374,
-                'shoes' => 132,
+                'shoes' => 172,
                 'mannequin' => $url,
             ]);
         }
         if ($coordId == 7) {
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
-                'caps' => null,
-                'tops' => 606,
-                'pants' => 367,
-                'shoes' => 130,
+                'caps' => 63,
+                'tops' => 613,
+                'pants' => 252,
+                'shoes' => 143,
                 'mannequin' => $url,
             ]);
         }
-        if ($coordId == 8) {
-            DB::table('userSelectCoord')->insert([
-                'user_id' => $user_id,
-                'caps' => null,
-                'tops' => 616,
-                'pants' => 374,
-                'shoes' => 127,
-                'mannequin' => $url,
-            ]);
-        }
+        // if ($coordId == 8) {
+        //     DB::table('userSelectCoord')->insert([
+        //         'user_id' => $user_id,
+        //         'caps' => null,
+        //         'tops' => 616,
+        //         'pants' => 374,
+        //         'shoes' => 127,
+        //         'mannequin' => $url,
+        //     ]);
+        // }
         if ($coordId == 9) {
             DB::table('userSelectCoord')->insert([
                 'user_id' => $user_id,
@@ -506,6 +506,236 @@ class FirstCoordList
                 'tops' => 622,
                 'pants' => 140,
                 'shoes' => 122,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 53) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 133,
+                'pants' => 242,
+                'shoes' => 59,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 54) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 286,
+                'pants' => 242,
+                'shoes' => 56,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 55) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 318,
+                'pants' => 238,
+                'shoes' => 172,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 56) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 61,
+                'tops' => 287,
+                'pants' => 252,
+                'shoes' => 144,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 57) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 234,
+                'pants' => 183,
+                'shoes' => 121,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 58) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 229,
+                'pants' => 183,
+                'shoes' => 117,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 59) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 220,
+                'pants' => 183,
+                'shoes' => 58,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 60) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 195,
+                'pants' => 188,
+                'shoes' => 58,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 61) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 179,
+                'pants' => 357,
+                'shoes' => 124,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 62) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 178,
+                'pants' => 375,
+                'shoes' => 124,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 63) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 265,
+                'pants' => 206,
+                'shoes' => 56,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 64) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 261,
+                'pants' => 206,
+                'shoes' => 58,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 65) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 256,
+                'pants' => 375,
+                'shoes' => 59,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 66) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 255,
+                'pants' => 374,
+                'shoes' => 57,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 67) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => NULL,
+                'tops' => 553,
+                'pants' => 233,
+                'shoes' => 129,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 68) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 578,
+                'pants' => 374,
+                'shoes' => 160,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 69) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 450,
+                'pants' => 357,
+                'shoes' => 158,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 70) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 447,
+                'pants' => 233,
+                'shoes' => 164,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 71) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 452,
+                'pants' => 253,
+                'shoes' => 166,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 72) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 488,
+                'pants' => 374,
+                'shoes' => 172,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 73) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 483,
+                'pants' => 356,
+                'shoes' => 172,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 74) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 479,
+                'pants' => 354,
+                'shoes' => 172,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 75) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 63,
+                'tops' => 467,
+                'pants' => 374,
+                'shoes' => 168,
                 'mannequin' => $url,
             ]);
         }

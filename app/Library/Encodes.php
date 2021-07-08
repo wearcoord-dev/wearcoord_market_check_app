@@ -331,6 +331,98 @@ class Encodes
             $gender = "female";
             $coordId = 52;
         }
+        if($data == "53"){
+            $gender = "female";
+            $coordId = 53;
+        }
+        if($data == "54"){
+            $gender = "female";
+            $coordId = 54;
+        }
+        if($data == "55"){
+            $gender = "female";
+            $coordId = 55;
+        }
+        if($data == "56"){
+            $gender = "female";
+            $coordId = 56;
+        }
+        if($data == "57"){
+            $gender = "female";
+            $coordId = 57;
+        }
+        if($data == "58"){
+            $gender = "female";
+            $coordId = 58;
+        }
+        if($data == "59"){
+            $gender = "female";
+            $coordId = 59;
+        }
+        if($data == "60"){
+            $gender = "female";
+            $coordId = 60;
+        }
+        if($data == "61"){
+            $gender = "female";
+            $coordId = 61;
+        }
+        if($data == "62"){
+            $gender = "female";
+            $coordId = 62;
+        }
+        if($data == "63"){
+            $gender = "female";
+            $coordId = 63;
+        }
+        if($data == "64"){
+            $gender = "female";
+            $coordId = 64;
+        }
+        if($data == "65"){
+            $gender = "female";
+            $coordId = 65;
+        }
+        if($data == "66"){
+            $gender = "female";
+            $coordId = 66;
+        }
+        if($data == "67"){
+            $gender = "female";
+            $coordId = 67;
+        }
+        if($data == "68"){
+            $gender = "female";
+            $coordId = 68;
+        }
+        if($data == "69"){
+            $gender = "female";
+            $coordId = 69;
+        }
+        if($data == "70"){
+            $gender = "female";
+            $coordId = 70;
+        }
+        if($data == "71"){
+            $gender = "female";
+            $coordId = 71;
+        }
+        if($data == "72"){
+            $gender = "female";
+            $coordId = 72;
+        }
+        if($data == "73"){
+            $gender = "female";
+            $coordId = 73;
+        }
+        if($data == "74"){
+            $gender = "female";
+            $coordId = 74;
+        }
+        if($data == "75"){
+            $gender = "female";
+            $coordId = 75;
+        }
 
 
         return ["gender" => $gender, "coordId" => $coordId];
