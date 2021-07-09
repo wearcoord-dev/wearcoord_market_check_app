@@ -40,6 +40,14 @@ export const ItemFirstPage = memo(() => {
                         gender={gender}
                         type={'tops'}
                     />
+                    <ItemShowSection
+                        gender={gender}
+                        type={'pants'}
+                    />
+                    <ItemShowSection
+                        gender={gender}
+                        type={'shoes'}
+                    />
                     <div className={classes.bottom}></div>
                 </>
             ) : <></>}

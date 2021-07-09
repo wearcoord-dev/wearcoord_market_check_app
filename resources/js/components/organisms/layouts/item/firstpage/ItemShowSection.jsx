@@ -1,7 +1,9 @@
-import { Grid, makeStyles } from "@material-ui/core";
+import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
 import { memo, useEffect, useState } from "react";
 import { useAllCaps } from "../../../../../hooks/selectwear/useAllCaps";
 import { useAllTops } from "../../../../../hooks/selectwear/useAllTops";
+import { useAllPants } from "../../../../../hooks/selectwear/useAllPants";
+import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
 
 const useStyles = makeStyles((theme) => ({
     h3title: {
@@ -26,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
         boxSizing: 'border-box',
         justifyContent: 'center',
         margin: '20px 0',
+    },
+    root: {
+        display: 'flex',
+        '& > * + *': {
+            marginLeft: theme.spacing(2),
+        },
     }
 }));
 
@@ -36,16 +44,20 @@ export const ItemShowSection = memo((props) => {
 
     const { getCaps, userCaps, loadingCaps, errorCaps } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
+    const { getPants, userPants, loadingPants, errorPants } = useAllPants();
+    const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
 
     const [data, setData] = useState([]);
     const [result, setResult] = useState([]);
+
+    // 各ウェアごとの表示条件を設定する
 
     useEffect(() => {
         if (type == 'caps') {
             if (userCaps.length == 0) {
                 if (gender == 'male') {
                     category = '506269';
-                }else{
+                } else {
                     category = '565818';
                 }
                 const input = {
@@ -64,7 +76,7 @@ export const ItemShowSection = memo((props) => {
             if (userTops.length == 0) {
                 if (gender == 'male') {
                     category = '508759';
-                }else{
+                } else {
                     category = '508803';
                 }
                 const input = {
@@ -79,7 +91,45 @@ export const ItemShowSection = memo((props) => {
             }
         }
 
-    }, [userCaps,userTops])
+        if (type == 'pants') {
+            if (userPants.length == 0) {
+                if (gender == 'male') {
+                    category = '508772';
+                } else {
+                    category = '508820';
+                }
+                const input = {
+                    wear: type,
+                    category: category,
+                }
+                getPants(input);
+                setData(userPants);
+
+            } else {
+                setData(userPants);
+            }
+        }
+
+        if (type == 'shoes') {
+            if (userShoes.length == 0) {
+                if (gender == 'male') {
+                    category = '208025';
+                } else {
+                    category = '565819';
+                }
+                const input = {
+                    wear: type,
+                    category: category,
+                }
+                getShoes(input);
+                setData(userShoes);
+
+            } else {
+                setData(userShoes);
+            }
+        }
+
+    }, [userCaps, userTops, userPants, userShoes])
 
     // 表示するアイテムの数を絞る
 
@@ -109,7 +159,13 @@ export const ItemShowSection = memo((props) => {
                             </Grid>
                         ))}
                     </>
-                ) : (<><p>naiyo</p></>)}
+                ) : (
+                    <>
+                        <div className={classes.root}>
+                            <CircularProgress />
+                        </div>Ï
+                    </>
+                )}
             </div>
         </>
     )
