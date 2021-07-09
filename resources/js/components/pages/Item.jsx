@@ -11,6 +11,7 @@ import { useAllShoes } from "../../hooks/selectwear/useAllShoes";
 import { useGetItemDetail } from "../../hooks/item/useGetItemDetail";
 import { useRegisterWearItem } from "../../hooks/item/useRegisterWearItem";
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import { ItemFirstPage } from "../organisms/layouts/item/firstpage/ItemFirstPage";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -203,28 +204,45 @@ export const Item = memo(() => {
 
     //各スクロール要素
     const items = (
-        dataArray.length ? (
-            <>
-                {dataArray.map((item) => (
-                    <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
-                        <button onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
-                            <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
-                        </button>
-                    </Grid>
-                ))}
-            </>
 
-        ) : (
-            <>
-                <p style={{ margin: '10px' }}>検索結果がここに反映されます</p>
-            </>
-        )
-    );
+        <>
+            {dataArray.length ? (
+                <>
+                    <InfiniteScroll
+                        dataLength={dataArray.length}
+                        next={loadMore}
+                        hasMore={true}
+                        style={{ overflow: 'visible' }}
+                    >
+                        <div className={classes.root}>
+                            <Grid style={{ justifyContent: 'center', width: '100%', margin: '0' }} container spacing={1}>
+
+                                {dataArray.map((item) => (
+                                    <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
+                                        <button onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
+                                            <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
+                                        </button>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </div>
+                    </InfiniteScroll>
+                </>
+
+            ) : (
+                <>
+                    {/* <p style={{ margin: '10px' }}>検索結果がここに反映されます</p> */}
+                    <ItemFirstPage />
+                </>
+            )
+            }
+        </>
+    )
 
 
     return (
         <>
-            <InfiniteScroll
+            {/* <InfiniteScroll
                 dataLength={dataArray.length}
                 next={loadMore}
                 hasMore={true}
@@ -235,7 +253,9 @@ export const Item = memo(() => {
                         {items}
                     </Grid>
                 </div>
-            </InfiniteScroll>
+            </InfiniteScroll> */}
+
+            {items}
 
             <Modal
                 aria-labelledby="transition-modal-title"
