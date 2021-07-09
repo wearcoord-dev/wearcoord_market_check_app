@@ -265,7 +265,7 @@ export const Item = memo(() => {
             </Modal>
 
 
-            <Button style={{ position: "fixed", bottom: "100px", left: "50%", transform: "translateX(-50%)" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "fixed", bottom: "100px", left: "50%", transform: "translateX(-50%)", width: "80%", padding: "10px", maxWidth: "250px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 <SearchIcon style={{ paddingRight: "6px" }} />
                 ウェアを探す
             </Button>
