@@ -34,6 +34,7 @@ export const useAllCaps = () => {
 
       const data = res.data.item.map((caps) => ({
         id: caps.db.id,
+        dbbrand: caps.db.brand,
         url: caps.url,
         brand: getBrand,
         color: getColor,

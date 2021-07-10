@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         backgroundColor: 'rgba(255, 255, 255, .7)',
         borderRadius: '10px',
+        position: 'relative',
     },
     modal: {
         display: 'flex',
@@ -38,6 +39,15 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+    },
+    brandinfo: {
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        backgroundColor: 'rgba(128,128,128,0.7)',
+        padding: '6px 0',
+        borderRadius: '0 0 10px 10px',
+        color: 'white',
     }
 }));
 
@@ -222,6 +232,7 @@ export const Item = memo(() => {
                                         <button onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
                                             <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
                                         </button>
+                                        <div className={classes.brandinfo}>{item.dbbrand}</div>
                                     </Grid>
                                 ))}
                             </Grid>
