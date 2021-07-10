@@ -33,6 +33,7 @@ export const useAllPants = () => {
 
             const data = res.data.item.map((wear) => ({
                 id: wear.db.id,
+                dbbrand: wear.db.brand,
                 url: wear.url,
                 brand: getBrand,
                 color: getColor,
