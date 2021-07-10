@@ -1,9 +1,13 @@
-import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
+import { Button, CircularProgress, Grid, makeStyles, Modal, Backdrop, Fade } from "@material-ui/core";
 import { memo, useEffect, useState } from "react";
 import { useAllCaps } from "../../../../../hooks/selectwear/useAllCaps";
 import { useAllTops } from "../../../../../hooks/selectwear/useAllTops";
 import { useAllPants } from "../../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import { useGetItemDetail } from "../../../../../hooks/item/useGetItemDetail";
+import { useRegisterWearItem } from "../../../../../hooks/item/useRegisterWearItem";
+
 
 const useStyles = makeStyles((theme) => ({
     h3title: {
@@ -34,12 +38,53 @@ const useStyles = makeStyles((theme) => ({
         '& > * + *': {
             marginLeft: theme.spacing(2),
         },
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    item: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
     }
 }));
 
 export const ItemShowSection = memo((props) => {
-    const { gender, type } = props;
+    const { gender, type, userid } = props;
     const classes = useStyles();
+
+    const [openModal, setOpen] = useState(false);
+    const { GetItemDetail, itemGetDetail, loadingItemDetail, errorItemDetail } = useGetItemDetail();
+    const { RegisterWearItem, itemRegisterWear, loadingRegisterWear, errorRegisterWear } = useRegisterWearItem();
+
+
+    // モーダルで展開する情報取得
+    const onClickInfo = (id, type) => {
+        const data = {
+            'id': id,
+            'type': type,
+        }
+        GetItemDetail(data);
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+       // モーダルで表示したウェアを着せる
+       const onClickWearItem = (id, type) => {
+        const data = {
+            'id': id,
+            'type': type,
+            'user': userid,
+        }
+        RegisterWearItem(data);
+    }
+
     let category;
 
     const { getCaps, userCaps, loadingCaps, errorCaps } = useAllCaps();
@@ -140,9 +185,6 @@ export const ItemShowSection = memo((props) => {
     }, [data])
 
 
-
-    console.log(`最後の${result.length}`);
-
     return (
         <>
             <div>
@@ -153,17 +195,45 @@ export const ItemShowSection = memo((props) => {
                     <>
                         {result.map((item) => (
                             <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
-                                <button>
+                                <button onClick={onClickInfo.bind(this, item.id, type)}>
                                     <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${gender}/${item.category}/${item.url}`} alt="" />
                                 </button>
                             </Grid>
                         ))}
+
+                        <Modal
+                            aria-labelledby="transition-modal-title"
+                            aria-describedby="transition-modal-description"
+                            className={classes.modal}
+                            open={openModal}
+                            onClose={handleClose}
+                            closeAfterTransition
+                            BackdropComponent={Backdrop}
+                            BackdropProps={{
+                                timeout: 500,
+                            }}
+                        >
+                            <Fade in={openModal}>
+                                <div className={classes.item}>
+                                    {result ? (itemGetDetail ? (
+                                        <>
+                                            <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
+                                            <Button style={{ left: "50%", transform: "translateX(-50%)" }} variant="contained" color="primary" onClick={onClickWearItem.bind(this, itemGetDetail.id, type)}>
+                                                <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
+                                                ウェアを着る
+                                            </Button>
+                                        </>) : (<p></p>)
+                                    ) : <div></div>}
+                                </div>
+                            </Fade>
+                        </Modal>
+
                     </>
                 ) : (
                     <>
                         <div className={classes.root}>
                             <CircularProgress />
-                        </div>Ï
+                        </div>
                     </>
                 )}
             </div>

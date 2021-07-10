@@ -18,12 +18,15 @@ export const ItemFirstPage = memo(() => {
     const context = useContext(UserContext);
 
     const [gender, setGender] = useState();
+    const [userid, setUserId] = useState();
 
 
     useEffect(() => {
         if (context.contextName) {
             const data = context.contextName.gender;
+            const id = context.contextName.id;
             setGender(data);
+            setUserId(id);
         }
     }, [context])
 
@@ -35,18 +38,22 @@ export const ItemFirstPage = memo(() => {
                     <ItemShowSection
                         gender={gender}
                         type={'caps'}
+                        userid={userid}
                     />
                     <ItemShowSection
                         gender={gender}
                         type={'tops'}
+                        userid={userid}
                     />
                     <ItemShowSection
                         gender={gender}
                         type={'pants'}
+                        userid={userid}
                     />
                     <ItemShowSection
                         gender={gender}
                         type={'shoes'}
+                        userid={userid}
                     />
                     <div className={classes.bottom}></div>
                 </>
