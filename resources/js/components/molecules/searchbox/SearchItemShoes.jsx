@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandShoes } from "./searchBrand/SearchBrandShoes";
 import { SearchColor } from "./SearchColor";
@@ -10,29 +10,36 @@ export const SearchItemShoes = memo((props) => {
 
     const context = useContext(UserContext);
 
-    useEffect((props) => {
-        console.log(props);
-        // if (props !== undefined) {
-            let category = "";
+        // 初回のレンダリング判定
+        const isFirstRender = useRef(false)
 
+        useEffect(() => {
+            isFirstRender.current = true
+        }, [])
+
+    useEffect((props) => {
+        let category = "";
         if(context.contextName.gender == 'male'){
             category = "208025";
         }else{
             category = "565819";
         }
 
-        const data = {
-            wear : "shoes",
-            brand : value,
-            color : valueColor,
-            category: category,
-        }
+        if(isFirstRender.current) {
+            isFirstRender.current = false;
+          } else {
+              const data = {
+                  wear : "shoes",
+                  brand : value,
+                  color : valueColor,
+                  category: category,
+              }
 
-        // 検索条件を保存
-        setShoesSel(data);
+              // 検索条件を保存
+              setShoesSel(data);
+              onClickFetchShoes(data);
+          }
 
-        onClickFetchShoes(data);
-        // }
     }, [value, valueColor]);
 
     return (

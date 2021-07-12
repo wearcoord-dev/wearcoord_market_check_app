@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandPantsFemale } from "./female/SearchBrandPantsFemale";
 import { SearchCategoryPantsFemale } from "./female/SearchCategoryPantsFemale";
@@ -15,19 +15,28 @@ export const SearchItemPants = memo((props) => {
 
     const context = useContext(UserContext);
 
+        // 初回のレンダリング判定
+        const isFirstRender = useRef(false)
+
+        useEffect(() => {
+            isFirstRender.current = true
+        }, [])
+
     useEffect((props) => {
-        console.log(props);
+        if(isFirstRender.current) {
+            isFirstRender.current = false;
+          } else {
+              const data = {
+                  wear: "pants",
+                  brand: value,
+                  color: valueColor,
+                  category: valueCategory,
+              }
 
-        const data = {
-            wear: "pants",
-            brand: value,
-            color: valueColor,
-            category: valueCategory,
-        }
+              setPantsSel(data);
+              onClickFetchPants(data);
+          }
 
-        setPantsSel(data);
-
-        onClickFetchPants(data);
     }, [value, valueColor, valueCategory]);
 
     return (
