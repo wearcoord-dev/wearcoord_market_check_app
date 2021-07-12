@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchBrandTops } from "./searchBrand/SearchBrandTops";
 import { SearchColor } from "./SearchColor";
@@ -15,29 +15,38 @@ export const SearchItemTops = memo((props) => {
 
     const context = useContext(UserContext);
 
+    // 初回のレンダリング判定
+    const isFirstRender = useRef(false)
+
+    useEffect(() => {
+        isFirstRender.current = true
+    }, [])
+
     useEffect((props) => {
-        console.log(props);
+        if(isFirstRender.current) {
+            isFirstRender.current = false;
+          } else {
+              const data = {
+                  wear: "tops",
+                  brand: value,
+                  color: valueColor,
+                  category: valueCategory,
+              }
 
-        const data = {
-            wear : "tops",
-            brand : value,
-            color : valueColor,
-            category: valueCategory,
-        }
+              setTopsSel(data);
+              onClickFetchTops(data);
+          }
 
-        setTopsSel(data);
-
-        onClickFetchTops(data);
-    }, [value, valueColor,valueCategory]);
+    }, [value, valueColor, valueCategory]);
 
     return (
         <>
             <div>
                 {context.contextName.gender == 'male' ? <SearchBrandTops setValue={setValue} value={value} /> : <SearchBrandTopsFemale setValue={setValue} value={value} />}
                 <SearchColor
-                setValueColor={setValueColor}
-                valueColor={valueColor}
-                 />
+                    setValueColor={setValueColor}
+                    valueColor={valueColor}
+                />
 
                 {context.contextName.gender == 'male' ? <SearchCategoryTops setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryTopsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
             </div>
