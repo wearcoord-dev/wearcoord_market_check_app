@@ -64,7 +64,7 @@ const useStyles = makeStyles({
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel, setTopsSel, topsSel } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -76,7 +76,7 @@ export const WearSearch = memo((props) => {
         <>
             <Container>
                 <Paper className={classes.root}>
-                    <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white"}} /></button>
+                    <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white" }} /></button>
                     <Tabs
                         value={value}
                         onChange={handleChange}
@@ -93,12 +93,15 @@ export const WearSearch = memo((props) => {
                     </Tabs>
                     <TabPanel value={value} index={0}>
                         <SearchItemCaps onClickFetchCaps={onClickFetchCaps}
-                        setCapsSel={setCapsSel}
-                        capsSel={capsSel}
-                         />
+                            setCapsSel={setCapsSel}
+                            capsSel={capsSel}
+                        />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <SearchItemTops onClickFetchTops={onClickFetchTops} />
+                        <SearchItemTops onClickFetchTops={onClickFetchTops}
+                        setTopsSel={setTopsSel}
+                        topsSel={topsSel}
+                        />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
                         <SearchItemPants onClickFetchPants={onClickFetchPants} />
