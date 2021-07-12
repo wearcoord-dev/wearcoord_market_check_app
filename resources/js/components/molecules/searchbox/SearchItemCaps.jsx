@@ -15,15 +15,7 @@ export const SearchItemCaps = memo((props) => {
     const context = useContext(UserContext);
 
     useEffect((props) => {
-        console.log(props);
-        // if (props !== undefined) {
-        //     let category = "";
-
-        // if(context.contextName.gender == 'male'){
-        //     category = "506269";
-        // }else{
-        //     category = "565818";
-        // }
+        // console.log(props);
 
         const data = {
             wear : "caps",
