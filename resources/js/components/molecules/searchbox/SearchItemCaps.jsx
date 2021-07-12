@@ -7,10 +7,10 @@ import { SearchBrandCaps } from "./searchBrand/SearchBrandCaps";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemCaps = memo((props) => {
-    const { onClickFetchCaps } = props;
-    const [value, setValue] = useState("");
-    const [valueColor, setValueColor] = useState("");
-    const [valueCategory, setValueCategory] = useState("");
+    const { onClickFetchCaps, setCapsSel, capsSel } = props;
+    const [value, setValue] = useState(capsSel.brand);
+    const [valueColor, setValueColor] = useState(capsSel.color);
+    const [valueCategory, setValueCategory] = useState(capsSel.category);
 
     const context = useContext(UserContext);
 
@@ -32,6 +32,8 @@ export const SearchItemCaps = memo((props) => {
             category: valueCategory,
         }
 
+        setCapsSel(data);
+
         onClickFetchCaps(data);
         // }
     }, [value, valueColor, valueCategory]);
@@ -40,10 +42,14 @@ export const SearchItemCaps = memo((props) => {
         <>
             <div>
                 <SearchBrandCaps setValue={setValue}
+                value={value}
                  />
-                <SearchColor setValueColor={setValueColor} />
+                <SearchColor
+                setValueColor={setValueColor}
+                valueColor={valueColor}
+                 />
 
-                {context.contextName.gender == 'male' ? <SearchCategoryCaps setValueCategory={setValueCategory} /> : <SearchCategoryCapsFemale setValueCategory={setValueCategory} />}
+                {context.contextName.gender == 'male' ? <SearchCategoryCaps setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryCapsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
             </div>
         </>
     )

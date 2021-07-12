@@ -30,6 +30,10 @@ export const SelectWear = memo(() => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
+    // 検索条件の保存管理
+
+    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+
 
     const onClickFetchCaps = (props) => {
 
@@ -413,6 +417,8 @@ export const SelectWear = memo(() => {
             >
                 <WearSearch
                     onClickFetchCaps={onClickFetchCaps}
+                    setCapsSel={setCapsSel}
+                    capsSel={capsSel}
                     onClickFetchTops={onClickFetchTops}
                     onClickFetchPants={onClickFetchPants}
                     onClickFetchShoes={onClickFetchShoes}

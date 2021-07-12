@@ -64,7 +64,7 @@ const useStyles = makeStyles({
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -92,7 +92,10 @@ export const WearSearch = memo((props) => {
                         <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={value} index={0}>
-                        <SearchItemCaps onClickFetchCaps={onClickFetchCaps} />
+                        <SearchItemCaps onClickFetchCaps={onClickFetchCaps}
+                        setCapsSel={setCapsSel}
+                        capsSel={capsSel}
+                         />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         <SearchItemTops onClickFetchTops={onClickFetchTops} />
