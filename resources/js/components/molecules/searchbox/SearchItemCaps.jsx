@@ -1,4 +1,4 @@
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { useAllCaps } from "../../../hooks/selectwear/useAllCaps";
 import { UserContext } from "../../providers/UserProvider";
 import { SearchCategoryCapsFemale } from "./female/SearchCategoryCapsFemale";
@@ -14,20 +14,28 @@ export const SearchItemCaps = memo((props) => {
 
     const context = useContext(UserContext);
 
+    // 初回のレンダリング判定
+    const isFirstRender = useRef(false)
+
+    useEffect(() => {
+        isFirstRender.current = true
+      }, [])
+
     useEffect((props) => {
-        // console.log(props);
 
-        const data = {
-            wear : "caps",
-            brand : value,
-            color : valueColor,
-            category: valueCategory,
-        }
+        if(isFirstRender.current) {
+            isFirstRender.current = false;
+          } else {
+              const data = {
+                  wear : "caps",
+                  brand : value,
+                  color : valueColor,
+                  category: valueCategory,
+              }
 
-        setCapsSel(data);
-
-        onClickFetchCaps(data);
-        // }
+              setCapsSel(data);
+              onClickFetchCaps(data);
+          }
     }, [value, valueColor, valueCategory]);
 
     return (
