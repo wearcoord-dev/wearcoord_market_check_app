@@ -86,6 +86,7 @@ export const SearchBrandTops = memo((props) => {
 
             setData(null);
             setValue('');
+            useGetcheck('');
             return;
         }
 

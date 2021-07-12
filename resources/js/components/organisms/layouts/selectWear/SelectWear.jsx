@@ -34,6 +34,7 @@ export const SelectWear = memo(() => {
 
     const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
 
 
     const onClickFetchCaps = (props) => {
@@ -426,6 +427,9 @@ export const SelectWear = memo(() => {
                     topsSel={topsSel}
 
                     onClickFetchPants={onClickFetchPants}
+                    setPantsSel={setPantsSel}
+                    pantsSel={pantsSel}
+
                     onClickFetchShoes={onClickFetchShoes}
                     handleClick={handleClick}
                 />
