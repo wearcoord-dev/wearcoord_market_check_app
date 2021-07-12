@@ -4,9 +4,9 @@ import { SearchBrandShoes } from "./searchBrand/SearchBrandShoes";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemShoes = memo((props) => {
-    const { onClickFetchShoes } = props;
-    const [value, setValue] = useState("");
-    const [valueColor, setValueColor] = useState("");
+    const { onClickFetchShoes, setShoesSel, shoesSel } = props;
+    const [value, setValue] = useState(shoesSel.brand);
+    const [valueColor, setValueColor] = useState(shoesSel.color);
 
     const context = useContext(UserContext);
 
@@ -28,6 +28,9 @@ export const SearchItemShoes = memo((props) => {
             category: category,
         }
 
+        // 検索条件を保存
+        setShoesSel(data);
+
         onClickFetchShoes(data);
         // }
     }, [value, valueColor]);
@@ -35,8 +38,8 @@ export const SearchItemShoes = memo((props) => {
     return (
         <>
             <div>
-                <SearchBrandShoes setValue={setValue} />
-                <SearchColor setValueColor={setValueColor} />
+                <SearchBrandShoes setValue={setValue} value={value} />
+                <SearchColor setValueColor={setValueColor} valueColor={valueColor} />
             </div>
         </>
     )
