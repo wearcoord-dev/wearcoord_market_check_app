@@ -7,11 +7,11 @@ import { SearchBrandPants } from "./searchBrand/SearchBrandPants";
 import { SearchColor } from "./SearchColor";
 
 export const SearchItemPants = memo((props) => {
-    const { onClickFetchPants } = props;
-    const [value, setValue] = useState("");
-    const [valueColor, setValueColor] = useState("");
+    const { onClickFetchPants, setPantsSel, pantsSel } = props;
+    const [value, setValue] = useState(pantsSel.brand);
+    const [valueColor, setValueColor] = useState(pantsSel.color);
 
-    const [valueCategory, setValueCategory] = useState("");
+    const [valueCategory, setValueCategory] = useState(pantsSel.category);
 
     const context = useContext(UserContext);
 
@@ -25,16 +25,20 @@ export const SearchItemPants = memo((props) => {
             category: valueCategory,
         }
 
+        setPantsSel(data);
+
         onClickFetchPants(data);
     }, [value, valueColor, valueCategory]);
 
     return (
         <>
             <div>
-                {context.contextName.gender == 'male' ? <SearchBrandPants setValue={setValue} /> : <SearchBrandPantsFemale setValue={setValue} />}
-                <SearchColor setValueColor={setValueColor} />
+                {context.contextName.gender == 'male' ? <SearchBrandPants setValue={setValue} value={value} /> : <SearchBrandPantsFemale setValue={setValue} value={value} />}
+                <SearchColor setValueColor={setValueColor}
+                valueColor={valueColor}
+                 />
 
-                {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} />}
+                {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
             </div>
         </>
     )

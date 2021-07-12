@@ -79,8 +79,10 @@ export const SearchBrandCaps = memo((props) => {
             console.log(props.target.checked);
             props.target.checked = !props.target.checked;
 
+            // 全ての条件を空にする
             setData(null);
             setValue('');
+            useGetcheck('');
             return;
         }
 

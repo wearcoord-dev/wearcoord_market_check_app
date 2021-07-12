@@ -76,6 +76,7 @@ export const SearchColor = memo((props) => {
 
                 setData(null);
                 setValueColor('');
+                useGetcheck('');
                 return;
             }
 
