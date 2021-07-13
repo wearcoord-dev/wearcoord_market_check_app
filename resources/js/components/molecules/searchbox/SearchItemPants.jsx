@@ -10,7 +10,6 @@ export const SearchItemPants = memo((props) => {
     const { onClickFetchPants, setPantsSel, pantsSel } = props;
     const [value, setValue] = useState(pantsSel.brand);
     const [valueColor, setValueColor] = useState(pantsSel.color);
-
     const [valueCategory, setValueCategory] = useState(pantsSel.category);
 
     const context = useContext(UserContext);
