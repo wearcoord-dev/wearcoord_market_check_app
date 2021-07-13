@@ -59,7 +59,7 @@ const useStyles = makeStyles({
 });
 
 export const ItemWearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes,handleClick } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes,handleClick, setCapsSel, capsSel, setTopsSel, topsSel, setPantsSel, pantsSel, setShoesSel, shoesSel } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -86,19 +86,35 @@ export const ItemWearSearch = memo((props) => {
                         <Tab icon={<Icon className="fas fa-shoe-prints" />} {...a11yProps(3)} />
                     </Tabs>
                     <TabPanel value={value} index={0}>
-                        <ItemSearchCaps onClickFetchCaps={onClickFetchCaps} />
+                        <ItemSearchCaps
+                        onClickFetchCaps={onClickFetchCaps}
+                        setCapsSel={setCapsSel}
+                        capsSel={capsSel}
+                         />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <ItemSearchTops onClickFetchTops={onClickFetchTops} />
+                        <ItemSearchTops
+                        onClickFetchTops={onClickFetchTops}
+                        setTopsSel={setTopsSel}
+                        topsSel={topsSel}
+                         />
                     </TabPanel>
                     <TabPanel value={value} index={2}>
-                        <ItemSearchPants onClickFetchPants={onClickFetchPants} />
+                        <ItemSearchPants
+                        onClickFetchPants={onClickFetchPants}
+                        setPantsSel={setPantsSel}
+                        pantsSel={pantsSel}
+                         />
                     </TabPanel>
                     {/* <TabPanel value={value} index={3}>
                         <div>test4</div>
                     </TabPanel> */}
                     <TabPanel value={value} index={3}>
-                        <ItemSearchShoes onClickFetchShoes={onClickFetchShoes} />
+                        <ItemSearchShoes
+                        onClickFetchShoes={onClickFetchShoes}
+                        setShoesSel={setShoesSel}
+                        shoesSel={shoesSel}
+                         />
                     </TabPanel>
                 </Paper>
             </Container>

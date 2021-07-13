@@ -1,18 +1,22 @@
 import { memo, useEffect, useState } from "react";
 
 export const ItemSearchCategoryCapsFemale = memo((props) => {
-    const { setValueCategory } = props;
-    const [check, setCheck] = useState(1);
+
+    const categorylist = {
+        caps: 0,
+    }
+
+    const { setValueCategory, valueCategory } = props;
+    const [check, setCheck] = useState(categorylist);
 
     // radioのonChangeイベント発生時
     const handleInputChange = (props) => {
         const category = props.target.value;
 
         // 最初のinput以外にチェックが入ったかどうか確認
-        if (props.target.value !== "") {
-            setCheck(0);
-        } else {
-            setCheck(1);
+        if(category == "565818"){
+            setCheck( {caps: true});
+        }else{
         }
 
         setValueCategory(category);
@@ -20,7 +24,20 @@ export const ItemSearchCategoryCapsFemale = memo((props) => {
 
     // 最初はtshirtにセット
     useEffect(() => {
-        const category = "";
+
+        if(valueCategory){
+            if(valueCategory == ""){
+            }else{
+                setCheck( {caps: true});
+                setValueCategory(valueCategory);
+            }
+        }else{
+            setCheck( {caps: true} );
+            const category = "565818";
+            setValueCategory(category);
+        }
+
+        const category = "565818";
         setValueCategory(category);
     }, []);
 
