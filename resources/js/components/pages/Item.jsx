@@ -60,6 +60,13 @@ export const Item = memo(() => {
     const classes = useStyles();
     const [openModal, setOpen] = useState(false);
 
+    // 検索条件の保存管理
+
+    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [shoesSel, setShoesSel] = useState({ brand: "", color: "", category: "", wear: "" });
+
 
     const onClickFetchCaps = (props) => {
 
@@ -312,9 +319,21 @@ export const Item = memo(() => {
             >
                 <ItemWearSearch
                     onClickFetchCaps={onClickFetchCaps}
+                    setCapsSel={setCapsSel}
+                    capsSel={capsSel}
+
                     onClickFetchTops={onClickFetchTops}
+                    setTopsSel={setTopsSel}
+                    topsSel={topsSel}
+
                     onClickFetchPants={onClickFetchPants}
+                    setPantsSel={setPantsSel}
+                    pantsSel={pantsSel}
+
                     onClickFetchShoes={onClickFetchShoes}
+                    setShoesSel={setShoesSel}
+                    shoesSel={shoesSel}
+
                     handleClick={handleClick}
                 />
             </Popper>

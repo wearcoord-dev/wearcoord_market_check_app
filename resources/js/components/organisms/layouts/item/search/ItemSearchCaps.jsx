@@ -10,25 +10,12 @@ import { Button } from "@material-ui/core";
 
 
 export const ItemSearchCaps = memo((props) => {
-    const { onClickFetchCaps } = props;
-    const [value, setValue] = useState("");
-    const [valueColor, setValueColor] = useState("");
-    const [valueCategory, setValueCategory] = useState("");
+    const { onClickFetchCaps, setCapsSel, capsSel } = props;
+    const [value, setValue] = useState(capsSel.brand);
+    const [valueColor, setValueColor] = useState(capsSel.color);
+    const [valueCategory, setValueCategory] = useState(capsSel.category);
 
     const context = useContext(UserContext);
-
-    // useEffect((props) => {
-    //     console.log(props);
-
-    //     const data = {
-    //         wear: "caps",
-    //         brand: value,
-    //         color: valueColor,
-    //         category: valueCategory,
-    //     }
-
-    //     onClickFetchCaps(data);
-    // }, [value, valueColor, valueCategory]);
 
     const handleClick = () => {
         const data = {
@@ -38,8 +25,7 @@ export const ItemSearchCaps = memo((props) => {
             category: valueCategory,
         }
 
-                console.log(data);
-
+        setCapsSel(data);
         onClickFetchCaps(data);
     }
 
@@ -47,10 +33,14 @@ export const ItemSearchCaps = memo((props) => {
         <>
             <div>
                 <SearchBrandCaps setValue={setValue}
+                value={value}
                 />
-                <SearchColor setValueColor={setValueColor} />
+                <SearchColor
+                setValueColor={setValueColor}
+                valueColor={valueColor}
+                 />
 
-                {context.contextName.gender == 'male' ? <ItemSearchCategoryCaps setValueCategory={setValueCategory} /> : <ItemSearchCategoryCapsFemale setValueCategory={setValueCategory} />}
+                {context.contextName.gender == 'male' ? <ItemSearchCategoryCaps setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <ItemSearchCategoryCapsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
 
                 <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px' }}  variant="contained" color="primary" onClick={handleClick}>
                     <SearchIcon style={{ paddingRight: "6px" }} />
