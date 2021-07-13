@@ -6,14 +6,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import { Button } from "@material-ui/core";
 import { SearchCategoryPants } from "../../../../molecules/searchbox/male/SearchCategoryPants";
 import { SearchCategoryPantsFemale } from "../../../../molecules/searchbox/female/SearchCategoryPantsFemale";
+import { SearchBrandPants } from "../../../../molecules/searchbox/searchBrand/SearchBrandPants";
+import { SearchBrandPantsFemale } from "../../../../molecules/searchbox/female/SearchBrandPantsFemale";
 
 
 
 export const ItemSearchPants = memo((props) => {
-    const { onClickFetchPants } = props;
-    const [value, setValue] = useState("");
-    const [valueColor, setValueColor] = useState("");
-    const [valueCategory, setValueCategory] = useState("");
+    const { onClickFetchPants, setPantsSel, pantsSel } = props;
+    const [value, setValue] = useState(pantsSel.brand);
+    const [valueColor, setValueColor] = useState(pantsSel.color);
+    const [valueCategory, setValueCategory] = useState(pantsSel.category);
 
     const context = useContext(UserContext);
 
@@ -25,19 +27,19 @@ export const ItemSearchPants = memo((props) => {
             category: valueCategory,
         }
 
-        // console.log(data);
-
+        setPantsSel(data);
         onClickFetchPants(data);
     }
 
     return (
         <>
             <div>
-                <SearchBrandCaps setValue={setValue}
-                />
-                <SearchColor setValueColor={setValueColor} />
+                {context.contextName.gender == 'male' ? <SearchBrandPants setValue={setValue} value={value} /> : <SearchBrandPantsFemale setValue={setValue} value={value} />}
+                <SearchColor setValueColor={setValueColor}
+                valueColor={valueColor}
+                 />
 
-                {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} />}
+                {context.contextName.gender == 'male' ? <SearchCategoryPants setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryPantsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
 
                 <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px' }} variant="contained" color="primary" onClick={handleClick}>
                     <SearchIcon style={{ paddingRight: "6px" }} />
