@@ -3,6 +3,7 @@ import { memo, useEffect, useState } from "react";
 export const SearchCategoryPants = memo((props) => {
 
     const categorylist = {
+        none: 0,
         half: 0,
         long: 0,
     }
@@ -15,28 +16,33 @@ export const SearchCategoryPants = memo((props) => {
         const category = props.target.value;
 
         // 最初のinput以外にチェックが入ったかどうか確認
-        if(category == "508772"){
-            setCheck( {half: true} );
-        }else{
-            setCheck( {long: true});
+        if (category == "508772") {
+            setCheck({ half: true });
+        } else if (category == "565926") {
+            setCheck({ long: true });
+        } else {
+            setCheck({ none: true });
         }
 
         setValueCategory(category);
     }
 
-    // 最初はhalfにセット
+    // 最初はnoneにセット
     useEffect(() => {
-        if(valueCategory){
-            if(valueCategory == "508772"){
-                setCheck( {half: true} );
+        if (valueCategory) {
+            if (valueCategory == "508772") {
+                setCheck({ half: true });
                 setValueCategory(valueCategory);
-            }else{
-                setCheck( {long: true});
+            } else if (valueCategory == "565926") {
+                setCheck({ long: true });
+                setValueCategory(valueCategory);
+            } else {
+                setCheck({ none: true });
                 setValueCategory(valueCategory);
             }
-        }else{
-            setCheck( {half: true} );
-            const category = "508772";
+        } else {
+            setCheck({ none: true });
+            const category = "";
             setValueCategory(category);
         }
     }, []);
@@ -46,14 +52,19 @@ export const SearchCategoryPants = memo((props) => {
         <>
             <div className="slide_x">
 
+                <input type="radio" id="none" className="radioInput" name="category" value="" onChange={handleInputChange}
+                    checked={check.none}
+                />
+                <label htmlFor="none" className="radioInputLabel">今のウェア</label>
+
                 <input type="radio" id="half" className="radioInput" name="category" value="508772" onChange={handleInputChange}
-                checked={check.half}
-                 />
+                    checked={check.half}
+                />
                 <label htmlFor="half" className="radioInputLabel">ハーフ・ショート</label>
 
                 <input type="radio" id="long" className="radioInput" name="category" value="565926" onChange={handleInputChange}
-                checked={check.long}
-                 />
+                    checked={check.long}
+                />
                 <label htmlFor="long" className="radioInputLabel">ロング</label>
             </div>
         </>
