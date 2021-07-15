@@ -3,6 +3,7 @@ import { memo, useEffect, useState } from "react";
 export const SearchCategoryTops = memo((props) => {
 
     const categorylist = {
+        none: 0,
         tshirt: 0,
         outer: 0,
     }
@@ -17,27 +18,32 @@ export const SearchCategoryTops = memo((props) => {
         // 最初のinput以外にチェックが入ったかどうか確認
         if(category == "508759"){
             setCheck( {tshirt: true} );
-        }else{
+        }else if(category == "565925"){
             setCheck( {outer: true});
+        }else{
+            setCheck( {none: true});
         }
 
         setValueCategory(category);
     }
 
-    // 最初はtshirtにセット
+    // 最初はnoneにセット
     useEffect(() => {
 
         if(valueCategory){
             if(valueCategory == "508759"){
                 setCheck( {tshirt: true} );
                 setValueCategory(valueCategory);
-            }else{
+            }else if(valueCategory == "565925"){
                 setCheck( {outer: true});
+                setValueCategory(valueCategory);
+            }else{
+                setCheck( {none: true});
                 setValueCategory(valueCategory);
             }
         }else{
-            setCheck( {tshirt: true} );
-            const category = "508759";
+            setCheck( {none: true} );
+            const category = "";
             setValueCategory(category);
         }
     }, []);
@@ -45,6 +51,11 @@ export const SearchCategoryTops = memo((props) => {
     return (
         <>
             <div className="slide_x">
+
+                <input type="radio" id="none" className="radioInput" name="category" value="" onChange={handleInputChange}
+                checked={check.none}
+                />
+                <label htmlFor="none" className="radioInputLabel">今のウェア</label>
 
                 <input type="radio" id="tshirt" className="radioInput" name="category" value="508759" onChange={handleInputChange}
                 checked={check.tshirt}

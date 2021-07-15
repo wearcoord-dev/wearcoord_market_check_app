@@ -51,7 +51,7 @@ export const SearchCategoryCapsFemale = memo((props) => {
                     checked={check}
                     checked={check.none}
                 />
-                <label htmlFor="nocaps" className="radioInputLabel">選ぶ</label>
+                <label htmlFor="nocaps" className="radioInputLabel">今のウェア</label>
 
                 <input type="radio" id="caps" className="radioInput" name="category" value="565818" onChange={handleInputChange}
                 checked={check.caps}
