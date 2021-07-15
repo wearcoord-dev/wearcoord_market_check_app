@@ -66,6 +66,8 @@ export const SelectWear = memo(() => {
     };
     const onClickFetchPants = (props) => {
 
+        console.log(props.category);
+
         const data = {
             'brand': props.brand,
             'color': props.color,
@@ -78,6 +80,8 @@ export const SelectWear = memo(() => {
         getPants(data);
     }
     const onClickFetchShoes = (props) => {
+
+        console.log(props.category);
 
         const data = {
             'brand': props.brand,

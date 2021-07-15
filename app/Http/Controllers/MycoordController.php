@@ -54,6 +54,9 @@ class MycoordController extends Controller
         $type = $request->input('type');
         $page = $request->input('page');
 
+        if($category == null){
+            return;
+        }
 
 
 

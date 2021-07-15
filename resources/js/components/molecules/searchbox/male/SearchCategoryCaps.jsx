@@ -49,7 +49,7 @@ export const SearchCategoryCaps = memo((props) => {
                 <input type="radio" id="nocaps" className="radioInput" name="category" value="" onChange={handleInputChange}
                 checked={check.none}
                 />
-                <label htmlFor="nocaps" className="radioInputLabel">選ぶ</label>
+                <label htmlFor="nocaps" className="radioInputLabel">今のウェア</label>
 
                 <input type="radio" id="caps" className="radioInput" name="category" value="506269" onChange={handleInputChange}
                 checked={check.caps}

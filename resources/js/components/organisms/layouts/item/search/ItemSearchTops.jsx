@@ -8,6 +8,8 @@ import { SearchCategoryTops } from "../../../../molecules/searchbox/male/SearchC
 import { SearchCategoryTopsFemale } from "../../../../molecules/searchbox/female/SearchCategoryTopsFemale";
 import { SearchBrandTops } from "../../../../molecules/searchbox/searchBrand/SearchBrandTops";
 import { SearchBrandTopsFemale } from "../../../../molecules/searchbox/female/SearchBrandTopsFemale";
+import { ItemSearchCategoryTops } from "./male/ItemSearchCategoryTops";
+import { ItemSearchCategoryTopsFemale } from "./female/ItemSearchCategoryTops.Female";
 
 
 
@@ -39,7 +41,7 @@ export const ItemSearchTops = memo((props) => {
                 valueColor={valueColor}
                  />
 
-                {context.contextName.gender == 'male' ? <SearchCategoryTops setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryTopsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
+                {context.contextName.gender == 'male' ? <ItemSearchCategoryTops setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <ItemSearchCategoryTopsFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
 
                 <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px' }} variant="contained" color="primary" onClick={handleClick}>
                     <SearchIcon style={{ paddingRight: "6px" }} />

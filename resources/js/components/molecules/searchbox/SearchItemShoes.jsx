@@ -1,5 +1,7 @@
 import { memo, useContext, useEffect, useRef, useState } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import { SearchCategoryShoesFemale } from "./female/SearchCategoryShoesFemale";
+import { SearchCategoryShoes } from "./male/SearchCategoryShoes";
 import { SearchBrandShoes } from "./searchBrand/SearchBrandShoes";
 import { SearchColor } from "./SearchColor";
 
@@ -7,6 +9,7 @@ export const SearchItemShoes = memo((props) => {
     const { onClickFetchShoes, setShoesSel, shoesSel } = props;
     const [value, setValue] = useState(shoesSel.brand);
     const [valueColor, setValueColor] = useState(shoesSel.color);
+    const [valueCategory, setValueCategory] = useState(shoesSel.category);
 
     const context = useContext(UserContext);
 
@@ -18,12 +21,12 @@ export const SearchItemShoes = memo((props) => {
         }, [])
 
     useEffect((props) => {
-        let category = "";
-        if(context.contextName.gender == 'male'){
-            category = "208025";
-        }else{
-            category = "565819";
-        }
+        // let category = "";
+        // if(context.contextName.gender == 'male'){
+        //     category = "208025";
+        // }else{
+        //     category = "565819";
+        // }
 
         if(isFirstRender.current) {
             isFirstRender.current = false;
@@ -32,7 +35,7 @@ export const SearchItemShoes = memo((props) => {
                   wear : "shoes",
                   brand : value,
                   color : valueColor,
-                  category: category,
+                  category: valueCategory,
               }
 
               // 検索条件を保存
@@ -40,13 +43,15 @@ export const SearchItemShoes = memo((props) => {
               onClickFetchShoes(data);
           }
 
-    }, [value, valueColor]);
+    }, [value, valueColor, valueCategory]);
 
     return (
         <>
             <div>
                 <SearchBrandShoes setValue={setValue} value={value} />
                 <SearchColor setValueColor={setValueColor} valueColor={valueColor} />
+
+                {context.contextName.gender == 'male' ? <SearchCategoryShoes setValueCategory={setValueCategory} valueCategory={valueCategory} /> : <SearchCategoryShoesFemale setValueCategory={setValueCategory} valueCategory={valueCategory} />}
             </div>
         </>
     )
