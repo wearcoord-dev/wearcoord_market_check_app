@@ -1,13 +1,15 @@
 import { memo, useContext, useEffect, useState } from "react";
 import { useOpenBtnFunc } from "../../../../hooks/mycoord/useOpenBtnFunc";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
+import { useOpenBtnFix } from "../../../../hooks/useOpenBtnFix";
 import { AppContext, UserWear } from "../../../providers/UserWear";
 import { OpenLeftBtn } from "../../button/OpenLeftBtn";
 import { OpenRightBtn } from "../../button/OpenRightBtn";
 import { Mannequin } from "./Mannequin";
 
 export const MainMycoord = memo(() => {
-    const { openBtnFunc } = useOpenBtnFunc();
+    // const { openBtnFunc } = useOpenBtnFunc();
+    const { openBtnFix } = useOpenBtnFix();
 
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
     const context = useContext(AppContext);
@@ -51,7 +53,8 @@ export const MainMycoord = memo(() => {
         }
     }, [userWearInfo]);
 
-    useEffect(() => openBtnFunc());
+    // useEffect(() => openBtnFunc());
+    useEffect(() => openBtnFix());
 
     return (
         <>
@@ -60,7 +63,7 @@ export const MainMycoord = memo(() => {
                 <Mannequin />
             {/* </UserWear> */}
             {userWearInfo ? (
-            <OpenRightBtn 
+            <OpenRightBtn
             capsID={capsIDValue}
             topsID={topsIDValue}
             pantsID={pantsIDValue}
