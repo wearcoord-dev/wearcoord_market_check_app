@@ -6,6 +6,10 @@ export const useOpenBtnFuncFav = () => {
         const btnPants = document.getElementById('btnPants');
         // const btnSocks = document.getElementById('btnSocks');
         const btnShoes = document.getElementById('btnShoes');
+        const btnCapsSummary = document.getElementById('btnSummaryCaps');
+        const btnTopsSummary = document.getElementById('btnSummaryTops');
+        const btnPantsSummary = document.getElementById('btnSummaryPants');
+        const btnShoesSummary = document.getElementById('btnSummaryShoes');
         // const btnBand = document.getElementById('btnBand');
         // const btnInner = document.getElementById('btnInner');
         const btnTitleCaps = document.getElementById('btnTitleCaps');
@@ -51,28 +55,28 @@ export const useOpenBtnFuncFav = () => {
             }
         }
 
-        btnCaps.onclick = function () {
+        btnCapsSummary.onclick = function () {
             btnTops.open = false;
             btnPants.open = false;
             btnShoes.open = false;
             toggleDisplay();
         }
 
-        btnTops.onclick = function () {
+        btnTopsSummary.onclick = function () {
             btnCaps.open = false;
             btnPants.open = false;
             btnShoes.open = false;
             toggleDisplay();
         }
 
-        btnPants.onclick = function () {
+        btnPantsSummary.onclick = function () {
             btnCaps.open = false;
             btnTops.open = false;
             btnShoes.open = false;
             toggleDisplay();
         }
 
-        btnShoes.onclick = function () {
+        btnShoesSummary.onclick = function () {
             btnCaps.open = false;
             btnTops.open = false;
             btnPants.open = false;

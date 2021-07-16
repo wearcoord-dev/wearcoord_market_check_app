@@ -24,7 +24,7 @@ export const OpenLeftBtn = memo(() => {
             <div className="leftContainer">
 
                 <details className="btnDesign left" id="btnBand">
-                    <summary>
+                    <summary id="btnSummaryBand">
                         <span className="material-icons-outlined">
                             circle
             </span>
@@ -38,7 +38,7 @@ export const OpenLeftBtn = memo(() => {
                 </details>
 
                 <details className="btnDesign left" id="btnInner">
-                    <summary>
+                    <summary id="btnSummaryInner">
                         <i className="fas fa-tshirt sideFontAwesome"></i>
                         <p className="btnText" id="btnTitleInner">Inner</p>
                     </summary>
@@ -66,7 +66,7 @@ export const OpenLeftBtn = memo(() => {
                 </details>
 
                 <details className="btnDesign left" id="btnSocks" >
-                    <summary>
+                    <summary id="btnSummarySocks">
                         <i className="fas fa-socks sideFontAwesome"></i>
                         <p className="btnText" id="btnTitleSocks">Socks</p>
                     </summary>

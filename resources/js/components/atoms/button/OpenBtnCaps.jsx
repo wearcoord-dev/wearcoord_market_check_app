@@ -70,7 +70,7 @@ export const OpenBtnCaps = memo((props) => {
         <>
             <div>
                 <details className="btnDesign right" id={"btn" + name} >
-                    <summary>
+                    <summary id={"btnSummary" + name}>
                         {icon}
                         <p className="btnText" id={"btnTitle" + name}>{name}</p>
                     </summary>
