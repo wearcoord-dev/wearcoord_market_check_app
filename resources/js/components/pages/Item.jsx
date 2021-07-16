@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '6px 0',
         borderRadius: '0 0 10px 10px',
         color: 'white',
+        textTransform: 'capitalize',
     }
 }));
 
