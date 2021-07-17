@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto !important',
         backgroundColor: theme.palette.background.paper,
         margin: '10px',
+        borderRadius: '10px',
     },
 }));
 
