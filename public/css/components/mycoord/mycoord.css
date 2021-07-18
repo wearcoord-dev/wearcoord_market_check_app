@@ -183,7 +183,7 @@ details[open] .detailsBottom {
 .popper {
   z-index: 1000;
   left: -5px !important;
-  top: 80px !important;
+  top: 100px !important;
 }
 
 .popper2 {
@@ -311,7 +311,8 @@ details[open] .detailsBottom {
 .slide_x {
   overflow: auto;
   white-space: nowrap;
-  margin: 14px 0;
+  margin: 7px 0;
+  padding: 7px 0;
 }
 
 .MuiBox-root {
@@ -320,7 +321,7 @@ details[open] .detailsBottom {
 
 @media (max-height: 700px) {
   .tabpanel {
-    height: 120px;
+    height: 160px;
     overflow: auto;
   }
 }
