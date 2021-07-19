@@ -29,9 +29,11 @@ const useStyles = makeStyles({
         // borderRadius: "20px",
     },
     h2title: {
-        borderBottom: "1px solid #484848",
+        // borderBottom: "1px solid #484848",
         paddingBottom: "2px",
         display: "inline-block",
+        fontWeight: "bold",
+        fontSize: "16px",
     },
     h2parrent: {
         width: "90%",

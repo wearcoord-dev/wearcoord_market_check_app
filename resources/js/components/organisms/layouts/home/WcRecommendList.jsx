@@ -15,6 +15,8 @@ const useStyles = makeStyles({
     ul: {
         overflowX: "auto",
         whiteSpace: "nowrap",
+        padding: "0 0 10px 0",
+        margin: "0 0 20px 0",
     },
     li: {
         display: "inline-block",
@@ -25,9 +27,11 @@ const useStyles = makeStyles({
         textAlign: "center",
     },
     h2title: {
-        borderBottom: "1px solid #484848",
+        // borderBottom: "1px solid #484848",
         paddingBottom: "2px",
         display: "inline-block",
+        fontWeight: "bold",
+        fontSize: "16px",
     },
     h2parrent: {
         width: "90%",
