@@ -22,11 +22,11 @@ const useStyles = makeStyles({
         margin: "auto",
         padding: "20px 0",
         display: "block",
-        maxWidth:"500px",
+        maxWidth: "500px",
     },
     img: {
         width: "100%",
-        // borderRadius: "20px",
+        borderRadius: "20px",
     },
     h2title: {
         // borderBottom: "1px solid #484848",
@@ -38,6 +38,11 @@ const useStyles = makeStyles({
     h2parrent: {
         width: "90%",
         margin: "10px auto 0",
+    },
+    swiperWrap: {
+        height: "300px",
+        display: "flex",
+        alignItems: "center",
     }
 });
 
@@ -55,27 +60,29 @@ export const HomeTopSection = memo(() => {
 
     return (
         <>
-            <div className={classes.h2parrent}>
+            {/* <div className={classes.h2parrent}>
                 <h2 className={classes.h2title}>wearcoord News</h2>
-            </div>
+            </div> */}
 
-            <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                pagination={{ clickable: true }}
-                // onSlideChange={() => console.log('slide change')}
-                // onSwiper={(swiper) => console.log(swiper)}
-                autoplay={{ delay:'5000' }}
-                loop={true}
-            >
-                <SwiperSlide>
-                <div className={classes.wrapper}
-                    onClick={onClickLarossoCoord}
+            <div className={classes.swiperWrap}>
+                <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    pagination={{ clickable: true }}
+                    // onSlideChange={() => console.log('slide change')}
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    autoplay={{ delay: '5000' }}
+                    loop={true}
                 >
-                    <img className={classes.img} src={banner1} alt="" />
-                </div>
-                </SwiperSlide>
-            </Swiper>
+                    <SwiperSlide>
+                        <div className={classes.wrapper}
+                            onClick={onClickLarossoCoord}
+                        >
+                            <img className={classes.img} src={banner1} alt="" />
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
+            </div>
         </>
     )
 })
