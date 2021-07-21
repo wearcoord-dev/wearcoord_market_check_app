@@ -25,6 +25,7 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         width: "100px",
         textAlign: "center",
+        boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
     },
     h2title: {
         // borderBottom: "1px solid #484848",
