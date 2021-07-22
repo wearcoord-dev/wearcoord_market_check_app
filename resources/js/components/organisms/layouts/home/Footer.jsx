@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles({
     footer: {
         // display: "flex",
-        backgroundColor: "#ddd",
+        backgroundColor: "#216496",
         padding: "30px 0",
     },
     iconul: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         justifyContent: "space-evenly",
         padding: "20px 0",
         "& a": {
-            color: "#484848",
+            color: "#f9f9f9",
         }
     },
     linkul: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
             borderBottom: "1px solid #f9f9f9",
 
             "& a": {
-                color: "#484848",
+                color: "#f9f9f9",
             }
         }
     }
