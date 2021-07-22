@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '30%',
         margin: '4px !important',
         justifyContent: 'center',
-        backgroundColor: 'rgba(255, 255, 255, .7)',
+        background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
+        boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
         borderRadius: '10px',
         position: 'relative',
     },
@@ -236,8 +237,8 @@ export const Item = memo(() => {
                             <Grid style={{ justifyContent: 'center', width: '100%', margin: '0' }} container spacing={1}>
 
                                 {dataArray.map((item) => (
-                                    <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3}>
-                                        <button onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
+                                    <Grid className={classes.paper} key={item.id} container item xs={12} spacing={3} onClick={onClickInfo.bind(this, item.id, dataList.wear)}>
+                                        <button>
                                             <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
                                         </button>
                                         <div className={classes.brandinfo}>{item.dbbrand}</div>

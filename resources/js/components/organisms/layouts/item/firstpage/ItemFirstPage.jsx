@@ -5,7 +5,7 @@ import { ItemShowSection } from "./ItemShowSection";
 
 const useStyles = makeStyles((theme) => ({
     h2title: {
-        padding: '16px 0',
+        padding: '30px 0',
         textAlign: 'center',
     },
     bottom: {

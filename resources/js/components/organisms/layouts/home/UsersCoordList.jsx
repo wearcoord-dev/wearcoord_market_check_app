@@ -3,6 +3,8 @@ import { useGetUserCoord } from "../../../../hooks/home/useGetUserCoord";
 import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 
 const useStyles = makeStyles({
@@ -39,7 +41,12 @@ const useStyles = makeStyles({
     h2parrent: {
         width: "90%",
         margin: "auto",
-        paddingTop: "30px",
+        padding: "30px 0",
+    },
+    loading: {
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
     }
 });
 
@@ -84,7 +91,7 @@ export const UsersCoordList = memo(() => {
                             ))}
                         </ul>
                     </>
-                )) : loadingUserCoordList ? <p>Loading...</p> : <p>アイテムがありません</p>}
+                )) : loadingUserCoordList ? <div className={classes.loading}><CircularProgress /></div> : <p>アイテムがありません</p>}
             </div>
         </div>
         </>

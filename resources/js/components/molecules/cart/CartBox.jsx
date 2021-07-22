@@ -5,6 +5,8 @@ import { UserContext } from "../../providers/UserProvider";
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { useDeleteCartItem } from "../../../hooks/cart/useDeleteCartItem";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +41,14 @@ const useStyles = makeStyles((theme) => ({
         padding: '10px 0',
         textAlign: 'center',
         fontWeight: 'bold',
+    },
+    loading: {
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
+        '& > * + *': {
+            marginLeft: theme.spacing(2),
+        },
     }
 }));
 
@@ -96,7 +106,7 @@ export const CartBox = memo((props) => {
                             </div>
                         ))}
                     </>
-                ) : <p>ありません</p>}
+                ) : <div className={classes.loading}><CircularProgress /></div>}
             </div>
 
             <Modal
