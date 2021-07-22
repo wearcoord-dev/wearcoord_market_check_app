@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
 import { useGetRecoCoord } from "../../../../hooks/home/useGetRecoCoord";
 import { useHistory } from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 
 const useStyles = makeStyles({
@@ -38,6 +40,12 @@ const useStyles = makeStyles({
     h2parrent: {
         width: "90%",
         margin: "auto",
+        padding: "30px 0",
+    },
+    loading: {
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
     }
 });
 
@@ -83,7 +91,7 @@ export const WcRecommendList = memo(() => {
                             ))}
                         </ul>
                     </>
-                )) : loadingRecoCoordList ? <p>Loading...</p> : <p>アイテムがありません</p>}
+                )) : loadingRecoCoordList ? <div className={classes.loading}><CircularProgress /></div> : <p>アイテムがありません</p>}
             </div>
         </div>
         </>

@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     gridListTile: {
         width: '150px !important',
         height: 'auto !important',
-        backgroundColor: theme.palette.background.paper,
+        background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
+        boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
         margin: '10px',
         borderRadius: '10px',
     },
@@ -55,7 +56,7 @@ export const Favorite = memo(() => {
 
     return (
         <>
-        <p style={{ textAlign:'center' }}>お気に入り登録したコーデ一覧</p>
+        <h3 style={{ textAlign:'center', padding: "30px 0" }}>お気に入り登録したコーデ一覧</h3>
             {userCoordData ? (
                 <div className={classes.root}>
                     <GridList cellHeight={160} className={classes.gridList}>
