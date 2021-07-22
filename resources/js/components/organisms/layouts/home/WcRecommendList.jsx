@@ -25,6 +25,7 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         width: "100px",
         textAlign: "center",
+        background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
         boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
     },
     h2title: {

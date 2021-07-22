@@ -16,6 +16,8 @@ import { PageSix } from "../organisms/layouts/introguide/PageSix";
 import { PageEnd } from "../organisms/layouts/introguide/PageEnd";
 import CancelIcon from '@material-ui/icons/Cancel';
 import { NewsList } from "../organisms/layouts/home/NewsList";
+import { RecommendItem } from "../organisms/layouts/home/RecommendItem";
+import { Footer } from "../organisms/layouts/home/Footer";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -104,8 +106,10 @@ export const Home = memo(() => {
             <div style={{ marginBottom: "70px" }}>
                 <HomeTopSection />
                 <NewsList />
+                <RecommendItem />
                 <UsersCoordList />
                 <WcRecommendList />
+                <Footer />
             </div>
 
             {userCheck ? (userCheck.firstcheck == null ? (
