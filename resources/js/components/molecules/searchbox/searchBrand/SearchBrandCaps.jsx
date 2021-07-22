@@ -147,7 +147,7 @@ export const SearchBrandCaps = memo((props) => {
                 onClick={onClickInput}
                 checked={check.ellesse}
                  />
-                <label htmlFor="ellesse" className="radioInputLabel">Ellesse</label>
+                <label htmlFor="ellesse" className="radioInputLabel">ellesse</label>
 
                 <input type="radio" id="babolat" className="radioInput" name="brand" value="babolat" onChange={handleInputChange}
                 onClick={onClickInput}
