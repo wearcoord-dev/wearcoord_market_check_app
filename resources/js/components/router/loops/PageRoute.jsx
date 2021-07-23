@@ -13,6 +13,7 @@ import { SetUserFace } from "../../pages/setPage/SetUserFace";
 import { Details } from "../../pages/details/Details";
 import { WcDetails } from "../../pages/details/WcDetails";
 import { LarossoDetails } from "../../pages/details/LarossoDetails";
+import { InfoRegisterSize } from "../../pages/setPage/size/InfoRegisterSize";
 
 export const PageRoute = [
   {
@@ -65,8 +66,13 @@ export const PageRoute = [
   },
   {
     path: "/settings/face",
-    exact: false,
+    exact: true,
     children: <SetUserFace />
+  },
+  {
+    path: "/settings/size",
+    exact: true,
+    children: <InfoRegisterSize />
   },
   {
     path: "/detail",
