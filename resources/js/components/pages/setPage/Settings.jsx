@@ -4,19 +4,20 @@ import { useHistory } from "react-router";
 
 const styles = {
     btnWrap: {
-      textAlign: "center",
-      margin: "20px"
+        textAlign: "center",
+        margin: "20px"
     },
     button: {
-      fontSize: "20px",
-      padding: "10px 0"
+        fontSize: "20px",
+        padding: "10px 0"
     },
-  };
+};
 
 export const Settings = memo(() => {
     const history = useHistory();
 
     const onClickFace = useCallback(() => history.push("/main/settings/face"), [history]);
+    const onClickSize = useCallback(() => history.push("/main/settings/size"), [history]);
 
 
     const onClickLogout = (e) => {
@@ -36,16 +37,21 @@ export const Settings = memo(() => {
 
     return (
         <>
-            <p style={{ textAlign: "center" }}>Settings</p>
-            <div style={ styles.btnWrap }>
-                <button style={ styles.button } onClick={onClickFace}>マネキン顔画像の変更</button>
-            </div>
-            <div style={ styles.btnWrap }>
-                <button style={ styles.button }>退会する</button>
-            </div>
-            <div style={ styles.btnWrap }>
-                <button style={ styles.button } href="/logout" onClick={onClickLogout}>ログアウト</button>
-            </div>
+            <p style={{ textAlign: "center", padding: "30px 0" }}>Settings</p>
+            <ul>
+                <li style={styles.btnWrap}>
+                    <button style={styles.button} onClick={onClickFace}>マネキン顔画像の変更</button>
+                </li>
+                <li style={styles.btnWrap}>
+                    <button style={styles.button} onClick={onClickSize}>ウェア情報の変更</button>
+                </li>
+                <li style={styles.btnWrap}>
+                    <button style={styles.button}>退会する</button>
+                </li>
+                <li style={styles.btnWrap}>
+                    <button style={styles.button} href="/logout" onClick={onClickLogout}>ログアウト</button>
+                </li>
+            </ul>
         </>
     )
 })
