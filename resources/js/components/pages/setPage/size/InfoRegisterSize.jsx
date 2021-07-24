@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { memo } from "react";
 import img1 from "../../../../../../public/img/others/size/DrawKit-Fashion-Illustration-01.svg";
 import img2 from "../../../../../../public/img/others/size/character 5.svg";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     info: {
@@ -69,6 +70,14 @@ const useStyles = makeStyles({
 
 export const InfoRegisterSize = memo(() => {
     const classes = useStyles();
+    const history = useHistory();
+
+    const onClickRegisterTops = () => {
+        history.push({
+            pathname: '/main/settings/size/tops',
+        });
+    }
+
 
     return (
         <>
@@ -88,7 +97,7 @@ export const InfoRegisterSize = memo(() => {
                         <img src={img2} alt="" />
                     </picture>
                     <p className={classes.p}>身幅やウエストなど、ご自身にピッタリなウェアサイズ数値が分かる方はこちら</p>
-                    <a className={classes.a} href="">Click</a>
+                    <button className={classes.a} onClick={onClickRegisterTops}>Click</button>
                 </li>
             </ul>
             <div style={{ marginBottom: "100px" }}></div>
