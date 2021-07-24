@@ -75,4 +75,41 @@ class UserController extends Controller
 
         return 'ok';
     }
+
+    public function registerSizeTops(Request $request)
+    {
+        $user_id = $request['userid'];
+        $kyoui = $request['kyoui'];
+        $mitake = $request['mitake'];
+        $mihaba = $request['mihaba'];
+        $katahaba = $request['katahaba'];
+        $sodetake = $request['sodetake'];
+        $setake = $request['setake'];
+
+        $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
+
+        if (isset($checkList)) {
+            DB::table('user_size')->where('user_id', $user_id)->update([
+                'user_id' => $user_id,
+                'kyoui' => $kyoui,
+                'mitake' => $mitake,
+                'mihaba' => $mihaba,
+                'katahaba' => $katahaba,
+                'sodetake' => $sodetake,
+                'setake' => $setake,
+            ]);
+        } else {
+            DB::table('user_size')->insert([
+                'user_id' => $user_id,
+                'kyoui' => $kyoui,
+                'mitake' => $mitake,
+                'mihaba' => $mihaba,
+                'katahaba' => $katahaba,
+                'sodetake' => $sodetake,
+                'setake' => $setake,
+            ]);
+        }
+
+        return 'ok';
+    }
 }

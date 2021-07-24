@@ -109,6 +109,11 @@ Route::get('/registerfirstcheck', function (Request $request) {
 
 Route::post('/registerfirstcheck', [App\Http\Controllers\UserController::class, "registerFirstCheck"]);
 
+Route::get('/registersize/tops', function (Request $request) {
+});
+
+Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);
