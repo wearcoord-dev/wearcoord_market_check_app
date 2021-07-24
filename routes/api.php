@@ -114,6 +114,11 @@ Route::get('/registersize/tops', function (Request $request) {
 
 Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
 
+Route::get('/registersize/pants', function (Request $request) {
+});
+
+Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

@@ -185,11 +185,11 @@ export const RegisterSizeTops = memo(() => {
             "userid": context.contextName.id,
         }
         const url = '/api/registersize/tops';
-        console.log(setData);
+        // console.log(setData);
 
         axios.post(url, setData, header).then((res) => {
             console.log(res);
-            // history.go(0);
+            history.push('/main/settings/size/pants');
         }).catch(() => {
         }).finally(() => {
         });
@@ -212,8 +212,7 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    // value={kyoui}
-                                    // onChange={onChangeKyoui}
+                                    // placeholder="test"
                                     {...register("kyoui", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.kyoui && <div className={classes.error}>半角英数3桁内で入力してください</div>}

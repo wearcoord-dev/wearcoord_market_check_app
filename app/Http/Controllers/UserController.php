@@ -112,4 +112,41 @@ class UserController extends Controller
 
         return 'ok';
     }
+
+    public function registerSizePants(Request $request)
+    {
+        $user_id = $request['userid'];
+        $weist = $request['weist'];
+        $hip = $request['hip'];
+        $watarihaba = $request['watarihaba'];
+        $matagami = $request['matagami'];
+        $matashita = $request['matashita'];
+        $susohaba = $request['susohaba'];
+
+        $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
+
+        if (isset($checkList)) {
+            DB::table('user_size')->where('user_id', $user_id)->update([
+                'user_id' => $user_id,
+                'weist' => $weist,
+                'hip' => $hip,
+                'watarihaba' => $watarihaba,
+                'matagami' => $matagami,
+                'matashita' => $matashita,
+                'susohaba' => $susohaba,
+            ]);
+        } else {
+            DB::table('user_size')->insert([
+                'user_id' => $user_id,
+                'weist' => $weist,
+                'hip' => $hip,
+                'watarihaba' => $watarihaba,
+                'matagami' => $matagami,
+                'matashita' => $matashita,
+                'susohaba' => $susohaba,
+            ]);
+        }
+
+        return 'ok';
+    }
 }
