@@ -15,6 +15,7 @@ import { WcDetails } from "../../pages/details/WcDetails";
 import { LarossoDetails } from "../../pages/details/LarossoDetails";
 import { InfoRegisterSize } from "../../pages/setPage/size/InfoRegisterSize";
 import { RegisterSizeTops } from "../../pages/setPage/size/RegisterSizeTops";
+import { RegisterSizePants } from "../../pages/setPage/size/RegisterSizePants";
 
 export const PageRoute = [
   {
@@ -79,6 +80,11 @@ export const PageRoute = [
     path: "/settings/size/tops",
     exact: true,
     children: <RegisterSizeTops />
+  },
+  {
+    path: "/settings/size/pants",
+    exact: true,
+    children: <RegisterSizePants />
   },
   {
     path: "/detail",
