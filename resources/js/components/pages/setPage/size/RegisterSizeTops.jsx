@@ -144,7 +144,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={mitake}
                                     onChange={onChangeMitake}
                                 /><span>cm</span>
@@ -161,7 +161,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={mihaba}
                                     onChange={onChangeMihaba}
                                 /><span>cm</span>
@@ -178,7 +178,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={katahaba}
                                     onChange={onChangeKatahaba}
                                 /><span>cm</span>
@@ -195,7 +195,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={sodetake}
                                     onChange={onChangeSodetake}
                                 /><span>cm</span>
@@ -212,7 +212,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={kyoui}
                                     onChange={onChangeKyoui}
                                 /><span>cm</span>
@@ -229,7 +229,7 @@ export const RegisterSizeTops = memo(() => {
                             <div className={classes.inputArea}>
                                 <input
                                     className={classes.input}
-                                    type="number"
+                                    type="tel"
                                     value={setake}
                                     onChange={onChangeSetake}
                                 /><span>cm</span>
