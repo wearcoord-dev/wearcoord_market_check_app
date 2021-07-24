@@ -9,6 +9,7 @@ import kyouiimg from "../../../../../../public/img/others/size/kyoui.jpg";
 import setakeimg from "../../../../../../public/img/others/size/setake.jpg";
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MuiAlert from '@material-ui/lab/Alert';
+import { useForm } from "react-hook-form";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -78,12 +79,18 @@ const useStyles = makeStyles({
         borderRadius: "999px",
         margin: "0 auto",
         bottom: "20px",
+    },
+    error: {
+        color: "red",
+        paddingTop: "10px",
     }
 });
 
 export const RegisterSizeTops = memo(() => {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const [open, setOpen] = useState(false);
 
     const handleClick = () => {
         setOpen(true);
@@ -97,19 +104,19 @@ export const RegisterSizeTops = memo(() => {
         setOpen(false);
     };
 
-    const [mitake, setMitake] = useState('');
-    const [mihaba, setMihaba] = useState('');
-    const [katahaba, setKatahaba] = useState('');
-    const [sodetake, setSodetake] = useState('');
-    const [kyoui, setKyoui] = useState('');
-    const [setake, setSetake] = useState('');
+    // const [mitake, setMitake] = useState('');
+    // const [mihaba, setMihaba] = useState('');
+    // const [katahaba, setKatahaba] = useState('');
+    // const [sodetake, setSodetake] = useState('');
+    // const [kyoui, setKyoui] = useState('');
+    // const [setake, setSetake] = useState('');
 
-    const onChangeMitake = (e) => setMitake(e.target.value);
-    const onChangeMihaba = (e) => setMihaba(e.target.value);
-    const onChangeKatahaba = (e) => setKatahaba(e.target.value);
-    const onChangeSodetake = (e) => setSodetake(e.target.value);
-    const onChangeKyoui = (e) => setKyoui(e.target.value);
-    const onChangeSetake = (e) => setSetake(e.target.value);
+    // const onChangeMitake = (e) => setMitake(e.target.value);
+    // const onChangeMihaba = (e) => setMihaba(e.target.value);
+    // const onChangeKatahaba = (e) => setKatahaba(e.target.value);
+    // const onChangeSodetake = (e) => setSodetake(e.target.value);
+    // const onChangeKyoui = (e) => setKyoui(e.target.value);
+    // const onChangeSetake = (e) => setSetake(e.target.value);
 
 
     const onClickRegisterTops = () => {
@@ -129,11 +136,13 @@ export const RegisterSizeTops = memo(() => {
 
     }
 
+    const onSubmit = data => console.log(data);
+
     return (
         <>
             <h2 className={classes.h2}>トップスサイズを入力</h2>
             <p className={classes.p}>※半角数字で入力してください</p>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <ul>
                     <li className={classes.li}>
                         <picture className={classes.picture}>
@@ -145,12 +154,20 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={mitake}
-                                    onChange={onChangeMitake}
+                                    // value={mitake}
+                                    // onChange={onChangeMitake}
+                                    name="mitake"
+                                    {...register("mitake", { required: true, pattern: /^[0-9]+$/i })}
                                 /><span>cm</span>
+                                {errors.mitake && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>
+
+                    {/* <li><input type="text" className={classes.input}
+                                    type="tel" {...register("exampleRequired", { required: true, pattern: /^[0-9]+$/i })} />
+                                    {errors.exampleRequired && <span>This field is required</span>}
+                                    </li> */}
 
                     <li className={classes.li}>
                         <picture className={classes.picture}>
@@ -162,9 +179,12 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={mihaba}
-                                    onChange={onChangeMihaba}
+                                    // value={mihaba}
+                                    // onChange={onChangeMihaba}
+                                    name="mihaba"
+                                    {...register("mihaba", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
+                                {errors.mihaba && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>
@@ -179,9 +199,12 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={katahaba}
-                                    onChange={onChangeKatahaba}
+                                    // value={katahaba}
+                                    // onChange={onChangeKatahaba}
+                                    {...register("katahaba", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
+                                {errors.katahaba && <div className={classes.error}>半角英数3桁内で入力してください</div>}
+
                             </div>
                         </div>
                     </li>
@@ -196,9 +219,12 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={sodetake}
-                                    onChange={onChangeSodetake}
+                                    // value={sodetake}
+                                    // onChange={onChangeSodetake}
+                                    {...register("sodetake", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
+                                {errors.sodetake && <div className={classes.error}>半角英数3桁内で入力してください</div>}
+
                             </div>
                         </div>
                     </li>
@@ -213,9 +239,11 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={kyoui}
-                                    onChange={onChangeKyoui}
+                                    // value={kyoui}
+                                    // onChange={onChangeKyoui}
+                                    {...register("kyoui", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
+                                {errors.kyoui && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>
@@ -230,16 +258,19 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    value={setake}
-                                    onChange={onChangeSetake}
+                                    // value={setake}
+                                    // onChange={onChangeSetake}
+                                    {...register("setake", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
+                                {errors.setake && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>
                 </ul>
-                <div>
-                    <button type="button" className={classes.a} onClick={onClickRegisterTops}>パンツサイズを入力する<ArrowRightIcon style={{ fontSize: "20px", verticalAlign: "bottom" }} /></button>
-                </div>
+                {/* <div>
+                    <input type="submit" className={classes.a}>パンツサイズを入力する<ArrowRightIcon style={{ fontSize: "20px", verticalAlign: "bottom" }} /></input>
+                </div> */}
+                <input className={classes.a} type="submit" value="パンツサイズを入力する" />
             </form>
             <Snackbar
                 anchorOrigin={{
