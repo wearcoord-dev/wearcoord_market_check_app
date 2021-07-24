@@ -84,6 +84,8 @@ Route::get('/getwcfavcoord', [App\Http\Controllers\MycoordController::class, "ge
 
 Route::get('/getlarosso2021', [App\Http\Controllers\MycoordController::class, "getLarosso2021"]);
 
+Route::get('/getusersize', [App\Http\Controllers\UserController::class, "getUserSize"]);
+
 Route::get('/registerwearitem', function (Request $request) {
 });
 
@@ -118,6 +120,7 @@ Route::get('/registersize/pants', function (Request $request) {
 });
 
 Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 

@@ -1,5 +1,5 @@
 import { Button, makeStyles, Snackbar } from "@material-ui/core";
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { memo, useState } from "react";
 import weistimg from "../../../../../../public/img/others/size/weist.jpg";
 import hipimg from "../../../../../../public/img/others/size/hip.jpg";
@@ -12,6 +12,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { UserContext } from "../../../providers/UserProvider";
+import { useGetUserSize } from "../../../../hooks/size/useGetUserSize";
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -93,15 +94,43 @@ export const RegisterSizePants = memo(() => {
     const history = useHistory();
     const context = useContext(UserContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { GetUserSize,  userSize, loadingUserSize, errorUserSize } = useGetUserSize();
+    const userCheck = context.contextName;
+
+
+    // 既に登録したサイズデータを取得
+    const [ preWeist, setPreWeist ] = useState();
+    const [ preHip, setPreHip ] = useState();
+    const [ preWatarihaba, setPreWatarihaba ] = useState();
+    const [ preMatagami, setPreMatagami ] = useState();
+    const [ preMatashita, setPreMatashita ] = useState();
+    const [ preSusohaba, setPreSusohaba ] = useState();
+
+    useEffect(() => {
+        if (userCheck !== undefined) {
+            GetUserSize(userCheck.id);
+        }
+    }, [userCheck]);
+
+    useEffect(() => {
+        if (userSize !== null) {
+            setPreWeist(userSize.weist);
+            setPreHip(userSize.hip);
+            setPreWatarihaba(userSize.watarihaba);
+            setPreMatagami(userSize.matagami);
+            setPreMatashita(userSize.matashita);
+            setPreSusohaba(userSize.susohaba);
+        }
+    }, [userSize]);
 
     const onSubmit = data => {
         console.log(data);
-        let weistsize = null;
-        let hipsize = null;
-        let watarihabasize = null;
-        let matagamisize = null;
-        let matashitasize = null;
-        let susohabasize = null;
+        let weistsize = preWeist;
+        let hipsize = preHip;
+        let watarihabasize = preWatarihaba;
+        let matagamisize = preMatagami;
+        let matashitasize = preMatashita;
+        let susohabasize = preSusohaba;
 
         if(!data.weist == ''){
             weistsize = data.weist;
@@ -166,7 +195,8 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    {...register("weist", { required: true, pattern: /^[0-9]+$/i, maxLength: 3 })}
+                                    placeholder={preWeist}
+                                    {...register("weist", { pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.weist && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
@@ -183,6 +213,7 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
+                                    placeholder={preHip}
                                     {...register("hip", { required: false, pattern: /^[0-9]+$/i })}
                                 /><span>cm</span>
                                 {errors.hip && <div className={classes.error}>半角英数3桁内で入力してください</div>}
@@ -200,6 +231,7 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
+                                    placeholder={preWatarihaba}
                                     {...register("watarihaba", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.watarihaba && <div className={classes.error}>半角英数3桁内で入力してください</div>}
@@ -217,6 +249,7 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
+                                    placeholder={preMatagami}
                                     {...register("matagami", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.matagami && <div className={classes.error}>半角英数3桁内で入力してください</div>}
@@ -235,6 +268,7 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
+                                    placeholder={preMatashita}
                                     {...register("matashita", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.matashita && <div className={classes.error}>半角英数3桁内で入力してください</div>}
@@ -253,6 +287,7 @@ export const RegisterSizePants = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
+                                    placeholder={preSusohaba}
                                     {...register("susohaba", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.susohaba && <div className={classes.error}>半角英数3桁内で入力してください</div>}

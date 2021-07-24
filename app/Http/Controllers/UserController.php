@@ -84,7 +84,7 @@ class UserController extends Controller
         $mihaba = $request['mihaba'];
         $katahaba = $request['katahaba'];
         $sodetake = $request['sodetake'];
-        $setake = $request['setake'];
+        $kitake = $request['kitake'];
 
         $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
 
@@ -96,7 +96,7 @@ class UserController extends Controller
                 'mihaba' => $mihaba,
                 'katahaba' => $katahaba,
                 'sodetake' => $sodetake,
-                'setake' => $setake,
+                'kitake' => $kitake,
             ]);
         } else {
             DB::table('user_size')->insert([
@@ -106,7 +106,7 @@ class UserController extends Controller
                 'mihaba' => $mihaba,
                 'katahaba' => $katahaba,
                 'sodetake' => $sodetake,
-                'setake' => $setake,
+                'kitake' => $kitake,
             ]);
         }
 
@@ -148,5 +148,15 @@ class UserController extends Controller
         }
 
         return 'ok';
+    }
+
+    public function getUserSize(Request $request)
+    {
+        $user_id = $request['id'];
+
+        $userSize = DB::table('user_size')->where('user_id', $user_id)->first();
+
+        return response()->json($userSize);
+
     }
 }
