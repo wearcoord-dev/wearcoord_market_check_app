@@ -123,6 +123,11 @@ Route::get('/registersize/pants', function (Request $request) {
 
 Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
 
+Route::get('/registersize/wear', function (Request $request) {
+});
+
+Route::post('/registersize/wear', [App\Http\Controllers\UserController::class, "registerSizeWear"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 

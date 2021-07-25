@@ -1,5 +1,5 @@
-import { Grid, makeStyles } from "@material-ui/core";
-import { memo, useContext } from "react";
+import { Backdrop, Button, Fade, Grid, makeStyles, Modal } from "@material-ui/core";
+import { memo, useContext, useState } from "react";
 import img1 from "../../../../../../public/img/others/size/DrawKit-Fashion-Illustration-01.svg";
 import img2 from "../../../../../../public/img/others/size/character 5.svg";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,10 @@ import { useForm } from "react-hook-form";
 import { useGetSizeWear } from "../../../../hooks/size/useGetSizeWear";
 import { UserContext } from "../../../providers/UserProvider";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import { constant } from "lodash";
+import { useRegisterSizeFromWear } from "../../../../hooks/size/useRegisterSizeFromWear";
+
 
 
 const useStyles = makeStyles({
@@ -112,6 +116,26 @@ const useStyles = makeStyles({
     loading: {
         display: 'flex',
         justifyContent: 'center',
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    item: {
+    },
+    modalbox: {
+        width: '90%',
+        margin: 'auto',
+        backgroundColor: '#ffffff',
+        borderRadius: '30px',
+        padding: '20px 0',
+        background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
+    },
+    imgbox: {
+        width: '60%',
+        margin: 'auto',
+        padding: '20px 0',
     }
 
 });
@@ -123,6 +147,21 @@ export const RegisterFromWearTops = memo(() => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { GetUserSizeWear, userSizeWear, loadingUserSizeWear, errorUserSizeWear } = useGetSizeWear();
     const userCheck = context.contextName;
+    const [openModal, setOpen] = useState(false);
+    const [wearInfo, setWearInfo] = useState();
+    const { RegisterSizeFromWear } = useRegisterSizeFromWear();
+
+    // モーダルで展開する情報取得
+    const onClickInfo = (props) => {
+        // console.log(props);
+        setWearInfo(props);
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     const items = (
         <>
@@ -137,7 +176,7 @@ export const RegisterFromWearTops = memo(() => {
                     <Grid style={{ justifyContent: 'center', width: '100%', margin: '0' }} container spacing={1}>
 
                         {userSizeWear.map((item) => (
-                            <Grid className={classes.paper} key={item.db.id} container item xs={12} spacing={3}>
+                            <Grid className={classes.paper} key={item.db.id} container item xs={12} spacing={3} onClick={onClickInfo.bind(this, item)}>
                                 <button>
                                     <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${item.category}/${item.url}`} alt="" />
                                 </button>
@@ -155,11 +194,16 @@ export const RegisterFromWearTops = memo(() => {
     )
 
     const onSubmit = data => {
-        // console.log(data);
         GetUserSizeWear(data, userCheck.gender);
     }
 
-    console.log(userSizeWear);
+    const onClickWearItem = (props) => {
+        // console.log(props);
+        const type = 'tops';
+        RegisterSizeFromWear(props, userCheck, type);
+    }
+
+    // console.log(wearInfo);
 
     return (
         <>
@@ -193,6 +237,37 @@ export const RegisterFromWearTops = memo(() => {
             {items}
 
             <div style={{ marginBottom: "100px" }}></div>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openModal}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={openModal}>
+                    <div className={classes.item}>
+                        {wearInfo ? (
+                            <>
+                                <div className={classes.modalbox}>
+                                    <div className={classes.imgbox}>
+                                        <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wearInfo.category}/${wearInfo.url}`} alt="" />
+                                    </div>
+                                    <Button style={{ left: "50%", transform: "translateX(-50%)" }} variant="contained" color="primary" onClick={onClickWearItem.bind(this, wearInfo)}>
+                                        <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
+                                        このウェアを選ぶ
+                                    </Button>
+                                </div>
+                            </>
+                        ) : <div></div>}
+                    </div>
+                </Fade>
+            </Modal>
         </>
     )
 })
