@@ -86,6 +86,8 @@ Route::get('/getlarosso2021', [App\Http\Controllers\MycoordController::class, "g
 
 Route::get('/getusersize', [App\Http\Controllers\UserController::class, "getUserSize"]);
 
+Route::get('/getsizewear', [App\Http\Controllers\UserController::class, "getSizeWear"]);
+
 Route::get('/registerwearitem', function (Request $request) {
 });
 

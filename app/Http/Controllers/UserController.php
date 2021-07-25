@@ -159,4 +159,60 @@ class UserController extends Controller
         return response()->json($userSize);
 
     }
+
+    public function getSizeWear(Request $request)
+    {
+        $brand = $request['brand'];
+        $size = $request['size'];
+        $type = $request['type'];
+        $gender = $request['gender'];
+
+        $wearItems = [];
+
+        $wearDataList = DB::table( $type . '_size')->where('brand', $brand)->where('size', $size)->where('gender', $gender)->get();
+
+        // 画像を取得
+
+        foreach($wearDataList as $wearData){
+            $i = DB::table( $type . '_rakuten_apis')->where('id', $wearData->item_id)->first();
+
+            $url = $i->black;
+
+                if (!$url) {
+                    $url = $i->white;
+                    if (!$url) {
+                        $url = $i->blue;
+                        if (!$url) {
+                            $url = $i->red;
+                            if (!$url) {
+                                $url = $i->green;
+                                if (!$url) {
+                                    $url = $i->yellow;
+                                    if (!$url) {
+                                        $url = $i->navy;
+                                        if (!$url) {
+                                            $url = $i->pink;
+                                            if (!$url) {
+                                                $url = $i->orange;
+                                                if (!$url) {
+                                                    $url = $i->purple;
+                                                    if (!$url) {
+                                                        $url = $i->gray;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                $wearItems[] = array('db' => $wearData, 'url' => $url, 'category' => $i->category);
+
+        }
+
+        return response()->json($wearItems);
+
+    }
 }
