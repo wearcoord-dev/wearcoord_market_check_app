@@ -1,4 +1,4 @@
-import { Backdrop, Button, Fade, Grid, makeStyles, Modal } from "@material-ui/core";
+import { Backdrop, Button, Fade, Grid, makeStyles, Modal, Snackbar } from "@material-ui/core";
 import { memo, useContext, useState } from "react";
 import img1 from "../../../../../../public/img/others/size/DrawKit-Fashion-Illustration-01.svg";
 import img2 from "../../../../../../public/img/others/size/character 5.svg";
@@ -10,8 +10,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import { constant } from "lodash";
 import { useRegisterSizeFromWear } from "../../../../hooks/size/useRegisterSizeFromWear";
+import MuiAlert from '@material-ui/lab/Alert';
 
 
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 const useStyles = makeStyles({
     info: {
@@ -147,7 +151,7 @@ export const RegisterFromWearPants = memo(() => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { GetUserSizeWear, userSizeWear, loadingUserSizeWear, errorUserSizeWear } = useGetSizeWear();
     const userCheck = context.contextName;
-    const [openModal, setOpen] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const [wearInfo, setWearInfo] = useState();
     const { RegisterSizeFromWear } = useRegisterSizeFromWear();
 
@@ -155,11 +159,11 @@ export const RegisterFromWearPants = memo(() => {
     const onClickInfo = (props) => {
         // console.log(props);
         setWearInfo(props);
-        setOpen(true);
+        setOpenModal(true);
     }
 
     const handleClose = () => {
-        setOpen(false);
+        setOpenModal(false);
     };
 
 
@@ -201,10 +205,24 @@ export const RegisterFromWearPants = memo(() => {
         // console.log(props);
         const type = 'pants';
         RegisterSizeFromWear(props, userCheck, type);
-        history.push('/main/mycoord');
+        setOpen(true);
+        setTimeout(function(){
+            history.push('/main/mycoord');
+        }, 3000);
     }
 
-    // console.log(wearInfo);
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+    };
+
+    const handleCloseSnack = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+
+      setOpen(false);
+    };
 
     return (
         <>
@@ -268,6 +286,11 @@ export const RegisterFromWearPants = memo(() => {
                     </div>
                 </Fade>
             </Modal>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleCloseSnack}>
+                <Alert onClose={handleCloseSnack} severity="success">
+                    ウェアサイズデータの登録が完了しました！
+                </Alert>
+            </Snackbar>
         </>
     )
 })
