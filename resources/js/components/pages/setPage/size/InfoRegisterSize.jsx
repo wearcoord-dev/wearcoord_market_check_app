@@ -95,7 +95,7 @@ export const InfoRegisterSize = memo(() => {
                         <img src={img1} alt="" />
                     </picture>
                     <p className={classes.p}>身幅やウエストなど、ご自身のウェアサイズが分からない方はこちら</p>
-                    <a className={classes.a} onClick={onClickRegisterWear}>Click</a>
+                    <button className={classes.a} onClick={onClickRegisterWear}>Click</button>
                 </li>
                 <li className={classes.li}>
                     <h2 className={classes.h2}>直接ウェアサイズデータを記入して登録する</h2>

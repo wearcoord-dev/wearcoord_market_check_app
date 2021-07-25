@@ -180,7 +180,7 @@ export const RegisterSizePants = memo(() => {
 
     return (
         <>
-            <h2 className={classes.h2}>トップスサイズを入力</h2>
+            <h2 className={classes.h2}>パンツサイズを入力</h2>
             <p className={classes.p}>※半角数字で入力してください</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ul>

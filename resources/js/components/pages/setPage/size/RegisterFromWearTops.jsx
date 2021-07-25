@@ -207,7 +207,7 @@ export const RegisterFromWearTops = memo(() => {
 
     return (
         <>
-            <p className={classes.info}>普段着ているトップスを選んで、ご自身の体格データとして登録します。以下の検索フォームからウェアを選んでください。</p>
+            <p className={classes.info}>普段着ているトップスを選んで、ご自身のウェアサイズデータとして登録します。以下の検索フォームからウェアを選んでください。</p>
 
             <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
                 <div className={classes.formwrap}>
