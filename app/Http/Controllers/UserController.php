@@ -116,7 +116,7 @@ class UserController extends Controller
     public function registerSizePants(Request $request)
     {
         $user_id = $request['userid'];
-        $weist = $request['weist'];
+        $waist = $request['waist'];
         $hip = $request['hip'];
         $watarihaba = $request['watarihaba'];
         $matagami = $request['matagami'];
@@ -128,7 +128,7 @@ class UserController extends Controller
         if (isset($checkList)) {
             DB::table('user_size')->where('user_id', $user_id)->update([
                 'user_id' => $user_id,
-                'weist' => $weist,
+                'waist' => $waist,
                 'hip' => $hip,
                 'watarihaba' => $watarihaba,
                 'matagami' => $matagami,
@@ -138,7 +138,7 @@ class UserController extends Controller
         } else {
             DB::table('user_size')->insert([
                 'user_id' => $user_id,
-                'weist' => $weist,
+                'waist' => $waist,
                 'hip' => $hip,
                 'watarihaba' => $watarihaba,
                 'matagami' => $matagami,
@@ -158,6 +158,9 @@ class UserController extends Controller
 
         $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
 
+        // return response()->json($user_id);
+
+
         if (isset($checkList)) {
             if($type == 'tops'){
                 DB::table('user_size')->where('user_id', $user_id)->update([
@@ -168,6 +171,17 @@ class UserController extends Controller
                     'sodetake' => $props['db']['sodetake'],
                     'kitake' => $props['db']['kitake'],
                     'tops_item_id' => $props['db']['item_id'],
+                ]);
+            }
+            if($type == 'pants'){
+                DB::table('user_size')->where('user_id', $user_id)->update([
+                    'waist' => $props['db']['waist'],
+                    'hip' => $props['db']['hip'],
+                    'watarihaba' => $props['db']['watarihaba'],
+                    'matagami' => $props['db']['matagami'],
+                    'matashita' => $props['db']['matashita'],
+                    'susohaba' => $props['db']['susohaba'],
+                    'pants_item_id' => $props['db']['item_id'],
                 ]);
             }
         } else {
@@ -181,6 +195,18 @@ class UserController extends Controller
                     'sodetake' => $props['db']['sodetake'],
                     'kitake' => $props['db']['kitake'],
                     'tops_item_id' => $props['db']['item_id'],
+                ]);
+            }
+            if($type == 'pants'){
+                DB::table('user_size')->insert([
+                    'user_id' => $user_id,
+                    'waist' => $props['db']['waist'],
+                    'hip' => $props['db']['hip'],
+                    'watarihaba' => $props['db']['watarihaba'],
+                    'matagami' => $props['db']['matagami'],
+                    'matashita' => $props['db']['matashita'],
+                    'susohaba' => $props['db']['susohaba'],
+                    'pants_item_id' => $props['db']['item_id'],
                 ]);
             }
         }

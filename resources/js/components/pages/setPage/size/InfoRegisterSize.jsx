@@ -80,7 +80,7 @@ export const InfoRegisterSize = memo(() => {
 
     const onClickRegisterWear = () => {
         history.push({
-            pathname: '/main/settings/size/wear',
+            pathname: '/main/settings/size/wear/tops',
         });
     }
 

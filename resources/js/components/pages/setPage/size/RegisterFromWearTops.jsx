@@ -201,9 +201,9 @@ export const RegisterFromWearTops = memo(() => {
         // console.log(props);
         const type = 'tops';
         RegisterSizeFromWear(props, userCheck, type);
+        history.push('/main/settings/size/wear/pants');
     }
 
-    // console.log(wearInfo);
 
     return (
         <>
@@ -224,9 +224,12 @@ export const RegisterFromWearTops = memo(() => {
                     <p className={classes.title}>サイズ :</p>
                     <div className={classes.formbox}>
                         <select {...register("size")}>
+                            <option value="ss">SS</option>
                             <option value="s">S</option>
+                            <option value="xs">XS</option>
                             <option value="m">M</option>
                             <option value="l">L</option>
+                            <option value="ll">LL</option>
                         </select>
                     </div>
                 </div>
