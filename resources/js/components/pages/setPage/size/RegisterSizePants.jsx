@@ -1,7 +1,7 @@
 import { Button, makeStyles, Snackbar } from "@material-ui/core";
 import React, { useContext, useEffect } from 'react';
 import { memo, useState } from "react";
-import weistimg from "../../../../../../public/img/others/size/weist.jpg";
+import waistimg from "../../../../../../public/img/others/size/waist.jpg";
 import hipimg from "../../../../../../public/img/others/size/hip.jpg";
 import watarihabaimg from "../../../../../../public/img/others/size/watarihaba.jpg";
 import matagamiimg from "../../../../../../public/img/others/size/matagami.jpg";
@@ -114,7 +114,7 @@ export const RegisterSizePants = memo(() => {
 
     useEffect(() => {
         if (userSize !== null) {
-            setPreWeist(userSize.weist);
+            setPreWeist(userSize.waist);
             setPreHip(userSize.hip);
             setPreWatarihaba(userSize.watarihaba);
             setPreMatagami(userSize.matagami);
@@ -125,15 +125,15 @@ export const RegisterSizePants = memo(() => {
 
     const onSubmit = data => {
         console.log(data);
-        let weistsize = preWeist;
+        let waistsize = preWeist;
         let hipsize = preHip;
         let watarihabasize = preWatarihaba;
         let matagamisize = preMatagami;
         let matashitasize = preMatashita;
         let susohabasize = preSusohaba;
 
-        if(!data.weist == ''){
-            weistsize = data.weist;
+        if(!data.waist == ''){
+            waistsize = data.waist;
         }
         if(!data.hip == ''){
             hipsize = data.hip;
@@ -159,7 +159,7 @@ export const RegisterSizePants = memo(() => {
         }
 
         const setData = {
-            "weist": weistsize,
+            "waist": waistsize,
             "hip": hipsize,
             "watarihaba": watarihabasize,
             "matagami": matagamisize,
@@ -187,7 +187,7 @@ export const RegisterSizePants = memo(() => {
 
                     <li className={classes.li}>
                         <picture className={classes.picture}>
-                            <img src={weistimg} alt="" />
+                            <img src={waistimg} alt="" />
                         </picture>
                         <div className={classes.box}>
                             <h3 className={classes.h3}>ウエスト</h3>
@@ -196,9 +196,9 @@ export const RegisterSizePants = memo(() => {
                                     className={classes.input}
                                     type="tel"
                                     placeholder={preWeist}
-                                    {...register("weist", { pattern: /^[0-9]+$/i, maxLength: 3 })}
+                                    {...register("waist", { pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
-                                {errors.weist && <div className={classes.error}>半角英数3桁内で入力してください</div>}
+                                {errors.waist && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>

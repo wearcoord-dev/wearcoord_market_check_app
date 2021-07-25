@@ -17,6 +17,7 @@ import { InfoRegisterSize } from "../../pages/setPage/size/InfoRegisterSize";
 import { RegisterSizeTops } from "../../pages/setPage/size/RegisterSizeTops";
 import { RegisterSizePants } from "../../pages/setPage/size/RegisterSizePants";
 import { RegisterFromWearTops } from "../../pages/setPage/size/RegisterFromWearTops";
+import { RegisterFromWearPants } from "../../pages/setPage/size/RegisterFromWearPants";
 
 export const PageRoute = [
   {
@@ -88,9 +89,14 @@ export const PageRoute = [
     children: <RegisterSizePants />
   },
   {
-    path: "/settings/size/wear",
+    path: "/settings/size/wear/tops",
     exact: true,
     children: <RegisterFromWearTops />
+  },
+  {
+    path: "/settings/size/wear/pants",
+    exact: true,
+    children: <RegisterFromWearPants />
   },
   {
     path: "/detail",
