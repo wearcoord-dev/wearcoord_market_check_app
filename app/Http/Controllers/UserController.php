@@ -150,6 +150,44 @@ class UserController extends Controller
         return 'ok';
     }
 
+    public function registerSizeWear(Request $request)
+    {
+        $user_id = $request['id'];
+        $props = $request['props'];
+        $type = $request['type'];
+
+        $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
+
+        if (isset($checkList)) {
+            if($type == 'tops'){
+                DB::table('user_size')->where('user_id', $user_id)->update([
+                    'kyoui' => $props['db']['kyoui'],
+                    'mitake' => $props['db']['mitake'],
+                    'mihaba' => $props['db']['mihaba'],
+                    'katahaba' => $props['db']['katahaba'],
+                    'sodetake' => $props['db']['sodetake'],
+                    'kitake' => $props['db']['kitake'],
+                    'tops_item_id' => $props['db']['item_id'],
+                ]);
+            }
+        } else {
+            if($type == 'tops'){
+                DB::table('user_size')->insert([
+                    'user_id' => $user_id,
+                    'kyoui' => $props['db']['kyoui'],
+                    'mitake' => $props['db']['mitake'],
+                    'mihaba' => $props['db']['mihaba'],
+                    'katahaba' => $props['db']['katahaba'],
+                    'sodetake' => $props['db']['sodetake'],
+                    'kitake' => $props['db']['kitake'],
+                    'tops_item_id' => $props['db']['item_id'],
+                ]);
+            }
+        }
+
+        return 'ok';
+    }
+
     public function getUserSize(Request $request)
     {
         $user_id = $request['id'];
