@@ -27,7 +27,7 @@ export const OpenLeftBtn = memo(() => {
 
                 <details className="btnDesign left" id="btnBand">
                     <summary id="btnSummaryBand">
-                        <i class="fas fa-ruler sideFontAwesome"></i>
+                        <i className="fas fa-ruler sideFontAwesome"></i>
                         <p className="btnText" id="btnTitleBand">Size</p>
                     </summary>
                     <div className="detailsBottom">

@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import { CartBox } from '../../../molecules/cart/CartBox';
+import { ShowTopsSize } from './ShowTopsSize';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -73,9 +74,7 @@ export const ShowSizeResult = memo(() => {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-        {/* <CartBox
-          type={'tops'}
-           /> */}
+            <ShowTopsSize />
         </TabPanel>
         <TabPanel value={value} index={1}>
         {/* <CartBox

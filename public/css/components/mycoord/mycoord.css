@@ -30,6 +30,10 @@
   position: relative;
 }
 
+.sideFontAwesome {
+  font-size: 2rem;
+}
+
 /* Chrome、Safari以外 */
 summary {
   display: block;
