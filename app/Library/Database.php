@@ -8,7 +8,7 @@ class Database
 {
     public static function searchDB($color, $brand, $category, $type, $page)
     {
-        if(empty($page)){
+        if (empty($page)) {
             $page = 1;
         }
 
@@ -123,7 +123,7 @@ class Database
         return ['item' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category];
     }
 
-    public static function createUrlAndCategory($id, $type)
+    public static function createUrlAndCategory($id, $type, $user_id)
     {
         $colors = ['black', 'navy', 'white', 'pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'gray'];
 
@@ -136,12 +136,33 @@ class Database
 
         if (!$testdesu) {
             $testdesu = DB::table($type . '_rakuten_apis')->where('id', $id)->first();
+            if ($type == 'tops') {
+                $userTopsSize = DB::table('user_size')->where('user_id', $user_id)->value('tops_size');
+                $isSizeTopsDB = DB::table('tops_size')->where('item_id', $id)->where('size', $userTopsSize)->exists();
+            }
+            if ($type == 'pants') {
+                $userPantsSize = DB::table('user_size')->where('user_id', $user_id)->value('tops_size');
+                $isSizePantsDB = DB::table('pants_size')->where('item_id', $id)->where('size', $userPantsSize)->exists();
+            }
             if ($testdesu) {
                 foreach ($colors as $color) {
                     if ($testdesu->$color) {
-                        $data = array('category' => $testdesu->category, 'url' => $testdesu->$color,
-                        'id' => $id
-                    );
+                        if ($type == 'tops') {
+                            $data = array(
+                                'category' => $testdesu->category, 'url' => $testdesu->$color,
+                                'id' => $id, 'isSizeTopsDB' => $isSizeTopsDB
+                            );
+                        }elseif($type == 'pants'){
+                            $data = array(
+                                'category' => $testdesu->category, 'url' => $testdesu->$color,
+                                'id' => $id, 'isSizePantsDB' => $isSizePantsDB
+                            );
+                        }else{
+                            $data = array(
+                                'category' => $testdesu->category, 'url' => $testdesu->$color,
+                                'id' => $id,
+                            );
+                        }
                     }
                 }
             }
