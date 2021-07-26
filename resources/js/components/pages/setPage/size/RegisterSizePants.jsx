@@ -86,7 +86,57 @@ const useStyles = makeStyles({
     error: {
         color: "red",
         paddingTop: "10px",
-    }
+    },
+    formbox: {
+        overflow: "hidden",
+        width: "50%",
+        margin: "1em auto",
+        textAlign: "center",
+        position: "relative",
+        border: "1px solid #bbbbbb",
+        borderRadius: "2px",
+        background: "#ffffff",
+        "& select": {
+            width: "100%",
+            paddingRight: "1em",
+            cursor: "pointer",
+            textIndent: "0.01px",
+            textOverflow: "ellipsis",
+            border: "none",
+            outline: "none",
+            background: "transparent",
+            backgroundImage: "none",
+            boxShadow: "none",
+            appearance: "none",
+            padding: "8px 38px 8px 8px",
+            color: "#666666",
+        },
+        '&::before': {
+            position: "absolute",
+            top: "0.8em",
+            right: "0.9em",
+            width: "0",
+            height: "0",
+            padding: "0",
+            content: "''",
+            borderLeft: "6px solid transparent",
+            borderRight: "6px solid transparent",
+            borderTop: "6px solid #666666",
+            pointerEvents: "none",
+        },
+    },
+    title: {
+        width: "50%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    formwrap: {
+        display: "flex",
+        width: "90%",
+        margin: "auto",
+        marginTop: "30px",
+    },
 });
 
 export const RegisterSizePants = memo(() => {
@@ -94,17 +144,20 @@ export const RegisterSizePants = memo(() => {
     const history = useHistory();
     const context = useContext(UserContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { GetUserSize,  userSize, loadingUserSize, errorUserSize } = useGetUserSize();
+    const { GetUserSize, userSize, loadingUserSize, errorUserSize } = useGetUserSize();
     const userCheck = context.contextName;
 
 
     // 既に登録したサイズデータを取得
-    const [ preWeist, setPreWeist ] = useState();
-    const [ preHip, setPreHip ] = useState();
-    const [ preWatarihaba, setPreWatarihaba ] = useState();
-    const [ preMatagami, setPreMatagami ] = useState();
-    const [ preMatashita, setPreMatashita ] = useState();
-    const [ preSusohaba, setPreSusohaba ] = useState();
+    const [preWeist, setPreWeist] = useState();
+    const [preHip, setPreHip] = useState();
+    const [preWatarihaba, setPreWatarihaba] = useState();
+    const [preMatagami, setPreMatagami] = useState();
+    const [preMatashita, setPreMatashita] = useState();
+    const [preSusohaba, setPreSusohaba] = useState();
+    const [prePantsSize, setPrePantsSize] = useState();
+    // 選んだサイズを保存
+    const [selectPantsSize, setSelectPantsSize] = useState();
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -120,8 +173,28 @@ export const RegisterSizePants = memo(() => {
             setPreMatagami(userSize.matagami);
             setPreMatashita(userSize.matashita);
             setPreSusohaba(userSize.susohaba);
+
+            // ウェアサイズのデフォルトを入れる
+            if (userSize.pants_size !== null) {
+                setPrePantsSize(userSize.pants_size);
+            } else {
+                setPrePantsSize('m');
+            }
+            setSelectPantsSize(prePantsSize);
         }
     }, [userSize]);
+
+        // 既存のウェアサイズがあれば更新
+
+        useEffect(() => {
+            if (userSize !== null) {
+                setSelectPantsSize(prePantsSize);
+            }
+        }, [prePantsSize]);
+
+        const changePantsSize = (props) => {
+            setSelectPantsSize(props)
+        }
 
     const onSubmit = data => {
         console.log(data);
@@ -132,22 +205,22 @@ export const RegisterSizePants = memo(() => {
         let matashitasize = preMatashita;
         let susohabasize = preSusohaba;
 
-        if(!data.waist == ''){
+        if (!data.waist == '') {
             waistsize = data.waist;
         }
-        if(!data.hip == ''){
+        if (!data.hip == '') {
             hipsize = data.hip;
         }
-        if(!data.watarihaba == ''){
+        if (!data.watarihaba == '') {
             watarihabasize = data.watarihaba;
         }
-        if(!data.matagami == ''){
+        if (!data.matagami == '') {
             matagamisize = data.matagami;
         }
-        if(!data.matashita == ''){
+        if (!data.matashita == '') {
             matashitasize = data.matashita;
         }
-        if(!data.susohaba == ''){
+        if (!data.susohaba == '') {
             susohabasize = data.susohaba;
         }
 
@@ -166,6 +239,8 @@ export const RegisterSizePants = memo(() => {
             "matashita": matashitasize,
             "susohaba": susohabasize,
             "userid": context.contextName.id,
+            "pants_size": selectPantsSize,
+
         }
         const url = '/api/registersize/pants';
         console.log(setData);
@@ -184,6 +259,18 @@ export const RegisterSizePants = memo(() => {
             <p className={classes.p}>※半角数字で入力してください</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ul>
+
+                    <li className={classes.formwrap}>
+                        <p className={classes.title}>サイズ :</p>
+                        <div className={classes.formbox}>
+                            <select value={selectPantsSize} {...register("size", { required: true })} onChange={(value) => changePantsSize(event.target.value)}>
+                                <option hidden>選択してください</option>
+                                <option value="s">S</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                            </select>
+                        </div>
+                    </li>
 
                     <li className={classes.li}>
                         <picture className={classes.picture}>

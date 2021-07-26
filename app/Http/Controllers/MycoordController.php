@@ -235,7 +235,7 @@ class MycoordController extends Controller
         $types = ['caps', 'tops', 'pants', 'shoes'];
 
         foreach ($types as $type) {
-            ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type);
+            ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type, $user_id);
         }
 
         $mannequin = $userWear->mannequin;
