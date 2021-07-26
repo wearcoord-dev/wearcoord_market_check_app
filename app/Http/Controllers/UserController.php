@@ -85,6 +85,7 @@ class UserController extends Controller
         $katahaba = $request['katahaba'];
         $sodetake = $request['sodetake'];
         $kitake = $request['kitake'];
+        $tops_size = $request['tops_size'];
 
         $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
 
@@ -97,6 +98,7 @@ class UserController extends Controller
                 'katahaba' => $katahaba,
                 'sodetake' => $sodetake,
                 'kitake' => $kitake,
+                'tops_size' => $tops_size,
             ]);
         } else {
             DB::table('user_size')->insert([
@@ -107,6 +109,7 @@ class UserController extends Controller
                 'katahaba' => $katahaba,
                 'sodetake' => $sodetake,
                 'kitake' => $kitake,
+                'tops_size' => $tops_size,
             ]);
         }
 
@@ -122,6 +125,8 @@ class UserController extends Controller
         $matagami = $request['matagami'];
         $matashita = $request['matashita'];
         $susohaba = $request['susohaba'];
+        $pants_size = $request['pants_size'];
+
 
         $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
 
@@ -134,6 +139,7 @@ class UserController extends Controller
                 'matagami' => $matagami,
                 'matashita' => $matashita,
                 'susohaba' => $susohaba,
+                'pants_size' => $pants_size,
             ]);
         } else {
             DB::table('user_size')->insert([
@@ -144,6 +150,7 @@ class UserController extends Controller
                 'matagami' => $matagami,
                 'matashita' => $matashita,
                 'susohaba' => $susohaba,
+                'pants_size' => $pants_size,
             ]);
         }
 
@@ -158,7 +165,7 @@ class UserController extends Controller
 
         $checkList = DB::table('user_size')->where('user_id', $user_id)->first();
 
-        // return response()->json($user_id);
+        // return response()->json($props);
 
 
         if (isset($checkList)) {
@@ -171,6 +178,7 @@ class UserController extends Controller
                     'sodetake' => $props['db']['sodetake'],
                     'kitake' => $props['db']['kitake'],
                     'tops_item_id' => $props['db']['item_id'],
+                    'tops_size' => $props['db']['size'],
                 ]);
             }
             if($type == 'pants'){
@@ -182,6 +190,7 @@ class UserController extends Controller
                     'matashita' => $props['db']['matashita'],
                     'susohaba' => $props['db']['susohaba'],
                     'pants_item_id' => $props['db']['item_id'],
+                    'pants_size' => $props['db']['size'],
                 ]);
             }
         } else {
@@ -195,6 +204,7 @@ class UserController extends Controller
                     'sodetake' => $props['db']['sodetake'],
                     'kitake' => $props['db']['kitake'],
                     'tops_item_id' => $props['db']['item_id'],
+                    'tops_size' => $props['db']['size'],
                 ]);
             }
             if($type == 'pants'){
@@ -207,6 +217,7 @@ class UserController extends Controller
                     'matashita' => $props['db']['matashita'],
                     'susohaba' => $props['db']['susohaba'],
                     'pants_item_id' => $props['db']['item_id'],
+                    'pants_size' => $props['db']['size'],
                 ]);
             }
         }
@@ -277,6 +288,29 @@ class UserController extends Controller
         }
 
         return response()->json($wearItems);
+
+    }
+
+    public function getCalcSize(Request $request)
+    {
+        $user_id = $request['userid'];
+        $type = $request['type'];
+
+
+        $userSize = DB::table('user_size')->where('user_id', $user_id)->first();
+        $userCoord = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
+
+        if($type == 'tops'){
+            $wearSize = DB::table('tops_size')->where('item_id', $userCoord->tops)->first();
+
+            $mitake = $userSize->mitake - $wearSize->mitake;
+            $mihaba = $userSize->mihaba - $wearSize->mihaba;
+            $katabaha = $userSize->katahaba;
+            return response()->json($mitake);
+        }
+
+
+        return response()->json($userSize);
 
     }
 }

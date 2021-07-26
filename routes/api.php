@@ -88,6 +88,8 @@ Route::get('/getusersize', [App\Http\Controllers\UserController::class, "getUser
 
 Route::get('/getsizewear', [App\Http\Controllers\UserController::class, "getSizeWear"]);
 
+Route::get('/getcalcsize', [App\Http\Controllers\UserController::class, "getCalcSize"]);
+
 Route::get('/registerwearitem', function (Request $request) {
 });
 

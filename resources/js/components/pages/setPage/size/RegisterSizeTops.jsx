@@ -86,24 +86,77 @@ const useStyles = makeStyles({
     error: {
         color: "red",
         paddingTop: "10px",
-    }
+    },
+    formbox: {
+        overflow: "hidden",
+        width: "50%",
+        margin: "1em auto",
+        textAlign: "center",
+        position: "relative",
+        border: "1px solid #bbbbbb",
+        borderRadius: "2px",
+        background: "#ffffff",
+        "& select": {
+            width: "100%",
+            paddingRight: "1em",
+            cursor: "pointer",
+            textIndent: "0.01px",
+            textOverflow: "ellipsis",
+            border: "none",
+            outline: "none",
+            background: "transparent",
+            backgroundImage: "none",
+            boxShadow: "none",
+            appearance: "none",
+            padding: "8px 38px 8px 8px",
+            color: "#666666",
+        },
+        '&::before': {
+            position: "absolute",
+            top: "0.8em",
+            right: "0.9em",
+            width: "0",
+            height: "0",
+            padding: "0",
+            content: "''",
+            borderLeft: "6px solid transparent",
+            borderRight: "6px solid transparent",
+            borderTop: "6px solid #666666",
+            pointerEvents: "none",
+        },
+    },
+    title: {
+        width: "50%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    formwrap: {
+        display: "flex",
+        width: "90%",
+        margin: "auto",
+        marginTop: "30px",
+    },
 });
 
 export const RegisterSizeTops = memo(() => {
     const classes = useStyles();
     const history = useHistory();
     const context = useContext(UserContext);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { GetUserSize,  userSize, loadingUserSize, errorUserSize } = useGetUserSize();
+    const { register, handleSubmit, watch, formState: { errors }, required } = useForm();
+    const { GetUserSize, userSize, loadingUserSize, errorUserSize } = useGetUserSize();
     const userCheck = context.contextName;
 
     // 既に登録したサイズデータを取得
-    const [ preKyoui, setPreKyoui ] = useState();
-    const [ preMitake, setPreMitake ] = useState();
-    const [ preMihaba, setPreMihaba ] = useState();
-    const [ preKatahaba, setPreKatahaba ] = useState();
-    const [ preSodetake, setPreSodetake ] = useState();
-    const [ preSetake, setPreSetake ] = useState();
+    const [preKyoui, setPreKyoui] = useState();
+    const [preMitake, setPreMitake] = useState();
+    const [preMihaba, setPreMihaba] = useState();
+    const [preKatahaba, setPreKatahaba] = useState();
+    const [preSodetake, setPreSodetake] = useState();
+    const [preKitake, setPreKitake] = useState();
+    const [preTopsSize, setPreTopsSize] = useState();
+    // 選んだサイズを保存
+    const [selectTopSize, setSelectTopSize] = useState();
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -118,10 +171,29 @@ export const RegisterSizeTops = memo(() => {
             setPreMihaba(userSize.mihaba);
             setPreKatahaba(userSize.katahaba);
             setPreSodetake(userSize.sodetake);
-            setPreSetake(userSize.kitake);
+            setPreKitake(userSize.kitake);
+
+            // ウェアサイズのデフォルトを入れる
+            if(userSize.tops_size !== null){
+                setPreTopsSize(userSize.tops_size);
+            }else{
+                setPreTopsSize('m');
+            }
+            setSelectTopSize(preTopsSize);
         }
     }, [userSize]);
 
+    // 既存のウェアサイズがあれば更新
+
+    useEffect(() => {
+        if (userSize !== null) {
+            setSelectTopSize(preTopsSize);
+        }
+    }, [preTopsSize]);
+
+    const changeTopsSize = (props) => {
+        setSelectTopSize(props)
+    }
 
     const onSubmit = data => {
         let kyouisize = preKyoui;
@@ -129,24 +201,24 @@ export const RegisterSizeTops = memo(() => {
         let mihabasize = preMihaba;
         let katahabasize = preKatahaba;
         let sodetakesize = preSodetake;
-        let kitakesize = preSetake;
+        let kitakesize = preKitake;
 
-        if(!data.kyoui == ''){
+        if (!data.kyoui == '') {
             kyouisize = data.kyoui;
         }
-        if(!data.mitake == ''){
+        if (!data.mitake == '') {
             mitakesize = data.mitake;
         }
-        if(!data.mihaba == ''){
+        if (!data.mihaba == '') {
             mihabasize = data.mihaba;
         }
-        if(!data.katahaba == ''){
+        if (!data.katahaba == '') {
             katahabasize = data.katahaba;
         }
-        if(!data.sodetake == ''){
+        if (!data.sodetake == '') {
             sodetakesize = data.sodetake;
         }
-        if(!data.kitake == ''){
+        if (!data.kitake == '') {
             kitakesize = data.kitake;
         }
 
@@ -165,9 +237,9 @@ export const RegisterSizeTops = memo(() => {
             "sodetake": sodetakesize,
             "kitake": kitakesize,
             "userid": context.contextName.id,
+            "tops_size": selectTopSize,
         }
         const url = '/api/registersize/tops';
-        // console.log(setData);
 
         axios.post(url, setData, header).then((res) => {
             console.log(res);
@@ -183,6 +255,21 @@ export const RegisterSizeTops = memo(() => {
             <p className={classes.p}>※半角数字で入力してください</p>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <ul>
+
+                    <li className={classes.formwrap}>
+                        <p className={classes.title}>サイズ :</p>
+                        <div className={classes.formbox}>
+                            <select value={selectTopSize} {...register("size", { required: true })} onChange={(value)=> changeTopsSize(event.target.value)}>
+                                <option hidden>選択してください</option>
+                                <option value="ss">SS</option>
+                                <option value="s">S</option>
+                                <option value="xs">XS</option>
+                                <option value="m">M</option>
+                                <option value="l">L</option>
+                                <option value="ll">LL</option>
+                            </select>
+                        </div>
+                    </li>
 
                     <li className={classes.li}>
                         <picture className={classes.picture}>
@@ -288,7 +375,7 @@ export const RegisterSizeTops = memo(() => {
                                 <input
                                     className={classes.input}
                                     type="tel"
-                                    placeholder={preSetake}
+                                    placeholder={preKitake}
                                     {...register("kitake", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.kitake && <div className={classes.error}>半角英数3桁内で入力してください</div>}
