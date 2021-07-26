@@ -60,29 +60,46 @@ export const OpenLeftBtn = memo(() => {
                     <>
                         {userWearInfo[1].topsData.isSizeTopsDB || userWearInfo[2].pantsData.isSizePantsDB ? (
                             <>
-                            <div style={{ position: "relative" }}>
+                                <div style={{ position: "relative" }}>
                                     <NotificationsIcon className={classes.alert} />
+                                    <details className="btnDesign left" id="btnBand">
+                                        <summary id="btnSummaryBand">
+                                            <i className="fas fa-ruler sideFontAwesome"></i>
+                                            <p className="btnText" id="btnTitleBand">Size</p>
+                                        </summary>
+                                        <div className="detailsBottom">
+                                            <div onClick={toShowSizeResult} className="detailsBtn" id="innerRemoveBtn">
+                                                <button type="submit">
+                                                    <CheckCircleOutlineIcon />
+                                                    <p className="btnText">確認する</p>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </details>
+                                </div>
+                            </>
+                        ) : (
+                            <>
                                 <details className="btnDesign left" id="btnBand">
                                     <summary id="btnSummaryBand">
                                         <i className="fas fa-ruler sideFontAwesome"></i>
                                         <p className="btnText" id="btnTitleBand">Size</p>
                                     </summary>
                                     <div className="detailsBottom">
-                                        <div onClick={toShowSizeResult} className="detailsBtn" id="innerRemoveBtn">
+                                        <div className="detailsBtn" id="innerRemoveBtn">
                                             <button type="submit">
                                                 <CheckCircleOutlineIcon />
-                                                <p className="btnText">確認する</p>
+                                                <p className="btnText">データがありません</p>
                                             </button>
                                         </div>
                                     </div>
                                 </details>
-                            </div>
                             </>
-                        ) : <p style={{ display: "none" }}></p>}
+                        )}
                     </>
                 ) : (
                     <>
-                        <details style={{ opacity: "0" }} className="btnDesign left" id="btnBand">
+                        <details className="btnDesign left" id="btnBand">
                             <summary id="btnSummaryBand">
                                 <i className="fas fa-ruler sideFontAwesome"></i>
                                 <p className="btnText" id="btnTitleBand">Size</p>
