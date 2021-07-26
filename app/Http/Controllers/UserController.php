@@ -301,16 +301,86 @@ class UserController extends Controller
         $userCoord = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
 
         if($type == 'tops'){
-            $wearSize = DB::table('tops_size')->where('item_id', $userCoord->tops)->first();
+            $wearSize = DB::table('tops_size')->where('item_id', $userCoord->tops)->where('size', $userSize->tops_size)->first();
 
-            $mitake = $userSize->mitake - $wearSize->mitake;
-            $mihaba = $userSize->mihaba - $wearSize->mihaba;
-            $katabaha = $userSize->katahaba;
-            return response()->json($mitake);
+            // 身丈
+            if(!$wearSize->mitake){
+                $mitake = null;
+                $mitake = array('calc' => $mitake, 'size' => $wearSize->mitake);
+            }elseif(!$userSize->mitake){
+                $mitake = 'No Size';
+                $mitake = array('calc' => $mitake, 'size' => $wearSize->mitake);
+            }else{
+                $mitake = $wearSize->mitake - $userSize->mitake;
+                $mitake = array('calc' => $mitake, 'size' => $wearSize->mitake);
+            }
+
+            // 身幅
+            if(!$wearSize->mihaba){
+                $mihaba = null;
+                $mihaba = array('calc' => $mihaba, 'size' => $wearSize->mihaba);
+            }elseif(!$userSize->mihaba){
+                $mihaba = 'No Size';
+                $mihaba = array('calc' => $mihaba, 'size' => $wearSize->mihaba);
+            }else{
+                $mihaba =  $wearSize->mihaba - $userSize->mihaba;
+                $mihaba = array('calc' => $mihaba, 'size' => $wearSize->mihaba);
+            }
+
+            // 肩幅
+            if(!$wearSize->katahaba){
+                $katahaba = null;
+                $katahaba = array('calc' => $katahaba, 'size' => $wearSize->katahaba);
+            }elseif(!$userSize->katahaba){
+                $katahaba = 'No Size';
+                $katahaba = array('calc' => $katahaba, 'size' => $wearSize->katahaba);
+            }else{
+                $katahaba = $wearSize->katahaba - $userSize->katahaba;
+                $katahaba = array('calc' => $katahaba, 'size' => $wearSize->katahaba);
+            }
+
+            // 胸囲
+            if(!$wearSize->kyoui){
+                $kyoui = null;
+                $kyoui = array('calc' => $kyoui, 'size' => $wearSize->kyoui);
+            }elseif(!$userSize->kyoui){
+                $kyoui = 'No Size';
+                $kyoui = array('calc' => $kyoui, 'size' => $wearSize->kyoui);
+            }else{
+                $kyoui = $wearSize->kyoui - $userSize->kyoui;
+                $kyoui = array('calc' => $kyoui, 'size' => $wearSize->kyoui);
+            }
+
+            // 着丈
+            if(!$wearSize->kitake){
+                $kitake = null;
+                $kitake = array('calc' => $kitake, 'size' => $wearSize->kitake);
+            }elseif(!$userSize->kitake){
+                $kitake = 'No Size';
+                $kitake = array('calc' => $kitake, 'size' => $wearSize->kitake);
+            }else{
+                $kitake = $wearSize->kitake - $userSize->kitake;
+                $kitake = array('calc' => $kitake, 'size' => $wearSize->kitake);
+            }
+
+            // 袖丈
+            if(!$wearSize->sodetake){
+                $sodetake = null;
+                $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
+            }elseif(!$userSize->sodetake){
+                $sodetake = 'No Size';
+                $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
+            }else{
+                $sodetake = $wearSize->sodetake - $userSize->sodetake;
+                $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
+            }
+
+            $wearItems[] = array('mitake' => $mitake, 'mihaba' => $mihaba, 'katahaba' => $katahaba, 'kyoui' => $kyoui, 'kitake' => $kitake, 'sodetake' => $sodetake);
+
         }
 
 
-        return response()->json($userSize);
+        return response()->json($wearItems);
 
     }
 }

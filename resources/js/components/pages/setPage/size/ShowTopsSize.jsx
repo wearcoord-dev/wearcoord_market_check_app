@@ -3,8 +3,13 @@ import { memo, useContext, useEffect } from "react";
 import mitakeimg from "../../../../../../public/img/others/size/mitake.jpg"
 import mihabaimg from "../../../../../../public/img/others/size/mihaba.jpg"
 import katahabaimgimg from "../../../../../../public/img/others/size/katahaba.jpg"
+import sodetakeimg from "../../../../../../public/img/others/size/sodetake.jpg"
+import kyouiimg from "../../../../../../public/img/others/size/kyoui.jpg"
+import kitakeimg from "../../../../../../public/img/others/size/kitake.jpg"
 import { useGetCalcSize } from "../../../../hooks/size/useGetCalcSize";
 import { UserContext } from "../../../providers/UserProvider";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const useStyles = makeStyles({
     topmargin: {
@@ -33,6 +38,30 @@ const useStyles = makeStyles({
     toptext: {
         textAlign: "center",
         padding: "20px 0",
+    },
+    h3: {
+        fontWeight: "bold",
+        fontSize: "14px",
+    },
+    p: {
+        padding: "6px 0",
+    },
+    bottommargin: {
+        marginBottom: "70px",
+    },
+    span: {
+        fontWeight: "bold",
+        color: "orangered",
+        padding: "0 4px",
+    },
+    nodata: {
+        color: "lightblue",
+    },
+    loading: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "200px",
     }
 });
 
@@ -43,6 +72,8 @@ export const ShowTopsSize = memo((props) => {
     const context = useContext(UserContext);
     const userCheck = context.contextName;
     const { GetCalcSize, userCalcSize, loadingUserCalcSize, errorUserCalcSize } = useGetCalcSize();
+
+    console.log(userCalcSize);
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -57,27 +88,100 @@ export const ShowTopsSize = memo((props) => {
     return (
         <>
             <div className={classes.topmargin}></div>
-            <p className={classes.toptext}>このトップスはあなたのサイズと比較して. . .</p>
-            <ul className={classes.ul}>
-                <li className={classes.li}>
-                    <h3>身丈</h3>
-                    <img src={mitakeimg} alt="" />
-                    <p>100cm</p>
-                    <p>datadata</p>
-                </li>
-                <li className={classes.li}>
-                    <h3>身幅</h3>
-                    <img src={mihabaimg} alt="" />
-                    <p>100cm</p>
-                    <p>datadata</p>
-                </li>
-                <li className={classes.li}>
-                    <h3>肩幅</h3>
-                    <img src={katahabaimgimg} alt="" />
-                    <p>100cm</p>
-                    <p>datadata</p>
-                </li>
-            </ul>
+            {userCalcSize ? (
+                <>
+                    <p className={classes.toptext}>このトップスはあなたのサイズと比較して. . .</p>
+                    <ul className={classes.ul}>
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>身丈</h3>
+                                <img src={mitakeimg} alt="" />
+                                {userCalcSize[0].mitake.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].mitake.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].mitake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].mitake.calc || userCalcSize[0].mitake.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].mitake.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>身幅</h3>
+                                <img src={mihabaimg} alt="" />
+                                {userCalcSize[0].mihaba.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].mihaba.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].mihaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].mihaba.calc || userCalcSize[0].mihaba.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].mihaba.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>肩幅</h3>
+                                <img src={katahabaimgimg} alt="" />
+                                {userCalcSize[0].katahaba.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].katahaba.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].katahaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].katahaba.calc || userCalcSize[0].katahaba.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].katahaba.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>袖丈</h3>
+                                <img src={sodetakeimg} alt="" />
+                                {userCalcSize[0].sodetake.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].sodetake.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].sodetake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].sodetake.calc || userCalcSize[0].sodetake.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].sodetake.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>胸囲</h3>
+                                <img src={kyouiimg} alt="" />
+                                {userCalcSize[0].kyoui.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].kyoui.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].kyoui.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].kyoui.calc || userCalcSize[0].kyoui.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].kyoui.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>着丈</h3>
+                                <img src={kitakeimg} alt="" />
+                                {userCalcSize[0].kitake.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].kitake.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].kitake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].kitake.calc || userCalcSize[0].kitake.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].kitake.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                    </ul>
+                </>
+            ) : (
+                <>
+                    <div className={classes.loading}>
+                        <CircularProgress />
+                    </div>
+                </>
+            )
+            }
+            <div className={classes.bottommargin}></div>
         </>
     )
 })
