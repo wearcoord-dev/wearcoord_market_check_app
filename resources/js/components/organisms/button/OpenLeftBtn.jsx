@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { useRemoveInner } from "../../../hooks/selectwear/useRemoveInner";
 import { OpenBtnLeft } from "../../atoms/button/OpenBtnLeft";
 import { UserContext } from "../../providers/UserProvider";
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 export const OpenLeftBtn = memo(() => {
     const { RemoveInner } = useRemoveInner();
@@ -18,6 +19,7 @@ export const OpenLeftBtn = memo(() => {
 
     const toSelectInner = useCallback(() => history.push("/main/selectinner"));
     const toSelectSocks = useCallback(() => history.push("/main/selectsocks"));
+    const toShowSizeResult = useCallback(() => history.push("/main/settings/size/result"));
 
     return (
         <>
@@ -25,15 +27,16 @@ export const OpenLeftBtn = memo(() => {
 
                 <details className="btnDesign left" id="btnBand">
                     <summary id="btnSummaryBand">
-                        <span className="material-icons-outlined">
-                            circle
-            </span>
-                        <p className="btnText" id="btnTitleBand">Band</p>
+                        <i class="fas fa-ruler sideFontAwesome"></i>
+                        <p className="btnText" id="btnTitleBand">Size</p>
                     </summary>
                     <div className="detailsBottom">
-                        <a href="" className="detailsBtn">
-                            <p className="btnText">準備中</p>
-                        </a>
+                        <div onClick={toShowSizeResult} className="detailsBtn" id="innerRemoveBtn">
+                            <button type="submit">
+                                <CheckCircleOutlineIcon />
+                                <p className="btnText">確認する</p>
+                            </button>
+                        </div>
                     </div>
                 </details>
 
@@ -43,20 +46,20 @@ export const OpenLeftBtn = memo(() => {
                         <p className="btnText" id="btnTitleInner">Inner</p>
                     </summary>
                     <div className="detailsBottom">
-                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn" method="post">
+                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     accessibility
-                    </span>
+                                </span>
                                 <p className="btnText">インナーを脱ぐ</p>
                             </button>
                         </div>
                         <hr />
-                        <div onClick={toSelectInner} className="detailsBtn" method="get">
+                        <div onClick={toSelectInner} className="detailsBtn">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     screen_search_desktop
-                </span>
+                                </span>
                                 <p className="btnText">選ぶ</p>
                                 <input type="hidden" name="type" value="inner" />
 
@@ -71,20 +74,20 @@ export const OpenLeftBtn = memo(() => {
                         <p className="btnText" id="btnTitleSocks">Socks</p>
                     </summary>
                     <div className="detailsBottom">
-                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn" method="post">
+                        <div onClick={removeInner} className="detailsBtn" id="innerRemoveBtn">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     accessibility
-                    </span>
+                                </span>
                                 <p className="btnText">ソックスを脱ぐ</p>
                             </button>
                         </div>
                         <hr />
-                        <div onClick={toSelectSocks} className="detailsBtn" method="get">
+                        <div onClick={toSelectSocks} className="detailsBtn">
                             <button type="submit">
                                 <span className="material-icons-outlined">
                                     screen_search_desktop
-                </span>
+                                </span>
                                 <p className="btnText">選ぶ</p>
                                 <input type="hidden" name="type" value="inner" />
 
@@ -93,7 +96,6 @@ export const OpenLeftBtn = memo(() => {
                     </div>
                 </details>
 
-                {/* <OpenBtnLeft name={'Socks'} icon={<i className="fas fa-socks sideFontAwesome"></i>} /> */}
             </div>
         </>
     )
