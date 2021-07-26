@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import { CartBox } from '../../../molecules/cart/CartBox';
 import { ShowTopsSize } from './ShowTopsSize';
 import { UserContext } from '../../../providers/UserProvider';
+import { ShowPantsSize } from './ShowPantsSize';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -82,9 +83,7 @@ export const ShowSizeResult = memo(() => {
              />
         </TabPanel>
         <TabPanel value={value} index={1}>
-        {/* <CartBox
-          type={'pants'}
-           /> */}
+        <ShowPantsSize />
         </TabPanel>
       </div>
     );
