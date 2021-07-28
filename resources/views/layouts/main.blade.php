@@ -31,13 +31,13 @@
     {{-- OGP --}}
     <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta property="og:url" content="{{ config('app.url') }}">
-    <meta property="og:type" content=" website" />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="wearcoord" />
     <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
     <meta property="og:site_name" content="wearcoord" />
-    <meta property="og:image" content="{{ asset('../../../public/img/logo/wearcoord-ogp.jpg') }}" />
+    <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ asset('../../../public/img/logo/wearcoord-ogp.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
 
 
