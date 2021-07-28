@@ -111,6 +111,10 @@ class UserController extends Controller
                 'kitake' => $kitake,
                 'tops_size' => $tops_size,
             ]);
+
+            DB::table('users')->where('id', $user_id)->update([
+                'sizecheck' => 1,
+            ]);
         }
 
         return 'ok';
@@ -151,6 +155,10 @@ class UserController extends Controller
                 'matashita' => $matashita,
                 'susohaba' => $susohaba,
                 'pants_size' => $pants_size,
+            ]);
+
+            DB::table('users')->where('id', $user_id)->update([
+                'sizecheck' => 1,
             ]);
         }
 
@@ -220,6 +228,11 @@ class UserController extends Controller
                     'pants_size' => $props['db']['size'],
                 ]);
             }
+
+            // サイズ登録がされたことを管理
+            DB::table('users')->where('id', $user_id)->update([
+                'sizecheck' => 1,
+            ]);
         }
 
         return 'ok';

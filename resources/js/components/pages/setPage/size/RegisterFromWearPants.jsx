@@ -202,12 +202,14 @@ export const RegisterFromWearPants = memo(() => {
     }
 
     const onClickWearItem = (props) => {
-        // console.log(props);
         const type = 'pants';
         RegisterSizeFromWear(props, userCheck, type);
         setOpen(true);
+
+        // 3秒後にコーデ画面トップへ
         setTimeout(function(){
-            history.push('/main/mycoord');
+            // history.push('/main/mycoord'); これはcontextが更新されない
+            window.location.href = "/main/mycoord";
         }, 3000);
     }
 

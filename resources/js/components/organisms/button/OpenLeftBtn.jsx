@@ -44,6 +44,7 @@ export const OpenLeftBtn = memo(() => {
     const toSelectInner = useCallback(() => history.push("/main/selectinner"));
     const toSelectSocks = useCallback(() => history.push("/main/selectsocks"));
     const toShowSizeResult = useCallback(() => history.push("/main/settings/size/result"));
+    const toRegisterSize = useCallback(() => history.push("/main/settings/size"));
 
 
     // useEffect(() => {
@@ -52,31 +53,79 @@ export const OpenLeftBtn = memo(() => {
     //     }
     // }, [userWearInfo]);
 
+
     return (
         <>
             <div className="leftContainer">
 
-                {userWearInfo ? (
+                {user ? (
                     <>
-                        {userWearInfo[1].topsData.isSizeTopsDB || userWearInfo[2].pantsData.isSizePantsDB ? (
+                        {userWearInfo ? (
                             <>
-                                <div style={{ position: "relative" }}>
-                                    <NotificationsIcon className={classes.alert} />
-                                    <details className="btnDesign left" id="btnBand">
-                                        <summary id="btnSummaryBand">
-                                            <i className="fas fa-ruler sideFontAwesome"></i>
-                                            <p className="btnText" id="btnTitleBand">Size</p>
-                                        </summary>
-                                        <div className="detailsBottom">
-                                            <div onClick={toShowSizeResult} className="detailsBtn" id="innerRemoveBtn">
-                                                <button type="submit">
-                                                    <CheckCircleOutlineIcon />
-                                                    <p className="btnText">確認する</p>
-                                                </button>
-                                            </div>
+                                {userWearInfo[1].topsData.isSizeTopsDB || userWearInfo[2].pantsData.isSizePantsDB ? (
+                                    <>
+                                        <div style={{ position: "relative" }}>
+                                            <NotificationsIcon className={classes.alert} />
+                                            <details className="btnDesign left" id="btnBand">
+                                                <summary id="btnSummaryBand">
+                                                    <i className="fas fa-ruler sideFontAwesome"></i>
+                                                    <p className="btnText" id="btnTitleBand">Size</p>
+                                                </summary>
+                                                {user.sizecheck === null ? (
+                                                    <div className="detailsBottom">
+                                                        <div onClick={toRegisterSize} className="detailsBtn" id="innerRemoveBtn">
+                                                            <button type="submit">
+                                                                <CheckCircleOutlineIcon />
+                                                                <p className="btnText">サイズを登録する</p>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="detailsBottom">
+                                                        <div onClick={toShowSizeResult} className="detailsBtn" id="innerRemoveBtn">
+                                                            <button type="submit">
+                                                                <CheckCircleOutlineIcon />
+                                                                <p className="btnText">確認する</p>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </details>
                                         </div>
-                                    </details>
-                                </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <details className="btnDesign left" id="btnBand">
+                                            <summary id="btnSummaryBand">
+                                                <i className="fas fa-ruler sideFontAwesome"></i>
+                                                <p className="btnText" id="btnTitleBand">Size</p>
+                                            </summary>
+                                            {user.sizecheck == null ? (
+                                                <>
+                                                    <div className="detailsBottom">
+                                                        <div onClick={toRegisterSize} className="detailsBtn" id="innerRemoveBtn">
+                                                            <button type="submit">
+                                                                <CheckCircleOutlineIcon />
+                                                                <p className="btnText">サイズを登録する</p>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div className="detailsBottom">
+                                                        <div className="detailsBtn" id="innerRemoveBtn">
+                                                            <button type="submit">
+                                                                <CheckCircleOutlineIcon />
+                                                                <p className="btnText">データがありません</p>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
+                                        </details>
+                                    </>
+                                )}
                             </>
                         ) : (
                             <>
@@ -89,7 +138,7 @@ export const OpenLeftBtn = memo(() => {
                                         <div className="detailsBtn" id="innerRemoveBtn">
                                             <button type="submit">
                                                 <CheckCircleOutlineIcon />
-                                                <p className="btnText">データがありません</p>
+                                                <p className="btnText">確認する</p>
                                             </button>
                                         </div>
                                     </div>
@@ -99,22 +148,26 @@ export const OpenLeftBtn = memo(() => {
                     </>
                 ) : (
                     <>
-                        <details className="btnDesign left" id="btnBand">
-                            <summary id="btnSummaryBand">
-                                <i className="fas fa-ruler sideFontAwesome"></i>
-                                <p className="btnText" id="btnTitleBand">Size</p>
-                            </summary>
-                            <div className="detailsBottom">
-                                <div className="detailsBtn" id="innerRemoveBtn">
-                                    <button type="submit">
-                                        <CheckCircleOutlineIcon />
-                                        <p className="btnText">確認する</p>
-                                    </button>
+                        <>
+                            <details className="btnDesign left" id="btnBand">
+                                <summary id="btnSummaryBand">
+                                    <i className="fas fa-ruler sideFontAwesome"></i>
+                                    <p className="btnText" id="btnTitleBand">Size</p>
+                                </summary>
+                                <div className="detailsBottom">
+                                    <div className="detailsBtn" id="innerRemoveBtn">
+                                        <button type="submit">
+                                            <CheckCircleOutlineIcon />
+                                            <p className="btnText">確認する</p>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </details>
+                            </details>
+                        </>
                     </>
                 )}
+
+
 
                 <details className="btnDesign left" id="btnInner">
                     <summary id="btnSummaryInner">
