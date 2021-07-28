@@ -141,7 +141,7 @@ class Database
                 $isSizeTopsDB = DB::table('tops_size')->where('item_id', $id)->where('size', $userTopsSize)->exists();
             }
             if ($type == 'pants') {
-                $userPantsSize = DB::table('user_size')->where('user_id', $user_id)->value('tops_size');
+                $userPantsSize = DB::table('user_size')->where('user_id', $user_id)->value('pants_size');
                 $isSizePantsDB = DB::table('pants_size')->where('item_id', $id)->where('size', $userPantsSize)->exists();
             }
             if ($testdesu) {
