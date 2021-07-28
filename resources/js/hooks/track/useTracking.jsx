@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 //   }
 // }
 
-export const useTracking = () => {
+export const useTracking = (trackingId) => {
   const { listen } = useHistory();
 
   useEffect(() => {
