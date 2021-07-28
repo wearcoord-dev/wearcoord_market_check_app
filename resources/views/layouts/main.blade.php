@@ -28,6 +28,30 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/components/mycoord/mycoord.css') }}" rel="stylesheet">
 
+    {{-- OGP --}}
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+    <meta property="og:url" content="{{ config('app.url') }}">
+    <meta property="og:type" content=" website" />
+    <meta property="og:title" content="wearcoord" />
+    <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+    <meta property="og:site_name" content="wearcoord" />
+    <meta property="og:image" content="{{ asset('../../../public/img/logo/wearcoord-ogp.jpg') }}" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ asset('../../../public/img/logo/wearcoord-ogp.jpg') }}">
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NEPPTM9ZH4');
+    gtag('config', 'UA-199807866-2');
+</script>
+
 </head>
 <body>
     <div id="app"></div>
