@@ -15,7 +15,18 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined	" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+        {{-- OGP --}}
+        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+            <meta property="og:url" content="{{ config('app.url') }}">
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="wearcoord LPページ" />
+            <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+            <meta property="og:site_name" content="wearcoord" />
+            <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
 </head>
 <body>
