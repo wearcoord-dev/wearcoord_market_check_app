@@ -3,6 +3,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="16x16" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="32x32" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/48.ico') }}" sizes="48x48" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/64.ico') }}" sizes="64x64" type="image/ico" />
+    <link rel="shortcut icon" href="{{ asset('img/logo/icon/64.ico') }}" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('img/logo/icon/sp.png') }}" />
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,7 +53,7 @@
 
 
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {{-- <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -50,7 +62,7 @@
 
     gtag('config', 'G-NEPPTM9ZH4');
     gtag('config', 'UA-199807866-2');
-</script>
+    </script> --}}
 
 </head>
 <body>
