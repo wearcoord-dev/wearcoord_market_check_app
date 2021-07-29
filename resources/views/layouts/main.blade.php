@@ -13,7 +13,7 @@
     <link rel="icon" href="{{ asset('img/logo/icon/48.ico') }}" sizes="48x48" type="image/ico" />
     <link rel="icon" href="{{ asset('img/logo/icon/64.ico') }}" sizes="64x64" type="image/ico" />
     <link rel="shortcut icon" href="{{ asset('img/logo/icon/64.ico') }}" type="image/x-icon" />
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('img/logo/icon/sp.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('img/logo/wearcoord-service.jpg') }}" />
 
 
     <!-- CSRF Token -->
