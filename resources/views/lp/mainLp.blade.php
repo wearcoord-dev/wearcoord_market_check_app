@@ -38,7 +38,7 @@
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
+        {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -46,7 +46,7 @@
 
         gtag('config', 'G-NEPPTM9ZH4');
         gtag('config', 'UA-199807866-2');
-        </script>
+        </script> --}}
 
 </head>
 <body>
