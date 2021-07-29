@@ -7,6 +7,15 @@
 
     <title>wearcoord</title>
 
+    <meta name="description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+
+    <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="16x16" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="32x32" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/48.ico') }}" sizes="48x48" type="image/ico" />
+    <link rel="icon" href="{{ asset('img/logo/icon/64.ico') }}" sizes="64x64" type="image/ico" />
+    <link rel="shortcut icon" href="{{ asset('img/logo/icon/64.ico') }}" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('img/logo/icon/sp.png') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lp/lp.css') }}">
@@ -21,12 +30,23 @@
         <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
             <meta property="og:url" content="{{ config('app.url') }}">
             <meta property="og:type" content="website" />
-            <meta property="og:title" content="wearcoord LPページ" />
+            <meta property="og:title" content="wearcoordトップ" />
             <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
             <meta property="og:site_name" content="wearcoord" />
             <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-NEPPTM9ZH4');
+        gtag('config', 'UA-199807866-2');
+        </script>
 
 </head>
 <body>
