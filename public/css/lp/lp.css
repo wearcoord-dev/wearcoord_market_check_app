@@ -92,7 +92,8 @@ input {
 }
 
 .lpHeader .headerBtn .headerBtnItem {
-  width: 120px;
+  width: 30vw;
+  max-width: 120px;
   border: 1px solid #0080E4;
   height: 60%;
   margin: auto 10px;
@@ -159,6 +160,7 @@ input {
 
 .slide-item {
   width: auto !important;
+  overflow: hidden;
 }
 
 .swiper-wrapper {
@@ -167,7 +169,6 @@ input {
 
 .mannequinImg {
   height: 400px;
-  background-image: url("../../img/lp/manekin_toplp.png");
   object-fit: cover;
   background-size: contain;
   background-repeat: no-repeat;
@@ -177,6 +178,24 @@ input {
   z-index: 1000;
   position: relative;
   filter: drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.2));
+  max-width: 800px;
+  margin: auto;
+}
+
+.mannequinWrap {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  height: 400px;
+  position: absolute;
+}
+
+.mannequinPosition {
+  position: absolute;
+  z-index: -1000;
+  width: 400px;
+  top: 0;
+  left: -70px;
 }
 
 .tops-container {
@@ -191,42 +210,49 @@ input {
 
 .pants-container {
   height: 200px;
-  top: 180px;
+  top: 200px;
   position: absolute !important;
-  left: -130px;
+  left: 0px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .pantslist {
-  height: 180px;
-  width: 100%;
-  object-fit: cover;
+  height: 150px;
+  width: 800px;
+  object-fit: contain;
   object-position: top;
+  margin-left: -40px;
 }
 
 .shoes-container {
   height: 200px;
-  top: 280px;
+  top: 310px;
   position: absolute !important;
-  left: -130px;
+  left: 0px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .shoes-container .shoeslist {
-  height: 150px;
-  width: 100%;
+  height: 100px;
+  width: 800px;
   object-fit: contain;
   object-position: top;
 }
 
 .caps-container {
   height: 200px;
-  top: 0px;
+  top: -14px;
   position: absolute !important;
-  left: -50px;
+  left: 0px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .caps-container .capslist {
-  height: 150px;
-  width: 100%;
+  height: 60px;
+  width: 800px;
   object-fit: contain;
   object-position: top;
 }
@@ -285,10 +311,6 @@ input {
 
 .sect .sectUl li p {
   line-height: 1.4;
-}
-
-.mannequinImg.female {
-  background-image: url("../../img/lp/woman_manekin_lp.png");
 }
 
 .sect .sectUl.sectBrand {

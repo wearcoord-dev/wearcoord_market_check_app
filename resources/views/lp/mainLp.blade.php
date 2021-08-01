@@ -68,6 +68,61 @@
         </div>
     </header>
 
+    <section>
+        <div class="mannequinImg">
+            <picture class="mannequinWrap">
+                <img class="mannequinPosition" src="{{asset('img/lp/manekin_toplp.png')}}" alt="">
+            </picture>
+            <div class="caps-container">
+                <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
+            </div>
+            <div class="swiper-container tops-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-item">
+                        <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
+                    </div>
+                    <div class="swiper-slide slide-item">
+                        <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+                <div class="pants-container">
+                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
+                </div>
+                <div class="shoes-container">
+                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="mannequinImg female">
+            <picture class="mannequinWrap">
+                <img class="mannequinPosition" src="{{asset('img/lp/woman_manekin_lp.png')}}" alt="">
+            </picture>
+            <div class="caps-container">
+                <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
+            </div>
+            <div class="swiper-container tops-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-item">
+                        <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
+                    </div>
+                    <div class="swiper-slide slide-item">
+                        <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+                <div class="pants-container">
+                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
+                </div>
+                <div class="shoes-container">
+                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- <section>
     <div class="mannequinImg">
         <div class="caps-container">
             <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
@@ -113,6 +168,7 @@
             </div>
         </div>
     </div>
+</section> --}}
 
     <section id="top">
         <div class="skewed"></div>
