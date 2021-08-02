@@ -145,6 +145,7 @@ input {
         width: 80%;
         padding-top: 180px;
         margin: auto;
+        max-width: 1000px;
 
         .textBold {
             padding-bottom: 30px;
@@ -225,7 +226,7 @@ input {
 
 .pants-container {
     height: 200px;
-    top: 200px;
+    top: 190px;
     position: absolute !important;
     left: 0px;
     width: 100%;
@@ -233,11 +234,11 @@ input {
 }
 
 .pantslist {
-    height: 150px;
+    height: 160px;
     width: 800px;
     object-fit: contain;
     object-position: top;
-    margin-left: -40px;
+    margin-left: -20px;
 }
 
 .shoes-container {
@@ -276,6 +277,9 @@ input {
     width: 100%;
     height: 300px;
     object-fit: cover;
+    max-width: 400px;
+    display: block;
+    margin: auto;
 }
 
 .sect {
