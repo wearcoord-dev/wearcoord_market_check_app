@@ -247,7 +247,7 @@
         </div>
 
         <div class="funcBox rightBorder">
-            <div class="wrapper">
+            <div class="wrapper reverse">
                 <picture>
                     <img src="{{asset('img/lp/size.png')}}" alt="">
                 </picture>
@@ -259,7 +259,7 @@
                         <div>
                             <div class='arrow_box'>
                                 <p class="patent">※特許出願中！</p>
-                                <p class="patent">wearcoordだけの体験！</p>
+                                <p class="patent">wearcoordだけの機能！</p>
                             </div>
                             <div class="img_tennis female_img"></div>
                         </div>

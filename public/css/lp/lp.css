@@ -350,7 +350,7 @@ input {
 }
 
 .funcBox picture {
-  width: 80%;
+  width: 40%;
   display: flex;
 }
 
@@ -358,6 +358,10 @@ input {
   width: 100%;
   object-fit: contain;
   padding: 50px 0;
+}
+
+.funcBox .textBox {
+  width: 60%;
 }
 
 .funcBox .textBox h3 {
@@ -373,7 +377,7 @@ input {
 
 .funcBox .description {
   text-align: center;
-  width: 90%;
+  width: 80%;
   margin: auto;
   position: relative;
   padding-bottom: 90px;
@@ -472,6 +476,10 @@ input {
   flex-direction: row-reverse;
 }
 
+.reverse {
+  flex-direction: row-reverse;
+}
+
 footer {
   background-color: #484848;
   color: white;
@@ -491,6 +499,9 @@ footer {
   .funcBox picture {
     margin: auto;
     width: initial;
+  }
+  .funcBox picture img {
+    padding: initial;
   }
   .funcBox .textBox {
     margin: auto;

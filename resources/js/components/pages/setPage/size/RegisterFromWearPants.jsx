@@ -230,6 +230,8 @@ export const RegisterFromWearPants = memo(() => {
         <>
             <p className={classes.info}>普段着ているパンツを選んで、ご自身のウェアサイズデータとして登録します。以下の検索フォームからウェアを選んでください。</p>
 
+            {userCheck.gender == 'male' ? (
+                <>
             <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
                 <div className={classes.formwrap}>
                     <p className={classes.title}>ブランド :</p>
@@ -253,6 +255,33 @@ export const RegisterFromWearPants = memo(() => {
                 <input type="hidden" {...register("type")} value="pants" />
                 <input className={classes.searchinput} type="submit" value="ウェアを検索" />
             </form>
+                </>
+            ) : (
+                <>
+            <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
+                <div className={classes.formwrap}>
+                    <p className={classes.title}>ブランド :</p>
+                    <div className={classes.formbox}>
+                        <select {...register("brand")}>
+                            <option value="yonex">Yonex</option>
+                        </select>
+                    </div>
+                </div>
+                <div className={classes.formwrap}>
+                    <p className={classes.title}>サイズ :</p>
+                    <div className={classes.formbox}>
+                        <select {...register("size")}>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" {...register("type")} value="pants" />
+                <input className={classes.searchinput} type="submit" value="ウェアを検索" />
+            </form>
+                </>
+            )}
 
             {items}
 

@@ -378,7 +378,7 @@ input {
     }
 
     picture {
-        width: 80%;
+        width: 40%;
         display: flex;
 
         img {
@@ -389,7 +389,7 @@ input {
     }
 
     .textBox {
-        // width: 60%;
+        width: 60%;
 
         h3 {
             font-size: 24px;
@@ -407,7 +407,7 @@ input {
     .description {
         // height: 60%;
         text-align: center;
-        width: 90%;
+        width: 80%;
         margin: auto;
         position: relative;
         padding-bottom: 90px;
@@ -503,6 +503,10 @@ input {
     flex-direction: row-reverse;
 }
 
+.reverse{
+    flex-direction: row-reverse;
+}
+
 footer {
     background-color: #484848;
     color: white;
@@ -534,6 +538,10 @@ footer {
         picture{
             margin: auto;
             width: initial;
+
+            img{
+                padding: initial;
+            }
         }
 
         .textBox{
