@@ -378,7 +378,7 @@ input {
     }
 
     picture {
-        width: 40%;
+        width: 80%;
         display: flex;
 
         img {
@@ -389,25 +389,28 @@ input {
     }
 
     .textBox {
-        width: 60%;
+        // width: 60%;
 
         h3 {
             font-size: 24px;
-            height: 40%;
+            // height: 40%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
             width: 90%;
             margin: auto;
+            padding: 50px 0;
         }
     }
 
     .description {
-        height: 60%;
+        // height: 60%;
         text-align: center;
         width: 90%;
         margin: auto;
+        position: relative;
+        padding-bottom: 90px;
 
         p{
             line-height: 1.4;
@@ -420,11 +423,74 @@ input {
 
         .patent {
             text-align: right;
-            padding-right: 30px;
-            color: #ddd;
+            // padding-right: 30px;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
         }
     }
 }
+
+.arrow_box{
+    position:absolute;
+    // width:500px;
+    // height:80px;
+    background:#0080E4;
+    padding:20px;
+    text-align:center;
+    color:#FFFFFF;
+    font-size:16px;
+    border-radius:999px;
+    -webkit-border-radius:999px;
+    -moz-border-radius:999px;
+    bottom: 10px;
+    right: 60px;
+}
+.arrow_box:after{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    border-color: rgba(0, 128, 228, 0);
+    border-top-width:10px;
+    border-bottom-width:10px;
+    border-left-width:10px;
+    border-right-width:10px;
+    margin-top: -10px;
+    border-left-color:#0080E4;
+    left:98%;
+    top:50%;
+}
+
+.img_tennis:after{
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+}
+
+
+  .male_img::after{
+    background-image: url(../../img/lp/male_tennis.png);
+    content: '';/*何も入れない*/
+    display: inline-block;/*忘れずに！*/
+    width: 50px;/*画像の幅*/
+    height: 50px;/*画像の高さ*/
+    background-size: contain;
+    vertical-align: middle;
+  }
+
+  .female_img::after{
+    background-image: url(../../img/lp/female_tennis.png);
+    content: '';/*何も入れない*/
+    display: inline-block;/*忘れずに！*/
+    width: 50px;/*画像の幅*/
+    height: 50px;/*画像の高さ*/
+    background-size: contain;
+    vertical-align: middle;
+  }
+
 
 .leftBorder {
     border-radius: 0 30px 30px 0;
@@ -480,7 +546,7 @@ footer {
         }
 
         .description{
-            padding: 30px 0;
+            // padding: 30px 0;
 
             p{
                 font-size: 12px;
