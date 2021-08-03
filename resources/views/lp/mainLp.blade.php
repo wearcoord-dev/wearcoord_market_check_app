@@ -221,6 +221,44 @@
 
     <section class="sect">
         <div>
+            <h2 class="sectTitle">wearcoordの楽しみ方</h2>
+        </div>
+
+        <div class="funcBox leftBorder">
+            <div class="wrapper">
+                <picture>
+                    <img src="{{asset('img/lp/coord.png')}}" alt="">
+                </picture>
+                <div class="textBox">
+                    <h3>コーディネートを直感的にできる！</h3>
+                    <div class="description">
+                        <p>欲しいアイテムをタップで検索！<br>気になるアイテムを横スクロールで着せ替え！</p>
+                        <p class="p20">どんどんサクサク、ウェアを手軽に楽しく直感的に着せ替えてコーディネートを楽しめます。</p>
+                        <p class="patent">※特許出願中</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="funcBox rightBorder">
+            <div class="wrapper">
+                <picture>
+                    <img src="{{asset('img/lp/size.png')}}" alt="">
+                </picture>
+                <div class="textBox">
+                    <h3>あなたに合ったウェアかどうかフィードバック！</h3>
+                    <div class="description">
+                        <p>あなたにピッタリなウェアサイズデータを登録すると、着たいウェアを選んだ時にwearcoordアプリがあなたに合ったウェアかどうか診断してフィードバック！</p>
+                        <p class="p20">より安心してオンライン上でウェアの購入ができます。サイズのフィードバックできる対象のウェアはどんどん拡大中！</p>
+                        <p class="patent">※特許出願中</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sect">
+        <div>
             <h2 class="sectTitle">wearcoordユーザーの声</h2>
         </div>
             <ul class="sectUl">

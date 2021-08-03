@@ -8,6 +8,8 @@ body {
   height: 100vh;
   position: relative;
   font-size: 1.2rem;
+  line-break: strict;
+  word-wrap: break-word;
 }
 
 button {
@@ -278,6 +280,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 50px 0;
 }
 
 .sect .sectUl li {
@@ -286,7 +289,7 @@ input {
   border-radius: 30px;
   padding: 30px;
   box-sizing: border-box;
-  margin: 20px;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -334,6 +337,76 @@ input {
   white-space: initial;
 }
 
+.funcBox {
+  box-shadow: 0 0 10px rgba(0, 128, 228, 0.3);
+  margin: 50px 0;
+}
+
+.funcBox .wrapper {
+  display: flex;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.funcBox picture {
+  width: 40%;
+  display: flex;
+}
+
+.funcBox picture img {
+  width: 100%;
+  object-fit: contain;
+  padding: 50px 0;
+}
+
+.funcBox .textBox {
+  width: 60%;
+}
+
+.funcBox .textBox h3 {
+  font-size: 24px;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 90%;
+  margin: auto;
+}
+
+.funcBox .description {
+  height: 60%;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+}
+
+.funcBox .description p {
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.funcBox .description .p20 {
+  padding: 20px 0;
+}
+
+.funcBox .description .patent {
+  text-align: right;
+  padding-right: 30px;
+  color: #ddd;
+}
+
+.leftBorder {
+  border-radius: 0 30px 30px 0;
+  margin-right: 10%;
+}
+
+.rightBorder {
+  border-radius: 30px 0px 0px 30px;
+  margin-left: 10%;
+  flex-direction: row-reverse;
+}
+
 footer {
   background-color: #484848;
   color: white;
@@ -341,4 +414,30 @@ footer {
   text-align: center;
   margin-top: 50px;
   font-weight: 100;
+}
+
+@media screen and (max-width: 800px) {
+  .sect .sectUl li {
+    margin: 20px;
+  }
+  .funcBox .wrapper {
+    display: block;
+  }
+  .funcBox picture {
+    margin: auto;
+    width: initial;
+  }
+  .funcBox .textBox {
+    margin: auto;
+    width: 90%;
+  }
+  .funcBox .textBox h3 {
+    font-size: 18px;
+  }
+  .funcBox .description {
+    padding: 30px 0;
+  }
+  .funcBox .description p {
+    font-size: 12px;
+  }
 }
