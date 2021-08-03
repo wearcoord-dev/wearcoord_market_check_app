@@ -48,6 +48,8 @@
         gtag('config', 'UA-199807866-2');
         </script> --}}
 
+        <meta name="google-site-verification" content="sorroT3vubAU0OCPOQyjycgzZ6x7nblvlxpviJB8AHE" />
+
 </head>
 <body>
     <header class="lpHeader">
