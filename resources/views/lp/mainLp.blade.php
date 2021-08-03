@@ -234,7 +234,13 @@
                     <div class="description">
                         <p>欲しいアイテムをタップで検索！<br>気になるアイテムを横スクロールで着せ替え！</p>
                         <p class="p20">どんどんサクサク、ウェアを手軽に楽しく直感的に着せ替えてコーディネートを楽しめます。</p>
-                        <p class="patent">※特許出願中</p>
+                        <div>
+                            <div class='arrow_box'>
+                                <p class="patent">※特許出願中！</p>
+                                <p class="patent">wearcoordだけの体験！</p>
+                            </div>
+                            <div class="img_tennis male_img"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,7 +256,13 @@
                     <div class="description">
                         <p>あなたにピッタリなウェアサイズデータを登録すると、着たいウェアを選んだ時にwearcoordアプリがあなたに合ったウェアかどうか診断してフィードバック！</p>
                         <p class="p20">より安心してオンライン上でウェアの購入ができます。サイズのフィードバックできる対象のウェアはどんどん拡大中！</p>
-                        <p class="patent">※特許出願中</p>
+                        <div>
+                            <div class='arrow_box'>
+                                <p class="patent">※特許出願中！</p>
+                                <p class="patent">wearcoordだけの体験！</p>
+                            </div>
+                            <div class="img_tennis female_img"></div>
+                        </div>
                     </div>
                 </div>
             </div>
