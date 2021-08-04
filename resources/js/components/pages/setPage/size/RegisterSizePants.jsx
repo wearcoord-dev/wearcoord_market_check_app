@@ -7,6 +7,7 @@ import watarihabaimg from "../../../../../../public/img/others/size/watarihaba.j
 import matagamiimg from "../../../../../../public/img/others/size/matagami.jpg";
 import matashitaimg from "../../../../../../public/img/others/size/matashita.jpg";
 import susohabaimg from "../../../../../../public/img/others/size/susohaba.jpg";
+import soutakeimg from "../../../../../../public/img/others/size/soutake.jpg";
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useForm } from "react-hook-form";
@@ -155,6 +156,7 @@ export const RegisterSizePants = memo(() => {
     const [preMatagami, setPreMatagami] = useState();
     const [preMatashita, setPreMatashita] = useState();
     const [preSusohaba, setPreSusohaba] = useState();
+    const [preSoutake, setPreSoutake] = useState();
     const [prePantsSize, setPrePantsSize] = useState();
     // 選んだサイズを保存
     const [selectPantsSize, setSelectPantsSize] = useState();
@@ -173,6 +175,7 @@ export const RegisterSizePants = memo(() => {
             setPreMatagami(userSize.matagami);
             setPreMatashita(userSize.matashita);
             setPreSusohaba(userSize.susohaba);
+            setPreSoutake(userSize.soutake);
 
             // ウェアサイズのデフォルトを入れる
             if (userSize.pants_size !== null) {
@@ -204,6 +207,7 @@ export const RegisterSizePants = memo(() => {
         let matagamisize = preMatagami;
         let matashitasize = preMatashita;
         let susohabasize = preSusohaba;
+        let soutakesize = preSoutake;
 
         if (!data.waist == '') {
             waistsize = data.waist;
@@ -223,6 +227,9 @@ export const RegisterSizePants = memo(() => {
         if (!data.susohaba == '') {
             susohabasize = data.susohaba;
         }
+        if (!data.soutake == '') {
+            soutakesize = data.soutake;
+        }
 
         const header = {
             headers: {
@@ -238,15 +245,16 @@ export const RegisterSizePants = memo(() => {
             "matagami": matagamisize,
             "matashita": matashitasize,
             "susohaba": susohabasize,
+            "soutake": soutakesize,
             "userid": context.contextName.id,
             "pants_size": selectPantsSize,
 
         }
         const url = '/api/registersize/pants';
-        console.log(setData);
+        // console.log(setData);
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
+            // console.log(res);
             history.push('/main/mycoord');
         }).catch(() => {
         }).finally(() => {
@@ -378,6 +386,24 @@ export const RegisterSizePants = memo(() => {
                                     {...register("susohaba", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
                                 /><span>cm</span>
                                 {errors.susohaba && <div className={classes.error}>半角英数3桁内で入力してください</div>}
+                            </div>
+                        </div>
+                    </li>
+
+                    <li className={classes.li}>
+                        <picture className={classes.picture}>
+                            <img src={soutakeimg} alt="" />
+                        </picture>
+                        <div className={classes.box}>
+                            <h3 className={classes.h3}>総丈</h3>
+                            <div className={classes.inputArea}>
+                                <input
+                                    className={classes.input}
+                                    type="tel"
+                                    placeholder={preSoutake}
+                                    {...register("soutake", { required: false, pattern: /^[0-9]+$/i, maxLength: 3 })}
+                                /><span>cm</span>
+                                {errors.soutake && <div className={classes.error}>半角英数3桁内で入力してください</div>}
                             </div>
                         </div>
                     </li>

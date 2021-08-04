@@ -130,6 +130,7 @@ class UserController extends Controller
         $matagami = $request['matagami'];
         $matashita = $request['matashita'];
         $susohaba = $request['susohaba'];
+        $soutake = $request['soutake'];
         $pants_size = $request['pants_size'];
 
 
@@ -144,6 +145,7 @@ class UserController extends Controller
                 'matagami' => $matagami,
                 'matashita' => $matashita,
                 'susohaba' => $susohaba,
+                'soutake' => $soutake,
                 'pants_size' => $pants_size,
             ]);
         } else {
@@ -155,6 +157,7 @@ class UserController extends Controller
                 'matagami' => $matagami,
                 'matashita' => $matashita,
                 'susohaba' => $susohaba,
+                'soutake' => $soutake,
                 'pants_size' => $pants_size,
             ]);
 
@@ -198,6 +201,7 @@ class UserController extends Controller
                     'matagami' => $props['db']['matagami'],
                     'matashita' => $props['db']['matashita'],
                     'susohaba' => $props['db']['susohaba'],
+                    'soutake' => $props['db']['soutake'],
                     'pants_item_id' => $props['db']['item_id'],
                     'pants_size' => $props['db']['size'],
                 ]);
@@ -225,6 +229,7 @@ class UserController extends Controller
                     'matagami' => $props['db']['matagami'],
                     'matashita' => $props['db']['matashita'],
                     'susohaba' => $props['db']['susohaba'],
+                    'soutake' => $props['db']['soutake'],
                     'pants_item_id' => $props['db']['item_id'],
                     'pants_size' => $props['db']['size'],
                 ]);

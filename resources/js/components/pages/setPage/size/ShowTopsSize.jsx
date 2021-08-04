@@ -6,6 +6,7 @@ import katahabaimgimg from "../../../../../../public/img/others/size/katahaba.jp
 import sodetakeimg from "../../../../../../public/img/others/size/sodetake.jpg"
 import kyouiimg from "../../../../../../public/img/others/size/kyoui.jpg"
 import kitakeimg from "../../../../../../public/img/others/size/kitake.jpg"
+import commentimg from "../../../../../../public/img/others/size/b0782.png"
 import { useGetCalcSize } from "../../../../hooks/size/useGetCalcSize";
 import { UserContext } from "../../../providers/UserProvider";
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -35,6 +36,8 @@ const useStyles = makeStyles({
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
+        maxWidth: "800px",
+        margin: "auto",
     },
     toptext: {
         textAlign: "center",
@@ -71,8 +74,13 @@ const useStyles = makeStyles({
         backgroundColor: "#fff",
         borderRadius: "20px",
         boxShadow: "0px 0px 12px rgb(72 72 72 / 25%)",
-        margin: "10px 0",
+        margin: "10px auto",
         padding: "10px 0",
+        maxWidth: "800px",
+    },
+    commentimg: {
+        width: "30%",
+        maxWidth: "150px",
     }
 });
 
@@ -111,7 +119,10 @@ export const ShowTopsSize = memo((props) => {
                 <>
                     {topsComment ? (
                         <>
-                            <div className={classes.comment}>{topsComment}</div>
+                            <div className={classes.comment}>
+                                {topsComment}
+                                <img className={classes.commentimg} src={commentimg} alt="" />
+                            </div>
                         </>
                     ) : (
                         <>

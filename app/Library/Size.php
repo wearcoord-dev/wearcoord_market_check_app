@@ -12,10 +12,12 @@ class Size
         $comment = null;
         // return $kyoui;
 
-        if ($kyoui && $mihaba && $kitake) {
+        if ($kyoui && $mihaba && $kitake || $kyoui === 0 || $mihaba === 0 || $kitake === 0) {
             $kyouiResult = self::kyouiCheck($kyoui);
             $kitakeResult = self::kitakeCheck($kitake);
             $mihabaResult = self::mihabaCheck($mihaba);
+
+                    // return $kyouiResult;
 
 
             // 胸囲の条件分岐
@@ -286,7 +288,7 @@ class Size
     public static function kyouiCheck($kyoui)
     {
 
-        switch ($kyoui) {
+        switch ($kyoui || $kyoui === 0) {
 
                 // 胸囲が-5cmより大きい(小さすぎる)
             case $kyoui < -5:
@@ -313,7 +315,7 @@ class Size
     public static function kitakeCheck($kitake)
     {
 
-        switch ($kitake) {
+        switch ($kitake || $kitake === 0) {
 
                 // 身丈が-5cmより大きい(小さすぎる)
             case $kitake < -5:
@@ -340,7 +342,7 @@ class Size
     public static function mihabaCheck($mihaba)
     {
 
-        switch ($mihaba) {
+        switch ($mihaba || $mihaba === 0) {
 
                 // 身幅が-5cmより大きい(小さすぎる)
             case $mihaba < -5:
@@ -369,7 +371,7 @@ class Size
         $comment = null;
         // return $waistCalc;
 
-        if ($waist && $soutake && $matashita) {
+        if ($waist && $soutake && $matashita || $waist === 0 || $soutake === 0 || $matashita === 0) {
             $waistResult = self::waistCheck($waist);
             $soutakeResult = self::soutakeCheck($soutake);
             $matashitaResult = self::matashitaCheck($matashita);
@@ -643,7 +645,7 @@ class Size
     public static function waistCheck($waist)
     {
 
-        switch ($waist) {
+        switch ($waist || $waist === 0) {
 
                 // -3cmより大きい(小さすぎる)
             case $waist < -3:
@@ -670,7 +672,7 @@ class Size
     public static function soutakeCheck($soutake)
     {
 
-        switch ($soutake) {
+        switch ($soutake || $soutake === 0) {
 
                 // 2cmより大きい(小さすぎる)
             case $soutake < -2:
@@ -697,7 +699,7 @@ class Size
     public static function matashitaCheck($matashita)
     {
 
-        switch ($matashita) {
+        switch ($matashita || $matashita === 0) {
 
                 // 2cmより大きい(小さすぎる)
             case $matashita < -2:

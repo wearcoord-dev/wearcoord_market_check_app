@@ -6,6 +6,8 @@ import watarihabaimg from "../../../../../../public/img/others/size/watarihaba.j
 import matagamiimg from "../../../../../../public/img/others/size/matagami.jpg"
 import matashitaimg from "../../../../../../public/img/others/size/matashita.jpg"
 import susohabaimg from "../../../../../../public/img/others/size/susohaba.jpg"
+import soutakeimg from "../../../../../../public/img/others/size/soutake.jpg"
+import commentimg from "../../../../../../public/img/others/size/b0783.png"
 import { useGetCalcSize } from "../../../../hooks/size/useGetCalcSize";
 import { UserContext } from "../../../providers/UserProvider";
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -35,6 +37,8 @@ const useStyles = makeStyles({
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",
+        maxWidth: "800px",
+        margin: "auto",
     },
     toptext: {
         textAlign: "center",
@@ -71,8 +75,13 @@ const useStyles = makeStyles({
         backgroundColor: "#fff",
         borderRadius: "20px",
         boxShadow: "0px 0px 12px rgb(72 72 72 / 25%)",
-        margin: "10px 0",
+        margin: "10px auto",
         padding: "10px 0",
+        maxWidth: "800px",
+    },
+    commentimg: {
+        width: "30%",
+        maxWidth: "150px",
     }
 });
 
@@ -83,7 +92,7 @@ export const ShowPantsSize = memo((props) => {
     const context = useContext(UserContext);
     const userCheck = context.contextName;
     const { GetCalcSize, userCalcSize, loadingUserCalcSize, errorUserCalcSize } = useGetCalcSize();
-    const { CreatePantsComment,  pantsComment } = useCreatePantsComment();
+    const { CreatePantsComment, pantsComment } = useCreatePantsComment();
 
     console.log(userCalcSize);
 
@@ -111,7 +120,10 @@ export const ShowPantsSize = memo((props) => {
                 <>
                     {pantsComment ? (
                         <>
-                            <div className={classes.comment}>{pantsComment}</div>
+                            <div className={classes.comment}>
+                                {pantsComment}
+                                <img className={classes.commentimg} src={commentimg} alt="" />
+                            </div>
                         </>
                     ) : (
                         <>
@@ -140,7 +152,7 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].waist.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].waist.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].waist.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].waist.calc || userCalcSize[0].waist.calc == 0 ? (
+                                {userCalcSize[0].waist.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].waist.calc || userCalcSize[0].waist.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].waist.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -153,7 +165,7 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].hip.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].hip.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].hip.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].hip.calc || userCalcSize[0].hip.calc == 0 ? (
+                                {userCalcSize[0].hip.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].hip.calc || userCalcSize[0].hip.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].hip.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -166,7 +178,7 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].watarihaba.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].watarihaba.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].watarihaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].watarihaba.calc || userCalcSize[0].watarihaba.calc == 0 ? (
+                                {userCalcSize[0].watarihaba.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].watarihaba.calc || userCalcSize[0].watarihaba.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].watarihaba.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -179,7 +191,7 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].matagami.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].matagami.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].matagami.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].matagami.calc || userCalcSize[0].matagami.calc == 0 ? (
+                                {userCalcSize[0].matagami.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].matagami.calc || userCalcSize[0].matagami.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].matagami.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -192,7 +204,7 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].matashita.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].matashita.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].matashita.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].matashita.calc || userCalcSize[0].matashita.calc == 0 ? (
+                                {userCalcSize[0].matashita.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].matashita.calc || userCalcSize[0].matashita.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].matashita.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -205,8 +217,21 @@ export const ShowPantsSize = memo((props) => {
                                 {userCalcSize[0].susohaba.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].susohaba.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].susohaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].susohaba.calc || userCalcSize[0].susohaba.calc == 0 ? (
+                                {userCalcSize[0].susohaba.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].susohaba.calc || userCalcSize[0].susohaba.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].susohaba.calc}</span>cmの差があります</p>
+                                ) : <p className={classes.p}>No data</p>}
+                            </li>
+                        ) : <li></li>}
+
+                        {userCalcSize[0] ? (
+                            <li className={classes.li}>
+                                <h3 className={classes.h3}>総丈</h3>
+                                <img src={soutakeimg} alt="" />
+                                {userCalcSize[0].soutake.size ? (
+                                    <p className={classes.p}>ウェアサイズ : {userCalcSize[0].soutake.size}cm</p>
+                                ) : <p className={classes.p}>No data</p>}
+                                {userCalcSize[0].soutake.calc == null ? (<p className={classes.nodata}>No data</p>) : userCalcSize[0].soutake.calc || userCalcSize[0].soutake.calc == 0 ? (
+                                    <p className={classes.p}><span className={classes.span}>{userCalcSize[0].soutake.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
                         ) : <li></li>}
