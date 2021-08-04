@@ -59,7 +59,7 @@ export const useCreateTopsComment = () => {
         if(props == "011"){
             const data = (
                 <>
-                    <p className={classes.p}>修普段のサイズより肩、胸周りが少々きつい可能性があります。テニスで腕まわりを動かすのに窮屈かもしれないので普段よりワンサイズ大きいものを着用されることをオススメします。</p>
+                    <p className={classes.p}>普段のサイズより肩、胸周りが少々きつい可能性があります。テニスで腕まわりを動かすのに窮屈かもしれないので普段よりワンサイズ大きいものを着用されることをオススメします。</p>
                 </>
             )
             setTopsComment(data);

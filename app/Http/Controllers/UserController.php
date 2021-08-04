@@ -482,7 +482,36 @@ class UserController extends Controller
                 $susohaba = array('calc' => $susohaba, 'size' => $wearSize->susohaba);
             }
 
-            $wearItems[] = array('waist' => $waist, 'hip' => $hip, 'watarihaba' => $watarihaba, 'matagami' => $matagami, 'matashita' => $matashita, 'susohaba' => $susohaba);
+            // 総丈
+            if (!$wearSize->soutake) {
+                $soutake = null;
+                $soutake = array('calc' => $soutake, 'size' => $wearSize->soutake);
+            } elseif (!$userSize->soutake) {
+                $soutake = null;
+                $soutake = array('calc' => $soutake, 'size' => $wearSize->soutake);
+            } else {
+                $soutake = $wearSize->soutake - $userSize->soutake;
+                $soutake = array('calc' => $soutake, 'size' => $wearSize->soutake);
+            }
+
+            // 計算結果を取得
+
+            $waistCalc = $waist['calc'];
+            $hipCalc = $hip['calc'];
+            $watarihabaCalc = $watarihaba['calc'];
+            $matagamiCalc = $matagami['calc'];
+            $matashitaCalc = $matashita['calc'];
+            $susohabaCalc = $susohaba['calc'];
+            $soutakeCalc = $soutake['calc'];
+
+            // コメントを指定
+
+            // return response()->json($wearItems[0]['mihaba']);
+            $sizeFB = Size::FeedbackPantsSizeComment($waistCalc, $hipCalc, $watarihabaCalc, $matagamiCalc, $matashitaCalc, $susohabaCalc, $soutakeCalc);
+
+            // return response()->json($sizeFB);
+
+            $wearItems[] = array('waist' => $waist, 'hip' => $hip, 'watarihaba' => $watarihaba, 'matagami' => $matagami, 'matashita' => $matashita, 'susohaba' => $susohaba , 'soutake' => $soutake, 'comment' => $sizeFB);
         }
 
 
