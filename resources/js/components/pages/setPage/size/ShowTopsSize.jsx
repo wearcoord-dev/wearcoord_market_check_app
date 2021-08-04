@@ -101,7 +101,6 @@ export const ShowTopsSize = memo((props) => {
 
         if (userCalcSize) {
             CreateTopsComment(userCalcSize[0].comment);
-            // console.log(userCalcSize[0].comment)
         }
 
     }, [userCalcSize]);

@@ -9,6 +9,7 @@ import susohabaimg from "../../../../../../public/img/others/size/susohaba.jpg"
 import { useGetCalcSize } from "../../../../hooks/size/useGetCalcSize";
 import { UserContext } from "../../../providers/UserProvider";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { useCreatePantsComment } from "../../../../hooks/size/useCreatePantsComment";
 
 
 const useStyles = makeStyles({
@@ -62,6 +63,16 @@ const useStyles = makeStyles({
         justifyContent: "center",
         alignItems: "center",
         height: "200px",
+    },
+    comment: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "#fff",
+        borderRadius: "20px",
+        boxShadow: "0px 0px 12px rgb(72 72 72 / 25%)",
+        margin: "10px 0",
+        padding: "10px 0",
     }
 });
 
@@ -72,6 +83,7 @@ export const ShowPantsSize = memo((props) => {
     const context = useContext(UserContext);
     const userCheck = context.contextName;
     const { GetCalcSize, userCalcSize, loadingUserCalcSize, errorUserCalcSize } = useGetCalcSize();
+    const { CreatePantsComment,  pantsComment } = useCreatePantsComment();
 
     console.log(userCalcSize);
 
@@ -84,6 +96,34 @@ export const ShowPantsSize = memo((props) => {
             GetCalcSize(data);
         }
     }, [userCheck]);
+
+    useEffect(() => {
+
+        if (userCalcSize) {
+            CreatePantsComment(userCalcSize[0].comment);
+        }
+
+    }, [userCalcSize]);
+
+    const showComment = (
+        <>
+            {userCalcSize ? (
+                <>
+                    {pantsComment ? (
+                        <>
+                            <div className={classes.comment}>{pantsComment}</div>
+                        </>
+                    ) : (
+                        <>
+                        </>
+                    )}
+                </>
+            ) : (
+                <>
+                </>
+            )}
+        </>
+    )
 
     return (
         <>
@@ -172,6 +212,7 @@ export const ShowPantsSize = memo((props) => {
                         ) : <li></li>}
 
                     </ul>
+                    {showComment}
                 </>
             ) : (
                 <>
