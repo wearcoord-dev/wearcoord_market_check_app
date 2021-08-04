@@ -321,7 +321,7 @@ class UserController extends Controller
                 $mitake = null;
                 $mitake = array('calc' => $mitake, 'size' => $wearSize->mitake);
             } elseif (!$userSize->mitake) {
-                $mitake = 'No Size';
+                $mitake = null;
                 $mitake = array('calc' => $mitake, 'size' => $wearSize->mitake);
             } else {
                 $mitake = $wearSize->mitake - $userSize->mitake;
@@ -333,7 +333,7 @@ class UserController extends Controller
                 $mihaba = null;
                 $mihaba = array('calc' => $mihaba, 'size' => $wearSize->mihaba);
             } elseif (!$userSize->mihaba) {
-                $mihaba = 'No Size';
+                $mihaba = null;
                 $mihaba = array('calc' => $mihaba, 'size' => $wearSize->mihaba);
             } else {
                 $mihaba =  $wearSize->mihaba - $userSize->mihaba;
@@ -345,7 +345,7 @@ class UserController extends Controller
                 $katahaba = null;
                 $katahaba = array('calc' => $katahaba, 'size' => $wearSize->katahaba);
             } elseif (!$userSize->katahaba) {
-                $katahaba = 'No Size';
+                $katahaba = null;
                 $katahaba = array('calc' => $katahaba, 'size' => $wearSize->katahaba);
             } else {
                 $katahaba = $wearSize->katahaba - $userSize->katahaba;
@@ -357,7 +357,7 @@ class UserController extends Controller
                 $kyoui = null;
                 $kyoui = array('calc' => $kyoui, 'size' => $wearSize->kyoui);
             } elseif (!$userSize->kyoui) {
-                $kyoui = 'No Size';
+                $kyoui = null;
                 $kyoui = array('calc' => $kyoui, 'size' => $wearSize->kyoui);
             } else {
                 $kyoui = $wearSize->kyoui - $userSize->kyoui;
@@ -369,7 +369,7 @@ class UserController extends Controller
                 $kitake = null;
                 $kitake = array('calc' => $kitake, 'size' => $wearSize->kitake);
             } elseif (!$userSize->kitake) {
-                $kitake = 'No Size';
+                $kitake = null;
                 $kitake = array('calc' => $kitake, 'size' => $wearSize->kitake);
             } else {
                 $kitake = $wearSize->kitake - $userSize->kitake;
@@ -381,7 +381,7 @@ class UserController extends Controller
                 $sodetake = null;
                 $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
             } elseif (!$userSize->sodetake) {
-                $sodetake = 'No Size';
+                $sodetake = null;
                 $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
             } else {
                 $sodetake = $wearSize->sodetake - $userSize->sodetake;
@@ -415,7 +415,7 @@ class UserController extends Controller
                 $waist = null;
                 $waist = array('calc' => $waist, 'size' => $wearSize->waist);
             } elseif (!$userSize->waist) {
-                $waist = 'No Size';
+                $waist = null;
                 $waist = array('calc' => $waist, 'size' => $wearSize->waist);
             } else {
                 $waist = $wearSize->waist - $userSize->waist;
@@ -427,7 +427,7 @@ class UserController extends Controller
                 $hip = null;
                 $hip = array('calc' => $hip, 'size' => $wearSize->hip);
             } elseif (!$userSize->hip) {
-                $hip = 'No Size';
+                $hip = null;
                 $hip = array('calc' => $hip, 'size' => $wearSize->hip);
             } else {
                 $hip =  $wearSize->hip - $userSize->hip;
@@ -439,7 +439,7 @@ class UserController extends Controller
                 $watarihaba = null;
                 $watarihaba = array('calc' => $watarihaba, 'size' => $wearSize->watarihaba);
             } elseif (!$userSize->watarihaba) {
-                $watarihaba = 'No Size';
+                $watarihaba = null;
                 $watarihaba = array('calc' => $watarihaba, 'size' => $wearSize->watarihaba);
             } else {
                 $watarihaba = $wearSize->watarihaba - $userSize->watarihaba;
@@ -451,7 +451,7 @@ class UserController extends Controller
                 $matagami = null;
                 $matagami = array('calc' => $matagami, 'size' => $wearSize->matagami);
             } elseif (!$userSize->matagami) {
-                $matagami = 'No Size';
+                $matagami = null;
                 $matagami = array('calc' => $matagami, 'size' => $wearSize->matagami);
             } else {
                 $matagami = $wearSize->matagami - $userSize->matagami;
@@ -463,7 +463,7 @@ class UserController extends Controller
                 $matashita = null;
                 $matashita = array('calc' => $matashita, 'size' => $wearSize->matashita);
             } elseif (!$userSize->matashita) {
-                $matashita = 'No Size';
+                $matashita = null;
                 $matashita = array('calc' => $matashita, 'size' => $wearSize->matashita);
             } else {
                 $matashita = $wearSize->matashita - $userSize->matashita;
@@ -475,7 +475,7 @@ class UserController extends Controller
                 $susohaba = null;
                 $susohaba = array('calc' => $susohaba, 'size' => $wearSize->susohaba);
             } elseif (!$userSize->susohaba) {
-                $susohaba = 'No Size';
+                $susohaba = null;
                 $susohaba = array('calc' => $susohaba, 'size' => $wearSize->susohaba);
             } else {
                 $susohaba = $wearSize->susohaba - $userSize->susohaba;

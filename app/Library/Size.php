@@ -10,6 +10,7 @@ class Size
     public static function FeedbackTopsSizeComment($mitake, $mihaba, $katahaba, $kyoui, $kitake, $sodetake)
     {
         $comment = null;
+        // return $kyoui;
 
         if ($kyoui && $mihaba && $kitake) {
             $kyouiResult = self::kyouiCheck($kyoui);
