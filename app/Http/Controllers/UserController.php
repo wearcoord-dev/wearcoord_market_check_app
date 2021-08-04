@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Library\Size;
 
 
 class UserController extends Controller
@@ -387,7 +388,23 @@ class UserController extends Controller
                 $sodetake = array('calc' => $sodetake, 'size' => $wearSize->sodetake);
             }
 
-            $wearItems[] = array('mitake' => $mitake, 'mihaba' => $mihaba, 'katahaba' => $katahaba, 'kyoui' => $kyoui, 'kitake' => $kitake, 'sodetake' => $sodetake);
+            // 計算結果を取得
+
+            $mitakeCalc = $mitake['calc'];
+            $mihabaCalc = $mihaba['calc'];
+            $katahabaCalc = $katahaba['calc'];
+            $kyouiCalc = $kyoui['calc'];
+            $kitakeCalc = $kitake['calc'];
+            $sodetakeCalc = $sodetake['calc'];
+
+            // コメントを指定
+
+            // return response()->json($wearItems[0]['mihaba']);
+            $sizeFB = Size::FeedbackTopsSizeComment($mitakeCalc, $mihabaCalc, $katahabaCalc, $kyouiCalc, $kitakeCalc, $sodetakeCalc);
+
+            $wearItems[] = array('mitake' => $mitake, 'mihaba' => $mihaba, 'katahaba' => $katahaba, 'kyoui' => $kyoui, 'kitake' => $kitake, 'sodetake' => $sodetake, 'comment' => $sizeFB);
+            // return response()->json($sizeFB);
+
         }
 
         if ($type == 'pants') {
