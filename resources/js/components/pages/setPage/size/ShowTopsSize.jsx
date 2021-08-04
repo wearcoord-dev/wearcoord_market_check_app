@@ -141,7 +141,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].mitake.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].mitake.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].mitake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].mitake.calc || userCalcSize[0].mitake.calc == 0 ? (
+                                {userCalcSize[0].mitake.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].mitake.calc || userCalcSize[0].mitake.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].mitake.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -154,7 +154,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].mihaba.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].mihaba.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].mihaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].mihaba.calc || userCalcSize[0].mihaba.calc == 0 ? (
+                                {userCalcSize[0].mihaba.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].mihaba.calc || userCalcSize[0].mihaba.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].mihaba.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -167,7 +167,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].katahaba.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].katahaba.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].katahaba.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].katahaba.calc || userCalcSize[0].katahaba.calc == 0 ? (
+                                {userCalcSize[0].katahaba.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].katahaba.calc || userCalcSize[0].katahaba.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].katahaba.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -180,7 +180,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].sodetake.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].sodetake.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].sodetake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].sodetake.calc || userCalcSize[0].sodetake.calc == 0 ? (
+                                {userCalcSize[0].sodetake.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].sodetake.calc || userCalcSize[0].sodetake.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].sodetake.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -193,7 +193,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].kyoui.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].kyoui.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].kyoui.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].kyoui.calc || userCalcSize[0].kyoui.calc == 0 ? (
+                                {userCalcSize[0].kyoui.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].kyoui.calc || userCalcSize[0].kyoui.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].kyoui.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
@@ -206,7 +206,7 @@ export const ShowTopsSize = memo((props) => {
                                 {userCalcSize[0].kitake.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].kitake.size}cm</p>
                                 ) : <p className={classes.p}>No data</p>}
-                                {userCalcSize[0].kitake.calc == 'No Size' ? (<p className={classes.nodata}>ウェアサイズ未登録</p>) : userCalcSize[0].kitake.calc || userCalcSize[0].kitake.calc == 0 ? (
+                                {userCalcSize[0].kitake.calc == null ? (<p className={classes.nodata}>No Data</p>) : userCalcSize[0].kitake.calc || userCalcSize[0].kitake.calc == 0 ? (
                                     <p className={classes.p}><span className={classes.span}>{userCalcSize[0].kitake.calc}</span>cmの差があります</p>
                                 ) : <p className={classes.p}>No data</p>}
                             </li>
