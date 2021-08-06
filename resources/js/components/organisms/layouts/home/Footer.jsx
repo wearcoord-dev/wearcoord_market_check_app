@@ -41,14 +41,14 @@ export const Footer = memo(() => {
         <>
         <footer className={classes.footer}>
             <ul className={classes.linkul}>
-                <li><a href="">企業情報</a></li>
-                <li><a href="">プライバシーポリシー</a></li>
-                <li><a href="">お問い合わせ</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://wearcoord.info/">企業情報</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="">プライバシーポリシー</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://wearcoord.info/contact">お問い合わせ</a></li>
             </ul>
             <ul className={classes.iconul}>
-                <li><a href=""><TwitterIcon style={{ fontSize: 40 }} /></a></li>
-                <li><a href=""><InstagramIcon style={{ fontSize: 40 }} /></a></li>
-                <li><a href=""><PinterestIcon style={{ fontSize: 40 }} /></a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/wearcoord"><TwitterIcon style={{ fontSize: 40 }} /></a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wearcoord/"><InstagramIcon style={{ fontSize: 40 }} /></a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.pinterest.jp/WEARCOORD/_created/"><PinterestIcon style={{ fontSize: 40 }} /></a></li>
             </ul>
         </footer>
         </>

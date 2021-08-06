@@ -13,9 +13,9 @@ const useStyles = makeStyles({
     alert: {
         position: "absolute",
         top: "-16px",
-        right: "6px",
+        left: "50px",
         fontSize: "30px",
-        color: "lightcoral",
+        color: "lightskyblue",
     },
     details: {
         position: "relative",
