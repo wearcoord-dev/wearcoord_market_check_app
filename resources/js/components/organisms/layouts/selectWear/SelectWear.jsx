@@ -399,13 +399,13 @@ export const SelectWear = memo(() => {
 
             <br />
 
-            <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 <SearchIcon style={{ paddingRight: "6px" }} />
                 着替える
             </Button>
 
             <Button
-                style={{ position: "fixed", bottom: "100px", right: "0" }} color="primary"
+                style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} color="primary"
                 variant="contained"
                 onClick={onClickRegisterWear}
             >
