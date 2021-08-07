@@ -29,6 +29,7 @@ export const useAllShoes = () => {
             const getColor = res.data.color;
             const getBrand = res.data.brand;
             const getCategory = res.data.category;
+            const count = res.data.count;
 
             const data = res.data.item.map((wear) => ({
                 id: wear.db.id,
@@ -37,6 +38,7 @@ export const useAllShoes = () => {
                 brand: getBrand,
                 color: getColor,
                 category: getCategory,
+                count: count,
             }));
             console.log(data);
             setUserShoes(data);
