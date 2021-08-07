@@ -43,6 +43,7 @@ export const SelectWear = memo(() => {
     useEffect(() => {
         if (userCaps[0]) {
             setCount(userCaps[0].count);
+            setOpenSnack(true);
         }
         if (userCaps.length == 0) {
             setCount(0);
@@ -95,7 +96,6 @@ export const SelectWear = memo(() => {
             setCapsArray([]);
             getCaps(data);
             // スナックバーを表示
-            setOpenSnack(true);
         }else{
             setOpenSnackWarning(true);
         }
