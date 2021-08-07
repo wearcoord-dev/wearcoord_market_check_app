@@ -5,6 +5,8 @@ import { UserContext } from "../../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import wearImg1 from "../../../../../../public/img/rakutenlist/male/506269/black_alpen_10360085.png"
 import wearImg2 from "../../../../../../public/img/rakutenlist/male/208025/yellow_jism_12877028.png"
+import { useGetRecommendItem } from "../../../../hooks/home/useGetRecommendItem";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const useStyles = makeStyles({
@@ -21,7 +23,7 @@ const useStyles = makeStyles({
         padding: "30px 0",
     },
     li: {
-        width: "40%",
+        width: "30%",
         backgroundColor: "#fff",
         padding: "16px",
         boxSizing: "border-box",
@@ -38,6 +40,7 @@ const useStyles = makeStyles({
         margin: "auto",
         display: "flex",
         justifyContent: "space-around",
+        flexWrap: "wrap",
     },
     text: {
         color: "#AEC0DC",
@@ -51,6 +54,16 @@ export const RecommendItem = memo(() => {
     const context = useContext(UserContext);
     const userData = context.contextName;
     const history = useHistory();
+    const { GetRecommendItem,  recommendItem, loadingRecommendItem, errorRecommendItem } = useGetRecommendItem();
+
+    useEffect(() => {
+        if (userData !== undefined) {
+            GetRecommendItem(userData);
+        }
+    }, [userData]);
+
+
+    console.log(recommendItem);
 
     return (
         <>
@@ -58,17 +71,23 @@ export const RecommendItem = memo(() => {
             <div className={classes.h2parrent}>
                 <h2 className={classes.h2title}>オススメアイテム</h2>
             </div>
-            <ul className={classes.ul}>
-                <li className={classes.li}>
-                    <img className={classes.img} src={wearImg1} alt="" />
-                    <p className={classes.text}>テストです</p>
-                </li>
-                <li className={classes.li}>
-                    <img className={classes.img} src={wearImg2} alt="" />
-                    <p className={classes.text}>テストです</p>
-                </li>
-            </ul>
+            <div>
+                {recommendItem ? (errorRecommendItem ? (<p>データの取得に失敗しました</p>) : loadingRecommendItem ? (<p>Loading...</p>) : (
+                    <>
+                        <ul className={classes.ul}>
+                            {recommendItem.map((item) => (
+                                <li className={classes.li} key={item.id}
+                                onClick={onClickDetailCoord.bind(this, item.id)}
+                                >
+                                    <img className={classes.img} src={`/img/rakutenlist/${userData.gender}/${item.category}/${item.url}`} alt="" />
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                )) : loadingRecommendItem ? <div className={classes.loading}><CircularProgress /></div> : <p>アイテムがありません</p>}
+            </div>
         </div>
+        
         </>
     )
 })

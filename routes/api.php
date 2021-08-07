@@ -44,6 +44,8 @@ Route::get('/getitem', [App\Http\Controllers\MycoordController::class, "getItem"
 
 Route::get('/getitemdetail', [App\Http\Controllers\ItemController::class, "getItemDetail"])->name('getItemDetail');
 
+Route::get('/getrecommenditem', [App\Http\Controllers\MainHomeController::class, "getRecommendItem"])->name('getRecommendItem');
+
 
 // Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
 

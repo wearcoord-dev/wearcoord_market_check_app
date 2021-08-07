@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4" style="text-align: center">
                                 <button type="submit" class="btn btn-primary loginbtn">
                                     {{ __('Login') }}
                                 </button>
