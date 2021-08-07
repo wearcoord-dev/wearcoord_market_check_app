@@ -1,5 +1,5 @@
 import { Button, Popover, Popper, Snackbar } from "@material-ui/core";
-import { memo, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps";
@@ -40,17 +40,32 @@ export const SelectWear = memo(() => {
     // 検索結果のカウントを保持
     const [count, setCount] = useState();
 
+    const isFirstRender = useRef(false)
+
+    // このeffectは初回レンダー時のみ呼ばれるeffect
     useEffect(() => {
-        if (userCaps[0]) {
-            setCount(userCaps[0].count);
-            setOpenSnack(true);
-        }
-        if (userCaps.length == 0) {
-            setCount(0);
+      isFirstRender.current = true
+    }, [])
+
+    useEffect(() => {
+        if(!isFirstRender.current){
+            if (userCaps[0]) {
+                setCount(userCaps[0].count);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+            if (userCaps.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+        }else{
+            // 初回の処理が終了
+            isFirstRender.current = false;
         }
     }, [userCaps]);
 
-    console.log(userCaps);
+    // console.log(userCaps);
 
     useEffect(() => {
         if (userTops[0]) {
@@ -91,12 +106,11 @@ export const SelectWear = memo(() => {
         }
 
         // カテゴリーが選ばれてなければ注意
-        if(props.category){
+        if (props.category) {
             setDataCaps(data);
             setCapsArray([]);
             getCaps(data);
-            // スナックバーを表示
-        }else{
+        } else {
             setOpenSnackWarning(true);
         }
     }
@@ -110,12 +124,12 @@ export const SelectWear = memo(() => {
             'page': 1,
         }
 
-        if(props.category){
+        if (props.category) {
             setDataTops(data);
             setTopsArray([]);
             getTops(data);
             setOpenSnack(true);
-        }else{
+        } else {
             setOpenSnackWarning(true);
         }
     };
@@ -131,12 +145,12 @@ export const SelectWear = memo(() => {
             'page': 1,
         }
 
-        if(props.category){
+        if (props.category) {
             setDataPants(data);
             setPantsArray([]);
             getPants(data);
             setOpenSnack(true);
-        }else{
+        } else {
             setOpenSnackWarning(true);
         }
     }
@@ -152,12 +166,12 @@ export const SelectWear = memo(() => {
             'page': 1,
         }
 
-        if(props.category){
+        if (props.category) {
             setDataShoes(data);
             setShoesArray([]);
             getShoes(data);
             setOpenSnack(true);
-        }else{
+        } else {
             setOpenSnackWarning(true);
         }
     }
