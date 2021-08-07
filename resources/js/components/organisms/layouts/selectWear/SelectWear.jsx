@@ -40,15 +40,21 @@ export const SelectWear = memo(() => {
     // 検索結果のカウントを保持
     const [count, setCount] = useState();
 
-    const isFirstRender = useRef(false)
+    const isFirstRenderCaps = useRef(false);
+    const isFirstRenderTops = useRef(false);
+    const isFirstRenderPants = useRef(false);
+    const isFirstRenderShoes = useRef(false);
 
     // このeffectは初回レンダー時のみ呼ばれるeffect
     useEffect(() => {
-      isFirstRender.current = true
+        isFirstRenderCaps.current = true;
+        isFirstRenderTops.current = true;
+        isFirstRenderPants.current = true;
+        isFirstRenderShoes.current = true;
     }, [])
 
     useEffect(() => {
-        if(!isFirstRender.current){
+        if (!isFirstRenderCaps.current) {
             if (userCaps[0]) {
                 setCount(userCaps[0].count);
                 // スナックバーを表示
@@ -59,38 +65,59 @@ export const SelectWear = memo(() => {
                 // スナックバーを表示
                 setOpenSnack(true);
             }
-        }else{
+        } else {
             // 初回の処理が終了
-            isFirstRender.current = false;
+            isFirstRenderCaps.current = false;
         }
     }, [userCaps]);
 
     // console.log(userCaps);
 
     useEffect(() => {
-        if (userTops[0]) {
-            setCount(userTops[0].count);
-        }
-        if (userTops.length == 0) {
-            setCount(0);
+        if (!isFirstRenderTops.current) {
+            if (userTops[0]) {
+                setCount(userTops[0].count);
+                setOpenSnack(true);
+            }
+            if (userTops.length == 0) {
+                setCount(0);
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderTops.current = false;
         }
     }, [userTops]);
 
     useEffect(() => {
-        if (userPants[0]) {
-            setCount(userPants[0].count);
-        }
-        if (userPants.length == 0) {
-            setCount(0);
+        if (!isFirstRenderPants.current) {
+            if (userPants[0]) {
+                setCount(userPants[0].count);
+                setOpenSnack(true);
+            }
+            if (userPants.length == 0) {
+                setCount(0);
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderPants.current = false;
         }
     }, [userPants]);
 
     useEffect(() => {
-        if (userShoes[0]) {
-            setCount(userShoes[0].count);
-        }
-        if (userShoes.length == 0) {
-            setCount(0);
+        if (!isFirstRenderShoes.current) {
+            if (userShoes[0]) {
+                setCount(userShoes[0].count);
+                setOpenSnack(true);
+            }
+            if (userShoes.length == 0) {
+                setCount(0);
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderShoes.current = false;
         }
     }, [userShoes]);
 
@@ -128,14 +155,11 @@ export const SelectWear = memo(() => {
             setDataTops(data);
             setTopsArray([]);
             getTops(data);
-            setOpenSnack(true);
         } else {
             setOpenSnackWarning(true);
         }
     };
     const onClickFetchPants = (props) => {
-
-        console.log(props.category);
 
         const data = {
             'brand': props.brand,
@@ -149,14 +173,11 @@ export const SelectWear = memo(() => {
             setDataPants(data);
             setPantsArray([]);
             getPants(data);
-            setOpenSnack(true);
         } else {
             setOpenSnackWarning(true);
         }
     }
     const onClickFetchShoes = (props) => {
-
-        console.log(props.category);
 
         const data = {
             'brand': props.brand,
@@ -170,7 +191,6 @@ export const SelectWear = memo(() => {
             setDataShoes(data);
             setShoesArray([]);
             getShoes(data);
-            setOpenSnack(true);
         } else {
             setOpenSnackWarning(true);
         }
