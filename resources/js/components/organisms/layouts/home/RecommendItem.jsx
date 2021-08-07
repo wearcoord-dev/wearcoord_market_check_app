@@ -65,6 +65,11 @@ const useStyles = makeStyles({
         padding: "10px",
         boxSizing: "border-box",
     },
+    loading: {
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
+    }
 });
 
 export const RecommendItem = memo(() => {

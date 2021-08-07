@@ -547,13 +547,13 @@ export const SelectWear = memo(() => {
             </Popper>
 
             <Snackbar open={openSnack} autoHideDuration={3000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success">
+                <Alert onClose={handleClose} severity="success" style={{ fontSize: "14px" }}>
                     {count}件ヒットしました！
                 </Alert>
             </Snackbar>
 
             <Snackbar open={openSnackWarning} autoHideDuration={2000} onClose={handleCloseWarning}>
-                <Alert onClose={handleCloseWarning} severity="warning">
+                <Alert onClose={handleCloseWarning} severity="warning" style={{ fontSize: "14px" }}>
                     カテゴリーを選んでください！
                 </Alert>
             </Snackbar>
