@@ -35,6 +35,8 @@ const useStyles = makeStyles({
         background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
         maxWidth: "180px",
         boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
+        margin: "10px 0",
+        maxWidth: "150px",
     },
     img: {
         width: "100%",
@@ -45,6 +47,7 @@ const useStyles = makeStyles({
         display: "flex",
         justifyContent: "space-around",
         flexWrap: "wrap",
+        maxWidth: "500px",
     },
     text: {
         color: "#AEC0DC",

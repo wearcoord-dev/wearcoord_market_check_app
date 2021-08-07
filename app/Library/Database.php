@@ -14,6 +14,7 @@ class Database
 
         if ($brand) {
             $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->orderBy('id', 'desc')->paginate(15);
+            $count = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->count();
 
             // 先に見つけた画像だけ取得
             $DBitems = [];
@@ -56,6 +57,8 @@ class Database
             }
             if ($color) {
                 $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->paginate(15);
+                $count = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->count();
+
 
                 // urlに画像を入れる
                 $DBitems = [];
@@ -66,6 +69,7 @@ class Database
             }
         } else if ($color) {
             $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->paginate(15);
+            $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->count();
 
             // urlに画像を入れる
             $DBitems = [];
@@ -75,6 +79,7 @@ class Database
             }
         } else if ($category) {
             $item = DB::table($type . '_rakuten_apis')->where('category', $category)->orderBy('id', 'desc')->paginate(15);
+            $count = DB::table($type . '_rakuten_apis')->where('category', $category)->count();
 
             // urlに画像を入れる
             $DBitems = [];
@@ -120,7 +125,7 @@ class Database
         // ddd($DBitems);
 
 
-        return ['item' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category];
+        return ['item' => $DBitems, 'color' => $color, 'brand' => $brand, 'category' => $category, 'count' => $count];
     }
 
     public static function createUrlAndCategory($id, $type, $user_id)

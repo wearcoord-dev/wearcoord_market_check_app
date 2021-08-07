@@ -1,4 +1,4 @@
-import { Button, Popover, Popper } from "@material-ui/core";
+import { Button, Popover, Popper, Snackbar } from "@material-ui/core";
 import { memo, useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -12,6 +12,7 @@ import { WearSearch } from "../../../molecules/searchbox/WearSearch";
 import { UserContext } from "../../../providers/UserProvider";
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
+import { Alert } from "@material-ui/lab";
 
 
 export const SelectWear = memo(() => {
@@ -31,11 +32,51 @@ export const SelectWear = memo(() => {
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
     // 検索条件の保存管理
-
     const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [shoesSel, setShoesSel] = useState({ brand: "", color: "", category: "", wear: "" });
+
+    // 検索結果のカウントを保持
+    const [count, setCount] = useState();
+
+    useEffect(() => {
+        if (userCaps[0]) {
+            setCount(userCaps[0].count);
+        }
+        if (userCaps.length == 0) {
+            setCount(0);
+        }
+    }, [userCaps]);
+
+    console.log(userCaps);
+
+    useEffect(() => {
+        if (userTops[0]) {
+            setCount(userTops[0].count);
+        }
+        if (userTops.length == 0) {
+            setCount(0);
+        }
+    }, [userTops]);
+
+    useEffect(() => {
+        if (userPants[0]) {
+            setCount(userPants[0].count);
+        }
+        if (userPants.length == 0) {
+            setCount(0);
+        }
+    }, [userPants]);
+
+    useEffect(() => {
+        if (userShoes[0]) {
+            setCount(userShoes[0].count);
+        }
+        if (userShoes.length == 0) {
+            setCount(0);
+        }
+    }, [userShoes]);
 
 
     const onClickFetchCaps = (props) => {
@@ -47,9 +88,17 @@ export const SelectWear = memo(() => {
             'wear': 'caps',
             'page': 1,
         }
-        setDataCaps(data);
-        setCapsArray([]);
-        getCaps(data);
+
+        // カテゴリーが選ばれてなければ注意
+        if(props.category){
+            setDataCaps(data);
+            setCapsArray([]);
+            getCaps(data);
+            // スナックバーを表示
+            setOpenSnack(true);
+        }else{
+            setOpenSnackWarning(true);
+        }
     }
     const onClickFetchTops = (props) => {
 
@@ -60,9 +109,15 @@ export const SelectWear = memo(() => {
             'wear': 'tops',
             'page': 1,
         }
-        setDataTops(data);
-        setTopsArray([]);
-        getTops(data);
+
+        if(props.category){
+            setDataTops(data);
+            setTopsArray([]);
+            getTops(data);
+            setOpenSnack(true);
+        }else{
+            setOpenSnackWarning(true);
+        }
     };
     const onClickFetchPants = (props) => {
 
@@ -75,9 +130,15 @@ export const SelectWear = memo(() => {
             'wear': 'pants',
             'page': 1,
         }
-        setDataPants(data);
-        setPantsArray([]);
-        getPants(data);
+
+        if(props.category){
+            setDataPants(data);
+            setPantsArray([]);
+            getPants(data);
+            setOpenSnack(true);
+        }else{
+            setOpenSnackWarning(true);
+        }
     }
     const onClickFetchShoes = (props) => {
 
@@ -90,9 +151,15 @@ export const SelectWear = memo(() => {
             'wear': 'shoes',
             'page': 1,
         }
-        setDataShoes(data);
-        setShoesArray([]);
-        getShoes(data);
+
+        if(props.category){
+            setDataShoes(data);
+            setShoesArray([]);
+            getShoes(data);
+            setOpenSnack(true);
+        }else{
+            setOpenSnackWarning(true);
+        }
     }
 
     const onClickRegisterWear = () => {
@@ -158,7 +225,11 @@ export const SelectWear = memo(() => {
             'page': newPage,
         }
         setDataCaps(data);
-        getCaps(data);
+
+        // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
+        if (count > 3) {
+            getCaps(data);
+        }
     }
 
     useEffect(() => {
@@ -218,7 +289,11 @@ export const SelectWear = memo(() => {
             'page': newPage,
         }
         setDataTops(data);
-        getTops(data);
+
+        // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
+        if (count > 3) {
+            getTops(data);
+        }
     }
 
     useEffect(() => {
@@ -279,7 +354,11 @@ export const SelectWear = memo(() => {
             'page': newPage,
         }
         setDataPants(data);
-        getPants(data);
+
+        // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
+        if (count > 3) {
+            getPants(data);
+        }
     }
 
     useEffect(() => {
@@ -340,7 +419,10 @@ export const SelectWear = memo(() => {
             'page': newPage,
         }
         setDataShoes(data);
-        getShoes(data);
+        // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
+        if (count > 3) {
+            getShoes(data);
+        }
     }
 
     useEffect(() => {
@@ -383,6 +465,26 @@ export const SelectWear = memo(() => {
             </>
         )
     )
+
+    // スナックバー
+    const [openSnack, setOpenSnack] = useState(false);
+    const [openSnackWarning, setOpenSnackWarning] = useState(false);
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSnack(false);
+    };
+
+    const handleCloseWarning = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSnackWarning(false);
+    };
 
     return (
         <>
@@ -443,6 +545,18 @@ export const SelectWear = memo(() => {
                 />
 
             </Popper>
+
+            <Snackbar open={openSnack} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success">
+                    {count}件ヒットしました！
+                </Alert>
+            </Snackbar>
+
+            <Snackbar open={openSnackWarning} autoHideDuration={2000} onClose={handleCloseWarning}>
+                <Alert onClose={handleCloseWarning} severity="warning">
+                    カテゴリーを選んでください！
+                </Alert>
+            </Snackbar>
         </>
     )
 })
