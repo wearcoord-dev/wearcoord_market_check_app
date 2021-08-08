@@ -95,7 +95,7 @@ export const WearSearch = memo((props) => {
             <Container>
                 <Paper className={classes.root}>
                     <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white" }} /></button>
-                    <div className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingBottom: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</div>
+                    <div className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingBottom: "6px" }} />ウェアを確定</div>
                     <Tabs
                         value={value}
                         onChange={handleChange}
