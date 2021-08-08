@@ -64,13 +64,17 @@ const useStyles = makeStyles({
     },
     register: {
         position: "absolute",
-        width: "150px",
+        // width: "150px",
         backgroundColor: "#216496",
         color: "#fff",
-        height: "30px",
-        top: "-40px",
-        left: "10px",
-        borderRadius: "6px",
+        // height: "30px",
+        top: "-130px",
+        left: "0px",
+        borderRadius: "0 6px 6px 0",
+        writingMode: "vertical-rl",
+        padding: "10px",
+        letterSpacing: "0.1em",
+        cursor: "pointer",
     }
 });
 
@@ -88,7 +92,7 @@ export const WearSearch = memo((props) => {
             <Container>
                 <Paper className={classes.root}>
                     <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white" }} /></button>
-                    <button className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingRight: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</button>
+                    <div className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingRight: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</div>
                     <Tabs
                         value={value}
                         onChange={handleChange}
