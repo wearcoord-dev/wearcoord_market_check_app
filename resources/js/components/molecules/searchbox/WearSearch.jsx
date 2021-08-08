@@ -8,6 +8,7 @@ import { SearchItemTops } from "./SearchItemTops";
 import { SearchItemPants } from "./SearchItemPants";
 import { SearchItemShoes } from "./SearchItemShoes";
 import CloseIcon from '@material-ui/icons/Close';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 
 function TabPanel(props) {
@@ -60,11 +61,21 @@ const useStyles = makeStyles({
         top: "-30px",
         right: "10px",
         fontSize: "10px",
+    },
+    register: {
+        position: "absolute",
+        width: "150px",
+        backgroundColor: "#216496",
+        color: "#fff",
+        height: "30px",
+        top: "-40px",
+        left: "10px",
+        borderRadius: "6px",
     }
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel, setTopsSel, topsSel, setPantsSel, pantsSel, setShoesSel, shoesSel } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel, setTopsSel, topsSel, setPantsSel, pantsSel, setShoesSel, shoesSel,onClickRegisterWear } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -77,6 +88,7 @@ export const WearSearch = memo((props) => {
             <Container>
                 <Paper className={classes.root}>
                     <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white" }} /></button>
+                    <button className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingRight: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</button>
                     <Tabs
                         value={value}
                         onChange={handleChange}

@@ -576,6 +576,7 @@ export const SelectWear = memo(() => {
                     shoesSel={shoesSel}
 
                     handleClick={handleClick}
+                    onClickRegisterWear={onClickRegisterWear}
                 />
 
             </Popper>
