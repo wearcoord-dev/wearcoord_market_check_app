@@ -72,14 +72,17 @@ const useStyles = makeStyles({
         left: "0px",
         borderRadius: "0 6px 6px 0",
         writingMode: "vertical-rl",
-        padding: "10px",
+        padding: "10px 0",
         letterSpacing: "0.1em",
         cursor: "pointer",
+        boxSizing: "border-box",
+        width: "50px",
+        lineHeight: "50px",
     }
 });
 
 export const WearSearch = memo((props) => {
-    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel, setTopsSel, topsSel, setPantsSel, pantsSel, setShoesSel, shoesSel,onClickRegisterWear } = props;
+    const { onClickFetchCaps, onClickFetchTops, onClickFetchPants, onClickFetchShoes, handleClick, setCapsSel, capsSel, setTopsSel, topsSel, setPantsSel, pantsSel, setShoesSel, shoesSel, onClickRegisterWear } = props;
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -92,7 +95,7 @@ export const WearSearch = memo((props) => {
             <Container>
                 <Paper className={classes.root}>
                     <button className={classes.closeBtn} type="button" onClick={handleClick} ><CloseIcon style={{ color: "white" }} /></button>
-                    <div className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingRight: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</div>
+                    <div className={classes.register} type="button" onClick={onClickRegisterWear} ><CheckCircleOutlineIcon style={{ paddingBottom: "6px", verticalAlign: "text-bottom" }} />ウェアを確定</div>
                     <Tabs
                         value={value}
                         onChange={handleChange}
