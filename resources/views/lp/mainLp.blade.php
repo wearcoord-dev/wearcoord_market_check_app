@@ -70,7 +70,7 @@
         </div>
     </header>
 
-    <section>
+    <section style="background-color: #fff">
         <div class="mannequinImg">
             <picture class="mannequinWrap">
                 <img class="mannequinPosition" src="{{asset('img/lp/manekin_toplp.png')}}" alt="">
@@ -182,11 +182,12 @@
                 <p>普段のスポーツを、よりワクワクしたものに。</p>
             </div>
             <div class="textDesc">
-                <p>「欲しいウェアが見つかった！でも自分の持っているウェアに合うかな？自分の顔にこの色は似合うかな？」スポーツウェアを購入する前に自分に似合うかどうかわからなくて困ったことはありませんか？</p>
-                <p>wearcoordでは欲しいウェアの組み合わせを購入前に見える化することでスポーツウェアをより気軽に楽しく、普段のスポーツもよりワクワクしたものにするお手伝いをします。</p>
+                <p>「欲しいイメージのウェアが見つからない・・・」「欲しいウェアが見つかった！でも着てみたら自分に合うのかな・・・」</p>
+                <p>スポーツウェアを購入する前に自分に似合うかどうかわからなくて困ったことはありませんか？</p>
+                <p>wearcoordでは欲しいウェアの組み合わせを購入前に見える化することでスポーツウェアをより気軽に楽しく、普段のスポーツをよりワクワクしたものにするお手伝いをします。</p>
             </div>
             <picture>
-                <img class="mockImg" src="{{asset('img/lp/mockup.png')}}" alt="">
+                <img class="mockImg" src="{{asset('img/lp/top_catch.png')}}" alt="">
             </picture>
         </div>
     </section>
@@ -198,25 +199,25 @@
             <ul class="sectUl">
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/li-tennis.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/search_item.png')}}" alt="">
                     </picture>
                     <h3>気になるウェアを探す</h3>
-                    <p>「このブランドのこんなカラーのアイテムが欲しい！」新作アイテムやプロ着用モデルなど豊富なアイテムの試着が可能です</p>
+                    <p>「このブランドのこんなカラーのアイテムが欲しい！」新作アイテムやプロ着用モデルなど豊富なアイテムの試着が可能です。</p>
                 </li>
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/li-running.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/coord_wear.png')}}" alt="">
                     </picture>
                     <h3>コーデを作って確認</h3>
-                    <p>購入したいウェアを手持ちウェアやシューズと合わせマネキンに着せて確認できます</p>
+                    <p>購入したいウェアを手持ちウェアやシューズと合わせマネキンに着せて確認できます。</p>
                 </li>
                 </li>
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/li-ref.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/ref.png')}}" alt="">
                     </picture>
                     <h3>他人のコーデを参考に</h3>
-                    <p>wearcoordユーザーが作った全身コーディネートを参照しワンクリックで試着できます</p>
+                    <p>wearcoordアプリ上で他のユーザーが作った全身コーディネートを参照し、ワンクリックで試着できます。</p>
                 </li>
             </ul>
     </section>
@@ -229,7 +230,7 @@
         <div class="funcBox leftBorder">
             <div class="wrapper">
                 <picture>
-                    <img src="{{asset('img/lp/coord.png')}}" alt="">
+                    <img src="{{asset('img/lp/top_catch.png')}}" alt="">
                 </picture>
                 <div class="textBox">
                     <h3>コーディネートを直感的にできる！</h3>
@@ -278,25 +279,25 @@
             <ul class="sectUl">
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/person2.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/user1.png')}}" alt="">
                     </picture>
-                    <h3>単価が高いウェアも安心<br>(20代 : テニスが趣味)</h3>
+                    <h3>単価が高いウェアも安心<br>（20代 : テニスが趣味）</h3>
                     <p>「単価の高いレディースウェアをネット上だけで選ぶのは難しいが、自分の顔や組み合わせにマッチするか確認できるので価格を気にせず好きなウェアを選べる」
                     </p>
                 </li>
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/person1.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/user2.png')}}" alt="">
                     </picture>
-                    <h3>お店で試着より気軽で良い<br>(30代: 週末テニスプレイヤー)</h3>
+                    <h3>お店で試着より気軽で良い<br>（30代: 週末テニスプレイヤー）</h3>
                     <p>「ちょっと気になる可愛いデザインのアイテムがあるけれどお店が近くにない時、試着をする感覚で全身コーデを作ることができてイメージが湧く」</p>
                 </li>
                 </li>
                 <li>
                     <picture>
-                        <img class="" src="{{asset('img/lp/li-tennis.png')}}" alt="">
+                        <img class="" src="{{asset('img/lp/user3.png')}}" alt="">
                     </picture>
-                    <h3>ずっとこれを待っていた！<br>(50代: 週末テニスプレイヤー)</h3>
+                    <h3>ずっとこれを待っていた！<br>（50代: 週末テニスプレイヤー）</h3>
                     <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどのコーデを頭で想像するしかなかったが、これがあるとちゃんと目で見た上で購入できるのがありがたい」
                     </p>
                 </li>
@@ -365,7 +366,14 @@
             </ul>
     </section>
 
-    <footer>wearcoord,inc</footer>
+    <footer>
+        <ul>
+            <li><a href="https://wearcoord.info/" target="_blank" rel="noopener noreferrer">企業情報</a></li>
+            <li><a href="" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></li>
+            <li><a href="https://wearcoord.info/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
+        </ul>
+        <small>wearcoord,inc</small>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
