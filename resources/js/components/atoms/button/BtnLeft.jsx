@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
     h2: {
         padding: '10px 0',
@@ -33,14 +33,6 @@ const useStyles = makeStyles((theme) => ({
     center: {
         display: 'flex',
         justifyContent: 'center',
-    },
-    btn: {
-        marginTop: '20px',
-        width: '100%',
-        padding: '10px 0',
-        maxWidth: '300px',
-        left: "50%",
-        transform: "translateX(-50%)"
     },
 }));
 
@@ -130,7 +122,10 @@ export const BtnLeft = memo((props) => {
                         <div className={classes.center}>
                             <img className={classes.img} src={img} alt="" />
                         </div>
-                        <Button className={classes.btn} variant="contained" color="primary" onClick={onClickDelete}>
+                        <Button style={{
+                            left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                        }} variant="contained" onClick={onClickDelete}>
                             {icon}
                             削除する
                         </Button>
@@ -156,7 +151,10 @@ export const BtnLeft = memo((props) => {
                         <div className={classes.center}>
                             <img className={classes.img} src={img} alt="" />
                         </div>
-                        <Button className={classes.btn} variant="contained" color="primary" onClick={onClickCopy}>
+                        <Button style={{
+                            left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                        }} variant="contained" onClick={onClickCopy}>
                             {icon}
                             着る
                         </Button>
