@@ -36,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     item: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
     brandinfo: {
         position: 'absolute',
@@ -294,7 +294,8 @@ export const Item = memo(() => {
                         {dataArray ? (itemGetDetail ? (
                             <>
                                 <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
-                                <Button style={{ left: "50%", transform: "translateX(-50%)" }} aria-describedby={id} variant="contained" color="primary" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
+                                <Button style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }} aria-describedby={id} variant="contained" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
                                     <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
                                     ウェアを着る
                                 </Button>

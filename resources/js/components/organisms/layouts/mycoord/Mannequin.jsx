@@ -2,7 +2,7 @@ import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../providers/UserWear";
 import { useGetUserWear } from "../../../../hooks/selectwear/useGetUserWear";
 import html2canvas from 'html2canvas';
-import { Fade, makeStyles, Modal } from "@material-ui/core";
+import { Button, Fade, makeStyles, Modal } from "@material-ui/core";
 import Backdrop from '@material-ui/core/Backdrop';
 import { useRegisterCoord } from "../../../../hooks/mycoord/useRegisterCoord";
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -16,11 +16,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
+    form: {
+        display: "flex",
+        flexDirection: "column",
+    }
 }));
 
 
@@ -187,12 +191,13 @@ export const Mannequin = memo(() => {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <form action="">
-                            <img style={{ height: "200px" }} id="canvas_img_test" src="" alt="" />
+                        <form className={classes.form}>
+                            <img style={{ height: "200px", objectFit: "contain" }} id="canvas_img_test" src="" alt="" />
                             <input type="hidden" id="canvas_img_url" value=""></input>
                             <input type="hidden" name="userId" value={userCheck}></input>
 
-                            <button type="button" onClick={registerCoord}>登録する</button>
+                            <button style={{ backgroundColor: "#0080E4", width:
+                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px", borderRadius: "4px" }} type="button" onClick={registerCoord}>登録する</button>
                         </form>
                     </div>
                 </Fade>
