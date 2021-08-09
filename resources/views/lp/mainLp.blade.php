@@ -71,12 +71,14 @@
     </header>
 
     <section style="background-color: #fff">
+
+        {{-- male --}}
         <div class="mannequinImg">
             <picture class="mannequinWrap">
                 <img class="mannequinPosition" src="{{asset('img/lp/manekin_toplp.png')}}" alt="">
             </picture>
             <div class="caps-container">
-                <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
+                <img class="capslist" src="{{asset('img/lp/wearlist-caps_male.png')}}" alt="">
             </div>
             <div class="swiper-container tops-container">
                 <div class="swiper-wrapper">
@@ -102,7 +104,7 @@
                 <img class="mannequinPosition" src="{{asset('img/lp/woman_manekin_lp.png')}}" alt="">
             </picture>
             <div class="caps-container">
-                <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
+                <img class="capslist" src="{{asset('img/lp/wearlist-caps_female.png')}}" alt="">
             </div>
             <div class="swiper-container tops-container">
                 <div class="swiper-wrapper">
@@ -115,10 +117,10 @@
                 </div>
             </div>
                 <div class="pants-container">
-                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
+                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants_female.png')}}" alt="">
                 </div>
                 <div class="shoes-container">
-                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
+                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes_female.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -209,7 +211,7 @@
                         <img class="" src="{{asset('img/lp/coord_wear.png')}}" alt="">
                     </picture>
                     <h3>コーデを作って確認</h3>
-                    <p>購入したいウェアを手持ちウェアやシューズと合わせマネキンに着せて確認できます。</p>
+                    <p>購入したいウェアを組み合わせて、理想のコーディネートを作ることができます。</p>
                 </li>
                 </li>
                 <li>
@@ -282,7 +284,7 @@
                         <img class="" src="{{asset('img/lp/user1.png')}}" alt="">
                     </picture>
                     <h3>単価が高いウェアも安心<br>（20代 : テニスが趣味）</h3>
-                    <p>「単価の高いレディースウェアをネット上だけで選ぶのは難しいが、自分の顔や組み合わせにマッチするか確認できるので価格を気にせず好きなウェアを選べる」
+                    <p>今までは「単価の高いレディースウェアをネット上の情報だけで選ぶのは難しかったけれど、組み合わせコーデで直感的に確認できるので、価格を気にせず好きなウェアを選べる！」
                     </p>
                 </li>
                 <li>
@@ -290,7 +292,7 @@
                         <img class="" src="{{asset('img/lp/user2.png')}}" alt="">
                     </picture>
                     <h3>お店で試着より気軽で良い<br>（30代: 週末テニスプレイヤー）</h3>
-                    <p>「ちょっと気になる可愛いデザインのアイテムがあるけれどお店が近くにない時、試着をする感覚で全身コーデを作ることができてイメージが湧く」</p>
+                    <p>「ちょっと気になる可愛いデザインのアイテムがあるけれどそのアイテムを置いているお店が近くにない時に、試着をする感覚で全身コーデを作ることができイメージが湧く！」</p>
                 </li>
                 </li>
                 <li>
@@ -298,7 +300,7 @@
                         <img class="" src="{{asset('img/lp/user3.png')}}" alt="">
                     </picture>
                     <h3>ずっとこれを待っていた！<br>（50代: 週末テニスプレイヤー）</h3>
-                    <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどのコーデを頭で想像するしかなかったが、これがあるとちゃんと目で見た上で購入できるのがありがたい」
+                    <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどを合わせたコーデを頭で想像するしかなかったが、wearcoordがあるとちゃんと目で確認した上で購入できるのがありがたい！」
                     </p>
                 </li>
             </ul>
