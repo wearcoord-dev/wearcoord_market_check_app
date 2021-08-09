@@ -85,11 +85,13 @@ input {
 .regibtn .registerbtn {
   background-color: #216496;
   color: white;
+  width: 200px;
 }
 
 .loginbtn {
   background-color: #216496;
   color: white;
+  width: 200px;
 }
 
 .resetbtn {
@@ -107,4 +109,8 @@ input {
 
 .backgroundRegi {
   background-color: lightgray;
+}
+
+.navbar-brand img {
+  width: 150px;
 }
