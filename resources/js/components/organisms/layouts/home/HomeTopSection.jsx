@@ -1,5 +1,5 @@
 import { memo } from "react";
-import banner1 from "/img/banner/lalosso-banner.png";
+import banner1 from "/img/banner/ralosso2021.jpg";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
     img: {
         width: "100%",
-        borderRadius: "20px",
+        // borderRadius: "20px",
     },
     h2title: {
         // borderBottom: "1px solid #484848",
@@ -40,9 +40,9 @@ const useStyles = makeStyles({
         margin: "10px auto 0",
     },
     swiperWrap: {
-        height: "300px",
         display: "flex",
         alignItems: "center",
+        padding: "0 0 50px 0",
     }
 });
 

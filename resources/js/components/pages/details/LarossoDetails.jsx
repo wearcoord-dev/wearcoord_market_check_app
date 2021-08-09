@@ -8,6 +8,7 @@ import { UserContext } from "../../providers/UserProvider";
 import { UserWear } from "../../providers/UserWear";
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { RalossoLp } from "../../organisms/layouts/detail/larosso/components/RalossoLp";
 
 
 function TabPanel(props) {
@@ -120,7 +121,7 @@ export const LarossoDetails = memo(() => {
                         aria-label="full width tabs example"
                         centered
                     >
-                        <Tab label="ラロッソ2021モデル" {...a11yProps(0)} />
+                        <Tab label="ラロッソ特集" {...a11yProps(0)} />
                         <Tab label="コーデする" {...a11yProps(1)} />
                     </Tabs>
                 </Paper>
@@ -131,7 +132,7 @@ export const LarossoDetails = memo(() => {
                     onChange={handleChangeIndex}
                 >
                     <TabPanel value={value} index={0} dir={theme.direction}>
-                        LPページ
+                        <RalossoLp />
                     </TabPanel>
                     <TabPanel value={value} index={1} dir={theme.direction}>
                         {userWearInfo ? (errorWear ? (

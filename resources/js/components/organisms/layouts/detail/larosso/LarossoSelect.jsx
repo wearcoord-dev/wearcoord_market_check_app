@@ -15,6 +15,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import { LarossoWearSearch } from "./components/LarossoWearSearch";
 import { useGetLarossoItem } from "../../../../../hooks/home/larosso/useGetLarossoItem";
 import { useGetLarossoPants } from "../../../../../hooks/home/larosso/useGetLarossoPants";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 export const LarossoSelect = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
@@ -143,7 +145,7 @@ export const LarossoSelect = memo(() => {
                     (errorLarossoTops ? (
                         <p style={{ color: "red" }}>データの取得に失敗しました</p>
                     ) : loadingLarossoTops ? (
-                        <p>Loading...</p>
+                        <CircularProgress />
                     ) : (
                         <>
                             <Swiper id="controller2"
@@ -182,7 +184,7 @@ export const LarossoSelect = memo(() => {
                     (error ? (
                         <p style={{ color: "red" }}>データの取得に失敗しました</p>
                     ) : loadingLarossoPants ? (
-                        <p>Loading...</p>
+                        <CircularProgress />
                     ) : (
                         <>
                             <Swiper id="controller3"
@@ -257,13 +259,13 @@ export const LarossoSelect = memo(() => {
 
             <br />
 
-            <Button style={{ position: "fixed", bottom: "100px", left: "0" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" onClick={handleClick}>
                 <SearchIcon style={{ paddingRight: "6px" }} />
                 着替える
       </Button>
 
             <Button
-                style={{ position: "fixed", bottom: "100px", right: "0" }} color="primary"
+                style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }}
                 variant="contained"
                 onClick={onClickRegisterWear}
             >
