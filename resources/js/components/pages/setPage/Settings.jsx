@@ -11,6 +11,12 @@ const styles = {
         fontSize: "20px",
         padding: "10px 0"
     },
+    title: {
+        textAlign: "center",
+        padding: "30px 0",
+        fontSize: "14px",
+        fontWeight: "bold",
+    }
 };
 
 export const Settings = memo(() => {
@@ -18,6 +24,7 @@ export const Settings = memo(() => {
 
     const onClickFace = useCallback(() => history.push("/main/settings/face"), [history]);
     const onClickSize = useCallback(() => history.push("/main/settings/size"), [history]);
+    const onClickDelete = useCallback(() => history.push("/main/settings/delete"), [history]);
 
 
     const onClickLogout = (e) => {
@@ -37,7 +44,7 @@ export const Settings = memo(() => {
 
     return (
         <>
-            <p style={{ textAlign: "center", padding: "30px 0" }}>Settings</p>
+            <p style={styles.title}>設定</p>
             <ul>
                 <li style={styles.btnWrap}>
                     <button style={styles.button} onClick={onClickFace}>マネキン顔画像の変更</button>
@@ -45,7 +52,7 @@ export const Settings = memo(() => {
                 <li style={styles.btnWrap}>
                     <button style={styles.button} onClick={onClickSize}>ウェア情報の変更</button>
                 </li>
-                <li style={styles.btnWrap}>
+                <li style={styles.btnWrap} onClick={onClickDelete}>
                     <button style={styles.button}>退会する</button>
                 </li>
                 <li style={styles.btnWrap}>
