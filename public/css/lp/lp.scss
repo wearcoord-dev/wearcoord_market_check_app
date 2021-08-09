@@ -263,9 +263,9 @@ input {
 
 .caps-container {
     height: 200px;
-    top: -14px;
+    top: -10px;
     position: absolute !important;
-    left: 0px;
+    left: -6px;
     width: 100%;
     overflow: hidden;
 
@@ -377,6 +377,7 @@ input {
         display: flex;
         max-width: 1000px;
         margin: auto;
+        padding: 30px 0;
     }
 
     picture {
