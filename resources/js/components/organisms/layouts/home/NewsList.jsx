@@ -94,6 +94,12 @@ export const NewsList = memo(() => {
     const userData = context.contextName;
     const history = useHistory();
 
+    const onClickLarossoCoord = () => {
+        history.push({
+            pathname: '/main/larosso2021',
+        });
+    }
+
     return (
         <>
             <div>
@@ -114,7 +120,7 @@ export const NewsList = memo(() => {
                             <p className={classes.label}>NEW</p>
                     </li>
 
-                    <li className={classes.li}>
+                    <li className={classes.li} onClick={onClickLarossoCoord}>
                         <div className={classes.imgBox}>
                             <img className={classes.img} src={logoImg} alt="" />
                         </div>
