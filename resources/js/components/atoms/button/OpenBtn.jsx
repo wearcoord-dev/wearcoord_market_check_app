@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
 }));
 
@@ -109,7 +109,7 @@ export const OpenBtn = memo((props) => {
                     <div className={classes.paper}>
                         {userItemInfo ? (
                             <>
-                                <p>{userItemInfo[0].brand}</p>
+                                {/* <p>{userItemInfo[0].brand}</p> */}
                                 <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
                             </>
                         ) : <div></div>}

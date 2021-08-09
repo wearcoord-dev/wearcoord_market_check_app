@@ -48,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     item: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
     brandinfo: {
         position: 'absolute',
@@ -88,8 +88,8 @@ export const ItemShowSection = memo((props) => {
         setOpen(false);
     };
 
-       // モーダルで表示したウェアを着せる
-       const onClickWearItem = (id, type) => {
+    // モーダルで表示したウェアを着せる
+    const onClickWearItem = (id, type) => {
         const data = {
             'id': id,
             'type': type,
@@ -232,7 +232,10 @@ export const ItemShowSection = memo((props) => {
                                     {result ? (itemGetDetail ? (
                                         <>
                                             <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
-                                            <Button style={{ left: "50%", transform: "translateX(-50%)" }} variant="contained" color="primary" onClick={onClickWearItem.bind(this, itemGetDetail.id, type)}>
+                                            <Button style={{
+                                                left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                                    "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                                            }} variant="contained" onClick={onClickWearItem.bind(this, itemGetDetail.id, type)}>
                                                 <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
                                                 ウェアを着る
                                             </Button>

@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     paper: {
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        padding: "10px",
+        boxSizing: "border-box",
     },
     btn: {
         marginTop: '20px',
@@ -125,7 +125,10 @@ export const CartBox = memo((props) => {
                     <div className={classes.paper}>
                         <h2 className={classes.h2} id="transition-modal-title">このアイテムをカートから削除しますか？</h2>
                         <div style={{ display: "flex", justifyContent: "center" }} dangerouslySetInnerHTML={{ __html: getHtml }}></div>
-                        <Button className={classes.btn} variant="contained" color="primary" onClick={onClickDelete}>
+                        <Button style={{
+                            left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                        }} variant="contained" color="primary" onClick={onClickDelete}>
                             <DeleteForeverIcon style={{ paddingRight: "6px" }} />
                             削除する
                         </Button>
