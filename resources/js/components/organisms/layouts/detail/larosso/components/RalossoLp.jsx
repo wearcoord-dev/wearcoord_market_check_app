@@ -7,10 +7,13 @@ const useStyles = makeStyles({
     root: {
         color: "#364A5C",
         lineHeight: "1.2",
+        backgroundColor: "#fff",
     },
     toptitle_wrap: {
         padding: "30px 0",
         textAlign: "center",
+        backgroundColor: "#216496",
+        color: "#fff",
 
         "& h2": {
             fontSize: "28px",
@@ -22,7 +25,7 @@ const useStyles = makeStyles({
         justifyContent: "space-around",
         width: "90%",
         margin: "auto",
-        padding: "20px 0",
+        padding: "50px 0",
 
         "& img": {
             width: "40%",
@@ -33,6 +36,7 @@ const useStyles = makeStyles({
     text_wrap: {
         width: "90%",
         margin: "auto",
+        padding: "50px 0",
     }
 });
 
@@ -48,7 +52,7 @@ export const RalossoLp = memo(() => {
                 </div>
 
                 <div className={classes.text_wrap}>
-                    <p>コーディネートアプリであるwearcoordを運営する株式会社wearcoordは、スポーツアパレルブランドralosso（ラロッソ）と公式提携します。</p>
+                    <p>コーディネートアプリのwearcoordを運営する株式会社wearcoordは、スポーツアパレルブランドralosso（ラロッソ）と公式提携します。</p>
                     <div className={classes.imgbox}>
                         <img src={ralossoimg} alt="" />
                         <img src={wcimg} alt="" />
