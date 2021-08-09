@@ -19,6 +19,7 @@ import { RegisterSizePants } from "../../pages/setPage/size/RegisterSizePants";
 import { RegisterFromWearTops } from "../../pages/setPage/size/RegisterFromWearTops";
 import { RegisterFromWearPants } from "../../pages/setPage/size/RegisterFromWearPants";
 import { ShowSizeResult } from "../../pages/setPage/size/ShowSizeResult";
+import { PreDelete } from "../../pages/setPage/deleteAccount/PreDelete";
 
 export const PageRoute = [
   {
@@ -73,6 +74,11 @@ export const PageRoute = [
     path: "/settings/face",
     exact: true,
     children: <SetUserFace />
+  },
+  {
+    path: "/settings/delete",
+    exact: true,
+    children: <PreDelete />
   },
   {
     path: "/settings/size",

@@ -21,6 +21,8 @@ export const MainMycoord = memo(() => {
     const [ pantsIDValue, setPantsID] = useState(null);
     const [ shoesIDValue, setShoesID] = useState(null);
 
+    // console.log(context);
+
 
     useEffect(() => {
         if (userCheck !== undefined) {

@@ -132,6 +132,11 @@ Route::get('/registersize/wear', function (Request $request) {
 
 Route::post('/registersize/wear', [App\Http\Controllers\UserController::class, "registerSizeWear"]);
 
+Route::get('/deleteaccount', function (Request $request) {
+});
+
+Route::post('/deleteaccount', [App\Http\Controllers\UserController::class, "deleteAccount"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 

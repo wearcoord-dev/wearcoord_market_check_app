@@ -9,6 +9,20 @@ use App\Library\Size;
 
 class UserController extends Controller
 {
+    public function deleteAccount(Request $request)
+    {
+
+        $user_id = $request['id'];
+
+        DB::table('users')->where('id', $user_id)->delete();
+        DB::table('userSelectCoord')->where('user_id', $user_id)->delete();
+        DB::table('userCreateCoord')->where('user_id', $user_id)->delete();
+        DB::table('userCart')->where('user_id', $user_id)->delete();
+        DB::table('user_size')->where('user_id', $user_id)->delete();
+
+        return 'ok';
+    }
+
     public function registerFace(Request $request)
     {
 
