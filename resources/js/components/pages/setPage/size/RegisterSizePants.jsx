@@ -276,6 +276,7 @@ export const RegisterSizePants = memo(() => {
                                 <option value="s">S</option>
                                 <option value="m">M</option>
                                 <option value="l">L</option>
+                                <option value="ll">LL</option>
                             </select>
                         </div>
                     </li>

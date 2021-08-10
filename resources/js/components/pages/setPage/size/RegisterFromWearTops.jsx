@@ -247,6 +247,7 @@ export const RegisterFromWearTops = memo(() => {
                             <div className={classes.formbox}>
                                 <select {...register("brand")}>
                                     <option value="fila">Fila</option>
+                                    <option value="babolat">Babolat</option>
                                 </select>
                             </div>
                         </div>
