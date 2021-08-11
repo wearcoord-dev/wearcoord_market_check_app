@@ -23,6 +23,7 @@ const useStyles = makeStyles({
         lineHeight: "1.2",
         boxShadow: "0px 0px 30px 1px rgba(153, 99, 99, 0.03)",
         padding: "20px",
+        maxWidth: "600px",
     },
     formbox: {
         overflow: "hidden",
@@ -81,6 +82,7 @@ const useStyles = makeStyles({
         boxSizing: "border - box",
         borderRadius: "20px",
         boxShadow: "0px 0px 30px 1px rgba(153, 99, 99, 0.03)",
+        maxWidth: "600px",
     },
     searchinput: {
         textAlign: "center",
@@ -106,6 +108,7 @@ const useStyles = makeStyles({
         boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
         borderRadius: '10px',
         position: 'relative',
+        maxWidth: "150px",
     },
     first: {
         height: '100px',
@@ -131,6 +134,7 @@ const useStyles = makeStyles({
         borderRadius: '30px',
         padding: '20px 0',
         background: "linear-gradient(221.32deg, rgba(229, 234, 238, 0.67) 2.42%, #FFFFFF 53.21%, rgba(238, 238, 238, 0.54) 99.93%)",
+        maxWidth: "300px",
     },
     imgbox: {
         width: '60%',
@@ -173,7 +177,7 @@ export const RegisterFromWearTops = memo(() => {
                 </>
             ) : (<>
                 <div className={classes.root}>
-                    <Grid style={{ justifyContent: 'center', width: '100%', margin: '0' }} container spacing={1}>
+                    <Grid style={{ justifyContent: 'center', width: '100%', margin: '0', maxWidth: "700px", margin: "auto" }} container spacing={1}>
 
                         {userSizeWear.map((item) => (
                             <Grid className={classes.paper} key={item.db.id} container item xs={12} spacing={3} onClick={onClickInfo.bind(this, item)}>
@@ -295,7 +299,8 @@ export const RegisterFromWearTops = memo(() => {
                                     <div className={classes.imgbox}>
                                         <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wearInfo.category}/${wearInfo.url}`} alt="" />
                                     </div>
-                                    <Button style={{ left: "50%", transform: "translateX(-50%)" }} variant="contained" color="primary" onClick={onClickWearItem.bind(this, wearInfo)}>
+                                    <Button style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }} variant="contained" onClick={onClickWearItem.bind(this, wearInfo)}>
                                         <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
                                         このウェアを選ぶ
                                     </Button>

@@ -14,12 +14,14 @@ const useStyles = makeStyles({
         lineHeight: "1.2",
         boxShadow: "0px 0px 30px 1px rgba(53, 53, 53, 0.03)",
         padding: "20px",
+        maxWidth: "600px",
     },
     ul: {
         padding: "10px 0",
         display: "flex",
         width: "90%",
         margin: "auto",
+        maxWidth: "600px",
     },
     li: {
         width: "50%",

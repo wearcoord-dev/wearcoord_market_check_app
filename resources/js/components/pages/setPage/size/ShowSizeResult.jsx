@@ -11,6 +11,7 @@ import { UserContext } from '../../../providers/UserProvider';
 import { ShowPantsSize } from './ShowPantsSize';
 import { useGetUserWear } from '../../../../hooks/selectwear/useGetUserWear';
 import InfoIcon from '@material-ui/icons/Info';
+import { SizeTextPage } from './SizeTextPage';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -105,7 +106,8 @@ export const ShowSizeResult = memo(() => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <div style={{ marginTop: "100px" }}>ここに説明が入ります</div>
+                {/* <div style={{ marginTop: "100px" }}>ここに説明が入ります</div> */}
+                <SizeTextPage />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <ShowTopsSize style={{ display: isTops }}
