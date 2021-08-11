@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
         margin: '10px',
         borderRadius: '10px',
     },
+    loading: {
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center",
+        '& > * + *': {
+            marginLeft: theme.spacing(2),
+        },
+    }
 }));
 
 export const Favorite = memo(() => {
@@ -68,7 +76,7 @@ export const Favorite = memo(() => {
                         ))};
                   </GridList>
                 </div>
-            ) : loadingRegisterCoord ? <CircularProgress /> : (<p></p>)}
+            ) : loadingRegisterCoord ? <div className={classes.loading}><CircularProgress /></div> : (<p></p>)}
         </>
     )
 })

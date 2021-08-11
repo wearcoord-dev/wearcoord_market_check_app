@@ -12,12 +12,23 @@ class Size
         $comment = null;
         // return $kyoui;
 
-        if ($kyoui && $mihaba && $kitake || $kyoui === 0 || $mihaba === 0 || $kitake === 0) {
+        // string化
+        if ($kyoui === 0) {
+            $kyoui = "zero";
+        }
+        if ($mihaba === 0) {
+            $mihaba = "zero";
+        }
+        if ($kitake === 0) {
+            $kitake = "zero";
+        }
+
+        if ($kyoui && $mihaba && $kitake) {
             $kyouiResult = self::kyouiCheck($kyoui);
             $kitakeResult = self::kitakeCheck($kitake);
             $mihabaResult = self::mihabaCheck($mihaba);
 
-                    // return $kyouiResult;
+            // return $kyouiResult;
 
 
             // 胸囲の条件分岐
@@ -288,6 +299,11 @@ class Size
     public static function kyouiCheck($kyoui)
     {
 
+        // 計算できるよう変換
+        if ($kyoui === "zero") {
+            $kyoui = 0;
+        }
+
         switch ($kyoui || $kyoui === 0) {
 
                 // 胸囲が-5cmより大きい(小さすぎる)
@@ -314,6 +330,11 @@ class Size
 
     public static function kitakeCheck($kitake)
     {
+
+        // 計算できるよう変換
+        if ($kitake === "zero") {
+            $kitake = 0;
+        }
 
         switch ($kitake || $kitake === 0) {
 
@@ -342,6 +363,11 @@ class Size
     public static function mihabaCheck($mihaba)
     {
 
+        // 計算できるよう変換
+        if ($mihaba === "zero") {
+            $mihaba = 0;
+        }
+
         switch ($mihaba || $mihaba === 0) {
 
                 // 身幅が-5cmより大きい(小さすぎる)
@@ -369,12 +395,24 @@ class Size
     public static function FeedbackPantsSizeComment($waist, $hip, $watarihaba, $matagami, $matashita, $susohaba, $soutake)
     {
         $comment = null;
-        // return $waistCalc;
 
-        if ($waist && $soutake && $matashita || $waist === 0 || $soutake === 0 || $matashita === 0) {
+        // string化
+        if ($waist === 0) {
+            $waist = "zero";
+        }
+        if ($soutake === 0) {
+            $soutake = "zero";
+        }
+        if ($matashita === 0) {
+            $matashita = "zero";
+        }
+
+        if ($waist && $soutake && $matashita) {
             $waistResult = self::waistCheck($waist);
             $soutakeResult = self::soutakeCheck($soutake);
             $matashitaResult = self::matashitaCheck($matashita);
+
+            // return $waistResult;
 
 
             // ウエストの条件分岐
@@ -645,6 +683,11 @@ class Size
     public static function waistCheck($waist)
     {
 
+        // 計算できるよう変換
+        if ($waist === "zero") {
+            $waist = 0;
+        }
+
         switch ($waist || $waist === 0) {
 
                 // -3cmより大きい(小さすぎる)
@@ -672,6 +715,10 @@ class Size
     public static function soutakeCheck($soutake)
     {
 
+        if ($soutake === "zero") {
+            $soutake = 0;
+        }
+
         switch ($soutake || $soutake === 0) {
 
                 // 2cmより大きい(小さすぎる)
@@ -698,6 +745,10 @@ class Size
 
     public static function matashitaCheck($matashita)
     {
+
+        if ($matashita === "zero") {
+            $matashita = 0;
+        }
 
         switch ($matashita || $matashita === 0) {
 
