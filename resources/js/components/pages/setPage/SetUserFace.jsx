@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import { memo, useCallback, useContext, useEffect, useRef, useState } from "react";
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
@@ -36,6 +36,10 @@ const useStyles = makeStyles({
     iconimg: {
         width: '100%',
         maxWidth: '50px',
+    },
+    input: {
+        opacity: 0,
+        display: 'none',
     }
 });
 
@@ -135,9 +139,45 @@ export const SetUserFace = memo(() => {
                     </div>
                 </div>
             ) : <p>画像がありません</p>}
-            <div className={classes.uploadwrap}>
+
+            {context.contextName ? (
+                <>
+                    {context.contextName.faceImg ? (
+                        <Button
+                            style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }}
+                            type="button"
+                            disabled={!completedCrop?.width || !completedCrop?.height}
+                            onClick={() =>
+                                generateDownload(previewCanvasRef.current, completedCrop)
+                            }
+                        >
+                            フェイス画像を削除する
+                        </Button>
+                    ) : (
+                        <p>画像なし</p>
+                    )}
+                </>
+            ) : <p>なし</p>}
+
+            {/* <div className={classes.uploadwrap}>
                 <input type="file" accept="image/*" onChange={onSelectFile} />
-            </div>
+            </div> */}
+
+            <Button
+                component="label"
+                for="file_input"
+                style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", margin: "10px 0" }}
+            >
+                フェイス画像を選択する
+                <input
+                    type="file"
+                    className={classes.input}
+                    accept="image/*"
+                    id="file_input"
+                    onChange={onSelectFile}
+                />
+            </Button>
+
             <ReactCrop
                 src={upImg}
                 onImageLoaded={onLoad}
@@ -162,8 +202,11 @@ export const SetUserFace = memo(() => {
                         <p className={classes.imgp}>選択されたサイズ</p>
                     </div>
                     <div style={{ textAlign: "center" }}>
-                        <button
-                            style={{ backgroundColor: "#484848", color: "white", padding: "10px 50px", display: "inline-block", borderRadius: "10px", fontSize: "20px" }}
+                        <Button
+                            style={{
+                                backgroundColor: "#0080E4", width:
+                                    "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                            }}
                             type="button"
                             disabled={!completedCrop?.width || !completedCrop?.height}
                             onClick={() =>
@@ -171,7 +214,7 @@ export const SetUserFace = memo(() => {
                             }
                         >
                             Faceを登録
-                        </button>
+                        </Button>
                     </div>
                 </>
             ) : <></>}
