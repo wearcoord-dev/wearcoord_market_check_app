@@ -137,6 +137,11 @@ Route::get('/deleteaccount', function (Request $request) {
 
 Route::post('/deleteaccount', [App\Http\Controllers\UserController::class, "deleteAccount"]);
 
+Route::get('/setting/deleteimg', function (Request $request) {
+});
+
+Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "deleteFaceImg"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 
