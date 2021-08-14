@@ -12,6 +12,8 @@ const useStyles = makeStyles({
     faceref: {
         display: 'flex',
         alignItems: 'flex-end',
+        maxWidth: "500px",
+        margin: "auto",
     },
     imgbox: {
         width: '50%',
@@ -172,7 +174,7 @@ export const SetUserFace = memo(() => {
                 <>
                     {context.contextName.faceImg ? (
                         <Button
-                            style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }}
+                            style={{ display: "block", margin: "10px auto", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff"}}
                             onClick={onClickDelete}
                         >
                             フェイス画像を削除する
@@ -190,7 +192,7 @@ export const SetUserFace = memo(() => {
             <Button
                 component="label"
                 htmlFor="file_input"
-                style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", margin: "10px 0" }}
+                style={{ display: "block", margin: "10px auto", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", textAlign: "center" }}
             >
                 フェイス画像を選択する
                 <input
