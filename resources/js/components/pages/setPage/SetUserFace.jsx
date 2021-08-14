@@ -6,6 +6,7 @@ import { useCreateUserFace } from "../../../hooks/user/useCreateUserFace";
 import { UserContext } from "../../providers/UserProvider";
 import sampleimg from "../../../../../public/img/others/face/face_crop_sample.png"
 import noimg from "../../../../../public/img/others/face/noimg.png"
+import axios from "axios";
 
 const useStyles = makeStyles({
     faceref: {
@@ -50,7 +51,7 @@ export const SetUserFace = memo(() => {
     const { CreateUserFace } = useCreateUserFace();
     const context = useContext(UserContext);
 
-    console.log(context.contextName);
+    // console.log(context.contextName);
 
     const [upImg, setUpImg] = useState();
     const [trimmedSrc, setTrimmedSrc] = useState(null);
@@ -59,6 +60,33 @@ export const SetUserFace = memo(() => {
     const previewCanvasRef = useRef(null);
     const [crop, setCrop] = useState({ unit: '%', width: 30, aspect: 1 / 1.15 });
     const [completedCrop, setCompletedCrop] = useState(null);
+
+    // 既存の画像を削除
+
+    const onClickDelete  = () => {
+        console.log(context.contextName.id);
+
+        const header = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }
+        }
+
+        const setData = {
+            "id": context.contextName.id,
+        }
+        const url = '/api/setting/deleteimg';
+        // console.log(setData);
+
+        axios.post(url, setData, header).then((res) => {
+            // console.log(res);
+            // history.push('/main/mycoord');
+            window.location.href = '/main/settings/face';
+        }).catch(() => {
+        }).finally(() => {
+        });
+    }
 
     function generateDownload(canvas, crop) {
         if (!crop || !canvas) {
@@ -145,16 +173,12 @@ export const SetUserFace = memo(() => {
                     {context.contextName.faceImg ? (
                         <Button
                             style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }}
-                            type="button"
-                            disabled={!completedCrop?.width || !completedCrop?.height}
-                            onClick={() =>
-                                generateDownload(previewCanvasRef.current, completedCrop)
-                            }
+                            onClick={onClickDelete}
                         >
                             フェイス画像を削除する
                         </Button>
                     ) : (
-                        <p>画像なし</p>
+                        <></>
                     )}
                 </>
             ) : <p>なし</p>}
@@ -165,7 +189,7 @@ export const SetUserFace = memo(() => {
 
             <Button
                 component="label"
-                for="file_input"
+                htmlFor="file_input"
                 style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width: "200px", padding: "10px 0", color: "#fff", margin: "10px 0" }}
             >
                 フェイス画像を選択する

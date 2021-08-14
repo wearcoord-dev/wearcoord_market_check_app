@@ -36,6 +36,18 @@ class UserController extends Controller
         return 'ok!';
     }
 
+    public function deleteFaceImg(Request $request)
+    {
+
+        $user_id = $request['id'];
+
+        DB::table('users')->where('id', $user_id)->update([
+            'faceImg' => null
+        ]);
+
+        return $user_id;
+    }
+
     public function addCart(Request $request)
     {
         $type = $request['type'];
