@@ -41,8 +41,9 @@ export const ItemSearchShoes = memo((props) => {
             <div>
                 <SearchBrandShoes setValue={setValue} value={value} />
                 <SearchColor setValueColor={setValueColor} valueColor={valueColor} />
+                <div style={{ height: "40px" }}></div>
 
-                <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px' }} variant="contained" color="primary" onClick={handleClick}>
+                <Button style={{ position: "absolute", bottom: "-50px", left: "50%", transform: "translateX(-50%)", width: "250px", height: '40px', backgroundColor: "#0080E4", color: "#fff" }} variant="contained" onClick={handleClick}>
                     <SearchIcon style={{ paddingRight: "6px" }} />
                     検索する
                 </Button>
