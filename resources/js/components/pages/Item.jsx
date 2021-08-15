@@ -1,5 +1,5 @@
-import { Backdrop, Button, Fade, Grid, makeStyles, Modal, Popper } from "@material-ui/core";
-import { memo, useContext, useEffect, useState } from "react";
+import { Backdrop, Button, Fade, Grid, makeStyles, Modal, Popper, Snackbar } from "@material-ui/core";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import { ItemWearSearch } from "../organisms/layouts/item/ItemWearSearch";
 import { useAllCaps } from "../../hooks/selectwear/useAllCaps";
@@ -12,6 +12,7 @@ import { useGetItemDetail } from "../../hooks/item/useGetItemDetail";
 import { useRegisterWearItem } from "../../hooks/item/useRegisterWearItem";
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import { ItemFirstPage } from "../organisms/layouts/item/firstpage/ItemFirstPage";
+import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,6 +69,112 @@ export const Item = memo(() => {
     const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [shoesSel, setShoesSel] = useState({ brand: "", color: "", category: "", wear: "" });
+
+    // スナックバー用検索結果のカウントを保持
+    const [count, setCount] = useState();
+    const isFirstRenderCaps = useRef(false);
+    const isFirstRenderTops = useRef(false);
+    const isFirstRenderPants = useRef(false);
+    const isFirstRenderShoes = useRef(false);
+
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    useEffect(() => {
+        isFirstRenderCaps.current = true;
+        isFirstRenderTops.current = true;
+        isFirstRenderPants.current = true;
+        isFirstRenderShoes.current = true;
+    }, [])
+
+    // スナックバー
+    const [openSnack, setOpenSnack] = useState(false);
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenSnack(false);
+    };
+
+    useEffect(() => {
+        if (!isFirstRenderCaps.current) {
+
+            // キャップスの数取得
+            if (userCaps[0]) {
+                setCount(userCaps[0].count);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+            if (userCaps.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderCaps.current = false;
+        }
+    }, [userCaps]);
+
+    useEffect(() => {
+        if (!isFirstRenderTops.current) {
+
+            // トップスの数取得
+            if (userTops[0]) {
+                setCount(userTops[0].count);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+            if (userTops.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderTops.current = false;
+        }
+    }, [userTops]);
+
+    useEffect(() => {
+        if (!isFirstRenderPants.current) {
+
+            // パンツの数取得
+            if (userPants[0]) {
+                setCount(userPants[0].count);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+            if (userPants.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderPants.current = false;
+        }
+    }, [userPants]);
+
+    useEffect(() => {
+        if (!isFirstRenderShoes.current) {
+
+            // シューズの数取得
+            if (userShoes[0]) {
+                setCount(userShoes[0].count);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+            if (userShoes.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                setOpenSnack(true);
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderShoes.current = false;
+        }
+    }, [userShoes]);
 
 
     const onClickFetchCaps = (props) => {
@@ -178,7 +285,7 @@ export const Item = memo(() => {
         }
     }
 
-    console.log(dataArray);
+    // console.log(dataArray);
 
     // モーダル表示
 
@@ -294,8 +401,10 @@ export const Item = memo(() => {
                         {dataArray ? (itemGetDetail ? (
                             <>
                                 <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
-                                <Button style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
-                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }} aria-describedby={id} variant="contained" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
+                                <Button style={{
+                                    left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                        "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                                }} aria-describedby={id} variant="contained" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
                                     <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
                                     ウェアを着る
                                 </Button>
@@ -340,6 +449,12 @@ export const Item = memo(() => {
                     handleClick={handleClick}
                 />
             </Popper>
+
+            <Snackbar open={openSnack} autoHideDuration={3000} onClose={handleCloseSnack}>
+                <Alert onClose={handleCloseSnack} severity="success">
+                    {count}件ヒットしました！
+                </Alert>
+            </Snackbar>
         </>
     )
 })
