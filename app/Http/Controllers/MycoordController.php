@@ -372,11 +372,15 @@ class MycoordController extends Controller
         if($type == 'tops'){
             if($gender == 'male'){
                 $category = '508759';
+            }else{
+                $category = '508803';
             }
         }
         if($type == 'pants'){
             if($gender == 'male'){
                 $category = '508772';
+            }else{
+                $category = '565816';
             }
         }
 

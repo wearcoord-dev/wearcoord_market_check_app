@@ -17,6 +17,7 @@ export const SearchBrandPantsFemale = memo((props) => {
         lecoq: '',
         lacoste: '',
         yuuchan: '',
+        ralosso: '',
     }
 
     const { setValue, value } = props;
@@ -66,6 +67,9 @@ export const SearchBrandPantsFemale = memo((props) => {
         }
         if(value == 'yuuchan'){
             useGetcheck( {yuuchan: true} );
+        }
+        if(value == 'ralosso'){
+            useGetcheck( {ralosso: true} );
         }
 
     }, [value])
@@ -170,6 +174,12 @@ export const SearchBrandPantsFemale = memo((props) => {
                 {/* <input type="radio" id="lacoste" className="radioInput" name="brand" value="lacoste" onChange={handleInputChange}
                 onClick={onClickInput} />
                 <label htmlFor="lacoste" className="radioInputLabel">Lacoste</label> */}
+
+                <input type="radio" id="ralosso" className="radioInput" name="brand" value="ralosso" onChange={handleInputChange}
+                onClick={onClickInput}
+                checked={check.ralosso}
+                 />
+                <label htmlFor="ralosso" className="radioInputLabel">ralosso</label>
             </div>
         </>
     )
