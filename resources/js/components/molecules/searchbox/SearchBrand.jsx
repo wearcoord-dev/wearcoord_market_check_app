@@ -49,6 +49,9 @@ export const SearchBrand = memo((props) => {
 
                 <input type="radio" id="ellesse" className="radioInput" name="brand" value="ellesse" onChange={handleInputChange} />
                 <label htmlFor="ellesse" className="radioInputLabel">Ellesse</label>
+
+                <input type="radio" id="ralosso" className="radioInput" name="brand" value="ralosso" onChange={handleInputChange} />
+                <label htmlFor="ralosso" className="radioInputLabel">ralosso</label>
             </div>
         </>
     )
