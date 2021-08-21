@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         boxSizing: 'border-box',
         justifyContent: 'center',
-        margin: '20px 0',
+        margin: '20px auto',
+        maxWidth: '700px',
     },
     root: {
         display: 'flex',
