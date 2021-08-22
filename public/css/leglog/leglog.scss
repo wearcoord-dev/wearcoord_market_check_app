@@ -229,6 +229,8 @@ input[name="tab_item"] {
     opacity: 0;
 }
 
+// 男性
+
 /*クリックで中身表示*/
 .hidden_box #asics:checked~.hidden_show-asics {
     padding: 10px 0;
@@ -285,6 +287,69 @@ input[name="tab_item"] {
 }
 
 .hidden_box #lecoq:checked~.hidden_show-lecoq {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+// 女性
+
+/*クリックで中身表示*/
+.hidden_box #asics_female:checked~.hidden_show-asics_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #adidas_female:checked~.hidden_show-adidas_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #fila_female:checked~.hidden_show-fila_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #nike_female:checked~.hidden_show-nike_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #prince_female:checked~.hidden_show-prince_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #diadora_female:checked~.hidden_show-diadora_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #ellese_female:checked~.hidden_show-ellese_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #babolat_female:checked~.hidden_show-babolat_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #hydrogen_female:checked~.hidden_show-hydrogen_female {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #lecoq_female:checked~.hidden_show-lecoq_female {
     padding: 10px 0;
     height: auto;
     opacity: 1;

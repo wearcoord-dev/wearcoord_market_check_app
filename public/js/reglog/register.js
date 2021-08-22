@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
+    // 男性
+
     // チェックボックスのHTML要素を取得
     var asics = document.querySelector("#asics");
     var label_asics = document.getElementById('label-asics');
@@ -124,6 +126,135 @@ window.addEventListener('DOMContentLoaded', function () {
             label_lecoq.classList.add('addBG');
         } else {
             label_lecoq.classList.remove('addBG');
+        }
+    }
+
+    // 女性
+
+    // チェックボックスのHTML要素を取得
+    var asics_female = document.querySelector("#asics_female");
+    var label_asics_female = document.getElementById('label-asics_female');
+    var adidas_female = document.querySelector("#adidas_female");
+    var label_adidas_female = document.getElementById('label-adidas_female');
+    var fila_female = document.querySelector("#fila_female");
+    var label_fila_female = document.getElementById('label-fila_female');
+    var nike_female = document.querySelector("#nike_female");
+    var label_nike_female = document.getElementById('label-nike_female');
+    var prince_female = document.querySelector("#prince_female");
+    var label_prince_female = document.getElementById('label-prince_female');
+    var diadora_female = document.querySelector("#diadora_female");
+    var label_diadora_female = document.getElementById('label-diadora_female');
+    var ellese_female = document.querySelector("#ellese_female");
+    var label_ellese_female = document.getElementById('label-ellese_female');
+    var babolat_female = document.querySelector("#babolat_female");
+    var label_babolat_female = document.getElementById('label-babolat_female');
+    // var hydrogen = document.querySelector("#hydrogen");
+    // var label_hydrogen = document.getElementById('label-hydrogen');
+    var lecoq_female = document.querySelector("#lecoq_female");
+    var label_lecoq_female = document.getElementById('label-lecoq_female');
+
+    changeBGFemale();
+
+    asics_female.addEventListener('change', function () {
+        // console.log(this.checked); // 選択されたらtrue、選択解除はfalse
+        changeBGFemale();
+    });
+
+    adidas_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    fila_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    nike_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    prince_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    diadora_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    ellese_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    babolat_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    // hydrogen_female.addEventListener('change', function () {
+    //     changeBGFemale();
+    // });
+
+    lecoq_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
+
+    function changeBGFemale(){
+        if (asics_female.checked) {
+            label_asics_female.classList.add('addBG');
+        } else {
+            label_asics_female.classList.remove('addBG');
+        }
+
+        if (adidas_female.checked) {
+            label_adidas_female.classList.add('addBG');
+        } else {
+            label_adidas_female.classList.remove('addBG');
+        }
+
+        if (fila_female.checked) {
+            label_fila_female.classList.add('addBG');
+        } else {
+            label_fila_female.classList.remove('addBG');
+        }
+
+        if (nike_female.checked) {
+            label_nike_female.classList.add('addBG');
+        } else {
+            label_nike_female.classList.remove('addBG');
+        }
+
+        if (prince_female.checked) {
+            label_prince_female.classList.add('addBG');
+        } else {
+            label_prince_female.classList.remove('addBG');
+        }
+
+        if (diadora_female.checked) {
+            label_diadora_female.classList.add('addBG');
+        } else {
+            label_diadora_female.classList.remove('addBG');
+        }
+
+        if (ellese_female.checked) {
+            label_ellese_female.classList.add('addBG');
+        } else {
+            label_ellese_female.classList.remove('addBG');
+        }
+
+        if (babolat_female.checked) {
+            label_babolat_female.classList.add('addBG');
+        } else {
+            label_babolat_female.classList.remove('addBG');
+        }
+
+        // if (hydrogen_female.checked) {
+        //     label_hydrogen_female.classList.add('addBG');
+        // } else {
+        //     label_hydrogen_female.classList.remove('addBG');
+        // }
+
+        if (lecoq_female.checked) {
+            label_lecoq_female.classList.add('addBG');
+        } else {
+            label_lecoq_female.classList.remove('addBG');
         }
     }
 
