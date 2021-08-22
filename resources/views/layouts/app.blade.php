@@ -110,5 +110,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script type="text/javascript" src="{{ asset('js/reglog/register.js') }}"></script>
 </body>
 </html>
