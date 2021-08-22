@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         width: '90%',
         margin: '0 auto 70px',
+        maxWidth: '700px',
     },
     gridList: {
         // width: 500,
