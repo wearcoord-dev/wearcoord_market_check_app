@@ -61,16 +61,16 @@
                                     3.CSSに追加 --}}
 
                                     <div class="tabBrandList">
-                                        <label for="asics">Asics</label>
-                                        <label for="adidas">Adidas</label>
-                                        <label for="fila">FILA</label>
-                                        <label for="nike">NIKE</label>
-                                        <label for="prince">Prince</label>
-                                        <label for="diadora">Diadora</label>
-                                        <label for="ellese">ellese</label>
-                                        <label for="babolat">Babolat</label>
-                                        <label for="hydrogen">Hydrogen</label>
-                                        <label for="lecoq">Lecoq</label>
+                                        <label id="label-asics" for="asics">Asics</label>
+                                        <label id="label-adidas" for="adidas">Adidas</label>
+                                        <label id="label-fila" for="fila">FILA</label>
+                                        <label id="label-nike" for="nike">NIKE</label>
+                                        <label id="label-prince" for="prince">Prince</label>
+                                        <label id="label-diadora" for="diadora">Diadora</label>
+                                        <label id="label-ellese" for="ellese">ellese</label>
+                                        <label id="label-babolat" for="babolat">Babolat</label>
+                                        <label id="label-hydrogen" for="hydrogen">Hydrogen</label>
+                                        <label id="label-lecoq" for="lecoq">Lecoq</label>
                                     </div>
 
 

@@ -182,9 +182,10 @@ input[name="tab_item"] {
 .tabBrandList {
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     flex-wrap: wrap;
+    max-width: 270px;
 
     label {
         cursor: pointer;
@@ -330,4 +331,10 @@ input[name="tab_item"] {
     left : 5%;                              /* 吹き出し口の横位置 */
     content: "";                       /* コンテンツの挿入 */
     position: absolute;                /* 親要素を基準 */
+  }
+
+  .addBG{
+    background-color: #216496;
+    color: #fff;
+    border: none !important;
   }
