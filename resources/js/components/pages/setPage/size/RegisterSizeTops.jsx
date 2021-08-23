@@ -257,7 +257,7 @@ export const RegisterSizeTops = memo(() => {
                 <ul>
 
                     <li className={classes.formwrap}>
-                        <p className={classes.title}>サイズ :</p>
+                        <p className={classes.title}>普段のサイズ :</p>
                         <div className={classes.formbox}>
                             <select value={selectTopSize} {...register("size", { required: true })} onChange={(value)=> changeTopsSize(event.target.value)}>
                                 <option hidden>選択してください</option>

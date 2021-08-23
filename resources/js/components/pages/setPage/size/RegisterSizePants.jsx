@@ -269,10 +269,11 @@ export const RegisterSizePants = memo(() => {
                 <ul>
 
                     <li className={classes.formwrap}>
-                        <p className={classes.title}>サイズ :</p>
+                        <p className={classes.title}>普段のサイズ :</p>
                         <div className={classes.formbox}>
                             <select value={selectPantsSize} {...register("size", { required: true })} onChange={(value) => changePantsSize(event.target.value)}>
                                 <option hidden>選択してください</option>
+                                <option value="ss">SS</option>
                                 <option value="s">S</option>
                                 <option value="m">M</option>
                                 <option value="l">L</option>
