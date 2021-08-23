@@ -67,7 +67,7 @@ export const Home = memo(() => {
 
     const body = (
         <div className={classes.paper}>
-                <CancelIcon color="primary" className={classes.icon} onClick={handleClose} />
+                {/* <CancelIcon color="primary" className={classes.icon} onClick={handleClose} /> */}
             <Swiper
                 slidesPerView={1}
                 navigation

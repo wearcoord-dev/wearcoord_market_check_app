@@ -148,8 +148,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var label_ellese_female = document.getElementById('label-ellese_female');
     var babolat_female = document.querySelector("#babolat_female");
     var label_babolat_female = document.getElementById('label-babolat_female');
-    // var hydrogen = document.querySelector("#hydrogen");
-    // var label_hydrogen = document.getElementById('label-hydrogen');
+    var hydrogen_female = document.querySelector("#hydrogen_female");
+    var label_hydrogen_female = document.getElementById('label-hydrogen_female');
     var lecoq_female = document.querySelector("#lecoq_female");
     var label_lecoq_female = document.getElementById('label-lecoq_female');
 
@@ -188,9 +188,9 @@ window.addEventListener('DOMContentLoaded', function () {
         changeBGFemale();
     });
 
-    // hydrogen_female.addEventListener('change', function () {
-    //     changeBGFemale();
-    // });
+    hydrogen_female.addEventListener('change', function () {
+        changeBGFemale();
+    });
 
     lecoq_female.addEventListener('change', function () {
         changeBGFemale();
@@ -245,11 +245,11 @@ window.addEventListener('DOMContentLoaded', function () {
             label_babolat_female.classList.remove('addBG');
         }
 
-        // if (hydrogen_female.checked) {
-        //     label_hydrogen_female.classList.add('addBG');
-        // } else {
-        //     label_hydrogen_female.classList.remove('addBG');
-        // }
+        if (hydrogen_female.checked) {
+            label_hydrogen_female.classList.add('addBG');
+        } else {
+            label_hydrogen_female.classList.remove('addBG');
+        }
 
         if (lecoq_female.checked) {
             label_lecoq_female.classList.add('addBG');

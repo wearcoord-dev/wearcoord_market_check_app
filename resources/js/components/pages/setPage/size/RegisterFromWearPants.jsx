@@ -15,7 +15,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
+}
 
 const useStyles = makeStyles({
     info: {
@@ -211,7 +211,7 @@ export const RegisterFromWearPants = memo(() => {
         setOpen(true);
 
         // 3秒後にコーデ画面トップへ
-        setTimeout(function(){
+        setTimeout(function () {
             // history.push('/main/mycoord'); これはcontextが更新されない
             window.location.href = "/main/mycoord";
         }, 3000);
@@ -223,70 +223,75 @@ export const RegisterFromWearPants = memo(() => {
     };
 
     const handleCloseSnack = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
+        if (reason === 'clickaway') {
+            return;
+        }
 
-      setOpen(false);
+        setOpen(false);
     };
 
     return (
         <>
             <p className={classes.info}>普段着ているパンツを選んで、ご自身のウェアサイズデータとして登録します。以下の検索フォームからウェアを選んでください。</p>
 
+            {/* 男性ウェア */}
             {userCheck.gender == 'male' ? (
                 <>
-            <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
-                <div className={classes.formwrap}>
-                    <p className={classes.title}>ブランド :</p>
-                    <div className={classes.formbox}>
-                        <select {...register("brand")}>
-                            <option value="nike">Nike</option>
-                            <option value="hydrogen">Hydrogen</option>
-                        </select>
-                    </div>
-                </div>
-                <div className={classes.formwrap}>
-                    <p className={classes.title}>サイズ :</p>
-                    <div className={classes.formbox}>
-                        <select {...register("size")}>
-                            <option value="s">S</option>
-                            <option value="m">M</option>
-                            <option value="l">L</option>
-                        </select>
-                    </div>
-                </div>
-                <input type="hidden" {...register("type")} value="pants" />
-                <input className={classes.searchinput} type="submit" value="ウェアを検索" />
-            </form>
+                    <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
+                        <div className={classes.formwrap}>
+                            <p className={classes.title}>ブランド :</p>
+                            <div className={classes.formbox}>
+                                <select {...register("brand")}>
+                                    <option value="nike">Nike</option>
+                                    <option value="hydrogen">Hydrogen</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className={classes.formwrap}>
+                            <p className={classes.title}>サイズ :</p>
+                            <div className={classes.formbox}>
+                                <select {...register("size")}>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" {...register("type")} value="pants" />
+                        <input className={classes.searchinput} type="submit" value="ウェアを検索" />
+                    </form>
                 </>
             ) : (
+
+                // 女性ウェア
                 <>
-            <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
-                <div className={classes.formwrap}>
-                    <p className={classes.title}>ブランド :</p>
-                    <div className={classes.formbox}>
-                        <select {...register("brand")}>
-                            <option value="yonex">Yonex</option>
-                            <option value="diadora">Diadora</option>
-                            <option value="babolat">Babolat</option>
-                        </select>
-                    </div>
-                </div>
-                <div className={classes.formwrap}>
-                    <p className={classes.title}>サイズ :</p>
-                    <div className={classes.formbox}>
-                        <select {...register("size")}>
-                            <option value="s">S</option>
-                            <option value="m">M</option>
-                            <option value="l">L</option>
-                            <option value="ll">LL</option>
-                        </select>
-                    </div>
-                </div>
-                <input type="hidden" {...register("type")} value="pants" />
-                <input className={classes.searchinput} type="submit" value="ウェアを検索" />
-            </form>
+                    <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
+                        <div className={classes.formwrap}>
+                            <p className={classes.title}>ブランド :</p>
+                            <div className={classes.formbox}>
+                                <select {...register("brand")}>
+                                    <option value="yonex">Yonex</option>
+                                    <option value="diadora">Diadora</option>
+                                    <option value="babolat">Babolat</option>
+                                    <option value="hydrogen">Hydrogen</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className={classes.formwrap}>
+                            <p className={classes.title}>サイズ :</p>
+                            <div className={classes.formbox}>
+                                <select {...register("size")}>
+                                    <option value="ss">SS</option>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="ll">LL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" {...register("type")} value="pants" />
+                        <input className={classes.searchinput} type="submit" value="ウェアを検索" />
+                    </form>
                 </>
             )}
 
@@ -314,8 +319,10 @@ export const RegisterFromWearPants = memo(() => {
                                     <div className={classes.imgbox}>
                                         <img style={{ width: "100%" }} className="wearImg" src={`/img/rakutenlist/${context.contextName.gender}/${wearInfo.category}/${wearInfo.url}`} alt="" />
                                     </div>
-                                    <Button style={{ left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
-                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px" }} variant="contained" onClick={onClickWearItem.bind(this, wearInfo)}>
+                                    <Button style={{
+                                        left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
+                                            "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
+                                    }} variant="contained" onClick={onClickWearItem.bind(this, wearInfo)}>
                                         <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
                                         このウェアを選ぶ
                                     </Button>

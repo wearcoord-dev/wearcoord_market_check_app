@@ -435,7 +435,7 @@
                                         <label id="label-diadora_female" for="diadora_female">Diadora</label>
                                         <label id="label-ellese_female" for="ellese_female">ellese</label>
                                         <label id="label-babolat_female" for="babolat_female">Babolat</label>
-                                        {{-- <label id="label-hydrogen_female" for="hydrogen_female">Hydrogen</label> --}}
+                                        <label id="label-hydrogen_female" for="hydrogen_female">Hydrogen</label>
                                         <label id="label-lecoq_female" for="lecoq_female">Lecoq</label>
                                     </div>
 
@@ -706,7 +706,6 @@
                                           <!--ここまで-->
                                         </div>
 
-
                                         {{-- lecoq --}}
                                         <input type="radio" id="lecoq_female" name="showbrand_female"/>
                                         <div class="hidden_show-lecoq_female hidden_show">
@@ -735,6 +734,34 @@
                                             class="radioInput" id="75" value="75" name="coorditem" >
                                            <label class="genderRadiobox" for="75">
                                                <img class="wearSet" src="{{asset('/img/firstcoord/75.png')}}" alt="">
+                                           </label>
+
+                                        </div>
+                                          <!--ここまで-->
+                                        </div>
+
+                                        {{--  hydrogen --}}
+                                        <input type="radio" id="hydrogen_female" name="showbrand_female"/>
+                                        <div class="hidden_show-hydrogen_female hidden_show">
+                                          <!--非表示ここから-->
+                                          <p class="coordTitle">Hydrogenのコーデ</p>
+                                          <div class="coordWrapper">
+                                            <input type="radio"
+                                            class="radioInput" id="76" value="76" name="coorditem" >
+                                           <label class="genderRadiobox" for="76">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/76.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="77" value="77" name="coorditem" >
+                                           <label class="genderRadiobox" for="77">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/77.png')}}" alt="">
+                                           </label>
+
+                                            <input type="radio"
+                                            class="radioInput" id="78" value="78" name="coorditem" >
+                                           <label class="genderRadiobox" for="78">
+                                               <img class="wearSet" src="{{asset('/img/firstcoord/78.png')}}" alt="">
                                            </label>
 
                                         </div>

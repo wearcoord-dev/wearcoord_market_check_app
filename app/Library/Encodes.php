@@ -423,6 +423,18 @@ class Encodes
             $gender = "female";
             $coordId = 75;
         }
+        if($data == "76"){
+            $gender = "female";
+            $coordId = 76;
+        }
+        if($data == "77"){
+            $gender = "female";
+            $coordId = 77;
+        }
+        if($data == "78"){
+            $gender = "female";
+            $coordId = 78;
+        }
 
 
         return ["gender" => $gender, "coordId" => $coordId];

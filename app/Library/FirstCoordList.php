@@ -739,5 +739,35 @@ class FirstCoordList
                 'mannequin' => $url,
             ]);
         }
+        if ($coordId == 76) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 669,
+                'pants' => 421,
+                'shoes' => 171,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 77) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 669,
+                'pants' => 419,
+                'shoes' => 171,
+                'mannequin' => $url,
+            ]);
+        }
+        if ($coordId == 78) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 668,
+                'pants' => 417,
+                'shoes' => 171,
+                'mannequin' => $url,
+            ]);
+        }
     }
 }
