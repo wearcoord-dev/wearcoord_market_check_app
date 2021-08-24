@@ -83,6 +83,48 @@ class Rakuten
         return ['items' => $items];
     }
 
+    public static function SearchAvailabilityAPI($getitem)
+    {
+
+        $client = new RakutenRws_Client();
+
+        //定数化
+        // define("RAKUTEN_APPLICATION_ID", config('app.rakuten_id'));
+        // define("RAKUTEN_APPLICATION_SEACRET", config('app.rakuten_key'));
+
+        //アプリIDをセット！
+        $client->setApplicationId(RAKUTEN_APPLICATION_ID);
+
+        //リクエストから検索キーワードを取り出し
+        $itemId = $getitem;
+
+        // IchibaItemSearch API から、指定条件で検索
+        if (!empty($itemId)) {
+            $response = $client->execute('IchibaItemSearch', array(
+                //入力パラメーター
+                'itemCode' => $itemId,
+            ));
+
+            // レスポンスが正しいかを isOk() で確認することができます
+            if ($response->isOk()) {
+                $items = array();
+                //配列で結果をぶち込んで行きます
+                foreach ($response as $item) {
+
+                    $items = array(
+                        'availability' => $item['availability'],
+                        'itemCode' => $item['itemCode'],
+                        // 'all' => $item,
+                    );
+                }
+            } else {
+                echo 'Error:' . $response->getMessage();
+            }
+        }
+
+        return ['items' => $items];
+    }
+
     public static function searchRakutenDB($type, $getItems, $color)
     {
         $wearType = $type;

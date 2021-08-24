@@ -54,7 +54,7 @@ class MycoordController extends Controller
         $type = $request->input('type');
         $page = $request->input('page');
 
-        if($category == null){
+        if ($category == null) {
             return;
         }
 
@@ -66,6 +66,45 @@ class MycoordController extends Controller
         // ddd($myDBitems);
 
         return response()->json($myDBitems);
+    }
+
+    // DBに販売可能有無を追加
+
+    public static function addAvailabilityDB()
+    {
+
+        // 使うとき/Library/Rakuten側をOFFにする
+
+        define("RAKUTEN_APPLICATION_ID", config('app.rakuten_id'));
+        define("RAKUTEN_APPLICATION_SEACRET", config('app.rakuten_key'));
+
+        // ここでウェアを指定
+        $type = "shoes";
+        $items = DB::table($type . '_rakuten_apis')->get();
+
+
+        foreach ($items as $item) {
+
+            $itemNum = $item->itemId;
+
+            sleep(1);
+
+            // 楽天APIを叩く
+            $getItems = Rakuten::SearchAvailabilityAPI($itemNum);
+
+
+            if (isset($getItems['items']['availability'])) {
+                $result = DB::table($type . '_rakuten_apis')->where('itemId', $itemNum)->update([
+                    'availability' => $getItems['items']['availability']
+                ]);
+            } else {
+                $result = DB::table($type . '_rakuten_apis')->where('itemId', $itemNum)->update([
+                    'availability' => null
+                ]);
+            }
+        }
+
+        return 'OK';
     }
 
     // DBにブランド名追加を自動化
@@ -369,17 +408,17 @@ class MycoordController extends Controller
 
         $category = '';
 
-        if($type == 'tops'){
-            if($gender == 'male'){
+        if ($type == 'tops') {
+            if ($gender == 'male') {
                 $category = '508759';
-            }else{
+            } else {
                 $category = '508803';
             }
         }
-        if($type == 'pants'){
-            if($gender == 'male'){
+        if ($type == 'pants') {
+            if ($gender == 'male') {
                 $category = '508772';
-            }else{
+            } else {
                 $category = '565816';
             }
         }

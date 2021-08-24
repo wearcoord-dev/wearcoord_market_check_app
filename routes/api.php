@@ -92,6 +92,8 @@ Route::get('/getsizewear', [App\Http\Controllers\UserController::class, "getSize
 
 Route::get('/getcalcsize', [App\Http\Controllers\UserController::class, "getCalcSize"]);
 
+Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class, "addAvailabilityDB"]);
+
 Route::get('/registerwearitem', function (Request $request) {
 });
 
