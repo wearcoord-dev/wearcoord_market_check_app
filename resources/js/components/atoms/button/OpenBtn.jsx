@@ -6,6 +6,7 @@ import { Backdrop, Fade, Modal } from "@material-ui/core";
 import { UserContext } from "../../providers/UserProvider";
 import { usePostItemToCart } from "../../../hooks/mycoord/usePostItemToCart";
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import nofFindImg from '../../../../../public/img/others/itemDetail/notfindpng.png'
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -19,6 +20,19 @@ const useStyles = makeStyles((theme) => ({
         padding: "10px",
         boxSizing: "border-box",
     },
+    img: {
+        width: '40%',
+        width: '200px',
+    },
+    div: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    notFindText: {
+        padding: '10px',
+        fontWeight: 'bold',
+    }
 }));
 
 export const OpenBtn = memo((props) => {
@@ -44,8 +58,10 @@ export const OpenBtn = memo((props) => {
     useEffect(() => {
         if (userItemInfo) {
             sethtmltext(userItemInfo[0].moshimoLink);
+            // console.log(userItemInfo[0].availability);
         }
     }, [userItemInfo])
+
 
     const handleClose = () => {
         setOpen(false);
@@ -109,8 +125,14 @@ export const OpenBtn = memo((props) => {
                     <div className={classes.paper}>
                         {userItemInfo ? (
                             <>
-                                {/* <p>{userItemInfo[0].brand}</p> */}
+                            {userItemInfo[0].availability ? (
                                 <div dangerouslySetInnerHTML={{ __html: htmltext }}></div>
+                            ) : (
+                                <div className={classes.div}>
+                                    <img className={classes.img} src={nofFindImg} alt="" />
+                                    <p className={classes.notFindText}>こちらのアイテムは取り扱いを終了しました</p>
+                                </div>
+                            )}
                             </>
                         ) : <div></div>}
                     </div>

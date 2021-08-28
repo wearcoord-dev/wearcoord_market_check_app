@@ -223,6 +223,8 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="nike">Nike</option>
                                     <option value="adidas">Adidas</option>
                                     <option value="asics">Asics</option>
+                                    <option value="diadora">Diadora</option>
+                                    <option value="prince">Prince</option>
                                 </select>
                             </div>
                         </div>
