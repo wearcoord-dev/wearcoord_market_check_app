@@ -254,6 +254,7 @@ export const RegisterFromWearTops = memo(() => {
                                 <select {...register("brand")}>
                                     <option value="fila">Fila</option>
                                     <option value="babolat">Babolat</option>
+                                    <option value="lecoq">Lecoq</option>
                                 </select>
                             </div>
                         </div>
