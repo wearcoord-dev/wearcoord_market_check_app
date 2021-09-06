@@ -225,6 +225,13 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="asics">Asics</option>
                                     <option value="diadora">Diadora</option>
                                     <option value="prince">Prince</option>
+                                    <option value="babolat">Babolat</option>
+                                    <option value="hydrogen">Hydrogen</option>
+                                    <option value="lecoq">lecoq</option>
+                                    <option value="lacoste">Lacoste</option>
+                                    <option value="ralosso">ralosso</option>
+                                    <option value="ellesse">ellesse</option>
+                                    <option value="fila">FILA</option>
                                 </select>
                             </div>
                         </div>
@@ -255,6 +262,12 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="fila">Fila</option>
                                     <option value="babolat">Babolat</option>
                                     <option value="lecoq">Lecoq</option>
+                                    <option value="prince">Prince</option>
+                                    <option value="ralosso">ralosso</option>
+                                    <option value="adidas">Adidas</option>
+                                    <option value="nike">Nike</option>
+                                    <option value="asics">Asics</option>
+                                    <option value="diadora">Diadora</option>
                                 </select>
                             </div>
                         </div>
