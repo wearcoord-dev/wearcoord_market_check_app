@@ -244,6 +244,12 @@ export const RegisterFromWearPants = memo(() => {
                                 <select {...register("brand")}>
                                     <option value="nike">Nike</option>
                                     <option value="hydrogen">Hydrogen</option>
+                                    <option value="lacoste">Lacoste</option>
+                                    <option value="lecoq">lecoq</option>
+                                    <option value="babolat">Babolat</option>
+                                    <option value="ellesse">ellesse</option>
+                                    <option value="fila">FILA</option>
+                                    <option value="asics">Asics</option>
                                 </select>
                             </div>
                         </div>
