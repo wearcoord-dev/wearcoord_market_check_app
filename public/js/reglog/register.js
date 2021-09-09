@@ -23,6 +23,10 @@ window.addEventListener('DOMContentLoaded', function () {
     var label_hydrogen = document.getElementById('label-hydrogen');
     var lecoq = document.querySelector("#lecoq");
     var label_lecoq = document.getElementById('label-lecoq');
+    var lacoste = document.querySelector("#lacoste");
+    var label_lacoste = document.getElementById('label-lacoste');
+    var ralosso = document.querySelector("#ralosso");
+    var label_ralosso = document.getElementById('label-ralosso');
 
     changeBG();
 
@@ -64,6 +68,14 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     lecoq.addEventListener('change', function () {
+        changeBG();
+    });
+
+    lacoste.addEventListener('change', function () {
+        changeBG();
+    });
+
+    ralosso.addEventListener('change', function () {
         changeBG();
     });
 
@@ -126,6 +138,18 @@ window.addEventListener('DOMContentLoaded', function () {
             label_lecoq.classList.add('addBG');
         } else {
             label_lecoq.classList.remove('addBG');
+        }
+
+        if (lacoste.checked) {
+            label_lacoste.classList.add('addBG');
+        } else {
+            label_lacoste.classList.remove('addBG');
+        }
+
+        if (ralosso.checked) {
+            label_ralosso.classList.add('addBG');
+        } else {
+            label_ralosso.classList.remove('addBG');
         }
     }
 

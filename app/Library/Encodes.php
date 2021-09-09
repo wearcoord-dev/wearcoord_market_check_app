@@ -435,6 +435,38 @@ class Encodes
             $gender = "female";
             $coordId = 78;
         }
+        if($data == "79"){
+            $gender = "male";
+            $coordId = 79;
+        }
+        if($data == "80"){
+            $gender = "male";
+            $coordId = 80;
+        }
+        if($data == "81"){
+            $gender = "male";
+            $coordId = 81;
+        }
+        if($data == "82"){
+            $gender = "male";
+            $coordId = 82;
+        }
+        if($data == "83"){
+            $gender = "male";
+            $coordId = 83;
+        }
+        if($data == "84"){
+            $gender = "male";
+            $coordId = 84;
+        }
+        if($data == "85"){
+            $gender = "male";
+            $coordId = 85;
+        }
+        if($data == "86"){
+            $gender = "male";
+            $coordId = 86;
+        }
 
 
         return ["gender" => $gender, "coordId" => $coordId];

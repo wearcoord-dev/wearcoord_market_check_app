@@ -292,6 +292,18 @@ input[name="tab_item"] {
     opacity: 1;
 }
 
+.hidden_box #lacoste:checked~.hidden_show-lacoste {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+.hidden_box #ralosso:checked~.hidden_show-ralosso {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
 // 女性
 
 /*クリックで中身表示*/
