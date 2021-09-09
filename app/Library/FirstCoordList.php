@@ -819,5 +819,91 @@ class FirstCoordList
                 'mannequin' => $url,
             ]);
         }
+
+// lacoste male
+
+        if ($coordId == 79) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 757,
+                'pants' => 426,
+                'shoes' => 223,
+                'mannequin' => "mens_170_long_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 80) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 755,
+                'pants' => 426,
+                'shoes' => 219,
+                'mannequin' => "mens_170_long_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 81) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 13,
+                'tops' => 753,
+                'pants' => 426,
+                'shoes' => 219,
+                'mannequin' => "mens_170_long_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 82) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 13,
+                'tops' => 410,
+                'pants' => 427,
+                'shoes' => 222,
+                'mannequin' => "mens_170_long_white_socks_model.png",
+            ]);
+        }
+
+// ralosso male
+
+        if ($coordId == 83) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 13,
+                'tops' => 763,
+                'pants' => 380,
+                'shoes' => 214,
+                'mannequin' => "mens_170_underinner_short_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 84) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => 13,
+                'tops' => 631,
+                'pants' => 377,
+                'shoes' => 223,
+                'mannequin' => "mens_170_underinner_short_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 85) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 666,
+                'pants' => 380,
+                'shoes' => 217,
+                'mannequin' => "mens_170_underinner_short_white_socks_model.png",
+            ]);
+        }
+        if ($coordId == 86) {
+            DB::table('userSelectCoord')->insert([
+                'user_id' => $user_id,
+                'caps' => null,
+                'tops' => 659,
+                'pants' => 377,
+                'shoes' => 224,
+                'mannequin' => "mens_170_long_white_socks_model.png",
+            ]);
+        }
     }
 }
