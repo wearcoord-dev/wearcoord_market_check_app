@@ -212,7 +212,7 @@ export const ShowPantsSize = memo((props) => {
 
                         {userCalcSize[0] ? (
                             <li className={classes.li}>
-                                <h3 className={classes.h3}>着丈</h3>
+                                <h3 className={classes.h3}>裾幅</h3>
                                 <img src={susohabaimg} alt="" />
                                 {userCalcSize[0].susohaba.size ? (
                                     <p className={classes.p}>ウェアサイズ : {userCalcSize[0].susohaba.size}cm</p>
