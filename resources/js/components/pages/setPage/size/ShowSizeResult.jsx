@@ -96,7 +96,7 @@ export const ShowSizeResult = memo(() => {
                     onChange={handleChange}
                     aria-label="scrollable prevent tabs example"
                     centered
-                    style={{ backgroundColor: '#216496', position: "fixed", width: "100%", zIndex: "100", top: "50px" }}
+                    style={{ backgroundColor: '#0080E4', position: "fixed", width: "100%", zIndex: "100", top: "50px" }}
                 >
                     <Tab icon={<InfoIcon />} aria-label="tops" {...a11yProps(0)} />
                     <Tab style={{ display: isTops }} icon={<i className="fas fa-tshirt sideFontAwesome"
