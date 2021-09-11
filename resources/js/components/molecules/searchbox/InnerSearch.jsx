@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     closeBtn: {
         width: "40px",
         height: "40px",
-        backgroundColor: "#216496",
+        backgroundColor: "#0080E4",
         borderRadius: "50%",
         position: "absolute",
         top: "-30px",

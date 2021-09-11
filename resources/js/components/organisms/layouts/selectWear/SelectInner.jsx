@@ -137,7 +137,7 @@ export const SelectInner = memo(() => {
                 )) : <></>}
             </div>
 
-            <Button style={{ position: "fixed", bottom: "100px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+            <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
                 インナーを探す
       </Button>
 
