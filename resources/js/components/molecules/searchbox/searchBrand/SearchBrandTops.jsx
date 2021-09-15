@@ -19,6 +19,7 @@ export const SearchBrandTops = memo((props) => {
         yuuchan: '',
         ralosso: '',
         tenninchu: '',
+        marc_de_paw: '',
     }
 
     const { setValue, value } = props;
@@ -74,6 +75,9 @@ export const SearchBrandTops = memo((props) => {
         }
         if(value == 'tenninchu'){
             useGetcheck( {tenninchu: true} );
+        }
+        if(value == 'marc_de_paw'){
+            useGetcheck( {marc_de_paw: true} );
         }
 
     }, [value])
@@ -202,6 +206,12 @@ export const SearchBrandTops = memo((props) => {
                 checked={check.tenninchu}
                  />
                 <label htmlFor="tenninchu" className="radioInputLabel">庭球人</label>
+
+                <input type="radio" id="marc_de_paw" className="radioInput" name="brand" value="marc_de_paw" onChange={handleInputChange}
+                onClick={onClickInput}
+                checked={check.marc_de_paw}
+                 />
+                <label htmlFor="marc_de_paw" className="radioInputLabel">Marc De Paw</label>
             </div>
         </>
     )
