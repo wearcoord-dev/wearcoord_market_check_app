@@ -232,6 +232,7 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="ralosso">ralosso</option>
                                     <option value="ellesse">ellesse</option>
                                     <option value="fila">FILA</option>
+                                    <option value="marc_de_paw">Marc De Paw</option>
                                 </select>
                             </div>
                         </div>
