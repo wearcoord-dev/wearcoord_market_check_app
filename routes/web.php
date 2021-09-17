@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('lp.mainLp');
-});
+})->name('lp');
 
 Route::get('/main', function () {
     return view('layouts.main');
@@ -61,3 +61,11 @@ Route::get('/viewtest/studio1', function () {
 Route::get('/studio2', function () {
     return view('check.two');
 });
+
+// 大会用LP
+
+Route::group(['middleware' => ['loginUserCheck']], function() {
+    Route::get('/cc-osaka2021', function () {
+        return view('lp.2021.chainCupOsaka');
+    });
+  });
