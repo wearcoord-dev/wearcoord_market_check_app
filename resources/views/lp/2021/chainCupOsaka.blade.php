@@ -127,7 +127,7 @@
                 <h2>どんな企画？</h2>
             </div>
 
-            <div class="box wow animate__animated animate__fadeInRight">
+            <div class="box wow animate__animated animate__fadeIn">
                 <div class="h3title">
                     <img src="{{asset('img/lp/2021/select.png')}}" alt="">
                     <h3>アプリで<br>コーディネートを<br>作ろう</h3>
@@ -144,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="box wow animate__animated animate__fadeInRight">
+            <div class="box wow animate__animated animate__fadeIn">
                 <div class="h3title">
                     <img src="{{asset('img/lp/2021/getitem.png')}}" alt="">
                     <h3>オシャレさんに<br>豪華な<br>プレゼント</h3>
@@ -165,14 +165,14 @@
 
         </section>
 
-        <section class="mainContents">
+        <section class="mainContents wow animate__animated animate__fadeIn">
             <div class="h2title">
                 <p>HOW TO JOIN</p>
                 <h2>参加方法</h2>
             </div>
 
             <div class="centerBox">
-                <div class="container wow animate__animated animate__fadeInUp">
+                <div class="container wow animate__animated animate__fadeIn">
                     <figure>
                         <img class="registerImg" src="{{asset('img/lp/2021/register.png')}}" alt="">
                     </figure>
@@ -183,7 +183,7 @@
                     </div>
                 </div>
 
-                <div class="container wow animate__animated animate__fadeInUp">
+                <div class="container wow animate__animated animate__fadeIn">
                     <figure>
                         <div class="wearset">
                             <img class="tops2Img" src="{{asset('img/lp/2021/tops2.png')}}" alt="">
@@ -200,7 +200,7 @@
                     </div>
                 </div>
 
-                <div class="container wow animate__animated animate__fadeInUp">
+                <div class="container wow animate__animated animate__fadeIn">
                     <figure class="step3">
                         <div>
                             <img class="playerImg" src="{{asset('img/lp/2021/player_male.png')}}" alt="">
@@ -233,8 +233,8 @@
                 <h2>結果発表</h2>
             </div>
 
-            <div class="centerBox">
-                <div class="resultBox wow animate__animated animate__fadeInUp">
+            <div class="centerBox wow animate__animated animate__fadeIn">
+                <div class="resultBox">
                     <figure>
                         <img class="itemImg" src="{{asset('img/lp/2021/item.png')}}" alt="">
                         <img class="maleImg" src="{{asset('img/lp/2021/male.png')}}" alt="">
