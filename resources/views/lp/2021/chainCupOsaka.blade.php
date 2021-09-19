@@ -7,7 +7,7 @@
 
     <title>wearcoord</title>
 
-    <meta name="description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+    <meta name="description" content="Chain Cup 大阪大会 ベストドレッサー賞についての特設ページです" />
 
     <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="16x16" type="image/ico" />
     <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="32x32" type="image/ico" />
@@ -30,8 +30,8 @@
         <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
             <meta property="og:url" content="{{ config('app.url') }}">
             <meta property="og:type" content="website" />
-            <meta property="og:title" content="wearcoordトップ" />
-            <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+            <meta property="og:title" content="wearcoord Chain Cup 特設ページ" />
+            <meta property="og:description" content="Chain Cup 大阪大会 ベストドレッサー賞についての特設ページです" />
             <meta property="og:site_name" content="wearcoord" />
             <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
             <meta name="twitter:card" content="summary_large_image">
@@ -57,6 +57,32 @@
         </div>
     </header>
 
+    <main>
+        <section class="top">
+            <figure>
+                <img class="topPlayer" src="{{asset('img/lp/2021/chaintop.png')}}" alt="">
+            </figure>
+            <div class="mainText">
+                <p class="catch">もっと気楽に<br>テニスウェアの<br>オシャレを<br>楽しもう。</p>
+                <p class="small">planned by</p>
+                <img src="{{asset('img/lp/2021/216496-long.png')}}" alt="">
+            </div>
+        </section>
+
+        <section>
+            <div class="contentsBox">
+                <img src="{{asset('img/lp/2021/chaincup_logo.png')}}" alt="">
+                    <h1>
+                        <span class="title">Chain Cup</span><br>
+                        12/30 大阪大会<br>
+                        <span class="marginTop">
+                            ベストドレッサー賞<br>
+                            概要ページ
+                        </span>
+                    </h1>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <ul>
