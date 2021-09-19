@@ -16,15 +16,20 @@
     <link rel="shortcut icon" href="{{ asset('img/logo/icon/64.ico') }}" type="image/x-icon" />
     <link rel="apple-touch-icon-precomposed" href="{{ asset('img/logo/wearcoord-service.jpg') }}" />
 
-
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lp/2021/chainCupOsaka.css') }}">
+    <script src="{{ asset('js/animation/wow.min.js') }}"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/css/swiper.min.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
         {{-- OGP --}}
         <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
@@ -60,9 +65,9 @@
     <main>
         <section class="top">
             <figure>
-                <img class="topPlayer" src="{{asset('img/lp/2021/chaintop.png')}}" alt="">
+                <img class="topPlayer wow animate__animated animate__fadeIn" src="{{asset('img/lp/2021/chaintop.png')}}" alt="">
             </figure>
-            <div class="mainText">
+            <div class="mainText wow animate__animated animate__fadeIn">
                 <p class="catch">もっと気楽に<br>テニスウェアの<br>オシャレを<br>楽しもう。</p>
                 <p class="small">planned by</p>
                 <img src="{{asset('img/lp/2021/216496-long.png')}}" alt="">
@@ -70,7 +75,7 @@
         </section>
 
         <section>
-            <div class="contentsBox">
+            <div class="contentsBox wow animate__animated animate__fadeIn">
                 <img src="{{asset('img/lp/2021/chaincup_logo.png')}}" alt="">
                     <h1>
                         <span class="title">Chain Cup</span><br>
@@ -83,7 +88,7 @@
             </div>
         </section>
 
-        <section class="wearcoord">
+        <section class="wearcoord wow animate__animated animate__fadeIn">
             <p class="intro">Chain Cup 12/30 大阪大会に<br>ご参加いただくみなさまへ</p>
             <div>
                 <p>みなさん、はじめまして。<br>
@@ -122,7 +127,7 @@
                 <h2>どんな企画？</h2>
             </div>
 
-            <div class="box">
+            <div class="box wow animate__animated animate__fadeInRight">
                 <div class="h3title">
                     <img src="{{asset('img/lp/2021/select.png')}}" alt="">
                     <h3>アプリで<br>コーディネートを<br>作ろう</h3>
@@ -139,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="box">
+            <div class="box wow animate__animated animate__fadeInRight">
                 <div class="h3title">
                     <img src="{{asset('img/lp/2021/getitem.png')}}" alt="">
                     <h3>オシャレさんに<br>豪華な<br>プレゼント</h3>
@@ -167,7 +172,7 @@
             </div>
 
             <div class="centerBox">
-                <div class="container">
+                <div class="container wow animate__animated animate__fadeInUp">
                     <figure>
                         <img class="registerImg" src="{{asset('img/lp/2021/register.png')}}" alt="">
                     </figure>
@@ -178,7 +183,7 @@
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container wow animate__animated animate__fadeInUp">
                     <figure>
                         <div class="wearset">
                             <img class="tops2Img" src="{{asset('img/lp/2021/tops2.png')}}" alt="">
@@ -195,7 +200,7 @@
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container wow animate__animated animate__fadeInUp">
                     <figure class="step3">
                         <div>
                             <img class="playerImg" src="{{asset('img/lp/2021/player_male.png')}}" alt="">
@@ -229,7 +234,7 @@
             </div>
 
             <div class="centerBox">
-                <div class="resultBox">
+                <div class="resultBox wow animate__animated animate__fadeInUp">
                     <figure>
                         <img class="itemImg" src="{{asset('img/lp/2021/item.png')}}" alt="">
                         <img class="maleImg" src="{{asset('img/lp/2021/male.png')}}" alt="">
@@ -244,7 +249,7 @@
             </div>
         </section>
 
-        <section class="endsect">
+        <section class="endsect wow animate__animated animate__fadeIn">
             <p class="mainText mb">好きな<br>テニスウェアを着て、</p>
             <p class="mainText">テニスにもっと<br>ワクワクを。</p>
             <p class="small">planned by</p>
@@ -271,6 +276,10 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        new WOW().init();
+    </script>
 
 </body>
 </html>
