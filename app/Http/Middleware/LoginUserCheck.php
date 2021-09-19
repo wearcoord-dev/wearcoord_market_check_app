@@ -21,7 +21,7 @@ class LoginUserCheck
                  $loginId = Auth::id();
 
                  //ログイン者とカート情報作成者が一致しなければ別のページにリダイレクト
-                 if ($loginId == 7 || $loginId == 2) {
+                 if ($loginId == 7 || $loginId == 2 || $loginId == 1) {
                      return $next($request);
                 }
 
