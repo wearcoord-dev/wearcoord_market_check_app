@@ -254,6 +254,7 @@ main {
 
 .mainContents .h2title {
   margin-bottom: 50px;
+  padding: 50px 0;
 }
 
 .mainContents .h2title p {
@@ -273,7 +274,7 @@ main {
 
 .mainContents .box {
   background-color: white;
-  width: 90%;
+  width: 94%;
   margin: 0 0 50px auto;
   padding: 20px;
   box-sizing: border-box;
@@ -421,7 +422,7 @@ main {
 }
 
 .mainContents .centerBox .container .textBox h3 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.6;
   margin-bottom: 20px;
@@ -443,6 +444,7 @@ main {
   line-height: 1.4;
   margin-bottom: 20px;
   margin-top: 50px;
+  font-size: 1.2rem;
 }
 
 .mainContents .centerBox .check ol {
@@ -452,6 +454,7 @@ main {
 
 .mainContents .centerBox .check ol li {
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .mainContents .centerBox .resultBox figure {
