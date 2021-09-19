@@ -82,6 +82,183 @@
                     </h1>
             </div>
         </section>
+
+        <section class="wearcoord">
+            <p class="intro">Chain Cup 12/30 大阪大会に<br>ご参加いただくみなさまへ</p>
+            <div>
+                <p>みなさん、はじめまして。<br>
+                    私たちはwearcoord（ウェアコード）と申します。<br>
+                    立ち上がったばっかりの、小さなサービスです。
+                </p>
+                <img class="wearcoord_logo" src="{{asset('img/lp/2021/216496-long.png')}}" alt="">
+                <p>
+                    私たちは<br>
+                    「もっと気軽に多くの人がスポーツウェアのオシャレを楽しめたらいいな」<br>
+                    という想いを持って、スポーツウェアのオンラインコーディネートアプリを開発しています。
+                </p>
+                <p class="margin">
+                    今回、Chain Cupとwearcoordはタイアップを行い、大会エントリー後から当日にかけて<br>
+                    <span class="focus">「ベストドレッサー賞」</span><br>
+                    企画を行います！
+                </p>
+                <p>どんなウェアを着てみたら、一番気分が上がるかな？と、是非ご想像いただきながら参加してみてください！</p>
+                <div class="fancyUp">
+                    <img src="{{asset('img/lp/2021/player_male.png')}}" alt="">
+                    <div class="fancyText">
+                        <div class="left">
+                            <p>LET'S</p>
+                        </div>
+                        <div>
+                            <p>FANCY UP!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mainContents">
+            <div class="h2title">
+                <p>ABOUT</p>
+                <h2>どんな企画？</h2>
+            </div>
+
+            <div class="box">
+                <div class="h3title">
+                    <img src="{{asset('img/lp/2021/select.png')}}" alt="">
+                    <h3>アプリで<br>コーディネートを<br>作ろう</h3>
+                </div>
+                <div class="mainText">
+                    <p style="margin-bottom: 10px">wearcoordにログイン後、Chain Cup特設ページにアクセスします。</p>
+                    <p>アプリに掲載されているウェアを用いて、みなさんの思うオシャレを表現したウェアのコーディネートをつくりましょう！</p>
+                    <div class="imgBox">
+                        <img class="mainImg" src="{{asset('img/lp/2021/swipe.png')}}" alt="">
+                        <img class="swiperImg" src="{{asset('img/lp/2021/swiper.png')}}" alt="">
+                    </div>
+                    <p style="margin-bottom: 20px">つくったコーディネートはwearcoordのChain Cup専用ページに投稿すると参加完了です。</p>
+                    <p>投稿されたコーディネートは他の参加者へ表示され、後日Chain Cup参加者による投票が行われてベストドレッサーを選びます！</p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="h3title">
+                    <img src="{{asset('img/lp/2021/getitem.png')}}" alt="">
+                    <h3>オシャレさんに<br>豪華な<br>プレゼント</h3>
+                </div>
+                <div class="mainText">
+                    <p>投票で最も多くの票を集めて、見事ベストドレッサー賞に輝いたコーディネートを投稿された男女それぞれの方に、コーディネートで使われたトップスとパンツをプレゼント！</p>
+                    <div class="imgBox">
+                        <div style="margin: 0 0 -20px 0;">
+                            <img class="topsImg" src="{{asset('img/lp/2021/tops.png')}}" alt="">
+                            <img class="skirtImg" src="{{asset('img/lp/2021/skirt.png')}}" alt="">
+                        </div>
+                        <img class="itemsImg" src="{{asset('img/lp/2021/items.png')}}" alt="">
+                    </div>
+                    <p style="margin-bottom: 20px">またベストドレッサーに選ばれたコーディネートを投票された方からも、抽選でプレゼントがもらえるかも？</p>
+                    <p class="gray">※商品の売行きにより在庫が確保できない場合は別アイテムをご用意致します</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="mainContents">
+            <div class="h2title">
+                <p>HOW TO JOIN</p>
+                <h2>参加方法</h2>
+            </div>
+
+            <div class="centerBox">
+                <div class="container">
+                    <figure>
+                        <img class="registerImg" src="{{asset('img/lp/2021/register.png')}}" alt="">
+                    </figure>
+                    <div class="textBox">
+                        <h3>ステップ①<br>wearcoordアプリに登録</h3>
+                        <p>エントリーにはwearcoordアプリのアカウントが必要です。</p>
+                        <p>wearcoordアプリwebページにアクセスをして、ユーザー登録をお願いします。</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <figure>
+                        <div class="wearset">
+                            <img class="tops2Img" src="{{asset('img/lp/2021/tops2.png')}}" alt="">
+                            <img class="poloImg" src="{{asset('img/lp/2021/polo.png')}}" alt="">
+                            <img class="topsImg" src="{{asset('img/lp/2021/tops.png')}}" alt="">
+                        </div>
+                        <img class="registerImg" src="{{asset('img/lp/2021/create.png')}}" alt="">
+                    </figure>
+                    <div class="textBox">
+                        <h3>ステップ②<br>コーディネートをつくる</h3>
+                        <p>12月よりコーディネート投稿と投票ページの受付開始予定です。</p>
+                        <p style="margin-bottom: 20px">Chain Cup特設ページにアクセスして、コーディネートを作成して投稿しましょう！</p>
+                        <p>なおアクセスの際には大会本部のLINEで配布されるコード番号が必要になりますので、お忘れなく！</p>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <figure class="step3">
+                        <div>
+                            <img class="playerImg" src="{{asset('img/lp/2021/player_male.png')}}" alt="">
+                        </div>
+                        <div class="right">
+                            <p class="like">LIKE!</p>
+                            <img class="likeImg" src="{{asset('img/lp/2021/like.png')}}" alt="">
+                            <img class="swiperImg" src="{{asset('img/lp/2021/swiper.png')}}" alt="">
+                        </div>
+                    </figure>
+                    <div class="textBox">
+                        <h3>ステップ③<br>コーディネートに投票する</h3>
+                        <p>投票ページで、他の参加者がつくったコーディネートから好きなものを一つ選んで、「いいね」しましょう！</p>
+                    </div>
+                </div>
+
+                <div class="check">
+                    <p>※ベストドレッサー参加とプレゼント受け取り資格のある方は、以下の項目を全て満たした方になります。必ず確認した上で参加してください。</p>
+                    <ol>
+                        <li>Chain Cup特設ページ経由でコーディネートを作成し、投稿していること。</li>
+                        <li>特設ページ内にて、他の参加者のコーディネートに投票していること。</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="mainContents">
+            <div class="h2title">
+                <p>RESULT</p>
+                <h2>結果発表</h2>
+            </div>
+
+            <div class="centerBox">
+                <div class="resultBox">
+                    <figure>
+                        <img class="itemImg" src="{{asset('img/lp/2021/item.png')}}" alt="">
+                        <img class="maleImg" src="{{asset('img/lp/2021/male.png')}}" alt="">
+                    </figure>
+                    <div class="textBox">
+                        <h3>結果は後日特設ページで発表！</h3>
+                        <p style="margin-bottom: 20px">見事ベストドレッサー賞に輝いたコーディネートは、後日特設ページ内で発表します！</p>
+                        <p>またベストドレッサー賞に輝いた男女1名ずつの方へ、登録したメールアドレスへ通知が入りますのでご確認ください。</p>
+                        <p style="margin-bottom: 50px">（そのためアカウント登録には有効なメールアドレスであることを忘れずに！）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="endsect">
+            <p class="mainText mb">好きな<br>テニスウェアを着て、</p>
+            <p class="mainText">テニスにもっと<br>ワクワクを。</p>
+            <p class="small">planned by</p>
+            <figure>
+                <img class="wearcoord_logo" src="{{asset('img/lp/2021/216496-long.png')}}" alt="">
+            </figure>
+        </section>
+
+        <section class="linkBtn">
+            <div class="contentsBox flexDirection">
+                <p class="big">特設ページ</p>
+                <p class="big">Coming Soon...</p>
+            </div>
+        </section>
     </main>
 
     <footer>
