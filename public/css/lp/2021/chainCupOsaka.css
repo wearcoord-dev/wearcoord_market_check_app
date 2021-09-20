@@ -447,12 +447,11 @@ main {
   font-size: 1.2rem;
 }
 
-.mainContents .centerBox .check ol {
-  list-style: auto;
+.mainContents .centerBox .check ul {
   line-height: 1.4;
 }
 
-.mainContents .centerBox .check ol li {
+.mainContents .centerBox .check ul li {
   font-weight: bold;
   font-size: 1.2rem;
 }
