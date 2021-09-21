@@ -7,6 +7,8 @@
 
     <meta name="description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
     <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#216496">
+
 
     <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="16x16" type="image/ico" />
     <link rel="icon" href="{{ asset('img/logo/icon/32.ico') }}" sizes="32x32" type="image/ico" />
