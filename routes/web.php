@@ -64,8 +64,8 @@ Route::get('/studio2', function () {
 
 // 大会用LP
 
-Route::group(['middleware' => ['loginUserCheck']], function() {
+// Route::group(['middleware' => ['loginUserCheck']], function() {
     Route::get('/cc-osaka2021', function () {
         return view('lp.2021.chainCupOsaka');
     });
-  });
+//   });
