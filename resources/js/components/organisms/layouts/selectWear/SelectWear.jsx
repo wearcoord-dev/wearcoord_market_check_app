@@ -531,7 +531,7 @@ export const SelectWear = memo(() => {
 
             <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
 
-            <div style={{ display: "flex", overflowX: "scroll" }}>{shoesComponent}</div>
+            <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
 
             <br />
 
