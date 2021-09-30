@@ -100,6 +100,12 @@ export const NewsList = memo(() => {
         });
     }
 
+    const onClickSize = () => {
+        history.push({
+            pathname: '/main/settings/size',
+        });
+    }
+
     return (
         <>
             <div>
@@ -107,13 +113,15 @@ export const NewsList = memo(() => {
                     <h2 className={classes.h2title}>お知らせ</h2>
                 </div>
                 <ul>
-                    <li className={classes.li}>
+                    <li className={classes.li}
+                    onClick={onClickSize}
+                    >
                         <div className={classes.imgBox}>
                             <img className={classes.img} src={logoImg} alt="" />
                         </div>
                         <div className={classes.textBox}>
-                            <p className={classes.date}>2021.7.21</p>
-                            <p className={classes.text}>wearcoordアプリが始動しました！</p>
+                            <p className={classes.date}>2021.10.1</p>
+                            <p className={classes.text}>体格サイズを登録する機能を搭載しました！</p>
                         </div>
                         <div className={classes.triangle}>
                         </div>
