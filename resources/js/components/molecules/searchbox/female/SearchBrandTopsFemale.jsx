@@ -192,7 +192,7 @@ export const SearchBrandTopsFemale = memo((props) => {
                 <label htmlFor="ralosso" className="radioInputLabel">ralosso</label>
 
                 {/* Admiralのアカウントだけ表示させる */}
-                {userid == process.env.MIX_ADMIRAL_ADMIN_ID ? (
+                {userid == 47 ? (
                     <>
                         <input type="radio" id="admiral" className="radioInput" name="brand" value="admiral" onChange={handleInputChange}
                             onClick={onClickInput}
