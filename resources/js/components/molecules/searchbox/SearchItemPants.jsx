@@ -41,7 +41,7 @@ export const SearchItemPants = memo((props) => {
     return (
         <>
             <div>
-                {context.contextName.gender == 'male' ? <SearchBrandPants setValue={setValue} value={value} /> : <SearchBrandPantsFemale setValue={setValue} value={value} />}
+                {context.contextName.gender == 'male' ? <SearchBrandPants setValue={setValue} value={value} /> : <SearchBrandPantsFemale setValue={setValue} value={value} userid={context.contextName.id} />}
                 <SearchColor setValueColor={setValueColor}
                 valueColor={valueColor}
                  />
