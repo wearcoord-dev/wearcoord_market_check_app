@@ -18,9 +18,10 @@ export const SearchBrandTopsFemale = memo((props) => {
         lacoste: '',
         yuuchan: '',
         ralosso: '',
+        admiral: '',
     }
 
-    const { setValue, value } = props;
+    const { setValue, value, userid } = props;
     const [data, setData] = useState('');
     const [check, useGetcheck] = useState(brandlist);
 
@@ -71,6 +72,9 @@ export const SearchBrandTopsFemale = memo((props) => {
         if (value == 'ralosso') {
             useGetcheck({ ralosso: true });
         }
+        if (value == 'admiral') {
+            useGetcheck({ admiral: true });
+        }
 
     }, [value])
 
@@ -98,7 +102,6 @@ export const SearchBrandTopsFemale = memo((props) => {
         setValue(props.target.value);
         setData(props.target.value);
     }
-
 
     return (
         <>
@@ -163,7 +166,7 @@ export const SearchBrandTopsFemale = memo((props) => {
                 <label htmlFor="babolat" className="radioInputLabel">Babolat</label>
 
                 <input type="radio" id="hydrogen" className="radioInput" name="brand" value="hydrogen" onChange={handleInputChange}
-                onClick={onClickInput} />
+                    onClick={onClickInput} />
                 <label htmlFor="hydrogen" className="radioInputLabel">Hydrogen</label>
 
                 <input type="radio" id="lecoq" className="radioInput" name="brand" value="lecoq" onChange={handleInputChange}
@@ -187,6 +190,19 @@ export const SearchBrandTopsFemale = memo((props) => {
                     checked={check.ralosso}
                 />
                 <label htmlFor="ralosso" className="radioInputLabel">ralosso</label>
+
+                {/* Admiralのアカウントだけ表示させる */}
+                {userid == process.env.MIX_ADMIRAL_ADMIN_ID ? (
+                    <>
+                        <input type="radio" id="admiral" className="radioInput" name="brand" value="admiral" onChange={handleInputChange}
+                            onClick={onClickInput}
+                            checked={check.admiral}
+                        />
+                        <label htmlFor="admiral" className="radioInputLabel">Admiral</label>
+                    </>
+                ) : null}
+
+
             </div>
         </>
     )
