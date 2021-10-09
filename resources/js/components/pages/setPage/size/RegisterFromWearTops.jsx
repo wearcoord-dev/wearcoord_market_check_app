@@ -269,6 +269,7 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="nike">Nike</option>
                                     <option value="asics">Asics</option>
                                     <option value="diadora">Diadora</option>
+                                    {userCheck.id == 47 ? <option value="admiral">Admiral</option> : null}
                                 </select>
                             </div>
                         </div>
