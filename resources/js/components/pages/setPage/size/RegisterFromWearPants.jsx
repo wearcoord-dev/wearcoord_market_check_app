@@ -281,6 +281,7 @@ export const RegisterFromWearPants = memo(() => {
                                     <option value="diadora">Diadora</option>
                                     <option value="babolat">Babolat</option>
                                     <option value="hydrogen">Hydrogen</option>
+                                    {userCheck.id == 47 ? <option value="admiral">Admiral</option> : null}
                                 </select>
                             </div>
                         </div>
