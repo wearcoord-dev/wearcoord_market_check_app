@@ -8,6 +8,10 @@ class Database
 {
     public static function searchDB($color, $brand, $category, $type, $page)
     {
+
+        // 表示させないブランドを指定
+        $notShowingBrand = ['admiral'];
+
         if (empty($page)) {
             $page = 1;
         }
@@ -72,8 +76,8 @@ class Database
                 }
             }
         } else if ($color) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->whereNotNull('availability')->paginate(21);
-            $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull('availability')->whereNotNull($color)->count();
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
+            $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull('availability')->whereNotNull($color)->where('brand', '!=', $notShowingBrand)->count();
 
             // urlに画像を入れる
             $DBitems = [];
@@ -82,7 +86,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
         } else if ($category) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->orderBy('id', 'desc')->whereNotNull('availability')->paginate(21);
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->orderBy('id', 'desc')->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
             $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull('availability')->count();
 
             // urlに画像を入れる
