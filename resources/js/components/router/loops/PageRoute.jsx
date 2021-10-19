@@ -20,6 +20,7 @@ import { RegisterFromWearTops } from "../../pages/setPage/size/RegisterFromWearT
 import { RegisterFromWearPants } from "../../pages/setPage/size/RegisterFromWearPants";
 import { ShowSizeResult } from "../../pages/setPage/size/ShowSizeResult";
 import { PreDelete } from "../../pages/setPage/deleteAccount/PreDelete";
+import { PassCheck } from "../../pages/bestdresser/base/PassCheck";
 
 export const PageRoute = [
   {
@@ -124,6 +125,11 @@ export const PageRoute = [
     path: "/larosso2021",
     exact: false,
     children: <LarossoDetails />
+  },
+  {
+    path: "/bestdresser/login",
+    exact: true,
+    children: <PassCheck />
   },
   {
     path: "*",
