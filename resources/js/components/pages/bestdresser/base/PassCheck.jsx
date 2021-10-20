@@ -3,6 +3,7 @@ import { memo } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import maleImg from "../../../../../../public/img/lp/2021/player_male.png";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
     info: {
@@ -60,6 +61,9 @@ const useStyles = makeStyles({
     text: {
         width: "70%",
         margin: "50px auto 20px",
+    },
+    bottom: {
+        height: "100px",
     }
 });
 
@@ -67,7 +71,14 @@ const useStyles = makeStyles({
 export const PassCheck = memo(() => {
     const classes = useStyles();
     const { register, handleSubmit } = useForm();
+    const history = useHistory();
     const onSubmit = (data) => console.log(data);
+
+    const onClickBestDressPage = () => {
+        history.push({
+            pathname: '/main/bestdresser/main',
+        });
+    }
 
     return (
         <>
@@ -83,7 +94,7 @@ export const PassCheck = memo(() => {
                             <p>「ここに大会名が入ります」</p>
                             <p>のページを見る</p>
                         </div>
-                        <button className={classes.a}>この大会を見る</button>
+                        <button onClick={onClickBestDressPage} className={classes.a}>この大会を見る</button>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <p className={classes.text}>参加するベストドレッサー賞の認証コードを送信してください。</p>
@@ -91,6 +102,7 @@ export const PassCheck = memo(() => {
                         <input className={classes.a} type="submit" value="送信" />
                     </form>
                 </div>
+                <div className={classes.bottom}></div>
             </UserWear>
         </>
     )

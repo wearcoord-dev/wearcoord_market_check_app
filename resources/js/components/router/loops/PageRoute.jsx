@@ -21,6 +21,7 @@ import { RegisterFromWearPants } from "../../pages/setPage/size/RegisterFromWear
 import { ShowSizeResult } from "../../pages/setPage/size/ShowSizeResult";
 import { PreDelete } from "../../pages/setPage/deleteAccount/PreDelete";
 import { PassCheck } from "../../pages/bestdresser/base/PassCheck";
+import { BestDressBase } from "../../pages/bestdresser/base/BestDressBase";
 
 export const PageRoute = [
   {
@@ -130,6 +131,11 @@ export const PageRoute = [
     path: "/bestdresser/login",
     exact: true,
     children: <PassCheck />
+  },
+  {
+    path: "/bestdresser/main",
+    exact: true,
+    children: <BestDressBase />
   },
   {
     path: "*",
