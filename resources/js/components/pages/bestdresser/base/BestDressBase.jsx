@@ -39,7 +39,7 @@ function a11yProps(index) {
     };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     root: {
         backgroundColor: "#216496",
     },
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         minHeight: "auto",
     }
-}));
+});
 
 export const BestDressBase = memo(() => {
     const classes = useStyles();
