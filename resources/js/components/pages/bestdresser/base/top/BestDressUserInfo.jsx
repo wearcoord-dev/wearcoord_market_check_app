@@ -38,6 +38,7 @@ const useStyles = makeStyles(() => ({
         fontSize: "12px",
         color: "#216496",
         paddingBottom: "6px",
+        textAlign: "center",
     },
     mainbluetext: {
         padding: "10px 0",
@@ -53,9 +54,25 @@ const useStyles = makeStyles(() => ({
         padding: "10px 0",
         backgroundColor: "white",
         borderRadius: "0 0 20px 20px",
-        width: "96%",
+        width: "100%",
         margin: "auto",
         boxShadow: "0px 0px 30px 1px rgb(53 53 53 / 3%)",
+    },
+    datebox: {
+        display: "flex",
+        justifyContent: "space-around",
+        "& div": {
+            backgroundColor: "#f0f0f0",
+            borderRadius: "10px",
+            padding: "10px 0",
+            boxSizing: "border-box",
+            width: "30%",
+            textAlign: "center",
+            "& span": {
+                color: "indianred",
+                fontWeight: "bold",
+            }
+        }
     }
 }));
 
@@ -92,8 +109,21 @@ export const BestDressUserInfo = memo(() => {
                     </li>
                 </ul>
                 <p className={classes.mainbluetext}><span>ベストドレッサー賞の受賞資格がまだありません！</span></p>
+                <div className={classes.datebox}>
+                    <div>
+                        <p className={classes.boldblue}>投稿期間</p>
+                        <p><span>12/1</span>〜<span>12/30</span></p>
+                    </div>
+                    <div>
+                        <p className={classes.boldblue}>投票期間</p>
+                        <p><span>12/20</span>〜<span>12/30</span></p>
+                    </div>
+                    <div>
+                        <p className={classes.boldblue}>結果発表</p>
+                        <p><span>大会当日！</span></p>
+                    </div>
+                </div>
             </div>
-            <p>userinfodesu</p>
         </>
     )
 })
