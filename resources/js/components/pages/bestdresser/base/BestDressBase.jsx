@@ -3,7 +3,10 @@ import { memo, useState } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import PropTypes from 'prop-types';
 import { Box, Paper, Tab, Tabs } from "@material-ui/core";
-
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import ImageSearchRoundedIcon from '@material-ui/icons/ImageSearchRounded';
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import { TopBase } from "./top/TopBase";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -46,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
     tab: {
         color: "white",
+        minHeight: "auto",
     }
 }));
 
@@ -77,9 +81,9 @@ export const BestDressBase = memo(() => {
                         aria-label="full width tabs example"
                         centered
                     >
-                        <Tab className={classes.tab} label="Top" {...a11yProps(0)} />
-                        <Tab className={classes.tab} label="コーデを見る" {...a11yProps(1)} />
-                        <Tab className={classes.tab} label="コーデを作る" {...a11yProps(2)} />
+                        <Tab icon={<HomeRoundedIcon />} className={classes.tab} label="Top" {...a11yProps(0)} />
+                        <Tab icon={<ImageSearchRoundedIcon />} className={classes.tab} label="コーデを見る" {...a11yProps(1)} />
+                        <Tab icon={<CreateRoundedIcon />} className={classes.tab} label="コーデを作る" {...a11yProps(2)} />
                     </Tabs>
                 </Paper>
                 <Paper
@@ -89,7 +93,7 @@ export const BestDressBase = memo(() => {
                     onChange={handleChangeIndex}
                 >
                     <TabPanel value={value} index={0} dir={theme.direction}>
-                        <p>test0</p>
+                        <TopBase />
                     </TabPanel>
                     <TabPanel value={value} index={1} dir={theme.direction}>
                         <p>test1</p>
