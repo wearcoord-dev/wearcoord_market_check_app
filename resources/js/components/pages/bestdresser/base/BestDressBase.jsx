@@ -7,6 +7,7 @@ import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import ImageSearchRoundedIcon from '@material-ui/icons/ImageSearchRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import { TopBase } from "./top/TopBase";
+import { ShowBDCoordList } from "./showcoord/ShowBDCoordList";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -96,7 +97,7 @@ export const BestDressBase = memo(() => {
                         <TopBase />
                     </TabPanel>
                     <TabPanel value={value} index={1} dir={theme.direction}>
-                        <p>test1</p>
+                        <ShowBDCoordList />
                     </TabPanel>
                     <TabPanel value={value} index={2} dir={theme.direction}>
                         <p>test2</p>
