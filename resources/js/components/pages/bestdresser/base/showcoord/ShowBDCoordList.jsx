@@ -126,7 +126,7 @@ export const ShowBDCoordList = memo(() => {
                             <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "hotpink" }} /></i>
                             <img src={coordImg} alt="" />
                             <div className={classes.figcap}>
-                                <figcaption>Tops : FILA</figcaption>
+                                <figcaption>Tops : Adidas</figcaption>
                                 <figcaption>Pants : FILA</figcaption>
                             </div>
                         </figure>
