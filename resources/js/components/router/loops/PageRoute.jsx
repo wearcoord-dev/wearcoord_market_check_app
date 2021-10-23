@@ -138,6 +138,11 @@ export const PageRoute = [
     children: <BestDressBase />
   },
   {
+    path: "/bestdresser/*",
+    exact: true,
+    children: <BestDressBase />
+  },
+  {
     path: "*",
     exact: false,
     children: <Page404 />

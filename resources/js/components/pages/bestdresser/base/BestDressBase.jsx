@@ -1,5 +1,5 @@
 import { makeStyles, useTheme } from "@material-ui/core";
-import { memo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import PropTypes from 'prop-types';
 import { Box, Paper, Tab, Tabs } from "@material-ui/core";
@@ -8,6 +8,9 @@ import ImageSearchRoundedIcon from '@material-ui/icons/ImageSearchRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import { TopBase } from "./top/TopBase";
 import { ShowBDCoordList } from "./showcoord/ShowBDCoordList";
+import { Route, Switch, useHistory, useLocation } from "react-router";
+import { Page404 } from "../../Page404";
+import { PageRouteBD } from "../../../router/loops/PageRouteBD";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -58,15 +61,36 @@ export const BestDressBase = memo(() => {
     const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = useState(0);
+    const history = useHistory();
+    const location = useLocation();
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    useEffect(() => {
+        if(location.pathname == "/main/bestdresser/main"){
+            setValue(0);
+        }
+        if(location.pathname == "/main/bestdresser/show"){
+            setValue(1);
+        }
+        if(location.pathname == "/main/bestdresser/create"){
+            setValue(2);
+        }
+        if(location.pathname == "/main/bestdresser/create/coord"){
+            setValue(2);
+        }
+    },[location]);
 
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
 
+    const onClickTop = useCallback(() => {
+        history.push("/main/bestdresser/main")
+    }, [history]);
+
+    const onClickShow = useCallback(() => {
+        history.push("/main/bestdresser/show")
+    }, [history]);
+
+    const onClickCreate = useCallback(() => {
+        history.push("/main/bestdresser/create")
+    }, [history]);
 
     return (
         <>
@@ -74,35 +98,35 @@ export const BestDressBase = memo(() => {
                 <Paper className={classes.root}>
                     <Tabs
                         value={value}
-                        onChange={handleChange}
                         // indicatorColor="primary"
-                        TabIndicatorProps={{style: {background:'white'}}}
+                        TabIndicatorProps={{ style: { background: 'white' } }}
                         // color="white"
                         variant="fullWidth"
                         aria-label="full width tabs example"
                         centered
                     >
-                        <Tab icon={<HomeRoundedIcon />} className={classes.tab} label="Top" {...a11yProps(0)} />
-                        <Tab icon={<ImageSearchRoundedIcon />} className={classes.tab} label="コーデを見る" {...a11yProps(1)} />
-                        <Tab icon={<CreateRoundedIcon />} className={classes.tab} label="コーデを作る" {...a11yProps(2)} />
+                        <Tab icon={<HomeRoundedIcon />} className={classes.tab} label="Top" onClick={onClickTop}  />
+                        <Tab icon={<ImageSearchRoundedIcon />} className={classes.tab} label="コーデを見る" onClick={onClickShow}  />
+                        <Tab icon={<CreateRoundedIcon />} className={classes.tab} label="コーデを作る" onClick={onClickCreate}  />
                     </Tabs>
                 </Paper>
-                <Paper
-                    className={classes.paper}
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={value}
-                    onChange={handleChangeIndex}
-                >
-                    <TabPanel value={value} index={0} dir={theme.direction}>
-                        <TopBase />
-                    </TabPanel>
-                    <TabPanel value={value} index={1} dir={theme.direction}>
-                        <ShowBDCoordList />
-                    </TabPanel>
-                    <TabPanel value={value} index={2} dir={theme.direction}>
-                        <p>test2</p>
-                    </TabPanel>
-                </Paper>
+                <Switch>
+                    <Route path="/main/bestdresser/" render={({ match: { url } }) => (
+                        <Switch>
+                            {PageRouteBD.map((route) => (
+                                <Route
+                                    key={route.path}
+                                    exact={route.exact}
+                                    path={`${url}${route.path}`}>
+                                    {route.children}
+                                </Route>
+                            ))}
+                        </Switch>
+                    )} />
+                    <Route path="*">
+                        <Page404 />
+                    </Route>
+                </Switch>
             </UserWear>
         </>
     )
