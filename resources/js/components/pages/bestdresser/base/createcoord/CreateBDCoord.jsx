@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import { memo } from "react";
+import { SelectWear } from "../../../../organisms/layouts/selectWear/SelectWear";
 
 const useStyles = makeStyles({
     root: {
@@ -12,7 +13,7 @@ export const CreateBDCoord = memo(() => {
 
     return (
         <>
-            <p>ここはコーデクリエイトです</p>
+            <SelectWear />
         </>
     )
 })
