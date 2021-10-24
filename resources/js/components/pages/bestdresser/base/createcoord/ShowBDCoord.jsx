@@ -67,7 +67,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     btnBox: {
-
+        position: "relative",
+    },
+    bottom: {
+        height: "100px",
     }
 }));
 
@@ -211,7 +214,7 @@ export const ShowBDCoord = memo(() => {
 
                 </div>
             )) : <div style={{ width: "40%", height: "50vh" }}></div>}
-                <div><input type="hidden" id="mannequinImgCanvas" name="canvas_img" value=""></input></div>
+            <div><input type="hidden" id="mannequinImgCanvas" name="canvas_img" value=""></input></div>
 
             <div className={classes.btnBox}>
                 <div onClick={toSelectWear} className={classes.bottomBtnLeft}>
@@ -234,6 +237,8 @@ export const ShowBDCoord = memo(() => {
                     </div>
                 </div>
             </div>
+
+            <div className={classes.bottom}></div>
 
 
             <Modal
