@@ -144,6 +144,13 @@ Route::get('/setting/deleteimg', function (Request $request) {
 
 Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "deleteFaceImg"]);
 
+// ベストドレッサー
+
+Route::get('/bestdresser/passcode', function (Request $request) {
+});
+
+Route::post('/bestdresser/passcode', [App\Http\Controllers\BestDresserController::class, "checkPassCode"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 

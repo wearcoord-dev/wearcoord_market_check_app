@@ -1,9 +1,10 @@
 import { makeStyles } from "@material-ui/core";
-import { memo } from "react";
+import { memo, useContext } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import maleImg from "../../../../../../public/img/lp/2021/player_male.png";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
+import { UserContext } from "../../../providers/UserProvider";
 
 const useStyles = makeStyles({
     info: {
@@ -72,7 +73,38 @@ export const PassCheck = memo(() => {
     const classes = useStyles();
     const { register, handleSubmit } = useForm();
     const history = useHistory();
-    const onSubmit = (data) => console.log(data);
+    const context = useContext(UserContext);
+    const userCheck = context.contextName;
+
+    const onSubmit = (data) =>{
+        console.log(data.codepass);
+        console.log(userCheck);
+
+        const header = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }
+        }
+
+        const setData = {
+            "input_codepass": data.codepass,
+            "userid": context.contextName.id,
+
+        }
+        const url = '/api/bestdresser/passcode';
+
+        axios.post(url, setData, header).then((res) => {
+            if(res.data){
+                history.push('/main/bestdresser/main');
+            }else{
+                alert('該当する大会がありません');
+            }
+        }).catch(() => {
+        }).finally(() => {
+        });
+
+    }
 
     const onClickBestDressPage = () => {
         history.push({
