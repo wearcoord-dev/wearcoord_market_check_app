@@ -4,6 +4,8 @@ import ErrorOutlineRoundedIcon from '@material-ui/icons/ErrorOutlineRounded';
 import maleImg from "../../../../../../../public/img/lp/2021/player_male.png";
 import selectImg from "../../../../../../../public/img/others/bestdresser/select.png"
 import axios from "axios";
+import moment from 'moment';
+
 
 
 const useStyles = makeStyles(() => ({
@@ -82,21 +84,44 @@ export const BestDressUserInfo = memo((props) => {
     const classes = useStyles();
     console.log(tour_id);
 
+    moment().format('YYYY-MM-DD HH:mm:ss.SSS');
+
+
     const [tourInfo, setTourInfo] = useState();
+    const [startCreateCoord, setStartCreateCoord] = useState();
+    const [endCreateCoord, setEndCreateCoord] = useState();
+    const [startPostCoord, setStartPostCoord] = useState();
+    const [endPostCoord, setEndPostCoord] = useState();
+    const [showResult, setShowResult] = useState();
 
     useEffect(() => {
         getTourInfo();
-    },[])
+    }, [])
+
+    useEffect(() => {
+        if (tourInfo) {
+            const spc = moment(tourInfo.startPostCoord);
+            setStartPostCoord(spc.format('M/D'));
+            const epc = moment(tourInfo.endPostCoord);
+            setEndPostCoord(epc.format('M/D'));
+            const scc = moment(tourInfo.startCreateCoord);
+            setStartCreateCoord(spc.format('M/D'));
+            const ecc = moment(tourInfo.endCreateCoord);
+            setEndCreateCoord(epc.format('M/D'));
+            setShowResult(tourInfo.showResult);
+        }
+    }, [tourInfo])
 
     const getTourInfo = async () => {
         const response = await axios.get('/api/bestdresser/tourinfo', {
             params: {
-              tour_id: tour_id,
+                tour_id: tour_id,
             }
-          });
+        });
         setTourInfo(response.data);
     }
     console.log(tourInfo);
+
 
     return (
         <>
@@ -131,15 +156,15 @@ export const BestDressUserInfo = memo((props) => {
                 <div className={classes.datebox}>
                     <div>
                         <p className={classes.boldblue}>投稿期間</p>
-                        <p><span>12/1</span>〜<span>12/30</span></p>
+                        <p><span>{startCreateCoord}</span>〜<span>{endCreateCoord}</span></p>
                     </div>
                     <div>
                         <p className={classes.boldblue}>投票期間</p>
-                        <p><span>12/20</span>〜<span>12/30</span></p>
+                        <p><span>{startPostCoord}</span>〜<span>{endPostCoord}</span></p>
                     </div>
                     <div>
                         <p className={classes.boldblue}>結果発表</p>
-                        <p><span>大会当日！</span></p>
+                        <p><span>{showResult}</span></p>
                     </div>
                 </div>
             </div>
