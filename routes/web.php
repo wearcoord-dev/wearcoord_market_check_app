@@ -43,6 +43,7 @@ Route::get('/user', function () {
         'faceImg' => $user->faceImg,
         'firstcheck' => $user->firstcheck,
         'sizecheck' => $user->sizecheck,
+        'tour_id' => $user->tour_id,
     ];
 
     return response()->json($user);

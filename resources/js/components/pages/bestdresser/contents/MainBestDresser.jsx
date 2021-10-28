@@ -19,7 +19,7 @@ export const MainBestDresser = memo(() => {
     return (
         <>
         <div className={classes.root}>
-            <p>ここに説明が入ります</p>
+            <p>テスト123用の概要です</p>
         </div>
         </>
     )
