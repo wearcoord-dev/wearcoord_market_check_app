@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import ErrorOutlineRoundedIcon from '@material-ui/icons/ErrorOutlineRounded';
 import maleImg from "../../../../../../../public/img/lp/2021/player_male.png";
 import selectImg from "../../../../../../../public/img/others/bestdresser/select.png"
+import axios from "axios";
 
 
 const useStyles = makeStyles(() => ({
@@ -76,8 +77,26 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-export const BestDressUserInfo = memo(() => {
+export const BestDressUserInfo = memo((props) => {
+    const { tour_id } = props;
     const classes = useStyles();
+    console.log(tour_id);
+
+    const [tourInfo, setTourInfo] = useState();
+
+    useEffect(() => {
+        getTourInfo();
+    },[])
+
+    const getTourInfo = async () => {
+        const response = await axios.get('/api/bestdresser/tourinfo', {
+            params: {
+              tour_id: tour_id,
+            }
+          });
+        setTourInfo(response.data);
+    }
+    console.log(tourInfo);
 
     return (
         <>

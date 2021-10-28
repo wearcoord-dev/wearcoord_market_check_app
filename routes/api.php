@@ -146,6 +146,8 @@ Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "
 
 // ベストドレッサー
 
+Route::get('/bestdresser/tourinfo', [App\Http\Controllers\BestDresserController::class, "getTourInfo"]);
+
 Route::get('/bestdresser/passcode', function (Request $request) {
 });
 

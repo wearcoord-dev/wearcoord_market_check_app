@@ -13,13 +13,13 @@ const useStyles = makeStyles({
         },
 });
 
-export const MainBestDresser = memo(() => {
+export const ChainCup2021 = memo(() => {
     const classes = useStyles();
 
     return (
         <>
         <div className={classes.root}>
-            <p>テスト123用の概要です</p>
+            <p>ChainCup2021用の概要です</p>
         </div>
         </>
     )
