@@ -6,21 +6,21 @@ import { TopBase } from "../../pages/bestdresser/base/top/TopBase";
 export const PageRouteBD = [
   {
     path: "/main",
-    exact: false,
+    exact: true,
     children: <TopBase />,
   },
   {
-    path: "/show",
-    exact: false,
+    path: "/main/show",
+    exact: true,
     children: <ShowBDCoordList />,
   },
   {
-    path: "/create",
+    path: "/main/create",
     exact: true,
     children: <ShowBDCoord />,
   },
   {
-    path: "/create/coord",
+    path: "/main/create/coord",
     exact: true,
     children: <CreateBDCoord />
   },

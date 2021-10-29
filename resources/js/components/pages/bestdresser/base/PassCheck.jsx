@@ -1,10 +1,11 @@
 import { makeStyles } from "@material-ui/core";
-import { memo, useContext } from "react";
+import { memo, useContext, useEffect, useRef, useState } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import maleImg from "../../../../../../public/img/lp/2021/player_male.png";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { UserContext } from "../../../providers/UserProvider";
+import { useGetUserInfo } from "../../../../hooks/user/useGetUserInfo";
 
 const useStyles = makeStyles({
     info: {
@@ -47,6 +48,7 @@ const useStyles = makeStyles({
     },
     textBox: {
         textAlign: "center",
+        lineHeight: "1.6",
     },
     input: {
         width: "70%",
@@ -65,6 +67,10 @@ const useStyles = makeStyles({
     },
     bottom: {
         height: "100px",
+    },
+    red: {
+        color: "indianred",
+        fontWeight: "bold",
     }
 });
 
@@ -75,10 +81,12 @@ export const PassCheck = memo(() => {
     const history = useHistory();
     const context = useContext(UserContext);
     const userCheck = context.contextName;
+    const [tourId, setTourID] = useState();
+    const [tourInfo, setTourInfo] = useState();
+    const { getUser, userInfo } = useGetUserInfo();
 
-    const onSubmit = (data) =>{
-        console.log(data.codepass);
-        console.log(userCheck);
+
+    const onSubmit = (data) => {
 
         const header = {
             headers: {
@@ -94,9 +102,9 @@ export const PassCheck = memo(() => {
         const url = '/api/bestdresser/passcode';
 
         axios.post(url, setData, header).then((res) => {
-            if(res.data){
+            if (res.data) {
                 history.push('/main/bestdresser/main');
-            }else{
+            } else {
                 alert('該当する大会がありません');
             }
         }).catch(() => {
@@ -111,6 +119,30 @@ export const PassCheck = memo(() => {
         });
     }
 
+    // 初回のレンダリング判定
+    const isFirstRender = useRef(false)
+
+    useEffect(() => {
+        isFirstRender.current = true
+        getUser();
+    }, [])
+
+    useEffect(async() => {
+        if (userInfo.data) {
+            if (userInfo.data.tour_id) {
+                if (isFirstRender.current) {
+                    const response = await axios.get('/api/bestdresser/tourinfo', {
+                        params: {
+                            tour_id: userInfo.data.tour_id,
+                        }
+                    });
+                    setTourInfo(response.data);
+                    isFirstRender.current = false
+                }
+            }
+        }
+    }, [userInfo.data]);
+
     return (
         <>
             <UserWear>
@@ -120,12 +152,17 @@ export const PassCheck = memo(() => {
                         <figure className={classes.img}>
                             <img src={maleImg} alt="" />
                         </figure>
-                        <div className={classes.textBox}>
-                            <p>既に参加中の</p>
-                            <p>「ここに大会名が入ります」</p>
-                            <p>のページを見る</p>
-                        </div>
-                        <button onClick={onClickBestDressPage} className={classes.a}>この大会を見る</button>
+                        {userCheck && (userCheck.tour_id !== null && (
+                            <>
+                                <div className={classes.textBox}>
+                                    <p>既に参加中の</p>
+                                    { tourInfo && ( tourInfo.tour_name && <p className={classes.red}>{tourInfo.tour_name}</p> ) }
+                                    <p>ページを見る</p>
+                                </div>
+                                <button onClick={onClickBestDressPage} className={classes.a}>この大会を見る</button>
+                            </>
+                        )
+                        )}
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <p className={classes.text}>参加するベストドレッサー賞の認証コードを送信してください。</p>
