@@ -82,10 +82,8 @@ const useStyles = makeStyles(() => ({
 export const BestDressUserInfo = memo((props) => {
     const { tour_id } = props;
     const classes = useStyles();
-    console.log(tour_id);
 
     moment().format('YYYY-MM-DD HH:mm:ss.SSS');
-
 
     const [tourInfo, setTourInfo] = useState();
     const [startCreateCoord, setStartCreateCoord] = useState();
@@ -120,8 +118,6 @@ export const BestDressUserInfo = memo((props) => {
         });
         setTourInfo(response.data);
     }
-    console.log(tourInfo);
-
 
     return (
         <>

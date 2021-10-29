@@ -1,5 +1,5 @@
 import { makeStyles, useTheme } from "@material-ui/core";
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { UserWear } from "../../../providers/UserWear";
 import PropTypes from 'prop-types';
 import { Box, Paper, Tab, Tabs } from "@material-ui/core";
@@ -11,6 +11,7 @@ import { ShowBDCoordList } from "./showcoord/ShowBDCoordList";
 import { Route, Switch, useHistory, useLocation } from "react-router";
 import { Page404 } from "../../Page404";
 import { PageRouteBD } from "../../../router/loops/PageRouteBD";
+import { useGetUserInfo } from "../../../../hooks/user/useGetUserInfo";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -63,18 +64,39 @@ export const BestDressBase = memo(() => {
     const [value, setValue] = useState(0);
     const history = useHistory();
     const location = useLocation();
+    const { getUser, userInfo } = useGetUserInfo();
+
+        // 初回のレンダリング判定
+        const isFirstRender = useRef(false)
+
+        useEffect(() => {
+            isFirstRender.current = true
+          }, [])
+
+          useEffect(() => {
+
+            if(isFirstRender.current) {
+                getUser();
+                isFirstRender.current = false
+            } else {
+                  if(!userInfo.data.tour_id){
+                    window.location.href = "/main/bestdresser/login";
+                  }
+              }
+        }, [userInfo]);
 
     useEffect(() => {
+
         if(location.pathname == "/main/bestdresser/main"){
             setValue(0);
         }
-        if(location.pathname == "/main/bestdresser/show"){
+        if(location.pathname == "/main/bestdresser/main/show"){
             setValue(1);
         }
-        if(location.pathname == "/main/bestdresser/create"){
+        if(location.pathname == "/main/bestdresser/main/create"){
             setValue(2);
         }
-        if(location.pathname == "/main/bestdresser/create/coord"){
+        if(location.pathname == "/main/bestdresser/main/create/coord"){
             setValue(2);
         }
     },[location]);
@@ -85,16 +107,18 @@ export const BestDressBase = memo(() => {
     }, [history]);
 
     const onClickShow = useCallback(() => {
-        history.push("/main/bestdresser/show")
+        history.push("/main/bestdresser/main/show")
     }, [history]);
 
     const onClickCreate = useCallback(() => {
-        history.push("/main/bestdresser/create")
+        history.push("/main/bestdresser/main/create")
     }, [history]);
 
     return (
         <>
             <UserWear>
+                { userInfo.data &&
+                <>
                 <Paper className={classes.root}>
                     <Tabs
                         value={value}
@@ -127,6 +151,8 @@ export const BestDressBase = memo(() => {
                         <Page404 />
                     </Route>
                 </Switch>
+                </>
+                }
             </UserWear>
         </>
     )

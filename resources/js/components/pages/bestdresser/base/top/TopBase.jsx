@@ -15,7 +15,6 @@ export const TopBase = memo(() => {
     const classes = useStyles();
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    console.log(userCheck);
 
     return (
         <>
