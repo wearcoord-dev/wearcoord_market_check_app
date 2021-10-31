@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Library\Database;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -36,13 +37,20 @@ class BestDresserController extends Controller
             $checkUserExist = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->exists();
 
             // 存在しなかった場合は新規で作成
-            if(!$checkUserExist){
+            if (!$checkUserExist) {
+                $getUserWear = DB::table('userSelectCoord')->where('user_id', $user_id)->first();
+
                 DB::table('bestDresser_user_info')->insert([
                     'user_id' => $user_id,
                     'tour_id' => $tour_id,
                     'isCreatedCoord' => false,
                     'isDoneVoting' => false,
                     'created_at' => now(),
+                    'caps' => $getUserWear->caps,
+                    'tops' => $getUserWear->tops,
+                    'pants' => $getUserWear->pants,
+                    'shoes' => $getUserWear->shoes,
+                    'mannequin' => $getUserWear->mannequin,
                 ]);
             }
         }
@@ -81,5 +89,45 @@ class BestDresserController extends Controller
 
 
         return response()->json($checkResult);
+    }
+
+    /**
+     * ベストドレッサー参加ユーザー選択ウェア詳細情報の取得
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function getBDUserWear(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $tour_id = $request->input('tour_id');
+
+        $userWear = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->first();
+
+        if(!$userWear){
+            return;
+        }
+
+        $types = ['caps', 'tops', 'pants', 'shoes'];
+
+        foreach ($types as $type) {
+            ${$type . 'Data'} = Database::createUrlAndCategory($userWear->$type, $type, $user_id);
+        }
+
+        $mannequin = $userWear->mannequin;
+
+        // ddd($capsData);
+
+
+        $wearData = [
+            $capsData,
+            $topsData,
+            $pantsData,
+            $shoesData,
+            "mannequin" => $mannequin,
+        ];
+        // ddd($wearData);
+
+        return response()->json($wearData);
     }
 }

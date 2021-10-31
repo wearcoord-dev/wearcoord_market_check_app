@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 import { useGetUserWear } from "../../../../../hooks/selectwear/useGetUserWear";
 import { useRegisterCoord } from "../../../../../hooks/mycoord/useRegisterCoord";
 import { AppContext } from "../../../../providers/UserWear";
+import { useGetBDUserInfo } from "../../../../../hooks/bestdresser/useGetBDUserInfo";
+import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -76,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const ShowBDCoord = memo(() => {
-    const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
+    const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const [mannequinUrl, setUrl] = useState(null);
     const { RegisterCoord } = useRegisterCoord();
     const history = useHistory();
@@ -88,27 +90,30 @@ export const ShowBDCoord = memo(() => {
 
     const toSelectWear = useCallback(() => history.push("create/coord"));
 
+// 最初にユーザーの選んでいるウェアを取得
+
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました')
-            GetWear(context)
+            GetBDUserWear(context)
         }
     }, [userCheck]);
 
+console.log(userBDWear)
+
+// ユーザーの選んでいるマネキンを表示
 
     useEffect(() => {
-        if (userWearInfo) {
+        if (userBDWear) {
 
-            const url = { backgroundImage: 'url( ../../../img/mannequin/' + userWearInfo.mannequin + ')' }
+            const url = { backgroundImage: 'url( ../../../img/mannequin/' + userBDWear.mannequin + ')' }
             setUrl(url);
         }
-    }, [userWearInfo]);
-
-    // console.log(mannequinUrl);
-    // console.log(`ここが${userWearInfo}だぞ！`);
+    }, [userBDWear]);
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+
+    // HTMLから画像を生成
 
     const handleOpen = () => {
         html2canvas(document.querySelector("#centerContainer"), { backgroundColor: null }).then(function (canvas) {
@@ -132,9 +137,9 @@ export const ShowBDCoord = memo(() => {
 
     return (
         <>
-            {userWearInfo ? (errorWear ? (
+            {userBDWear ? (errorBDUserWear ? (
                 <p>error</p>
-            ) : loadingWear ? (
+            ) : loadingBDUserWear ? (
                 <p>loading</p>
             ) : (
                 <div className="centerContainer" id="centerContainer">
@@ -147,64 +152,64 @@ export const ShowBDCoord = memo(() => {
                         <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} src={userCheck.faceImg} alt="" /></div>
 
                         <div style={{ display: "flex" }}>
-                            {userWearInfo ? (errorWear ? (
+                            {userBDWear ? (errorBDUserWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
+                            ) : loadingBDUserWear ? (
                                 <p>Loading...</p>
                             ) : (
 
                                 // capsdataがnullなら代替
                                 <>
-                                    {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                                        <img style={{ width: "60px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                                    {userBDWear[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                                        <img style={{ width: "60px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[0].capsData.category}/${userBDWear[0].capsData.url}`} alt="" />
                                     </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </div>
 
                         <div style={{ display: "flex" }}>
-                            {userWearInfo ? (errorWear ? (
+                            {userBDWear ? (errorBDUserWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
+                            ) : loadingBDUserWear ? (
                                 <p>Loading...</p>
                             ) : (
 
                                 // topsdataがnullなら代替
                                 <>
-                                    {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto", height: "115px", marginTop: "16px" }}>
-                                        <img style={{ width: "125px", height: "125px", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                                    {userBDWear[1] ? <div style={{ textAlign: "center", margin: "auto", height: "115px", marginTop: "16px" }}>
+                                        <img style={{ width: "125px", height: "125px", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[1].topsData.category}/${userBDWear[1].topsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </div>
 
                         <div style={{ display: "flex" }}>
-                            {userWearInfo ? (errorWear ? (
+                            {userBDWear ? (errorBDUserWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
+                            ) : loadingBDUserWear ? (
                                 <p>Loading...</p>
                             ) : (
 
                                 // pantsdataがnullなら代替
                                 <>
-                                    {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto", height: "140px" }}>
-                                        <img style={{ width: "90%", height: "170px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                                    {userBDWear[2] ? <div style={{ textAlign: "center", margin: "auto", height: "140px" }}>
+                                        <img style={{ width: "90%", height: "170px", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[2].pantsData.category}/${userBDWear[2].pantsData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
                         </div>
 
                         <div style={{ display: "flex", overflowX: "scroll" }}>
-                            {userWearInfo ? (errorWear ? (
+                            {userBDWear ? (errorBDUserWear ? (
                                 <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                            ) : loadingWear ? (
+                            ) : loadingBDUserWear ? (
                                 <p>Loading...</p>
                             ) : (
 
                                 // shoesdataがnullなら代替
                                 <>
-                                    {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                                        <img style={{ width: "100px", height: "100px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                                    {userBDWear[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                                        <img style={{ width: "100px", height: "100px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[3].shoesData.category}/${userBDWear[3].shoesData.url}`} alt="" />
                                     </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
                                 </>
                             )) : <></>}
