@@ -153,6 +153,11 @@ Route::get('/bestdresser/passcode', function (Request $request) {
 
 Route::post('/bestdresser/passcode', [App\Http\Controllers\BestDresserController::class, "checkPassCode"]);
 
+Route::get('/bestdresser/bdUserInfo', function (Request $request) {
+});
+
+Route::post('/bestdresser/bdUserInfo', [App\Http\Controllers\BestDresserController::class, "getBDUserInfo"]);
+
 
 // Route::post('/registercoord', function (Request $request) {
 

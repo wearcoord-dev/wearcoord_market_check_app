@@ -64,6 +64,7 @@ const useStyles = makeStyles(() => ({
     datebox: {
         display: "flex",
         justifyContent: "space-around",
+        margin: "10px auto",
         "& div": {
             backgroundColor: "#f0f0f0",
             borderRadius: "10px",
@@ -80,7 +81,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const BestDressUserInfo = memo((props) => {
-    const { tour_id } = props;
+    const { tour_id, user_id } = props;
     const classes = useStyles();
 
     moment().format('YYYY-MM-DD HH:mm:ss.SSS');
@@ -91,10 +92,14 @@ export const BestDressUserInfo = memo((props) => {
     const [startPostCoord, setStartPostCoord] = useState();
     const [endPostCoord, setEndPostCoord] = useState();
     const [showResult, setShowResult] = useState();
+    const [bdUserInfo, setBDUserInfo] = useState(null);
 
     useEffect(() => {
         getTourInfo();
+        getBDUserInfo();
     }, [])
+
+    // 大会情報取得
 
     useEffect(() => {
         if (tourInfo) {
@@ -119,51 +124,106 @@ export const BestDressUserInfo = memo((props) => {
         setTourInfo(response.data);
     }
 
+    // ベストドレッサー参加ユーザー情報取得
+
+    const getBDUserInfo = async () => {
+
+        const header = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        }
+
+        const setData = {
+            "user_id": user_id,
+            "tour_id": tour_id,
+        }
+        const url = '/api/bestdresser/bdUserInfo';
+
+        await axios.post(url, setData, header).then((res) => {
+            setBDUserInfo(res.data);
+            console.log(res.data)
+        }).catch(() => {
+        }).finally(() => {
+        });
+    }
+
     return (
         <>
-            <div className={classes.root}>
-                <ul className={classes.ul}>
-                    <li className={classes.li}>
-                        <figure>
-                            <img src={maleImg} alt="" />
-                        </figure>
-                        <div className={classes.textArea}>
-                            <p className={classes.boldblue}>コーデ未投稿</p>
-                            <p>「コーデを作る」からコーデを作りましょう！</p>
+            {bdUserInfo && (
+                <>
+                    <div className={classes.root}>
+                        <ul className={classes.ul}>
+                            <li className={classes.li}>
+                                <figure>
+                                    <img src={maleImg} alt="" />
+                                </figure>
+                                <div className={classes.textArea}>
+                                    {!bdUserInfo.isCreatedCoord ? (
+                                        <>
+                                            <p className={classes.boldblue}>コーデ未投稿</p>
+                                            <p>「コーデを作る」からコーデを作りましょう！</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p className={classes.boldblue}>コーデ投稿済み！</p>
+                                            <p>「コーデを作る」からコーデを作りました！</p>
+                                        </>
+                                    )}
+                                </div>
+                                <i>
+                                    <ErrorOutlineRoundedIcon />
+                                </i>
+                            </li>
+                            <li className={classes.li}>
+                                <figure>
+                                    <img src={selectImg} alt="" />
+                                </figure>
+                                <div className={classes.textArea}>
+                                    {!bdUserInfo.isDoneVoting ? (
+                                        <>
+                                            <p className={classes.boldblue}>コーデ未投票</p>
+                                            <p>「コーデを見る」からコーデに投票しましょう！</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p className={classes.boldblue}>コーデ投票済み！</p>
+                                            <p>「コーデを見る」からコーデに投票しました！</p>
+                                        </>
+                                    )}
+                                </div>
+                                <i>
+                                    <ErrorOutlineRoundedIcon />
+                                </i>
+                            </li>
+                        </ul>
+                        {!bdUserInfo.isCreatedCoord && !bdUserInfo.isDoneVoting ? (
+                                        <>
+                        <p className={classes.mainbluetext}><span>ベストドレッサー賞の受賞資格がまだありません！</span></p>
+                                        </>
+                                    ) : (
+                                        <>
+                        <p className={classes.mainbluetext}><span>ベストドレッサー賞の受賞資格を取得済み！</span></p>
+                                        </>
+                                    )}
+
+                        <div className={classes.datebox}>
+                            <div>
+                                <p className={classes.boldblue}>投稿期間</p>
+                                <p><span>{startCreateCoord}</span>〜<span>{endCreateCoord}</span></p>
+                            </div>
+                            <div>
+                                <p className={classes.boldblue}>投票期間</p>
+                                <p><span>{startPostCoord}</span>〜<span>{endPostCoord}</span></p>
+                            </div>
+                            <div>
+                                <p className={classes.boldblue}>結果発表</p>
+                                <p><span>{showResult}</span></p>
+                            </div>
                         </div>
-                        <i>
-                            <ErrorOutlineRoundedIcon />
-                        </i>
-                    </li>
-                    <li className={classes.li}>
-                        <figure>
-                            <img src={selectImg} alt="" />
-                        </figure>
-                        <div className={classes.textArea}>
-                            <p className={classes.boldblue}>コーデ未投票</p>
-                            <p>「コーデを見る」からコーデに投票しましょう！</p>
-                        </div>
-                        <i>
-                            <ErrorOutlineRoundedIcon />
-                        </i>
-                    </li>
-                </ul>
-                <p className={classes.mainbluetext}><span>ベストドレッサー賞の受賞資格がまだありません！</span></p>
-                <div className={classes.datebox}>
-                    <div>
-                        <p className={classes.boldblue}>投稿期間</p>
-                        <p><span>{startCreateCoord}</span>〜<span>{endCreateCoord}</span></p>
                     </div>
-                    <div>
-                        <p className={classes.boldblue}>投票期間</p>
-                        <p><span>{startPostCoord}</span>〜<span>{endPostCoord}</span></p>
-                    </div>
-                    <div>
-                        <p className={classes.boldblue}>結果発表</p>
-                        <p><span>{showResult}</span></p>
-                    </div>
-                </div>
-            </div>
+                </>
+            )}
         </>
     )
 })
