@@ -106,6 +106,12 @@ export const NewsList = memo(() => {
         });
     }
 
+    const onClickBD = () => {
+        history.push({
+            pathname: '/main/bestdresser/login',
+        });
+    }
+
     return (
         <>
             <div>
@@ -113,6 +119,20 @@ export const NewsList = memo(() => {
                     <h2 className={classes.h2title}>お知らせ</h2>
                 </div>
                 <ul>
+                    <li className={classes.li}
+                    onClick={onClickBD}
+                    >
+                        <div className={classes.imgBox}>
+                            <img className={classes.img} src={logoImg} alt="" />
+                        </div>
+                        <div className={classes.textBox}>
+                            <p className={classes.date}>2021.11.1</p>
+                            <p className={classes.text}>ベストドレッサー賞ページがOPENしました！</p>
+                        </div>
+                        <div className={classes.triangle}>
+                        </div>
+                            <p className={classes.label}>NEW</p>
+                    </li>
                     <li className={classes.li}
                     onClick={onClickSize}
                     >
