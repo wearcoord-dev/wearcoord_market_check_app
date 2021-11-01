@@ -13,17 +13,22 @@ import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
 import { useRegisterWear } from "../../../../../hooks/selectwear/useRegisterWear";
 import { UserContext } from "../../../../providers/UserProvider";
 import { WearSearch } from "../../../../molecules/searchbox/WearSearch";
+import { InnerSearch } from "../../../../molecules/searchbox/InnerSearch";
+import { useRegisterInner } from "../../../../../hooks/selectwear/useRegisterInner";
+import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
 
 
-export const SelectBDCoord = memo(() => {
+export const SelectBDCoord = memo((props) => {
+    const { from } = props;
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const { RegisterWear } = useRegisterWear();
-    const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
-
+    const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const context = useContext(UserContext);
+    const { RegisterInner } = useRegisterInner();
+
 
     // 着ているウェアを取得
     const [activeIndexCaps, setActiveIndexCaps] = useState(0);
@@ -71,7 +76,6 @@ export const SelectBDCoord = memo(() => {
         }
     }, [userCaps]);
 
-    // console.log(userCaps);
 
     useEffect(() => {
         if (!isFirstRenderTops.current) {
@@ -210,8 +214,7 @@ export const SelectBDCoord = memo(() => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました')
-            GetWear(context)
+            GetBDUserWear(context)
         }
     }, [userCheck]);
 
@@ -290,15 +293,15 @@ export const SelectBDCoord = memo(() => {
 
         ) : (
             <>
-                {userWearInfo ? (errorWear ? (
+                {userBDWear ? (errorBDUserWear ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
+                ) : loadingBDUserWear ? (
                     <p>Loading...</p>
                 ) : (
                     // capsdataがnullなら代替
                     <>
-                        {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
-                            <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
+                        {userBDWear[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
+                            <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[0].capsData.category}/${userBDWear[0].capsData.url}`} alt="" />
                         </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                     </>
                 )) : <></>}
@@ -354,16 +357,16 @@ export const SelectBDCoord = memo(() => {
 
         ) : (
             <>
-                {userWearInfo ? (errorWear ? (
+                {userBDWear ? (errorBDUserWear ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
+                ) : loadingBDUserWear ? (
                     <p>Loading...</p>
                 ) : (
 
                     // topsdataがnullなら代替
                     <>
-                        {userWearInfo[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                            <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[1].topsData.category}/${userWearInfo[1].topsData.url}`} alt="" />
+                        {userBDWear[1] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: "100", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[1].topsData.category}/${userBDWear[1].topsData.url}`} alt="" />
                         </div> : <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>}
                     </>
                 )) : <></>}
@@ -419,16 +422,16 @@ export const SelectBDCoord = memo(() => {
 
         ) : (
             <>
-                {userWearInfo ? (errorWear ? (
+                {userBDWear ? (errorBDUserWear ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
+                ) : loadingBDUserWear ? (
                     <p>Loading...</p>
                 ) : (
 
                     // pantsdataがnullなら代替
                     <>
-                        {userWearInfo[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                            <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[2].pantsData.category}/${userWearInfo[2].pantsData.url}`} alt="" />
+                        {userBDWear[2] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[2].pantsData.category}/${userBDWear[2].pantsData.url}`} alt="" />
                         </div> : <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>}
                     </>
                 )) : <></>}
@@ -483,16 +486,16 @@ export const SelectBDCoord = memo(() => {
 
         ) : (
             <>
-                {userWearInfo ? (errorWear ? (
+                {userBDWear ? (errorBDUserWear ? (
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
-                ) : loadingWear ? (
+                ) : loadingBDUserWear ? (
                     <p>Loading...</p>
                 ) : (
 
                     // shoesdataがnullなら代替
                     <>
-                        {userWearInfo[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
-                            <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[3].shoesData.category}/${userWearInfo[3].shoesData.url}`} alt="" />
+                        {userBDWear[3] ? <div style={{ textAlign: "center", margin: "auto" }}>
+                            <img style={{ width: "100%", height: "100px", objectFit: "contain" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[3].shoesData.category}/${userBDWear[3].shoesData.url}`} alt="" />
                         </div> : <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>}
                     </>
                 )) : <></>}
@@ -519,7 +522,10 @@ export const SelectBDCoord = memo(() => {
 
         setOpenSnackWarning(false);
     };
-    console.log(userCheck)
+
+    const onClickFetchInner = (props) => (
+        RegisterInner(props)
+    );
 
     return (
         <>
@@ -534,23 +540,23 @@ export const SelectBDCoord = memo(() => {
 
             <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
 
-            <br />
+            {from == "wear" && (
+                <>
+                    <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                        <SearchIcon style={{ paddingRight: "6px" }} />
+                        着替える
+                    </Button>
 
-            <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                <SearchIcon style={{ paddingRight: "6px" }} />
-                着替える
-            </Button>
+                    <Button
+                        style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} color="primary"
+                        variant="contained"
+                        onClick={onClickRegisterWear}
+                    >
+                        <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
+                        ウェアを確定
+                    </Button>
 
-            <Button
-                style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} color="primary"
-                variant="contained"
-                onClick={onClickRegisterWear}
-            >
-                <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
-                ウェアを確定
-            </Button>
-
-            <Popper
+                    <Popper
                 id={id}
                 open={open}
                 anchorEl={anchorEl}
@@ -581,6 +587,32 @@ export const SelectBDCoord = memo(() => {
                 />
 
             </Popper>
+                </>
+            )}
+
+            {from == "inner" && (
+                <>
+                    <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                インナーを探す
+      </Button>
+
+            <Popper
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                // onClose={handleClose}
+                placement={'top'}
+                className="popper"
+                style={{ width: "100%" }}
+            >
+
+                <InnerSearch
+                    handleClick={handleClick}
+                    onClickFetchInner={onClickFetchInner}
+                />
+            </Popper>
+                </>
+            )}
 
             <Snackbar open={openSnack} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" style={{ fontSize: "14px" }}>
