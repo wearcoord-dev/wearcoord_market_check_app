@@ -5,17 +5,16 @@ import 'swiper/swiper-bundle.css';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import SearchIcon from '@material-ui/icons/Search';
 import { Alert } from "@material-ui/lab";
-import { useGetUserWear } from "../../../../../hooks/selectwear/useGetUserWear";
 import { useAllCaps } from "../../../../../hooks/selectwear/useAllCaps";
 import { useAllTops } from "../../../../../hooks/selectwear/useAllTops";
 import { useAllPants } from "../../../../../hooks/selectwear/useAllPants";
 import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
-import { useRegisterWear } from "../../../../../hooks/selectwear/useRegisterWear";
 import { UserContext } from "../../../../providers/UserProvider";
 import { WearSearch } from "../../../../molecules/searchbox/WearSearch";
 import { InnerSearch } from "../../../../molecules/searchbox/InnerSearch";
 import { useRegisterInner } from "../../../../../hooks/selectwear/useRegisterInner";
 import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
+import { useRegisterBDWear } from "../../../../../hooks/bestdresser/useRegisterBDWear";
 
 
 export const SelectBDCoord = memo((props) => {
@@ -24,7 +23,7 @@ export const SelectBDCoord = memo((props) => {
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
-    const { RegisterWear } = useRegisterWear();
+    const { RegisterWear } = useRegisterBDWear();
     const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const context = useContext(UserContext);
     const { RegisterInner } = useRegisterInner();
@@ -201,13 +200,16 @@ export const SelectBDCoord = memo((props) => {
     }
 
     const onClickRegisterWear = () => {
+        console.log(context.contextName.id)
+
         const obj = {
             "caps": capsArray[activeIndexCaps],
             "tops": topsArray[activeIndexTops],
             "pants": pantsArray[activeIndexPants],
             "shoes": shoesArray[activeIndexShoes],
-            "userid": context.contextName,
+            "userid": context.contextName.id,
         }
+
         RegisterWear(obj);
     }
     const userCheck = context.contextName;

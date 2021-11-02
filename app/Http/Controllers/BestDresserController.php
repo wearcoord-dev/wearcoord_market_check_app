@@ -130,4 +130,51 @@ class BestDresserController extends Controller
 
         return response()->json($wearData);
     }
+
+    /**
+     * ベストドレッサーコーデ登録
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function registerBDWear(Request $request)
+    {
+        $user_id = $request->input('userid');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+
+        // ウェアが選択されていれば反映、なければ前のデータを取得
+
+        if ($request->input('caps')) {
+            $caps = $request->input('caps');
+        } else {
+            $caps = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('caps');
+        }
+
+        if ($request->input('tops')) {
+            $tops = $request->input('tops');
+        } else {
+            $tops = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('tops');
+        }
+
+        if ($request->input('pants')) {
+            $pants = $request->input('pants');
+        } else {
+            $pants = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('pants');
+        }
+
+        if ($request->input('shoes')) {
+            $shoes = $request->input('shoes');
+        } else {
+            $shoes = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('shoes');
+        }
+
+            DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->update([
+                'caps' => $caps,
+                'tops' => $tops,
+                'pants' => $pants,
+                'shoes' => $shoes,
+            ]);
+
+        return 'OK';
+    }
 }
