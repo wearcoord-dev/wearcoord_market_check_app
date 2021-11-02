@@ -168,6 +168,10 @@ Route::get('/bestdresser/registerBDWear', function (Request $request) {
 
 Route::post('/bestdresser/registerBDWear', [App\Http\Controllers\BestDresserController::class, "registerBDWear"]);
 
+Route::get('/registerBDcoord', function (Request $request) {
+});
+
+Route::post('/registerBDcoord', [App\Http\Controllers\BestDresserController::class, "registerBDcoord"]);
 
 // Route::post('/registercoord', function (Request $request) {
 

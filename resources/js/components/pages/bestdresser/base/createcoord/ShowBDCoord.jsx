@@ -9,6 +9,7 @@ import { useRegisterCoord } from "../../../../../hooks/mycoord/useRegisterCoord"
 import { AppContext } from "../../../../providers/UserWear";
 import { useGetBDUserInfo } from "../../../../../hooks/bestdresser/useGetBDUserInfo";
 import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
+import { useRegisterBDCoord } from "../../../../../hooks/bestdresser/useRegisterBDCoord";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -80,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 export const ShowBDCoord = memo(() => {
     const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const [mannequinUrl, setUrl] = useState(null);
-    const { RegisterCoord } = useRegisterCoord();
+    const { RegisterCoord } = useRegisterBDCoord();
     const history = useHistory();
 
 
@@ -274,7 +275,7 @@ export const ShowBDCoord = memo(() => {
                             <input type="hidden" name="userId" value={userCheck}></input>
 
                             <button style={{
-                                backgroundColor: "#0080E4", width:
+                                backgroundColor: "#216496", width:
                                     "200px", padding: "10px 0", color: "#fff", marginTop: "10px", borderRadius: "4px"
                             }} type="button" onClick={registerCoord}>投稿する</button>
                         </form>
