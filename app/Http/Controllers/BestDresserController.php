@@ -100,11 +100,11 @@ class BestDresserController extends Controller
     public function getBDUserWear(Request $request)
     {
         $user_id = $request->input('user_id');
-        $tour_id = $request->input('tour_id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
 
         $userWear = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->first();
 
-        if(!$userWear){
+        if (!$userWear) {
             return;
         }
 
@@ -132,7 +132,7 @@ class BestDresserController extends Controller
     }
 
     /**
-     * ベストドレッサーコーデ登録
+     * ベストドレッサー選択ウェア保存
      *
      * @param array $request ユーザー情報
      * @return  array
@@ -168,13 +168,63 @@ class BestDresserController extends Controller
             $shoes = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('shoes');
         }
 
-            DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->update([
-                'caps' => $caps,
-                'tops' => $tops,
-                'pants' => $pants,
-                'shoes' => $shoes,
-            ]);
+        DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->update([
+            'caps' => $caps,
+            'tops' => $tops,
+            'pants' => $pants,
+            'shoes' => $shoes,
+        ]);
 
         return 'OK';
+    }
+
+    /**
+     * ベストドレッサーコーデ登録
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function registerBDcoord(Request $request)
+    {
+        $imgUrl = $request['imgUrl'];
+        $userId = $request['userId'];
+
+        $tour_id = DB::table('users')->where('id', $userId)->value('tour_id');
+        $userGender = DB::table('users')->where('id', $userId)->value('gender');
+
+        $userWear = DB::table('bestDresser_user_info')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
+
+        $userCoord = DB::table('bestDresser_coordlist')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
+
+
+        if(!$userCoord){
+            DB::table('bestDresser_coordlist')->insert([
+                'user_id' => $userId,
+                'tour_id' => $tour_id,
+                'gender' => $userGender,
+                'caps' => $userWear->caps,
+                'tops' => $userWear->tops,
+                'pants' => $userWear->pants,
+                'shoes' => $userWear->shoes,
+                'mannequin' => $userWear->mannequin,
+                'img' => $imgUrl,
+                'created_at' => now(),
+            ]);
+        }else{
+            DB::table('bestDresser_coordlist')->update([
+                'user_id' => $userId,
+                'tour_id' => $tour_id,
+                'gender' => $userGender,
+                'caps' => $userWear->caps,
+                'tops' => $userWear->tops,
+                'pants' => $userWear->pants,
+                'shoes' => $userWear->shoes,
+                'mannequin' => $userWear->mannequin,
+                'img' => $imgUrl,
+                'updated_at' => now(),
+            ]);
+        }
+
+        return 'ok!';
     }
 }

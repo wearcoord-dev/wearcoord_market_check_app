@@ -29,7 +29,6 @@ export const useRegisterBDWear = () => {
         }else{
             shoes = null;
         }
-        console.log(props)
 
         const header = {
             headers: {
@@ -47,7 +46,6 @@ export const useRegisterBDWear = () => {
         const url = '/api/bestdresser/registerBDWear';
 
         await axios.post(url, setData, header).then((res) => {
-            console.log(res);
             history.push("/main/bestdresser/main/create");
         }).catch(() => {
         }).finally(() => {
