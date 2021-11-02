@@ -184,7 +184,7 @@ class BestDresserController extends Controller
      * @param array $request ユーザー情報
      * @return  array
      */
-    public function registerBDcoord(Request $request)
+    public function registerBDCoord(Request $request)
     {
         $imgUrl = $request['imgUrl'];
         $userId = $request['userId'];
@@ -197,7 +197,7 @@ class BestDresserController extends Controller
         $userCoord = DB::table('bestDresser_coordlist')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
 
 
-        if(!$userCoord){
+        if (!$userCoord) {
             DB::table('bestDresser_coordlist')->insert([
                 'user_id' => $userId,
                 'tour_id' => $tour_id,
@@ -210,7 +210,7 @@ class BestDresserController extends Controller
                 'img' => $imgUrl,
                 'created_at' => now(),
             ]);
-        }else{
+        } else {
             DB::table('bestDresser_coordlist')->update([
                 'user_id' => $userId,
                 'tour_id' => $tour_id,
@@ -224,6 +224,25 @@ class BestDresserController extends Controller
                 'updated_at' => now(),
             ]);
         }
+
+        return 'ok!';
+    }
+
+    /**
+     * ベストドレッサーインナー保存
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function registerBDInner(Request $request)
+    {
+        $url = $request->input('url');
+        $user_id = $request->input('id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+
+        DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->update([
+            'mannequin' => $url,
+        ]);
 
         return 'ok!';
     }

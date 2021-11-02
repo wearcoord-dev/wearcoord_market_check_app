@@ -12,9 +12,9 @@ import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
 import { UserContext } from "../../../../providers/UserProvider";
 import { WearSearch } from "../../../../molecules/searchbox/WearSearch";
 import { InnerSearch } from "../../../../molecules/searchbox/InnerSearch";
-import { useRegisterInner } from "../../../../../hooks/selectwear/useRegisterInner";
 import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
 import { useRegisterBDWear } from "../../../../../hooks/bestdresser/useRegisterBDWear";
+import { useRegisterBDInner } from "../../../../../hooks/bestdresser/useRegisterBDInner";
 
 
 export const SelectBDCoord = memo((props) => {
@@ -26,7 +26,7 @@ export const SelectBDCoord = memo((props) => {
     const { RegisterWear } = useRegisterBDWear();
     const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const context = useContext(UserContext);
-    const { RegisterInner } = useRegisterInner();
+    const { RegisterBDInner } = useRegisterBDInner();
 
 
     // 着ているウェアを取得
@@ -525,8 +525,8 @@ export const SelectBDCoord = memo((props) => {
         setOpenSnackWarning(false);
     };
 
-    const onClickFetchInner = (props) => (
-        RegisterInner(props)
+    const onClickBDInner = (props) => (
+        RegisterBDInner(props)
     );
 
     return (
@@ -610,7 +610,7 @@ export const SelectBDCoord = memo((props) => {
 
                 <InnerSearch
                     handleClick={handleClick}
-                    onClickFetchInner={onClickFetchInner}
+                    onClickFetchInner={onClickBDInner}
                 />
             </Popper>
                 </>
