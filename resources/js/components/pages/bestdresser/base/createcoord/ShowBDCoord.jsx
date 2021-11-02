@@ -86,9 +86,20 @@ export const ShowBDCoord = memo(() => {
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    // console.log(userCheck);
 
-    const toSelectWear = useCallback(() => history.push("create/coord"));
+    const toSelectWear = () => {
+        history.push({
+            pathname: 'create/coord',
+            state: { from: 'wear' }
+        });
+    }
+
+    const toSelectInner = () => {
+        history.push({
+            pathname: 'create/coord',
+            state: { from: 'inner' }
+        });
+    }
 
 // 最初にユーザーの選んでいるウェアを取得
 
@@ -97,8 +108,6 @@ export const ShowBDCoord = memo(() => {
             GetBDUserWear(context)
         }
     }, [userCheck]);
-
-console.log(userBDWear)
 
 // ユーザーの選んでいるマネキンを表示
 
@@ -130,7 +139,6 @@ console.log(userBDWear)
     };
 
     const registerCoord = (props) => {
-        // console.log("OK");
         RegisterCoord(props, context);
     }
 
@@ -222,7 +230,7 @@ console.log(userBDWear)
             <div><input type="hidden" id="mannequinImgCanvas" name="canvas_img" value=""></input></div>
 
             <div className={classes.btnBox}>
-                <div onClick={toSelectWear} className={classes.bottomBtnLeft}>
+                <div onClick={toSelectInner} className={classes.bottomBtnLeft}>
                     <div className={classes.searchBtn}>
                         <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
                         <p className="btnText">マネキンを変更</p>
