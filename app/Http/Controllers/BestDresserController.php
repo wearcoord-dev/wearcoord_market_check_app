@@ -246,4 +246,21 @@ class BestDresserController extends Controller
 
         return 'ok!';
     }
+
+    /**
+     * ベストドレッサー コーデ全取得
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function bdCoordList(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+        $gender = DB::table('users')->where('id', $user_id)->value('gender');
+
+        $coordList = DB::table('bestDresser_coordlist')->where('tour_id', $tour_id)->where('gender', $gender)->where('user_id', '!=', $user_id)->get();
+
+        return response()->json($coordList);
+    }
 }
