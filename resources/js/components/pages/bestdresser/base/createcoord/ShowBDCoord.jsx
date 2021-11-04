@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         bottom: "0",
         display: "flex",
         width: "40%",
-        height: "60px",
+        height: "40px",
         minWidth: "150px",
         justifyContent: "center",
         alignItems: "center",
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
         left: "0",
         display: "flex",
         width: "40%",
-        height: "60px",
+        height: "40px",
         minWidth: "150px",
         justifyContent: "center",
         alignItems: "center",
@@ -74,12 +74,17 @@ const useStyles = makeStyles((theme) => ({
     },
     bottom: {
         height: "100px",
+    },
+    btnWrapper: {
+        position: "absolute",
+        bottom: "20px",
+        width: "100%",
     }
 }));
 
 
 export const ShowBDCoord = memo(() => {
-    const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
+    const { GetBDUserWear, userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const [mannequinUrl, setUrl] = useState(null);
     const { RegisterCoord } = useRegisterBDCoord();
     const history = useHistory();
@@ -102,7 +107,7 @@ export const ShowBDCoord = memo(() => {
         });
     }
 
-// 最初にユーザーの選んでいるウェアを取得
+    // 最初にユーザーの選んでいるウェアを取得
 
     useEffect(() => {
         if (userCheck !== undefined) {
@@ -110,7 +115,7 @@ export const ShowBDCoord = memo(() => {
         }
     }, [userCheck]);
 
-// ユーザーの選んでいるマネキンを表示
+    // ユーザーの選んでいるマネキンを表示
 
     useEffect(() => {
         if (userBDWear) {
@@ -228,26 +233,27 @@ export const ShowBDCoord = memo(() => {
 
                 </div>
             )) : <div style={{ width: "40%", height: "50vh" }}></div>}
-            <div><input type="hidden" id="mannequinImgCanvas" name="canvas_img" value=""></input></div>
 
-            <div className={classes.btnBox}>
-                <div onClick={toSelectInner} className={classes.bottomBtnLeft}>
-                    <div className={classes.searchBtn}>
-                        <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
-                        <p className="btnText">マネキンを変更</p>
+            <div className={classes.btnWrapper}>
+                <div className={classes.btnBox}>
+                    <div onClick={toSelectInner} className={classes.bottomBtnLeft}>
+                        <div className={classes.searchBtn}>
+                            <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
+                            <p className="btnText">マネキンを変更</p>
+                        </div>
                     </div>
-                </div>
-                <div onClick={toSelectWear} className={classes.bottomBtnLeft}>
-                    <div className={classes.searchBtn}>
-                        <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
-                        <p className="btnText">着替える</p>
+                    <div onClick={toSelectWear} className={classes.bottomBtnLeft}>
+                        <div className={classes.searchBtn}>
+                            <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
+                            <p className="btnText">着替える</p>
+                        </div>
                     </div>
-                </div>
 
-                <div onClick={handleOpen} className={classes.bottomBtnRight}>
-                    <div className={classes.searchBtn}>
-                        <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
-                        <p className="btnText">コーデを投稿する</p>
+                    <div onClick={handleOpen} className={classes.bottomBtnRight}>
+                        <div className={classes.searchBtn}>
+                            <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
+                            <p className="btnText">コーデを投稿する</p>
+                        </div>
                     </div>
                 </div>
             </div>
