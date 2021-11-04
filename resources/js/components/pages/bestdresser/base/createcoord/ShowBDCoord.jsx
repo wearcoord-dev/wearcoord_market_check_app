@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     bottomBtnRight: {
         position: "absolute",
         right: "0",
-        bottom: "0",
+        bottom: "80px",
         display: "flex",
         width: "40%",
         height: "40px",
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     bottomBtnLeft: {
+        position: "absolute",
         left: "0",
         display: "flex",
         width: "40%",
@@ -71,14 +72,16 @@ const useStyles = makeStyles((theme) => ({
     },
     btnBox: {
         position: "relative",
+        height: "100%",
     },
     bottom: {
         height: "100px",
     },
     btnWrapper: {
-        position: "absolute",
-        bottom: "20px",
+        position: "fixed",
+        bottom: "0",
         width: "100%",
+        height: "100vh",
     }
 }));
 
@@ -157,7 +160,7 @@ export const ShowBDCoord = memo(() => {
                 <p>loading</p>
             ) : (
                 <div className="centerContainer" id="centerContainer">
-                    <div className="clickCover" onClick={toSelectWear} ></div>
+                    {/* <div className="clickCover" onClick={toSelectWear} ></div> */}
                     {mannequinUrl ? (<div id="mannequinImgCanvas" className="mannequinImg" style={{
                         'backgroundImage': mannequinUrl.backgroundImage,
                         maxWidth: '200px',
@@ -236,13 +239,13 @@ export const ShowBDCoord = memo(() => {
 
             <div className={classes.btnWrapper}>
                 <div className={classes.btnBox}>
-                    <div onClick={toSelectInner} className={classes.bottomBtnLeft}>
+                    <div onClick={toSelectInner} className={classes.bottomBtnLeft} style={{ bottom:"140px" }}>
                         <div className={classes.searchBtn}>
                             <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
                             <p className="btnText">マネキンを変更</p>
                         </div>
                     </div>
-                    <div onClick={toSelectWear} className={classes.bottomBtnLeft}>
+                    <div onClick={toSelectWear} className={classes.bottomBtnLeft} style={{ bottom:"80px" }}>
                         <div className={classes.searchBtn}>
                             <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
                             <p className="btnText">着替える</p>
