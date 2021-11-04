@@ -211,7 +211,7 @@ class BestDresserController extends Controller
                 'created_at' => now(),
             ]);
         } else {
-            DB::table('bestDresser_coordlist')->update([
+            DB::table('bestDresser_coordlist')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
                 'user_id' => $userId,
                 'tour_id' => $tour_id,
                 'gender' => $userGender,
