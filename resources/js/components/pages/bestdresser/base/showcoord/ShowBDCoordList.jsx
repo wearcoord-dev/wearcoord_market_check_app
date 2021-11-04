@@ -1,8 +1,10 @@
 import { Backdrop, Fade, Button, makeStyles, Modal } from "@material-ui/core";
-import { memo, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import coordImg from "../../../../../../../public/img/firstcoord/1.png";
 import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import { AppContext } from "../../../../providers/UserWear";
+import { useGetBDCoordList } from "../../../../../hooks/bestdresser/useGetBDCoordList";
 
 const useStyles = makeStyles({
     root: {
@@ -107,6 +109,18 @@ const useStyles = makeStyles({
 export const ShowBDCoordList = memo(() => {
     const classes = useStyles();
     const [openModal, setOpen] = useState(false);
+    const context = useContext(AppContext);
+    const userCheck = context.contextName;
+    console.log(userCheck)
+    const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
+
+    // 最初にユーザーの選んでいるウェアを取得
+
+    useEffect(() => {
+        if (userCheck !== undefined) {
+            GetBDCoordList(context)
+        }
+    }, [userCheck]);
 
     const handleClose = () => {
         setOpen(false);
@@ -116,10 +130,31 @@ export const ShowBDCoordList = memo(() => {
         setOpen(true);
     }
 
+    const items = (
+        <>
+            {userCoordList && (
+                <>
+                    {userCoordList.map((item, index) => (
+                        <li onClick={onClickInfo} key={index}>
+                            <figure>
+                                <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
+                                <img src={item.img} alt="" />
+                                <div className={classes.figcap}>
+                                    <figcaption>Tops : FILA</figcaption>
+                                    <figcaption>Pants : FILA</figcaption>
+                                </div>
+                            </figure>
+                        </li>
+                    ))}
+                </>
+            )}
+        </>
+    )
+
     return (
         <>
             <div className={classes.root}>
-                <p className={classes.title}>今このコーデをいいね！しています</p>
+                {/* <p className={classes.title}>今このコーデをいいね！しています</p>
                 <ul className={classes.ul}>
                     <li onClick={onClickInfo}>
                         <figure>
@@ -131,50 +166,11 @@ export const ShowBDCoordList = memo(() => {
                             </div>
                         </figure>
                     </li>
-                </ul>
+                </ul> */}
 
                 <p className={classes.title}>参加中のすべてのコーデ</p>
                 <ul className={classes.ul}>
-                    <li onClick={onClickInfo}>
-                        <figure>
-                            <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
-                            <img src={coordImg} alt="" />
-                            <div className={classes.figcap}>
-                                <figcaption>Tops : FILA</figcaption>
-                                <figcaption>Pants : FILA</figcaption>
-                            </div>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
-                            <img src={coordImg} alt="" />
-                            <div className={classes.figcap}>
-                                <figcaption>Tops : FILA</figcaption>
-                                <figcaption>Pants : FILA</figcaption>
-                            </div>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
-                            <img src={coordImg} alt="" />
-                            <div className={classes.figcap}>
-                                <figcaption>Tops : FILA</figcaption>
-                                <figcaption>Pants : FILA</figcaption>
-                            </div>
-                        </figure>
-                    </li>
-                    <li>
-                        <figure>
-                            <i ><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
-                            <img src={coordImg} alt="" />
-                            <div className={classes.figcap}>
-                                <figcaption>Tops : FILA</figcaption>
-                                <figcaption>Pants : FILA</figcaption>
-                            </div>
-                        </figure>
-                    </li>
+                    {items}
                 </ul>
                 <div className={classes.bottom}></div>
             </div>
@@ -194,18 +190,6 @@ export const ShowBDCoordList = memo(() => {
                 <Fade in={openModal}>
                     <div className={classes.item}>
                         <i className={classes.close} onClick={handleClose}><CloseRoundedIcon style={{ fontSize: "20px", color: "#f9f9f9" }} /></i>
-                        {/* {dataArray ? (itemGetDetail ? (
-                            <>
-                                <div dangerouslySetInnerHTML={{ __html: itemGetDetail.moshimoLink }}></div>
-                                <Button style={{
-                                    left: "50%", transform: "translateX(-50%)", backgroundColor: "#0080E4", width:
-                                        "200px", padding: "10px 0", color: "#fff", marginTop: "10px"
-                                }} aria-describedby={id} variant="contained" onClick={onClickWearItem.bind(this, itemGetDetail.id, dataList.wear)}>
-                                    <AccessibilityNewIcon style={{ paddingRight: "6px" }} />
-                                    ウェアを着る
-                                </Button>
-                            </>) : (<p></p>)
-                        ) : <div></div>} */}
                         <figure>
                             <img src={coordImg} alt="" />
                         </figure>
