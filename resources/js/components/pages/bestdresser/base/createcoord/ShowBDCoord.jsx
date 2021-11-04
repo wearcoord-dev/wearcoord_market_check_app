@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     },
     btnBox: {
         position: "relative",
-        height: "100%",
+        // height: "100%",
     },
     bottom: {
         height: "100px",
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
         position: "fixed",
         bottom: "0",
         width: "100%",
-        height: "100vh",
+        // height: "100vh",
     }
 }));
 
