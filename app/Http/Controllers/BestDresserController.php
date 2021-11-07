@@ -282,4 +282,56 @@ class BestDresserController extends Controller
 
         return response()->json($getLikeCoord);
     }
+
+    /**
+     * ベストドレッサー いいね機能
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function postBDCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $coord = $request->input('coord');
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
+
+        if($existBDLike){
+            DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
+                'coord_id' => $coord,
+                'updated_at' => now()
+            ]);
+        }else{
+            DB::table('likes')->insert([
+                'coord_id' => $coord,
+                'user_id' => $user_id,
+                'tour_id' => $user->tour_id,
+                'created_at' => now()
+            ]);
+        }
+
+        return 'ok';
+    }
+
+    /**
+     * ベストドレッサー いいね削除
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function deleteBDCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $coord = $request->input('coord');
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
+
+        if($existBDLike){
+            DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->delete();
+        }
+
+        return 'ok';
+    }
 }

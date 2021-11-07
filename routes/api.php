@@ -185,6 +185,16 @@ Route::get('/bestdresser/getLikeCoord', function (Request $request) {
 
 Route::post('/bestdresser/getLikeCoord', [App\Http\Controllers\BestDresserController::class, "getLikeCoord"]);
 
+Route::get('/bestdresser/postBDCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/postBDCoord', [App\Http\Controllers\BestDresserController::class, "postBDCoord"]);
+
+Route::get('/bestdresser/deleteBDCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/deleteBDCoord', [App\Http\Controllers\BestDresserController::class, "deleteBDCoord"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

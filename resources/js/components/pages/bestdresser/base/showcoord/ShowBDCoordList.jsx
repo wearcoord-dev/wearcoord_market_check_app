@@ -136,14 +136,16 @@ export const ShowBDCoordList = memo(() => {
             {userCoordList && (
                 <>
                     {userCoordList.map((item, index) => (
-                        <li onClick={onClickInfo} key={index}>
+                        <li key={index}>
                             <figure>
                                 {/* <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i> */}
                                 <BDLikeBtn item={item} userData={context} />
+                                <div onClick={onClickInfo}>
                                 <img src={item.img} alt="" />
                                 <div className={classes.figcap}>
                                     <figcaption>Tops : FILA</figcaption>
                                     <figcaption>Pants : FILA</figcaption>
+                                </div>
                                 </div>
                             </figure>
                         </li>
