@@ -180,6 +180,11 @@ Route::post('/bestdresser/registerBDInner', [App\Http\Controllers\BestDresserCon
 
 Route::get('/bestdresser/bdCoordList', [App\Http\Controllers\BestDresserController::class, "bdCoordList"]);
 
+Route::get('/bestdresser/getLikeCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/getLikeCoord', [App\Http\Controllers\BestDresserController::class, "getLikeCoord"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

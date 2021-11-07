@@ -5,6 +5,7 @@ import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { AppContext } from "../../../../providers/UserWear";
 import { useGetBDCoordList } from "../../../../../hooks/bestdresser/useGetBDCoordList";
+import { BDLikeBtn } from "./BDLikeBtn";
 
 const useStyles = makeStyles({
     root: {
@@ -137,7 +138,8 @@ export const ShowBDCoordList = memo(() => {
                     {userCoordList.map((item, index) => (
                         <li onClick={onClickInfo} key={index}>
                             <figure>
-                                <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
+                                {/* <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i> */}
+                                <BDLikeBtn item={item} userData={context} />
                                 <img src={item.img} alt="" />
                                 <div className={classes.figcap}>
                                     <figcaption>Tops : FILA</figcaption>
