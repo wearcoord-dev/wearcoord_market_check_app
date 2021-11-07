@@ -114,6 +114,9 @@ export const ShowBDCoordList = memo(() => {
     const userCheck = context.contextName;
     console.log(userCheck)
     const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
+// モーダルデータ
+    const [ modalImg, setModalImg ] = useState();
+    const [ modalItem, setModalItem ] = useState();
 
     // 最初にユーザーの選んでいるウェアを取得
 
@@ -127,8 +130,11 @@ export const ShowBDCoordList = memo(() => {
         setOpen(false);
     };
 
-    const onClickInfo = () => {
+    const onClickInfo = (item, img) => {
         setOpen(true);
+        // console.log(id, img)
+        setModalImg(img);
+        setModalItem(item);
     }
 
     const items = (
@@ -140,7 +146,7 @@ export const ShowBDCoordList = memo(() => {
                             <figure>
                                 {/* <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i> */}
                                 <BDLikeBtn item={item} userData={context} />
-                                <div onClick={onClickInfo}>
+                                <div onClick={onClickInfo.bind(this, item, item.img)}>
                                 <img src={item.img} alt="" />
                                 <div className={classes.figcap}>
                                     <figcaption>Tops : FILA</figcaption>
@@ -195,11 +201,12 @@ export const ShowBDCoordList = memo(() => {
                     <div className={classes.item}>
                         <i className={classes.close} onClick={handleClose}><CloseRoundedIcon style={{ fontSize: "20px", color: "#f9f9f9" }} /></i>
                         <figure>
-                            <img src={coordImg} alt="" />
+                            <img src={modalImg} alt="" />
                         </figure>
                         <div className={classes.btnbox}>
                             <button className={classes.like}>
-                                <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i>
+                                {/* <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "silver" }} /></i> */}
+                                <BDLikeBtn item={modalItem} userData={context} />
                             </button>
                             <button className={classes.detail}>コーデの詳細を見る</button>
                         </div>
