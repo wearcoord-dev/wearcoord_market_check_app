@@ -197,7 +197,7 @@ export const BestDressUserInfo = memo((props) => {
                                 </i>
                             </li>
                         </ul>
-                        {!bdUserInfo.isCreatedCoord && !bdUserInfo.isDoneVoting ? (
+                        {bdUserInfo.isCreatedCoord == false || bdUserInfo.isDoneVoting == false ? (
                                         <>
                         <p className={classes.mainbluetext}><span>ベストドレッサー賞の受賞資格がまだありません！</span></p>
                                         </>
