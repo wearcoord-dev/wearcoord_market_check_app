@@ -211,6 +211,9 @@ class BestDresserController extends Controller
                 'img' => $imgUrl,
                 'created_at' => now(),
             ]);
+            DB::table('bestDresser_user_info')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
+                'isCreatedCoord' => true,
+            ]);
         } else {
             DB::table('bestDresser_coordlists')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
                 'user_id' => $userId,
@@ -223,6 +226,9 @@ class BestDresserController extends Controller
                 'mannequin' => $userWear->mannequin,
                 'img' => $imgUrl,
                 'updated_at' => now(),
+            ]);
+            DB::table('bestDresser_user_info')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
+                'isCreatedCoord' => true,
             ]);
         }
 
@@ -287,7 +293,7 @@ class BestDresserController extends Controller
      * ベストドレッサー いいね機能
      *
      * @param array $request ユーザー情報
-     * @return  array
+     * @return
      */
     public function postBDCoord(Request $request)
     {
@@ -302,12 +308,18 @@ class BestDresserController extends Controller
                 'coord_id' => $coord,
                 'updated_at' => now()
             ]);
+            DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
+                'isDoneVoting' => true,
+            ]);
         }else{
             DB::table('likes')->insert([
                 'coord_id' => $coord,
                 'user_id' => $user_id,
                 'tour_id' => $user->tour_id,
                 'created_at' => now()
+            ]);
+            DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
+                'isDoneVoting' => true,
             ]);
         }
 
@@ -318,7 +330,7 @@ class BestDresserController extends Controller
      * ベストドレッサー いいね削除
      *
      * @param array $request ユーザー情報
-     * @return  array
+     * @return
      */
     public function deleteBDCoord(Request $request)
     {
@@ -330,6 +342,9 @@ class BestDresserController extends Controller
 
         if($existBDLike){
             DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->delete();
+            DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
+                'isDoneVoting' => false,
+            ]);
         }
 
         return 'ok';
