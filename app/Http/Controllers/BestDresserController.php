@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Library\Database;
+use App\Models\BestDresserCoordlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -194,11 +195,11 @@ class BestDresserController extends Controller
 
         $userWear = DB::table('bestDresser_user_info')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
 
-        $userCoord = DB::table('bestDresser_coordlist')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
+        $userCoord = DB::table('bestDresser_coordlists')->where('user_id', $userId)->where('tour_id', $tour_id)->first();
 
 
         if (!$userCoord) {
-            DB::table('bestDresser_coordlist')->insert([
+            DB::table('bestDresser_coordlists')->insert([
                 'user_id' => $userId,
                 'tour_id' => $tour_id,
                 'gender' => $userGender,
@@ -211,7 +212,7 @@ class BestDresserController extends Controller
                 'created_at' => now(),
             ]);
         } else {
-            DB::table('bestDresser_coordlist')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
+            DB::table('bestDresser_coordlists')->where('user_id', $userId)->where('tour_id', $tour_id)->update([
                 'user_id' => $userId,
                 'tour_id' => $tour_id,
                 'gender' => $userGender,
@@ -259,8 +260,78 @@ class BestDresserController extends Controller
         $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
         $gender = DB::table('users')->where('id', $user_id)->value('gender');
 
-        $coordList = DB::table('bestDresser_coordlist')->where('tour_id', $tour_id)->where('gender', $gender)->where('user_id', '!=', $user_id)->get();
+        $coordList = DB::table('bestDresser_coordlists')->where('tour_id', $tour_id)->where('gender', $gender)->where('user_id', '!=', $user_id)->get();
 
         return response()->json($coordList);
+    }
+
+    /**
+     * ベストドレッサー いいね取得
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function getLikeCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $coord = $request->input('coord');
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        $model = new BestDresserCoordlist();
+        $getLikeCoord = $model->isLikedBy($user, $coord);
+
+        return response()->json($getLikeCoord);
+    }
+
+    /**
+     * ベストドレッサー いいね機能
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function postBDCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $coord = $request->input('coord');
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
+
+        if($existBDLike){
+            DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
+                'coord_id' => $coord,
+                'updated_at' => now()
+            ]);
+        }else{
+            DB::table('likes')->insert([
+                'coord_id' => $coord,
+                'user_id' => $user_id,
+                'tour_id' => $user->tour_id,
+                'created_at' => now()
+            ]);
+        }
+
+        return 'ok';
+    }
+
+    /**
+     * ベストドレッサー いいね削除
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function deleteBDCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $coord = $request->input('coord');
+        $user = DB::table('users')->where('id', $user_id)->first();
+
+        $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
+
+        if($existBDLike){
+            DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->delete();
+        }
+
+        return 'ok';
     }
 }
