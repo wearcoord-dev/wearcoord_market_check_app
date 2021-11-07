@@ -10,10 +10,10 @@ const useStyles = makeStyles({
         height: "10px",
     },
     clickArea: {
-        width: "50px",
-        height: "50px",
-        position: "absolute",
-        right: "0",
+        // width: "50px",
+        // height: "50px",
+        // position: "absolute",
+        // right: "0",
     }
 });
 
