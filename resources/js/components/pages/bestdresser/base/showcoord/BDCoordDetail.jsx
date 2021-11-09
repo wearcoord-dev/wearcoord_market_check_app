@@ -5,10 +5,10 @@ import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import { useOpenBtnFuncFav } from "../../../../../hooks/favorite/useOpenBtnFuncFav";
 import { UserContext } from "../../../../providers/UserProvider";
 import { BtnLeft } from "../../../../atoms/button/BtnLeft";
-import { OpenRightBtnFav } from "../../../../organisms/button/OpenRightBtnFav";
 import { useGetBDCoord } from "../../../../../hooks/bestdresser/useGetBDCoord";
 import queryString from 'query-string';
 import { useLocation } from "react-router";
+import { OpenRightBtnFavBD } from "../../../../organisms/button/OpenRightBtnFavBD";
 
 
 
@@ -123,7 +123,7 @@ export const BDCoordDetail = memo(() => {
                     <div className={classes.imgbox}>
                         <img className={classes.img} src={userCoordBD.img} alt="" />
                     </div>
-                    <OpenRightBtnFav
+                    <OpenRightBtnFavBD
                         capsID={capsIDValue}
                         topsID={topsIDValue}
                         pantsID={pantsIDValue}

@@ -131,7 +131,7 @@ export const ShowBDCoordList = memo(() => {
     // モーダルデータ
     const [modalImg, setModalImg] = useState();
     const [modalItem, setModalItem] = useState();
-    console.log(modalItem)
+
     // 最初にユーザーの選んでいるウェアを取得
 
     useEffect(() => {

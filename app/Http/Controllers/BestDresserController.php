@@ -364,4 +364,25 @@ class BestDresserController extends Controller
 
         return response()->json($userItem);
     }
+
+    /**
+     * ベストドレッサー ウェア着用
+     *
+     * @param array $request ユーザー情報
+     * @return
+     */
+    public function wearItemBD(Request $request)
+    {
+        $type = $request['type'];
+        $item = $request['item'];
+        $user_id = $request['userId'];
+
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+
+        $result = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->update([
+            $type => $item,
+        ]);
+
+        return response()->json($result);
+    }
 }
