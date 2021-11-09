@@ -7,6 +7,7 @@ import { AppContext } from "../../../../providers/UserWear";
 import { useGetBDCoordList } from "../../../../../hooks/bestdresser/useGetBDCoordList";
 import { BDLikeBtn } from "./BDLikeBtn";
 import { ShowBrand } from "./ShowBrand";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
     root: {
@@ -124,10 +125,13 @@ export const ShowBDCoordList = memo(() => {
     const userCheck = context.contextName;
     console.log(userCheck)
     const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
+    const history = useHistory();
+
+
     // モーダルデータ
     const [modalImg, setModalImg] = useState();
     const [modalItem, setModalItem] = useState();
-    console.log(modalItem)
+
     // 最初にユーザーの選んでいるウェアを取得
 
     useEffect(() => {
@@ -145,6 +149,13 @@ export const ShowBDCoordList = memo(() => {
         // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
+    }
+
+    const onClickLinkDetail = () => {
+        history.push({
+            pathname: "show/detail",
+            search: "?id=" + modalItem.id
+        });
     }
 
     const items = (
@@ -229,7 +240,9 @@ export const ShowBDCoordList = memo(() => {
                             <button className={classes.like}>
                                 <BDLikeBtn item={modalItem} userData={context} />
                             </button>
-                            <button className={classes.detail}>コーデの詳細を見る</button>
+                            {modalItem && (
+                                <button onClick={onClickLinkDetail} className={classes.detail}>コーデの詳細を見る</button>
+                            )}
                         </div>
                     </div>
                 </Fade>

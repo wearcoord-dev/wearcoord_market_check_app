@@ -195,6 +195,14 @@ Route::get('/bestdresser/deleteBDCoord', function (Request $request) {
 
 Route::post('/bestdresser/deleteBDCoord', [App\Http\Controllers\BestDresserController::class, "deleteBDCoord"]);
 
+Route::get('/bestdresser/getuserBDcoord', [App\Http\Controllers\BestDresserController::class, "getUserBDCoord"]);
+
+
+Route::get('/bestdresser/wearItemBD', function (Request $request) {
+});
+
+Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserController::class, "wearItemBD"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);
