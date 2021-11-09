@@ -349,4 +349,19 @@ class BestDresserController extends Controller
 
         return 'ok';
     }
+
+    /**
+     * ベストドレッサー ユーザーコーデ取得
+     *
+     * @param array $request ユーザー情報
+     * @return
+     */
+    public function getUserBDCoord(Request $request)
+    {
+        $id = $request['id'];
+
+        $userItem = DB::table('bestDresser_coordlists')->where('id', $id)->first();
+
+        return response()->json($userItem);
+    }
 }
