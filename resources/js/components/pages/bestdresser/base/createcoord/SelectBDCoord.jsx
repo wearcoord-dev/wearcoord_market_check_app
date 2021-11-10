@@ -1,4 +1,4 @@
-import { Button, Popover, Popper, Snackbar } from "@material-ui/core";
+import { Button, makeStyles, Popover, Popper, Snackbar } from "@material-ui/core";
 import { memo, useContext, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -12,19 +12,69 @@ import { useAllShoes } from "../../../../../hooks/selectwear/useAllShoes";
 import { UserContext } from "../../../../providers/UserProvider";
 import { WearSearch } from "../../../../molecules/searchbox/WearSearch";
 import { InnerSearch } from "../../../../molecules/searchbox/InnerSearch";
+import { SocksSearch } from "../../../../molecules/searchbox/SocksSearch";
 import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
 import { useRegisterBDWear } from "../../../../../hooks/bestdresser/useRegisterBDWear";
 import { useRegisterBDInner } from "../../../../../hooks/bestdresser/useRegisterBDInner";
 
+const useStyles = makeStyles(() => ({
+    bottomBtnRight: {
+        position: "absolute",
+        right: "0",
+        bottom: "100px",
+        display: "flex",
+        width: "40%",
+        height: "40px",
+        minWidth: "150px",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#216496",
+        color: "#f0f0f0",
+        lineHeight: "1.5",
+        borderRadius: "10px 0px 0px 10px",
+        "& span": {
+            fontWeight: "bold",
+            paddingLeft: "10px",
+            fontSize: "12px"
+        }
+    },
+    bottomBtnLeft: {
+        position: "absolute",
+        left: "0",
+        display: "flex",
+        width: "40%",
+        height: "40px",
+        bottom: "100px",
+        minWidth: "150px",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#216496",
+        color: "#f0f0f0",
+        lineHeight: "1.5",
+        borderRadius: "0px 10px 10px 0px",
+        margin: "16px 0 0 0",
+        "& span": {
+            fontWeight: "bold",
+            paddingLeft: "10px",
+            fontSize: "12px"
+        }
+    },
+    btnWrapper: {
+        position: "fixed",
+        bottom: "0",
+        width: "100%",
+    }
+}));
 
 export const SelectBDCoord = memo((props) => {
     const { from } = props;
+    const classes = useStyles();
     const { getCaps, userCaps, loading, error } = useAllCaps();
     const { getTops, userTops, loadingTops, errorTops } = useAllTops();
     const { getPants, userPants, loadingPants, errorPants } = useAllPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const { RegisterWear } = useRegisterBDWear();
-    const { GetBDUserWear,  userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
+    const { GetBDUserWear, userBDWear, loadingBDUserWear, errorBDUserWear } = useGetBDUserWear();
     const context = useContext(UserContext);
     const { RegisterBDInner } = useRegisterBDInner();
 
@@ -228,6 +278,17 @@ export const SelectBDCoord = memo((props) => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+
+    // ソックスモーダル
+
+    const [anchorElSocks, setAnchorElSocks] = useState(null);
+
+    const handleClickSocks = (event) => {
+        setAnchorElSocks(anchorElSocks ? null : event.currentTarget);
+    };
+
+    const openSocks = Boolean(anchorElSocks);
+    const idSocks = openSocks ? 'simple-popover' : undefined;
 
     const getActiveIndexCaps = (swiper) => {
         setActiveIndexCaps(swiper.activeIndex);
@@ -544,75 +605,98 @@ export const SelectBDCoord = memo((props) => {
 
             {from == "wear" && (
                 <>
-                    <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                        <SearchIcon style={{ paddingRight: "6px" }} />
-                        着替える
-                    </Button>
+                    <div className={classes.btnWrapper}>
+                        <Button className={classes.bottomBtnLeft} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                            <SearchIcon style={{ paddingRight: "6px" }} />
+                            着替える
+                        </Button>
 
-                    <Button
-                        style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} color="primary"
-                        variant="contained"
-                        onClick={onClickRegisterWear}
-                    >
-                        <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
-                        ウェアを確定
-                    </Button>
+                        <Button
+                            className={classes.bottomBtnRight} color="primary"
+                            variant="contained"
+                            onClick={onClickRegisterWear}
+                        >
+                            <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
+                            ウェアを確定
+                        </Button>
 
-                    <Popper
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                // onClose={handleClose}
-                placement={'top'}
-                className="popper"
-                style={{ width: "100%" }}
-            >
-                <WearSearch
-                    onClickFetchCaps={onClickFetchCaps}
-                    setCapsSel={setCapsSel}
-                    capsSel={capsSel}
+                        <Popper
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            // onClose={handleClose}
+                            placement={'top'}
+                            className="popper"
+                            style={{ width: "100%" }}
+                        >
+                            <WearSearch
+                                onClickFetchCaps={onClickFetchCaps}
+                                setCapsSel={setCapsSel}
+                                capsSel={capsSel}
 
-                    onClickFetchTops={onClickFetchTops}
-                    setTopsSel={setTopsSel}
-                    topsSel={topsSel}
+                                onClickFetchTops={onClickFetchTops}
+                                setTopsSel={setTopsSel}
+                                topsSel={topsSel}
 
-                    onClickFetchPants={onClickFetchPants}
-                    setPantsSel={setPantsSel}
-                    pantsSel={pantsSel}
+                                onClickFetchPants={onClickFetchPants}
+                                setPantsSel={setPantsSel}
+                                pantsSel={pantsSel}
 
-                    onClickFetchShoes={onClickFetchShoes}
-                    setShoesSel={setShoesSel}
-                    shoesSel={shoesSel}
+                                onClickFetchShoes={onClickFetchShoes}
+                                setShoesSel={setShoesSel}
+                                shoesSel={shoesSel}
 
-                    handleClick={handleClick}
-                    onClickRegisterWear={onClickRegisterWear}
-                />
-
-            </Popper>
+                                handleClick={handleClick}
+                                onClickRegisterWear={onClickRegisterWear}
+                            />
+                        </Popper>
+                    </div>
                 </>
             )}
 
             {from == "inner" && (
                 <>
-                    <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-                インナーを探す
-      </Button>
+                    <div className={classes.btnWrapper}>
+                        <Button className={classes.bottomBtnLeft} aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
+                            インナーを探す
+                        </Button>
 
-            <Popper
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                // onClose={handleClose}
-                placement={'top'}
-                className="popper"
-                style={{ width: "100%" }}
-            >
+                        <Popper
+                            id={id}
+                            open={open}
+                            anchorEl={anchorEl}
+                            // onClose={handleClose}
+                            placement={'top'}
+                            className="popper"
+                            style={{ width: "100%" }}
+                        >
 
-                <InnerSearch
-                    handleClick={handleClick}
-                    onClickFetchInner={onClickBDInner}
-                />
-            </Popper>
+                            <InnerSearch
+                                handleClick={handleClick}
+                                onClickFetchInner={onClickBDInner}
+                            />
+                        </Popper>
+
+                        <Button className={classes.bottomBtnRight} aria-describedby={idSocks} variant="contained" color="primary" onClick={handleClickSocks}>
+                            ソックスを探す
+                        </Button>
+
+                        <Popper
+                            id={idSocks}
+                            open={openSocks}
+                            anchorEl={anchorElSocks}
+                            // onClose={handleClose}
+                            placement={'top'}
+                            className="popperSocks"
+                            style={{ width: "100%" }}
+                        >
+
+                            <SocksSearch
+                                handleClick={handleClickSocks}
+                                onClickFetchSocks={onClickBDInner}
+                            />
+                        </Popper>
+                    </div>
                 </>
             )}
 
