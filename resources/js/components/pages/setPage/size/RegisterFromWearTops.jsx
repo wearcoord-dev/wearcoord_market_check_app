@@ -213,7 +213,8 @@ export const RegisterFromWearTops = memo(() => {
         <>
             <p className={classes.info}>普段着ているトップスを選んで、ご自身のウェアサイズデータとして登録します。以下の検索フォームからウェアを選んでください。</p>
 
-            {userCheck.gender == 'male' ? (
+            { userCheck && (
+            userCheck.gender == 'male' ? (
                 <>
                     <form onSubmit={handleSubmit(onSubmit)} className={classes.form} >
                         <div className={classes.formwrap}>
@@ -233,6 +234,7 @@ export const RegisterFromWearTops = memo(() => {
                                     <option value="ellesse">ellesse</option>
                                     <option value="fila">FILA</option>
                                     <option value="marc_de_paw">Marc De Paw</option>
+                                    <option value="10EZ">10EZ</option>
                                 </select>
                             </div>
                         </div>
@@ -290,7 +292,7 @@ export const RegisterFromWearTops = memo(() => {
                         <input className={classes.searchinput} type="submit" value="ウェアを検索" />
                     </form>
                 </>
-            )}
+            ))}
 
 
             {items}
