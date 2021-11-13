@@ -147,11 +147,15 @@ export const ShowBDCoordList = memo(() => {
         }
     }, [userCheck]);
 
-    // 投票期間であれば表示
     useEffect(() => {
         if (userTourInfo !== null) {
+            // 投票期間であれば表示
             if (userTourInfo.startPostCoord < today.format()) {
                 GetBDCoordList(context)
+                // 投票期間外であればセット
+                if(userTourInfo.endPostCoord < today.format()) {
+                    setNotPost(2);
+                }
             }else{
                 setNotPost(1);
             }
@@ -169,6 +173,13 @@ export const ShowBDCoordList = memo(() => {
         setModalItem(item);
     }
 
+    const onClickEndInfo = (item, img) => {
+        setOpen(true);
+        // console.log(id, img)
+        setModalImg(img);
+        setModalItem(item);
+    }
+
     const onClickLinkDetail = () => {
         history.push({
             pathname: "show/detail",
@@ -178,22 +189,43 @@ export const ShowBDCoordList = memo(() => {
 
     const items = (
         <>
-            {userCoordList && (
+            {userCoordList && userTourInfo && (
                 <>
-                    {userCoordList.map((item, index) => (
-                        <li key={index}>
-                            <figure>
-                                <BDLikeBtn item={item} userData={context} />
-                                <div onClick={onClickInfo.bind(this, item, item.img)}>
-                                    <img src={item.img} alt="" />
-                                    <div className={classes.figcap}>
-                                        <ShowBrand type={'tops'} id={item.tops} />
-                                        <ShowBrand type={'pants'} id={item.pants} />
-                                    </div>
-                                </div>
-                            </figure>
-                        </li>
-                    ))}
+                    {userTourInfo.endPostCoord < today.format() ? (
+                        <>
+                            {userCoordList.map((item, index) => (
+                                <li key={index}>
+                                    <figure>
+                                        <div onClick={onClickEndInfo.bind(this, item, item.img)}>
+                                            <img src={item.img} alt="" />
+                                            <div className={classes.figcap}>
+                                                <ShowBrand type={'tops'} id={item.tops} />
+                                                <ShowBrand type={'pants'} id={item.pants} />
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </li>
+                            ))}
+                        </>
+
+                    ) : (
+                        <>
+                            {userCoordList.map((item, index) => (
+                                <li key={index}>
+                                    <figure>
+                                        <BDLikeBtn item={item} userData={context} />
+                                        <div onClick={onClickInfo.bind(this, item, item.img)}>
+                                            <img src={item.img} alt="" />
+                                            <div className={classes.figcap}>
+                                                <ShowBrand type={'tops'} id={item.tops} />
+                                                <ShowBrand type={'pants'} id={item.pants} />
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </li>
+                            ))}
+                        </>
+                    )}
                 </>
             )}
 
@@ -221,6 +253,9 @@ export const ShowBDCoordList = memo(() => {
                 </ul> */}
 
                 <p className={classes.title}>参加中のすべてのコーデ</p>
+                {notPost == 2 && (
+                <p>投票期間が終了しました！</p>
+            )}
                 <ul className={classes.ul}>
                     {items}
                 </ul>
@@ -259,9 +294,20 @@ export const ShowBDCoordList = memo(() => {
                                 </div>
                             )}
                         <div div className={classes.btnbox}>
-                            <button className={classes.like}>
-                                <BDLikeBtn item={modalItem} userData={context} />
-                            </button>
+                            {userTourInfo && (
+                                <>
+                                    {userTourInfo.endPostCoord < today.format() ? (
+                                        <>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <button className={classes.like}>
+                                                <BDLikeBtn item={modalItem} userData={context} />
+                                            </button>
+                                        </>
+                                    )}
+                                </>
+                            )}
                             {modalItem && (
                                 <button onClick={onClickLinkDetail} className={classes.detail}>コーデの詳細を見る</button>
                             )}
