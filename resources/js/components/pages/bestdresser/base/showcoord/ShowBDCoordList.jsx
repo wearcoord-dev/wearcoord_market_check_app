@@ -8,6 +8,9 @@ import { useGetBDCoordList } from "../../../../../hooks/bestdresser/useGetBDCoor
 import { BDLikeBtn } from "./BDLikeBtn";
 import { ShowBrand } from "./ShowBrand";
 import { useHistory } from "react-router";
+import { useGetTourInfo } from "../../../../../hooks/bestdresser/useGetTourInfo";
+import moment from 'moment';
+
 
 const useStyles = makeStyles({
     root: {
@@ -125,6 +128,8 @@ export const ShowBDCoordList = memo(() => {
     const userCheck = context.contextName;
     console.log(userCheck)
     const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
+    const { GetTourInfo, userTourInfo, loadingTourInfo, errorTourInfo } = useGetTourInfo();
+    const today = moment();
     const history = useHistory();
 
 
@@ -132,13 +137,26 @@ export const ShowBDCoordList = memo(() => {
     const [modalImg, setModalImg] = useState();
     const [modalItem, setModalItem] = useState();
 
-    // 最初にユーザーの選んでいるウェアを取得
+    // 投票期間前の管理
+    const [notPost, setNotPost] = useState();
 
+    // 大会の情報を取得
     useEffect(() => {
         if (userCheck !== undefined) {
-            GetBDCoordList(context)
+            GetTourInfo(context)
         }
     }, [userCheck]);
+
+    // 投票期間であれば表示
+    useEffect(() => {
+        if (userTourInfo !== null) {
+            if (userTourInfo.startPostCoord < today.format()) {
+                GetBDCoordList(context)
+            }else{
+                setNotPost(1);
+            }
+        }
+    }, [userTourInfo]);
 
     const handleClose = () => {
         setOpen(false);
@@ -177,6 +195,10 @@ export const ShowBDCoordList = memo(() => {
                         </li>
                     ))}
                 </>
+            )}
+
+            {notPost == 1 && (
+                <p>投票期間前です</p>
             )}
         </>
     )

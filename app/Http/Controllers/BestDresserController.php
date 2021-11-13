@@ -385,4 +385,19 @@ class BestDresserController extends Controller
 
         return response()->json($result);
     }
+
+    /**
+     * 大会情報
+     *
+     * @param array $request ユーザー情報
+     * @return
+     */
+    public function getBDTourInfo(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+        $tourInfo = DB::table('tour_info')->where('id', $tour_id)->first();
+
+        return response()->json($tourInfo);
+    }
 }
