@@ -132,13 +132,14 @@ export const SelectWear = memo(() => {
             'page': 1,
         }
 
-        // カテゴリーが選ばれてなければ注意
+        // カテゴリーが選ばれてなければ着ているウェアに切り替え
         if (props.category) {
             setDataCaps(data);
             setCapsArray([]);
             getCaps(data);
         } else {
-            setOpenSnackWarning(true);
+            // setOpenSnackWarning(true);
+            setCapsArray([]);
         }
     }
     const onClickFetchTops = (props) => {
@@ -156,7 +157,7 @@ export const SelectWear = memo(() => {
             setTopsArray([]);
             getTops(data);
         } else {
-            setOpenSnackWarning(true);
+            setTopsArray([]);
         }
     };
     const onClickFetchPants = (props) => {
@@ -174,7 +175,7 @@ export const SelectWear = memo(() => {
             setPantsArray([]);
             getPants(data);
         } else {
-            setOpenSnackWarning(true);
+            setPantsArray([]);
         }
     }
     const onClickFetchShoes = (props) => {
@@ -192,7 +193,7 @@ export const SelectWear = memo(() => {
             setShoesArray([]);
             getShoes(data);
         } else {
-            setOpenSnackWarning(true);
+            setShoesArray([]);
         }
     }
 
@@ -587,11 +588,11 @@ export const SelectWear = memo(() => {
                 </Alert>
             </Snackbar>
 
-            <Snackbar open={openSnackWarning} autoHideDuration={2000} onClose={handleCloseWarning}>
+            {/* <Snackbar open={openSnackWarning} autoHideDuration={2000} onClose={handleCloseWarning}>
                 <Alert onClose={handleCloseWarning} severity="warning" style={{ fontSize: "14px" }}>
                     カテゴリーを選んでください！
                 </Alert>
-            </Snackbar>
+            </Snackbar> */}
         </>
     )
 })
