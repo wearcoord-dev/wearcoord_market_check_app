@@ -400,4 +400,20 @@ class BestDresserController extends Controller
 
         return response()->json($tourInfo);
     }
+
+    /**
+     * ユーザーコーデのいいね有無取得
+     *
+     * @param array $request ユーザー情報
+     * @return
+     */
+    public function getOwnLike(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+        $coord_id = DB::table('bestDresser_coordlists')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('id');
+        $getLike = DB::table('likes')->where('coord_id', $coord_id)->where('tour_id', $tour_id)->exists();
+
+        return response()->json($getLike);
+    }
 }
