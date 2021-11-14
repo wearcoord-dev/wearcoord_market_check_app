@@ -121,6 +121,7 @@ export const SelectWear = memo(() => {
         }
     }, [userShoes]);
 
+    const [showCaps, setShowCaps] = useState(0);
 
     const onClickFetchCaps = (props) => {
 
@@ -132,16 +133,27 @@ export const SelectWear = memo(() => {
             'page': 1,
         }
 
-        // カテゴリーが選ばれてなければ着ているウェアに切り替え
+        // カテゴリーがnullなら着ているウェアに切り替え
         if (props.category) {
-            setDataCaps(data);
-            setCapsArray([]);
-            getCaps(data);
+
+            // カテゴリーがremoveなら配列を空にして表示させない
+            if (props.category == 'remove') {
+                setDataCaps([]);
+                setCapsArray([]);
+                setShowCaps(1);
+            } else {
+                setDataCaps(data);
+                setCapsArray([]);
+                getCaps(data);
+                setShowCaps(0);
+            }
         } else {
-            // setOpenSnackWarning(true);
+            setOpenSnackWarning(true);
             setCapsArray([]);
+            setShowCaps(0);
         }
     }
+
     const onClickFetchTops = (props) => {
 
         const data = {
@@ -198,13 +210,24 @@ export const SelectWear = memo(() => {
     }
 
     const onClickRegisterWear = () => {
+
+        let capsInfo = null;
+
+        // 非表示フラグが立っている場合は中身をnullにする
+        if (showCaps == 1) {
+            capsInfo = null;
+        } else {
+            capsInfo = capsArray[activeIndexCaps];
+        }
+
         const obj = {
-            "caps": capsArray[activeIndexCaps],
+            "caps": capsInfo,
             "tops": topsArray[activeIndexTops],
             "pants": pantsArray[activeIndexPants],
             "shoes": shoesArray[activeIndexShoes],
             "userid": context.contextName,
         }
+
         RegisterWear(obj);
     }
     const userCheck = context.contextName;
@@ -295,13 +318,20 @@ export const SelectWear = memo(() => {
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
                 ) : loadingWear ? (
                     <p>Loading...</p>
-                ) : (
-                    // capsdataがnullなら代替
+                    // 非表示でない場合は表示させる
+                ) : (showCaps == 0 ? (
+
+                    // capsがnullでない場合は表示させる
                     <>
                         {userWearInfo[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
                             <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userWearInfo[0].capsData.category}/${userWearInfo[0].capsData.url}`} alt="" />
                         </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                     </>
+                ) : (
+                    <>
+                        <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+                    </>
+                )
                 )) : <></>}
             </>
         )

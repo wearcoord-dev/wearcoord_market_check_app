@@ -198,7 +198,9 @@ class MycoordController extends Controller
 
         if ($request->input('caps')) {
             $caps = $request->input('caps');
-        } else {
+        } elseif($request->input('caps') == null) {
+            $caps = null;
+        }else{
             $caps = DB::table('userSelectCoord')->where('user_id', $user_id)->value('caps');
         }
 
