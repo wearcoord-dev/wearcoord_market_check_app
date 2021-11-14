@@ -147,7 +147,9 @@ class BestDresserController extends Controller
 
         if ($request->input('caps')) {
             $caps = $request->input('caps');
-        } else {
+        } elseif($request->input('caps') == null) {
+            $caps = null;
+        }else{
             $caps = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('caps');
         }
 
