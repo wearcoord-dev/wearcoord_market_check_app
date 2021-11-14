@@ -126,7 +126,6 @@ export const ShowBDCoordList = memo(() => {
     const [openModal, setOpen] = useState(false);
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    console.log(userCheck)
     const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
     const { GetTourInfo, userTourInfo, loadingTourInfo, errorTourInfo } = useGetTourInfo();
     const today = moment();
