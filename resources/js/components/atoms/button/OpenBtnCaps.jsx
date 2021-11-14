@@ -75,13 +75,13 @@ export const OpenBtnCaps = memo((props) => {
                         <p className="btnText" id={"btnTitle" + name}>{name}</p>
                     </summary>
                     <div className="detailsBottom">
-                        <div onClick={removeCaps} className="detailsBtn" id="innerRemoveBtn" method="post">
+                        {/* <div onClick={removeCaps} className="detailsBtn" id="innerRemoveBtn" method="post">
                             <button type="submit">
                                 <DeleteOutlineIcon style={{ fontSize: 20 }} />
                                 <p className="btnText">Capsを脱ぐ</p>
                             </button>
                         </div>
-                        <hr />
+                        <hr /> */}
                         <div className="detailsBtn" >
                             <button onClick={onClickCart} type="button">
                                 <span className="material-icons-outlined">
