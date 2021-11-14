@@ -5,6 +5,7 @@ export const SearchCategoryCapsFemale = memo((props) => {
     const categorylist = {
         none: 0,
         caps: 0,
+        remove: 0,
     }
 
     const { setValueCategory, valueCategory } = props;
@@ -17,6 +18,8 @@ export const SearchCategoryCapsFemale = memo((props) => {
         // 最初のinput以外にチェックが入ったかどうか確認
         if(category == ""){
             setCheck( {none: true} );
+        }else if(category == "remove"){
+            setCheck( {remove: true});
         }else{
             setCheck( {caps: true});
         }
@@ -30,6 +33,9 @@ export const SearchCategoryCapsFemale = memo((props) => {
         if(valueCategory){
             if(valueCategory == ""){
                 setCheck( {none: true} );
+                setValueCategory(valueCategory);
+            }else if(valueCategory == "remove"){
+                setCheck( {remove: true});
                 setValueCategory(valueCategory);
             }else{
                 setCheck( {caps: true});
@@ -57,6 +63,12 @@ export const SearchCategoryCapsFemale = memo((props) => {
                 checked={check.caps}
                  />
                 <label htmlFor="caps" className="radioInputLabel">キャップス</label>
+
+
+                <input type="radio" id="removeCaps" className="radioInput" name="category" value="remove" onChange={handleInputChange}
+                checked={check.remove}
+                 />
+                <label htmlFor="removeCaps" className="radioInputLabel">キャップスを脱ぐ</label>
             </div>
         </>
     )
