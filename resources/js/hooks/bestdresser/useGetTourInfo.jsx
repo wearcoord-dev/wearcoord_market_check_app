@@ -8,7 +8,7 @@ export const useGetTourInfo = () => {
 
 
     const GetTourInfo = async(props) => {
-        setErrorTourInfo(true);
+        setLoadingTourInfo(true);
         setErrorTourInfo(false);
         // console.log(props)
 

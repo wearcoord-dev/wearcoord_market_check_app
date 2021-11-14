@@ -205,6 +205,8 @@ Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserControll
 
 Route::get('/bestdresser/getBDTourInfo', [App\Http\Controllers\BestDresserController::class, "getBDTourInfo"]);
 
+Route::get('/bestdresser/getOwnLike', [App\Http\Controllers\BestDresserController::class, "getOwnLike"]);
+
 // Route::post('/registercoord', function (Request $request) {
 
 //     // ddd($request);

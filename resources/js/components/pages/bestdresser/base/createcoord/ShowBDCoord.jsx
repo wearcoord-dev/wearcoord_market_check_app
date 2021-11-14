@@ -10,6 +10,7 @@ import { AppContext } from "../../../../providers/UserWear";
 import { useGetBDUserInfo } from "../../../../../hooks/bestdresser/useGetBDUserInfo";
 import { useGetBDUserWear } from "../../../../../hooks/bestdresser/useGetBDUserWear";
 import { useRegisterBDCoord } from "../../../../../hooks/bestdresser/useRegisterBDCoord";
+import { useGetOwnLike } from "../../../../../hooks/bestdresser/useGetOwnLike";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +43,27 @@ const useStyles = makeStyles((theme) => ({
         color: "#f0f0f0",
         lineHeight: "1.5",
         borderRadius: "10px 0px 0px 10px",
+        "& p": {
+            fontWeight: "bold",
+            paddingLeft: "10px",
+        }
+    },
+    bottomBtnRightNot: {
+        position: "absolute",
+        right: "0",
+        bottom: "80px",
+        display: "flex",
+        width: "40%",
+        height: "40px",
+        minWidth: "150px",
+        justifyContent: "center",
+        alignItems: "center",
+        // backgroundColor: "#216496",
+        color: "#216496",
+        lineHeight: "1.5",
+        borderRadius: "10px 0px 0px 10px",
+        border: "2px solid #216496",
+        borderRight: "none",
         "& p": {
             fontWeight: "bold",
             paddingLeft: "10px",
@@ -90,6 +112,7 @@ export const ShowBDCoord = memo(() => {
     const [mannequinUrl, setUrl] = useState(null);
     const { RegisterCoord } = useRegisterBDCoord();
     const history = useHistory();
+    const { GetOwnLike, userOwnLike, loadingOwnLike, errorOwnLike } = useGetOwnLike();
 
 
     const context = useContext(AppContext);
@@ -114,6 +137,7 @@ export const ShowBDCoord = memo(() => {
     useEffect(() => {
         if (userCheck !== undefined) {
             GetBDUserWear(context)
+            GetOwnLike(context)
         }
     }, [userCheck]);
 
@@ -238,25 +262,42 @@ export const ShowBDCoord = memo(() => {
 
             <div className={classes.btnWrapper}>
                 <div className={classes.btnBox}>
-                    <div onClick={toSelectInner} className={classes.bottomBtnLeft} style={{ bottom:"140px" }}>
+                    <div onClick={toSelectInner} className={classes.bottomBtnLeft} style={{ bottom: "140px" }}>
                         <div className={classes.searchBtn}>
                             <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
                             <p className="btnText">マネキンを変更</p>
                         </div>
                     </div>
-                    <div onClick={toSelectWear} className={classes.bottomBtnLeft} style={{ bottom:"80px" }}>
+                    <div onClick={toSelectWear} className={classes.bottomBtnLeft} style={{ bottom: "80px" }}>
                         <div className={classes.searchBtn}>
                             <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
                             <p className="btnText">着替える</p>
                         </div>
                     </div>
 
-                    <div onClick={handleOpen} className={classes.bottomBtnRight}>
-                        <div className={classes.searchBtn}>
-                            <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
-                            <p className="btnText">コーデを投稿する</p>
-                        </div>
-                    </div>
+                    {!loadingOwnLike && (
+                        // いいねされている場合
+                        userOwnLike == true ? (
+                            <>
+                                <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
+                                    <div className={classes.searchBtn}>
+                                        <AddBoxIcon style={{ color: '#216496', fontSize: 20 }} />
+                                        <p className="btnText">いいねされています</p>
+                                    </div>
+                                </div>
+                            </>
+                        ) : (
+                            // いいねされていない場合
+                            <>
+                                <div onClick={handleOpen} className={classes.bottomBtnRight}>
+                                    <div className={classes.searchBtn}>
+                                        <AddBoxIcon style={{ color: '#f0f0f0', fontSize: 20 }} />
+                                        <p className="btnText">コーデを投稿する</p>
+                                    </div>
+                                </div>
+                            </>
+                        ))}
+
                 </div>
             </div>
 
@@ -282,10 +323,21 @@ export const ShowBDCoord = memo(() => {
                             <input type="hidden" id="canvas_img_url" value=""></input>
                             <input type="hidden" name="userId" value={userCheck}></input>
 
+                            {!loadingOwnLike && (
+                        // いいねされている場合
+                        userOwnLike == true ? (
+                            <>
+                            <p>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
+                            </>
+                        ) : (
+                            <>
                             <button style={{
                                 backgroundColor: "#216496", width:
                                     "200px", padding: "10px 0", color: "#fff", marginTop: "10px", borderRadius: "4px"
                             }} type="button" onClick={registerCoord}>投稿する</button>
+                            </>
+                        ))}
+
                         </form>
                     </div>
                 </Fade>
