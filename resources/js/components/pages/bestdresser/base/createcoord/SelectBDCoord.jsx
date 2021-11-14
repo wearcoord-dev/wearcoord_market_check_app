@@ -174,6 +174,8 @@ export const SelectBDCoord = memo((props) => {
         }
     }, [userShoes]);
 
+    // capsを脱いだ場合は表示を消す
+    const [showCaps, setShowCaps] = useState(0);
 
     const onClickFetchCaps = (props) => {
 
@@ -184,17 +186,27 @@ export const SelectBDCoord = memo((props) => {
             'wear': 'caps',
             'page': 1,
         }
-console.log(props)
 
         // カテゴリーがnullなら着ているウェアに切り替え
         if (props.category) {
-            setDataCaps(data);
-            setCapsArray([]);
-            getCaps(data);
+
+            // カテゴリーがremoveなら配列を空にして表示させない
+            if (props.category == 'remove') {
+                setDataCaps([]);
+                setCapsArray([]);
+                setShowCaps(1);
+            } else {
+                setDataCaps(data);
+                setCapsArray([]);
+                getCaps(data);
+                setShowCaps(0);
+            }
         } else {
             setCapsArray([]);
+            setShowCaps(0);
         }
     }
+
     const onClickFetchTops = (props) => {
 
         const data = {
@@ -251,15 +263,24 @@ console.log(props)
     }
 
     const onClickRegisterWear = () => {
-        console.log(context.contextName.id)
+
+        let capsInfo = null;
+
+        // 非表示フラグが立っている場合は中身をnullにする
+        if (showCaps == 1) {
+            capsInfo = null;
+        } else {
+            capsInfo = capsArray[activeIndexCaps];
+        }
 
         const obj = {
-            "caps": capsArray[activeIndexCaps],
+            "caps": capsInfo,
             "tops": topsArray[activeIndexTops],
             "pants": pantsArray[activeIndexPants],
             "shoes": shoesArray[activeIndexShoes],
             "userid": context.contextName.id,
         }
+        console.log(obj)
 
         RegisterWear(obj);
     }
@@ -361,13 +382,21 @@ console.log(props)
                     <p style={{ color: "red" }}>データの取得に失敗しました</p>
                 ) : loadingBDUserWear ? (
                     <p>Loading...</p>
-                ) : (
-                    // capsdataがnullなら代替
+
+                    // 非表示でない場合は表示させる
+                ) : (showCaps == 0 ? (
+                    
+                    // capsがnullでない場合は表示させる
                     <>
                         {userBDWear[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
                             <img style={{ width: "60px" }} src={`/img/rakutenlist/${context.contextName.gender}/${userBDWear[0].capsData.category}/${userBDWear[0].capsData.url}`} alt="" />
                         </div> : <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>}
                     </>
+                ) : (
+                    <>
+                    <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+                    </>
+                )
                 )) : <></>}
             </>
         )
