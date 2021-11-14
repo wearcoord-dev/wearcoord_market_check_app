@@ -27,6 +27,7 @@ export const useAllCaps = () => {
             page: page,
           }
     }).then((res) => {
+        // console.log(res)
         console.log(res.data.item);
         const getColor = res.data.color;
         const getBrand = res.data.brand;

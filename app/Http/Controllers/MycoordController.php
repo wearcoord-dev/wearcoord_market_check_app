@@ -199,25 +199,25 @@ class MycoordController extends Controller
         if ($request->input('caps')) {
             $caps = $request->input('caps');
         } else {
-            $caps = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('caps');
+            $caps = DB::table('userSelectCoord')->where('user_id', $user_id)->value('caps');
         }
 
         if ($request->input('tops')) {
             $tops = $request->input('tops');
         } else {
-            $tops = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('tops');
+            $tops = DB::table('userSelectCoord')->where('user_id', $user_id)->value('tops');
         }
 
         if ($request->input('pants')) {
             $pants = $request->input('pants');
         } else {
-            $pants = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('pants');
+            $pants = DB::table('userSelectCoord')->where('user_id', $user_id)->value('pants');
         }
 
         if ($request->input('shoes')) {
             $shoes = $request->input('shoes');
         } else {
-            $shoes = $checkList = DB::table('userSelectCoord')->where('user_id', $user_id)->value('shoes');
+            $shoes = DB::table('userSelectCoord')->where('user_id', $user_id)->value('shoes');
         }
 
 

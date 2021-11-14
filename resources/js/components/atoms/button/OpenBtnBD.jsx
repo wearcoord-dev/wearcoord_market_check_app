@@ -82,7 +82,7 @@ export const OpenBtnBD = memo((props) => {
                             <div className="detailsBottom">
                                 <div className="detailsBtn">
                                     <button onClick={onClickCoord} type="button">
-                                        <span class="material-icons-outlined">
+                                        <span className="material-icons-outlined">
                                             accessibility
                                         </span>
                                         <p className="btnText">コーデに着せる</p>
