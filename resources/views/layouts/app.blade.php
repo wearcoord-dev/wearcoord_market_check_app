@@ -47,7 +47,7 @@
     <link href="{{ asset('css/leglog/leglog.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="default">
+    <div id="default" style="position: relative;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navindex">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

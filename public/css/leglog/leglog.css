@@ -72,7 +72,7 @@ input {
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   filter: grayscale(40%);
   top: 0;
@@ -118,7 +118,6 @@ input {
 /*タブ切り替え全体のスタイル*/
 .tabs {
   margin-top: 50px;
-  padding-bottom: 40px;
   background-color: #fff;
   width: 700px;
   margin: 0 auto;
