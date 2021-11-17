@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Library\Size;
+use Illuminate\Http\Request;
+use App\Library\FirstCoordList;
+use Illuminate\Support\Facades\DB;
 
 
 class UserController extends Controller
@@ -99,6 +100,23 @@ class UserController extends Controller
         DB::table('users')->where('id', $id)->update([
             'firstcheck' => 1,
         ]);
+
+        $userWear = DB::table('userSelectCoord')->where('user_id', $id)->first();
+
+        // データが無かったら作成
+        if (!$userWear) {
+            $gender = DB::table('users')->where('id', $id)->value('gender');
+            $coordId = DB::table('users')->where('id', $id)->value('registerCoord');
+
+            if ($gender == "male") {
+                $url = "mens_170_model.png";
+            } else {
+                $url = "woman_totalinner_manekin1.png";
+            }
+
+            // 新規登録で選んだコーデを反映
+            FirstCoordList::createFirstCoord($url, $id, $coordId);
+        }
 
         return 'ok';
     }
