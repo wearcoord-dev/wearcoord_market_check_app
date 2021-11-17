@@ -7,6 +7,16 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
+                <div class="form-group row mb-0 mt-4">
+                    <div class="col-md-8 m-auto" style="text-align: center">
+                        <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-primary loginbtn">
+                            {{ __('Googleでログイン') }}
+                        </a>
+                    </div>
+                </div>
+
+                <hr>
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -52,7 +62,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4" style="text-align: center">
+                            <div class="col-md-8 m-auto" style="text-align: center">
                                 <button type="submit" class="btn btn-primary loginbtn">
                                     {{ __('Login') }}
                                 </button>

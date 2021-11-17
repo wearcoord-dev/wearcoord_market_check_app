@@ -22,7 +22,21 @@ Route::get('/main', function () {
     return view('layouts.main');
 })->middleware(['auth']);
 
+// SNS認証用
+
 Auth::routes();
+Route::prefix('login')->name('login.')->group(function () {
+    // Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+    // Route::get('/{provider}', [App\Http\Controllers\Auth\LoginController::class, 'redirectToProvider'])->name('{provider}');
+    // Route::get('/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleProviderCallback'])->name('google.callback');
+    Route::get('/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('{provider}');
+    Route::get('/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+
+Route::prefix('register')->name('register.')->group(function () {
+    Route::get('/{provider}', 'App\Http\Controllers\Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+    Route::post('/{provider}', 'App\Http\Controllers\Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
 
 // /main/以降にアクセスしても404にしない
 
