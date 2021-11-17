@@ -412,7 +412,7 @@ export const RegisterSizePants = memo(() => {
                 </ul>
                 <input className={classes.a} type="submit" value="入力完了！" />
             </form>
-            <div style={{ marginBottom: "100px" }}></div>
+            <div style={{ paddingBottom: "100px" }}></div>
         </>
     )
 })

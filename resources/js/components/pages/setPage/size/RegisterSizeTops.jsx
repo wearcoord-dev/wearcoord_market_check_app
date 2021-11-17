@@ -388,7 +388,7 @@ export const RegisterSizeTops = memo(() => {
                 </div> */}
                 <input className={classes.a} type="submit" value="パンツサイズを入力する" />
             </form>
-            <div style={{ marginBottom: "100px" }}></div>
+            <div style={{ paddingBottom: "100px" }}></div>
         </>
     )
 })
