@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     footer: {
         // display: "flex",
         backgroundColor: "#216496",
-        padding: "30px 0",
+        padding: "30px 0 100px",
     },
     iconul: {
         display: "flex",
@@ -42,7 +42,7 @@ export const Footer = memo(() => {
         <footer className={classes.footer}>
             <ul className={classes.linkul}>
                 <li><a target="_blank" rel="noopener noreferrer" href="https://wearcoord.info/">企業情報</a></li>
-                <li><a target="_blank" rel="noopener noreferrer" href="">プライバシーポリシー</a></li>
+                <li><a href="/privacy-policy">プライバシーポリシー</a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href="https://wearcoord.info/contact">お問い合わせ</a></li>
             </ul>
             <ul className={classes.iconul}>

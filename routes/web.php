@@ -84,3 +84,11 @@ Route::get('/studio2', function () {
         return view('lp.2021.chainCupOsaka');
     });
 //   });
+
+Route::get('/privacy-policy', function () {
+    return view('pages.privacypolicy');
+})->name('privacy');
+
+Route::get('/cookie-policy', function () {
+    return view('pages.cookiepolicy');
+})->name('cookie');
