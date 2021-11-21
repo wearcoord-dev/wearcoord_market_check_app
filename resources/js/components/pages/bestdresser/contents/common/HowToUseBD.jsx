@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     },
     descSectUl: {
         "& li": {
-            padding: "30px 0",
+            padding: "40px 0",
             width: "90%",
             margin: "auto",
             "& p": {
@@ -147,7 +147,7 @@ export const HowToUseBD = memo(() => {
                                 <p>「コーデを投稿する」からコーデを投稿しましょう！</p>
                                 <p style={{ padding: "20px 0" }}>これであなたのコーデは完成です！</p>
                                 <div className={classes.refBox}>
-                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>なお投稿したコーデは、他の参加者から「いいね！」されるまで修正可能です。参加者の皆さんから選ばれるようなコーデを目指しましょう！</p>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px", fontWeight: "bold" }}>なお投稿したコーデは、他の参加者から「いいね！」されるまで修正可能です。参加者の皆さんから選ばれるようなコーデを目指しましょう！</p>
                                 </div>
                             </li>
                         </ul>
@@ -169,7 +169,7 @@ export const HowToUseBD = memo(() => {
                             </li>
                             <li>
                                 <div className={classes.descTitleBox}><span className={classes.number}>2</span>
-                                    <h4>2. 「コーデを見る」を選び、他の参加者のコーデを見よう！</h4></div>
+                                    <h4>「コーデを見る」を選び、他の参加者のコーデを見よう！</h4></div>
                                 <figure className={classes.figureImg}>
                                     <img src={vote1Img} alt="" />
                                 </figure>
@@ -179,7 +179,7 @@ export const HowToUseBD = memo(() => {
                                 </figure>
                                 <p>コーデを選ぶと画像を拡大したり、着ているウェアのブランドを確認できます。</p>
                                 <div className={classes.refBox}>
-                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>「コーデの詳細を見る」を選択すると、そのコーデのウェアを自分のマネキンに着せたり、ECページに移動して購入もできます。</p>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px", fontWeight: "bold" }}>「コーデの詳細を見る」を選択すると、そのコーデのウェアを自分のマネキンに着せたり、ECページに移動して購入もできます。</p>
                                 </div>
                             </li>
                             <li>
@@ -191,8 +191,8 @@ export const HowToUseBD = memo(() => {
                                 <p>お気に入りのコーデが見つかったら、ハートマークを押して「いいね！」しましょう！</p>
                                 <p>赤いハートのコーデがは現在あなたが「いいね！」しているコーデです。</p>
                                 <div className={classes.refBox}>
-                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>ベストドレッサー賞では、参加者一人につき一つのコーデに対して「いいね！」が可能です。</p>
-                                    <p style={{ padding: "0 20px 20px 20px", color: "white", fontSize: "12px" }}>なお投票期間内であれば他のコーデに「いいね！」し直すことができます。良いなと思うコーデが見つかったら、どんどん「いいね！」しましょう！</p>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px", fontWeight: "bold" }}>ベストドレッサー賞では、参加者一人につき一つのコーデに対して「いいね！」が可能です。</p>
+                                    <p style={{ padding: "0 20px 20px 20px", color: "white", fontSize: "12px", fontWeight: "bold" }}>なお投票期間内であれば他のコーデに「いいね！」し直すことができます。良いなと思うコーデが見つかったら、どんどん「いいね！」しましょう！</p>
                                 </div>
                             </li>
                         </ul>
