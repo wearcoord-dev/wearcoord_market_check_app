@@ -7,8 +7,7 @@ import post2Img from "../../../../../../../public/img/others/bestdresser/ref/pos
 import post3Img from "../../../../../../../public/img/others/bestdresser/ref/post3.png"
 import post4Img from "../../../../../../../public/img/others/bestdresser/ref/post4.png"
 import vote1Img from "../../../../../../../public/img/others/bestdresser/ref/vote1.png"
-import vote2Img from "../../../../../../../public/img/others/bestdresser/ref/vote2.png"
-import vote3Img from "../../../../../../../public/img/others/bestdresser/ref/vote3.png"
+import voteImg from "../../../../../../../public/img/others/bestdresser/ref/vote.png"
 import vote4Img from "../../../../../../../public/img/others/bestdresser/ref/vote4.png"
 import check1Img from "../../../../../../../public/img/others/bestdresser/ref/check1.png"
 
@@ -23,8 +22,11 @@ const useStyles = makeStyles({
         borderRadius: "10px",
         width: "80%",
         margin: "auto",
-        display: "list-item",
+        // display: "list-item",
         backgroundColor: "#216496",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
     },
     title: {
         color: "#216496",
@@ -54,6 +56,7 @@ const useStyles = makeStyles({
             margin: "auto",
             "& p": {
                 lineHeight: "1.6",
+                fontSize: "16px",
             }
         }
     },
@@ -84,6 +87,15 @@ const useStyles = makeStyles({
         padding: "20px 0",
         maxWidth: "700px",
         margin: "auto",
+    },
+    icon: {
+        fontSize: "20px",
+        paddingLeft: "10px",
+    },
+    refBox: {
+        backgroundColor: "lightslategray",
+        borderRadius: "20px",
+        marginTop: "30px",
     }
 });
 
@@ -98,7 +110,7 @@ export const HowToUseBD = memo(() => {
                 </div>
 
                 <details className={classes.details}>
-                    <summary className={classes.summary}>コーデを投稿しよう</summary>
+                    <summary className={classes.summary}>コーデを投稿しよう<AddCircleOutlineIcon className={classes.icon} /></summary>
                     <div className={classes.detailsContent}>
                         {/* コーデを投稿しよう */}
                         <ul className={classes.descSectUl}>
@@ -117,15 +129,14 @@ export const HowToUseBD = memo(() => {
                                     <img src={post2Img} alt="" />
                                 </figure>
                                 <p>上の青いタブにある「コーデを作る」を選択すると、コーディネートを作成できるページに移動します。</p>
-                                <p style={{ paddingTop: "20px" }}>ページ内にある「マネキンを変更」を選択するとコーデを着せるマネキンを変更できます。</p>
-                                <p>「着替える」を選択するとウェアを選択できます。</p>
+                                <p style={{ paddingTop: "20px" }}>「マネキンを変更」でコーデを着せるマネキンを変更可能。</p>
+                                <p>「着替える」でコーデのウェアを選択。</p>
                                 <figure className={classes.figureImg}>
                                     <img src={post3Img} alt="" />
                                 </figure>
-                                <p>キャップス、トップス、パンツ、シューズのカテゴリそれぞれから、気に入ったウェアを探しましょう。</p>
-                                <p>下部のリストから条件を選ぶと、マネキン上にウェアが表示されます。</p>
-                                <p style={{ padding: "20px 0" }}>ウェアをマネキン上に乗せているものがあなたのコーデです！</p>
-                                <p>コーデが決まったら「確定」を選択しましょう。</p>
+                                <p>ウェアの条件を選ぶと、マネキン上にウェアが表示されます。</p>
+                                <p style={{ paddingBottom: "20px" }}>マネキンの上に乗せているウェアがあなたのコーデです！</p>
+                                <p>コーデが決まったら「確定」を選択！</p>
                             </li>
                             <li>
                                 <div className={classes.descTitleBox}><span className={classes.number}>3</span>
@@ -133,17 +144,18 @@ export const HowToUseBD = memo(() => {
                                 <figure className={classes.figureImg}>
                                     <img src={post4Img} alt="" />
                                 </figure>
-                                <p>「コーデを投稿する」を選択すると、あなたのコーデ画像が表示されます。</p>
-                                <p>これで問題なければ「投稿する」を選択して投稿しましょう！</p>
-                                <p style={{ padding: "20px 0" }}>これであなたのコーデは投稿完了です！</p>
-                                <p>なお投稿したコーデは、他の参加者から「いいね！」されるまで修正可能です。参加者の皆さんから選ばれるようなコーデを目指しましょう！</p>
+                                <p>「コーデを投稿する」からコーデを投稿しましょう！</p>
+                                <p style={{ padding: "20px 0" }}>これであなたのコーデは完成です！</p>
+                                <div className={classes.refBox}>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>なお投稿したコーデは、他の参加者から「いいね！」されるまで修正可能です。参加者の皆さんから選ばれるようなコーデを目指しましょう！</p>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </details>
 
                 <details className={classes.details}>
-                    <summary className={classes.summary}>コーデに投票しよう</summary>
+                    <summary className={classes.summary}>コーデに投票しよう<AddCircleOutlineIcon className={classes.icon} /></summary>
                     <div className={classes.detailsContent}>
                         {/* コーデに投票しよう */}
                         <ul className={classes.descSectUl}>
@@ -162,12 +174,13 @@ export const HowToUseBD = memo(() => {
                                     <img src={vote1Img} alt="" />
                                 </figure>
                                 <p>上の青いタブにある「コーデを見る」を選択すると、他の参加者が作成したコーデの一覧ページに移ります。</p>
-                                <figure className={classes.figureImg} style={{ display: "flex" }}>
-                                    <img style={{ width: "50%" }} src={vote2Img} alt="" />
-                                    <img style={{ width: "50%" }} src={vote3Img} alt="" />
+                                <figure className={classes.figureImg}>
+                                    <img src={voteImg} alt="" />
                                 </figure>
-                                <p>コーデをタップすると画像を拡大したり、着ているウェアのブランドを確認できます。</p>
-                                <p style={{ paddingTop: "20px" }}>「コーデの詳細を見る」を選択すると、そのコーデが着ているウェアを自分のマネキンに着せたり、ECページに移動して購入もできます。</p>
+                                <p>コーデを選ぶと画像を拡大したり、着ているウェアのブランドを確認できます。</p>
+                                <div className={classes.refBox}>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>「コーデの詳細を見る」を選択すると、そのコーデのウェアを自分のマネキンに着せたり、ECページに移動して購入もできます。</p>
+                                </div>
                             </li>
                             <li>
                                 <div className={classes.descTitleBox}><span className={classes.number}>3</span>
@@ -175,16 +188,18 @@ export const HowToUseBD = memo(() => {
                                 <figure className={classes.figureImg}>
                                     <img src={vote4Img} alt="" />
                                 </figure>
-                                <p>お気に入りのコーデが見つかったら、ハートマークの箇所を選択して「いいね！」しましょう！</p>
-                                <p>赤くなっているハートのコーデが、現在あなたが「いいね！」しているコーデです。</p>
-                                <p style={{ padding: "20px 0" }}>ベストドレッサー賞では、参加者一人につき一つのコーデに対して「いいね！」が可能です。</p>
-                                <p>なお投票期間内であれば他のコーデに「いいね！」し直すことができます。良いなと思うコーデが見つかったら、どんどん「いいね！」しましょう！</p>
+                                <p>お気に入りのコーデが見つかったら、ハートマークを押して「いいね！」しましょう！</p>
+                                <p>赤いハートのコーデがは現在あなたが「いいね！」しているコーデです。</p>
+                                <div className={classes.refBox}>
+                                    <p style={{ padding: "20px", color: "white", fontSize: "12px" }}>ベストドレッサー賞では、参加者一人につき一つのコーデに対して「いいね！」が可能です。</p>
+                                    <p style={{ padding: "0 20px 20px 20px", color: "white", fontSize: "12px" }}>なお投票期間内であれば他のコーデに「いいね！」し直すことができます。良いなと思うコーデが見つかったら、どんどん「いいね！」しましょう！</p>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </details>
                 <details className={classes.details}>
-                    <summary className={classes.summary}>受賞資格を確認しよう</summary>
+                    <summary className={classes.summary}>受賞資格を確認しよう<AddCircleOutlineIcon className={classes.icon} /></summary>
                     <div className={classes.detailsContent}>
                         {/* コーデを投稿しよう */}
                         <ul className={classes.descSectUl}>
@@ -202,7 +217,7 @@ export const HowToUseBD = memo(() => {
                                 <figure className={classes.figureImg}>
                                     <img src={check1Img} alt="" />
                                 </figure>
-                                <p>「コーデ投稿済み！」「コーデ投票済み！」とあれば、「ベストドレッサー賞の受賞資格を取得済み！」と表示されます。</p>
+                                <p>「ベストドレッサー賞の受賞資格を取得済み！」と表示されたら完了です。</p>
                                 <p style={{ paddingTop: "20px" }}>これでベストドレッサー賞の受賞資格を獲得しました！</p>
                                 <p>結果をお楽しみに！</p>
                             </li>
