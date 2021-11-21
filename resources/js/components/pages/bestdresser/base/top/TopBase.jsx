@@ -15,6 +15,9 @@ const useStyles = makeStyles({
         justifyContent: "center",
         height: "50vh",
         alignItems: "center",
+    },
+    bottom: {
+        paddingBottom: "100px",
     }
 });
 
@@ -31,6 +34,7 @@ export const TopBase = memo(() => {
             <section className={classes.root}>
                 { userCheck.tour_id == 1 && <ChainCup2021 />}
                 { userCheck.tour_id == 2 && <MainBestDresser />}
+                <div className={classes.bottom}></div>
             </section>
         </>
          :  (
