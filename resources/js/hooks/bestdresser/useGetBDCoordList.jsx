@@ -19,7 +19,7 @@ export const useGetBDCoordList = () => {
               }
         }).then((res) => {
             setUserCoordList(res.data);
-            console.log(res.data)
+            // console.log(res.data)
         }).catch(() => {
             setErrorBDCoordList(true);
         }).finally(() => {

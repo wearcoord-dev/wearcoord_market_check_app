@@ -203,6 +203,8 @@ Route::get('/bestdresser/wearItemBD', function (Request $request) {
 
 Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserController::class, "wearItemBD"]);
 
+Route::get('/bestdresser/bdMyPostCoord', [App\Http\Controllers\BestDresserController::class, "bdMyPostCoord"]);
+
 Route::get('/bestdresser/getBDTourInfo', [App\Http\Controllers\BestDresserController::class, "getBDTourInfo"]);
 
 Route::get('/bestdresser/getOwnLike', [App\Http\Controllers\BestDresserController::class, "getOwnLike"]);

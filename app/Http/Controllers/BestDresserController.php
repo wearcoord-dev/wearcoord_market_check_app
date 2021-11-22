@@ -418,4 +418,20 @@ class BestDresserController extends Controller
 
         return response()->json($getLike);
     }
+
+        /**
+     * ベストドレッサー コーデ全取得
+     *
+     * @param array $request ユーザー情報
+     * @return  array
+     */
+    public function bdMyPostCoord(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $tour_id = DB::table('users')->where('id', $user_id)->value('tour_id');
+
+        $coordList = DB::table('bestDresser_coordlists')->where('tour_id', $tour_id)->where('user_id', $user_id)->first();
+
+        return response()->json($coordList);
+    }
 }
