@@ -12,6 +12,9 @@ import { useGetTourInfo } from "../../../../../hooks/bestdresser/useGetTourInfo"
 import moment from 'moment';
 import sleepImg from "../../../../../../../public/img/others/bestdresser/sleep.png";
 import { useGetBDMyPostCoord } from "../../../../../hooks/bestdresser/useGetBDMyPostCoord";
+import useSWR from 'swr';
+import axios from 'axios';
+
 
 
 const useStyles = makeStyles({
@@ -150,11 +153,19 @@ export const ShowBDCoordList = memo(() => {
     const [openModalUserCoord, setOpenUserCoord] = useState(false);
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
     const { GetBDMyPostCoord, userBDMyPostCoord, loadingBDMyPostCoord, errorBDMyPostCoord } = useGetBDMyPostCoord();
     const { GetTourInfo, userTourInfo, loadingTourInfo, errorTourInfo } = useGetTourInfo();
     const today = moment();
     const history = useHistory();
+
+// コーデリスト取得
+
+    const fetcher = url => axios.get(url, {
+        params: {
+            user_id: context.contextName.id,
+          }
+    }).then(res => res.data);
+    const { data, error } = useSWR('/api/bestdresser/bdCoordList', fetcher);
 
 
     // モーダルデータ
@@ -176,7 +187,6 @@ export const ShowBDCoordList = memo(() => {
         if (userTourInfo !== null) {
             // 投票期間であれば表示
             if (userTourInfo.startPostCoord < today.format()) {
-                GetBDCoordList(context)
                 // 投票期間外であればセット
                 if (userTourInfo.endPostCoord < today.format()) {
                     setNotPost(2);
@@ -225,11 +235,11 @@ export const ShowBDCoordList = memo(() => {
 
     const items = (
         <>
-            {userCoordList && userTourInfo && (
+            {data && userTourInfo && (
                 <>
                     {userTourInfo.endPostCoord < today.format() ? (
                         <>
-                            {userCoordList.map((item, index) => (
+                            {data.map((item, index) => (
                                 <li key={index}>
                                     <figure>
                                         <div onClick={onClickEndInfo.bind(this, item, item.img)}>
@@ -246,7 +256,7 @@ export const ShowBDCoordList = memo(() => {
 
                     ) : (
                         <>
-                            {userCoordList.map((item, index) => (
+                            {data.map((item, index) => (
                                 <li key={index}>
                                     <figure>
                                         <BDLikeBtn item={item} userData={context} />
