@@ -234,10 +234,10 @@ export const ShowBDCoordList = memo(() => {
                                     <figure>
                                         <div onClick={onClickEndInfo.bind(this, item, item.img)}>
                                             <img src={item.img} alt="" />
-                                            <div className={classes.figcap}>
+                                            {/* <div className={classes.figcap}>
                                                 <ShowBrand type={'tops'} id={item.tops} />
                                                 <ShowBrand type={'pants'} id={item.pants} />
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </figure>
                                 </li>
@@ -252,10 +252,10 @@ export const ShowBDCoordList = memo(() => {
                                         <BDLikeBtn item={item} userData={context} />
                                         <div onClick={onClickInfo.bind(this, item, item.img)}>
                                             <img src={item.img} alt="" />
-                                            <div className={classes.figcap}>
+                                            {/* <div className={classes.figcap}>
                                                 <ShowBrand type={'tops'} id={item.tops} />
                                                 <ShowBrand type={'pants'} id={item.pants} />
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </figure>
                                 </li>
@@ -295,10 +295,10 @@ export const ShowBDCoordList = memo(() => {
                             <figure>
                                 <div onClick={onClickUserCoord.bind(this, userBDMyPostCoord, userBDMyPostCoord.img)}>
                                     <img src={userBDMyPostCoord.img} alt="" />
-                                    <div className={classes.figcap}>
+                                    {/* <div className={classes.figcap}>
                                         <ShowBrand type={'tops'} id={userBDMyPostCoord.tops} />
                                         <ShowBrand type={'pants'} id={userBDMyPostCoord.pants} />
-                                    </div>
+                                    </div> */}
                                 </div>
                             </figure>
                         </li>
