@@ -105,6 +105,12 @@ const useStyles = makeStyles((theme) => ({
         position: "fixed",
         bottom: "0",
         width: "100%",
+    },
+    bold: {
+        fontWeight: "bold",
+        padding: "20px",
+        boxSizing: "border-box",
+        lineHeight: "1.6",
     }
 }));
 
@@ -351,15 +357,15 @@ export const ShowBDCoord = memo(() => {
                                 // いいねされている場合
                                 userOwnLike == true ? (
                                     <>
-                                        <p>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
+                                        <p className={classes.bold}>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
                                     </>
                                 ) : userTourInfo.endPostCoord < today.format() ? (
                                     <>
-                                        <p>コーデ投稿期間が過ぎたため投稿できません。</p>
+                                        <p className={classes.bold}>コーデ投稿期間が過ぎたため投稿できません。</p>
                                     </>
                                 ) : userTourInfo.startPostCoord > today.format() ? (
                                     <>
-                                        <p>投稿期間前です。しばらくお待ちください！</p>
+                                        <p className={classes.bold}>投稿期間前です。しばらくお待ちください！</p>
 
                                     </>
                                 ) : (

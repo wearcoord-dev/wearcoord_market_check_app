@@ -10,6 +10,8 @@ import { ShowBrand } from "./ShowBrand";
 import { useHistory } from "react-router";
 import { useGetTourInfo } from "../../../../../hooks/bestdresser/useGetTourInfo";
 import moment from 'moment';
+import sleepImg from "../../../../../../../public/img/others/bestdresser/sleep.png";
+import { useGetBDMyPostCoord } from "../../../../../hooks/bestdresser/useGetBDMyPostCoord";
 
 
 const useStyles = makeStyles({
@@ -20,6 +22,7 @@ const useStyles = makeStyles({
     ul: {
         display: "flex",
         flexWrap: "wrap",
+        justifyContent: "center",
         "& li": {
             width: "40%",
             maxWidth: "150px",
@@ -118,15 +121,37 @@ const useStyles = makeStyles({
         fontWeight: "bold",
         width: "70%",
         margin: "20px auto"
+    },
+    figure: {
+        textAlign: "center",
+        "& img": {
+            width: "50%",
+            maxWidth: "300px",
+        }
+    },
+    contentBox: {
+        "& p": {
+            textAlign: "center",
+            lineHeight: "1.6",
+            fontWeight: "bold",
+        }
+    },
+    loading: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "300px",
     }
 });
 
 export const ShowBDCoordList = memo(() => {
     const classes = useStyles();
     const [openModal, setOpen] = useState(false);
+    const [openModalUserCoord, setOpenUserCoord] = useState(false);
     const context = useContext(AppContext);
     const userCheck = context.contextName;
     const { GetBDCoordList, userCoordList, loadingBDCoordList, errorBDCoordList } = useGetBDCoordList();
+    const { GetBDMyPostCoord, userBDMyPostCoord, loadingBDMyPostCoord, errorBDMyPostCoord } = useGetBDMyPostCoord();
     const { GetTourInfo, userTourInfo, loadingTourInfo, errorTourInfo } = useGetTourInfo();
     const today = moment();
     const history = useHistory();
@@ -143,6 +168,7 @@ export const ShowBDCoordList = memo(() => {
     useEffect(() => {
         if (userCheck !== undefined) {
             GetTourInfo(context)
+            GetBDMyPostCoord(context)
         }
     }, [userCheck]);
 
@@ -152,10 +178,10 @@ export const ShowBDCoordList = memo(() => {
             if (userTourInfo.startPostCoord < today.format()) {
                 GetBDCoordList(context)
                 // 投票期間外であればセット
-                if(userTourInfo.endPostCoord < today.format()) {
+                if (userTourInfo.endPostCoord < today.format()) {
                     setNotPost(2);
                 }
-            }else{
+            } else {
                 setNotPost(1);
             }
         }
@@ -163,6 +189,10 @@ export const ShowBDCoordList = memo(() => {
 
     const handleClose = () => {
         setOpen(false);
+    };
+
+    const handleCloseUserCoord = () => {
+        setOpenUserCoord(false);
     };
 
     const onClickInfo = (item, img) => {
@@ -174,6 +204,13 @@ export const ShowBDCoordList = memo(() => {
 
     const onClickEndInfo = (item, img) => {
         setOpen(true);
+        // console.log(id, img)
+        setModalImg(img);
+        setModalItem(item);
+    }
+
+    const onClickUserCoord = (item, img) => {
+        setOpenUserCoord(true);
         // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
@@ -197,10 +234,10 @@ export const ShowBDCoordList = memo(() => {
                                     <figure>
                                         <div onClick={onClickEndInfo.bind(this, item, item.img)}>
                                             <img src={item.img} alt="" />
-                                            <div className={classes.figcap}>
+                                            {/* <div className={classes.figcap}>
                                                 <ShowBrand type={'tops'} id={item.tops} />
                                                 <ShowBrand type={'pants'} id={item.pants} />
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </figure>
                                 </li>
@@ -215,10 +252,10 @@ export const ShowBDCoordList = memo(() => {
                                         <BDLikeBtn item={item} userData={context} />
                                         <div onClick={onClickInfo.bind(this, item, item.img)}>
                                             <img src={item.img} alt="" />
-                                            <div className={classes.figcap}>
+                                            {/* <div className={classes.figcap}>
                                                 <ShowBrand type={'tops'} id={item.tops} />
                                                 <ShowBrand type={'pants'} id={item.pants} />
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </figure>
                                 </li>
@@ -229,7 +266,15 @@ export const ShowBDCoordList = memo(() => {
             )}
 
             {notPost == 1 && (
-                <p>投票期間前です</p>
+                <>
+                    <div className={classes.contentBox}>
+                        <figure className={classes.figure}>
+                            <img src={sleepImg} alt="" />
+                        </figure>
+                        <p>投票期間前です。</p>
+                        <p>投票開始までしばらくお待ちください！</p>
+                    </div>
+                </>
             )}
         </>
     )
@@ -237,24 +282,41 @@ export const ShowBDCoordList = memo(() => {
     return (
         <>
             <div>
-                {/* <p className={classes.title}>今このコーデをいいね！しています</p>
-                <ul className={classes.ul}>
-                    <li onClick={onClickInfo}>
-                        <figure>
-                            <i><FavoriteRoundedIcon style={{ fontSize: "30px", color: "hotpink" }} /></i>
-                            <img src={coordImg} alt="" />
-                            <div className={classes.figcap}>
-                                <figcaption>Tops : Adidas</figcaption>
-                                <figcaption>Pants : FILA</figcaption>
-                            </div>
-                        </figure>
-                    </li>
-                </ul> */}
+                {userBDMyPostCoord ? (loadingBDMyPostCoord ? <>
+                    <div className={classes.loading}>
+                        <CircularProgress size={40} />
+                    </div>
+                </> : <>
+                { userBDMyPostCoord.id && (
+                    <>
+                    <p className={classes.title}>あなたのコーデ</p>
+                    <ul className={classes.ul}>
+                        <li>
+                            <figure>
+                                <div onClick={onClickUserCoord.bind(this, userBDMyPostCoord, userBDMyPostCoord.img)}>
+                                    <img src={userBDMyPostCoord.img} alt="" />
+                                    {/* <div className={classes.figcap}>
+                                        <ShowBrand type={'tops'} id={userBDMyPostCoord.tops} />
+                                        <ShowBrand type={'pants'} id={userBDMyPostCoord.pants} />
+                                    </div> */}
+                                </div>
+                            </figure>
+                        </li>
+                    </ul>
+                    </>
+                ) }
+                </>) :
+                    <>
+                    </>
+                }
 
                 <p className={classes.title}>参加中のすべてのコーデ</p>
                 {notPost == 2 && (
-                <p>投票期間が終了しました！</p>
-            )}
+                    <div className={classes.contentBox}>
+                        <p>投票期間が終了しました！</p>
+                        <p>結果発表をお楽しみに！</p>
+                    </div>
+                )}
                 <ul className={classes.ul}>
                     {items}
                 </ul>
@@ -307,6 +369,46 @@ export const ShowBDCoordList = memo(() => {
                                     )}
                                 </>
                             )}
+                            {modalItem && (
+                                <button onClick={onClickLinkDetail} className={classes.detail}>コーデの詳細を見る</button>
+                            )}
+                        </div>
+                    </div>
+                </Fade>
+            </Modal>
+
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openModalUserCoord}
+                onClose={handleCloseUserCoord}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={openModalUserCoord}>
+                    <div className={classes.item}>
+                        <i className={classes.close} onClick={handleCloseUserCoord}><CloseRoundedIcon style={{ fontSize: "20px", color: "#f9f9f9" }} /></i>
+                        <figure>
+                            <img src={modalImg} alt="" />
+                        </figure>
+                        {modalItem ? (
+                            <div className={classes.brandBox}>
+                                <ShowBrand type={'caps'} id={modalItem.caps} />
+                                <ShowBrand type={'tops'} id={modalItem.tops} />
+                                <ShowBrand type={'pants'} id={modalItem.pants} />
+                                <ShowBrand type={'shoes'} id={modalItem.shoes} />
+                            </div>
+                        ) :
+                            (
+                                <div className={classes.root}>
+                                    <CircularProgress size={40} />
+                                </div>
+                            )}
+                        <div div className={classes.btnbox}>
                             {modalItem && (
                                 <button onClick={onClickLinkDetail} className={classes.detail}>コーデの詳細を見る</button>
                             )}
