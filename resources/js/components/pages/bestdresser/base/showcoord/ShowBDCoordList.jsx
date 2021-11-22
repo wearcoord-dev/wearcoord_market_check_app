@@ -10,6 +10,7 @@ import { ShowBrand } from "./ShowBrand";
 import { useHistory } from "react-router";
 import { useGetTourInfo } from "../../../../../hooks/bestdresser/useGetTourInfo";
 import moment from 'moment';
+import sleepImg from "../../../../../../../public/img/others/bestdresser/sleep.png";
 
 
 const useStyles = makeStyles({
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
     ul: {
         display: "flex",
         flexWrap: "wrap",
+        justifyContent: "center",
         "& li": {
             width: "40%",
             maxWidth: "150px",
@@ -118,6 +120,20 @@ const useStyles = makeStyles({
         fontWeight: "bold",
         width: "70%",
         margin: "20px auto"
+    },
+    figure: {
+        textAlign: "center",
+        "& img": {
+            width: "50%",
+            maxWidth: "300px",
+        }
+    },
+    contentBox: {
+        "& p": {
+            textAlign: "center",
+            lineHeight: "1.6",
+            fontWeight: "bold",
+        }
     }
 });
 
@@ -152,10 +168,10 @@ export const ShowBDCoordList = memo(() => {
             if (userTourInfo.startPostCoord < today.format()) {
                 GetBDCoordList(context)
                 // 投票期間外であればセット
-                if(userTourInfo.endPostCoord < today.format()) {
+                if (userTourInfo.endPostCoord < today.format()) {
                     setNotPost(2);
                 }
-            }else{
+            } else {
                 setNotPost(1);
             }
         }
@@ -229,7 +245,15 @@ export const ShowBDCoordList = memo(() => {
             )}
 
             {notPost == 1 && (
-                <p>投票期間前です</p>
+                <>
+                    <div className={classes.contentBox}>
+                        <figure className={classes.figure}>
+                            <img src={sleepImg} alt="" />
+                        </figure>
+                        <p>投票期間前です。</p>
+                        <p>投票開始までしばらくお待ちください！</p>
+                    </div>
+                </>
             )}
         </>
     )
@@ -253,8 +277,11 @@ export const ShowBDCoordList = memo(() => {
 
                 <p className={classes.title}>参加中のすべてのコーデ</p>
                 {notPost == 2 && (
-                <p>投票期間が終了しました！</p>
-            )}
+                    <div className={classes.contentBox}>
+                        <p>投票期間が終了しました！</p>
+                        <p>結果発表をお楽しみに！</p>
+                    </div>
+                )}
                 <ul className={classes.ul}>
                     {items}
                 </ul>
