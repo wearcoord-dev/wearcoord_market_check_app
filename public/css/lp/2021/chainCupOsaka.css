@@ -525,6 +525,10 @@ main {
   padding-bottom: 50px;
 }
 
+.linkBtn a {
+  color: #216496;
+}
+
 .linkBtn .flexDirection {
   flex-direction: column;
 }

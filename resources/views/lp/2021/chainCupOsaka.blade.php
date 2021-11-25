@@ -260,10 +260,12 @@
         </section>
 
         <section class="linkBtn">
-            <div class="contentsBox flexDirection">
-                <p class="big">特設ページ</p>
-                <p class="big">Coming Soon...</p>
-            </div>
+            <a href="/main/bestdresser/login" class="contentsBox flexDirection">
+                <p class="big">ベストドレッサー賞</p>
+                <p class="big" style="display: flex; justify-content: center;">開催ページへ<span class="material-icons-outlined" style="font-size: 36px;">
+                    arrow_right
+                    </span></p>
+            </a>
         </section>
     </main>
 
