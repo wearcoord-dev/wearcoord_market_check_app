@@ -5,8 +5,7 @@ import maleImg from "../../../../../../../public/img/lp/2021/player_male.png";
 import selectImg from "../../../../../../../public/img/others/bestdresser/select.png"
 import axios from "axios";
 import moment from 'moment';
-
-
+import useSWR from 'swr';
 
 const useStyles = makeStyles(() => ({
     li: {
@@ -95,34 +94,34 @@ export const BestDressUserInfo = memo((props) => {
     const [bdUserInfo, setBDUserInfo] = useState(null);
 
     useEffect(() => {
-        getTourInfo();
+        // getTourInfo();
         getBDUserInfo();
     }, [])
+
+    const fetcher = url => axios.get(url, {
+        params: {
+            tour_id: tour_id,
+        }
+    }).then(res =>res.data);
+    const { data, error } = useSWR('/api/bestdresser/tourinfo', fetcher);
+
 
     // 大会情報取得
 
     useEffect(() => {
-        if (tourInfo) {
-            const spc = moment(tourInfo.startPostCoord);
+        if (data) {
+            const spc = moment(data.startPostCoord);
             setStartPostCoord(spc.format('M/D'));
-            const epc = moment(tourInfo.endPostCoord);
+            const epc = moment(data.endPostCoord);
             setEndPostCoord(epc.format('M/D'));
-            const scc = moment(tourInfo.startCreateCoord);
+            const scc = moment(data.startCreateCoord);
             setStartCreateCoord(spc.format('M/D'));
-            const ecc = moment(tourInfo.endCreateCoord);
+            const ecc = moment(data.endCreateCoord);
             setEndCreateCoord(epc.format('M/D'));
-            setShowResult(tourInfo.showResult);
+            setShowResult(data.showResult);
         }
-    }, [tourInfo])
+    }, [data])
 
-    const getTourInfo = async () => {
-        const response = await axios.get('/api/bestdresser/tourinfo', {
-            params: {
-                tour_id: tour_id,
-            }
-        });
-        setTourInfo(response.data);
-    }
 
     // ベストドレッサー参加ユーザー情報取得
 
@@ -142,7 +141,6 @@ export const BestDressUserInfo = memo((props) => {
 
         await axios.post(url, setData, header).then((res) => {
             setBDUserInfo(res.data);
-            console.log(res.data)
         }).catch(() => {
         }).finally(() => {
         });

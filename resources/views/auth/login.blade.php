@@ -73,6 +73,7 @@
                                     </a>
                                 @endif
                             </div>
+                            <a  href="{{ route('register') }}" style="text-align: center">新規登録はこちら</a>
                         </div>
                     </form>
                 </div>
