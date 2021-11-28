@@ -158,12 +158,12 @@ export const ShowBDCoordList = memo(() => {
     const today = moment();
     const history = useHistory();
 
-// コーデリスト取得
+    // コーデリスト取得
 
     const fetcher = url => axios.get(url, {
         params: {
             user_id: context.contextName.id,
-          }
+        }
     }).then(res => res.data);
     const { data, error } = useSWR('/api/bestdresser/bdCoordList', fetcher);
 
@@ -186,9 +186,9 @@ export const ShowBDCoordList = memo(() => {
     useEffect(() => {
         if (userTourInfo !== null) {
             // 投票期間であれば表示
-            if (userTourInfo.startPostCoord < today.format()) {
+            if (userTourInfo.startPostCoord < today.format('YYYY-MM-DD HH:mm:ss')) {
                 // 投票期間外であればセット
-                if (userTourInfo.endPostCoord < today.format()) {
+                if (userTourInfo.endPostCoord < today.format('YYYY-MM-DD HH:mm:ss')) {
                     setNotPost(2);
                 }
             } else {
@@ -237,7 +237,7 @@ export const ShowBDCoordList = memo(() => {
         <>
             {data && userTourInfo && (
                 <>
-                    {userTourInfo.endPostCoord < today.format() ? (
+                    {userTourInfo.endPostCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                         <>
                             {data.map((item, index) => (
                                 <li key={index}>
@@ -256,34 +256,36 @@ export const ShowBDCoordList = memo(() => {
 
                     ) : (
                         <>
-                            {data.map((item, index) => (
-                                <li key={index}>
-                                    <figure>
-                                        <BDLikeBtn item={item} userData={context} />
-                                        <div onClick={onClickInfo.bind(this, item, item.img)}>
-                                            <img src={item.img} alt="" />
-                                            {/* <div className={classes.figcap}>
+                            {notPost == 1 ? (
+                                <>
+                                    <div className={classes.contentBox}>
+                                        <figure className={classes.figure}>
+                                            <img src={sleepImg} alt="" />
+                                        </figure>
+                                        <p>投票期間前です。</p>
+                                        <p>投票開始までしばらくお待ちください！</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {data.map((item, index) => (
+                                        <li key={index}>
+                                            <figure>
+                                                <BDLikeBtn item={item} userData={context} />
+                                                <div onClick={onClickInfo.bind(this, item, item.img)}>
+                                                    <img src={item.img} alt="" />
+                                                    {/* <div className={classes.figcap}>
                                                 <ShowBrand type={'tops'} id={item.tops} />
                                                 <ShowBrand type={'pants'} id={item.pants} />
                                             </div> */}
-                                        </div>
-                                    </figure>
-                                </li>
-                            ))}
+                                                </div>
+                                            </figure>
+                                        </li>
+                                    ))}
+                                </>
+                            )}
                         </>
                     )}
-                </>
-            )}
-
-            {notPost == 1 && (
-                <>
-                    <div className={classes.contentBox}>
-                        <figure className={classes.figure}>
-                            <img src={sleepImg} alt="" />
-                        </figure>
-                        <p>投票期間前です。</p>
-                        <p>投票開始までしばらくお待ちください！</p>
-                    </div>
                 </>
             )}
         </>
@@ -297,24 +299,24 @@ export const ShowBDCoordList = memo(() => {
                         <CircularProgress size={40} />
                     </div>
                 </> : <>
-                { userBDMyPostCoord.id && (
-                    <>
-                    <p className={classes.title}>あなたのコーデ</p>
-                    <ul className={classes.ul}>
-                        <li>
-                            <figure>
-                                <div onClick={onClickUserCoord.bind(this, userBDMyPostCoord, userBDMyPostCoord.img)}>
-                                    <img src={userBDMyPostCoord.img} alt="" />
-                                    {/* <div className={classes.figcap}>
+                    {userBDMyPostCoord.id && (
+                        <>
+                            <p className={classes.title}>あなたのコーデ</p>
+                            <ul className={classes.ul}>
+                                <li>
+                                    <figure>
+                                        <div onClick={onClickUserCoord.bind(this, userBDMyPostCoord, userBDMyPostCoord.img)}>
+                                            <img src={userBDMyPostCoord.img} alt="" />
+                                            {/* <div className={classes.figcap}>
                                         <ShowBrand type={'tops'} id={userBDMyPostCoord.tops} />
                                         <ShowBrand type={'pants'} id={userBDMyPostCoord.pants} />
                                     </div> */}
-                                </div>
-                            </figure>
-                        </li>
-                    </ul>
-                    </>
-                ) }
+                                        </div>
+                                    </figure>
+                                </li>
+                            </ul>
+                        </>
+                    )}
                 </>) :
                     <>
                     </>
@@ -367,7 +369,7 @@ export const ShowBDCoordList = memo(() => {
                         <div div className={classes.btnbox}>
                             {userTourInfo && (
                                 <>
-                                    {userTourInfo.endPostCoord < today.format() ? (
+                                    {userTourInfo.endPostCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                                         <>
                                         </>
                                     ) : (

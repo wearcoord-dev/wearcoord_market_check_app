@@ -74,6 +74,7 @@ const useStyles = makeStyles(() => ({
             "& span": {
                 color: "indianred",
                 fontWeight: "bold",
+                lineHeight: "1.6",
             }
         }
     }
@@ -90,6 +91,7 @@ export const BestDressUserInfo = memo((props) => {
     const [endCreateCoord, setEndCreateCoord] = useState();
     const [startPostCoord, setStartPostCoord] = useState();
     const [endPostCoord, setEndPostCoord] = useState();
+    const [endPostCoordTime, setEndPostCoordTime] = useState();
     const [showResult, setShowResult] = useState();
     const [bdUserInfo, setBDUserInfo] = useState(null);
 
@@ -115,9 +117,10 @@ export const BestDressUserInfo = memo((props) => {
             const epc = moment(data.endPostCoord);
             setEndPostCoord(epc.format('M/D'));
             const scc = moment(data.startCreateCoord);
-            setStartCreateCoord(spc.format('M/D'));
+            setStartCreateCoord(scc.format('M/D'));
             const ecc = moment(data.endCreateCoord);
-            setEndCreateCoord(epc.format('M/D'));
+            setEndCreateCoord(ecc.format('M/D'));
+            setEndPostCoordTime(epc.format('HH:mm'));
             setShowResult(data.showResult);
         }
     }, [data])
@@ -212,7 +215,8 @@ export const BestDressUserInfo = memo((props) => {
                             </div>
                             <div>
                                 <p className={classes.boldblue}>投票期間</p>
-                                <p><span>{startPostCoord}</span>〜<span>{endPostCoord}</span></p>
+                                <p><span>{startPostCoord}</span>〜</p>
+                                <p><span>{endPostCoord}</span>  <span>{endPostCoordTime}</span></p>
                             </div>
                             <div>
                                 <p className={classes.boldblue}>結果発表</p>
