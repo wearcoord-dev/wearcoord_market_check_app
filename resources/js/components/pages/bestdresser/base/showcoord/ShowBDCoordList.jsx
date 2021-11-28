@@ -213,7 +213,7 @@ export const ShowBDCoordList = memo(() => {
     }
 
     const onClickEndInfo = (item, img) => {
-        setOpen(true);
+        setOpenUserCoord(true);
         // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
@@ -236,6 +236,7 @@ export const ShowBDCoordList = memo(() => {
     const items = (
         <>
             {data && userTourInfo && (
+                // 投票期間終了
                 <>
                     {userTourInfo.endPostCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                         <>
@@ -258,15 +259,25 @@ export const ShowBDCoordList = memo(() => {
                         <>
                             {notPost == 1 ? (
                                 <>
-                                    <div className={classes.contentBox}>
+                                    {/* <div className={classes.contentBox}>
                                         <figure className={classes.figure}>
                                             <img src={sleepImg} alt="" />
                                         </figure>
                                         <p>投票期間前です。</p>
                                         <p>投票開始までしばらくお待ちください！</p>
-                                    </div>
+                                    </div> */}
+                                    {data.map((item, index) => (
+                                        <li key={index}>
+                                            <figure>
+                                                <div onClick={onClickEndInfo.bind(this, item, item.img)}>
+                                                    <img src={item.img} alt="" />
+                                                </div>
+                                            </figure>
+                                        </li>
+                                    ))}
                                 </>
                             ) : (
+                                // 投票可能
                                 <>
                                     {data.map((item, index) => (
                                         <li key={index}>
@@ -327,6 +338,15 @@ export const ShowBDCoordList = memo(() => {
                     <div className={classes.contentBox}>
                         <p>投票期間が終了しました！</p>
                         <p>結果発表をお楽しみに！</p>
+                    </div>
+                )}
+                {notPost == 1 && (
+                    <div className={classes.contentBox}>
+                        {/* <figure className={classes.figure}>
+                            <img src={sleepImg} alt="" />
+                        </figure> */}
+                        <p>投票期間前です。</p>
+                        <p>投票開始までしばらくお待ちください！</p>
                     </div>
                 )}
                 <ul className={classes.ul}>
