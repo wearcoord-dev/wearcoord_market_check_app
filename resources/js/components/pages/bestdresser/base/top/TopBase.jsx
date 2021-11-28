@@ -33,6 +33,7 @@ export const TopBase = memo(() => {
             <BestDressUserInfo tour_id={userCheck.tour_id} user_id={userCheck.id} />
             <section className={classes.root}>
                 { userCheck.tour_id == 1 && <ChainCup2021 />}
+                { userCheck.tour_id == 4 && <ChainCup2021 />}
                 { userCheck.tour_id == 2 && <MainBestDresser />}
                 <div className={classes.bottom}></div>
             </section>

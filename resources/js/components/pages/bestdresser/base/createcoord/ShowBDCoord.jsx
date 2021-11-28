@@ -124,7 +124,6 @@ export const ShowBDCoord = memo(() => {
     const { GetTourInfo, userTourInfo, loadingTourInfo, errorTourInfo } = useGetTourInfo();
     const today = moment();
 
-
     const context = useContext(AppContext);
     const userCheck = context.contextName;
 
@@ -184,7 +183,6 @@ export const ShowBDCoord = memo(() => {
     const registerCoord = (props) => {
         RegisterCoord(props, context);
     }
-
 
     return (
         <>
@@ -297,7 +295,7 @@ export const ShowBDCoord = memo(() => {
                                     </div>
                                 </div>
                             </>
-                        ) : userTourInfo.endPostCoord < today.format() ? (
+                        ) : userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                             // 投稿期間が終了した場合
                             <>
                                 <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
@@ -307,7 +305,7 @@ export const ShowBDCoord = memo(() => {
                                     </div>
                                 </div>
                             </>
-                        ) : userTourInfo.startPostCoord > today.format() ? (
+                        ) : userTourInfo.startCreateCoord > today.format('YYYY-MM-DD HH:mm:ss') ? (
                             // 投稿期間前の場合
                             <>
                                 <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
@@ -359,11 +357,11 @@ export const ShowBDCoord = memo(() => {
                                     <>
                                         <p className={classes.bold}>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
                                     </>
-                                ) : userTourInfo.endPostCoord < today.format() ? (
+                                ) : userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                                     <>
                                         <p className={classes.bold}>コーデ投稿期間が過ぎたため投稿できません。</p>
                                     </>
-                                ) : userTourInfo.startPostCoord > today.format() ? (
+                                ) : userTourInfo.startCreateCoord > today.format('YYYY-MM-DD HH:mm:ss') ? (
                                     <>
                                         <p className={classes.bold}>投稿期間前です。しばらくお待ちください！</p>
 
