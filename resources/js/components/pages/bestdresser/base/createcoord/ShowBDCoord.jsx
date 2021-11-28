@@ -285,23 +285,23 @@ export const ShowBDCoord = memo(() => {
                     </div>
 
                     {!loadingOwnLike && userTourInfo && (
-                        // いいねされている場合
-                        userOwnLike == true ? (
-                            <>
-                                <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
-                                    <div className={classes.searchBtn}>
-                                        <AddBoxIcon style={{ color: '#216496', fontSize: 20 }} />
-                                        <p className="btnText">いいねされています</p>
-                                    </div>
-                                </div>
-                            </>
-                        ) : userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
-                            // 投稿期間が終了した場合
+                        // 投稿期間が終了した場合
+                        userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                             <>
                                 <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
                                     <div className={classes.searchBtn}>
                                         <AddBoxIcon style={{ color: '#216496', fontSize: 20 }} />
                                         <p className="btnText">投稿期間が終了しました</p>
+                                    </div>
+                                </div>
+                            </>
+                        ) : userOwnLike == true ? (
+                            // いいねされている場合
+                            <>
+                                <div onClick={handleOpen} className={classes.bottomBtnRightNot}>
+                                    <div className={classes.searchBtn}>
+                                        <AddBoxIcon style={{ color: '#216496', fontSize: 20 }} />
+                                        <p className="btnText">いいねされています</p>
                                     </div>
                                 </div>
                             </>
@@ -352,14 +352,14 @@ export const ShowBDCoord = memo(() => {
                             <input type="hidden" name="userId" value={userCheck}></input>
 
                             {!loadingOwnLike && userTourInfo && (
-                                // いいねされている場合
-                                userOwnLike == true ? (
-                                    <>
-                                        <p className={classes.bold}>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
-                                    </>
-                                ) : userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
+                                userTourInfo.endCreateCoord < today.format('YYYY-MM-DD HH:mm:ss') ? (
                                     <>
                                         <p className={classes.bold}>コーデ投稿期間が過ぎたため投稿できません。</p>
+                                    </>
+                                ) : userOwnLike == true ? (
+                                    // いいねされている場合
+                                    <>
+                                        <p className={classes.bold}>あなたのコーデは他の参加者から「いいね！」されているため変更できません。結果をお楽しみ！</p>
                                     </>
                                 ) : userTourInfo.startCreateCoord > today.format('YYYY-MM-DD HH:mm:ss') ? (
                                     <>
