@@ -1,5 +1,6 @@
 import { memo } from "react";
 import banner1 from "/img/banner/ralosso2021.jpg";
+import banner2 from "/img/banner/bestdresser_top.jpg";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
@@ -74,6 +75,12 @@ export const HomeTopSection = memo(() => {
                     autoplay={{ delay: '5000' }}
                     loop={true}
                 >
+                    <SwiperSlide>
+                        <a className={classes.wrapper} href="main/bestdresser/login"
+                        >
+                            <img className={classes.img} src={banner2} alt="" />
+                        </a>
+                    </SwiperSlide>
                     <SwiperSlide>
                         <div className={classes.wrapper}
                             onClick={onClickLarossoCoord}
