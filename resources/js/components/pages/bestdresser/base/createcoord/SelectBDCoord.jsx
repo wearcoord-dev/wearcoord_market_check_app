@@ -636,6 +636,8 @@ export const SelectBDCoord = memo((props) => {
 
             <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
 
+            <div style={{ paddingBottom: "180px" }}></div>
+
             {from == "wear" && (
                 <>
                     <div className={classes.btnWrapper}>

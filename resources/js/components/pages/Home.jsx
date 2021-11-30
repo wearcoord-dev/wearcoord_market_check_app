@@ -103,7 +103,7 @@ export const Home = memo(() => {
 
     return (
         <>
-            <div style={{ marginBottom: "70px" }}>
+            <div>
                 <HomeTopSection />
                 <NewsList />
                 <RecommendItem />

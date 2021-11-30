@@ -10,6 +10,7 @@ export const MainLayout = memo((props) => {
             <Header></Header>
             <div className="headerTop"></div>
             {children}
+            <div style={{ paddingBottom: "70px" }} ></div>
             <Navbar></Navbar>
         </>
     )
