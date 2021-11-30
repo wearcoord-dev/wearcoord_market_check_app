@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#f0f0f0",
         lineHeight: "1.5",
         borderRadius: "10px 0px 0px 10px",
+        maxWidth: "250px",
         "& p": {
             fontWeight: "bold",
             paddingLeft: "10px",
@@ -66,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "10px 0px 0px 10px",
         border: "2px solid #216496",
         borderRight: "none",
+        maxWidth: "250px",
         "& p": {
             fontWeight: "bold",
             paddingLeft: "10px",
@@ -85,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
         lineHeight: "1.5",
         borderRadius: "0px 10px 10px 0px",
         margin: "16px 0 0 0",
+        maxWidth: "250px",
         "& p": {
             fontWeight: "bold",
             paddingLeft: "10px",

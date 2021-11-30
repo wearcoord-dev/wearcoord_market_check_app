@@ -26,6 +26,8 @@ const useStyles = makeStyles({
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
+        maxWidth: "1000px",
+        margin: "auto",
         "& li": {
             width: "40%",
             maxWidth: "150px",

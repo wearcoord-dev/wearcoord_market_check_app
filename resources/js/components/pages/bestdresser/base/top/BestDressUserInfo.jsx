@@ -59,6 +59,7 @@ const useStyles = makeStyles(() => ({
         width: "100%",
         margin: "auto",
         boxShadow: "0px 0px 30px 1px rgb(53 53 53 / 3%)",
+        maxWidth: "1000px",
     },
     datebox: {
         display: "flex",

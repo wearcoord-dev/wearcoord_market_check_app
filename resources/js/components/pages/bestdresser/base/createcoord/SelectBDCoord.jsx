@@ -32,6 +32,7 @@ const useStyles = makeStyles(() => ({
         color: "#f0f0f0",
         lineHeight: "1.5",
         borderRadius: "10px 0px 0px 10px",
+        maxWidth: "250px",
         "& span": {
             fontWeight: "bold",
             paddingLeft: "10px",
@@ -53,6 +54,7 @@ const useStyles = makeStyles(() => ({
         lineHeight: "1.5",
         borderRadius: "0px 10px 10px 0px",
         margin: "16px 0 0 0",
+        maxWidth: "250px",
         "& span": {
             fontWeight: "bold",
             paddingLeft: "10px",
@@ -63,6 +65,7 @@ const useStyles = makeStyles(() => ({
         position: "fixed",
         bottom: "0",
         width: "100%",
+        left: "0",
     }
 }));
 
@@ -385,7 +388,7 @@ export const SelectBDCoord = memo((props) => {
 
                     // 非表示でない場合は表示させる
                 ) : (showCaps == 0 ? (
-                    
+
                     // capsがnullでない場合は表示させる
                     <>
                         {userBDWear[0] ? <div style={{ textAlign: "center", margin: "auto", height: "50px" }}>
