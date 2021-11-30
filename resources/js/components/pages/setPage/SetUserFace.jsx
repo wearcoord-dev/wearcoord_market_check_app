@@ -147,7 +147,7 @@ export const SetUserFace = memo(() => {
         setTrimmedSrc(canvas.toDataURL(contentType));
     }, [completedCrop]);
 
-    console.log(completedCrop);
+    // console.log(completedCrop);
 
     return (
         <div className="App">
@@ -244,7 +244,7 @@ export const SetUserFace = memo(() => {
                     </div>
                 </>
             ) : <></>}
-            <div style={{ marginBottom: "100px" }}></div>
+            <div style={{ paddingBottom: "100px" }}></div>
         </div>
     );
 })
