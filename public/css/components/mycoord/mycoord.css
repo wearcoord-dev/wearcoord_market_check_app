@@ -371,3 +371,9 @@ details[open] .detailsBottom {
   width: 80%;
   margin: 10px 0;
 }
+
+@media (max-width: 320px) {
+  .centerContainer {
+    min-width: 180px;
+  }
+}
