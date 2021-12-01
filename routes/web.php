@@ -92,3 +92,9 @@ Route::get('/privacy-policy', function () {
 Route::get('/cookie-policy', function () {
     return view('pages.cookiepolicy');
 })->name('cookie');
+
+// コラム記事
+
+Route::get('/column/size', function () {
+    return view('column.read.size');
+});
