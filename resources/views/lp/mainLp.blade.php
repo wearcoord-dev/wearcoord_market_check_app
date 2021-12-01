@@ -39,6 +39,15 @@
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTSE1Y4CSQ"></script>
+                <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-KTSE1Y4CSQ');
+                </script>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
         <script>
@@ -372,7 +381,7 @@
 
     <footer>
         <ul>
-            <li><a href="https://wearcoord.info/" target="_blank" rel="noopener noreferrer">企業情報</a></li>
+            <li><a href="https://wearcoord.info" target="_blank" rel="noopener noreferrer">企業情報</a></li>
             <li><a href="{{ route('privacy') }}">プライバシーポリシー</a></li>
             <li><a href="https://wearcoord.info/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a></li>
         </ul>

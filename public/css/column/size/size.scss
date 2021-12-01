@@ -1,0 +1,256 @@
+.topSect {
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(252, 252, 252, 0.9) 75%, #D8E4ED 100%);
+
+    .columnTitle {
+        background-color: #216496;
+        width: 90%;
+        border-radius: 0 30px 30px 0;
+        box-shadow: 0px 4px 12px rgba(33, 100, 150, 0.5);
+
+        h2 {
+            color: white;
+            font-size: 1.4rem;
+            padding: 10px 40px;
+            line-height: 1.6;
+            font-weight: bold;
+            text-align: center;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.ib {
+    display: inline-block;
+}
+
+.tac {
+    text-align: center;
+}
+
+.hr{
+    background-color: #216496;
+    width: 50%;
+    max-width: 300px;
+}
+
+.fluid {
+    width: 30vh;
+    height: 30vh;
+    background: white;
+    animation: fluidrotate 15s ease 0s infinite;
+    box-shadow: 0px 0px 12px rgba(33, 100, 150, 0.46);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6vh auto;
+    max-width: 250px;
+    max-height: 250px;
+    position: relative;
+}
+
+@keyframes fluidrotate {
+
+    0%,
+    100% {
+        border-radius: 87% 13% 30% 70% / 30% 43% 57% 70%;
+    }
+
+    //   14% {
+    //       border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+    //   }
+    //   28% {
+    //       border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+    //   }
+    42% {
+        border-radius: 53% 47% 43% 57% / 33% 60% 40% 67%;
+    }
+
+    //   56% {
+    //       border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+    //   }
+    //   70% {
+    //       border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+    //   }
+    84% {
+        border-radius: 85% 15% 78% 22% / 33% 75% 25% 67%;
+    }
+
+}
+
+.thinkImg {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 40%;
+    }
+}
+
+.thinking {
+
+    img {
+        position: absolute;
+        bottom: -20%;
+        left: -20%;
+        width: 50%;
+    }
+}
+
+.centerImg {
+    max-width: 200px;
+    margin: auto;
+
+    img {
+        width: 100%;
+    }
+
+    figcaption{
+        text-align: center;
+        padding: 10px 0;
+        color: #484848;
+    }
+}
+
+.container {
+    width: 90%;
+    // margin: auto;
+    box-shadow: 0px 4px 12px rgba(33, 100, 150, 0.5);
+    border-radius: 20px;
+    padding: 10px 0;
+    max-width: 500px;
+    position: absolute;
+    bottom: 10%;
+    transform: translateX(-50%);
+    left: 50%;
+    background-color: #fff;
+
+    p {
+        text-align: center;
+        font-size: 1.4rem;
+        padding: 10px 0;
+        font-weight: bold;
+    }
+
+    ul {
+        width: 90%;
+        margin: auto;
+
+        li {
+            font-size: 1.4rem;
+            padding: 6px 0;
+            font-weight: bold;
+
+        }
+    }
+}
+
+.readintro {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 2%;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 50%;
+    max-width: 180px;
+}
+
+.mainSect {
+    background-color: #D8E4ED;
+    padding: 50px 0;
+
+    .mainContainer {
+        padding: 50px 0 100px;
+        border-radius: 30px;
+        width: 90%;
+        margin: auto;
+        background-color: #fff;
+        box-shadow: 0px 4px 12px rgba(33, 100, 150, 0.5);
+        max-width: 1400px;
+
+        .wrapper {
+            width: 90%;
+            margin: auto;
+            max-width: 700px;
+        }
+    }
+
+    .issue {
+        padding: 40px 0;
+
+        p {
+            font-size: 1.4rem;
+            color: #0080E4;
+            line-height: 1.6;
+        }
+    }
+
+    p {
+        font-weight: bold;
+        line-height: 1.6;
+        font-size: 1.4rem;
+    }
+
+    .pointSect {
+        padding: 100px 0;
+
+        h3 {
+            .point {
+                color: white;
+                background: #216496;
+                width: 100px;
+                text-align: center;
+                padding: 4px 0;
+                margin: 10px auto;
+            }
+
+            .h3title {
+                font-size: 1.8rem;
+                text-align: center;
+                padding: 10px 0;
+
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        h4{
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.linkBtn{
+    background-color: #216496;
+    color: white;
+    width: 90%;
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 999px;
+    align-items: center;
+    box-shadow: 0px 4px 12px rgba(33, 100, 150, 0.5);
+    max-width: 300px;
+
+    p{
+        text-align: center;
+
+        span{
+            font-weight: bold;
+        }
+    }
+}
