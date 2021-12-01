@@ -83,19 +83,30 @@
   width: 50%;
 }
 
-.centerImg {
-  max-width: 200px;
+.centerImg li {
   margin: auto;
+  max-width: 300px;
+  width: 80%;
 }
 
-.centerImg img {
+.centerImg li img {
   width: 100%;
 }
 
-.centerImg figcaption {
+.centerImg .figcaption {
   text-align: center;
   padding: 10px 0;
   color: #484848;
+}
+
+.centerImgSimple {
+  width: 60%;
+  margin: auto;
+  max-width: 200px;
+}
+
+.centerImgSimple img {
+  width: 100%;
 }
 
 .container {
