@@ -103,17 +103,31 @@
 }
 
 .centerImg {
-    max-width: 200px;
-    margin: auto;
 
-    img {
-        width: 100%;
+    li{
+        margin: auto;
+        max-width: 300px;
+        width: 80%;
+
+        img {
+            width: 100%;
+        }
     }
 
-    figcaption{
+    .figcaption{
         text-align: center;
         padding: 10px 0;
         color: #484848;
+    }
+}
+
+.centerImgSimple{
+    width: 60%;
+    margin: auto;
+    max-width: 200px;
+
+    img{
+        width: 100%;
     }
 }
 

@@ -67,7 +67,7 @@
                 <p>このような経験がある方は多いのではないでしょうか？一目惚れしてそのウェアがすごく欲しくなる、着てみたくなるという衝動に駆られること、やっぱりありますよね。</p>
                 <p style="padding: 30px 0">ただそこで気になってくるのは、ブランドごとに微妙に異なるサイズ感の違いかと思います。</p>
 
-                <figure class="centerImg">
+                <figure class="centerImgSimple">
                     <img src="{{ asset('img/reading/loose/female_thinking.png') }}" alt="">
                 </figure>
 
@@ -84,10 +84,11 @@
 
                 <p style="padding: 50px 0">オンラインストア内の商品ページの中で胸囲や身丈、ウエストといったサイズの記載を見かけたことはありませんか？</p>
 
-                <figure class="centerImg">
-                    <img src="{{ asset('img/column/size/larosso.jpg') }}" alt="">
-                    <figcaption>参考 : ralosso公式オンラインストア</figcaption>
-                </figure>
+                <ul class="centerImg">
+                    <li><a href="{{ asset('img/column/size/larosso.jpg') }}" data-lightbox="simple-group" data-title="参考 : ralosso公式オンラインストア" data-alt="ralosso公式オンラインストア"><img src="{{ asset('img/column/size/larosso.jpg') }}" alt="ralosso公式オンラインストア"></a>
+                    <p class="figcaption">参考 : ralosso公式オンラインストア</p>
+                    </li>
+                </ul>
 
                 <p style="padding: 50px 0 20px">トップスやパンツなどのアイテムには商品のサイズが記載されていることが多く、試着ができないオンラインストア上ではその数値を参考にして商品を選ぶしかありません。</p>
                 <p style="padding: 20px 0 0px">そのため普段着用しているウェアの胸囲やウエスト、身幅や股下などのサイズが大体これくらい（◯◯cm）かな？と把握し、それを基準として欲しいウェアのサイズを確認すると良いでしょう！</p>
@@ -103,17 +104,19 @@
 
                 <h4 style="padding: 50px 0">●トップスのサイズ項目の例</h4>
 
-                <figure class="centerImg">
-                    <img src="{{ asset('img/column/size/tops_size.jpg') }}" alt="">
-                </figure>
+                <ul class="centerImg">
+                    <li><a href="{{ asset('img/column/size/tops_size.jpg') }}" data-lightbox="simple-group" data-title="トップスのサイズ項目の例" data-alt="トップスのサイズ項目の例"><img src="{{ asset('img/column/size/tops_size.jpg') }}" alt="トップスのサイズ項目の例"></a>
+                    </li>
+                </ul>
 
                 <p style="padding: 50px 0">トップスの例として上記のようなサイズの項目が挙げられます。胸囲は様々なウェアに大抵記載がありますが、アイテムやオンラインストアによっては幅や丈まで分かる場合があります。</p>
 
                 <h4 style="padding: 50px 0">●パンツのサイズ項目の例</h4>
 
-                <figure class="centerImg">
-                    <img src="{{ asset('img/column/size/pants_size.jpg') }}" alt="">
-                </figure>
+                <ul class="centerImg">
+                    <li><a href="{{ asset('img/column/size/pants_size.jpg') }}" data-lightbox="simple-group" data-title="パンツのサイズ項目の例" data-alt="パンツのサイズ項目の例"><img src="{{ asset('img/column/size/pants_size.jpg') }}" alt="パンツのサイズ項目の例"></a>
+                    </li>
+                </ul>
 
                 <p style="padding: 50px 0 0">パンツの例として上記のようなサイズの項目が挙げられます。項目が多いと思われる方もいらっしゃるかもしれませんが、ショートやロングそれぞれご自身がちょうどいいと思うサイズを一度把握しておくと、ウェア選びがとても簡単になります！</p>
             </div>
@@ -130,10 +133,10 @@
                 <p style="padding: 30px 0">　オンラインコーディネートアプリ「wearcoord」では、様々なブランドのウェアのサイズをデータベースとして登録しています。</p>
                 <p style="padding: 0 0 50px">普段着用しているウェアやサイズをご自身のアカウントに登録し、そのサイズをもとに気になるウェアとサイズの比較することができる「サイズ比較機能」を提供しています。</p>
 
-
-                <figure class="centerImg">
-                    <img src="{{ asset('img/column/size/sizefunc.png') }}" alt="">
-                </figure>
+                <ul class="centerImg">
+                    <li><a href="{{ asset('img/column/size/sizefunc.png') }}" data-lightbox="simple-group" data-title="サイズ機能" data-alt="サイズ機能"><img src="{{ asset('img/column/size/sizefunc.png') }}" alt="サイズ機能"></a>
+                    </li>
+                </ul>
 
                 <p style="padding: 50px 0 0">胸囲やウエストといったサイズが、今の自分のサイズと気になるウェアと比べて「どのくらい（何cm）違うのか」を算出し結果を見ることができるので、直感的にサイズ感を知ることが可能です。</p>
 
