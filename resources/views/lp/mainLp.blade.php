@@ -363,6 +363,24 @@
             </ul>
     </section>
 
+       <section class="sect">
+        <div>
+            <h2 class="sectTitle">wearcoordコラム</h2>
+        </div>
+            <ul class="sectUl sectColumn">
+                <li>
+                    <a href="{{ route('column_size') }}">
+                        <img class="" src="{{asset('img/lp/2021/size.jpg')}}" alt="">
+                    </a>
+                </li>
+                {{-- <li>
+                    <a>
+                        <img class="" src="{{asset('img/lp/2021/size.jpg')}}" alt="">
+                    </a>
+                </li> --}}
+            </ul>
+    </section>
+
     <footer>
         <ul>
             <li><a href="https://wearcoord.info" target="_blank" rel="noopener noreferrer">企業情報</a></li>
