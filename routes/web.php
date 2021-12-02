@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// 本来API用で作ったもの
+
+Route::get('/deletecoord', function (Request $request) {
+});
+
+Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
+
+// ここまで
 
 Route::get('/', function () {
     return view('lp.mainLp');

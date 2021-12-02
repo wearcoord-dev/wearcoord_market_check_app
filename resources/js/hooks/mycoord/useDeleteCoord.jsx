@@ -18,7 +18,7 @@ export const useDeleteCoord = () => {
         const setData = {
             "id": id,
         }
-        const url = '/api/deletecoord';
+        const url = '/deletecoord';
 
         axios.post(url, setData, header).then((res) => {
             history.push("/main/favorite");
