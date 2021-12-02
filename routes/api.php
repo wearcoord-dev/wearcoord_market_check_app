@@ -104,10 +104,10 @@ Route::get('/deletecartitem', function (Request $request) {
 
 Route::post('/deletecartitem', [App\Http\Controllers\ItemController::class, "deleteCartItem"]);
 
-Route::get('/deletecoord', function (Request $request) {
-});
+// Route::get('/deletecoord', function (Request $request) {
+// });
 
-Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
+// Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
 
 Route::get('/copycoord', function (Request $request) {
 });
