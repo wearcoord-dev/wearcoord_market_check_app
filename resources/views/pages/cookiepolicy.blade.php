@@ -43,6 +43,10 @@
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
+            @if(env('APP_ENV') == 'production')
+            @include('layouts.parts.analytics')
+            @endif
+
 </head>
 <body>
     <header class="lpHeader">

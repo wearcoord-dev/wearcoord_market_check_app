@@ -66,6 +66,10 @@
     gtag('config', 'UA-199807866-2');
     </script>
 
+@if(env('APP_ENV') == 'production')
+@include('layouts.parts.analytics')
+@endif
+
 </head>
 <body>
     <div id="app"></div>

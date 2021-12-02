@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#216496">
 
-    <title>wearcoord</title>
+    <title>Chain Cup特設ページ | wearcoord</title>
 
     <meta name="description" content="Chain Cup 大阪大会 ベストドレッサー賞についての特設ページです" />
 
@@ -33,7 +33,6 @@
   />
 
         {{-- OGP --}}
-        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
             <meta property="og:url" content="{{ config('app.url') }}">
             <meta property="og:type" content="website" />
             <meta property="og:title" content="wearcoord Chain Cup 特設ページ" />
@@ -42,6 +41,10 @@
             <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
+
+            @if(env('APP_ENV') == 'production')
+            @include('layouts.parts.analytics')
+            @endif
 
 </head>
 <body>
