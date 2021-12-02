@@ -53,7 +53,6 @@ export const SetUserFace = memo(() => {
     const { CreateUserFace } = useCreateUserFace();
     const context = useContext(UserContext);
 
-    // console.log(context.contextName);
 
     const [upImg, setUpImg] = useState();
     const [trimmedSrc, setTrimmedSrc] = useState(null);
@@ -66,12 +65,10 @@ export const SetUserFace = memo(() => {
     // 既存の画像を削除
 
     const onClickDelete  = () => {
-        console.log(context.contextName.id);
 
         const header = {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
             }
         }
 
@@ -79,11 +76,8 @@ export const SetUserFace = memo(() => {
             "id": context.contextName.id,
         }
         const url = '/api/setting/deleteimg';
-        // console.log(setData);
 
         axios.post(url, setData, header).then((res) => {
-            // console.log(res);
-            // history.push('/main/mycoord');
             window.location.href = '/main/settings/face';
         }).catch(() => {
         }).finally(() => {
@@ -147,7 +141,6 @@ export const SetUserFace = memo(() => {
         setTrimmedSrc(canvas.toDataURL(contentType));
     }, [completedCrop]);
 
-    // console.log(completedCrop);
 
     return (
         <div className="App">

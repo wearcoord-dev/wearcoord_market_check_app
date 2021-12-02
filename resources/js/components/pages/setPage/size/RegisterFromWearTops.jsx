@@ -157,7 +157,6 @@ export const RegisterFromWearTops = memo(() => {
 
     // モーダルで展開する情報取得
     const onClickInfo = (props) => {
-        // console.log(props);
         setWearInfo(props);
         setOpen(true);
     }
@@ -202,7 +201,6 @@ export const RegisterFromWearTops = memo(() => {
     }
 
     const onClickWearItem = (props) => {
-        // console.log(props);
         const type = 'tops';
         RegisterSizeFromWear(props, userCheck, type);
         history.push('/main/settings/size/wear/pants');

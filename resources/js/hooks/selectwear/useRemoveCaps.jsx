@@ -5,9 +5,6 @@ export const useRemoveCaps = () => {
     const history = useHistory();
 
     const RemoveCaps = (props) => {
-        // console.log('OK');
-        // console.log(props.id);
-        // console.log(props.gender);
 
         const id = props.id;
         // const gender = props.gender;
@@ -18,7 +15,6 @@ export const useRemoveCaps = () => {
                 // gender: gender,
               }
         }).then((res) => {
-            console.log(res);
             history.go(0);
           }).catch(() => {
           }).finally(() => {

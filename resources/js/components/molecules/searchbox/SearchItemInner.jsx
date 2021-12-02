@@ -12,8 +12,6 @@ export const SearchItemInner = memo((props) => {
     const [valueId, setValueId] = useState("");
 
     const context = useContext(UserContext);
-    console.log(context.contextName.id);
-    console.log('表示してるぞ！！');
     const userid = context.contextName.id;
     const gender = context.contextName.gender;
 

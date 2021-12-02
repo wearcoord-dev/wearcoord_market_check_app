@@ -10,7 +10,6 @@ export const useGetBDUserWear = () => {
     const GetBDUserWear = async(props) => {
         setLoadingBDUserWear(true);
         setErrorBDUserWear(false);
-        console.log(props)
 
         const header = {
             headers: {
@@ -26,7 +25,6 @@ export const useGetBDUserWear = () => {
 
         await axios.post(url, setData, header).then((res) => {
             setUserBDWear(res.data);
-            console.log(res)
         }).catch(() => {
             setErrorBDUserWear(true);
         }).finally(() => {

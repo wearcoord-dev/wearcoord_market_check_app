@@ -9,7 +9,6 @@ export const useAllPosts = () => {
   const getPosts = () => {
     setLoading(true);
     setError(false);
-    console.log("postだよ");
 
     axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
       const data = res.data.map((post) => ({

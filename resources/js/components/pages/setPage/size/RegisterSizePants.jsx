@@ -200,7 +200,6 @@ export const RegisterSizePants = memo(() => {
         }
 
     const onSubmit = data => {
-        console.log(data);
         let waistsize = preWeist;
         let hipsize = preHip;
         let watarihabasize = preWatarihaba;
@@ -251,10 +250,8 @@ export const RegisterSizePants = memo(() => {
 
         }
         const url = '/api/registersize/pants';
-        // console.log(setData);
 
         axios.post(url, setData, header).then((res) => {
-            // console.log(res);
             history.push('/main/mycoord');
         }).catch(() => {
         }).finally(() => {

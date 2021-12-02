@@ -18,7 +18,6 @@ export const useCreatePantsComment = () => {
 
     const CreatePantsComment = (props) => {
 
-        // console.log(props);
 
         if(props == "000"){
             const data = (

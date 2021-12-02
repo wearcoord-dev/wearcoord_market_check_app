@@ -7,13 +7,6 @@ export const useCreateUserFace = () => {
 
   const CreateUserFace = (upImg,context) => {
 
-    // console.log(props.target.form[1].value);
-    // console.log(context.contextName.id);
-
-    console.log('送ってます〜');
-    // console.log(upImg);
-    // console.log(context.contextName.id);
-
     const header = { headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         "Access-Control-Allow-Origin": "*",
@@ -29,7 +22,6 @@ export const useCreateUserFace = () => {
     const url = '/api/registerface';
 
     axios.post(url, setData, header).then((res) => {
-        console.log(res);
         history.go(0);
     }).catch(() => {
     }).finally(() => {

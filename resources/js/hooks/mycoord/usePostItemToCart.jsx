@@ -7,9 +7,6 @@ export const usePostItemToCart = () => {
 
   const PostItemToCart = (type, item, user) => {
 
-    // console.log(props.target.form[1].value);
-    // console.log(context.contextName.id);
-
     const header = { headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         "Access-Control-Allow-Origin": "*",
@@ -25,7 +22,6 @@ export const usePostItemToCart = () => {
     const url = '/api/addcart';
 
     axios.post(url, setData, header).then((res) => {
-        console.log(res);
         if(res.data==1){
             alert('登録しました');
         };

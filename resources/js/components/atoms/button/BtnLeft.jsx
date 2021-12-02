@@ -71,7 +71,6 @@ export const BtnLeft = memo((props) => {
         }
         if (type == 'wear') {
             setOpenWear(true);
-            console.log('試着です');
         }
     }
 

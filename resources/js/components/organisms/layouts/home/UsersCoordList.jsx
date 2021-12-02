@@ -59,7 +59,6 @@ export const UsersCoordList = memo(() => {
 
     useEffect(() => {
         if (userData !== undefined) {
-            // console.log('useEffectが実行されました');
             const gender = userData.gender;
             GetUserCoord(gender);
         }

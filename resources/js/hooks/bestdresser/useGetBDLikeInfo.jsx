@@ -10,7 +10,6 @@ export const useGetBDLikeInfo = () => {
     const GetBDLikeInfo = async(props, userId) => {
         setLoadingBDLikeInfo(true);
         setErrorBDLikeInfo(false);
-        // console.log(props)
 
         const header = {
             headers: {
@@ -26,7 +25,6 @@ export const useGetBDLikeInfo = () => {
 
         await axios.post(url, setData, header).then((res) => {
             setBDLikeInfo(res.data);
-            // console.log(res.data)
         }).catch(() => {
             setErrorBDLikeInfo(true);
         }).finally(() => {

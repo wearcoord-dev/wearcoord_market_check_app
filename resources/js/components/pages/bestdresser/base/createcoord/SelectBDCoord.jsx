@@ -283,7 +283,6 @@ export const SelectBDCoord = memo((props) => {
             "shoes": shoesArray[activeIndexShoes],
             "userid": context.contextName.id,
         }
-        console.log(obj)
 
         RegisterWear(obj);
     }

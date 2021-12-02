@@ -8,7 +8,6 @@ export const useCopyCoord = () => {
 
 
     const CopyCoord = (props) => {
-        console.log(props);
 
         const id = props.id;
         const userid = props.userid;
@@ -35,7 +34,6 @@ export const useCopyCoord = () => {
         const url = '/api/copycoord';
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             history.push("/main/mycoord");
           }).catch(() => {
           }).finally(() => {

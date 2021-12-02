@@ -209,21 +209,18 @@ export const ShowBDCoordList = memo(() => {
 
     const onClickInfo = (item, img) => {
         setOpen(true);
-        // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
     }
 
     const onClickEndInfo = (item, img) => {
         setOpenUserCoord(true);
-        // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
     }
 
     const onClickUserCoord = (item, img) => {
         setOpenUserCoord(true);
-        // console.log(id, img)
         setModalImg(img);
         setModalItem(item);
     }

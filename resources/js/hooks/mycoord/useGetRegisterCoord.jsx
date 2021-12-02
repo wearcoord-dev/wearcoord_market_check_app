@@ -12,9 +12,6 @@ export const useGetRegisterCoord = () => {
         setLoadingRegisterCoord(true);
         setErrorRegisterCoord(false);
 
-
-        // console.log('OK');
-        // console.log(props);
         const userid = props.contextName.id;
 
         axios.get("/getregistercoord", {
@@ -22,7 +19,6 @@ export const useGetRegisterCoord = () => {
                 id: userid,
               }
         }).then((res) => {
-            console.log(res);
             setUserCoordData(res.data);
           }).catch(() => {
             setErrorRegisterCoord(true);

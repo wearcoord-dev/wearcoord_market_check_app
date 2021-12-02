@@ -47,7 +47,6 @@ export const Detail = memo((props) => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました');
             GetUserFavCoord(coordid);
         }
     }, [userCheck]);
@@ -78,7 +77,6 @@ export const Detail = memo((props) => {
         }
     }, [userCoordList]);
 
-    console.log(userCoordList);
 
     return (
         <>

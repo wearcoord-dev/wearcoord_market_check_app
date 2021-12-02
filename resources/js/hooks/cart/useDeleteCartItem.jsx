@@ -11,9 +11,6 @@ export const useDeleteCartItem = () => {
 
 
     const DeleteCartItem = (props) => {
-        // setLoadingRegisterWear(true);
-        // setErrorRegisterWear(false);
-        console.log(props);
 
         const id = props.id;
         const type = props.type;
@@ -32,7 +29,6 @@ export const useDeleteCartItem = () => {
         const url = '/api/deletecartitem';
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             // setItemRegisterWear(res.data);
             history.go(0);
           }).catch(() => {

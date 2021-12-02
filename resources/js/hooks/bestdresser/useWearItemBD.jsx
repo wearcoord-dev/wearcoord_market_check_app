@@ -7,9 +7,6 @@ export const useWearItemBD = () => {
 
   const WearItemBD = (type, item, user) => {
 
-    // console.log(props.target.form[1].value);
-    // console.log(context.contextName.id);
-
     const header = { headers: {
         'Content-Type': 'application/json;charset=UTF-8',
          }}
@@ -24,7 +21,6 @@ export const useWearItemBD = () => {
     const url = '/api/bestdresser/wearItemBD';
 
     axios.post(url, setData, header).then((res) => {
-        console.log(res);
         if(res.data==1){
             alert('登録しました');
         };

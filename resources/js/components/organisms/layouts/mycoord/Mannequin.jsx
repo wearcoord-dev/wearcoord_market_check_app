@@ -37,13 +37,11 @@ export const Mannequin = memo(() => {
 
     const context = useContext(AppContext);
     const userCheck = context.contextName;
-    // console.log(userCheck);
 
     const toSelectWear =useCallback(() => history.push("/main/selectwear") );
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -56,9 +54,6 @@ export const Mannequin = memo(() => {
             setUrl(url);
         }
     }, [userWearInfo]);
-
-    // console.log(mannequinUrl);
-    // console.log(`ここが${userWearInfo}だぞ！`);
 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -78,7 +73,6 @@ export const Mannequin = memo(() => {
     };
 
     const registerCoord = (props) => {
-        // console.log("OK");
         RegisterCoord(props,context);
     }
 

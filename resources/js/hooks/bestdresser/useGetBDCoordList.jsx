@@ -10,7 +10,6 @@ export const useGetBDCoordList = () => {
     const GetBDCoordList = async(props) => {
         setLoadingBDCoordList(true);
         setErrorBDCoordList(false);
-        console.log(props)
 
         axios.get("/api/bestdresser/bdCoordList", {
             params: {
@@ -19,7 +18,6 @@ export const useGetBDCoordList = () => {
               }
         }).then((res) => {
             setUserCoordList(res.data);
-            // console.log(res.data)
         }).catch(() => {
             setErrorBDCoordList(true);
         }).finally(() => {

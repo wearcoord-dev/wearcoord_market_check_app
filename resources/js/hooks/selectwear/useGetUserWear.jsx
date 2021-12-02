@@ -12,9 +12,6 @@ export const useGetUserWear = () => {
         setLoadingWear(true);
         setErrorWear(false);
 
-
-        // console.log('OK');
-        // console.log(props);
         const userid = props.contextName.id;
 
         axios.get("/getwear", {
@@ -22,7 +19,6 @@ export const useGetUserWear = () => {
                 id: userid,
               }
         }).then((res) => {
-            console.log(res);
             setUserWearInfo(res.data);
           }).catch(() => {
             setErrorWear(true);

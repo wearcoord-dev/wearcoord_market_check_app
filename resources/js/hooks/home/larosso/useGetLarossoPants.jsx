@@ -9,7 +9,6 @@ export const useGetLarossoPants = () => {
   const getLarossoPants = (data) => {
     setLoadingLarossoPants(true);
     setLarossoPantsError(false);
-    // console.log(data);
     const gender = data.gender;
     const type = data.type;
 
@@ -19,7 +18,6 @@ export const useGetLarossoPants = () => {
             type: type,
           }
     }).then((res) => {
-        // console.log(res.data);
 
         const data = res.data.map((wear) => ({
             id: wear.id,
@@ -28,7 +26,6 @@ export const useGetLarossoPants = () => {
             category: wear.category,
           }
       ));
-    //   console.log(data);
       setGetLarossoPants(data);
     }).catch(() => {
         setLarossoPantsError(true);

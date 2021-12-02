@@ -13,14 +13,12 @@ export const useGetUserSize = () => {
         setErrorUserSize(false);
 
 
-        console.log(props);
 
         axios.get("/api/getusersize", {
             params: {
                 id: props,
               }
         }).then((res) => {
-            // console.log(res.data);
             setUserSize(res.data);
           }).catch(() => {
             setErrorUserSize(true);

@@ -32,7 +32,6 @@ export const OpenLeftBtn = memo(() => {
 
     useEffect(() => {
         if (user !== undefined) {
-            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [user]);
@@ -45,13 +44,6 @@ export const OpenLeftBtn = memo(() => {
     const toSelectSocks = useCallback(() => history.push("/main/selectsocks"));
     const toShowSizeResult = useCallback(() => history.push("/main/settings/size/result"));
     const toRegisterSize = useCallback(() => history.push("/main/settings/size"));
-
-
-    // useEffect(() => {
-    //     if (userWearInfo[1]) {
-    //         console.log(userWearInfo[1])
-    //     }
-    // }, [userWearInfo]);
 
 
     return (

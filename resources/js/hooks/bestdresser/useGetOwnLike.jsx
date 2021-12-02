@@ -10,7 +10,6 @@ export const useGetOwnLike = () => {
     const GetOwnLike = async(props) => {
         setLoadingOwnLike(true);
         setErrorOwnLike(false);
-        // console.log(props)
 
         axios.get("/api/bestdresser/getOwnLike", {
             params: {
@@ -18,7 +17,6 @@ export const useGetOwnLike = () => {
               }
         }).then((res) => {
             setUserOwnLike(res.data);
-            console.log(res.data)
         }).catch(() => {
             setErrorOwnLike(true);
         }).finally(() => {

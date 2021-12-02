@@ -85,7 +85,6 @@ export const useOpenBtnFix = () => {
             btnShoes.open = false;
             btnBand.open = false;
             btnInner.open = false;
-            console.log('ok');
             toggleDisplay();
         }
 

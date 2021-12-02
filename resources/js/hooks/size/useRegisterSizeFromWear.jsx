@@ -13,7 +13,6 @@ export const useRegisterSizeFromWear = () => {
             }
         }
 
-        console.log(props)
 
         const setData = {
             props: props,
@@ -22,10 +21,8 @@ export const useRegisterSizeFromWear = () => {
         }
         const url = '/api/registersize/wear';
 
-        // console.log('OK');
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             // history.go(0);
         }).catch(() => {
         }).finally(() => {

@@ -58,14 +58,12 @@ export const WcRecommendList = memo(() => {
 
     useEffect(() => {
         if (userData !== undefined) {
-            // console.log('useEffectが実行されました');
             const gender = userData.gender;
             GetRecoCoord(gender);
         }
     }, [userData]);
 
     const onClickDetailCoord = (props) => {
-        console.log(props);
         history.push({
             pathname: '/main/wcdetail',
             state: { id: props }

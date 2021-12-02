@@ -70,8 +70,6 @@ export const HomeTopSection = memo(() => {
                     spaceBetween={50}
                     slidesPerView={1}
                     pagination={{ clickable: true }}
-                    // onSlideChange={() => console.log('slide change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
                     autoplay={{ delay: '5000' }}
                     loop={true}
                 >

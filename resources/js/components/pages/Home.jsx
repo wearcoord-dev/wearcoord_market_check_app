@@ -52,8 +52,6 @@ export const Home = memo(() => {
     const context = useContext(UserContext);
     const userCheck = context.contextName;
 
-    console.log(userCheck);
-
     // getModalStyle is not a pure function, we roll the style only on the first render
     const classes = useStyles();
     const [open, setOpen] = useState(true);
@@ -61,7 +59,6 @@ export const Home = memo(() => {
 
     const handleClose = () => {
         setOpen(false);
-        console.log('close');
         const id = userCheck.id;
         RegisterFirstStep(id);
     };

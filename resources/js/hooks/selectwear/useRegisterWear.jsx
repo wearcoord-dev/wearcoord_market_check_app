@@ -6,9 +6,6 @@ export const useRegisterWear = () => {
 
 
     const RegisterWear = (props) => {
-        // console.log('OKだよ');
-        // console.log(props);
-        // console.log(props.tops);
         let caps = '';
         let tops = '';
         let pants = '';
@@ -45,7 +42,6 @@ export const useRegisterWear = () => {
                 userid: userid,
               }
         }).then((res) => {
-            console.log(res);
             history.push("/main/mycoord");
           }).catch(() => {
           }).finally(() => {

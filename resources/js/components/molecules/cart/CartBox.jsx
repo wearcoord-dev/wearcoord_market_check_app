@@ -84,7 +84,6 @@ export const CartBox = memo((props) => {
     useEffect(() => {
         if (context.contextName) {
             const user = context.contextName;
-            // console.log(user);
             GetCartItem(type, user);
         }
     }, [context])

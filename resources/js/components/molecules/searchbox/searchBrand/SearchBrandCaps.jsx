@@ -76,7 +76,6 @@ export const SearchBrandCaps = memo((props) => {
 
         // 前と同じ条件をクリックしたらチェックボタンを外す
         if(data == props.target.value){
-            console.log(props.target.checked);
             props.target.checked = !props.target.checked;
 
             // 全ての条件を空にする

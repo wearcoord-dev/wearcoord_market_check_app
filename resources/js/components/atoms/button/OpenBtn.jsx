@@ -58,7 +58,6 @@ export const OpenBtn = memo((props) => {
     useEffect(() => {
         if (userItemInfo) {
             sethtmltext(userItemInfo[0].moshimoLink);
-            // console.log(userItemInfo[0].availability);
         }
     }, [userItemInfo])
 

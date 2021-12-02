@@ -13,14 +13,12 @@ export const useGetWcFavCoord = () => {
         setErrorWcCoordList(false);
 
 
-        // console.log('OK');
 
         axios.get("/api/getwcfavcoord", {
             params: {
                 id: coordid,
               }
         }).then((res) => {
-            // console.log(res.data);
             setWcCoordList(res.data);
           }).catch(() => {
             setErrorWcCoordList(true);

@@ -42,21 +42,16 @@ export const Favorite = memo(() => {
     const { GetRegisterCoord, userCoordData, loadingRegisterCoord, errorRegisterCoord } = useGetRegisterCoord();
 
     const context = useContext(UserContext);
-    console.log(context);
     const userCheck = context.contextName;
 
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
             GetRegisterCoord(context)
         }
     }, [userCheck]);
 
     const onClickDetailCoord = (props) => {
-        // alert(id);
-        // history.push("/main/detail");
-        console.log(props);
         history.push({
             pathname: '/main/detail',
             state: { id: props }

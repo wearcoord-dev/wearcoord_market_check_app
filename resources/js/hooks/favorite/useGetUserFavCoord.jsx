@@ -13,14 +13,12 @@ export const useGetUserFavCoord = () => {
         setErrorUserCoordList(false);
 
 
-        // console.log('OK');
 
         axios.get("/api/getuserfavcoord", {
             params: {
                 id: coordid,
               }
         }).then((res) => {
-            // console.log(res.data);
             setUserCoordList(res.data);
           }).catch(() => {
             setErrorUserCoordList(true);

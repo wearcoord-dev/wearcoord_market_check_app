@@ -9,7 +9,6 @@ export const useAllTops = () => {
   const getTops = (props) => {
     setLoadingTops(true);
     setError(false);
-    // console.log("topsだよ");
     const brand = props.brand;
     const color = props.color;
     const category = props.category;
@@ -27,7 +26,6 @@ export const useAllTops = () => {
             page: page,
           }
     }).then((res) => {
-        console.log(res.data.item);
         const getColor = res.data.color;
         const getBrand = res.data.brand;
         const getCategory = res.data.category;
@@ -43,7 +41,6 @@ export const useAllTops = () => {
             count: count,
           }
       ));
-      console.log(data);
       setUserTops(data);
     }).catch(() => {
       setError(true);

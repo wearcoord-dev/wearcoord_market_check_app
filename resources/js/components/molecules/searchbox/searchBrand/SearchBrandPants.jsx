@@ -93,7 +93,6 @@ export const SearchBrandPants = memo((props) => {
 
         // 前と同じ条件をクリックしたらチェックボタンを外す
         if(data == props.target.value){
-            console.log(props.target.checked);
             props.target.checked = !props.target.checked;
 
             setData(null);
