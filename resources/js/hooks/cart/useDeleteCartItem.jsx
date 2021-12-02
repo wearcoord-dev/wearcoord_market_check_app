@@ -18,7 +18,6 @@ export const useDeleteCartItem = () => {
 
         const header = { headers: {
             'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
              }}
 
         const setData = {

@@ -10,7 +10,6 @@ export const useRegisterCoord = () => {
 
     const header = { headers: {
         'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
          }}
 
     const imgUrl = props.target.form[0].value
