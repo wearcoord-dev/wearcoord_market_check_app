@@ -92,7 +92,6 @@ export const BDCoordDetail = memo(() => {
         }
     }, [userCoordBD]);
 
-    // console.log(userCoordBD);
 
     return (
         <>

@@ -72,11 +72,9 @@ export const ShowSizeResult = memo(() => {
     useEffect(() => {
         // if (userWearInfo !== undefined) {
             if(userWearInfo){
-                // console.log(userWearInfo['1'].topsData.isSizeTopsDB);
                 if(userWearInfo['1'].topsData.isSizeTopsDB === true){
                     setIsTops('block');
                 }
-                // console.log(userWearInfo['2'].pantsData.isSizePantsDB);
                 if(userWearInfo['2'].pantsData.isSizePantsDB === true){
                     setIsPants('block');
                 }

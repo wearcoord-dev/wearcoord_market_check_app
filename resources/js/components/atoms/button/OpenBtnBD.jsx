@@ -54,13 +54,11 @@ export const OpenBtnBD = memo((props) => {
     const onClickCoord = () => {
         const user = context.contextName;
         WearItemBD(type, item, user);
-        // console.log(type, item, user)
     }
 
     useEffect(() => {
         if (userItemInfo) {
             sethtmltext(userItemInfo[0].moshimoLink);
-            // console.log(userItemInfo[0].availability);
         }
     }, [userItemInfo])
 

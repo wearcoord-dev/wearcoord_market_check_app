@@ -22,7 +22,6 @@ export const BDLikeBtn = memo((props) => {
     const { GetBDLikeInfo, BDLikeInfo, loadingBDLikeInfo, errorBDLikeInfo } = useGetBDLikeInfo()
     const classes = useStyles();
 
-    // console.log(userData.contextName.id)
 
     const userId = userData.contextName.id;
 

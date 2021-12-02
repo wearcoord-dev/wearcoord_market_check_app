@@ -161,7 +161,6 @@ export const RegisterFromWearPants = memo(() => {
 
     // モーダルで展開する情報取得
     const onClickInfo = (props) => {
-        // console.log(props);
         setWearInfo(props);
         setOpenModal(true);
     }

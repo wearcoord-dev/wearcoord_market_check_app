@@ -11,7 +11,6 @@ export const useAllCaps = () => {
     setLoadingCaps(true);
     setErrorCaps(false);
 
-    console.log(props)
 
     const brand = props.brand;
     const color = props.color;
@@ -29,8 +28,6 @@ export const useAllCaps = () => {
             page: page,
           }
     }).then((res) => {
-        console.log(res)
-        console.log(res.data.item);
         const getColor = res.data.color;
         const getBrand = res.data.brand;
         const getCategory = res.data.category;
@@ -46,7 +43,6 @@ export const useAllCaps = () => {
         count: count,
       }
       ));
-      console.log(data);
       setUserCaps(data);
     }).catch(() => {
         setErrorCaps(true);

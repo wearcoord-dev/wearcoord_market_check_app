@@ -93,7 +93,6 @@ export const ShowTopsSize = memo((props) => {
     const { GetCalcSize, userCalcSize, loadingUserCalcSize, errorUserCalcSize } = useGetCalcSize();
     const { CreateTopsComment, topsComment } = useCreateTopsComment();
 
-    console.log(userCalcSize);
 
     useEffect(() => {
         if (userCheck !== undefined) {

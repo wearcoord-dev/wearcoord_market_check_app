@@ -94,7 +94,6 @@ export const ShowPantsSize = memo((props) => {
     const { GetCalcSize, userCalcSize, loadingUserCalcSize, errorUserCalcSize } = useGetCalcSize();
     const { CreatePantsComment, pantsComment } = useCreatePantsComment();
 
-    console.log(userCalcSize);
 
     useEffect(() => {
         if (userCheck !== undefined) {

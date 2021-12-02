@@ -8,7 +8,6 @@ export const useGetUserInfo = () => {
   const getUser = () => {
 
     axios.get("/user").then((res) => {
-        // console.log(res);
 
         setUserInfo(res);
     })

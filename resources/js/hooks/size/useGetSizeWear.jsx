@@ -16,7 +16,6 @@ export const useGetSizeWear = () => {
         const size = props.size;
         const type = props.type;
 
-        // console.log(gender);
 
         axios.get("/api/getsizewear", {
             params: {
@@ -26,7 +25,6 @@ export const useGetSizeWear = () => {
                 gender: gender,
               }
         }).then((res) => {
-            // console.log(res.data);
             setUserSizeWear(res.data);
           }).catch(() => {
             setErrorUserSizeWear(true);

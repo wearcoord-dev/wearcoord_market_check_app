@@ -10,7 +10,6 @@ export const useGetBDUserInfo = () => {
     const GetBDUserInfo = async(props) => {
         setLoadingBDUserInfo(true);
         setErrorBDUserInfo(false);
-        console.log(props)
 
         const header = {
             headers: {
@@ -26,7 +25,6 @@ export const useGetBDUserInfo = () => {
 
         await axios.post(url, setData, header).then((res) => {
             setUserBDInfo(res.data);
-            console.log(res.data)
         }).catch(() => {
             setErrorBDUserInfo(true);
         }).finally(() => {

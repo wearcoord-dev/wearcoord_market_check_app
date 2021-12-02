@@ -18,7 +18,6 @@ export const useCreateTopsComment = () => {
 
     const CreateTopsComment = (props) => {
 
-        // console.log(props);
 
         if(props == "000"){
             const data = (

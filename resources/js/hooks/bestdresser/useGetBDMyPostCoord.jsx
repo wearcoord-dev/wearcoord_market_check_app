@@ -10,7 +10,6 @@ export const useGetBDMyPostCoord = () => {
     const GetBDMyPostCoord = async(props) => {
         setLoadingBDMyPostCoord(true);
         setErrorBDMyPostCoord(false);
-        console.log(props)
 
         axios.get("/api/bestdresser/bdMyPostCoord", {
             params: {
@@ -19,7 +18,6 @@ export const useGetBDMyPostCoord = () => {
               }
         }).then((res) => {
             setBDMyPostCoord(res.data);
-            console.log(res.data)
         }).catch(() => {
             setErrorBDMyPostCoord(true);
         }).finally(() => {

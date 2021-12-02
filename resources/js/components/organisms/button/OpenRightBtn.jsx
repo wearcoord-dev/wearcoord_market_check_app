@@ -3,10 +3,6 @@ import { OpenBtnCaps } from "../../atoms/button/OpenBtnCaps"
 
 export const OpenRightBtn = (props) => {
     const { capsID, topsID, pantsID, shoesID } = props;
-    // console.log(capsID);
-    // console.log(topsID);
-    // console.log(pantsID);
-    // console.log(shoesID);
 
     return (
         <div className="rightContainer">

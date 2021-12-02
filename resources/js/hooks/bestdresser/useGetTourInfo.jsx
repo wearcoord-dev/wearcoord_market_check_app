@@ -10,7 +10,6 @@ export const useGetTourInfo = () => {
     const GetTourInfo = async(props) => {
         setLoadingTourInfo(true);
         setErrorTourInfo(false);
-        // console.log(props)
 
         axios.get("/api/bestdresser/getBDTourInfo", {
             params: {
@@ -18,7 +17,6 @@ export const useGetTourInfo = () => {
               }
         }).then((res) => {
             setUserTourInfo(res.data);
-            console.log(res.data)
         }).catch(() => {
             setErrorTourInfo(true);
         }).finally(() => {

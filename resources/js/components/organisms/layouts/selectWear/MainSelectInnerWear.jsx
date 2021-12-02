@@ -10,11 +10,9 @@ export const MainSelectInnerWear = memo(() => {
 
     const context = useContext(ValueContext);
     const userCheck = context.contextName;
-    // console.log(userCheck);
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -26,8 +24,6 @@ export const MainSelectInnerWear = memo(() => {
             setUrl(url);
         }
     }, [userWearInfo]);
-
-    // console.log(`ここが${userWearInfo}だぞ！`);
 
     return (
         <>

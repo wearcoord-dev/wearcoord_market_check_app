@@ -9,7 +9,6 @@ export const useRegisterFirstStep = () => {
         const header = {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
             }
         }
 
@@ -18,11 +17,7 @@ export const useRegisterFirstStep = () => {
         }
         const url = '/api/registerfirstcheck';
 
-        console.log('OK');
-        console.log(id);
-
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             history.go(0);
         }).catch(() => {
         }).finally(() => {

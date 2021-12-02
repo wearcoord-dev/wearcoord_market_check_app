@@ -9,7 +9,6 @@ export const useGetLarossoItem = () => {
   const getLarossoItem = (data) => {
     setLoadingLarossoTops(true);
     setLarossoTopsError(false);
-    console.log(data);
     const gender = data.gender;
     const type = data.type;
 
@@ -22,10 +21,6 @@ export const useGetLarossoItem = () => {
             type: type,
           }
     }).then((res) => {
-        console.log(res.data);
-        // const getColor = res.data.color;
-        // const getBrand = res.data.brand;
-        // const getCategory = res.data.category;
 
         const data = res.data.map((wear) => ({
             id: wear.id,
@@ -34,7 +29,6 @@ export const useGetLarossoItem = () => {
             category: wear.category,
           }
       ));
-      console.log(data);
       setGetLarossoTops(data);
     }).catch(() => {
         setLarossoTopsError(true);

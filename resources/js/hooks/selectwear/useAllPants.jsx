@@ -9,7 +9,6 @@ export const useAllPants = () => {
     const getPants = (props) => {
         setLoadingPants(true);
         setErrorPants(false);
-        // console.log("pantsだよ");
         const brand = props.brand;
         const color = props.color;
         const category = props.category;
@@ -26,7 +25,6 @@ export const useAllPants = () => {
                 page: page,
             }
         }).then((res) => {
-            console.log(res.data.item);
             const getColor = res.data.color;
             const getBrand = res.data.brand;
             const getCategory = res.data.category;
@@ -41,7 +39,6 @@ export const useAllPants = () => {
                 category: getCategory,
                 count: count,
             }));
-            console.log(data);
             setUserPants(data);
         }).catch(() => {
             setErrorPants(true);

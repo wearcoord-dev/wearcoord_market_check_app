@@ -225,7 +225,6 @@ export const RegisterSizeTops = memo(() => {
         const header = {
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
             }
         }
 
@@ -242,7 +241,6 @@ export const RegisterSizeTops = memo(() => {
         const url = '/api/registersize/tops';
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             history.push('/main/settings/size/pants');
         }).catch(() => {
         }).finally(() => {

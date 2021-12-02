@@ -71,7 +71,6 @@ export const SelectWear = memo(() => {
         }
     }, [userCaps]);
 
-    // console.log(userCaps);
 
     useEffect(() => {
         if (!isFirstRenderTops.current) {
@@ -234,7 +233,6 @@ export const SelectWear = memo(() => {
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            // console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);

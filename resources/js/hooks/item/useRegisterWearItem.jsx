@@ -14,7 +14,6 @@ export const useRegisterWearItem = () => {
         setLoadingRegisterWear(true);
         setErrorRegisterWear(false);
 
-        console.log(props);
 
         const id = props.id;
         const type = props.type;
@@ -22,7 +21,6 @@ export const useRegisterWearItem = () => {
 
         const header = { headers: {
             'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
              }}
 
         const setData = {
@@ -33,7 +31,6 @@ export const useRegisterWearItem = () => {
         const url = '/api/registerwearitem';
 
         axios.post(url, setData, header).then((res) => {
-            console.log(res);
             // setItemRegisterWear(res.data);
             history.push("/main/mycoord");
           }).catch(() => {

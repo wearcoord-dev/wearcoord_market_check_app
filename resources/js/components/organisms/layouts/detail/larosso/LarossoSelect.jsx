@@ -64,7 +64,6 @@ export const LarossoSelect = memo(() => {
         RegisterWear(obj);
     }
     const userCheck = context.contextName;
-    // console.log(context);
 
 
     useEffect(() => {
@@ -98,7 +97,6 @@ export const LarossoSelect = memo(() => {
         setActiveIndexShoes(swiper.activeIndex);
     }
 
-    // console.log(userPants);
 
     return (
         <>

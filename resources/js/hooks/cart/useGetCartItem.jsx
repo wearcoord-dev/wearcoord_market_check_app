@@ -20,7 +20,6 @@ export const useGetCartItem = () => {
                 type: type,
               }
         }).then((res) => {
-            console.log(res.data);
             setUserCartItemInfo(res.data);
           }).catch(() => {
             setErrorCartItem(true);

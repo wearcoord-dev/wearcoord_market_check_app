@@ -13,7 +13,6 @@ export const useGetRecommendItem = () => {
         setErrorRecommendItem(false);
 
 
-        // console.log(props);
 
         axios.get("/api/getrecommenditem", {
             params: {
@@ -29,7 +28,6 @@ export const useGetRecommendItem = () => {
                 category: wear.item.category,
               }
           ));
-            // console.log(res.data);
             setRecommendItem(data);
           }).catch(() => {
             setErrorRecommendItem(true);

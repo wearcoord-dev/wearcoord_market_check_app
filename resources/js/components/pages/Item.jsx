@@ -287,7 +287,6 @@ export const Item = memo(() => {
         }
     }
 
-    // console.log(dataArray);
 
     // モーダル表示
 

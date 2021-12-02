@@ -113,7 +113,6 @@ export const RecommendItem = memo(() => {
         };
 
 
-    console.log(recommendItem);
 
     return (
         <>

@@ -7,11 +7,8 @@ export const SearchBrand = memo((props) => {
     // radioのonChangeイベント発生時
     const handleInputChange = (props) => {
         const brand = props.target.value;
-        // console.log(props.target.value);
 
         // name属性の値を取得
-        // const name = props.target.name;
-        // console.log(props.target.name);
 
         setValue(brand);
     }

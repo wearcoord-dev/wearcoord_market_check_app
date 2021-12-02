@@ -12,7 +12,6 @@ export const useGetItemDetail = () => {
         setLoadingItemDetail(true);
         setErrorItemDetail(false);
 
-        console.log(props);
 
         const id = props.id;
         const type = props.type;
@@ -23,7 +22,6 @@ export const useGetItemDetail = () => {
                 type: type,
               }
         }).then((res) => {
-            console.log(res);
             setItemGetDetail(res.data);
           }).catch(() => {
             setErrorItemDetail(true);

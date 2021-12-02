@@ -24,12 +24,6 @@ export const Navbar = memo(() => {
     const [value, setValue] = useState(null);
 
     const history = useHistory();
-    // console.log(`ここは${value}`);
-
-    // const onClickMain = useCallback(() => history.push("/main"), [history]);
-    // const onClickMycoord = useCallback(() => history.push("/main/mycoord"), [history]);
-    // const onClickItem = useCallback(() => history.push("/main/item"), [history]);
-    // const onClickFavorite = useCallback(() => history.push("/main/favorite"), [history]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -40,11 +34,6 @@ export const Navbar = memo(() => {
         <>
             <BottomNavigation
                 value={value}
-                //   onChange={(event, newValue) => {
-                //     console.log(newValue);
-                //     setValue(newValue);
-                //     history.push(`${newValue}`);
-                //   }}
                 onChange={handleChange}
                 showLabels
                 className={classes.root}

@@ -19,12 +19,10 @@ export const SelectSocks = memo(() => {
     );
 
     const userCheck = context.contextName;
-    // console.log(context);
 
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -37,12 +35,6 @@ export const SelectSocks = memo(() => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-    // console.log(userCaps[activeIndex]);
-    // console.log(userTops[activeIndexTops]);
-    // console.log(userPants[activeIndexPants]);
-    // console.log(userShoes[activeIndexShoes]);
-    // console.log(context.contextName);
 
     return (
         <>

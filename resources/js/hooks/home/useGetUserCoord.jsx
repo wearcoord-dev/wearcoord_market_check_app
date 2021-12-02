@@ -13,14 +13,12 @@ export const useGetUserCoord = () => {
         setErrorUserCoordList(false);
 
 
-        // console.log('OK');
 
         axios.get("/api/getusercoord", {
             params: {
                 gender: gender,
               }
         }).then((res) => {
-            // console.log(res.data);
             setUserCoordList(res.data);
           }).catch(() => {
             setErrorUserCoordList(true);

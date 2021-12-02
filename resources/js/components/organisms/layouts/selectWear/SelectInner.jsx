@@ -25,12 +25,10 @@ export const SelectInner = memo(() => {
     );
 
     const userCheck = context.contextName;
-    // console.log(context);
 
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました')
             GetWear(context)
         }
     }, [userCheck]);
@@ -43,9 +41,6 @@ export const SelectInner = memo(() => {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-    // console.log(activeIndex);
-    // console.log(activeIndexTops);
 
     const getActiveIndex = (swiper) => {
         setActiveIndex(swiper.activeIndex);
@@ -62,12 +57,6 @@ export const SelectInner = memo(() => {
     const getActiveIndexShoes = (swiper) => {
         setActiveIndexShoes(swiper.activeIndex);
     }
-
-    // console.log(userCaps[activeIndex]);
-    // console.log(userTops[activeIndexTops]);
-    // console.log(userPants[activeIndexPants]);
-    // console.log(userShoes[activeIndexShoes]);
-    // console.log(context.contextName);
 
     return (
         <>

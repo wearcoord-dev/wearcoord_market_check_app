@@ -13,14 +13,12 @@ export const useGetRecoCoord = () => {
         setErrorRecoCoordList(false);
 
 
-        // console.log('OK');
 
         axios.get("/api/getrecocoord", {
             params: {
                 gender: gender,
               }
         }).then((res) => {
-            console.log(res.data);
             setRecoCoordList(res.data);
           }).catch(() => {
             setErrorRecoCoordList(true);

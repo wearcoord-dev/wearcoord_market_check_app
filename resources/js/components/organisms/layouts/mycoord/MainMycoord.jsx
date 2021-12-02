@@ -21,12 +21,10 @@ export const MainMycoord = memo(() => {
     const [ pantsIDValue, setPantsID] = useState(null);
     const [ shoesIDValue, setShoesID] = useState(null);
 
-    // console.log(context);
 
 
     useEffect(() => {
         if (userCheck !== undefined) {
-            console.log('useEffectが実行されました');
 
             GetWear(context);
         }
@@ -34,11 +32,6 @@ export const MainMycoord = memo(() => {
 
     useEffect(() => {
         if (userWearInfo) {
-
-            // console.log(`${(userWearInfo[1].topsData.id)}だぞ！！！`);
-            // console.log(`${(userWearInfo[0].capsData.id)}だぞ！！！`);
-            // console.log(`${(userWearInfo[2].pantsData.id)}だぞ！！！`);
-            // console.log(`${(userWearInfo[3].shoesData.id)}だぞ！！！`);
 
             // nullかどうか
             if(userWearInfo[0]){

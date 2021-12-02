@@ -13,14 +13,12 @@ export const useGetBDCoord = () => {
         setErrorUserCoordBD(false);
 
 
-        console.log(coordid);
 
         axios.get("/api/bestdresser/getuserBDcoord", {
             params: {
                 id: coordid,
               }
         }).then((res) => {
-            // console.log(res.data);
             setUserCoordBD(res.data);
           }).catch(() => {
             setErrorUserCoordBD(true);

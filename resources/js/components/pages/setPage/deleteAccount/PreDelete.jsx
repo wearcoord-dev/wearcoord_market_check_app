@@ -83,7 +83,6 @@ export const PreDelete = memo(() => {
     const context = useContext(UserContext);
     const user = context.contextName;
 
-    console.log(user);
 
         // モーダル
         const onClickModal = () => {
@@ -99,7 +98,6 @@ export const PreDelete = memo(() => {
             const header = {
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
-                    "Access-Control-Allow-Origin": "*",
                 }
             }
 

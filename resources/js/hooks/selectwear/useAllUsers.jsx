@@ -9,7 +9,6 @@ export const useAllUsers = () => {
   const getUsers = () => {
     setLoading(true);
     setError(false);
-    console.log("userだよ");
 
 
     axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
