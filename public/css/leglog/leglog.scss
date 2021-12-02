@@ -369,6 +369,19 @@ input[name="tab_item"] {
 
 .coordTitle{
     margin: 0;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.coordTitle::after {
+    content: "コーデを一つ選択してください";
+    font-size: 12px;
+    // font-weight: bold;
+    color: red;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
 }
 
 .helpIcon{
