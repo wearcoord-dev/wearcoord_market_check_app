@@ -238,7 +238,7 @@ export const RegisterSizeTops = memo(() => {
             "userid": context.contextName.id,
             "tops_size": selectTopSize,
         }
-        const url = '/api/registersize/tops';
+        const url = '/registersize/tops';
 
         axios.post(url, setData, header).then((res) => {
             history.push('/main/settings/size/pants');

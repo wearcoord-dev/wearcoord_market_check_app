@@ -53,6 +53,34 @@ Route::get('/deletecartitem', function (Request $request) {
 
 Route::post('/deletecartitem', [App\Http\Controllers\ItemController::class, "deleteCartItem"]);
 
+// 単品ウェアを着せる
+
+Route::get('/registerwearitem', function (Request $request) {
+});
+
+Route::post('/registerwearitem', [App\Http\Controllers\ItemController::class, "registerWearItem"]);
+
+// コーデ一式コピーして着せる
+
+Route::get('/copycoord', function (Request $request) {
+});
+
+Route::post('/copycoord', [App\Http\Controllers\MycoordController::class, "copyCoord"]);
+
+// 登録後最初のチェック
+
+Route::get('/registerfirstcheck', function (Request $request) {
+});
+
+Route::post('/registerfirstcheck', [App\Http\Controllers\UserController::class, "registerFirstCheck"]);
+
+// トップスのサイズ登録
+
+Route::get('/registersize/tops', function (Request $request) {
+});
+
+Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
+
 // ここまで
 
 Route::get('/', function () {

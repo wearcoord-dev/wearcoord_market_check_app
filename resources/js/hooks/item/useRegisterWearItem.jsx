@@ -28,7 +28,7 @@ export const useRegisterWearItem = () => {
             "id": id,
             "user": user,
         }
-        const url = '/api/registerwearitem';
+        const url = '/registerwearitem';
 
         axios.post(url, setData, header).then((res) => {
             // setItemRegisterWear(res.data);
