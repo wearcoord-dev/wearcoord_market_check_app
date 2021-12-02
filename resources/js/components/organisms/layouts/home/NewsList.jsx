@@ -70,8 +70,8 @@ const useStyles = makeStyles({
         lineHeight: "1.2",
     },
     triangle: {
-        borderTop: "20px solid #0080E4",
-        borderRight: "30px solid #0080E4",
+        borderTop: "20px solid #216496",
+        borderRight: "30px solid #216496",
         borderBottom: "12px solid transparent",
         borderLeft: "50px solid transparent",
         borderRadius: "0 10px 0 0",

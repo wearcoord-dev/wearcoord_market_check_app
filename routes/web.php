@@ -97,4 +97,4 @@ Route::get('/cookie-policy', function () {
 
 Route::get('/column/size', function () {
     return view('column.read.size');
-});
+})->name('column_size');

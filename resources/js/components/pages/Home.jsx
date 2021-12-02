@@ -18,6 +18,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { NewsList } from "../organisms/layouts/home/NewsList";
 import { RecommendItem } from "../organisms/layouts/home/RecommendItem";
 import { Footer } from "../organisms/layouts/home/Footer";
+import { ColumnList } from "../organisms/layouts/home/ColumnList";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -109,6 +110,7 @@ export const Home = memo(() => {
                 <RecommendItem />
                 <UsersCoordList />
                 <WcRecommendList />
+                <ColumnList />
                 <Footer />
             </div>
 

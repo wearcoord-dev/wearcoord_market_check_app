@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react";
 import { useHistory } from "react-router";
-import  Logo  from "../../../../../public/img/logo/0080E4-long.png"
+import  Logo  from "../../../../../public/img/logo/216496-long.png"
 
 export const Header = memo(() => {
     const history = useHistory();
