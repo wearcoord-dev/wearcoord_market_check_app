@@ -21,6 +21,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lp/lp.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/common/common.css') }}">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/css/swiper.min.css">
 
@@ -39,34 +41,16 @@
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTSE1Y4CSQ"></script>
-                <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-KTSE1Y4CSQ');
-                </script>
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEPPTM9ZH4"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-NEPPTM9ZH4');
-        gtag('config', 'UA-199807866-2');
-        </script> --}}
-
-        {{-- <meta name="google-site-verification" content="sorroT3vubAU0OCPOQyjycgzZ6x7nblvlxpviJB8AHE" /> --}}
+            @if(env('APP_ENV') == 'production')
+            @include('layouts.parts.analytics')
+            @endif
 
 </head>
 <body>
     <header class="lpHeader">
         <div class="headerList">
-            <a href="#top" class="titleIcon">
-                <img class="titleImg" src="{{asset('img/logo/0080E4-short.png')}}" alt="">
+            <a href="{{ route('lp') }}" class="titleIcon">
+                <img class="titleImg" src="{{asset('img/logo/logo_216496.png')}}" alt="">
             </a>
         </div>
         <div class="headerBtn">

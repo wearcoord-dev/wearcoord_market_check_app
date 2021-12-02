@@ -39,6 +39,10 @@
 
     @yield('ogp')
 
+    @if(env('APP_ENV') == 'production')
+    @include('layouts.parts.analytics')
+    @endif
+
 </head>
 
 <body>
