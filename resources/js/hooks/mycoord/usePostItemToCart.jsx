@@ -18,7 +18,7 @@ export const usePostItemToCart = () => {
         "item": item,
         "userId": userId,
     }
-    const url = '/api/addcart';
+    const url = '/addcart';
 
     axios.post(url, setData, header).then((res) => {
         if(res.data==1){

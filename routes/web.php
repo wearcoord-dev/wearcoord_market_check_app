@@ -18,10 +18,40 @@ use Illuminate\Http\Request;
 
 // 本来API用で作ったもの
 
+// コーデを削除
+
 Route::get('/deletecoord', function (Request $request) {
 });
 
 Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
+
+// コーデをお気に入りに登録
+
+Route::get('/registercoord', function (Request $request) {
+});
+
+Route::post('/registercoord', [App\Http\Controllers\MycoordController::class, "registerCoord"]);
+
+// 顔画像登録
+
+Route::get('/registerface', function (Request $request) {
+});
+
+Route::post('/registerface', [App\Http\Controllers\UserController::class, "registerFace"]);
+
+// カートに追加
+
+Route::get('/addcart', function (Request $request) {
+});
+
+Route::post('/addcart', [App\Http\Controllers\UserController::class, "addCart"]);
+
+// カートから削除
+
+Route::get('/deletecartitem', function (Request $request) {
+});
+
+Route::post('/deletecartitem', [App\Http\Controllers\ItemController::class, "deleteCartItem"]);
 
 // ここまで
 

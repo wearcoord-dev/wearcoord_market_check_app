@@ -18,7 +18,7 @@ export const useCreateUserFace = () => {
         "imgUrl": imgUrl,
         "userId": userId,
     }
-    const url = '/api/registerface';
+    const url = '/registerface';
 
     axios.post(url, setData, header).then((res) => {
         history.go(0);
