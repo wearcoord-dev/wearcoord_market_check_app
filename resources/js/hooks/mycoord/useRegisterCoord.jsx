@@ -19,7 +19,7 @@ export const useRegisterCoord = () => {
         "imgUrl": imgUrl,
         "userId": userId,
     }
-    const url = '/api/registercoord';
+    const url = '/registercoord';
 
     axios.post(url, setData, header).then((res) => {
         history.go(0);

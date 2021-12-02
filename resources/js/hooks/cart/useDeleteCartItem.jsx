@@ -25,7 +25,7 @@ export const useDeleteCartItem = () => {
             "id": id,
             "user": user,
         }
-        const url = '/api/deletecartitem';
+        const url = '/deletecartitem';
 
         axios.post(url, setData, header).then((res) => {
             // setItemRegisterWear(res.data);

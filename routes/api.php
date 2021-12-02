@@ -59,20 +59,6 @@ Route::get('/getrecommenditem', [App\Http\Controllers\MainHomeController::class,
 //     return response()->json($user);
 // });
 
-Route::get('/registercoord', function (Request $request) {
-});
-
-Route::post('/registercoord', [App\Http\Controllers\MycoordController::class, "registerCoord"]);
-
-Route::get('/registerface', function (Request $request) {
-});
-
-Route::post('/registerface', [App\Http\Controllers\UserController::class, "registerFace"]);
-
-Route::get('/addcart', function (Request $request) {
-});
-
-Route::post('/addcart', [App\Http\Controllers\UserController::class, "addCart"]);
 
 Route::get('/getcartitem', [App\Http\Controllers\UserController::class, "getCartItem"]);
 
@@ -98,11 +84,6 @@ Route::get('/registerwearitem', function (Request $request) {
 });
 
 Route::post('/registerwearitem', [App\Http\Controllers\ItemController::class, "registerWearItem"]);
-
-Route::get('/deletecartitem', function (Request $request) {
-});
-
-Route::post('/deletecartitem', [App\Http\Controllers\ItemController::class, "deleteCartItem"]);
 
 // Route::get('/deletecoord', function (Request $request) {
 // });
