@@ -80,30 +80,10 @@ Route::get('/getcalcsize', [App\Http\Controllers\UserController::class, "getCalc
 
 Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class, "addAvailabilityDB"]);
 
-Route::get('/registerwearitem', function (Request $request) {
-});
-
-Route::post('/registerwearitem', [App\Http\Controllers\ItemController::class, "registerWearItem"]);
-
 // Route::get('/deletecoord', function (Request $request) {
 // });
 
 // Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
-
-Route::get('/copycoord', function (Request $request) {
-});
-
-Route::post('/copycoord', [App\Http\Controllers\MycoordController::class, "copyCoord"]);
-
-Route::get('/registerfirstcheck', function (Request $request) {
-});
-
-Route::post('/registerfirstcheck', [App\Http\Controllers\UserController::class, "registerFirstCheck"]);
-
-Route::get('/registersize/tops', function (Request $request) {
-});
-
-Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
 
 Route::get('/registersize/pants', function (Request $request) {
 });

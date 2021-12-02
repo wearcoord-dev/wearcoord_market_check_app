@@ -30,7 +30,7 @@ export const useCopyCoord = () => {
             'shoes': shoesID,
             'mannequin': mannequin,
         }
-        const url = '/api/copycoord';
+        const url = '/copycoord';
 
         axios.post(url, setData, header).then((res) => {
             history.push("/main/mycoord");

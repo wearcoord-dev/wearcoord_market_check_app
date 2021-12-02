@@ -15,7 +15,7 @@ export const useRegisterFirstStep = () => {
         const setData = {
             "id": id,
         }
-        const url = '/api/registerfirstcheck';
+        const url = '/registerfirstcheck';
 
         axios.post(url, setData, header).then((res) => {
             history.go(0);
