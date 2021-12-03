@@ -81,6 +81,34 @@ Route::get('/registersize/tops', function (Request $request) {
 
 Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
 
+// パンツのサイズ登録
+
+Route::get('/registersize/pants', function (Request $request) {
+});
+
+Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
+
+// ウェアからのサイズ登録
+
+Route::get('/registersize/wear', function (Request $request) {
+});
+
+Route::post('/registersize/wear', [App\Http\Controllers\UserController::class, "registerSizeWear"]);
+
+// アカウント削除
+
+Route::get('/deleteaccount', function (Request $request) {
+});
+
+Route::post('/deleteaccount', [App\Http\Controllers\UserController::class, "deleteAccount"]);
+
+// 顔写真削除
+
+Route::get('/setting/deleteimg', function (Request $request) {
+});
+
+Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "deleteFaceImg"]);
+
 // ここまで
 
 Route::get('/', function () {

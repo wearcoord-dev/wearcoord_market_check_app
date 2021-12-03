@@ -105,7 +105,7 @@ export const PreDelete = memo(() => {
                 id: user.id,
             }
 
-            const url = '/api/deleteaccount';
+            const url = '/deleteaccount';
 
             axios.post(url, setData, header).then(() => {
                     window.location.href = "/";

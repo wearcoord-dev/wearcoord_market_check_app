@@ -18,7 +18,7 @@ export const useRegisterSizeFromWear = () => {
             id: user.id,
             type: type,
         }
-        const url = '/api/registersize/wear';
+        const url = '/registersize/wear';
 
 
         axios.post(url, setData, header).then((res) => {

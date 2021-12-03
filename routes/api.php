@@ -85,26 +85,6 @@ Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class
 
 // Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
 
-Route::get('/registersize/pants', function (Request $request) {
-});
-
-Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
-
-Route::get('/registersize/wear', function (Request $request) {
-});
-
-Route::post('/registersize/wear', [App\Http\Controllers\UserController::class, "registerSizeWear"]);
-
-Route::get('/deleteaccount', function (Request $request) {
-});
-
-Route::post('/deleteaccount', [App\Http\Controllers\UserController::class, "deleteAccount"]);
-
-Route::get('/setting/deleteimg', function (Request $request) {
-});
-
-Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "deleteFaceImg"]);
-
 // ベストドレッサー
 
 Route::get('/bestdresser/tourinfo', [App\Http\Controllers\BestDresserController::class, "getTourInfo"]);
