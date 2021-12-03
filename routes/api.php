@@ -46,20 +46,6 @@ Route::get('/getitemdetail', [App\Http\Controllers\ItemController::class, "getIt
 
 Route::get('/getrecommenditem', [App\Http\Controllers\MainHomeController::class, "getRecommendItem"])->name('getRecommendItem');
 
-
-// Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addBrandDB"])->name('addBrandDB');
-
-// Route::get('/caps', [App\Http\Controllers\MycoordController::class, "addColorImgDB"])->name('addColorImgDB');
-
-// Route::get('/user', function (Request $request) {
-
-//     $user = Auth::user();
-//     ddd($user);
-
-//     return response()->json($user);
-// });
-
-
 Route::get('/getcartitem', [App\Http\Controllers\UserController::class, "getCartItem"]);
 
 Route::get('/getusercoord', [App\Http\Controllers\MainHomeController::class, "getUserCoord"]);
@@ -80,87 +66,17 @@ Route::get('/getcalcsize', [App\Http\Controllers\UserController::class, "getCalc
 
 Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class, "addAvailabilityDB"]);
 
-// Route::get('/deletecoord', function (Request $request) {
-// });
-
-// Route::post('/deletecoord', [App\Http\Controllers\MycoordController::class, "deleteCoord"]);
 
 // ベストドレッサー
 
 Route::get('/bestdresser/tourinfo', [App\Http\Controllers\BestDresserController::class, "getTourInfo"]);
 
-
-
-
-
-
 Route::get('/bestdresser/bdCoordList', [App\Http\Controllers\BestDresserController::class, "bdCoordList"]);
 
-
-
-
 Route::get('/bestdresser/getuserBDcoord', [App\Http\Controllers\BestDresserController::class, "getUserBDCoord"]);
-
-
-
 
 Route::get('/bestdresser/bdMyPostCoord', [App\Http\Controllers\BestDresserController::class, "bdMyPostCoord"]);
 
 Route::get('/bestdresser/getBDTourInfo', [App\Http\Controllers\BestDresserController::class, "getBDTourInfo"]);
 
 Route::get('/bestdresser/getOwnLike', [App\Http\Controllers\BestDresserController::class, "getOwnLike"]);
-
-// Route::post('/registercoord', function (Request $request) {
-
-//     // ddd($request);
-
-//     return response()->json($request['imgUrl']);
-// });
-
-// Route::get( '/pants', function ( Request $request ) {
-
-//     $pants = collect([
-//         [
-//             'id'  => 1,
-//             'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports_10030744.png',
-//         ],
-//         [
-//             'id'  => 2,
-//             'url' => '/img/rakutenlist/fila/male/508772/red/amuse37_10002360.png',
-//         ],
-//         [
-//             'id'  => 3,
-//             'url' => '/img/rakutenlist/asics/male/508772/white/aozoraya-sp_10142640.png',
-//         ],
-//         [
-//             'id'  => 4,
-//             'url' => '/img/rakutenlist/asics/male/508772/black/chitosesports-b_10016753.png',
-//         ],
-//     ]);
-
-//     return response()->json( $pants );
-// } );
-
-// Route::get( '/shoes', function ( Request $request ) {
-
-//     $shoes = collect([
-//         [
-//             'id'  => 1,
-//             'url' => '/img/rakutenlist/fila/male/208025/white/esports_11472884.png',
-//         ],
-//         [
-//             'id'  => 2,
-//             'url' => '/img/rakutenlist/asics/male/208025/black/chitosesports_10047743.png',
-//         ],
-//         [
-//             'id'  => 3,
-//             'url' => '/img/rakutenlist/adidas/male/208025/red/everracket_10038980.png',
-//         ],
-//         [
-//             'id'  => 4,
-//             'url' => '/img/rakutenlist/adidas/male/208025/red/sportsauthority_10328602.png',
-//         ],
-//     ]);
-
-//     return response()->json( $shoes );
-// } );
