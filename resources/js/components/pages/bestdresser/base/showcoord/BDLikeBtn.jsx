@@ -41,7 +41,7 @@ export const BDLikeBtn = memo((props) => {
             user_id: userId,
         }
 
-        const setUrl = '/api/bestdresser/postBDCoord';
+        const setUrl = '/bestdresser/postBDCoord';
 
         await axios.post(setUrl, setData, header).then((res) => {
             window.location.href = "/main/bestdresser/main/show";
@@ -62,7 +62,7 @@ export const BDLikeBtn = memo((props) => {
             user_id: userId,
         }
 
-        const setUrl = '/api/bestdresser/deleteBDCoord';
+        const setUrl = '/bestdresser/deleteBDCoord';
 
         await axios.post(setUrl, setData, header).then((res) => {
             window.location.href = "/main/bestdresser/main/show";

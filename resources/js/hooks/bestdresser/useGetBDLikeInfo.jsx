@@ -21,7 +21,7 @@ export const useGetBDLikeInfo = () => {
             "user_id": userId,
             "coord": props.id,
         }
-        const url = '/api/bestdresser/getLikeCoord';
+        const url = '/bestdresser/getLikeCoord';
 
         await axios.post(url, setData, header).then((res) => {
             setBDLikeInfo(res.data);

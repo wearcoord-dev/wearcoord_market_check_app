@@ -89,60 +89,20 @@ Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class
 
 Route::get('/bestdresser/tourinfo', [App\Http\Controllers\BestDresserController::class, "getTourInfo"]);
 
-Route::get('/bestdresser/passcode', function (Request $request) {
-});
 
-Route::post('/bestdresser/passcode', [App\Http\Controllers\BestDresserController::class, "checkPassCode"]);
 
-Route::get('/bestdresser/bdUserInfo', function (Request $request) {
-});
 
-Route::post('/bestdresser/bdUserInfo', [App\Http\Controllers\BestDresserController::class, "getBDUserInfo"]);
 
-Route::get('/bestdresser/bdUserWear', function (Request $request) {
-});
-
-Route::post('/bestdresser/bdUserWear', [App\Http\Controllers\BestDresserController::class, "getBDUserWear"]);
-
-Route::get('/bestdresser/registerBDWear', function (Request $request) {
-});
-
-Route::post('/bestdresser/registerBDWear', [App\Http\Controllers\BestDresserController::class, "registerBDWear"]);
-
-Route::get('/bestdresser/registerBDCoord', function (Request $request) {
-});
-
-Route::post('/bestdresser/registerBDCoord', [App\Http\Controllers\BestDresserController::class, "registerBDCoord"]);
-
-Route::get('/bestdresser/registerBDInner', function (Request $request) {
-});
-
-Route::post('/bestdresser/registerBDInner', [App\Http\Controllers\BestDresserController::class, "registerBDInner"]);
 
 Route::get('/bestdresser/bdCoordList', [App\Http\Controllers\BestDresserController::class, "bdCoordList"]);
 
-Route::get('/bestdresser/getLikeCoord', function (Request $request) {
-});
 
-Route::post('/bestdresser/getLikeCoord', [App\Http\Controllers\BestDresserController::class, "getLikeCoord"]);
 
-Route::get('/bestdresser/postBDCoord', function (Request $request) {
-});
-
-Route::post('/bestdresser/postBDCoord', [App\Http\Controllers\BestDresserController::class, "postBDCoord"]);
-
-Route::get('/bestdresser/deleteBDCoord', function (Request $request) {
-});
-
-Route::post('/bestdresser/deleteBDCoord', [App\Http\Controllers\BestDresserController::class, "deleteBDCoord"]);
 
 Route::get('/bestdresser/getuserBDcoord', [App\Http\Controllers\BestDresserController::class, "getUserBDCoord"]);
 
 
-Route::get('/bestdresser/wearItemBD', function (Request $request) {
-});
 
-Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserController::class, "wearItemBD"]);
 
 Route::get('/bestdresser/bdMyPostCoord', [App\Http\Controllers\BestDresserController::class, "bdMyPostCoord"]);
 

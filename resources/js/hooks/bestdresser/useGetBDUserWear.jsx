@@ -21,7 +21,7 @@ export const useGetBDUserWear = () => {
             "user_id": props.contextName.id,
             "tour_id": props.contextName.tour_id,
         }
-        const url = '/api/bestdresser/bdUserWear';
+        const url = '/bestdresser/bdUserWear';
 
         await axios.post(url, setData, header).then((res) => {
             setUserBDWear(res.data);

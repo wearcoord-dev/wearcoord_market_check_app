@@ -20,7 +20,7 @@ export const useRegisterBDInner = () => {
             id: id,
         }
 
-        const setUrl = '/api/bestdresser/registerBDInner';
+        const setUrl = '/bestdresser/registerBDInner';
 
         await axios.post(setUrl, setData, header).then((res) => {
             history.push("/main/bestdresser/main/create");
