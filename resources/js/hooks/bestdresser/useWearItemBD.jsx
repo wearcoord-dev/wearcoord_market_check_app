@@ -18,7 +18,7 @@ export const useWearItemBD = () => {
         "item": item,
         "userId": userId,
     }
-    const url = '/api/bestdresser/wearItemBD';
+    const url = '/bestdresser/wearItemBD';
 
     axios.post(url, setData, header).then((res) => {
         if(res.data==1){

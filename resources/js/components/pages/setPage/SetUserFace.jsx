@@ -75,7 +75,7 @@ export const SetUserFace = memo(() => {
         const setData = {
             "id": context.contextName.id,
         }
-        const url = '/api/setting/deleteimg';
+        const url = '/setting/deleteimg';
 
         axios.post(url, setData, header).then((res) => {
             window.location.href = '/main/settings/face';

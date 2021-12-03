@@ -141,7 +141,7 @@ export const BestDressUserInfo = memo((props) => {
             "user_id": user_id,
             "tour_id": tour_id,
         }
-        const url = '/api/bestdresser/bdUserInfo';
+        const url = '/bestdresser/bdUserInfo';
 
         await axios.post(url, setData, header).then((res) => {
             setBDUserInfo(res.data);

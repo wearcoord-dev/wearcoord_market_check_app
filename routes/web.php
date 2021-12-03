@@ -81,6 +81,107 @@ Route::get('/registersize/tops', function (Request $request) {
 
 Route::post('/registersize/tops', [App\Http\Controllers\UserController::class, "registerSizeTops"]);
 
+// パンツのサイズ登録
+
+Route::get('/registersize/pants', function (Request $request) {
+});
+
+Route::post('/registersize/pants', [App\Http\Controllers\UserController::class, "registerSizePants"]);
+
+// ウェアからのサイズ登録
+
+Route::get('/registersize/wear', function (Request $request) {
+});
+
+Route::post('/registersize/wear', [App\Http\Controllers\UserController::class, "registerSizeWear"]);
+
+// アカウント削除
+
+Route::get('/deleteaccount', function (Request $request) {
+});
+
+Route::post('/deleteaccount', [App\Http\Controllers\UserController::class, "deleteAccount"]);
+
+// 顔写真削除
+
+Route::get('/setting/deleteimg', function (Request $request) {
+});
+
+Route::post('/setting/deleteimg', [App\Http\Controllers\UserController::class, "deleteFaceImg"]);
+
+// ベストドレッサー
+
+// パスコード認証
+
+Route::get('/bestdresser/passcode', function (Request $request) {
+});
+
+Route::post('/bestdresser/passcode', [App\Http\Controllers\BestDresserController::class, "checkPassCode"]);
+
+// ユーザー進捗情報
+
+Route::get('/bestdresser/bdUserInfo', function (Request $request) {
+});
+
+Route::post('/bestdresser/bdUserInfo', [App\Http\Controllers\BestDresserController::class, "getBDUserInfo"]);
+
+// ユーザーの今のコーデ
+
+Route::get('/bestdresser/bdUserWear', function (Request $request) {
+});
+
+Route::post('/bestdresser/bdUserWear', [App\Http\Controllers\BestDresserController::class, "getBDUserWear"]);
+
+// コーデの保存
+
+Route::get('/bestdresser/registerBDWear', function (Request $request) {
+});
+
+Route::post('/bestdresser/registerBDWear', [App\Http\Controllers\BestDresserController::class, "registerBDWear"]);
+
+// コーデの投稿
+
+Route::get('/bestdresser/registerBDCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/registerBDCoord', [App\Http\Controllers\BestDresserController::class, "registerBDCoord"]);
+
+
+// インナーの保存
+
+Route::get('/bestdresser/registerBDInner', function (Request $request) {
+});
+
+Route::post('/bestdresser/registerBDInner', [App\Http\Controllers\BestDresserController::class, "registerBDInner"]);
+
+// いいねしたコーデの取得
+
+Route::get('/bestdresser/getLikeCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/getLikeCoord', [App\Http\Controllers\BestDresserController::class, "getLikeCoord"]);
+
+// コーデへのいいね投稿
+
+Route::get('/bestdresser/postBDCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/postBDCoord', [App\Http\Controllers\BestDresserController::class, "postBDCoord"]);
+
+// コーデへのいいね削除
+
+Route::get('/bestdresser/deleteBDCoord', function (Request $request) {
+});
+
+Route::post('/bestdresser/deleteBDCoord', [App\Http\Controllers\BestDresserController::class, "deleteBDCoord"]);
+
+// ウェア単品の着用
+
+Route::get('/bestdresser/wearItemBD', function (Request $request) {
+});
+
+Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserController::class, "wearItemBD"]);
+
 // ここまで
 
 Route::get('/', function () {

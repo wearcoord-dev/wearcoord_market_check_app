@@ -99,7 +99,7 @@ export const PassCheck = memo(() => {
             "userid": context.contextName.id,
 
         }
-        const url = '/api/bestdresser/passcode';
+        const url = '/bestdresser/passcode';
 
         axios.post(url, setData, header).then((res) => {
             if (res.data) {

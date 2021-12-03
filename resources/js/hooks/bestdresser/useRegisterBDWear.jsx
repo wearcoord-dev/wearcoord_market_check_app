@@ -43,7 +43,7 @@ export const useRegisterBDWear = () => {
             shoes: shoes,
             userid: props.userid,
         }
-        const url = '/api/bestdresser/registerBDWear';
+        const url = '/bestdresser/registerBDWear';
 
         await axios.post(url, setData, header).then((res) => {
             history.push("/main/bestdresser/main/create");

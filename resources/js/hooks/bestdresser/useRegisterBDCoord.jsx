@@ -18,7 +18,7 @@ export const useRegisterBDCoord = () => {
         "imgUrl": imgUrl,
         "userId": userId,
     }
-    const url = '/api/bestdresser/registerBDCoord';
+    const url = '/bestdresser/registerBDCoord';
 
     axios.post(url, setData, header).then((res) => {
         history.go(0);

@@ -248,7 +248,7 @@ export const RegisterSizePants = memo(() => {
             "pants_size": selectPantsSize,
 
         }
-        const url = '/api/registersize/pants';
+        const url = '/registersize/pants';
 
         axios.post(url, setData, header).then((res) => {
             history.push('/main/mycoord');
