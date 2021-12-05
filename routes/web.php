@@ -182,6 +182,10 @@ Route::get('/bestdresser/wearItemBD', function (Request $request) {
 
 Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserController::class, "wearItemBD"]);
 
+
+
+Route::get('/calcLikeBD', [App\Http\Controllers\BestDresserController::class, "calcLikeBD"])->name('calcLikeBD');
+
 // ここまで
 
 Route::get('/', function () {
