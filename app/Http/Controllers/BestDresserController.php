@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isEmpty;
+
 class BestDresserController extends Controller
 {
 
@@ -147,9 +149,9 @@ class BestDresserController extends Controller
 
         if ($request->input('caps')) {
             $caps = $request->input('caps');
-        } elseif($request->input('caps') == null) {
+        } elseif ($request->input('caps') == null) {
             $caps = null;
-        }else{
+        } else {
             $caps = DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $tour_id)->value('caps');
         }
 
@@ -305,7 +307,7 @@ class BestDresserController extends Controller
 
         $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
 
-        if($existBDLike){
+        if ($existBDLike) {
             DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
                 'coord_id' => $coord,
                 'updated_at' => now()
@@ -313,11 +315,12 @@ class BestDresserController extends Controller
             DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
                 'isDoneVoting' => true,
             ]);
-        }else{
+        } else {
             DB::table('likes')->insert([
                 'coord_id' => $coord,
                 'user_id' => $user_id,
                 'tour_id' => $user->tour_id,
+                'gender' => $user->gender,
                 'created_at' => now()
             ]);
             DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
@@ -342,7 +345,7 @@ class BestDresserController extends Controller
 
         $existBDLike = DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->first();
 
-        if($existBDLike){
+        if ($existBDLike) {
             DB::table('likes')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->delete();
             DB::table('bestDresser_user_info')->where('user_id', $user_id)->where('tour_id', $user->tour_id)->update([
                 'isDoneVoting' => false,
@@ -419,7 +422,7 @@ class BestDresserController extends Controller
         return response()->json($getLike);
     }
 
-        /**
+    /**
      * ベストドレッサー コーデ全取得
      *
      * @param array $request ユーザー情報
@@ -433,5 +436,83 @@ class BestDresserController extends Controller
         $coordList = DB::table('bestDresser_coordlists')->where('tour_id', $tour_id)->where('user_id', $user_id)->first();
 
         return response()->json($coordList);
+    }
+
+    /**
+     * ベストドレッサー いいね結果集計
+     *
+     * @param array $request getパラメータ
+     * @return  array
+     */
+    public function calcLikeBD(Request $request)
+    {
+        $tour_id = $request->input('tour_id');
+        // $gender = $request->input('gender');
+        $resultMale = DB::table('likes')->where('tour_id', $tour_id)->where('gender', "male")->get('coord_id');
+        $resultFemale = DB::table('likes')->where('tour_id', $tour_id)->where('gender', "female")->get('coord_id');
+
+        if($resultMale->isEmpty() && $resultFemale->isEmpty()){
+            return response()->json('not found');
+        }
+
+        $total = null;
+
+
+        if(!$resultMale->isEmpty()){
+            $arr = null;
+            foreach($resultMale as $r){
+                $arr[] = $r->coord_id;
+            }
+
+            $unique = array_unique($arr);
+
+
+            foreach($unique as $u){
+                $getCount = DB::table('likes')->where('coord_id', $u)->count();
+
+                if($total){
+                    if($total['male']['いいね合計数'] < $getCount){
+                        $total = array(  'male' => [ 'いいね合計数' => $getCount, 'coord_id' => $u ] );
+                    }else{
+                    }
+                }else{
+                    $total = array('male' => ['いいね合計数' => $getCount, 'coord_id' => $u]);
+                }
+            }
+        }
+
+        $totalFemale = null;
+
+
+        if(!$resultFemale->isEmpty()){
+            $arr = null;
+            foreach($resultFemale as $r){
+                $arr[] = $r->coord_id;
+            }
+
+            $unique = array_unique($arr);
+
+
+            foreach($unique as $u){
+                $getCount = DB::table('likes')->where('coord_id', $u)->count();
+
+                if($totalFemale){
+                    if($totalFemale['female']['いいね合計数'] < $getCount){
+                        $totalFemale = array(  'female' => [ 'いいね合計数' => $getCount, 'coord_id' => $u ] );
+                    }else{
+                    }
+                }else{
+                    $totalFemale = array('female' => ['いいね合計数' => $getCount, 'coord_id' => $u]);
+                }
+            }
+        }
+
+        $totalArr = array($total, $totalFemale);
+
+
+
+        // $coordList = DB::table('bestDresser_coordlists')->where('tour_id', $tour_id)->where('user_id', $user_id)->first();
+
+        return response()->json($totalArr);
     }
 }
