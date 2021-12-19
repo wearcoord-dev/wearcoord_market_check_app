@@ -425,7 +425,7 @@ class BestDresserController extends Controller
     /**
      * ベストドレッサー コーデ全取得
      *
-     * @param array $request ユーザー情報
+     * @param object $request ユーザー情報
      * @return  array
      */
     public function bdMyPostCoord(Request $request)
@@ -446,7 +446,7 @@ class BestDresserController extends Controller
      */
     public function calcLikeBD(Request $request)
     {
-        $tour_id = $request->input('tour_id');
+        $tour_id = $request['tour_id'];
 
         // $resultMale = DB::table('likes')->where('tour_id', $tour_id)->where('gender', "male")->groupBy('likes.id')->get('coord_id');
 
