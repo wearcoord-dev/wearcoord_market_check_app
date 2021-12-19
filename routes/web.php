@@ -184,7 +184,7 @@ Route::post('/bestdresser/wearItemBD', [App\Http\Controllers\BestDresserControll
 
 
 
-Route::get('/calcLikeBD', [App\Http\Controllers\BestDresserController::class, "calcLikeBD"])->name('calcLikeBD');
+// Route::get('/calcLikeBD', [App\Http\Controllers\BestDresserController::class, "calcLikeBD"])->name('calcLikeBD');
 
 // ここまで
 
