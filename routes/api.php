@@ -80,3 +80,5 @@ Route::get('/bestdresser/bdMyPostCoord', [App\Http\Controllers\BestDresserContro
 Route::get('/bestdresser/getBDTourInfo', [App\Http\Controllers\BestDresserController::class, "getBDTourInfo"]);
 
 Route::get('/bestdresser/getOwnLike', [App\Http\Controllers\BestDresserController::class, "getOwnLike"]);
+
+Route::get('/calcLikeBD', [App\Http\Controllers\BestDresserController::class, "calcLikeBD"])->name('calcLikeBD');
