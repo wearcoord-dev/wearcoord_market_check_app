@@ -55,7 +55,7 @@ export const HomeTopSection = memo(() => {
 
     const onClickLarossoCoord = () => {
         history.push({
-            pathname: '/main/larosso2021',
+            pathname: '/main/larosso',
         });
     }
 

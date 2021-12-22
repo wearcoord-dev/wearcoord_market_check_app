@@ -58,6 +58,8 @@ Route::get('/getwcfavcoord', [App\Http\Controllers\MycoordController::class, "ge
 
 Route::get('/getlarosso2021', [App\Http\Controllers\MycoordController::class, "getLarosso2021"]);
 
+Route::get('/getbrandtops', [App\Http\Controllers\MycoordController::class, "getBrandTops"]);
+
 Route::get('/getusersize', [App\Http\Controllers\UserController::class, "getUserSize"]);
 
 Route::get('/getsizewear', [App\Http\Controllers\UserController::class, "getSizeWear"]);
