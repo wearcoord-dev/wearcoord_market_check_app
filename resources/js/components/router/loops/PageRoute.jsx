@@ -22,6 +22,7 @@ import { ShowSizeResult } from "../../pages/setPage/size/ShowSizeResult";
 import { PreDelete } from "../../pages/setPage/deleteAccount/PreDelete";
 import { PassCheck } from "../../pages/bestdresser/base/PassCheck";
 import { BestDressBase } from "../../pages/bestdresser/base/BestDressBase";
+import { TenezDetails } from "../../pages/details/TenezDetails";
 
 export const PageRoute = [
   {
@@ -123,9 +124,14 @@ export const PageRoute = [
     children: <WcDetails />
   },
   {
-    path: "/larosso2021",
+    path: "/larosso",
     exact: false,
     children: <LarossoDetails />
+  },
+  {
+    path: "/10ez",
+    exact: false,
+    children: <TenezDetails />
   },
   {
     path: "/bestdresser/login",
