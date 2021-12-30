@@ -34,7 +34,7 @@ export const TopBase = memo(() => {
             <BestDressUserInfo tour_id={userCheck.tour_id} user_id={userCheck.id} />
             <section className={classes.root}>
                 { userCheck.tour_id == 1 && <ChainCup2021 />}
-                { userCheck.tour_id == 4 && <ChainCup2021 />}
+                { userCheck.tour_id == 4 && <ChainCup2021 user={userCheck} />}
                 { userCheck.tour_id == 2 && <MainBestDresser />}
                 { userCheck.tour_id == 5 && <ChainCupNewYear2022 />}
                 <div className={classes.bottom}></div>

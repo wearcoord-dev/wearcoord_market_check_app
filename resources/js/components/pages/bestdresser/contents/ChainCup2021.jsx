@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { memo } from "react";
 import { HowToUseBD } from "./common/HowToUseBD";
 import PlayerImg from "../../../../../../public/img/lp/2021/player_male.png"
+import { ResultBD } from "./common/ResultBD";
 
 const useStyles = makeStyles({
     root: {
@@ -42,10 +43,11 @@ const useStyles = makeStyles({
         "& img": {
             width: "100%",
         }
-}
+    }
 });
 
-export const ChainCup2021 = memo(() => {
+export const ChainCup2021 = memo((props) => {
+    const { user } = props;
     const classes = useStyles();
 
     return (
@@ -67,6 +69,14 @@ export const ChainCup2021 = memo(() => {
                         <img src={PlayerImg} alt="" />
                     </figure>
                 </div>
+                {user.gender == 'male' ?
+                    <>
+                        <ResultBD coord_id={19} />
+                    </> :
+                    <>
+                        <ResultBD coord_id={28} />
+                    </>
+                }
                 <HowToUseBD />
             </div>
         </>
