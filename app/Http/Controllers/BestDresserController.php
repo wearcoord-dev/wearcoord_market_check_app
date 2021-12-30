@@ -535,4 +535,20 @@ class BestDresserController extends Controller
 
         return response()->json($totalArr);
     }
+
+
+    /**
+     * ベストドレッサー いいね結果集計
+     *
+     * @param array $request getパラメータ
+     * @return  array
+     */
+    public function resultCoord(Request $request)
+    {
+        $coord_id = $request['coord_id'];
+
+        $coordList = DB::table('bestDresser_coordlists')->where('id', $coord_id)->first();
+
+        return response()->json($coordList);
+    }
 }
