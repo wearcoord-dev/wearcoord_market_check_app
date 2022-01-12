@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import { memo } from "react";
 import ralossoimg from "../../../../../../../../public/img/others/article/ralosso_logo.png"
 import whiteWear from "../../../../../../../../public/img/lp/tenez/game_shirt_white.jpg"
+import redWear from "../../../../../../../../public/img/lp/tenez/_MG_1083.png"
 
 const useStyles = makeStyles({
     root: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles({
     },
     tac: {
         textAlign: "center",
-        marginTop: "50px",
+        margin: "50px 0",
     }
 });
 
@@ -100,6 +101,21 @@ export const TenezLp = memo(() => {
 
                             <div className={classes.tac}>
                                 <a className={classes.btn} href="https://10ezapparel.stores.jp/items/61420590a1027561a0e6c9ad" target="_brank">このウェアを買う</a>
+                            </div>
+                        </li>
+                        <li>
+                            <h4 className={classes.smallTitle}>Game Wear 1.0</h4>
+                            <hr />
+                            <div className={classes.imgbox}>
+                                <img src={redWear} alt="" />
+                            </div>
+
+                            <div style={{ height: "400px" }}>
+                                <iframe width={"100%"} height={"100%"}  title="test_ten001" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/94aeeb7c7b01446cbe09b7b6c0d0fd1a/embed"> </iframe>
+                            </div>
+
+                            <div className={classes.tac}>
+                                <a className={classes.btn} href="https://10ezapparel.stores.jp/items/60ca9a19103986664d8c5682" target="_brank">このウェアを買う</a>
                             </div>
                         </li>
                     </ul>
