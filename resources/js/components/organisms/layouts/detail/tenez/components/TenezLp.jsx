@@ -65,6 +65,17 @@ const useStyles = makeStyles({
     tac: {
         textAlign: "center",
         margin: "50px 0",
+    },
+    tenezImg2: {
+        height: "250px",
+        width: "100%",
+        objectFit: "cover",
+        objectPosition: "bottom",
+        maxWidth: "800px",
+        "@media (min-width:1000px)": {
+            height: "400px",
+            width: "40%",
+        },
     }
 });
 
@@ -87,6 +98,11 @@ export const TenezLp = memo(() => {
                     <h3 className={classes.smallTitle}>about</h3>
                     <p className={classes.mb}>テニスの歴史にインスパイアされた、プレーヤーのためのオシャレを追求する10EZのテニスウェアが3Dモデルになって登場。よりリアルに素材感やイメージを把握できるようになりました。</p>
                     <p className={classes.mb}>2021年11月にポップアップストアを銀座で開いていた10EZですが、これからはメインをネットショップにするとのこと。<br></br>ブランドを展開するのは、ツアーをまわる現役のテニスプレーヤーとしても活躍する冨田兄弟。そんな彼らだからこそ考えるテニスウェアの快適さが追求されたブランドです。</p>
+
+                    <figure style={{ textAlign: "center", padding: "50px 0" }}>
+                        <img className={classes.tenezImg2} src={tenezImg} alt="" />
+                    </figure>
+
                     <h3 className={classes.smallTitle}>手軽に細部まで確認</h3>
                     <p className={classes.mb}>画像の平置きでしかイメージが分からなかったものが、3Dモデルでは手に取るように自由に動かせます。ズームすることで生地がどんな素材なのかもわかりやすくなります。</p>
                     <p className={classes.mb}>気になってはいたけど現物を見る機会がなかったという方は、ぜひ3Dモデルを触ってみてよりリアルな体験に近い10EZを触れてみてください。</p>
@@ -115,7 +131,7 @@ export const TenezLp = memo(() => {
                             </div>
 
                             <div style={{ height: "400px" }}>
-                                <iframe width={"100%"} height={"100%"}  title="test_ten001" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/94aeeb7c7b01446cbe09b7b6c0d0fd1a/embed"> </iframe>
+                                <iframe width={"100%"} height={"100%"} title="test_ten001" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/94aeeb7c7b01446cbe09b7b6c0d0fd1a/embed"> </iframe>
                             </div>
 
                             <div className={classes.tac}>
