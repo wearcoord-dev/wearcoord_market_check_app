@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import { memo } from "react";
-import ralossoimg from "../../../../../../../../public/img/others/article/ralosso_logo.png"
+import tenezImg from "../../../../../../../../public/img/others/article/tenez/tenez_img.jpg"
 import whiteWear from "../../../../../../../../public/img/lp/tenez/game_shirt_white.jpg"
 import redWear from "../../../../../../../../public/img/lp/tenez/_MG_1083.png"
 
@@ -78,6 +78,10 @@ export const TenezLp = memo(() => {
                     <h2>wearcoord × 10EZ</h2>
                     <p>10EZのテニスウェアが3Dで触れるようになりました！</p>
                 </div>
+
+                <figure style={{ textAlign: "center" }}>
+                    <img style={{ height: "250px", width: "100%", objectFit: "cover", objectPosition: "top", maxWidth: "800px" }} src={tenezImg} alt="" />
+                </figure>
 
                 <div className={classes.text_wrap}>
                     <h3 className={classes.smallTitle}>about</h3>
