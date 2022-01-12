@@ -73,12 +73,12 @@ export const HomeTopSection = memo(() => {
                     autoplay={{ delay: '5000' }}
                     loop={true}
                 >
-                    <SwiperSlide>
+                    {/* <SwiperSlide>
                         <a className={classes.wrapper} href="main/bestdresser/login"
                         >
                             <img className={classes.img} src={banner2} alt="" />
                         </a>
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                     <SwiperSlide>
                         <div className={classes.wrapper}
                             onClick={onClickLarossoCoord}
