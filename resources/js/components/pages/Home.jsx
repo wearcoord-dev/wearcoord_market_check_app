@@ -19,6 +19,7 @@ import { NewsList } from "../organisms/layouts/home/NewsList";
 import { RecommendItem } from "../organisms/layouts/home/RecommendItem";
 import { Footer } from "../organisms/layouts/home/Footer";
 import { ColumnList } from "../organisms/layouts/home/ColumnList";
+import { HomeBrandList } from "../organisms/layouts/home/HomeBrandList";
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -104,6 +105,7 @@ export const Home = memo(() => {
             <div>
                 <HomeTopSection />
                 <NewsList />
+                <HomeBrandList />
                 <RecommendItem />
                 <UsersCoordList />
                 <WcRecommendList />

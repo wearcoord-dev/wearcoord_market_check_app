@@ -20,8 +20,8 @@ import { useGetBrandPants } from "../../../../../hooks/home/brand/useGetBrandPan
 
 export const TenezSelect = memo(() => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
-    const { getBrandTops, userTops, loadingBrandTops, errorBrandTops} = useGetBrandTops();
-    const { getBrandPants, userPants, loadingBrandPants, errorBrandPants} = useGetBrandPants();
+    const { getBrandTops, userTops, loadingBrandTops, errorBrandTops } = useGetBrandTops();
+    const { getBrandPants, userPants, loadingBrandPants, errorBrandPants } = useGetBrandPants();
     const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
     const { RegisterWear } = useRegisterWear();
     const { GetWear, userWearInfo, loadingWear, errorWear } = useGetUserWear();
@@ -36,17 +36,17 @@ export const TenezSelect = memo(() => {
 
     const onClickFetchTops = (props) => {
         const data = {
-             "type" : "tops",
-             "gender" : props,
-             "brand" : "tenez",
+            "type": "tops",
+            "gender": props,
+            "brand": "tenez",
         }
         getBrandTops(data);
     };
 
     const onClickFetchPants = (props) => {
         const data = {
-             "type" : "pants",
-             "gender" : props,
+            "type": "pants",
+            "gender": props,
             "brand": "tenez",
         }
         getBrandPants(data);
@@ -256,38 +256,50 @@ export const TenezSelect = memo(() => {
 
             <br />
 
-            <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" onClick={handleClick}>
-                <SearchIcon style={{ paddingRight: "6px" }} />
-                着替える
-      </Button>
+            {userCheck.gender === 'male' ? (
+                <>
+                    <Button style={{ position: "fixed", bottom: "100px", left: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "0 10px 10px 0", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }} aria-describedby={id} variant="contained" onClick={handleClick}>
+                        <SearchIcon style={{ paddingRight: "6px" }} />
+                        着替える
+                    </Button>
 
-            <Button
-                style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }}
-                variant="contained"
-                onClick={onClickRegisterWear}
-            >
-                <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
-                ウェアを確定
-            </Button>
+                    <Button
+                        style={{ position: "fixed", bottom: "100px", right: "0", backgroundColor: "#ddd", width: "130px", borderRadius: "10px 0 0 10px", fontSize: "12px", color: "#484848", boxShadow: "none", height: "60px" }}
+                        variant="contained"
+                        onClick={onClickRegisterWear}
+                    >
+                        <CheckCircleOutlineIcon style={{ paddingRight: "6px" }} />
+                        ウェアを確定
+                    </Button>
 
-            <Popper
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                // onClose={handleClose}
-                placement={'top'}
-                className="popper"
-                style={{ width: "100%" }}
-            >
-                <TenezWearSearch
-                    // onClickFetchCaps={onClickFetchCaps}
-                    onClickFetchTops={onClickFetchTops}
-                    onClickFetchPants={onClickFetchPants}
-                    // onClickFetchShoes={onClickFetchShoes}
-                    handleClick={handleClick}
-                />
+                    <Popper
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        // onClose={handleClose}
+                        placement={'top'}
+                        className="popper"
+                        style={{ width: "100%" }}
+                    >
+                        <TenezWearSearch
+                            // onClickFetchCaps={onClickFetchCaps}
+                            onClickFetchTops={onClickFetchTops}
+                            onClickFetchPants={onClickFetchPants}
+                            // onClickFetchShoes={onClickFetchShoes}
+                            handleClick={handleClick}
+                        />
 
-            </Popper>
+                    </Popper>
+                </>
+            ) : (
+                <>
+                        <div style={{ textAlign: "center"}}>
+                            <p style={{ color: "#216496", fontWeight: "bold", lineHeight: "1.4" }}>女性用10EZウェアはただいま準備中です。</p>
+                            <p style={{ color: "#216496", fontWeight: "bold", lineHeight: "1.4" }}>Coming Soon...</p>
+                    </div>
+                </>
+            )}
+
         </>
     )
 })

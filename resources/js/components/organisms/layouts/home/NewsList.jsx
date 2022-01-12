@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import logoImg from "../../../../../../public/img/logo/0080E4-short.png";
+import tenezImg from "../../../../../../public/img/lp/tenez/tenez.jpeg";
 import { fontWeight } from "@material-ui/system";
 
 
@@ -90,13 +91,11 @@ const useStyles = makeStyles({
 
 export const NewsList = memo(() => {
     const classes = useStyles();
-    const context = useContext(UserContext);
-    const userData = context.contextName;
     const history = useHistory();
 
-    const onClickLarossoCoord = () => {
+    const onClickBrand = () => {
         history.push({
-            pathname: '/main/larosso',
+            pathname: '/main/10ez',
         });
     }
 
@@ -119,8 +118,20 @@ export const NewsList = memo(() => {
                     <h2 className={classes.h2title}>お知らせ</h2>
                 </div>
                 <ul>
+                    <li className={classes.li} onClick={onClickBrand}>
+                        <div className={classes.imgBox}>
+                            <img style={{ width: "100%", height: "70px", objectFit: "cover" }} src={tenezImg} alt="" />
+                        </div>
+                        <div className={classes.textBox}>
+                            <p className={classes.date}>2022.1.12</p>
+                            <p className={classes.text}>10EZ特集ページを開設しました！</p>
+                        </div>
+                        <div className={classes.triangle}>
+                        </div>
+                        <p className={classes.label}>NEW</p>
+                    </li>
                     <li className={classes.li}
-                    onClick={onClickBD}
+                        onClick={onClickBD}
                     >
                         <div className={classes.imgBox}>
                             <img className={classes.img} src={logoImg} alt="" />
@@ -131,10 +142,10 @@ export const NewsList = memo(() => {
                         </div>
                         <div className={classes.triangle}>
                         </div>
-                            <p className={classes.label}>NEW</p>
+                        <p className={classes.label}>NEW</p>
                     </li>
                     <li className={classes.li}
-                    onClick={onClickSize}
+                        onClick={onClickSize}
                     >
                         <div className={classes.imgBox}>
                             <img className={classes.img} src={logoImg} alt="" />
@@ -145,20 +156,7 @@ export const NewsList = memo(() => {
                         </div>
                         <div className={classes.triangle}>
                         </div>
-                            <p className={classes.label}>NEW</p>
-                    </li>
-
-                    <li className={classes.li} onClick={onClickLarossoCoord}>
-                        <div className={classes.imgBox}>
-                            <img className={classes.img} src={logoImg} alt="" />
-                        </div>
-                        <div className={classes.textBox}>
-                            <p className={classes.date}>2021.7.21</p>
-                            <p className={classes.text}>ラロッソ特集ページを開設しました！</p>
-                        </div>
-                        <div className={classes.triangle}>
-                        </div>
-                            <p className={classes.label}>NEW</p>
+                        <p className={classes.label}>NEW</p>
                     </li>
                 </ul>
             </div>
