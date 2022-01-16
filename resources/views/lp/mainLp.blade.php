@@ -389,5 +389,32 @@
         </ul>
         <small>wearcoord,inc</small>
     </footer>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js" integrity="sha512-sAHYBRXSgMOV2axInO6rUzuKKM5SkItFLlLHQ8YjRD+FBwowtATOs4njP9oim3/MzyAGrB52SLDjpAOLcOT9TA==" crossorigin="anonymous"></script>
+    <script>
+        const txts = $('.mannequinImg');
+        let txtIndex = -1;
+        txts.hide()
+        function showNextTxt() {
+        txtIndex++;
+        txts.eq(txtIndex % txts.length).fadeIn(2000).delay(3000).fadeOut(2000, showNextTxt);
+        var mySwiper = new Swiper ('.swiper-container', {
+        autoplay: {
+        delay: 0,
+        },
+        loop: true,
+        speed: 10000,
+        disableOnInteraction: false,
+        autoplayDisableOnInteraction: false,
+        observer: true,
+        observeParents: true,
+        observeSlideChildren: true,
+        });
+        }
+        showNextTxt();
+    </script>
 </body>
 </html>
