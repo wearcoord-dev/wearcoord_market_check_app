@@ -428,3 +428,9 @@ input[name="tab_item"] {
     color: #fff;
     border: none !important;
   }
+
+  .row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+}

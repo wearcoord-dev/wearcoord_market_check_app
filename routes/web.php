@@ -273,3 +273,20 @@ Route::get('/cookie-policy', function () {
 Route::get('/column/size', function () {
     return view('column.read.size');
 })->name('column_size');
+
+
+
+// 管理画面
+
+Route::get('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'showAdminLoginForm']);
+Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
+
+Route::post('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogin']);
+Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
+
+Route::view('/admin', 'admin')->middleware('auth:admin')->name('admin-home');
+
+Route::get('password/admin/reset', [App\Http\Controllers\AuthAdmin\AdminForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
+Route::post('password/admin/email', [App\Http\Controllers\AuthAdmin\AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
+Route::get('password/admin/reset/{token}', [App\Http\Controllers\AuthAdmin\AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
+Route::post('password/admin/reset', [App\Http\Controllers\AuthAdmin\AdminResetPasswordController::class, 'reset'])->name('admin.password.update');
