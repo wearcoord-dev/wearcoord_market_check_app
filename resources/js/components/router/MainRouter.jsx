@@ -23,7 +23,7 @@ export const MainRouter = memo(() => {
                     ))}
                 </Switch>
             )} />
-            <Route path="*">
+            <Route path="/*">
                 <Page404 />
             </Route>
         </Switch>
