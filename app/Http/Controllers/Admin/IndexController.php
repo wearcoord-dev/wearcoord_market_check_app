@@ -15,6 +15,6 @@ class IndexController extends Controller
     public function index($gender)
     {
 
-        return view('admin.maleIndex', compact('gender'));
+        return view('admin.itemIndex', compact('gender'));
     }
 }
