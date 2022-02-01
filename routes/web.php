@@ -290,3 +290,11 @@ Route::get('password/admin/reset', [App\Http\Controllers\AuthAdmin\AdminForgotPa
 Route::post('password/admin/email', [App\Http\Controllers\AuthAdmin\AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('admin.password.email');
 Route::get('password/admin/reset/{token}', [App\Http\Controllers\AuthAdmin\AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 Route::post('password/admin/reset', [App\Http\Controllers\AuthAdmin\AdminResetPasswordController::class, 'reset'])->name('admin.password.update');
+
+// Route::view('/admin/maleIndex', 'admin.maleIndex')->middleware('auth:admin')->name('male-index');
+
+// ウェア一覧取得
+Route::get('/admin/index/{gender}', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('itemIndex');
+
+// ウェア追加
+Route::get('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'index'])->name('itemAdd');
