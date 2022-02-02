@@ -19,9 +19,6 @@ class IndexController extends Controller
         // $items = TopsRakutenApi::find(1);
 
         $category = $request->category;
-        if (!$category) {
-            $category = 506269;
-        }
 
         $brand = $request->brand;
         $color = $request->color;
@@ -29,12 +26,19 @@ class IndexController extends Controller
 
         if($gender == 'male'){
             $items = self::getMaleItems($brand, $color, $category);
+        }if($gender == 'female'){
+            $items = self::getFemaleItems($brand, $color, $category);
         }
 
         return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color'));
     }
 
+    // 男性アイテム取得
+
     private static function getMaleItems($brand, $color, $category){
+        if (!$category) {
+            $category = 506269;
+        }
 
         if ($category == 506269) {
             // キャップス取得
@@ -62,6 +66,56 @@ class IndexController extends Controller
         }
 
         if ($category == 208025) {
+            // シューズ取得
+            $items = self::getItemsFromDB('shoes', $brand, $color, $category);
+        }
+
+        return $items;
+    }
+
+    // 女性アイテム取得
+
+    private static function getFemaleItems($brand, $color, $category){
+        if (!$category) {
+            $category = 565818;
+        }
+
+        if ($category == 565818) {
+            // キャップス取得
+            $items = self::getItemsFromDB('caps', $brand, $color, $category);
+        }
+
+        if ($category == 508803) {
+            // 半袖取得
+            $items = self::getItemsFromDB('tops', $brand, $color, $category);
+        }
+
+        if ($category == 565927) {
+            // アウター取得
+            $items = self::getItemsFromDB('tops', $brand, $color, $category);
+        }
+
+        if ($category == 500316) {
+            // ワンピース取得
+            $items = self::getItemsFromDB('tops', $brand, $color, $category);
+        }
+
+        if ($category == 508820) {
+            // ショートパンツ取得
+            $items = self::getItemsFromDB('pants', $brand, $color, $category);
+        }
+
+        if ($category == 565928) {
+            // ロングパンツ取得
+            $items = self::getItemsFromDB('pants', $brand, $color, $category);
+        }
+
+        if ($category == 565816) {
+            // スカート取得
+            $items = self::getItemsFromDB('pants', $brand, $color, $category);
+        }
+
+        if ($category == 565819) {
             // シューズ取得
             $items = self::getItemsFromDB('shoes', $brand, $color, $category);
         }
