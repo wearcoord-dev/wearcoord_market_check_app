@@ -5,7 +5,6 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    {{$color}}
                     <div class="card-header">{{ $gender }}ウェア一覧</div>
                     <form action="" method="get">
                         <div class="d-flex justify-content-around pt-4 pb-4">
