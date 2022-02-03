@@ -40,12 +40,27 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $gender)
     {
+        $request->validate([
+            'itemId' => ['required', 'string', 'max:200'],
+            'brand' => ['required', 'string',  'max:100'],
+            'category' => ['required', 'integer'],
+            'color' => ['required', 'string'],
+            'wearimg' => ['required', 'string'],
+            'link' => ['nullable', 'string'],
+            'available' => ['required', 'integer'],
+        ]);
 
-        // 画像の保存
-        // $filename = $request->wearimg->getClientOriginalName();
-        // $img = $request->wearimg->storeAs('', $filename);
+        $imageFiles = $request->wearimg;
+        if (!is_null($imageFiles)) {
+            $category = $request->category;
+            
+            // 画像の保存
+            $filename = $request->wearimg->getClientOriginalName();
+            $img = $request->wearimg->storeAs('/img/rakutenlist/' . $gender . '/' . $category, $filename);
+            // dd($request);
+        }
     }
 
     /**

@@ -10,6 +10,26 @@ class TopsRakutenApi extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'itemId',
+        'brand',
+        'category',
+        'moshimoLink',
+        'availability',
+        'black',
+        'white',
+        'blue',
+        'red',
+        'green',
+        'yellow',
+        'navy',
+        'pink',
+        'orange',
+        'purple',
+        'gray',
+        'img',
+    ];
+
     public function topsSizes()
     {
         return $this->hasMany(TopsSize::class, 'item_id', 'id');

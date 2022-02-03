@@ -47,9 +47,9 @@
 
                             {{-- アイテムID --}}
                             <div class="form-group row p-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">アイテムID</label>
+                                <label for="itemId" class="col-sm-2 col-form-label">アイテムID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputEmail3" placeholder="アイテムID">
+                                    <input type="text" class="form-control" id="itemId" name="itemId" placeholder="アイテムID">
                                 </div>
                             </div>
 
