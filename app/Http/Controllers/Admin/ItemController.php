@@ -42,7 +42,10 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // 画像の保存
+        // $filename = $request->wearimg->getClientOriginalName();
+        // $img = $request->wearimg->storeAs('', $filename);
     }
 
     /**
@@ -90,4 +93,3 @@ class ItemController extends Controller
         //
     }
 }
-

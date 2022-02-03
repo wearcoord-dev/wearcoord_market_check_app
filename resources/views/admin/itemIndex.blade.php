@@ -9,54 +9,19 @@
                     <form action="" method="get">
                         @csrf
                         <div class="d-flex justify-content-around pt-4 pb-4">
+
+                            {{-- カテゴリー --}}
                             @if ($gender == 'male')
                                 @include('admin.parts.maleCategory')
                             @elseif ($gender == 'female')
                                 @include('admin.parts.femaleCategory')
                             @endif
-                            <div class="input-group">
-                                <p class="m-auto p-2">ブランド : </p>
-                                <select class="custom-select" id="brand" name="brand"
-                                    aria-label="Example select with button addon">
-                                    <option @if (\Request::get('brand') === null) selected @endif value="0">全て</option>
-                                    <option @if (\Request::get('brand') === 'adidas') selected @endif value="adidas">Adidas</option>
-                                    <option @if (\Request::get('brand') === 'nike') selected @endif value="nike">Nike</option>
-                                    <option @if (\Request::get('brand') === 'yonex') selected @endif value="yonex">Yonex</option>
-                                    <option @if (\Request::get('brand') === 'asics') selected @endif value="asics">Asics</option>
-                                    <option @if (\Request::get('brand') === 'diadora') selected @endif value="diadora">Diadora</option>
-                                    <option @if (\Request::get('brand') === 'prince') selected @endif value="prince">Prince</option>
-                                    <option @if (\Request::get('brand') === 'fila') selected @endif value="fila">FILA</option>
-                                    <option @if (\Request::get('brand') === 'underarmour') selected @endif value="underarmour">Underarmour</option>
-                                    <option @if (\Request::get('brand') === 'ellesse') selected @endif value="ellesse">ellesse</option>
-                                    <option @if (\Request::get('brand') === 'babolat') selected @endif value="babolat">babolat</option>
-                                    <option @if (\Request::get('brand') === 'hydrogen') selected @endif value="hydrogen">Hydrogen</option>
-                                    <option @if (\Request::get('brand') === 'lecoq') selected @endif value="lecoq">ellesse</option>
-                                    <option @if (\Request::get('brand') === 'lacoste') selected @endif value="lacoste">lacoste</option>
-                                    <option @if (\Request::get('brand') === 'yuuchan') selected @endif value="yuuchan">yuuchan</option>
-                                    <option @if (\Request::get('brand') === 'ralosso') selected @endif value="ralosso">ralosso</option>
-                                    <option @if (\Request::get('brand') === 'marc_de_paw') selected @endif value="marc_de_paw">Marc De Paw</option>
-                                    <option @if (\Request::get('brand') === 'tenez') selected @endif value="tenez">10EZ</option>
-                                    <option @if (\Request::get('brand') === 'yoxoi') selected @endif value="yoxoi">YOXOI</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <p class="m-auto p-2">色 : </p>
-                                <select class="custom-select" id="color" name="color"
-                                    aria-label="Example select with button addon">
-                                    <option @if (\Request::get('color') === null) selected @endif value="0">全て</option>
-                                    <option @if (\Request::get('color') === 'black') selected @endif value="black">black</option>
-                                    <option @if (\Request::get('color') === 'white') selected @endif value="white">white</option>
-                                    <option @if (\Request::get('color') === 'blue') selected @endif value="blue">blue</option>
-                                    <option @if (\Request::get('color') === 'red') selected @endif value="red">red</option>
-                                    <option @if (\Request::get('color') === 'green') selected @endif value="green">green</option>
-                                    <option @if (\Request::get('color') === 'yellow') selected @endif value="yellow">yellow</option>
-                                    <option @if (\Request::get('color') === 'navy') selected @endif value="navy">navy</option>
-                                    <option @if (\Request::get('color') === 'pink') selected @endif value="pink">pink</option>
-                                    <option @if (\Request::get('color') === 'orange') selected @endif value="orange">orange</option>
-                                    <option @if (\Request::get('color') === 'purple') selected @endif value="purple">purple</option>
-                                    <option @if (\Request::get('color') === 'gray') selected @endif value="gray">gray</option>
-                                </select>
-                            </div>
+
+                            {{-- ブランド --}}
+                            @include('admin.parts.brand')
+
+                            {{-- カラー --}}
+                            @include('admin.parts.color')
                         </div>
                     </form>
 
