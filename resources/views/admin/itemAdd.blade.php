@@ -1,12 +1,28 @@
 @extends('layouts.appAdmin', ['authgroup'=>'admin'])
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <div>
+                <div class="font-medium text-red-600">
+                </div>
+
+                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
                 <div class="card">
                     <div class="card-header">{{ $gender }}ウェア新規登録</div>
-                    <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body p-5">
 
@@ -49,7 +65,8 @@
                             <div class="form-group row p-3">
                                 <label for="itemId" class="col-sm-2 col-form-label">アイテムID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="itemId" name="itemId" placeholder="アイテムID">
+                                    <input type="text" class="form-control" id="itemId" name="itemId"
+                                        placeholder="アイテムID">
                                 </div>
                             </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UploadRequest;
 use App\Models\TopsRakutenApi;
 use Illuminate\Http\Request;
 
@@ -40,14 +41,14 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $gender)
+    public function store(UploadRequest $request, $gender)
     {
         $request->validate([
             'itemId' => ['required', 'string', 'max:200'],
             'brand' => ['required', 'string',  'max:100'],
             'category' => ['required', 'integer'],
             'color' => ['required', 'string'],
-            'wearimg' => ['required', 'string'],
+            'wearimg' => ['required', 'mimes:png', 'image'],
             'link' => ['nullable', 'string'],
             'available' => ['required', 'integer'],
         ]);
@@ -55,7 +56,7 @@ class ItemController extends Controller
         $imageFiles = $request->wearimg;
         if (!is_null($imageFiles)) {
             $category = $request->category;
-            
+
             // 画像の保存
             $filename = $request->wearimg->getClientOriginalName();
             $img = $request->wearimg->storeAs('/img/rakutenlist/' . $gender . '/' . $category, $filename);
