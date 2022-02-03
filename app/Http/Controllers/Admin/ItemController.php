@@ -70,14 +70,22 @@ class ItemController extends Controller
                 function () use ($request) {
 
                     // nullに変換
-                    if($request->available == '0'){
+                    if ($request->available == '0') {
                         $available = null;
-                    }else{
+                    } else {
                         $available = $request->available;
                     }
 
-                    if($request->category == 508759 || $request->category == 565925){
-                        $product = TopsRakutenApi::create([
+                    $topsCategory = [
+                        508759 => true,
+                        565925 => true,
+                        508803 => true,
+                        565927 => true,
+                        500316 => true,
+                    ];
+
+                    if (isset($topsCategory[$request->category])) {
+                        TopsRakutenApi::create([
                             'itemId' => $request->itemId,
                             'brand' => $request->brand,
                             'category' => $request->category,
