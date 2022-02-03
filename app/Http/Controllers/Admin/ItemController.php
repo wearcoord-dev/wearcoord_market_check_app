@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
+use App\Models\TopsRakutenApi;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadRequest;
-use App\Models\TopsRakutenApi;
-use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -62,6 +63,43 @@ class ItemController extends Controller
             $img = $request->wearimg->storeAs('/img/rakutenlist/' . $gender . '/' . $category, $filename);
             // dd($request);
         }
+
+
+        try {
+            DB::transaction(
+                function () use ($request) {
+
+                    // nullに変換
+                    if($request->available == '0'){
+                        $available = null;
+                    }else{
+                        $available = $request->available;
+                    }
+
+                    if($request->category == 508759 || $request->category == 565925){
+                        $product = TopsRakutenApi::create([
+                            'itemId' => $request->itemId,
+                            'brand' => $request->brand,
+                            'category' => $request->category,
+                            'moshimoLink' => $request->link,
+                            'availability' => $available,
+                            $request->color => $request->wearimg->getClientOriginalName(),
+                            'img' => $request->wearimg->getClientOriginalName(),
+                        ]);
+                    }
+                },
+                2
+            );
+        } catch (
+            Throwable $e
+        ) {
+            Log::error($e);
+            throw $e;
+        }
+
+        return redirect()->route('itemIndex', [
+            'gender' => $gender,
+        ]);
     }
 
     /**

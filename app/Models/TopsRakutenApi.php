@@ -10,6 +10,8 @@ class TopsRakutenApi extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'itemId',
         'brand',
