@@ -7,6 +7,9 @@ use App\Models\TopsRakutenApi;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadRequest;
+use App\Models\CapsRakutenApi;
+use App\Models\PantsRakutenApi;
+use App\Models\ShoesRakutenApi;
 
 class ItemController extends Controller
 {
@@ -76,6 +79,11 @@ class ItemController extends Controller
                         $available = $request->available;
                     }
 
+                    $capsCategory = [
+                        506269 => true,
+                        565818 => true,
+                    ];
+
                     $topsCategory = [
                         508759 => true,
                         565925 => true,
@@ -84,8 +92,51 @@ class ItemController extends Controller
                         500316 => true,
                     ];
 
+                    $pantsCategory = [
+                        508820 => true,
+                        565928 => true,
+                        565816 => true,
+                        508772 => true,
+                        565926 => true,
+                    ];
+
+                    $shoesCategory = [
+                        208025 => true,
+                        565819 => true,
+                    ];
+
                     if (isset($topsCategory[$request->category])) {
                         TopsRakutenApi::create([
+                            'itemId' => $request->itemId,
+                            'brand' => $request->brand,
+                            'category' => $request->category,
+                            'moshimoLink' => $request->link,
+                            'availability' => $available,
+                            $request->color => $request->wearimg->getClientOriginalName(),
+                            'img' => $request->wearimg->getClientOriginalName(),
+                        ]);
+                    } elseif (isset($capsCategory[$request->category])) {
+                        CapsRakutenApi::create([
+                            'itemId' => $request->itemId,
+                            'brand' => $request->brand,
+                            'category' => $request->category,
+                            'moshimoLink' => $request->link,
+                            'availability' => $available,
+                            $request->color => $request->wearimg->getClientOriginalName(),
+                            'img' => $request->wearimg->getClientOriginalName(),
+                        ]);
+                    } elseif (isset($pantsCategory[$request->category])) {
+                        PantsRakutenApi::create([
+                            'itemId' => $request->itemId,
+                            'brand' => $request->brand,
+                            'category' => $request->category,
+                            'moshimoLink' => $request->link,
+                            'availability' => $available,
+                            $request->color => $request->wearimg->getClientOriginalName(),
+                            'img' => $request->wearimg->getClientOriginalName(),
+                        ]);
+                    } elseif (isset($shoesCategory[$request->category])) {
+                        ShoesRakutenApi::create([
                             'itemId' => $request->itemId,
                             'brand' => $request->brand,
                             'category' => $request->category,
@@ -116,9 +167,23 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $category, $id)
     {
-        //
+        $gender = $request->input('gender');
+
+        if ($gender == 'male') {
+            $detail = self::getMaleItems($id, $category);
+        }
+        if ($gender == 'female') {
+            $detail = self::getFemaleItems($id, $category);
+        }
+
+        $color = self::getColor($detail);
+        $brand = $detail->brand;
+
+        // dd($items);
+
+        return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color'));
     }
 
     /**
@@ -153,5 +218,109 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private static function getMaleItems($item, $category)
+    {
+
+        if ($category == 506269) {
+            // キャップス取得
+            $items = self::getItemsFromDB('caps', $item, $category);
+        }
+
+        if ($category == 508759) {
+            // 半袖取得
+            $items = self::getItemsFromDB('tops', $item, $category);
+        }
+
+        if ($category == 565925) {
+            // アウター取得
+            $items = self::getItemsFromDB('tops', $item, $category);
+        }
+
+        if ($category == 508772) {
+            // ショートパンツ取得
+            $items = self::getItemsFromDB('pants', $item, $category);
+        }
+
+        if ($category == 565926) {
+            // ロングパンツ取得
+            $items = self::getItemsFromDB('pants', $item, $category);
+        }
+
+        if ($category == 208025) {
+            // シューズ取得
+            $items = self::getItemsFromDB('shoes', $item, $category);
+        }
+
+        return $items;
+    }
+
+    // 女性アイテム取得
+
+    private static function getFemaleItems($item, $category)
+    {
+
+        if ($category == 565818) {
+            // キャップス取得
+            $items = self::getItemsFromDB('caps', $item, $category);
+        }
+
+        if ($category == 508803) {
+            // 半袖取得
+            $items = self::getItemsFromDB('tops', $item, $category);
+        }
+
+        if ($category == 565927) {
+            // アウター取得
+            $items = self::getItemsFromDB('tops', $item, $category);
+        }
+
+        if ($category == 500316) {
+            // ワンピース取得
+            $items = self::getItemsFromDB('tops', $item, $category);
+        }
+
+        if ($category == 508820) {
+            // ショートパンツ取得
+            $items = self::getItemsFromDB('pants', $item, $category);
+        }
+
+        if ($category == 565928) {
+            // ロングパンツ取得
+            $items = self::getItemsFromDB('pants', $item, $category);
+        }
+
+        if ($category == 565816) {
+            // スカート取得
+            $items = self::getItemsFromDB('pants', $item, $category);
+        }
+
+        if ($category == 565819) {
+            // シューズ取得
+            $items = self::getItemsFromDB('shoes', $item, $category);
+        }
+
+        return $items;
+    }
+
+    private  static function getItemsFromDB($type, $item, $category)
+    {
+
+        $items = DB::table($type . '_rakuten_apis')->where('id', $item)->first();
+
+        return $items;
+    }
+
+    private static function getColor($items)
+    {
+
+        $getImg =  $items->img;
+
+        foreach ($items as $color => $item) {
+            if ($item == $getImg) {
+                return $color;
+            };
+        };
     }
 }

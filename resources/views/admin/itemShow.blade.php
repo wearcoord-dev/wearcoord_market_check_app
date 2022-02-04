@@ -21,25 +21,24 @@
 
     @endif
                 <div class="card">
-                    <div class="card-header">{{ $gender }}ウェア新規登録</div>
+                    <div class="card-header">ウェア登録情報編集</div>
                     <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="card-body p-5">
-
                             {{-- 表示切り替え --}}
                             <div class="row p-3">
                                 <legend class="col-form-label col-sm-2 pt-0">アイテム表示</legend>
                                 <div class="col-sm-10">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="available" id="show" value="1"
-                                            checked>
+                                             @if ($detail->availability == '1') checked @endif>
                                         <label class="form-check-label" for="show">
                                             表示する
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="available" id="not" value="0">
+                                        <input class="form-check-input" type="radio" name="available" id="not" value="0" @if ($detail->availability == null) checked @endif>
                                         <label class="form-check-label" for="not">
                                             表示しない
                                         </label>

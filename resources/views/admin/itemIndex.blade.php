@@ -48,7 +48,7 @@
                                             @else
                                                 <p>状態 : <span>非表示</span></p>
                                             @endif
-                                            <a href="#" class="btn btn-primary btn-block">編集</a>
+                                            <a href="{{ route('itemShow', ['item' => $item->id, 'category' => $item->category, 'gender' => $gender]) }}" class="btn btn-primary btn-block">編集</a>
                                         </div>
                                     </div>
                                 </div>

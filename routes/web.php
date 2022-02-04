@@ -245,13 +245,13 @@ Route::get('/getregistercoord', [App\Http\Controllers\MycoordController::class, 
 
 // 外部参照用
 
-Route::get('/viewtest/studio1', function () {
-    return view('check.one');
-});
+// Route::get('/viewtest/studio1', function () {
+//     return view('check.one');
+// });
 
-Route::get('/studio2', function () {
-    return view('check.two');
-});
+// Route::get('/studio2', function () {
+//     return view('check.two');
+// });
 
 // 大会用LP
 
@@ -302,7 +302,8 @@ Route::resource('items', ItemController::class)
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/index/{gender}', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('itemIndex');
-    Route::get('/admin/index/{item}', [App\Http\Controllers\Admin\IndexController::class, 'show'])->name('items.show');
+    Route::get('/admin/detail/{category}/{item}', [App\Http\Controllers\Admin\ItemController::class, 'show'])->name('itemShow');
+
     // ウェア追加
     Route::get('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'index'])->name('itemAdd');
     Route::post('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'store'])->name('itemAddPost');
