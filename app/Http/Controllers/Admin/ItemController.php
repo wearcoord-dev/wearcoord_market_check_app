@@ -181,8 +181,6 @@ class ItemController extends Controller
         $color = self::getColor($detail);
         $brand = $detail->brand;
 
-        // dd($items);
-
         return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color'));
     }
 
@@ -315,11 +313,23 @@ class ItemController extends Controller
     private static function getColor($items)
     {
 
-        $getImg =  $items->img;
+        $colorSets = [
+            'black',
+            'white',
+            'blue',
+            'red',
+            'green',
+            'yellow',
+            'navy',
+            'pink',
+            'orange',
+            'purple',
+            'gray',
+        ];
 
-        foreach ($items as $color => $item) {
-            if ($item == $getImg) {
-                return $color;
+        foreach ($colorSets as $set) {
+            if ($items->$set !== null) {
+                return $set;
             };
         };
     }
