@@ -178,10 +178,12 @@ class ItemController extends Controller
             $detail = self::getFemaleItems($id, $category);
         }
 
+        $type = $detail[1];
+        $detail = $detail[0];
         $color = self::getColor($detail);
         $brand = $detail->brand;
 
-        return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color'));
+        return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color', 'type'));
     }
 
     /**
@@ -307,7 +309,7 @@ class ItemController extends Controller
 
         $items = DB::table($type . '_rakuten_apis')->where('id', $item)->first();
 
-        return $items;
+        return [$items, $type];
     }
 
     private static function getColor($items)

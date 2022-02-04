@@ -31,7 +31,21 @@ class IndexController extends Controller
             $items = self::getFemaleItems($brand, $color, $category);
         }
 
-        return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color'));
+        $colorSets = [
+            'black',
+            'white',
+            'blue',
+            'red',
+            'green',
+            'yellow',
+            'navy',
+            'pink',
+            'orange',
+            'purple',
+            'gray',
+        ];
+
+        return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color', 'colorSets'));
     }
 
     // public function show(Request $request, $item, $category){
