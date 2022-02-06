@@ -52,12 +52,12 @@
                             </a>
 
                             <div>
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a href="{{ route('adminLogout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                <form id="logout-form" action="{{ route('adminLogout') }}" method="POST"
                                     class="d-none">
                                     @csrf
                                 </form>

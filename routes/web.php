@@ -280,10 +280,10 @@ Route::get('/column/size', function () {
 // 管理画面
 
 Route::get('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'showAdminLoginForm']);
-Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
+// Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
 
 Route::post('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogin']);
-Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
+// Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
 
 Route::view('/admin', 'admin')->middleware('auth:admin')->name('admin-home');
 
@@ -309,5 +309,8 @@ Route::middleware('auth:admin')->group(function () {
     // ウェア追加
     Route::get('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'index'])->name('itemAdd');
     Route::post('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'store'])->name('itemAddPost');
+
+    Route::post('/admin/logout', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogout'])->name('adminLogout');
+
 });
 
