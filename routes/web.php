@@ -303,6 +303,7 @@ Route::resource('items', ItemController::class)
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/index/{gender}', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('itemIndex');
     Route::get('/admin/detail/{category}/{item}', [App\Http\Controllers\Admin\ItemController::class, 'show'])->name('itemShow');
+    Route::post('/admin/detail/update', [App\Http\Controllers\Admin\ItemController::class, 'update'])->name('itemFixPost');
 
     // ウェア追加
     Route::get('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'index'])->name('itemAdd');

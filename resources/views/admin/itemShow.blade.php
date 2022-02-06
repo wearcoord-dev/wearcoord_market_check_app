@@ -22,7 +22,7 @@
                 @endif
                 <div class="card">
                     <div class="card-header">ウェア登録情報編集</div>
-                    <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST"
+                    <form action="{{ route('itemFixPost', ['type' => $type, 'id' => $detail->id, 'gender' => $gender]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="card-body p-5">
@@ -67,7 +67,7 @@
                                 <label for="itemId" class="col-sm-2 col-form-label">アイテムID</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="itemId" name="itemId"
-                                        placeholder="{{ $detail->itemId }}">
+                                     value="{{ $detail->itemId }}">
                                 </div>
                             </div>
 
@@ -135,7 +135,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">登録する</button>
+                        <button type="submit" class="btn btn-primary">変更内容を登録する</button>
                 </div>
                 </form>
             </div>
