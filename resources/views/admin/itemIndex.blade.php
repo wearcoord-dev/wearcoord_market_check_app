@@ -5,7 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ $gender }}ウェア一覧</div>
+                    @if ($gender == 'male')
+                    <div class="card-header bg-info text-white">{{ $gender }}ウェア一覧</div>
+                    @elseif($gender == 'female')
+                    <div class="card-header bg-warning text-dark">{{ $gender }}ウェア一覧</div>
+                    @endif
                     <form action="" method="get">
                         @csrf
                         <div class="d-flex justify-content-around pt-4 pb-4">

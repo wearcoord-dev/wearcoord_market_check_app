@@ -5,23 +5,27 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                    @if ($errors->any())
-        <div class="alert alert-danger" role="alert">
-            <div>
-                <div class="font-medium text-red-600">
-                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <div>
+                            <div class="font-medium text-red-600">
+                            </div>
 
-                <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
 
-    @endif
+                @endif
                 <div class="card">
-                    <div class="card-header">{{ $gender }}ウェア新規登録</div>
+                    @if ($gender == 'male')
+                        <div class="card-header bg-info text-white">{{ $gender }}ウェア新規登録</div>
+                    @elseif($gender == 'female')
+                        <div class="card-header bg-warning text-dark">{{ $gender }}ウェア新規登録</div>
+                    @endif
                     <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
