@@ -254,7 +254,7 @@ class ItemController extends Controller
 
                     if ($type == 'tops') {
                         $product = TopsRakutenApi::findOrFail($id);
-                        $product->availability = $request->available;
+                        $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
                         $oldColor = self::getColor($product);
@@ -275,7 +275,7 @@ class ItemController extends Controller
                         $product->save();
                     } elseif ($type == 'caps') {
                         $product = CapsRakutenApi::findOrFail($id);
-                        $product->availability = $request->available;
+                        $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
                         $oldColor = self::getColor($product);
@@ -295,7 +295,7 @@ class ItemController extends Controller
                         $product->save();
                     } elseif ($type == 'pants') {
                         $product = PantsRakutenApi::findOrFail($id);
-                        $product->availability = $request->available;
+                        $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
                         $oldColor = self::getColor($product);
@@ -315,7 +315,7 @@ class ItemController extends Controller
                         $product->save();
                     } elseif ($type == 'shoes') {
                         $product = ShoesRakutenApi::findOrFail($id);
-                        $product->availability = $request->available;
+                        $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
                         $oldColor = self::getColor($product);
