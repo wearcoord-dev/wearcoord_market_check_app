@@ -22,8 +22,8 @@
                 @endif
                 <div class="card">
                     <div class="card-header">ウェア登録情報編集</div>
-                    <form action="{{ route('itemFixPost', ['type' => $type, 'id' => $detail->id, 'gender' => $gender]) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('itemFixPost', ['type' => $type, 'id' => $detail->id, 'gender' => $gender]) }}"
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body p-5">
                             {{-- 表示切り替え --}}
@@ -67,7 +67,7 @@
                                 <label for="itemId" class="col-sm-2 col-form-label">アイテムID</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="itemId" name="itemId"
-                                     value="{{ $detail->itemId }}">
+                                        value="{{ $detail->itemId }}">
                                 </div>
                             </div>
 
@@ -137,6 +137,14 @@
 
                         <button type="submit" class="btn btn-primary">変更内容を登録する</button>
                 </div>
+                </form>
+
+                <form method="post" action="{{ route('itemDelete', ['id' => $detail->id, 'type' => $type, 'gender' => $gender, 'category' => $detail->category, 'color' => $color]) }}">
+                    @csrf
+                    {{-- @method('delete') --}}
+                    <div style="text-align: end;" class="p-2 w-full flex justify-around mt-32">
+                        <button type="submit" class="btn btn-danger">アイテムを削除する</button>
+                    </div>
                 </form>
             </div>
         </div>

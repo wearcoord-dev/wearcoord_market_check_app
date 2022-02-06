@@ -156,8 +156,13 @@ class ItemController extends Controller
             throw $e;
         }
 
+        $category = $request->category;
+        $color = $request->color;
+
         return redirect()->route('itemIndex', [
             'gender' => $gender,
+            'category' => $category,
+            'color' => $color,
         ]);
     }
 
@@ -288,26 +293,46 @@ class ItemController extends Controller
                             $product->moshimoLink = $request->link;
                         }
                         $product->save();
-                    } elseif (isset($pantsCategory[$request->category])) {
-                        PantsRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                        ]);
-                    } elseif (isset($shoesCategory[$request->category])) {
-                        ShoesRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                        ]);
+                    } elseif ($type == 'pants') {
+                        $product = PantsRakutenApi::findOrFail($id);
+                        $product->availability = $request->available;
+                        $product->brand = $request->brand;
+                        $product->itemId = $request->itemId;
+                        $oldColor = self::getColor($product);
+
+                        if ($color) {
+                            $imgUrl = $product->$oldColor;
+                            $product->$oldColor = null;
+                            $product->$color = $imgUrl;
+                        }
+                        if ($imageFiles) {
+                            $product->img = $request->wearimg->getClientOriginalName();
+                            $product->$color = $request->wearimg->getClientOriginalName();
+                        }
+                        if ($request->link) {
+                            $product->moshimoLink = $request->link;
+                        }
+                        $product->save();
+                    } elseif ($type == 'shoes') {
+                        $product = ShoesRakutenApi::findOrFail($id);
+                        $product->availability = $request->available;
+                        $product->brand = $request->brand;
+                        $product->itemId = $request->itemId;
+                        $oldColor = self::getColor($product);
+
+                        if ($color) {
+                            $imgUrl = $product->$oldColor;
+                            $product->$oldColor = null;
+                            $product->$color = $imgUrl;
+                        }
+                        if ($imageFiles) {
+                            $product->img = $request->wearimg->getClientOriginalName();
+                            $product->$color = $request->wearimg->getClientOriginalName();
+                        }
+                        if ($request->link) {
+                            $product->moshimoLink = $request->link;
+                        }
+                        $product->save();
                     }
                 },
                 2
@@ -342,9 +367,32 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+
+        $id = $request->id;
+        $type = $request->type;
+        $gender = $request->gender;
+
+        if ($type == 'tops') {
+            TopsRakutenApi::findOrFail($id)->delete();
+        } elseif ($type == 'caps') {
+            CapsRakutenApi::findOrFail($id)->delete();
+
+        } elseif ($type == 'pants') {
+            PantsRakutenApi::findOrFail($id)->delete();
+
+        } elseif ($type == 'shoes') {
+            ShoesRakutenApi::findOrFail($id)->delete();
+        }
+
+        $category = $request->category;
+        $color = $request->color;
+
+        return redirect()->route('itemIndex', [
+            'gender' => $gender,
+            'category' => $category,
+        ]);
     }
 
     private static function getMaleItems($item, $category)
