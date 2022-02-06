@@ -20,6 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet">
 
 </head>
 
@@ -33,9 +34,12 @@
 
                 <ul class="d-flex m-auto">
                     <li class="p-2"><a href="{{ route('itemIndex', ['gender' => 'male']) }}">男ウェア一覧</a></li>
-                    <li class="p-2"><a href="{{ route('itemAdd', ['gender' => 'male']) }}">男ウェア新規登録</a></li>
-                    <li class="p-2"><a href="{{ route('itemIndex', ['gender' => 'female']) }}">女ウェア一覧</a></li>
-                    <li class="p-2"><a href="{{ route('itemAdd', ['gender' => 'female']) }}">女ウェア新規登録</a></li>
+                    <li class="p-2"><a href="{{ route('itemAdd', ['gender' => 'male']) }}">男ウェア新規登録</a>
+                    </li>
+                    <li class="p-2"><a href="{{ route('itemIndex', ['gender' => 'female']) }}">女ウェア一覧</a>
+                    </li>
+                    <li class="p-2"><a href="{{ route('itemAdd', ['gender' => 'female']) }}">女ウェア新規登録</a>
+                    </li>
                 </ul>
 
                 <div>
@@ -48,12 +52,12 @@
                             </a>
 
                             <div>
-                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a href="{{ route('adminLogout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                <form id="logout-form" action="{{ route('adminLogout') }}" method="POST"
                                     class="d-none">
                                     @csrf
                                 </form>

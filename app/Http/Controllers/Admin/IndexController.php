@@ -24,18 +24,42 @@ class IndexController extends Controller
         $color = $request->color;
         $gender = $gender;
 
-        if($gender == 'male'){
+        if ($gender == 'male') {
             $items = self::getMaleItems($brand, $color, $category);
-        }if($gender == 'female'){
+        }
+        if ($gender == 'female') {
             $items = self::getFemaleItems($brand, $color, $category);
         }
 
-        return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color'));
+        $colorSets = [
+            'black',
+            'white',
+            'blue',
+            'red',
+            'green',
+            'yellow',
+            'navy',
+            'pink',
+            'orange',
+            'purple',
+            'gray',
+        ];
+
+        return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color', 'colorSets'));
     }
+
+    // public function show(Request $request, $item, $category){
+    //     $gender = $request->input('gender');
+    //     $brand = 'yonex';
+    //     $color = 'red';
+
+    //     return view('admin.itemShow', compact('gender', 'items', 'category', 'brand', 'color'));
+    // }
 
     // 男性アイテム取得
 
-    private static function getMaleItems($brand, $color, $category){
+    private static function getMaleItems($brand, $color, $category)
+    {
         if (!$category) {
             $category = 506269;
         }
@@ -75,7 +99,8 @@ class IndexController extends Controller
 
     // 女性アイテム取得
 
-    private static function getFemaleItems($brand, $color, $category){
+    private static function getFemaleItems($brand, $color, $category)
+    {
         if (!$category) {
             $category = 565818;
         }
@@ -125,7 +150,8 @@ class IndexController extends Controller
 
     // DBからアイテムを絞り込んで取得
 
-    private  static function getItemsFromDB($type, $brand, $color, $category){
+    private  static function getItemsFromDB($type, $brand, $color, $category)
+    {
         if ($brand && $color) {
             $items = DB::table($type . '_rakuten_apis')->where('category', $category)->where('brand', $brand)->whereNotNull($color)->orderBy('id', 'desc')->paginate(30);
         } elseif ($color) {
@@ -137,4 +163,5 @@ class IndexController extends Controller
         }
         return $items;
     }
+
 }

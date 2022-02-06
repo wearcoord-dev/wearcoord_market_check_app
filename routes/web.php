@@ -245,13 +245,13 @@ Route::get('/getregistercoord', [App\Http\Controllers\MycoordController::class, 
 
 // 外部参照用
 
-Route::get('/viewtest/studio1', function () {
-    return view('check.one');
-});
+// Route::get('/viewtest/studio1', function () {
+//     return view('check.one');
+// });
 
-Route::get('/studio2', function () {
-    return view('check.two');
-});
+// Route::get('/studio2', function () {
+//     return view('check.two');
+// });
 
 // 大会用LP
 
@@ -280,10 +280,10 @@ Route::get('/column/size', function () {
 // 管理画面
 
 Route::get('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'showAdminLoginForm']);
-Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
+// Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
 
 Route::post('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogin']);
-Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
+// Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
 
 Route::view('/admin', 'admin')->middleware('auth:admin')->name('admin-home');
 
@@ -302,9 +302,15 @@ Route::resource('items', ItemController::class)
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/index/{gender}', [App\Http\Controllers\Admin\IndexController::class, 'index'])->name('itemIndex');
-    Route::get('/admin/index/{item}', [App\Http\Controllers\Admin\IndexController::class, 'show'])->name('items.show');
+    Route::get('/admin/detail/{category}/{item}', [App\Http\Controllers\Admin\ItemController::class, 'show'])->name('itemShow');
+    Route::post('/admin/detail/update', [App\Http\Controllers\Admin\ItemController::class, 'update'])->name('itemFixPost');
+    Route::post('/admin/detail/destroy', [App\Http\Controllers\Admin\ItemController::class, 'destroy'])->name('itemDelete');
+
     // ウェア追加
     Route::get('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'index'])->name('itemAdd');
     Route::post('/admin/add/{gender}', [App\Http\Controllers\Admin\ItemController::class, 'store'])->name('itemAddPost');
+
+    Route::post('/admin/logout', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogout'])->name('adminLogout');
+
 });
 

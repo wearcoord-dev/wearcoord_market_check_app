@@ -22,7 +22,6 @@
                     <div class="card-body">
                         <h5 class="card-title">ウェア一覧</h5>
                         <ul style="padding: 20px">
-                            <li class="card-text" style="list-style: disc">サイズ登録されているアイテムのみ一覧表示画面で画像が表示される（DBカラムの'img'にあるものを取得している）</li>
                             <li class="card-text" style="list-style: disc">表示順は新しいものから載せている</li>
                             <li class="card-text" style="list-style: disc">大きく飛び出しているアフィリエイトリンクはアプリ側でも飛び出しているので、本当は要修正</li>
                         </ul>

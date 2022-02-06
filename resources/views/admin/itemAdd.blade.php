@@ -20,7 +20,6 @@
         </div>
 
     @endif
-            <img src=" {{ asset('/storage/img/rakutenlist/male/506269/common_logo.png')}}">
                 <div class="card">
                     <div class="card-header">{{ $gender }}ウェア新規登録</div>
                     <form action="{{ route('itemAddPost', ['gender' => $gender]) }}" method="POST"
