@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,30 +28,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.3.7/css/swiper.min.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
-        {{-- OGP --}}
-        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
-            <meta property="og:url" content="{{ config('app.url') }}">
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content="wearcoordトップ" />
-            <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
-            <meta property="og:site_name" content="wearcoord" />
-            <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
+    {{-- OGP --}}
 
-            @if(env('APP_ENV') == 'production')
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+        <meta property="og:url" content="{{ config('app.url') }}">
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="wearcoordトップ" />
+        <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+        <meta property="og:site_name" content="wearcoord" />
+        <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
+
+        @if (env('APP_ENV') == 'production')
             @include('layouts.parts.analytics')
-            @endif
+        @endif
 
-</head>
+    </head>
+
 <body>
     <header class="lpHeader">
         <div class="headerList">
             <a href="{{ route('lp') }}" class="titleIcon">
-                <img class="titleImg" src="{{asset('img/logo/logo_216496.png')}}" alt="">
+                <img class="titleImg" src="{{ asset('img/logo/logo_216496.png') }}" alt="">
             </a>
         </div>
         <div class="headerBtn">
@@ -60,7 +65,7 @@
                 </a>
             </div>
             <div class="headerBtnItem signinBtn">
-                <a  href="{{ route('register') }}">新規登録</a>
+                <a href="{{ route('register') }}">新規登録</a>
             </div>
         </div>
     </header>
@@ -70,54 +75,54 @@
         {{-- male --}}
         <div class="mannequinImg">
             <picture class="mannequinWrap">
-                <img class="mannequinPosition" src="{{asset('img/lp/manekin_toplp.png')}}" alt="">
+                <img class="mannequinPosition" src="{{ asset('img/lp/manekin_toplp.png') }}" alt="">
             </picture>
             <div class="caps-container">
-                <img class="capslist" src="{{asset('img/lp/wearlist-caps_male.png')}}" alt="">
+                <img class="capslist" src="{{ asset('img/lp/wearlist-caps_male.png') }}" alt="">
             </div>
             <div class="swiper-container tops-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slide-item">
-                        <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
+                        <img class="toplist" src="{{ asset('img/lp/wearlist-top.png') }}" alt="">
                     </div>
                     <div class="swiper-slide slide-item">
-                        <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
+                        <img class="toplist" src="{{ asset('img/lp/wearlist-top.png') }}" alt="">
                     </div>
                 </div>
             </div>
-                <div class="pants-container">
-                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
-                </div>
-                <div class="shoes-container">
-                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
-                </div>
+            <div class="pants-container">
+                <img class="pantslist" src="{{ asset('img/lp/wearlist-pants.png') }}" alt="">
             </div>
+            <div class="shoes-container">
+                <img class="shoeslist" src="{{ asset('img/lp/wearlist-shoes.png') }}" alt="">
+            </div>
+        </div>
         </div>
 
         <div class="mannequinImg female">
             <picture class="mannequinWrap">
-                <img class="mannequinPosition" src="{{asset('img/lp/woman_manekin_lp.png')}}" alt="">
+                <img class="mannequinPosition" src="{{ asset('img/lp/woman_manekin_lp.png') }}" alt="">
             </picture>
             <div class="caps-container">
-                <img class="capslist" src="{{asset('img/lp/wearlist-caps_female.png')}}" alt="">
+                <img class="capslist" src="{{ asset('img/lp/wearlist-caps_female.png') }}" alt="">
             </div>
             <div class="swiper-container tops-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slide-item">
-                        <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
+                        <img class="toplist" src="{{ asset('img/lp/ladies_lp_item.png') }}" alt="">
                     </div>
                     <div class="swiper-slide slide-item">
-                        <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
+                        <img class="toplist" src="{{ asset('img/lp/ladies_lp_item.png') }}" alt="">
                     </div>
                 </div>
             </div>
-                <div class="pants-container">
-                    <img class="pantslist" src="{{asset('img/lp/wearlist-pants_female.png')}}" alt="">
-                </div>
-                <div class="shoes-container">
-                    <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes_female.png')}}" alt="">
-                </div>
+            <div class="pants-container">
+                <img class="pantslist" src="{{ asset('img/lp/wearlist-pants_female.png') }}" alt="">
             </div>
+            <div class="shoes-container">
+                <img class="shoeslist" src="{{ asset('img/lp/wearlist-shoes_female.png') }}" alt="">
+            </div>
+        </div>
         </div>
     </section>
 
@@ -184,8 +189,22 @@
                 <p>wearcoordでは欲しいウェアの組み合わせを購入前に見える化することでスポーツウェアをより気軽に楽しく、普段のスポーツをよりワクワクしたものにするお手伝いをします。</p>
             </div>
             <picture>
-                <img class="mockImg" src="{{asset('img/lp/top_catch.png')}}" alt="">
+                <img class="mockImg" src="{{ asset('img/lp/top_catch.png') }}" alt="">
             </picture>
+
+            <div class="notLoginLink">
+                <h2>会員登録せずに今すぐアプリを使ってみる!</h2>
+                <div class="linkCard">
+                    <a href="/sample/female">
+                        <img src={{ asset('img/lp/female_tennis.png') }} alt="">
+                        <p>女性向けウェアはこちら</p>
+                    </a>
+                    <a href="/sample/male">
+                        <img src={{ asset('img/lp/male_tennis.png') }} alt="">
+                        <p>男性向けウェアはこちら</p>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -193,30 +212,30 @@
         <div>
             <h2 class="sectTitle">wearcoordでできること</h2>
         </div>
-            <ul class="sectUl">
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/search_item.png')}}" alt="">
-                    </picture>
-                    <h3>気になるウェアを探す</h3>
-                    <p>「このブランドのこんなカラーのアイテムが欲しい！」新作アイテムやプロ着用モデルなど豊富なアイテムの試着が可能です。</p>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/coord_wear.png')}}" alt="">
-                    </picture>
-                    <h3>コーデを作って確認</h3>
-                    <p>購入したいウェアを組み合わせて、理想のコーディネートを作ることができます。</p>
-                </li>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/ref.png')}}" alt="">
-                    </picture>
-                    <h3>他人のコーデを参考に</h3>
-                    <p>wearcoordアプリ上で他のユーザーが作った全身コーディネートを参照し、ワンクリックで試着できます。</p>
-                </li>
-            </ul>
+        <ul class="sectUl">
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/search_item.png') }}" alt="">
+                </picture>
+                <h3>気になるウェアを探す</h3>
+                <p>「このブランドのこんなカラーのアイテムが欲しい！」新作アイテムやプロ着用モデルなど豊富なアイテムの試着が可能です。</p>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/coord_wear.png') }}" alt="">
+                </picture>
+                <h3>コーデを作って確認</h3>
+                <p>購入したいウェアを組み合わせて、理想のコーディネートを作ることができます。</p>
+            </li>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/ref.png') }}" alt="">
+                </picture>
+                <h3>他人のコーデを参考に</h3>
+                <p>wearcoordアプリ上で他のユーザーが作った全身コーディネートを参照し、ワンクリックで試着できます。</p>
+            </li>
+        </ul>
     </section>
 
     <section class="sect">
@@ -227,7 +246,7 @@
         <div class="funcBox leftBorder">
             <div class="wrapper">
                 <picture>
-                    <img src="{{asset('img/lp/top_catch.png')}}" alt="">
+                    <img src="{{ asset('img/lp/top_catch.png') }}" alt="">
                 </picture>
                 <div class="textBox">
                     <h3>コーディネートを直感的にできる！</h3>
@@ -249,7 +268,7 @@
         <div class="funcBox rightBorder">
             <div class="wrapper reverse">
                 <picture>
-                    <img src="{{asset('img/lp/size.png')}}" alt="">
+                    <img src="{{ asset('img/lp/size.png') }}" alt="">
                 </picture>
                 <div class="textBox">
                     <h3>あなたに合ったウェアかどうかフィードバック！</h3>
@@ -273,112 +292,112 @@
         <div>
             <h2 class="sectTitle">wearcoordユーザーの声</h2>
         </div>
-            <ul class="sectUl">
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/user1.png')}}" alt="">
-                    </picture>
-                    <h3>単価が高いウェアも安心<br>（20代 : テニスが趣味）</h3>
-                    <p>「今までは単価の高いレディースウェアをネット上の情報だけで選ぶのは難しかったけれど、組み合わせコーデで直感的に確認できるので、価格を気にせず好きなウェアを選べる！」
-                    </p>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/user2.png')}}" alt="">
-                    </picture>
-                    <h3>お店で試着より気軽で良い<br>（30代: 週末テニスプレイヤー）</h3>
-                    <p>「ちょっと気になる可愛いデザインのアイテムがあるけれどそのアイテムを置いているお店が近くにない時に、試着をする感覚で全身コーデを作ることができイメージが湧く！」</p>
-                </li>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/user3.png')}}" alt="">
-                    </picture>
-                    <h3>ずっとこれを待っていた！<br>（50代: 週末テニスプレイヤー）</h3>
-                    <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどを合わせたコーデを頭で想像するしかなかったが、wearcoordがあるとちゃんと目で確認した上で購入できるのがありがたい！」
-                    </p>
-                </li>
-            </ul>
+        <ul class="sectUl">
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/user1.png') }}" alt="">
+                </picture>
+                <h3>単価が高いウェアも安心<br>（20代 : テニスが趣味）</h3>
+                <p>「今までは単価の高いレディースウェアをネット上の情報だけで選ぶのは難しかったけれど、組み合わせコーデで直感的に確認できるので、価格を気にせず好きなウェアを選べる！」
+                </p>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/user2.png') }}" alt="">
+                </picture>
+                <h3>お店で試着より気軽で良い<br>（30代: 週末テニスプレイヤー）</h3>
+                <p>「ちょっと気になる可愛いデザインのアイテムがあるけれどそのアイテムを置いているお店が近くにない時に、試着をする感覚で全身コーデを作ることができイメージが湧く！」</p>
+            </li>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/user3.png') }}" alt="">
+                </picture>
+                <h3>ずっとこれを待っていた！<br>（50代: 週末テニスプレイヤー）</h3>
+                <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどを合わせたコーデを頭で想像するしかなかったが、wearcoordがあるとちゃんと目で確認した上で購入できるのがありがたい！」
+                </p>
+            </li>
+        </ul>
     </section>
 
-       <section class="sect">
+    <section class="sect">
         <div>
             <h2 class="sectTitle">wearcoordで取り扱うブランド一覧</h2>
         </div>
-            <ul class="sectUl sectBrand">
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/adidas.png')}}" alt="">
-                    </picture>
-                    <h3>Adidas</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/asics.png')}}" alt="">
-                    </picture>
-                    <h3>Asics</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/diadora.png')}}" alt="">
-                    </picture>
-                    <h3>Diadora</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/ellesse.png')}}" alt="">
-                    </picture>
-                    <h3>Ellesse</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/fila.png')}}" alt="">
-                    </picture>
-                    <h3>Fila</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/prince.png')}}" alt="">
-                    </picture>
-                    <h3>Prince</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/underarmar.png')}}" alt="">
-                    </picture>
-                    <h3>Underarmar</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/yonex.png')}}" alt="">
-                    </picture>
-                    <h3>Yonex</h3>
-                </li>
-                <li>
-                    <picture>
-                        <img class="" src="{{asset('img/lp/nike.png')}}" alt="">
-                    </picture>
-                    <h3>Nike</h3>
-                </li>
-            </ul>
+        <ul class="sectUl sectBrand">
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/adidas.png') }}" alt="">
+                </picture>
+                <h3>Adidas</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/asics.png') }}" alt="">
+                </picture>
+                <h3>Asics</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/diadora.png') }}" alt="">
+                </picture>
+                <h3>Diadora</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/ellesse.png') }}" alt="">
+                </picture>
+                <h3>Ellesse</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/fila.png') }}" alt="">
+                </picture>
+                <h3>Fila</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/prince.png') }}" alt="">
+                </picture>
+                <h3>Prince</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/underarmar.png') }}" alt="">
+                </picture>
+                <h3>Underarmar</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/yonex.png') }}" alt="">
+                </picture>
+                <h3>Yonex</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/nike.png') }}" alt="">
+                </picture>
+                <h3>Nike</h3>
+            </li>
+        </ul>
     </section>
 
-       <section class="sect">
+    <section class="sect">
         <div>
             <h2 class="sectTitle">wearcoordコラム</h2>
         </div>
-            <ul class="sectUl sectColumn">
-                <li>
-                    <a href="{{ route('column_size') }}">
-                        <img class="" src="{{asset('img/lp/2021/size.jpg')}}" alt="">
-                    </a>
-                </li>
-                {{-- <li>
+        <ul class="sectUl sectColumn">
+            <li>
+                <a href="{{ route('column_size') }}">
+                    <img class="" src="{{ asset('img/lp/2021/size.jpg') }}" alt="">
+                </a>
+            </li>
+            {{-- <li>
                     <a>
                         <img class="" src="{{asset('img/lp/2021/size.jpg')}}" alt="">
                     </a>
                 </li> --}}
-            </ul>
+        </ul>
     </section>
 
     <footer>
@@ -391,30 +410,35 @@
     </footer>
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js" integrity="sha512-sAHYBRXSgMOV2axInO6rUzuKKM5SkItFLlLHQ8YjRD+FBwowtATOs4njP9oim3/MzyAGrB52SLDjpAOLcOT9TA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"
+        integrity="sha512-sAHYBRXSgMOV2axInO6rUzuKKM5SkItFLlLHQ8YjRD+FBwowtATOs4njP9oim3/MzyAGrB52SLDjpAOLcOT9TA=="
+        crossorigin="anonymous"></script>
     <script>
         const txts = $('.mannequinImg');
         let txtIndex = -1;
         txts.hide()
+
         function showNextTxt() {
-        txtIndex++;
-        txts.eq(txtIndex % txts.length).fadeIn(2000).delay(3000).fadeOut(2000, showNextTxt);
-        var mySwiper = new Swiper ('.swiper-container', {
-        autoplay: {
-        delay: 0,
-        },
-        loop: true,
-        speed: 10000,
-        disableOnInteraction: false,
-        autoplayDisableOnInteraction: false,
-        observer: true,
-        observeParents: true,
-        observeSlideChildren: true,
-        });
+            txtIndex++;
+            txts.eq(txtIndex % txts.length).fadeIn(2000).delay(3000).fadeOut(2000, showNextTxt);
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: {
+                    delay: 0,
+                },
+                loop: true,
+                speed: 10000,
+                disableOnInteraction: false,
+                autoplayDisableOnInteraction: false,
+                observer: true,
+                observeParents: true,
+                observeSlideChildren: true,
+            });
         }
         showNextTxt();
     </script>
 </body>
+
 </html>
