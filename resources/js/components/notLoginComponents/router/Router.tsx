@@ -1,6 +1,7 @@
 import { FC, memo } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Page404 } from "../pages/Page404";
+import { HeaderLayout } from "../templates/HeaderLayout";
 import { SampleRoutes } from "./SampleRoutes";
 
 export const Router: FC = memo(() => {
@@ -14,7 +15,9 @@ export const Router: FC = memo(() => {
                             exact={route.exact}
                             path={`${url}${route.path}`}
                         >
-                            {route.children}
+                            <HeaderLayout>
+                                {route.children}
+                            </HeaderLayout>
                         </Route>
                     ))}
                 </Switch>
