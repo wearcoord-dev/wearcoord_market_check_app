@@ -1,0 +1,16 @@
+export const brandList = [
+'all',
+'adidas',
+'nike',
+'yonex',
+'asics',
+'diadora',
+'prince',
+'fila',
+'underarmour',
+'ellesse',
+'babolat',
+'hydrogen',
+'lecoq',
+'lacoste',
+];

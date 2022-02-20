@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 
 const style = {
     bgImg: {
@@ -17,6 +18,9 @@ const style = {
 }as const;
 
 export const TopCoord: FC = memo(() => {
+    const { notLoginUser } = useNotLoginUser();
+    console.log(notLoginUser);
+
     return (
         <>
             <div style={style.bgImg}>

@@ -12,6 +12,7 @@ export const Header: FC = memo(() => {
     const onClickHome = () => window.location.href = "/";
     const onClickMale = useCallback(() => history.push("/sample/male"), []);
     const onClickFemale = useCallback(() => history.push("/sample/female"), []);
+    const onClickCoord = useCallback(() => history.push("/sample"), []);
 
     return (
         <>
@@ -28,6 +29,9 @@ export const Header: FC = memo(() => {
                 </Flex>
                 <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }}>
                     <Box pr={4}>
+                        <Link onClick={onClickCoord}>コーデを見る</Link>
+                    </Box>
+                    <Box pr={4}>
                         <Link onClick={onClickMale}>男性向けウェア</Link>
                     </Box>
                     <Link onClick={onClickFemale}>女性向けウェア</Link>
@@ -40,6 +44,7 @@ export const Header: FC = memo(() => {
                 onClickHome={onClickHome}
                 onClickMale={onClickMale}
                 onClickFemale={onClickFemale}
+                onClickCoord={onClickCoord}
             />
         </>
     )
