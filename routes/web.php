@@ -314,3 +314,14 @@ Route::middleware('auth:admin')->group(function () {
 
 });
 
+
+// 未ログイン
+
+Route::get('/sample', function () {
+    return view('layouts.notLogin');
+});
+
+// /main/以降にアクセスしても404にしない
+Route::get('/sample/{any}', static function () {
+    return view('layouts.notLogin');
+})->where('any', '.*');
