@@ -28,3 +28,18 @@ export const topsList = [
     },
 ];
 
+export const pantsList = [
+    {
+        value: 'now',
+        text: '今のウェア'
+    },
+    {
+        value: 'half',
+        text: 'ハーフ・ショート'
+    },
+    {
+        value: 'long',
+        text: 'ロング'
+    },
+];
+

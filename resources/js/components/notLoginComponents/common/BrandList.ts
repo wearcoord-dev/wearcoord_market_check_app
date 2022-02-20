@@ -34,3 +34,23 @@ export const brandTopsList = [
 'tenez',
 'yoxoi',
 ];
+
+export const brandPantsList = [
+'all',
+'adidas',
+'nike',
+'yonex',
+'asics',
+'diadora',
+'prince',
+'fila',
+'ellesse',
+'babolat',
+'hydrogen',
+'lecoq',
+'lacoste',
+'ralosso',
+'marc_de_paw',
+'tenez',
+'yoxoi',
+];

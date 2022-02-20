@@ -11,6 +11,11 @@ export const SelectWear: FC = memo(() => {
         onOpen: onOpenTops,
         onClose: onCloseTops
     } = useDisclosure()
+    const {
+        isOpen: isOpenPants,
+        onOpen: onOpenPants,
+        onClose: onClosePants
+    } = useDisclosure()
 
     // console.log(notLoginUser);
 
@@ -18,16 +23,25 @@ export const SelectWear: FC = memo(() => {
     const onClickCaps = useCallback(() => {
         onOpen();
         onCloseTops();
+        onClosePants();
     }, []);
 
     const onClickTops = useCallback(() => {
-        onOpenTops();
         onClose();
+        onOpenTops();
+        onClosePants();
+    }, []);
+
+    const onClickPants = useCallback(() => {
+        onClose();
+        onCloseTops();
+        onOpenPants();
     }, []);
 
     const onClickAllClose = useCallback(() => {
         onClose();
         onCloseTops();
+        onClosePants();
     }, []);
 
     const capsComponent = (
@@ -44,7 +58,7 @@ export const SelectWear: FC = memo(() => {
 
     const pantsComponent = (
         <>
-            <div style={{ width: "100%", height: "170px", margin: "auto" }}></div>
+            <div onClick={onClickPants} style={{ width: "100%", height: "170px", margin: "auto" }}></div>
         </>
     )
 
@@ -72,6 +86,8 @@ export const SelectWear: FC = memo(() => {
                 isOpen={isOpen}
                 onCloseTops={onCloseTops}
                 isOpenTops={isOpenTops}
+                onClosePants={onClosePants}
+                isOpenPants={isOpenPants}
                 onClickAllClose={onClickAllClose}
             />
         </>
