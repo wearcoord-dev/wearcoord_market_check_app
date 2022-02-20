@@ -1,5 +1,4 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
-import { render } from "react-dom"
 import { brandList } from "../common/BrandList"
 
 
