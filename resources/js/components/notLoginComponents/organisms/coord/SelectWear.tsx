@@ -1,20 +1,44 @@
-import { FC, memo } from "react";
+import { useDisclosure } from "@chakra-ui/react";
+import { FC, memo, useCallback, useEffect } from "react";
 import { SearchBox } from "../../molecules/SearchBox";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 
 export const SelectWear: FC = memo(() => {
-    const { notLoginUser} = useNotLoginUser();
-    console.log(notLoginUser);
+    const { notLoginUser } = useNotLoginUser();
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const {
+        isOpen: isOpenTops,
+        onOpen: onOpenTops,
+        onClose: onCloseTops
+    } = useDisclosure()
+
+    // console.log(notLoginUser);
+
+    // 選択したカテゴリー以外を閉じる
+    const onClickCaps = useCallback(() => {
+        onOpen();
+        onCloseTops();
+    }, []);
+
+    const onClickTops = useCallback(() => {
+        onOpenTops();
+        onClose();
+    }, []);
+
+    const onClickAllClose = useCallback(() => {
+        onClose();
+        onCloseTops();
+    }, []);
 
     const capsComponent = (
         <>
-            <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+            <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
         </>
     )
 
     const topsComponent = (
         <>
-            <div style={{ width: "100%", height: "130px", margin: "auto" }}></div>
+            <div onClick={onClickTops} style={{ width: "100%", height: "130px", margin: "auto" }}></div>
         </>
     )
 
@@ -43,7 +67,13 @@ export const SelectWear: FC = memo(() => {
 
             <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
 
-            <SearchBox />
+            <SearchBox
+                onClose={onClose}
+                isOpen={isOpen}
+                onCloseTops={onCloseTops}
+                isOpenTops={isOpenTops}
+                onClickAllClose={onClickAllClose}
+            />
         </>
     )
 });

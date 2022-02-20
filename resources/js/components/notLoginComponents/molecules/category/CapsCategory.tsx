@@ -1,8 +1,13 @@
-import { Flex } from "@chakra-ui/react";
+import { Button, ButtonGroup, Flex } from "@chakra-ui/react";
 import { FC, memo } from "react";
+import { SaveBtn } from "../../atoms/buttonGroup/SaveBtn";
 import { SearchBrandSelect } from "./select/SearchBrand";
 import { SearchCategorySelect } from "./select/SearchCategory";
 import { SearchColorSelect } from "./select/SearchColor";
+
+type Props = {
+    onClickAllClose: () => void;
+}
 
 const style = {
     wrapper: {
@@ -18,7 +23,9 @@ const style = {
     }
 } as const;
 
-export const CapsCategory: FC = memo(() => {
+export const CapsCategory: FC<Props> = memo((props) => {
+    const { onClickAllClose } = props;
+
     return (
         <Flex style={style.wrapper} p={10}>
             <Flex as='ul' overflow='auto'
@@ -69,6 +76,7 @@ export const CapsCategory: FC = memo(() => {
             >
                 <SearchColorSelect />
             </Flex>
+            <SaveBtn onClickAllClose={onClickAllClose} />
         </Flex>
     )
 });
