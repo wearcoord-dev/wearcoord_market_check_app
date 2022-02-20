@@ -12,10 +12,11 @@ type Props = {
 const style = {
     wrapper: {
         position: "fixed",
-        bottom: "20px",
+        bottom: "0px",
         width: "100%",
         right: "0",
         flexDirection: 'column',
+        backgroundColor: 'ghostwhite'
     },
     ul: {
         flexWrap: "nowrap",

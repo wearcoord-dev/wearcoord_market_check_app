@@ -192,7 +192,7 @@
                 <img class="mockImg" src="{{ asset('img/lp/top_catch.png') }}" alt="">
             </picture>
 
-            <div class="notLoginLink">
+            {{-- <div class="notLoginLink">
                 <h2>会員登録せずに今すぐアプリを使ってみる!</h2>
                 <div class="linkCard">
                     <a href="/sample/female">
@@ -204,7 +204,7 @@
                         <p>男性向けウェアはこちら</p>
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 
