@@ -2,6 +2,7 @@ import { Drawer } from "@chakra-ui/react";
 import { FC, memo } from "react";
 import { CapsCategory } from "./category/CapsCategory";
 import { PantsCategory } from "./category/PantsCategory";
+import { ShoesCategory } from "./category/ShoesCategory";
 import { TopsCategory } from "./category/TopsCategory";
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
     isOpenTops: boolean;
     onClosePants: () => void;
     isOpenPants: boolean;
+    onCloseShoes: () => void;
+    isOpenShoes: boolean;
     onClickAllClose: () => void;
 }
 
@@ -29,7 +32,7 @@ const style = {
 } as const;
 
 export const SearchBox: FC<Props> = memo((props) => {
-    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onClickAllClose } = props;
+    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose } = props;
 
     return (
         <>
@@ -41,6 +44,9 @@ export const SearchBox: FC<Props> = memo((props) => {
             </Drawer>
             <Drawer onClose={onClosePants} isOpen={isOpenPants}>
                 <PantsCategory onClickAllClose={onClickAllClose} />
+            </Drawer>
+            <Drawer onClose={onCloseShoes} isOpen={isOpenShoes}>
+                <ShoesCategory onClickAllClose={onClickAllClose} />
             </Drawer>
         </>
     )

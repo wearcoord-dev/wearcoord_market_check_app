@@ -1,6 +1,6 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 import { FC, memo } from "react"
-import { capsList, pantsList, topsList } from "../../../common/CategoryList"
+import { capsList, pantsList, shoesList, topsList } from "../../../common/CategoryList"
 
 type Props = {
     type: string;
@@ -57,6 +57,9 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
         }
         if(type === 'pants'){
             options = pantsList;
+        }
+        if(type === 'shoes'){
+            options = shoesList;
         }
 
     const { getRootProps, getRadioProps } = useRadioGroup({

@@ -5,17 +5,22 @@ import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 
 export const SelectWear: FC = memo(() => {
     const { notLoginUser } = useNotLoginUser();
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const {
         isOpen: isOpenTops,
         onOpen: onOpenTops,
         onClose: onCloseTops
-    } = useDisclosure()
+    } = useDisclosure();
     const {
         isOpen: isOpenPants,
         onOpen: onOpenPants,
         onClose: onClosePants
-    } = useDisclosure()
+    } = useDisclosure();
+    const {
+        isOpen: isOpenShoes,
+        onOpen: onOpenShoes,
+        onClose: onCloseShoes
+    } = useDisclosure();
 
     // console.log(notLoginUser);
 
@@ -24,24 +29,35 @@ export const SelectWear: FC = memo(() => {
         onOpen();
         onCloseTops();
         onClosePants();
+        onCloseShoes();
     }, []);
 
     const onClickTops = useCallback(() => {
         onClose();
         onOpenTops();
         onClosePants();
+        onCloseShoes();
     }, []);
 
     const onClickPants = useCallback(() => {
         onClose();
         onCloseTops();
         onOpenPants();
+        onCloseShoes();
+    }, []);
+
+    const onClickShoes = useCallback(() => {
+        onClose();
+        onCloseTops();
+        onClosePants();
+        onOpenShoes();
     }, []);
 
     const onClickAllClose = useCallback(() => {
         onClose();
         onCloseTops();
         onClosePants();
+        onCloseShoes();
     }, []);
 
     const capsComponent = (
@@ -64,7 +80,7 @@ export const SelectWear: FC = memo(() => {
 
     const shoesComponent = (
         <>
-            <div style={{ width: "100%", height: "100px", margin: "auto" }}></div>
+            <div onClick={onClickShoes} style={{ width: "100%", height: "100px", margin: "auto" }}></div>
         </>
     )
 
@@ -88,6 +104,8 @@ export const SelectWear: FC = memo(() => {
                 isOpenTops={isOpenTops}
                 onClosePants={onClosePants}
                 isOpenPants={isOpenPants}
+                onCloseShoes={onCloseShoes}
+                isOpenShoes={isOpenShoes}
                 onClickAllClose={onClickAllClose}
             />
         </>
