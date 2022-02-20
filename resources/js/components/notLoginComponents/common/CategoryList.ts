@@ -13,3 +13,18 @@ export const capsList = [
     },
 ];
 
+export const topsList = [
+    {
+        value: 'now',
+        text: '今のウェア'
+    },
+    {
+        value: 'tshirt',
+        text: 'Tシャツ'
+    },
+    {
+        value: 'outer',
+        text: 'アウター'
+    },
+];
+

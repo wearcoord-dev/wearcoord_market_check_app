@@ -1,9 +1,5 @@
-import { Box, Center, Flex, Wrap, WrapItem } from "@chakra-ui/react";
 import { FC, memo } from "react";
-import { SearchBrandSelect } from "./SearchBrand";
-import { SearchCategorySelect } from "./SearchCategory";
-import { SearchColorSelect } from "./SearchColor";
-
+import { CapsCategory } from "./category/CapsCategory";
 
 const style = {
     wrapper: {
@@ -22,56 +18,7 @@ const style = {
 export const SearchBox: FC = memo(() => {
     return (
         <>
-            <Flex style={style.wrapper}>
-                <Flex as='ul' overflow='auto'
-                    css={{
-                        '&::-webkit-scrollbar': {
-                            height: '8px',
-                        },
-                        '&::-webkit-scrollbar-track': {
-                            width: '6px',
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                            background: '#216496',
-                            borderRadius: '24px',
-                        },
-                    }}
-                >
-                    <SearchCategorySelect />
-                </Flex>
-                <Flex as='ul' overflow='auto'
-                    css={{
-                        '&::-webkit-scrollbar': {
-                            height: '8px',
-                        },
-                        '&::-webkit-scrollbar-track': {
-                            width: '6px',
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                            background: '#216496',
-                            borderRadius: '24px',
-                        },
-                    }}
-                >
-                    <SearchBrandSelect />
-                </Flex>
-                <Flex as='ul' overflow='auto'
-                    css={{
-                        '&::-webkit-scrollbar': {
-                            height: '8px',
-                        },
-                        '&::-webkit-scrollbar-track': {
-                            width: '6px',
-                        },
-                        '&::-webkit-scrollbar-thumb': {
-                            background: '#216496',
-                            borderRadius: '24px',
-                        },
-                    }}
-                >
-                    <SearchColorSelect />
-                </Flex>
-            </Flex>
+            <CapsCategory />
         </>
     )
 });

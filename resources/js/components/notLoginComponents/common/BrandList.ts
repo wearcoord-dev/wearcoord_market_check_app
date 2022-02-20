@@ -1,4 +1,4 @@
-export const brandList = [
+export const brandCapsList = [
 'all',
 'adidas',
 'nike',
@@ -13,4 +13,24 @@ export const brandList = [
 'hydrogen',
 'lecoq',
 'lacoste',
+];
+
+export const brandTopsList = [
+'all',
+'adidas',
+'nike',
+'yonex',
+'asics',
+'diadora',
+'prince',
+'fila',
+'ellesse',
+'babolat',
+'hydrogen',
+'lecoq',
+'lacoste',
+'ralosso',
+'marc_de_paw',
+'tenez',
+'yoxoi',
 ];
