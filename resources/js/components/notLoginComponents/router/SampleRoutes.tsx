@@ -1,3 +1,4 @@
+import { ChangeMannequin } from "../pages/ChangeManenequin";
 import { CoordFemale } from "../pages/CoordFemale";
 import { CoordMale } from "../pages/CoordMale";
 import { Page404 } from "../pages/Page404";
@@ -19,6 +20,11 @@ export const SampleRoutes = [
         path: "/female",
         exact: false,
         children: <CoordFemale />
+    },
+    {
+        path: "/mannequin",
+        exact: false,
+        children: <ChangeMannequin />
     },
     {
         path: "*",

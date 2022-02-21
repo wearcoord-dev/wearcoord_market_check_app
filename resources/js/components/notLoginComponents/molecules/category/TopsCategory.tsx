@@ -16,7 +16,8 @@ const style = {
         width: "100%",
         right: "0",
         flexDirection: 'column',
-        backgroundColor: 'ghostwhite'
+        backgroundColor: 'ghostwhite',
+        padding: "0 20px 20px",
     },
     ul: {
         flexWrap: "nowrap",
