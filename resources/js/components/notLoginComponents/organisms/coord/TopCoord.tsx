@@ -15,7 +15,7 @@ const style = {
         position: "relative",
         backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
     }
-}as const;
+} as const;
 
 export const TopCoord: FC = memo(() => {
     const { notLoginUser } = useNotLoginUser();
@@ -23,10 +23,16 @@ export const TopCoord: FC = memo(() => {
 
     return (
         <>
-            <div style={style.bgImg}>
-                <div style={style.mannequinImg}>
+            {notLoginUser ? (
+                <div style={style.bgImg}>
+                    <div style={style.mannequinImg}>
+                    </div>
                 </div>
-            </div>
+
+            ) :
+                (
+                    <p>コーデを作ってください</p>
+                )}
         </>
     )
 });
