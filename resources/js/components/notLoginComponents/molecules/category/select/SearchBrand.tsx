@@ -23,6 +23,7 @@ function RadioCard(props) {
                 borderWidth='1px'
                 borderRadius='md'
                 boxShadow='md'
+                whiteSpace='nowrap'
                 // bg='#f9f9f9'
                 _checked={{
                     bg: '#216496',
@@ -71,10 +72,10 @@ export const SearchBrandSelect: FC<Props> = memo((props) => {
     return (
         <HStack {...group} py={6}>
             {options.map((value) => {
-                const radio = getRadioProps({ value })
+                const radio = getRadioProps({ value: value.value })
                 return (
-                    <RadioCard key={value} {...radio}>
-                        {value}
+                    <RadioCard key={value.value} {...radio}>
+                        {value.text}
                     </RadioCard>
                 )
             })}

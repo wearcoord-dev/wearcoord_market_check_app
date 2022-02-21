@@ -23,6 +23,7 @@ function RadioCard(props) {
                 borderWidth='1px'
                 borderRadius='md'
                 boxShadow='md'
+                whiteSpace='nowrap'
                 _checked={{
                     bg: '#216496',
                     color: 'white',
@@ -33,8 +34,8 @@ function RadioCard(props) {
                 }}
                 px={10}
                 py={3}
-                width='150px'
-                textAlign='center'
+                // width='150px'
+                // textAlign='center'
             >
                 {props.children}
             </Box>
