@@ -41,6 +41,14 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
         }
     }, [notLoginUser])
 
+    // useEffect(() => {
+    //     if (notLoginUser) {
+    //         if (notLoginUser.gender && notLoginUser.mannequin === null) {
+    //             setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null })
+    //         }
+    //     }
+    // })
+
     // console.log(localStorage.getItem("gender"), localStorage.getItem("mannequin"));
 
     return (

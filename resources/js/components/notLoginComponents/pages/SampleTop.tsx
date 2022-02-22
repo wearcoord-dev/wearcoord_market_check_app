@@ -13,13 +13,13 @@ export const SampleTop: FC = memo(() => {
         <>
             <TopCoord />
 
-            <Stack direction='row' spacing={4} align='center'>
+            {/* <Stack direction='row' spacing={4} align='center'>
                 <OpenBtn />
 
                 <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
                     マネキンを変更する
                 </Button>
-            </Stack>
+            </Stack> */}
         </>
     )
 });

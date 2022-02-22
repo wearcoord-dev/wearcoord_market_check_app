@@ -1,5 +1,7 @@
 import { Button, Flex, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import { FC, memo, useCallback, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { useMessage } from "../hooks/useMessage";
 import { InnerSearchBox } from "../molecules/InnerSearchBox";
 import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
@@ -16,7 +18,6 @@ const style = {
         maxWidth: "400px",
         margin: "auto",
         position: "relative",
-        backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
         width: '50%',
     }
 } as const;
@@ -37,50 +38,54 @@ const commonCss = {
 export const ChangeMannequin: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const [mannequinValue, setMannequinValue] = useState('');
+    const history = useHistory();
+    const location = useLocation();
+    const { showMessage } = useMessage();
     console.log(notLoginUser);
 
-    // if(!notLoginUser){
-    //     setNotLoginUser({gender : 'male', caps : null, tops : null, pants : null, shoes : null});
-    // }
+    {/* @ts-ignore */ }
+    const fromWhere = location.state.from;
+    console.log(fromWhere);
 
-    const handleSubmit = () => {
+
+    const handleSubmit = (props) => {
         // e.preventDefault();
-        console.log(mannequinValue)
-        const genderType = 'male';
-        setNotLoginUser({ ...notLoginUser, gender: genderType, mannequin: mannequinValue });
+        // console.log(mannequinValue)
+        setNotLoginUser({ ...notLoginUser, gender: props, mannequin: mannequinValue });
+        showMessage({ title: "変更しました", status: "success" });
+        // 前のページに戻れないようにする
+        history.replace('/sample');
     };
 
     return (
         <>
-            <div style={style.bgImg}>
-                <div style={style.mannequinImg}>
+            {/* 現在のマネキンを表示 */}
+            {notLoginUser ? (notLoginUser.mannequin ? (
+                <div style={style.bgImg}>
+                    <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
+                    </div>
                 </div>
-            </div>
+            ) : null
+            ) : null}
 
-            <Tabs position='fixed' bottom={0} width='100%' isFitted variant='enclosed'>
-                <TabList mb='1em'>
-                    <Tab>インナー</Tab>
-                    <Tab>ソックス</Tab>
-                </TabList>
-                <TabPanels>
-                    <TabPanel>
-                        <Flex as='ul' overflow='auto'
-                            css={commonCss}
-                        >
-                            <InnerSearchBox setMannequinValue={setMannequinValue} gender={'male'} type='inner' />
-                        </Flex>
-                        <SubmitBtn EnterSubmit={handleSubmit}>マネキンを確定する</SubmitBtn>
-                    </TabPanel>
-                    <TabPanel>
-                        <Flex as='ul' overflow='auto'
-                            css={commonCss}
-                        >
-                            <InnerSearchBox setMannequinValue={setMannequinValue} gender={'male'} type='socks' />
-                        </Flex>
-                        <SubmitBtn EnterSubmit={handleSubmit}>マネキンを確定する</SubmitBtn>
-                    </TabPanel>
-                </TabPanels>
-            </Tabs>
+            {notLoginUser ? (notLoginUser.gender === 'male' ? (
+                <CreateTabs setMannequinValue={setMannequinValue} handleSubmit={handleSubmit} gender='male' />
+            ) : notLoginUser.gender === 'female' ? (
+                <CreateTabs setMannequinValue={setMannequinValue} handleSubmit={handleSubmit} gender='female' />
+            )
+                : null
+            ) : null}
+
+            {fromWhere ? (fromWhere === 'male' ? (
+                <CreateTabs setMannequinValue={setMannequinValue} handleSubmit={handleSubmit} gender='male' />
+            ) : fromWhere === 'female' ? (
+                <CreateTabs setMannequinValue={setMannequinValue} handleSubmit={handleSubmit} gender='female' />
+            )
+                : null
+            ) : null}
+
+            {/* {fromWhere ? fromWhere ?? <p>okkkk</p> : null} */}
+
         </>
     )
 });
@@ -93,5 +98,34 @@ function SubmitBtn(props) {
                 {children}
             </Button>
         </Stack>
+    )
+}
+
+function CreateTabs(props) {
+    const { setMannequinValue, handleSubmit, gender } = props;
+
+    const types = ['inner', 'socks'];
+
+    return (
+        <Tabs position='fixed' bottom={0} width='100%' isFitted variant='enclosed'>
+            <TabList mb='1em'>
+                <Tab>インナー</Tab>
+                <Tab>ソックス</Tab>
+            </TabList>
+            <TabPanels>
+                {types.map((value) => {
+                    return (
+                        <TabPanel key={value}>
+                            <Flex as='ul' overflow='auto'
+                                css={commonCss}
+                            >
+                                <InnerSearchBox setMannequinValue={setMannequinValue} gender={gender} type={value} />
+                            </Flex>
+                            <SubmitBtn EnterSubmit={() => handleSubmit(gender)}>マネキンを確定する</SubmitBtn>
+                        </TabPanel>
+                    )
+                })}
+            </TabPanels>
+        </Tabs>
     )
 }
