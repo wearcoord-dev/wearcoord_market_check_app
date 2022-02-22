@@ -43,9 +43,14 @@ export const ChangeMannequin: FC = memo(() => {
     const { showMessage } = useMessage();
     console.log(notLoginUser);
 
-    {/* @ts-ignore */ }
-    const fromWhere = location.state.from;
-    console.log(fromWhere);
+
+    // context保持している場合のアクセスはlocationを使わないのでここで確認
+    let fromWhere = null;
+
+    if (location.state) {
+        {/* @ts-ignore */ }
+        fromWhere = location.state.from;
+    }
 
 
     const handleSubmit = (props) => {
@@ -57,6 +62,13 @@ export const ChangeMannequin: FC = memo(() => {
         history.replace('/sample');
     };
 
+    // ダイレクトにマネキン変更URLに飛んできた場合トップに戻す
+    if (!location.state && notLoginUser) {
+        if (notLoginUser.gender === null) {
+            history.replace('/sample');
+        }
+    }
+
     return (
         <>
             {/* 現在のマネキンを表示 */}
@@ -65,7 +77,11 @@ export const ChangeMannequin: FC = memo(() => {
                     <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
                     </div>
                 </div>
-            ) : null
+            ) : (
+                <Stack justifyContent='center' alignItems='center' height='50vh'>
+                    <Flex>現在何も選ばれていません</Flex>
+                </Stack>
+            )
             ) : null}
 
             {notLoginUser ? (notLoginUser.gender === 'male' ? (

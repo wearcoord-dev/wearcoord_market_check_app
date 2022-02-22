@@ -1,7 +1,8 @@
-import { Button, Stack } from "@chakra-ui/react";
-import { FC, memo } from "react";
+import { Button, Flex, Stack } from "@chakra-ui/react";
+import { FC, memo, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
+import { NotLoginUser } from "../../types/NotLoginUser";
 
 const style = {
     bgImg: {
@@ -31,17 +32,23 @@ export const TopCoord: FC = memo(() => {
         });
     }
 
+    const onClickChangeMannequin = useCallback(() => history.push("/sample/mannequin"), []);
+
+
     return (
         <>
-            {notLoginUser ? (
+
+            {notLoginUser ? (notLoginUser.mannequin ? (
                 <div style={style.bgImg}>
                     <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
                     </div>
                 </div>
-            ) :
-                (
-                    <p>コーデを作ってください</p>
-                )}
+            ): (
+                <Stack>
+                    <Flex justifyContent='center' py={10}>マネキンを選ぶかコーデを作りましょう!</Flex>
+                </Stack>
+            )
+            ) : null}
 
             {/* genderが選ばれていない時のマネキンリンクボタン */}
             {notLoginUser ? (notLoginUser.gender === null ? (
@@ -54,6 +61,22 @@ export const TopCoord: FC = memo(() => {
                     </Button>
                 </Stack>
             ) : null) : null}
+
+            {notLoginUser ? (notLoginUser.gender ? (
+                <Stack direction='row' spacing={4} align='center' justifyContent='center'>
+                    <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
+                        マネキンを変更する
+                    </Button>
+                </Stack>
+            ) : null) : null}
+
+            {/* {notLoginUser ? (notLoginUser.gender === 'male' ? (
+                <>
+                </>
+            ) : notLoginUser.gender === 'female' ? (
+                <>
+                </>
+            ) : null) : null} */}
         </>
     )
 });
