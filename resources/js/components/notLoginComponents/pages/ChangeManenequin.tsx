@@ -1,5 +1,5 @@
 import { Button, Flex, Stack, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import { FC, memo } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import { InnerSearchBox } from "../molecules/InnerSearchBox";
 import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
@@ -36,11 +36,19 @@ const commonCss = {
 
 export const ChangeMannequin: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
+    const [mannequinValue, setMannequinValue] = useState('');
     console.log(notLoginUser);
 
     // if(!notLoginUser){
     //     setNotLoginUser({gender : 'male', caps : null, tops : null, pants : null, shoes : null});
     // }
+
+    const handleSubmit = () => {
+        // e.preventDefault();
+        console.log(mannequinValue)
+        const genderType = 'male';
+        setNotLoginUser({ ...notLoginUser, gender: genderType, mannequin: mannequinValue });
+    };
 
     return (
         <>
@@ -59,23 +67,31 @@ export const ChangeMannequin: FC = memo(() => {
                         <Flex as='ul' overflow='auto'
                             css={commonCss}
                         >
-                            <InnerSearchBox gender={'male'} type='inner' />
+                            <InnerSearchBox setMannequinValue={setMannequinValue} gender={'male'} type='inner' />
                         </Flex>
+                        <SubmitBtn EnterSubmit={handleSubmit}>マネキンを確定する</SubmitBtn>
                     </TabPanel>
                     <TabPanel>
                         <Flex as='ul' overflow='auto'
                             css={commonCss}
                         >
-                            <InnerSearchBox gender={'male'} type='socks' />
+                            <InnerSearchBox setMannequinValue={setMannequinValue} gender={'male'} type='socks' />
                         </Flex>
+                        <SubmitBtn EnterSubmit={handleSubmit}>マネキンを確定する</SubmitBtn>
                     </TabPanel>
                 </TabPanels>
-            <Stack direction='row' spacing={4} align='center' justifyContent='center' pb={4}>
-                <Button bg='#216496' variant='solid' color='white'>
-                    マネキンを確定する
-                </Button>
-            </Stack>
             </Tabs>
         </>
     )
 });
+
+function SubmitBtn(props) {
+    const { children, EnterSubmit } = props;
+    return (
+        <Stack direction='row' spacing={4} align='center' justifyContent='center' py={4}>
+            <Button type="button" bg='#216496' variant='solid' color='white' onClick={EnterSubmit}>
+                {children}
+            </Button>
+        </Stack>
+    )
+}

@@ -4,4 +4,5 @@ export type NotLoginUser = {
     tops: string;
     pants: string;
     shoes: string;
+    mannequin: string;
 }
