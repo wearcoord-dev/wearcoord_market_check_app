@@ -54,11 +54,15 @@ export const ChangeMannequin: FC = memo(() => {
 
 
     const handleSubmit = (props) => {
+        if (!mannequinValue){
+            showMessage({ title: "一つ選んでください", status: "error" });
+            return;
+        }
         // e.preventDefault();
         // console.log(mannequinValue)
         setNotLoginUser({ ...notLoginUser, gender: props, mannequin: mannequinValue });
         showMessage({ title: "変更しました", status: "success" });
-        // 前のページに戻れないようにする
+        // // 前のページに戻れないようにする
         history.replace('/sample');
     };
 
