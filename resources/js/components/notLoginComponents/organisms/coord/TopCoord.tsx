@@ -1,6 +1,8 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
 import { FC, memo, useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import { DeleteModal } from "../../atoms/modal/modal";
+import { useMessage } from "../../hooks/useMessage";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 import { NotLoginUser } from "../../types/NotLoginUser";
 
@@ -22,6 +24,7 @@ const style = {
 
 export const TopCoord: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
+    const { showMessage } = useMessage();
     const history = useHistory();
     console.log(notLoginUser);
 
@@ -34,6 +37,12 @@ export const TopCoord: FC = memo(() => {
 
     const onClickChangeMannequin = useCallback(() => history.push("/sample/mannequin"), []);
 
+    const onClickResetMannequin = () => {
+        localStorage.clear();
+        showMessage({ title: "コーデを削除しました", status: "success" });
+        history.go(0);
+    };
+
 
     return (
         <>
@@ -43,7 +52,7 @@ export const TopCoord: FC = memo(() => {
                     <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
                     </div>
                 </div>
-            ): (
+            ) : (
                 <Stack>
                     <Flex justifyContent='center' py={10}>マネキンを選ぶかコーデを作りましょう!</Flex>
                 </Stack>
@@ -67,6 +76,7 @@ export const TopCoord: FC = memo(() => {
                     <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
                         マネキンを変更する
                     </Button>
+                    <DeleteModal onClickResetMannequin={onClickResetMannequin}>コーデをリセットする</DeleteModal>
                 </Stack>
             ) : null) : null}
 
