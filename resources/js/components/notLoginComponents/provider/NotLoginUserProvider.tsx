@@ -31,11 +31,11 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
     useEffect(() => {
         if (notLoginUser) {
             if (notLoginUser.gender) {
-                localStorage.setItem('flg', JSON.stringify('true'));
+                localStorage.setItem('flg', ('true'));
                 localStorage.setItem('gender', (notLoginUser.gender));
             }
             if (notLoginUser.mannequin) {
-                localStorage.setItem('flg', JSON.stringify('true'));
+                localStorage.setItem('flg', ('true'));
                 localStorage.setItem('mannequin', (notLoginUser.mannequin));
             }
         }

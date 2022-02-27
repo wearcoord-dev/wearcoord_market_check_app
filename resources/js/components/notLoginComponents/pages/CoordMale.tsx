@@ -1,5 +1,6 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { SelectWear } from "../organisms/coord/SelectWear";
+import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 
 const style = {
     bgImg: {
@@ -18,6 +19,33 @@ const style = {
 } as const;
 
 export const CoordMale: FC = memo(() => {
+    const { notLoginUser, setNotLoginUser } = useNotLoginUser();
+    const [defaultMannequin, setDefaultMannequin] = useState<String>('');
+    const [defaultGender, setDefaultGender] = useState<String>('');
+    console.log(notLoginUser);
+
+    // 訪れたユーザーのデフォルトウェアをstateで管理
+    // 既に女性が登録されている場合は男性をセット
+
+    useEffect(() => {
+        if (notLoginUser) {
+            if (notLoginUser.gender === null) {
+                // setNotLoginUser({...notLoginUser, gender: 'male'});
+                setDefaultGender('male');
+            } else if (notLoginUser.gender === 'female') {
+                setDefaultGender('male');
+                setDefaultMannequin('mens_170_model.png');
+            }
+            if (notLoginUser.mannequin === null) {
+                // setNotLoginUser({ ...notLoginUser, mannequin: 'mens_170_model.png' });
+                setDefaultMannequin('mens_170_model.png');
+            }
+        }
+    }, [notLoginUser])
+
+    console.log(defaultGender);
+    console.log(defaultMannequin);
+
     return (
         <>
             <div style={style.bgImg}>
