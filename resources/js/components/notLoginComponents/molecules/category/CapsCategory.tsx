@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Flex } from "@chakra-ui/react";
-import { FC, memo } from "react";
+import { FC, memo, ReactNode, useEffect, useRef, useState } from "react";
 import { SaveBtn } from "../../atoms/buttonGroup/SaveBtn";
 import { SearchBrandSelect } from "./select/SearchBrand";
 import { SearchCategorySelect } from "./select/SearchCategory";
@@ -7,6 +7,9 @@ import { SearchColorSelect } from "./select/SearchColor";
 
 type Props = {
     onClickAllClose: () => void;
+    onClickFetchCaps: any;
+    setCapsSel: any;
+    capsSel: any;
 }
 
 const style = {
@@ -25,56 +28,68 @@ const style = {
     }
 } as const;
 
+const commoncss = {
+    '&::-webkit-scrollbar': {
+        height: '8px',
+    },
+    '&::-webkit-scrollbar-track': {
+        width: '6px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+        background: '#216496',
+        borderRadius: '24px',
+    },
+}
+
+
 export const CapsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose } = props;
+    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel } = props;
+    const [value, setValue] = useState(capsSel.brand);
+    const [valueColor, setValueColor] = useState(capsSel.color);
+    const [valueCategory, setValueCategory] = useState(capsSel.category);
+
+    // 初回のレンダリング判定
+    const isFirstRender = useRef(false)
+
+    useEffect(() => {
+        isFirstRender.current = true
+    }, [])
+
+    useEffect(() => {
+
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+        } else {
+            const data = {
+                wear: "caps",
+                brand: value,
+                color: valueColor,
+                category: valueCategory,
+            }
+
+            setCapsSel(data);
+            onClickFetchCaps(data);
+        }
+    }, [value, valueColor, valueCategory]);
 
     return (
         <Flex style={style.wrapper} p={10}>
             <Flex as='ul' overflow='auto'
-                css={{
-                    '&::-webkit-scrollbar': {
-                        height: '8px',
-                    },
-                    '&::-webkit-scrollbar-track': {
-                        width: '6px',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                        background: '#216496',
-                        borderRadius: '24px',
-                    },
-                }}
+                css={commoncss}
             >
-                <SearchCategorySelect type={'caps'} />
+                <SearchCategorySelect
+                    type={'caps'}
+                    // setValueCategory={setValueCategory}
+                    // valueCategory={valueCategory}
+                />
             </Flex>
             <Flex as='ul' overflow='auto'
-                css={{
-                    '&::-webkit-scrollbar': {
-                        height: '8px',
-                    },
-                    '&::-webkit-scrollbar-track': {
-                        width: '6px',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                        background: '#216496',
-                        borderRadius: '24px',
-                    },
-                }}
+                css={commoncss}
             >
                 <SearchBrandSelect type={'caps'} />
             </Flex>
             <Flex as='ul' overflow='auto'
-                css={{
-                    '&::-webkit-scrollbar': {
-                        height: '8px',
-                    },
-                    '&::-webkit-scrollbar-track': {
-                        width: '6px',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                        background: '#216496',
-                        borderRadius: '24px',
-                    },
-                }}
+                css={commoncss}
             >
                 <SearchColorSelect />
             </Flex>

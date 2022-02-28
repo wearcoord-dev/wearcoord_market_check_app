@@ -36,6 +36,8 @@ export const CoordMale: FC = memo(() => {
             } else if (notLoginUser.gender === 'female') {
                 setDefaultGender('male');
                 setDefaultMannequin('mens_170_model.png');
+            } else if (notLoginUser.gender === 'male') {
+                setDefaultMannequin(notLoginUser.mannequin);
             }
             if (notLoginUser.mannequin === null) {
                 // setNotLoginUser({ ...notLoginUser, mannequin: 'mens_170_model.png' });
@@ -51,24 +53,10 @@ export const CoordMale: FC = memo(() => {
         <>
             <div style={style.bgImg}>
                 {notLoginUser ?
-                    (notLoginUser.gender === 'male' ?
-                        // 男性で既に登録している場合
-                        ((notLoginUser.mannequin ? (
-                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
-                                <SelectSection />
-                            </div>
-                        ) : (
-                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
-                                <SelectSection />
-                            </div>
-                        )))
-                        :
-                        // 女性で既に登録している場合か初めての場合は初期マネキンを表示
-                        (
-                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
-                                <SelectSection />
-                            </div>
-                        )
+                    (
+                        <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
+                            <SelectSection />
+                        </div>
                     )
                     : (
                         <Stack direction='row' spacing={4}>

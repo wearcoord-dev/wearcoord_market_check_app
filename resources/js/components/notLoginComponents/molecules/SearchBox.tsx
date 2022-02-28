@@ -1,5 +1,5 @@
 import { Drawer } from "@chakra-ui/react";
-import { FC, memo } from "react";
+import { FC, memo, ReactNode } from "react";
 import { CapsCategory } from "./category/CapsCategory";
 import { PantsCategory } from "./category/PantsCategory";
 import { ShoesCategory } from "./category/ShoesCategory";
@@ -15,6 +15,9 @@ type Props = {
     onCloseShoes: () => void;
     isOpenShoes: boolean;
     onClickAllClose: () => void;
+    onClickFetchCaps: any;
+    setCapsSel: any;
+    capsSel: any;
 }
 
 const style = {
@@ -32,12 +35,17 @@ const style = {
 } as const;
 
 export const SearchBox: FC<Props> = memo((props) => {
-    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose } = props;
+    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose, onClickFetchCaps, setCapsSel, capsSel } = props;
 
     return (
         <>
             <Drawer onClose={onClose} isOpen={isOpen}>
-                <CapsCategory onClickAllClose={onClickAllClose} />
+                <CapsCategory
+                onClickAllClose={onClickAllClose}
+                    onClickFetchCaps={onClickFetchCaps}
+                    setCapsSel={setCapsSel}
+                    capsSel={capsSel}
+                />
             </Drawer>
             <Drawer onClose={onCloseTops} isOpen={isOpenTops}>
                 <TopsCategory onClickAllClose={onClickAllClose} />

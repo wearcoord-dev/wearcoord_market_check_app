@@ -5,6 +5,7 @@ import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useMessage } from "../../hooks/useMessage";
+import { WearType } from "../../types/WearType";
 
 export const SelectWear: FC = memo(() => {
     const { notLoginUser } = useNotLoginUser();
@@ -72,7 +73,11 @@ export const SelectWear: FC = memo(() => {
     const [activeIndexCaps, setActiveIndexCaps] = useState<Number>(0);
 
     // 検索条件の保存管理
-    const [capsSel, setCapsSel] = useState<Object>({ brand: "", color: "", category: "", wear: "" });
+    const [capsSel, setCapsSel] = useState<Array<WearType>>();
+    const [dataCaps, setDataCaps] = useState<Object>({});
+    const [capsArray, setCapsArray] = useState([]);
+    const [showCaps, setShowCaps] = useState<Number>(0);
+
 
     // 検索結果のカウントを保持
     const [count, setCount] = useState<Number>(0);
@@ -98,6 +103,36 @@ export const SelectWear: FC = memo(() => {
             isFirstRenderCaps.current = false;
         }
     }, [userCaps]);
+
+    const onClickFetchCaps = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'caps',
+            'page': 1,
+        }
+
+        // カテゴリーがnullなら着ているウェアに切り替え
+        if (props.category) {
+
+            // カテゴリーがremoveなら配列を空にして表示させない
+            if (props.category == 'remove') {
+                setDataCaps([]);
+                setCapsArray([]);
+                setShowCaps(1);
+            } else {
+                setDataCaps(data);
+                setCapsArray([]);
+                getCaps(data);
+                setShowCaps(0);
+            }
+        } else {
+            setCapsArray([]);
+            setShowCaps(0);
+        }
+    }
 
     const capsComponent = (
         <>
@@ -146,6 +181,9 @@ export const SelectWear: FC = memo(() => {
                 onCloseShoes={onCloseShoes}
                 isOpenShoes={isOpenShoes}
                 onClickAllClose={onClickAllClose}
+                onClickFetchCaps={onClickFetchCaps}
+                setCapsSel={setCapsSel}
+                capsSel={capsSel}
             />
         </>
     )
