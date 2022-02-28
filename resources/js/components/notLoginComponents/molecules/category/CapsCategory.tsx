@@ -11,7 +11,6 @@ type Props = {
     setCapsSel: any;
     capsSel: any;
     defaultGender: string;
-    defaultMannequin: string;
 }
 
 const style = {
@@ -45,9 +44,9 @@ const commoncss = {
 
 
 export const CapsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender, defaultMannequin } = props;
-    const [value, setValue] = useState();
-    const [valueColor, setValueColor] = useState();
+    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender } = props;
+    const [value, setValue] = useState('');
+    const [valueColor, setValueColor] = useState((''));
     const [valueCategory, setValueCategory] = useState();
 
     // 初回のレンダリング判定
@@ -84,18 +83,25 @@ export const CapsCategory: FC<Props> = memo((props) => {
                     setValueCategory={setValueCategory}
                     valueCategory={valueCategory}
                     defaultGender={defaultGender}
-                    defaultMannequin={defaultMannequin}
                 />
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}
             >
-                <SearchBrandSelect type={'caps'} />
+                <SearchBrandSelect
+                    type={'caps'}
+                    setValue={setValue}
+                    value={value}
+                    defaultGender={defaultGender}
+                />
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}
             >
-                <SearchColorSelect />
+                <SearchColorSelect
+                    setValueColor={setValueColor}
+                    valueColor={valueColor}
+                />
             </Flex>
             <SaveBtn onClickAllClose={onClickAllClose} />
         </Flex>

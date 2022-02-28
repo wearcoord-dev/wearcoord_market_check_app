@@ -92,13 +92,12 @@ export const SelectWear: FC<Props> = memo((props) => {
     // 初回読み込み時のuseEffect管理
     const isFirstRenderCaps = useRef(true);
 
-
     useEffect(() => {
         if (!isFirstRenderCaps.current) {
             if (userCaps[0]) {
                 setCount(userCaps[0].count);
                 // スナックバーを表示
-                showMessage({ title: `${count}件見つかりました`, status: "success" });
+                showMessage({ title: `${userCaps[0].count}件見つかりました`, status: "success" });
             }
             if (userCaps.length == 0) {
                 setCount(0);
@@ -191,7 +190,6 @@ export const SelectWear: FC<Props> = memo((props) => {
                 onClickFetchCaps={onClickFetchCaps}
                 setCapsSel={setCapsSel}
                 defaultGender={defaultGender}
-                defaultMannequin={defaultMannequin}
                 capsSel={capsSel}
             />
         </>

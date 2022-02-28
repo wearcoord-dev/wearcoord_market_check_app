@@ -1,7 +1,11 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
-import { useCallback } from "react"
+import { FC, memo, useCallback } from "react"
 import { colorList } from "../../../common/ColorList"
 
+type Props = {
+    valueColor: any;
+    setValueColor: any;
+}
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -46,13 +50,15 @@ function RadioCard(props) {
 }
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-export function SearchColorSelect() {
+export const SearchColorSelect: FC<Props> = memo((props) => {
+    const { valueColor, setValueColor } = props;
+
     const options = colorList;
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'framework',
         defaultValue: 'react',
-        // onChange: console.log,
+        onChange: setValueColor,
     })
 
     const group = getRootProps()
@@ -69,4 +75,4 @@ export function SearchColorSelect() {
             })}
         </HStack>
     )
-}
+})

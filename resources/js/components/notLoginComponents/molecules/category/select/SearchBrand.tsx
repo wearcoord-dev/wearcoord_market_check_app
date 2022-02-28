@@ -4,6 +4,9 @@ import { brandCapsList, brandPantsList, brandShoesList, brandTopsList } from "..
 
 type Props = {
     type: string;
+    value: any;
+    setValue: any;
+    defaultGender: string;
 }
 
 
@@ -44,7 +47,7 @@ function RadioCard(props) {
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 export const SearchBrandSelect: FC<Props> = memo((props) => {
-    const { type } = props;
+    const { type, value, setValue, defaultGender } = props;
 
     let options = null;
 
@@ -64,7 +67,7 @@ export const SearchBrandSelect: FC<Props> = memo((props) => {
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'framework',
         defaultValue: 'react',
-        // onChange: console.log,
+        onChange: setValue,
     })
 
     const group = getRootProps()

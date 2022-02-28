@@ -1,11 +1,10 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 import { FC, memo, useState } from "react"
-import { capsList, pantsList, shoesList, topsList } from "../../../common/CategoryList"
+import { capsList, capsListFemale, pantsList, shoesList, topsList } from "../../../common/CategoryList"
 
 type Props = {
     type: string;
     defaultGender: string;
-    defaultMannequin: string;
     valueCategory: any;
     setValueCategory: any;
 }
@@ -49,13 +48,17 @@ function RadioCard(props) {
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 export const SearchCategorySelect: FC<Props> = memo((props) => {
-    const { type, defaultGender, defaultMannequin, setValueCategory, valueCategory } = props;
+    const { type, defaultGender, setValueCategory, valueCategory } = props;
 
     let options = null;
 
     // export function SearchCategorySelect() {
     if (type === 'caps') {
-        options = capsList;
+        if(defaultGender == 'male'){
+            options = capsList;
+        } else if (defaultGender == 'female'){
+            options = capsListFemale;
+        }
     }
     if (type === 'tops') {
         options = topsList;

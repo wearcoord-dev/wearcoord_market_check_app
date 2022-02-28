@@ -1,10 +1,25 @@
 export const capsList = [
     {
-        value: 'now',
+        value: '',
         text: '今のウェア'
     },
     {
-        value: 'caps',
+        value: '506269',
+        text: 'キャップス'
+    },
+    {
+        value: 'remove',
+        text: 'キャップスを脱ぐ'
+    },
+];
+
+export const capsListFemale = [
+    {
+        value: '',
+        text: '今のウェア'
+    },
+    {
+        value: '565818',
         text: 'キャップス'
     },
     {
