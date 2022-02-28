@@ -7,7 +7,14 @@ import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useMessage } from "../../hooks/useMessage";
 import { WearType } from "../../types/WearType";
 
-export const SelectWear: FC = memo(() => {
+type Props = {
+    defaultGender: string;
+    defaultMannequin: string;
+}
+
+export const SelectWear: FC<Props> = memo((props) => {
+    const { defaultGender, defaultMannequin } = props;
+
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { showMessage } = useMessage();
@@ -183,6 +190,8 @@ export const SelectWear: FC = memo(() => {
                 onClickAllClose={onClickAllClose}
                 onClickFetchCaps={onClickFetchCaps}
                 setCapsSel={setCapsSel}
+                defaultGender={defaultGender}
+                defaultMannequin={defaultMannequin}
                 capsSel={capsSel}
             />
         </>

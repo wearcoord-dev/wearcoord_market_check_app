@@ -10,6 +10,8 @@ type Props = {
     onClickFetchCaps: any;
     setCapsSel: any;
     capsSel: any;
+    defaultGender: string;
+    defaultMannequin: string;
 }
 
 const style = {
@@ -43,10 +45,10 @@ const commoncss = {
 
 
 export const CapsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel } = props;
-    const [value, setValue] = useState(capsSel.brand);
-    const [valueColor, setValueColor] = useState(capsSel.color);
-    const [valueCategory, setValueCategory] = useState(capsSel.category);
+    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender, defaultMannequin } = props;
+    const [value, setValue] = useState();
+    const [valueColor, setValueColor] = useState();
+    const [valueCategory, setValueCategory] = useState();
 
     // 初回のレンダリング判定
     const isFirstRender = useRef(false)
@@ -79,8 +81,10 @@ export const CapsCategory: FC<Props> = memo((props) => {
             >
                 <SearchCategorySelect
                     type={'caps'}
-                    // setValueCategory={setValueCategory}
-                    // valueCategory={valueCategory}
+                    setValueCategory={setValueCategory}
+                    valueCategory={valueCategory}
+                    defaultGender={defaultGender}
+                    defaultMannequin={defaultMannequin}
                 />
             </Flex>
             <Flex as='ul' overflow='auto'

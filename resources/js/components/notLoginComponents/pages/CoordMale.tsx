@@ -3,6 +3,11 @@ import { FC, memo, useEffect, useState } from "react";
 import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 
+type Props = {
+    defaultGender: string;
+    defaultMannequin: string;
+}
+
 const style = {
     bgImg: {
     },
@@ -19,10 +24,10 @@ const style = {
     }
 } as const;
 
-export const CoordMale: FC = memo(() => {
+export const CoordMale: FC<Props> = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
-    const [defaultMannequin, setDefaultMannequin] = useState<String>('');
-    const [defaultGender, setDefaultGender] = useState<String>('');
+    const [defaultMannequin, setDefaultMannequin] = useState<string>('');
+    const [defaultGender, setDefaultGender] = useState<string>('');
     console.log(notLoginUser);
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
@@ -55,7 +60,10 @@ export const CoordMale: FC = memo(() => {
                 {notLoginUser ?
                     (
                         <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
-                            <SelectSection />
+                            <SelectSection
+                                defaultGender={defaultGender}
+                                defaultMannequin={defaultMannequin}
+                            />
                         </div>
                     )
                     : (
@@ -69,10 +77,15 @@ export const CoordMale: FC = memo(() => {
     )
 });
 
-const SelectSection = memo(() => {
+const SelectSection: FC<Props> = memo((props) => {
+    const { defaultGender, defaultMannequin } = props;
+
     return (
         <>
-            <SelectWear />
+            <SelectWear
+                defaultGender={defaultGender}
+                defaultMannequin={defaultMannequin}
+            />
         </>
     )
 })
