@@ -4,7 +4,7 @@ import { brandCapsList, brandPantsList, brandShoesList, brandTopsList } from "..
 
 type Props = {
     type: string;
-    value: any;
+    valueBrand: any;
     setValue: any;
     defaultGender: string;
 }
@@ -13,9 +13,16 @@ type Props = {
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
     const { getInputProps, getCheckboxProps } = useRadio(props)
+    const { selectedBrand } = props;
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
+
+    // 既に選んでいるものにチェックを入れる
+
+    if (props.value === selectedBrand) {
+        checkbox['data-checked'] = '';
+    }
 
     return (
         <Box as='label'>
@@ -47,7 +54,7 @@ function RadioCard(props) {
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
 export const SearchBrandSelect: FC<Props> = memo((props) => {
-    const { type, value, setValue, defaultGender } = props;
+    const { type, valueBrand, setValue, defaultGender } = props;
 
     let options = null;
 
@@ -77,7 +84,7 @@ export const SearchBrandSelect: FC<Props> = memo((props) => {
             {options.map((value) => {
                 const radio = getRadioProps({ value: value.value })
                 return (
-                    <RadioCard key={value.value} {...radio}>
+                    <RadioCard key={value.value} {...radio} selectedBrand={valueBrand}>
                         {value.text}
                     </RadioCard>
                 )

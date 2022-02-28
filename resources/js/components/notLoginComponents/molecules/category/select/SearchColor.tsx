@@ -10,18 +10,27 @@ type Props = {
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
     const { getInputProps, getCheckboxProps } = useRadio(props)
+    const { selectedColor } = props;
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
 
+    // 既に選んでいるものにチェックを入れる
+
+    if (props.value === selectedColor) {
+        checkbox['data-checked'] = '';
+    }
+
+    // 全ての場合テキストを入れるようにする
+
     let getColor = props.value;
     let allText;
 
-    if(getColor == 'all'){
+    if (getColor == 'all') {
         getColor = 'white';
     }
 
-    if (props.value == 'all'){
+    if (props.value == 'all') {
         allText = '全て';
     }
 
@@ -83,7 +92,7 @@ export const SearchColorSelect: FC<Props> = memo((props) => {
             {options.map((value) => {
                 const radio = getRadioProps({ value })
                 return (
-                    <RadioCard key={value} {...radio}>
+                    <RadioCard key={value} {...radio} selectedColor={valueColor}>
                         {/* {value} */}
                     </RadioCard>
                 )

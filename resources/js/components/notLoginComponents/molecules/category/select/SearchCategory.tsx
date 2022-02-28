@@ -13,9 +13,16 @@ type Props = {
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
     const { getInputProps, getCheckboxProps } = useRadio(props)
+    const { selectedCategory } = props;
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
+
+    // 既に選んでいるものにチェックを入れる
+
+    if (props.value === selectedCategory) {
+        checkbox['data-checked'] = '';
+    }
 
     return (
         <Box as='label'>
@@ -54,9 +61,9 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
 
     // export function SearchCategorySelect() {
     if (type === 'caps') {
-        if(defaultGender == 'male'){
+        if (defaultGender == 'male') {
             options = capsList;
-        } else if (defaultGender == 'female'){
+        } else if (defaultGender == 'female') {
             options = capsListFemale;
         }
     }
@@ -75,7 +82,6 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
         defaultValue: 'react',
         onChange: setValueCategory,
     })
-    // console.log(valueCategory)
 
     const group = getRootProps()
 
@@ -86,7 +92,7 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
                 const valueStr = value.value;
                 const radio = getRadioProps({ value: valueStr })
                 return (
-                    <RadioCard key={valueStr} {...radio}>
+                    <RadioCard key={valueStr} {...radio} selectedCategory={valueCategory}>
                         {value.text}
                     </RadioCard>
                 )

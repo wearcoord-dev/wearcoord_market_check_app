@@ -45,9 +45,9 @@ const commoncss = {
 
 export const CapsCategory: FC<Props> = memo((props) => {
     const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender } = props;
-    const [value, setValue] = useState('');
-    const [valueColor, setValueColor] = useState((''));
-    const [valueCategory, setValueCategory] = useState();
+    const [value, setValue] = useState(capsSel.brand);
+    const [valueColor, setValueColor] = useState(capsSel.color);
+    const [valueCategory, setValueCategory] = useState(capsSel.category);
 
     // 初回のレンダリング判定
     const isFirstRender = useRef(false)
@@ -91,7 +91,7 @@ export const CapsCategory: FC<Props> = memo((props) => {
                 <SearchBrandSelect
                     type={'caps'}
                     setValue={setValue}
-                    value={value}
+                    valueBrand={value}
                     defaultGender={defaultGender}
                 />
             </Flex>

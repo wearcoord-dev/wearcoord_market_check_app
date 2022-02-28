@@ -61,14 +61,15 @@ export const SelectWear: FC<Props> = memo((props) => {
             }
 
             const data = {
-                'brand': '',
-                'color': '',
+                'brand': 'all',
+                'color': 'all',
                 'category': defaultCapsCategory,
                 'wear': 'caps',
                 'page': 1,
             }
             setDataCaps(data);
             setCapsArray([]);
+            setCapsSel(data);
             getCaps(data);
             setShowCaps(0);
             // 初回の処理が終了
@@ -110,10 +111,10 @@ export const SelectWear: FC<Props> = memo((props) => {
     const { getCaps, userCaps, loading, error } = useAllCaps();
 
     // 着ているウェアを取得
-    const [activeIndexCaps, setActiveIndexCaps] = useState<Number>(0);
+    const [activeIndexCaps, setActiveIndexCaps] = useState(0);
 
     // 検索条件の保存管理
-    const [capsSel, setCapsSel] = useState<Array<WearType>>();
+    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: ""});
     const [dataCaps, setDataCaps] = useState({ brand: "", color: "", category: "", wear: "", page: null });
     const [capsArray, setCapsArray] = useState([]);
     const [showCaps, setShowCaps] = useState<Number>(0);
