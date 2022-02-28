@@ -28,7 +28,7 @@ export const CoordMale: FC<Props> = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const [defaultMannequin, setDefaultMannequin] = useState<string>('');
     const [defaultGender, setDefaultGender] = useState<string>('');
-    console.log(notLoginUser);
+    // console.log(notLoginUser);
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
@@ -51,8 +51,8 @@ export const CoordMale: FC<Props> = memo(() => {
         }
     }, [notLoginUser])
 
-    console.log(defaultGender);
-    console.log(defaultMannequin);
+    // console.log(defaultGender);
+    // console.log(defaultMannequin);
 
     return (
         <>
