@@ -50,12 +50,20 @@ export const SelectWear: FC<Props> = memo((props) => {
         onCloseShoes();
 
         // 最初に開いた場合はアイテムを事前に表示しておく
+        let defaultCapsCategory: string;
 
-        if (isFirstOpenCaps.current === false){
+        if (isFirstOpenCaps.current === false) {
+
+            if (defaultGender === 'male') {
+                defaultCapsCategory = '506269';
+            } else if (defaultGender === 'female'){
+                defaultCapsCategory = '565818';
+            }
+
             const data = {
                 'brand': '',
                 'color': '',
-                'category': '506269',
+                'category': defaultCapsCategory,
                 'wear': 'caps',
                 'page': 1,
             }
@@ -66,7 +74,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             // 初回の処理が終了
             isFirstOpenCaps.current = true;
         }
-    }, []);
+    }, [defaultGender]);
 
     const onClickTops = useCallback(() => {
         onClose();
