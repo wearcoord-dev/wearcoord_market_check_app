@@ -58,6 +58,14 @@ class MycoordController extends Controller
             return;
         }
 
+        if ($brand == 'all') {
+            $brand = '';
+        }
+
+        if ($color == 'all') {
+            $color = '';
+        }
+
 
 
         // wearcoord管理DBでフィルター

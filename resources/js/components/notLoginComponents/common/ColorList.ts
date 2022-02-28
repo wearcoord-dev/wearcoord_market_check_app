@@ -1,4 +1,5 @@
 export const colorList = [
+    'all',
     'black',
     'white',
     'navy',

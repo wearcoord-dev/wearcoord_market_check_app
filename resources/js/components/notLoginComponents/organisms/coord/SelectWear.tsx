@@ -75,6 +75,8 @@ export const SelectWear: FC<Props> = memo((props) => {
         onCloseShoes();
     }, []);
 
+    // ここからcaps
+
     // 検索処理
     const { getCaps, userCaps, loading, error } = useAllCaps();
 
@@ -100,15 +102,11 @@ export const SelectWear: FC<Props> = memo((props) => {
     useEffect(() => {
         if (!isFirstRenderCaps.current) {
             if (userCaps[0]) {
-                if (count == 0) {
-                    showMessage({ title: `${userCaps[0].count}件見つかりました`, status: "success" });
-                }
                 setCount(userCaps[0].count);
-                // スナックバーを表示
             }
             if (userCaps.length == 0) {
                 setCount(0);
-                // スナックバーを表示
+                // メッセージバーを表示
                 showMessage({ title: "条件に合ったものが見つかりませんでした", status: "error" });
             }
         } else {
@@ -116,6 +114,16 @@ export const SelectWear: FC<Props> = memo((props) => {
             isFirstRenderCaps.current = false;
         }
     }, [userCaps]);
+
+    // 検索件数が更新された場合にメッセージバーを表示
+
+    useEffect(() => {
+        if (userCaps[0]) {
+            if (count > 0) {
+                showMessage({ title: `${userCaps[0].count}件見つかりました`, status: "success" });
+            }
+        }
+    }, [count])
 
     const onClickFetchCaps = (props) => {
 
@@ -185,7 +193,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 >
                     {capsArray.map((wear) => (
                         <SwiperSlide onClick={onClickCaps} className="wearLi" key={wear.id}  >
-                            <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${wear.category}/${wear.url}`} alt="" />
+                            <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${wear.category}/${wear.url}`} alt="" style={{ margin: 'auto' }} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -197,6 +205,8 @@ export const SelectWear: FC<Props> = memo((props) => {
             </>
         )
     )
+
+    // ここまでcaps
 
     const topsComponent = (
         <>

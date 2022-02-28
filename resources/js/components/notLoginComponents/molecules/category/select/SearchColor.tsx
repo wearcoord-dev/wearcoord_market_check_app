@@ -14,6 +14,17 @@ function RadioCard(props) {
     const input = getInputProps()
     const checkbox = getCheckboxProps()
 
+    let getColor = props.value;
+    let allText;
+
+    if(getColor == 'all'){
+        getColor = 'white';
+    }
+
+    if (props.value == 'all'){
+        allText = '全て';
+    }
+
     // console.log(props)
 
     // 再選択でチェックリムーブ
@@ -29,7 +40,7 @@ function RadioCard(props) {
                 borderWidth='1px'
                 borderRadius='md'
                 boxShadow='md'
-                backgroundColor={props.value}
+                backgroundColor={getColor}
                 _checked={{
                     border: '4px',
                     borderColor: '#216496',
@@ -38,12 +49,16 @@ function RadioCard(props) {
                 _focus={{
                     // boxShadow: 'outline',
                 }}
-                px={10}
-                py={3}
+                // px={10}
+                // py={3}
                 height='30px'
                 width='60px'
+                whiteSpace='nowrap'
+                display='flex'
+                justifyContent='center'
+                alignItems='center'
             >
-                {/* {props.children} */}
+                {allText}
             </Box>
         </Box>
     )
