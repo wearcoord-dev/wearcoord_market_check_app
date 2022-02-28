@@ -1,3 +1,4 @@
+import { Spinner, Stack } from "@chakra-ui/react";
 import { FC, memo, useEffect, useState } from "react";
 import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
@@ -14,7 +15,7 @@ const style = {
         maxWidth: "400px",
         margin: "auto",
         position: "relative",
-        backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
+        // backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
     }
 } as const;
 
@@ -49,10 +50,41 @@ export const CoordMale: FC = memo(() => {
     return (
         <>
             <div style={style.bgImg}>
-                <div style={style.mannequinImg}>
-                    <SelectWear />
-                </div>
+                {notLoginUser ?
+                    (notLoginUser.gender === 'male' ?
+                        // 男性で既に登録している場合
+                        ((notLoginUser.mannequin ? (
+                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
+                                <SelectSection />
+                            </div>
+                        ) : (
+                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
+                                <SelectSection />
+                            </div>
+                        )))
+                        :
+                        // 女性で既に登録している場合か初めての場合は初期マネキンを表示
+                        (
+                            <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${defaultMannequin})` }}>
+                                <SelectSection />
+                            </div>
+                        )
+                    )
+                    : (
+                        <Stack direction='row' spacing={4}>
+                            <Spinner size='xl' />
+                        </Stack>
+                    )
+                }
             </div>
         </>
     )
 });
+
+const SelectSection = memo(() => {
+    return (
+        <>
+            <SelectWear />
+        </>
+    )
+})

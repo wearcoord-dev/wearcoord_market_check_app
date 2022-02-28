@@ -1,11 +1,16 @@
 import { useDisclosure } from "@chakra-ui/react";
-import { FC, memo, useCallback, useEffect } from "react";
+import { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import { SearchBox } from "../../molecules/SearchBox";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
+
+import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
+import { useMessage } from "../../hooks/useMessage";
 
 export const SelectWear: FC = memo(() => {
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { showMessage } = useMessage();
+
     const {
         isOpen: isOpenTops,
         onOpen: onOpenTops,
@@ -59,6 +64,40 @@ export const SelectWear: FC = memo(() => {
         onClosePants();
         onCloseShoes();
     }, []);
+
+    // 検索処理
+    const { getCaps, userCaps, loading, error } = useAllCaps();
+
+    // 着ているウェアを取得
+    const [activeIndexCaps, setActiveIndexCaps] = useState<Number>(0);
+
+    // 検索条件の保存管理
+    const [capsSel, setCapsSel] = useState<Object>({ brand: "", color: "", category: "", wear: "" });
+
+    // 検索結果のカウントを保持
+    const [count, setCount] = useState<Number>(0);
+
+    // 初回読み込み時のuseEffect管理
+    const isFirstRenderCaps = useRef(true);
+
+
+    useEffect(() => {
+        if (!isFirstRenderCaps.current) {
+            if (userCaps[0]) {
+                setCount(userCaps[0].count);
+                // スナックバーを表示
+                showMessage({ title: `${count}件見つかりました`, status: "success" });
+            }
+            if (userCaps.length == 0) {
+                setCount(0);
+                // スナックバーを表示
+                showMessage({ title: "条件に合ったものが見つかりませんでした", status: "error" });
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderCaps.current = false;
+        }
+    }, [userCaps]);
 
     const capsComponent = (
         <>
