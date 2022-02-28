@@ -1,7 +1,11 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
-import { useCallback } from "react"
+import { FC, memo, useCallback } from "react"
 import { colorList } from "../../../common/ColorList"
 
+type Props = {
+    valueColor: any;
+    setValueColor: any;
+}
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -9,6 +13,17 @@ function RadioCard(props) {
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
+
+    let getColor = props.value;
+    let allText;
+
+    if(getColor == 'all'){
+        getColor = 'white';
+    }
+
+    if (props.value == 'all'){
+        allText = '全て';
+    }
 
     // console.log(props)
 
@@ -25,7 +40,7 @@ function RadioCard(props) {
                 borderWidth='1px'
                 borderRadius='md'
                 boxShadow='md'
-                backgroundColor={props.value}
+                backgroundColor={getColor}
                 _checked={{
                     border: '4px',
                     borderColor: '#216496',
@@ -34,25 +49,31 @@ function RadioCard(props) {
                 _focus={{
                     // boxShadow: 'outline',
                 }}
-                px={10}
-                py={3}
+                // px={10}
+                // py={3}
                 height='30px'
                 width='60px'
+                whiteSpace='nowrap'
+                display='flex'
+                justifyContent='center'
+                alignItems='center'
             >
-                {/* {props.children} */}
+                {allText}
             </Box>
         </Box>
     )
 }
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-export function SearchColorSelect() {
+export const SearchColorSelect: FC<Props> = memo((props) => {
+    const { valueColor, setValueColor } = props;
+
     const options = colorList;
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'framework',
         defaultValue: 'react',
-        // onChange: console.log,
+        onChange: setValueColor,
     })
 
     const group = getRootProps()
@@ -69,4 +90,4 @@ export function SearchColorSelect() {
             })}
         </HStack>
     )
-}
+})
