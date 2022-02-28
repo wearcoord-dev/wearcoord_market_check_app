@@ -39,13 +39,42 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     // console.log(notLoginUser);
 
+    // 初回読み込み時のuseEffect管理
+    const isFirstOpenCaps = useRef(false);
+
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
         onOpen();
         onCloseTops();
         onClosePants();
         onCloseShoes();
-    }, []);
+
+        // 最初に開いた場合はアイテムを事前に表示しておく
+        let defaultCapsCategory: string;
+
+        if (isFirstOpenCaps.current === false) {
+
+            if (defaultGender === 'male') {
+                defaultCapsCategory = '506269';
+            } else if (defaultGender === 'female'){
+                defaultCapsCategory = '565818';
+            }
+
+            const data = {
+                'brand': '',
+                'color': '',
+                'category': defaultCapsCategory,
+                'wear': 'caps',
+                'page': 1,
+            }
+            setDataCaps(data);
+            setCapsArray([]);
+            getCaps(data);
+            setShowCaps(0);
+            // 初回の処理が終了
+            isFirstOpenCaps.current = true;
+        }
+    }, [defaultGender]);
 
     const onClickTops = useCallback(() => {
         onClose();
