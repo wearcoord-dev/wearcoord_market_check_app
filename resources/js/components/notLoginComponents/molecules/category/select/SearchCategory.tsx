@@ -1,6 +1,6 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 import { FC, memo, useState } from "react"
-import { capsList, capsListFemale, pantsList, shoesList, topsList } from "../../../common/CategoryList"
+import { capsList, capsListFemale, pantsList, shoesList, topsList, topsListFemale } from "../../../common/CategoryList"
 
 type Props = {
     type: string;
@@ -68,7 +68,11 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
         }
     }
     if (type === 'tops') {
-        options = topsList;
+        if (defaultGender == 'male') {
+            options = topsList;
+        } else if (defaultGender == 'female') {
+            options = topsListFemale;
+        }
     }
     if (type === 'pants') {
         options = pantsList;

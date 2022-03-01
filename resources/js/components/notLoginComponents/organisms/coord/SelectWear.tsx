@@ -6,10 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
+import { useAllTops } from "../../../../hooks/selectwear/useAllTops.jsx";
 import { useMessage } from "../../hooks/useMessage";
 import { WearType, WearTypePage } from "../../types/WearType";
 import { useRegisterWear } from "../../hooks/useRegisterWear";
 import { CapsSect } from "../wearSect/CapsSect";
+import { TopsSect } from "../wearSect/TopsSect";
 
 type Props = {
     defaultGender: string;
@@ -51,6 +53,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     // 初回読み込み時のuseEffect管理
     const isFirstOpenCaps = useRef(false);
+    const isFirstOpenTops = useRef(false);
 
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
@@ -92,6 +95,33 @@ export const SelectWear: FC<Props> = memo((props) => {
         onOpenTops();
         onClosePants();
         onCloseShoes();
+
+        // 最初に開いた場合はアイテムを事前に表示しておく
+        let defaultTopsCategory: string;
+
+        if (isFirstOpenTops.current === false) {
+
+            if (defaultGender === 'male') {
+                defaultTopsCategory = '508759';
+            } else if (defaultGender === 'female') {
+                defaultTopsCategory = '508803';
+            }
+
+            const data = {
+                'brand': 'all',
+                'color': 'all',
+                'category': defaultTopsCategory,
+                'wear': 'tops',
+                'page': 1,
+            }
+            setDataTops(data);
+            setTopsArray([]);
+            setTopsSel(data);
+            getTops(data);
+            setShowTops(0);
+            // 初回の処理が終了
+            isFirstOpenCaps.current = true;
+        }
     }, []);
 
     const onClickPants = useCallback(() => {
@@ -185,9 +215,61 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     // ここまでcaps
 
+    // ここからtops
+
+    // 検索処理
+    const { getTops, userTops, loadingTops, errorTops } = useAllTops();
+
+    // 着ているウェアを取得
+    const [activeIndexTops, setActiveIndexTops] = useState(0);
+
+    // // 検索条件の保存管理
+    const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [dataTops, setDataTops] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [topsArray, setTopsArray] = useState([]);
+    const [showTops, setShowTops] = useState<Number>(0);
+
+    // 中心のウェアを取得
+
+    const getActiveIndexTops = (swiper) => {
+        setActiveIndexTops(swiper.activeIndex);
+    }
+
+    // 条件に合ったウェアを探す
+
+    const onClickFetchTops = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'tops',
+            'page': 1,
+        }
+
+        if (props.category) {
+            setDataTops(data);
+            setTopsArray([]);
+            getTops(data);
+        } else {
+            setTopsArray([]);
+        }
+    }
+
     const topsComponent = (
         <>
-            <div onClick={onClickTops} style={{ width: "100%", height: "130px", margin: "auto" }}></div>
+            <TopsSect
+                onClickTops={onClickTops}
+                defaultGender={defaultGender}
+                setDataTops={setDataTops}
+                setTopsArray={setTopsArray}
+                dataTops={dataTops}
+                topsArray={topsArray}
+                getActiveIndexTops={getActiveIndexTops}
+                userTops={userTops}
+                getTops={getTops}
+                // defaultTops={defaultTops}
+            />
         </>
     )
 
@@ -252,8 +334,11 @@ export const SelectWear: FC<Props> = memo((props) => {
                 onClickAllClose={onClickAllClose}
                 onClickFetchCaps={onClickFetchCaps}
                 setCapsSel={setCapsSel}
-                defaultGender={defaultGender}
                 capsSel={capsSel}
+                onClickFetchTops={onClickFetchTops}
+                setTopsSel={setTopsSel}
+                topsSel={topsSel}
+                defaultGender={defaultGender}
                 onClickRegisterWear={onClickRegisterWear}
             />
         </>
