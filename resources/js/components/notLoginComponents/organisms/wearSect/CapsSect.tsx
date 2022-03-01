@@ -1,6 +1,8 @@
 import { FC, memo, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 import 'swiper/swiper-bundle.css';
+import axios from "axios";
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useMessage } from "../../hooks/useMessage";
@@ -18,7 +20,23 @@ type Props = {
     userCaps: any;
 }
 
+const colorList = [
+    'all',
+    'black',
+    'white',
+    'navy',
+    'pink',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+    'gray',
+];
+
 export const CapsSect: FC<Props> = memo((props) => {
+    const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { onClickCaps, defaultGender, setDataCaps, setCapsArray, setShowCaps, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps } = props;
     const { showMessage } = useMessage();
 
@@ -81,6 +99,37 @@ export const CapsSect: FC<Props> = memo((props) => {
         setCapsArray([...capsArray, ...userCaps]);
     }, [userCaps]);
 
+    // 着用アイテムがあった場合取得
+
+    const [defaultCaps, setDefaultCaps] = useState(notLoginUser.caps);
+    const [defaultCategory, setDefaultCategory] = useState('');
+    const [defaultUrl, setDefaultUrl] = useState('');
+
+    console.log(defaultCategory, defaultUrl)
+
+    useEffect(() => {
+        if (notLoginUser) {
+            if (notLoginUser.caps) {
+
+                axios.get("/api/getitemdetail", {
+                    params: {
+                        id: defaultCaps,
+                        type: 'caps',
+                    }
+                }).then((res) => {
+                    setDefaultCategory(res.data.category);
+                    console.log(res)
+                    colorList.map((color) => {
+                        if (res.data[color] !== null)
+                        setDefaultUrl(res.data[color]);
+                    })
+                }).catch(() => {
+                }).finally(() => {
+                });
+            }
+        }
+    }, [notLoginUser]);
+
     return (
         capsArray.length ? (
             <>
@@ -98,10 +147,18 @@ export const CapsSect: FC<Props> = memo((props) => {
                 </Swiper>
             </>
 
+        ) : (defaultCaps ? (
+            <>
+                <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}>
+                    <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ margin: 'auto' }} />
+                </div>
+            </>
+
         ) : (
             <>
                 <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
             </>
+        )
         )
     )
 });
