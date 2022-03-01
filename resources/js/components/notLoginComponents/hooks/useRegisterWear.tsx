@@ -11,8 +11,9 @@ export const useRegisterWear = () => {
     const registerWearLocal = useCallback((props: Props) => {
         const { gender, mannequin, caps } = props;
 
-        console.log(gender, mannequin, caps)
+        // @ts-ignore:next-line
+        console.log(gender, mannequin, caps.id)
 
-    },[])
-        return { registerWearLocal };
+    }, [])
+    return { registerWearLocal };
 }

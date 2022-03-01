@@ -9,6 +9,7 @@ import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useMessage } from "../../hooks/useMessage";
 import { WearType, WearTypePage } from "../../types/WearType";
 import { useRegisterWear } from "../../hooks/useRegisterWear";
+import { CapsSect } from "../wearSect/CapsSect";
 
 type Props = {
     defaultGender: string;
@@ -113,55 +114,27 @@ export const SelectWear: FC<Props> = memo((props) => {
         onCloseShoes();
     }, []);
 
-    // ここからcaps
+    // // ここからcaps
 
-    // 検索処理
+    // // 検索処理
     const { getCaps, userCaps, loading, error } = useAllCaps();
 
-    // 着ているウェアを取得
+    // // 着ているウェアを取得
     const [activeIndexCaps, setActiveIndexCaps] = useState(0);
 
-    // 検索条件の保存管理
+    // // 検索条件の保存管理
     const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [dataCaps, setDataCaps] = useState({ brand: "", color: "", category: "", wear: "", page: null });
     const [capsArray, setCapsArray] = useState([]);
     const [showCaps, setShowCaps] = useState<Number>(0);
 
-    // 検索結果のカウントを保持
-    const [count, setCount] = useState<Number>(0);
-
-    // 初回読み込み時のuseEffect管理
-    const isFirstRenderCaps = useRef(true);
+    // 中心のウェアを取得
 
     const getActiveIndexCaps = (swiper) => {
         setActiveIndexCaps(swiper.activeIndex);
     }
 
-    useEffect(() => {
-        if (!isFirstRenderCaps.current) {
-            if (userCaps[0]) {
-                setCount(userCaps[0].count);
-            }
-            if (userCaps.length == 0) {
-                setCount(0);
-                // メッセージバーを表示
-                showMessage({ title: "条件に合ったものが見つかりませんでした", status: "error" });
-            }
-        } else {
-            // 初回の処理が終了
-            isFirstRenderCaps.current = false;
-        }
-    }, [userCaps]);
-
-    // 検索件数が更新された場合にメッセージバーを表示
-
-    useEffect(() => {
-        if (userCaps[0]) {
-            if (count > 0) {
-                showMessage({ title: `${userCaps[0].count}件見つかりました`, status: "success" });
-            }
-        }
-    }, [count])
+    // 条件に合ったウェアを探す
 
     const onClickFetchCaps = (props) => {
 
@@ -193,55 +166,20 @@ export const SelectWear: FC<Props> = memo((props) => {
         }
     }
 
-    const onChangeEndCaps = () => {
-
-        if (dataCaps) {
-            const newPage = dataCaps.page + 1;
-
-            const data = {
-                'brand': dataCaps.brand,
-                'color': dataCaps.color,
-                'category': dataCaps.category,
-                'wear': 'caps',
-                'page': newPage,
-            }
-            setDataCaps(data);
-
-            // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
-            if (count > 3) {
-                getCaps(data);
-            }
-        }
-
-    }
-
-    useEffect(() => {
-        setCapsArray([...capsArray, ...userCaps]);
-    }, [userCaps]);
-
     const capsComponent = (
 
-        capsArray.length ? (
-            <>
-                <Swiper id="controller"
-                    slidesPerView={3}
-                    centeredSlides={true}
-                    onSlideChangeTransitionEnd={getActiveIndexCaps}
-                    onReachEnd={onChangeEndCaps}
-                >
-                    {capsArray.map((wear) => (
-                        <SwiperSlide onClick={onClickCaps} className="wearLi" key={wear.id}  >
-                            <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${wear.category}/${wear.url}`} alt="" style={{ margin: 'auto' }} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </>
-
-        ) : (
-            <>
-                <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
-            </>
-        )
+        <CapsSect
+            onClickCaps={onClickCaps}
+            defaultGender={defaultGender}
+            setDataCaps={setDataCaps}
+            setCapsArray={setCapsArray}
+            setShowCaps={setShowCaps}
+            dataCaps={dataCaps}
+            capsArray={capsArray}
+            getActiveIndexCaps={getActiveIndexCaps}
+            userCaps={userCaps}
+            getCaps={getCaps}
+        />
     )
 
     // ここまでcaps
@@ -268,7 +206,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     const onClickRegisterWear = () => {
 
-        let capsInfo: object = null;
+        let capsInfo = null;
 
         // 非表示フラグが立っている場合は中身をnullにする
         if (showCaps == 1) {
@@ -280,8 +218,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         const obj = {
             gender: defaultGender,
             mannequin: defaultMannequin,
-            // @ts-ignore:next-line
-            caps: capsInfo.id,
+            caps: capsInfo,
             // "tops": topsArray[activeIndexTops],
             // "pants": pantsArray[activeIndexPants],
             // "shoes": shoesArray[activeIndexShoes],

@@ -1,0 +1,107 @@
+import { FC, memo, useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+
+import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
+import { useMessage } from "../../hooks/useMessage";
+
+type Props = {
+    defaultGender: string;
+    onClickCaps: () => void;
+    getActiveIndexCaps: any;
+    setDataCaps: any;
+    setCapsArray: any;
+    setShowCaps: any;
+    dataCaps: any;
+    capsArray: any;
+    getCaps: any;
+    userCaps: any;
+}
+
+export const CapsSect: FC<Props> = memo((props) => {
+    const { onClickCaps, defaultGender, setDataCaps, setCapsArray, setShowCaps, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps } = props;
+    const { showMessage } = useMessage();
+
+
+    // 検索結果のカウントを保持
+    const [count, setCount] = useState<Number>(0);
+
+    // 初回読み込み時のuseEffect管理
+    const isFirstRenderCaps = useRef(true);
+
+    useEffect(() => {
+        if (!isFirstRenderCaps.current) {
+            if (userCaps[0]) {
+                setCount(userCaps[0].count);
+            }
+            if (userCaps.length == 0) {
+                setCount(0);
+                // メッセージバーを表示
+                showMessage({ title: "条件に合ったものが見つかりませんでした", status: "error" });
+            }
+        } else {
+            // 初回の処理が終了
+            isFirstRenderCaps.current = false;
+        }
+    }, [userCaps]);
+
+    // 検索件数が更新された場合にメッセージバーを表示
+
+    useEffect(() => {
+        if (userCaps[0]) {
+            if (count > 0) {
+                showMessage({ title: `${userCaps[0].count}件見つかりました`, status: "success" });
+            }
+        }
+    }, [count])
+
+    const onChangeEndCaps = () => {
+
+        if (dataCaps) {
+            const newPage = dataCaps.page + 1;
+
+            const data = {
+                'brand': dataCaps.brand,
+                'color': dataCaps.color,
+                'category': dataCaps.category,
+                'wear': 'caps',
+                'page': newPage,
+            }
+            setDataCaps(data);
+
+            // カウントが3件以上だと検索(表示が少なすぎた際の自動検索を避ける)
+            if (count > 3) {
+                getCaps(data);
+            }
+        }
+
+    }
+
+    useEffect(() => {
+        setCapsArray([...capsArray, ...userCaps]);
+    }, [userCaps]);
+
+    return (
+        capsArray.length ? (
+            <>
+                <Swiper id="controller"
+                    slidesPerView={3}
+                    centeredSlides={true}
+                    onSlideChangeTransitionEnd={getActiveIndexCaps}
+                    onReachEnd={onChangeEndCaps}
+                >
+                    {capsArray.map((wear) => (
+                        <SwiperSlide onClick={onClickCaps} className="wearLi" key={wear.id}  >
+                            <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${wear.category}/${wear.url}`} alt="" style={{ margin: 'auto' }} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </>
+
+        ) : (
+            <>
+                <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+            </>
+        )
+    )
+});
