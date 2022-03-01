@@ -42,6 +42,7 @@ export const CoordMale: FC<Props> = memo(() => {
                 setDefaultGender('male');
                 setDefaultMannequin('mens_170_model.png');
             } else if (notLoginUser.gender === 'male') {
+                setDefaultGender('male');
                 setDefaultMannequin(notLoginUser.mannequin);
             }
             if (notLoginUser.mannequin === null) {

@@ -85,7 +85,8 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
 
     const group = getRootProps()
 
-
+    // console.log(defaultGender)
+    // console.log(options)
     return (
         <HStack {...group} py={6}>
             {options.map((value) => {
