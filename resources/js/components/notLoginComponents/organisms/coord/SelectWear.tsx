@@ -17,6 +17,7 @@ type Props = {
     defaultGender: string;
     defaultMannequin: string;
     defaultCaps?: string;
+    defaultTops?: string;
 }
 
 type SendProps = {
@@ -26,7 +27,7 @@ type SendProps = {
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops } = props;
 
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -120,7 +121,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             getTops(data);
             setShowTops(0);
             // 初回の処理が終了
-            isFirstOpenCaps.current = true;
+            isFirstOpenTops.current = true;
         }
     }, []);
 
@@ -256,6 +257,8 @@ export const SelectWear: FC<Props> = memo((props) => {
         }
     }
 
+    // console.log(topsSel)
+
     const topsComponent = (
         <>
             <TopsSect
@@ -268,7 +271,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 getActiveIndexTops={getActiveIndexTops}
                 userTops={userTops}
                 getTops={getTops}
-                // defaultTops={defaultTops}
+                defaultTops={defaultTops}
             />
         </>
     )
@@ -302,7 +305,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             gender: defaultGender,
             mannequin: defaultMannequin,
             caps: capsInfo,
-            // "tops": topsArray[activeIndexTops],
+            tops: topsArray[activeIndexTops],
             // "pants": pantsArray[activeIndexPants],
             // "shoes": shoesArray[activeIndexShoes],
         }

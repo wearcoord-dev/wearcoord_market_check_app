@@ -105,6 +105,9 @@ export const TopsSect: FC<Props> = memo((props) => {
     const [defaultCategory, setDefaultCategory] = useState('');
     const [defaultUrl, setDefaultUrl] = useState('');
 
+    // console.log(defaultUrl, defaultCategory)
+    // console.log(defaultCategory)
+
     useEffect(() => {
         if (notLoginUser) {
             if (defaultTops) {
@@ -147,7 +150,7 @@ export const TopsSect: FC<Props> = memo((props) => {
         ) : (defaultTops ? (defaultUrl ? (
             <>
                     <div onClick={onClickTops} style={{ width: "100%", height: "130px", margin: "auto" }}>
-                        <img src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: 100, position: "relative" }} />
+                        <img src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: 100, position: "relative", margin: "auto" }} />
                 </div>
             </>
         ) : (null)

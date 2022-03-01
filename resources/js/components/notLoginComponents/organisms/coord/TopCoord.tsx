@@ -26,7 +26,7 @@ export const TopCoord: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { showMessage } = useMessage();
     const history = useHistory();
-    console.log(notLoginUser);
+    // console.log(notLoginUser);
 
     const onClickToMannequin = (gender) => {
         history.push({
