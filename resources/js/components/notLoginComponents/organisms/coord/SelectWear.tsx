@@ -14,6 +14,7 @@ import { CapsSect } from "../wearSect/CapsSect";
 type Props = {
     defaultGender: string;
     defaultMannequin: string;
+    defaultCaps?: string;
 }
 
 type SendProps = {
@@ -23,7 +24,7 @@ type SendProps = {
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin } = props;
+    const { defaultGender, defaultMannequin, defaultCaps } = props;
 
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -173,12 +174,12 @@ export const SelectWear: FC<Props> = memo((props) => {
             defaultGender={defaultGender}
             setDataCaps={setDataCaps}
             setCapsArray={setCapsArray}
-            setShowCaps={setShowCaps}
             dataCaps={dataCaps}
             capsArray={capsArray}
             getActiveIndexCaps={getActiveIndexCaps}
             userCaps={userCaps}
             getCaps={getCaps}
+            defaultCaps={defaultCaps}
         />
     )
 

@@ -13,11 +13,11 @@ type Props = {
     getActiveIndexCaps: any;
     setDataCaps: any;
     setCapsArray: any;
-    setShowCaps: any;
     dataCaps: any;
     capsArray: any;
     getCaps: any;
     userCaps: any;
+    defaultCaps?: string;
 }
 
 const colorList = [
@@ -37,7 +37,7 @@ const colorList = [
 
 export const CapsSect: FC<Props> = memo((props) => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
-    const { onClickCaps, defaultGender, setDataCaps, setCapsArray, setShowCaps, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps } = props;
+    const { onClickCaps, defaultGender, setDataCaps, setCapsArray, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps, defaultCaps } = props;
     const { showMessage } = useMessage();
 
 
@@ -101,15 +101,13 @@ export const CapsSect: FC<Props> = memo((props) => {
 
     // 着用アイテムがあった場合取得
 
-    const [defaultCaps, setDefaultCaps] = useState(notLoginUser.caps);
+    const [setCaps, setSetCaps] = useState('');
     const [defaultCategory, setDefaultCategory] = useState('');
     const [defaultUrl, setDefaultUrl] = useState('');
 
-    console.log(defaultCategory, defaultUrl)
-
     useEffect(() => {
         if (notLoginUser) {
-            if (notLoginUser.caps) {
+            if (defaultCaps) {
 
                 axios.get("/api/getitemdetail", {
                     params: {
@@ -118,17 +116,16 @@ export const CapsSect: FC<Props> = memo((props) => {
                     }
                 }).then((res) => {
                     setDefaultCategory(res.data.category);
-                    console.log(res)
                     colorList.map((color) => {
                         if (res.data[color] !== null)
-                        setDefaultUrl(res.data[color]);
+                            setDefaultUrl(res.data[color]);
                     })
                 }).catch(() => {
                 }).finally(() => {
                 });
             }
         }
-    }, [notLoginUser]);
+    }, [notLoginUser, defaultCaps]);
 
     return (
         capsArray.length ? (
@@ -147,12 +144,13 @@ export const CapsSect: FC<Props> = memo((props) => {
                 </Swiper>
             </>
 
-        ) : (defaultCaps ? (
+        ) : (defaultCaps ? (defaultUrl ? (
             <>
                 <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}>
                     <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ margin: 'auto' }} />
                 </div>
             </>
+        ) : (null)
 
         ) : (
             <>
