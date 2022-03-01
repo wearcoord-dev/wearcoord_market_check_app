@@ -8,10 +8,17 @@ import 'swiper/swiper-bundle.css';
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useMessage } from "../../hooks/useMessage";
 import { WearType, WearTypePage } from "../../types/WearType";
+import { useRegisterWear } from "../../hooks/useRegisterWear";
 
 type Props = {
     defaultGender: string;
     defaultMannequin: string;
+}
+
+type SendProps = {
+    gender: string;
+    mannequin: string;
+    caps: string;
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
@@ -20,6 +27,7 @@ export const SelectWear: FC<Props> = memo((props) => {
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { showMessage } = useMessage();
+    const { registerWearLocal } = useRegisterWear();
 
     const {
         isOpen: isOpenTops,
@@ -56,7 +64,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
             if (defaultGender === 'male') {
                 defaultCapsCategory = '506269';
-            } else if (defaultGender === 'female'){
+            } else if (defaultGender === 'female') {
                 defaultCapsCategory = '565818';
             }
 
@@ -114,7 +122,7 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [activeIndexCaps, setActiveIndexCaps] = useState(0);
 
     // 検索条件の保存管理
-    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: ""});
+    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
     const [dataCaps, setDataCaps] = useState({ brand: "", color: "", category: "", wear: "", page: null });
     const [capsArray, setCapsArray] = useState([]);
     const [showCaps, setShowCaps] = useState<Number>(0);
@@ -256,6 +264,31 @@ export const SelectWear: FC<Props> = memo((props) => {
         </>
     )
 
+    // 作成したコーデを保存
+
+    const onClickRegisterWear = () => {
+
+        let capsInfo: object = null;
+
+        // 非表示フラグが立っている場合は中身をnullにする
+        if (showCaps == 1) {
+            capsInfo = null;
+        } else {
+            capsInfo = capsArray[activeIndexCaps];
+        }
+
+        const obj = {
+            gender: defaultGender,
+            mannequin: defaultMannequin,
+            // @ts-ignore:next-line
+            caps: capsInfo.id,
+            // "tops": topsArray[activeIndexTops],
+            // "pants": pantsArray[activeIndexPants],
+            // "shoes": shoesArray[activeIndexShoes],
+        }
+        registerWearLocal(obj);
+    }
+
     return (
         <>
             <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} alt="" /></div>
@@ -283,6 +316,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 setCapsSel={setCapsSel}
                 defaultGender={defaultGender}
                 capsSel={capsSel}
+                onClickRegisterWear={onClickRegisterWear}
             />
         </>
     )

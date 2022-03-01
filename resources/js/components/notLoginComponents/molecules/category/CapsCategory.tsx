@@ -6,6 +6,7 @@ import { SearchCategorySelect } from "./select/SearchCategory";
 import { SearchColorSelect } from "./select/SearchColor";
 
 type Props = {
+    onClickRegisterWear: () => void;
     onClickAllClose: () => void;
     onClickFetchCaps: any;
     setCapsSel: any;
@@ -44,7 +45,7 @@ const commoncss = {
 
 
 export const CapsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender } = props;
+    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender, onClickRegisterWear } = props;
     const [value, setValue] = useState(capsSel.brand);
     const [valueColor, setValueColor] = useState(capsSel.color);
     const [valueCategory, setValueCategory] = useState(capsSel.category);
@@ -103,7 +104,10 @@ export const CapsCategory: FC<Props> = memo((props) => {
                     valueColor={valueColor}
                 />
             </Flex>
-            <SaveBtn onClickAllClose={onClickAllClose} />
+            <SaveBtn
+                onClickAllClose={onClickAllClose}
+                onClickRegisterWear={onClickRegisterWear}
+            />
         </Flex>
     )
 });
