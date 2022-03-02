@@ -62,7 +62,7 @@ export const TopsCategory: FC<Props> = memo((props) => {
             isFirstRender.current = false;
         } else {
             const data = {
-                wear: "caps",
+                wear: "tops",
                 brand: value,
                 color: valueColor,
                 category: valueCategory,
@@ -99,7 +99,6 @@ export const TopsCategory: FC<Props> = memo((props) => {
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}
-
             >
                 <SearchColorSelect
                     setValueColor={setValueColor}

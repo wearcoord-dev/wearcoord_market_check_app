@@ -23,6 +23,9 @@ type Props = {
     onClickFetchTops: any;
     setTopsSel: any;
     topsSel: any;
+    onClickFetchPants: any;
+    setPantsSel: any;
+    pantsSel: any;
 }
 
 const style = {
@@ -40,7 +43,7 @@ const style = {
 } as const;
 
 export const SearchBox: FC<Props> = memo((props) => {
-    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose, defaultGender, onClickRegisterWear, onClickFetchCaps, setCapsSel, capsSel, onClickFetchTops, setTopsSel, topsSel } = props;
+    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose, defaultGender, onClickRegisterWear, onClickFetchCaps, setCapsSel, capsSel, onClickFetchTops, setTopsSel, topsSel, onClickFetchPants, setPantsSel, pantsSel } = props;
 
     return (
         <>
@@ -65,7 +68,14 @@ export const SearchBox: FC<Props> = memo((props) => {
                 />
             </Drawer>
             <Drawer onClose={onClosePants} isOpen={isOpenPants}>
-                <PantsCategory onClickAllClose={onClickAllClose} />
+                <PantsCategory
+                    onClickAllClose={onClickAllClose}
+                    onClickFetchPants={onClickFetchPants}
+                    setPantsSel={setPantsSel}
+                    pantsSel={pantsSel}
+                    defaultGender={defaultGender}
+                    onClickRegisterWear={onClickRegisterWear}
+                />
             </Drawer>
             <Drawer onClose={onCloseShoes} isOpen={isOpenShoes}>
                 <ShoesCategory onClickAllClose={onClickAllClose} />

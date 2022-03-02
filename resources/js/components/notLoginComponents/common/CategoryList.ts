@@ -60,16 +60,35 @@ export const topsListFemale = [
 
 export const pantsList = [
     {
-        value: 'now',
+        value: '',
         text: '今のウェア'
     },
     {
-        value: 'half',
+        value: '508772',
         text: 'ハーフ・ショート'
     },
     {
-        value: 'long',
+        value: '565926',
         text: 'ロング'
+    },
+];
+
+export const pantsListFemale = [
+    {
+        value: '',
+        text: '今のウェア'
+    },
+    {
+        value: '508820',
+        text: 'ハーフ・ショート'
+    },
+    {
+        value: '565928',
+        text: 'ロング'
+    },
+    {
+        value: '565816',
+        text: 'スカート'
     },
 ];
 

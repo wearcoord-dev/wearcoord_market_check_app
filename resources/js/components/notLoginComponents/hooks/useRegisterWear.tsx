@@ -7,6 +7,7 @@ type Props = {
     mannequin: string;
     caps?: string;
     tops?: string;
+    pants?: string;
 }
 
 export const useRegisterWear = () => {
@@ -16,10 +17,11 @@ export const useRegisterWear = () => {
     console.log(notLoginUser)
 
     const registerWearLocal = useCallback((props: Props) => {
-        const { gender, mannequin, caps, tops } = props;
+        const { gender, mannequin, caps, tops, pants } = props;
 
         let capsId;
         let topsId;
+        let pantsId;
 
         // @ts-ignore:next-line
         if (!caps) {
@@ -35,7 +37,16 @@ export const useRegisterWear = () => {
             // @ts-ignore:next-line
             topsId = tops.id;
         }
-        console.log(mannequin, gender, capsId, topsId)
+        // @ts-ignore:next-line
+        if (!pants) {
+            pantsId = null;
+        } else {
+            // @ts-ignore:next-line
+            pantsId = pants.id;
+        }
+        
+        // console.log(mannequin, gender, capsId, topsId, pants)
+
         // @ts-ignore:next-line
         // console.log(gender, mannequin, caps.id)
         // @ts-ignore:next-line
@@ -48,7 +59,7 @@ export const useRegisterWear = () => {
 
         try {
             // 実行される処理
-            setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId })
+            setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId, pants: pantsId })
             showMessage({ title: "コーデを保存しました", status: "success" });
         } catch (error) {
             // 例外が発生した場合に実行される処理

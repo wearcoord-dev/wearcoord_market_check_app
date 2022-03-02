@@ -22,6 +22,7 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
                 mannequin: localStorage.getItem("mannequin") ?? null,
                 caps: localStorage.getItem("caps") ?? null,
                 tops: localStorage.getItem("tops") ?? null,
+                pants: localStorage.getItem("pants") ?? null,
             })
         } else {
             setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null, caps: null, tops:null })
@@ -47,6 +48,10 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
             if (notLoginUser.tops) {
                 localStorage.setItem('flg', ('true'));
                 localStorage.setItem('tops', (notLoginUser.tops));
+            }
+            if (notLoginUser.pants) {
+                localStorage.setItem('flg', ('true'));
+                localStorage.setItem('pants', (notLoginUser.pants));
             }
         }
     }, [notLoginUser])

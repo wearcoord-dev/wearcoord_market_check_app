@@ -7,17 +7,20 @@ import 'swiper/swiper-bundle.css';
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops.jsx";
+import { useAllPants } from "../../../../hooks/selectwear/useAllPants.jsx";
 import { useMessage } from "../../hooks/useMessage";
 import { WearType, WearTypePage } from "../../types/WearType";
 import { useRegisterWear } from "../../hooks/useRegisterWear";
 import { CapsSect } from "../wearSect/CapsSect";
 import { TopsSect } from "../wearSect/TopsSect";
+import { PantsSect } from "../wearSect/PantsSect";
 
 type Props = {
     defaultGender: string;
     defaultMannequin: string;
     defaultCaps?: string;
     defaultTops?: string;
+    defaultPants?: string;
 }
 
 type SendProps = {
@@ -27,7 +30,7 @@ type SendProps = {
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants } = props;
 
     const { notLoginUser } = useNotLoginUser();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -257,8 +260,6 @@ export const SelectWear: FC<Props> = memo((props) => {
         }
     }
 
-    // console.log(topsSel)
-
     const topsComponent = (
         <>
             <TopsSect
@@ -276,9 +277,63 @@ export const SelectWear: FC<Props> = memo((props) => {
         </>
     )
 
+    // ここまでtops
+
+    // ここからpants
+
+    // 検索処理
+    const { getPants, userPants, loadingPants, errorPants } = useAllPants();
+
+    // 着ているウェアを取得
+    const [activeIndexPants, setActiveIndexPants] = useState(0);
+
+    // // 検索条件の保存管理
+    const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [dataPants, setDataPants] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [pantsArray, setPantsArray] = useState([]);
+    const [showPants, setShowPants] = useState<Number>(0);
+
+    // 中心のウェアを取得
+
+    const getActiveIndexPants = (swiper) => {
+        setActiveIndexPants(swiper.activeIndex);
+    }
+
+    // 条件に合ったウェアを探す
+
+    const onClickFetchPants = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'pants',
+            'page': 1,
+        }
+
+        if (props.category) {
+            setDataPants(data);
+            setPantsArray([]);
+            getPants(data);
+        } else {
+            setPantsArray([]);
+        }
+    }
+
     const pantsComponent = (
         <>
-            <div onClick={onClickPants} style={{ width: "100%", height: "170px", margin: "auto" }}></div>
+            <PantsSect
+                onClickPants={onClickPants}
+                defaultGender={defaultGender}
+                setDataPants={setDataPants}
+                setPantsArray={setPantsArray}
+                dataPants={dataPants}
+                pantsArray={pantsArray}
+                getActiveIndexPants={getActiveIndexPants}
+                userPants={userPants}
+                getPants={getPants}
+                defaultPants={defaultPants}
+            />
         </>
     )
 
@@ -306,7 +361,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             mannequin: defaultMannequin,
             caps: capsInfo,
             tops: topsArray[activeIndexTops],
-            // "pants": pantsArray[activeIndexPants],
+            pants: pantsArray[activeIndexPants],
             // "shoes": shoesArray[activeIndexShoes],
         }
         registerWearLocal(obj);
@@ -341,6 +396,9 @@ export const SelectWear: FC<Props> = memo((props) => {
                 onClickFetchTops={onClickFetchTops}
                 setTopsSel={setTopsSel}
                 topsSel={topsSel}
+                onClickFetchPants={onClickFetchPants}
+                setPantsSel={setPantsSel}
+                pantsSel={pantsSel}
                 defaultGender={defaultGender}
                 onClickRegisterWear={onClickRegisterWear}
             />
