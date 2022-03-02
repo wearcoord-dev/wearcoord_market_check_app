@@ -58,6 +58,7 @@ export const SelectWear: FC<Props> = memo((props) => {
     // 初回読み込み時のuseEffect管理
     const isFirstOpenCaps = useRef(false);
     const isFirstOpenTops = useRef(false);
+    const isFirstOpenPants = useRef(false);
 
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
@@ -126,14 +127,41 @@ export const SelectWear: FC<Props> = memo((props) => {
             // 初回の処理が終了
             isFirstOpenTops.current = true;
         }
-    }, []);
+    }, [defaultGender]);
 
     const onClickPants = useCallback(() => {
         onClose();
         onCloseTops();
         onOpenPants();
         onCloseShoes();
-    }, []);
+
+        // 最初に開いた場合はアイテムを事前に表示しておく
+        let defaultPantsCategory: string;
+
+        if (isFirstOpenPants.current === false) {
+
+            if (defaultGender === 'male') {
+                defaultPantsCategory = '508772';
+            } else if (defaultGender === 'female') {
+                defaultPantsCategory = '508820';
+            }
+
+            const data = {
+                'brand': 'all',
+                'color': 'all',
+                'category': defaultPantsCategory,
+                'wear': 'pants',
+                'page': 1,
+            }
+            setDataPants(data);
+            setPantsArray([]);
+            setPantsSel(data);
+            getPants(data);
+            setShowPants(0);
+            // 初回の処理が終了
+            isFirstOpenPants.current = true;
+        }
+    }, [defaultGender]);
 
     const onClickShoes = useCallback(() => {
         onClose();
@@ -336,6 +364,8 @@ export const SelectWear: FC<Props> = memo((props) => {
             />
         </>
     )
+
+    // ここまでpants
 
     const shoesComponent = (
         <>

@@ -8,6 +8,7 @@ type Props = {
     defaultMannequin: string;
     defaultCaps?: string;
     defaultTops?: string;
+    defaultPants?: string;
 }
 
 const style = {
@@ -32,6 +33,7 @@ export const CoordFemale: FC<Props> = memo(() => {
     const [defaultGender, setDefaultGender] = useState<string>('');
     const [defaultCaps, setDefaultCaps] = useState<string>('');
     const [defaultTops, setDefaultTops] = useState<string>('');
+    const [defaultPants, setDefaultPants] = useState<string>('');
 
     // console.log(defaultTops);
 
@@ -48,6 +50,7 @@ export const CoordFemale: FC<Props> = memo(() => {
                 setDefaultMannequin('woman_manekin1.png');
                 setDefaultCaps(null);
                 setDefaultTops(null);
+                setDefaultPants(null);
             } else if (notLoginUser.gender === 'female') {
                 setDefaultGender('female');
                 setDefaultMannequin(notLoginUser.mannequin);
@@ -64,6 +67,11 @@ export const CoordFemale: FC<Props> = memo(() => {
             if (notLoginUser.tops !== null) {
                 if (notLoginUser.gender === 'female') {
                     setDefaultTops(notLoginUser.tops);
+                }
+            }
+            if (notLoginUser.pants !== null) {
+                if (notLoginUser.gender === 'female') {
+                    setDefaultPants(notLoginUser.pants);
                 }
             }
         }
@@ -84,6 +92,7 @@ export const CoordFemale: FC<Props> = memo(() => {
                                 defaultMannequin={defaultMannequin}
                                 defaultCaps={defaultCaps}
                                 defaultTops={defaultTops}
+                                defaultPants={defaultPants}
                             />
                         </div>
                     )
@@ -99,7 +108,7 @@ export const CoordFemale: FC<Props> = memo(() => {
 });
 
 const SelectSection: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants } = props;
 
     return (
         <>
@@ -108,6 +117,7 @@ const SelectSection: FC<Props> = memo((props) => {
                 defaultMannequin={defaultMannequin}
                 defaultCaps={defaultCaps}
                 defaultTops={defaultTops}
+                defaultPants={defaultPants}
             />
         </>
     )
