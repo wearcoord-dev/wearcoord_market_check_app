@@ -150,7 +150,9 @@ export const CapsSect: FC<Props> = memo((props) => {
                     <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ margin: 'auto' }} />
                 </div>
             </>
-        ) : (null)
+        ) : (
+            <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+        )
 
         ) : (
             <>
