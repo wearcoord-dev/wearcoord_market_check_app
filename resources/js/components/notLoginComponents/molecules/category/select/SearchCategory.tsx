@@ -1,6 +1,6 @@
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 import { FC, memo, useState } from "react"
-import { capsList, capsListFemale, pantsList, shoesList, topsList } from "../../../common/CategoryList"
+import { capsList, capsListFemale, pantsList, pantsListFemale, shoesList, topsList, topsListFemale } from "../../../common/CategoryList"
 
 type Props = {
     type: string;
@@ -13,9 +13,16 @@ type Props = {
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
     const { getInputProps, getCheckboxProps } = useRadio(props)
+    const { selectedCategory } = props;
 
     const input = getInputProps()
     const checkbox = getCheckboxProps()
+
+    // 既に選んでいるものにチェックを入れる
+
+    if (props.value === selectedCategory) {
+        checkbox['data-checked'] = '';
+    }
 
     return (
         <Box as='label'>
@@ -54,17 +61,25 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
 
     // export function SearchCategorySelect() {
     if (type === 'caps') {
-        if(defaultGender == 'male'){
+        if (defaultGender == 'male') {
             options = capsList;
-        } else if (defaultGender == 'female'){
+        } else if (defaultGender == 'female') {
             options = capsListFemale;
         }
     }
     if (type === 'tops') {
-        options = topsList;
+        if (defaultGender == 'male') {
+            options = topsList;
+        } else if (defaultGender == 'female') {
+            options = topsListFemale;
+        }
     }
     if (type === 'pants') {
-        options = pantsList;
+        if (defaultGender == 'male') {
+            options = pantsList;
+        } else if (defaultGender == 'female') {
+            options = pantsListFemale;
+        }
     }
     if (type === 'shoes') {
         options = shoesList;
@@ -75,18 +90,18 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
         defaultValue: 'react',
         onChange: setValueCategory,
     })
-    // console.log(valueCategory)
 
     const group = getRootProps()
 
-
+    // console.log(defaultGender)
+    // console.log(options)
     return (
         <HStack {...group} py={6}>
             {options.map((value) => {
                 const valueStr = value.value;
                 const radio = getRadioProps({ value: valueStr })
                 return (
-                    <RadioCard key={valueStr} {...radio}>
+                    <RadioCard key={valueStr} {...radio} selectedCategory={valueCategory}>
                         {value.text}
                     </RadioCard>
                 )
