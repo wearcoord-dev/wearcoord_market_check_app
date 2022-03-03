@@ -1,19 +1,19 @@
 import { useDisclosure } from "@chakra-ui/react";
 import { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import { SearchBox } from "../../molecules/SearchBox";
-import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops.jsx";
 import { useAllPants } from "../../../../hooks/selectwear/useAllPants.jsx";
+import { useAllShoes } from "../../../../hooks/selectwear/useAllShoes.jsx";
 import { useMessage } from "../../hooks/useMessage";
-import { WearType, WearTypePage } from "../../types/WearType";
 import { useRegisterWear } from "../../hooks/useRegisterWear";
 import { CapsSect } from "../wearSect/CapsSect";
 import { TopsSect } from "../wearSect/TopsSect";
 import { PantsSect } from "../wearSect/PantsSect";
+import { ShoesSect } from "../wearSect/ShoesSect";
 
 type Props = {
     defaultGender: string;
@@ -21,21 +21,15 @@ type Props = {
     defaultCaps?: string;
     defaultTops?: string;
     defaultPants?: string;
-}
-
-type SendProps = {
-    gender: string;
-    mannequin: string;
-    caps: string;
+    defaultShoes?: string;
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
 
-    const { notLoginUser } = useNotLoginUser();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const { showMessage } = useMessage();
     const { registerWearLocal } = useRegisterWear();
+
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const {
         isOpen: isOpenTops,
@@ -53,12 +47,12 @@ export const SelectWear: FC<Props> = memo((props) => {
         onClose: onCloseShoes
     } = useDisclosure();
 
-    // console.log(notLoginUser);
 
     // 初回読み込み時のuseEffect管理
     const isFirstOpenCaps = useRef(false);
     const isFirstOpenTops = useRef(false);
     const isFirstOpenPants = useRef(false);
+    const isFirstOpenShoes = useRef(false);
 
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
@@ -168,7 +162,34 @@ export const SelectWear: FC<Props> = memo((props) => {
         onCloseTops();
         onClosePants();
         onOpenShoes();
-    }, []);
+
+        // 最初に開いた場合はアイテムを事前に表示しておく
+        let defaultShoesCategory: string;
+
+        if (isFirstOpenShoes.current === false) {
+
+            if (defaultGender === 'male') {
+                defaultShoesCategory = '208025';
+            } else if (defaultGender === 'female') {
+                defaultShoesCategory = '565819';
+            }
+
+            const data = {
+                'brand': 'all',
+                'color': 'all',
+                'category': defaultShoesCategory,
+                'wear': 'shoes',
+                'page': 1,
+            }
+            setDataShoes(data);
+            setShoesArray([]);
+            setShoesSel(data);
+            getShoes(data);
+            setShowShoes(0);
+            // 初回の処理が終了
+            isFirstOpenShoes.current = true;
+        }
+    }, [defaultGender]);
 
     const onClickAllClose = useCallback(() => {
         onClose();
@@ -367,11 +388,66 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     // ここまでpants
 
+    // ここからshoes
+
+    // 検索処理
+    const { getShoes, userShoes, loadingShoes, errorShoes } = useAllShoes();
+
+    // 着ているウェアを取得
+    const [activeIndexShoes, setActiveIndexShoes] = useState(0);
+
+    // // 検索条件の保存管理
+    const [shoesSel, setShoesSel] = useState({ brand: "", color: "", category: "", wear: "" });
+    const [dataShoes, setDataShoes] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [shoesArray, setShoesArray] = useState([]);
+    const [showShoes, setShowShoes] = useState<Number>(0);
+
+    // 中心のウェアを取得
+
+    const getActiveIndexShoes = (swiper) => {
+        setActiveIndexShoes(swiper.activeIndex);
+    }
+
+    // 条件に合ったウェアを探す
+
+    const onClickFetchShoes = (props) => {
+
+        const data = {
+            'brand': props.brand,
+            'color': props.color,
+            'category': props.category,
+            'wear': 'shoes',
+            'page': 1,
+        }
+
+        if (props.category) {
+            setDataShoes(data);
+            setShoesArray([]);
+            getShoes(data);
+        } else {
+            setShoesArray([]);
+        }
+    }
+
     const shoesComponent = (
         <>
-            <div onClick={onClickShoes} style={{ width: "100%", height: "100px", margin: "auto" }}></div>
+            <ShoesSect
+                onClickShoes={onClickShoes}
+                defaultGender={defaultGender}
+                setDataShoes={setDataShoes}
+                setShoesArray={setShoesArray}
+                dataShoes={dataShoes}
+                shoesArray={shoesArray}
+                getActiveIndexShoes={getActiveIndexShoes}
+                userShoes={userShoes}
+                getShoes={getShoes}
+                defaultShoes={defaultShoes}
+            />
         </>
     )
+
+    // ここまでshoes
+
 
     // 作成したコーデを保存
 
@@ -392,7 +468,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             caps: capsInfo,
             tops: topsArray[activeIndexTops],
             pants: pantsArray[activeIndexPants],
-            // "shoes": shoesArray[activeIndexShoes],
+            shoes: shoesArray[activeIndexShoes],
         }
         registerWearLocal(obj);
     }
@@ -429,6 +505,9 @@ export const SelectWear: FC<Props> = memo((props) => {
                 onClickFetchPants={onClickFetchPants}
                 setPantsSel={setPantsSel}
                 pantsSel={pantsSel}
+                onClickFetchShoes={onClickFetchShoes}
+                setShoesSel={setShoesSel}
+                shoesSel={shoesSel}
                 defaultGender={defaultGender}
                 onClickRegisterWear={onClickRegisterWear}
             />

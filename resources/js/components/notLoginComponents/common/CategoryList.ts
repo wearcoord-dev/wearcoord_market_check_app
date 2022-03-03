@@ -94,11 +94,22 @@ export const pantsListFemale = [
 
 export const shoesList = [
     {
-        value: 'now',
+        value: '',
         text: '今のウェア'
     },
     {
-        value: 'shoes',
+        value: '208025',
+        text: 'シューズ'
+    },
+];
+
+export const shoesListFemale = [
+    {
+        value: '',
+        text: '今のウェア'
+    },
+    {
+        value: '565819',
         text: 'シューズ'
     },
 ];

@@ -8,6 +8,7 @@ type Props = {
     caps?: string;
     tops?: string;
     pants?: string;
+    shoes?: string;
 }
 
 export const useRegisterWear = () => {
@@ -17,11 +18,12 @@ export const useRegisterWear = () => {
     console.log(notLoginUser)
 
     const registerWearLocal = useCallback((props: Props) => {
-        const { gender, mannequin, caps, tops, pants } = props;
+        const { gender, mannequin, caps, tops, pants, shoes } = props;
 
         let capsId;
         let topsId;
         let pantsId;
+        let shoesId;
 
         // @ts-ignore:next-line
         if (!caps) {
@@ -44,22 +46,17 @@ export const useRegisterWear = () => {
             // @ts-ignore:next-line
             pantsId = pants.id;
         }
-        
-        // console.log(mannequin, gender, capsId, topsId, pants)
-
         // @ts-ignore:next-line
-        // console.log(gender, mannequin, caps.id)
-        // @ts-ignore:next-line
-        // setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: caps.id }).then(() => {
-        //     showMessage({ title: "コーデを保存しました", status: "success" });
-        // }
-        // ).catch(() => {
-        //     showMessage({ title: "コーデの保存に失敗しました", status: "error" });
-        // });
+        if (!shoes) {
+            shoesId = null;
+        } else {
+            // @ts-ignore:next-line
+            shoesId = shoes.id;
+        }
 
         try {
             // 実行される処理
-            setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId, pants: pantsId })
+            setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId, pants: pantsId, shoes: shoesId })
             showMessage({ title: "コーデを保存しました", status: "success" });
         } catch (error) {
             // 例外が発生した場合に実行される処理
