@@ -49,9 +49,11 @@ export const ShoesComponent: FC<Props> = memo((props) => {
         }
     }, [itemId]);
 
+    console.log(defaultCategory, defaultUrl)
+
     return (
         <>
-            {itemId ? (
+            {itemId && defaultCategory && defaultUrl ? (
                 <div style={{ textAlign: "center", margin: "auto" }}>
                     <img src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ width: "100%", height: "100px", objectFit: "contain", position: "relative", margin: "auto" }} />
                 </div>

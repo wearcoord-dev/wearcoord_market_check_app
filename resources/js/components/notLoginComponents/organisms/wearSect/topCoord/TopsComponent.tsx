@@ -51,7 +51,7 @@ export const TopsComponent: FC<Props> = memo((props) => {
 
     return (
         <>
-            {itemId ? (
+            {itemId && defaultCategory && defaultUrl ? (
                 <div style={{ width: "100%", height: "130px", margin: "auto" }}>
                     <img src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ width: "125px", height: "125px", objectFit: "contain", zIndex: 100, position: "relative", margin: "auto" }} />
                 </div>

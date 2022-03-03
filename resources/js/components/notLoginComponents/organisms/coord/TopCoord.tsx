@@ -26,11 +26,11 @@ const style = {
         // backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
     },
     wrapper: {
-        display: "flex",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-        height: "100vh",
-        flexDirection: "column",
+        // display: "flex",
+        // justifyContent: "space-evenly",
+        // alignItems: "center",
+        // height: "100%",
+        // flexDirection: "column",
     }
 } as const;
 
