@@ -51,7 +51,7 @@ export const PantsComponent: FC<Props> = memo((props) => {
 
     return (
         <>
-            {itemId ? (
+            {itemId && defaultCategory && defaultUrl ? (
                 <div style={{ width: "100%", height: "170px", margin: "auto" }}>
                     <img src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ width: "100%", height: "170px", objectFit: "contain", position: "relative", margin: "auto" }} />
                 </div>
