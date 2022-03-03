@@ -26,8 +26,8 @@ export const PantsComponent: FC<Props> = memo((props) => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { defaultGender, itemId } = props;
 
-    const [defaultCategory, setDefaultCategory] = useState('');
-    const [defaultUrl, setDefaultUrl] = useState('');
+    const [defaultCategory, setDefaultCategory] = useState();
+    const [defaultUrl, setDefaultUrl] = useState();
 
     useEffect(() => {
         if (notLoginUser) {
