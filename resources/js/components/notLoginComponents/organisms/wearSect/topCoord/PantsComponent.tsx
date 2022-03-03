@@ -31,23 +31,26 @@ export const PantsComponent: FC<Props> = memo((props) => {
 
     useEffect(() => {
         if (notLoginUser) {
-
-            axios.get("/api/getitemdetail", {
-                params: {
-                    id: itemId,
-                    type: 'pants',
+            if (!defaultCategory) {
+                if (!defaultUrl) {
+                    axios.get("/api/getitemdetail", {
+                        params: {
+                            id: itemId,
+                            type: 'pants',
+                        }
+                    }).then((res) => {
+                        setDefaultCategory(res.data.category);
+                        colorList.map((color) => {
+                            if (res.data[color] !== null)
+                                setDefaultUrl(res.data[color]);
+                        })
+                    }).catch(() => {
+                    }).finally(() => {
+                    });
                 }
-            }).then((res) => {
-                setDefaultCategory(res.data.category);
-                colorList.map((color) => {
-                    if (res.data[color] !== null)
-                        setDefaultUrl(res.data[color]);
-                })
-            }).catch(() => {
-            }).finally(() => {
-            });
+            }
         }
-    }, [itemId]);
+    }, [itemId, defaultCategory, defaultUrl]);
 
     return (
         <>

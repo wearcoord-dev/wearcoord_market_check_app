@@ -31,25 +31,26 @@ export const ShoesComponent: FC<Props> = memo((props) => {
 
     useEffect(() => {
         if (notLoginUser) {
-
-            axios.get("/api/getitemdetail", {
-                params: {
-                    id: itemId,
-                    type: 'shoes',
+            if (!defaultCategory) {
+                if (!defaultUrl) {
+                    axios.get("/api/getitemdetail", {
+                        params: {
+                            id: itemId,
+                            type: 'shoes',
+                        }
+                    }).then((res) => {
+                        setDefaultCategory(res.data.category);
+                        colorList.map((color) => {
+                            if (res.data[color] !== null)
+                                setDefaultUrl(res.data[color]);
+                        })
+                    }).catch(() => {
+                    }).finally(() => {
+                    });
                 }
-            }).then((res) => {
-                setDefaultCategory(res.data.category);
-                colorList.map((color) => {
-                    if (res.data[color] !== null)
-                        setDefaultUrl(res.data[color]);
-                })
-            }).catch(() => {
-            }).finally(() => {
-            });
+            }
         }
-    }, [itemId]);
-
-    console.log(defaultCategory, defaultUrl)
+    }, [itemId, defaultCategory, defaultUrl]);
 
     return (
         <>
