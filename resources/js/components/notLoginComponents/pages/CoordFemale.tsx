@@ -4,11 +4,12 @@ import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 
 type Props = {
-    defaultGender: string;
-    defaultMannequin: string;
+    defaultGender?: string;
+    defaultMannequin?: string;
     defaultCaps?: string;
     defaultTops?: string;
     defaultPants?: string;
+    defaultShoes?: string;
 }
 
 const style = {
@@ -34,8 +35,7 @@ export const CoordFemale: FC<Props> = memo(() => {
     const [defaultCaps, setDefaultCaps] = useState<string>('');
     const [defaultTops, setDefaultTops] = useState<string>('');
     const [defaultPants, setDefaultPants] = useState<string>('');
-
-    // console.log(defaultTops);
+    const [defaultShoes, setDefaultShoes] = useState<string>('');
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
@@ -51,6 +51,7 @@ export const CoordFemale: FC<Props> = memo(() => {
                 setDefaultCaps(null);
                 setDefaultTops(null);
                 setDefaultPants(null);
+                setDefaultShoes(null);
             } else if (notLoginUser.gender === 'female') {
                 setDefaultGender('female');
                 setDefaultMannequin(notLoginUser.mannequin);
@@ -74,12 +75,13 @@ export const CoordFemale: FC<Props> = memo(() => {
                     setDefaultPants(notLoginUser.pants);
                 }
             }
+            if (notLoginUser.shoes !== null) {
+                if (notLoginUser.gender === 'female') {
+                    setDefaultShoes(notLoginUser.shoes);
+                }
+            }
         }
     }, [notLoginUser])
-
-    // console.log(defaultGender);
-    // console.log(defaultMannequin);
-    // console.log(defaultCaps);
 
     return (
         <>
@@ -93,6 +95,7 @@ export const CoordFemale: FC<Props> = memo(() => {
                                 defaultCaps={defaultCaps}
                                 defaultTops={defaultTops}
                                 defaultPants={defaultPants}
+                                defaultShoes={defaultShoes}
                             />
                         </div>
                     )
@@ -108,7 +111,7 @@ export const CoordFemale: FC<Props> = memo(() => {
 });
 
 const SelectSection: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
 
     return (
         <>
@@ -118,6 +121,7 @@ const SelectSection: FC<Props> = memo((props) => {
                 defaultCaps={defaultCaps}
                 defaultTops={defaultTops}
                 defaultPants={defaultPants}
+                defaultShoes={defaultShoes}
             />
         </>
     )

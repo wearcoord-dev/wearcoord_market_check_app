@@ -23,6 +23,7 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
                 caps: localStorage.getItem("caps") ?? null,
                 tops: localStorage.getItem("tops") ?? null,
                 pants: localStorage.getItem("pants") ?? null,
+                shoes: localStorage.getItem("shoes") ?? null,
             })
         } else {
             setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null, caps: null, tops:null })
@@ -53,18 +54,12 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
                 localStorage.setItem('flg', ('true'));
                 localStorage.setItem('pants', (notLoginUser.pants));
             }
+            if (notLoginUser.shoes) {
+                localStorage.setItem('flg', ('true'));
+                localStorage.setItem('shoes', (notLoginUser.shoes));
+            }
         }
     }, [notLoginUser])
-
-    // useEffect(() => {
-    //     if (notLoginUser) {
-    //         if (notLoginUser.gender && notLoginUser.mannequin === null) {
-    //             setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null })
-    //         }
-    //     }
-    // })
-
-    // console.log(localStorage.getItem("gender"), localStorage.getItem("mannequin"));
 
     return (
         <NotLoginUserContext.Provider value={{ notLoginUser, setNotLoginUser }}>

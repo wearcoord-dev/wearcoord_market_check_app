@@ -4,11 +4,12 @@ import { SelectWear } from "../organisms/coord/SelectWear";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 
 type Props = {
-    defaultGender: string;
-    defaultMannequin: string;
+    defaultGender?: string;
+    defaultMannequin?: string;
     defaultCaps?: string;
     defaultTops?: string;
     defaultPants?: string;
+    defaultShoes?: string;
 }
 
 const style = {
@@ -34,7 +35,7 @@ export const CoordMale: FC<Props> = memo(() => {
     const [defaultCaps, setDefaultCaps] = useState<string>('');
     const [defaultTops, setDefaultTops] = useState<string>('');
     const [defaultPants, setDefaultPants] = useState<string>('');
-    // console.log(defaultCaps);
+    const [defaultShoes, setDefaultShoes] = useState<string>('');
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
@@ -42,7 +43,6 @@ export const CoordMale: FC<Props> = memo(() => {
     useEffect(() => {
         if (notLoginUser) {
             if (notLoginUser.gender === null) {
-                // setNotLoginUser({...notLoginUser, gender: 'male'});
                 setDefaultGender('male');
             } else if (notLoginUser.gender === 'female') {
                 setDefaultGender('male');
@@ -50,12 +50,12 @@ export const CoordMale: FC<Props> = memo(() => {
                 setDefaultCaps(null);
                 setDefaultTops(null);
                 setDefaultPants(null);
+                setDefaultShoes(null);
             } else if (notLoginUser.gender === 'male') {
                 setDefaultGender('male');
                 setDefaultMannequin(notLoginUser.mannequin);
             }
             if (notLoginUser.mannequin === null) {
-                // setNotLoginUser({ ...notLoginUser, mannequin: 'mens_170_model.png' });
                 setDefaultMannequin('mens_170_model.png');
             }
             if (notLoginUser.caps !== null) {
@@ -73,11 +73,13 @@ export const CoordMale: FC<Props> = memo(() => {
                     setDefaultPants(notLoginUser.pants);
                 }
             }
+            if (notLoginUser.shoes !== null) {
+                if (notLoginUser.gender === 'male'){
+                    setDefaultShoes(notLoginUser.shoes);
+                }
+            }
         }
     }, [notLoginUser])
-
-    // console.log(defaultGender);
-    // console.log(defaultMannequin);
 
     return (
         <>
@@ -91,6 +93,7 @@ export const CoordMale: FC<Props> = memo(() => {
                                 defaultCaps={defaultCaps}
                                 defaultTops={defaultTops}
                                 defaultPants={defaultPants}
+                                defaultShoes={defaultShoes}
                             />
                         </div>
                     )
@@ -106,7 +109,7 @@ export const CoordMale: FC<Props> = memo(() => {
 });
 
 const SelectSection: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
 
     return (
         <>
@@ -116,6 +119,7 @@ const SelectSection: FC<Props> = memo((props) => {
                 defaultCaps={defaultCaps}
                 defaultTops={defaultTops}
                 defaultPants={defaultPants}
+                defaultShoes={defaultShoes}
             />
         </>
     )
