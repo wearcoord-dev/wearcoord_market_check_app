@@ -19,7 +19,7 @@ class Database
         if ($brand) {
 
             // availabilityがnullではないものを取得
-            $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->orderBy('id', 'desc')->whereNotNull('availability')->paginate(21);
+            $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->inRandomOrder()->whereNotNull('availability')->paginate(21);
 
             // availabilityがnullではない全ての数を取得
             $count = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull('availability')->count();
@@ -64,7 +64,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
             if ($color) {
-                $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->whereNotNull('availability')->paginate(21);
+                $item = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->inRandomOrder()->whereNotNull('availability')->paginate(21);
                 $count = DB::table($type . '_rakuten_apis')->where('brand', $brand)->where('category', $category)->whereNotNull($color)->whereNotNull('availability')->count();
 
 
@@ -76,7 +76,7 @@ class Database
                 }
             }
         } else if ($color) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->inRandomOrder()->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
             $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull('availability')->whereNotNull($color)->where('brand', '!=', $notShowingBrand)->count();
 
             // urlに画像を入れる
@@ -86,7 +86,7 @@ class Database
                 $DBitems[] = array('db' => $i, 'url' => $url);
             }
         } else if ($category) {
-            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->orderBy('id', 'desc')->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
+            $item = DB::table($type . '_rakuten_apis')->where('category', $category)->inRandomOrder()->whereNotNull('availability')->where('brand', '!=', $notShowingBrand)->paginate(21);
             $count = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull('availability')->count();
 
             // urlに画像を入れる
