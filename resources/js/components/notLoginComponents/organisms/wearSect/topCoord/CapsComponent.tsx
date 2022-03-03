@@ -26,28 +26,31 @@ export const CapsComponent: FC<Props> = memo((props) => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { defaultGender, itemId } = props;
 
-    const [defaultCategory, setDefaultCategory] = useState('');
-    const [defaultUrl, setDefaultUrl] = useState('');
+    const [defaultCategory, setDefaultCategory] = useState();
+    const [defaultUrl, setDefaultUrl] = useState();
 
     useEffect(() => {
         if (notLoginUser) {
-
-            axios.get("/api/getitemdetail", {
-                params: {
-                    id: itemId,
-                    type: 'caps',
+            if (!defaultCategory) {
+                if (!defaultUrl) {
+                    axios.get("/api/getitemdetail", {
+                        params: {
+                            id: itemId,
+                            type: 'caps',
+                        }
+                    }).then((res) => {
+                        setDefaultCategory(res.data.category);
+                        colorList.map((color) => {
+                            if (res.data[color] !== null)
+                                setDefaultUrl(res.data[color]);
+                        })
+                    }).catch(() => {
+                    }).finally(() => {
+                    });
                 }
-            }).then((res) => {
-                setDefaultCategory(res.data.category);
-                colorList.map((color) => {
-                    if (res.data[color] !== null)
-                        setDefaultUrl(res.data[color]);
-                })
-            }).catch(() => {
-            }).finally(() => {
-            });
+            }
         }
-    }, [itemId]);
+    }, [itemId, defaultCategory, defaultUrl]);
 
     return (
         <>
