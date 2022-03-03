@@ -1,10 +1,12 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
-import { FC, memo, useCallback } from "react";
+import axios from "axios";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { DeleteModal } from "../../atoms/modal/modal";
 import { useMessage } from "../../hooks/useMessage";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 import { NotLoginUser } from "../../types/NotLoginUser";
+import { CapsComponent } from "../wearSect/topCoord/CapsComponent";
 
 const style = {
     bgImg: {
@@ -25,8 +27,18 @@ const style = {
 export const TopCoord: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { showMessage } = useMessage();
+    const [defaultGender, setDefaultGender] = useState<string>();
+    const [capsId, setCapsId] = useState<string>();
     const history = useHistory();
-    // console.log(notLoginUser);
+
+    console.log(notLoginUser);
+
+    useEffect(() => {
+        if (notLoginUser) {
+            setDefaultGender(notLoginUser.gender);
+            setCapsId(notLoginUser.caps);
+        }
+    }, [notLoginUser])
 
     const onClickToMannequin = (gender) => {
         history.push({
@@ -44,12 +56,32 @@ export const TopCoord: FC = memo(() => {
     };
 
 
+    const capsComponent = (
+        <>
+            <CapsComponent
+                defaultGender={defaultGender}
+                itemId={capsId}
+            />
+        </>
+    )
+
+
     return (
         <>
 
             {notLoginUser ? (notLoginUser.mannequin ? (
                 <div style={style.bgImg}>
                     <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
+                        <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} alt="" /></div>
+
+                        <div style={{ display: "flex", position: "relative" }}>{capsComponent}</div>
+
+                        {/* <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
+
+
+                        <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
+
+                        <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div> */}
                     </div>
                 </div>
             ) : (
@@ -79,14 +111,6 @@ export const TopCoord: FC = memo(() => {
                     <DeleteModal onClickResetMannequin={onClickResetMannequin}>コーデをリセットする</DeleteModal>
                 </Stack>
             ) : null) : null}
-
-            {/* {notLoginUser ? (notLoginUser.gender === 'male' ? (
-                <>
-                </>
-            ) : notLoginUser.gender === 'female' ? (
-                <>
-                </>
-            ) : null) : null} */}
         </>
     )
 });

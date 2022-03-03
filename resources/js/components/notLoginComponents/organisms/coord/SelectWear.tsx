@@ -14,6 +14,7 @@ import { CapsSect } from "../wearSect/CapsSect";
 import { TopsSect } from "../wearSect/TopsSect";
 import { PantsSect } from "../wearSect/PantsSect";
 import { ShoesSect } from "../wearSect/ShoesSect";
+import { useHistory } from "react-router-dom";
 
 type Props = {
     defaultGender: string;
@@ -28,6 +29,7 @@ export const SelectWear: FC<Props> = memo((props) => {
     const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
 
     const { registerWearLocal } = useRegisterWear();
+    const history = useHistory();
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -471,6 +473,10 @@ export const SelectWear: FC<Props> = memo((props) => {
             shoes: shoesArray[activeIndexShoes],
         }
         registerWearLocal(obj);
+        history.push({
+            pathname: '/sample',
+            // state: { from: gender }
+        });
     }
 
     return (
