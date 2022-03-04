@@ -23,6 +23,7 @@ const style = {
         flexDirection: 'column',
         backgroundColor: 'ghostwhite',
         padding: "0 20px 20px",
+        zIndex: 1000,
     },
     ul: {
         flexWrap: "nowrap",
