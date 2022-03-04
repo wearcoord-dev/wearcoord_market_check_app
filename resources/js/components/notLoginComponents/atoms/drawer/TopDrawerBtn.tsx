@@ -1,5 +1,5 @@
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Icon, IconProps, useDisclosure } from "@chakra-ui/react";
-import { FC, memo, ReactNode } from "react";
+import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Icon, useDisclosure } from "@chakra-ui/react";
+import { FC, memo } from "react";
 
 type Props = {
     btnIcon: any;
