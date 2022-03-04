@@ -56,39 +56,6 @@ export const SelectWear: FC<Props> = memo((props) => {
     const isFirstOpenPants = useRef(false);
     const isFirstOpenShoes = useRef(false);
 
-    // 最初にページを開いた場合topsを自動的に表示
-    const [firstOpen, setFirstOpen] = useState('');
-
-    useEffect(() => {
-        onClose();
-        onOpenTops();
-        onClosePants();
-        onCloseShoes();
-
-        // 最初に開いた場合はアイテムを事前に表示しておく
-
-        if (defaultGender === 'male') {
-            setFirstOpen('508759');
-        } else if (defaultGender === 'female') {
-            setFirstOpen('508803');
-        }
-        console.log(firstOpen, defaultGender)
-        const data = {
-            'brand': 'all',
-            'color': 'all',
-            'category': firstOpen,
-            'wear': 'tops',
-            'page': 1,
-        }
-        setDataTops(data);
-        setTopsArray([]);
-        setTopsSel(data);
-        getTops(data);
-        setShowTops(0);
-        isFirstOpenTops.current = true;
-
-    }, [firstOpen, defaultGender]);
-
 
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
@@ -495,16 +462,16 @@ export const SelectWear: FC<Props> = memo((props) => {
         if (showCaps == 1) {
             capsInfo = null;
         } else {
-            capsInfo = capsArray[activeIndexCaps];
+            capsInfo = capsArray[activeIndexCaps] ?? defaultCaps;
         }
 
         const obj = {
             gender: defaultGender,
             mannequin: defaultMannequin,
             caps: capsInfo,
-            tops: topsArray[activeIndexTops],
-            pants: pantsArray[activeIndexPants],
-            shoes: shoesArray[activeIndexShoes],
+            tops: topsArray[activeIndexTops] ?? defaultTops,
+            pants: pantsArray[activeIndexPants] ?? defaultPants,
+            shoes: shoesArray[activeIndexShoes] ?? defaultShoes,
         }
         registerWearLocal(obj);
         history.push({
@@ -512,6 +479,39 @@ export const SelectWear: FC<Props> = memo((props) => {
             // state: { from: gender }
         });
     }
+
+    // 最初にページを開いた場合topsを自動的に表示
+    const [firstOpen, setFirstOpen] = useState('');
+
+    useEffect(() => {
+        onClose();
+        onOpenTops();
+        onClosePants();
+        onCloseShoes();
+
+        // 最初に開いた場合はアイテムを事前に表示しておく
+
+        if (defaultGender === 'male') {
+            setFirstOpen('508759');
+        } else if (defaultGender === 'female') {
+            setFirstOpen('508803');
+        }
+        console.log(firstOpen, defaultGender)
+        const data = {
+            'brand': 'all',
+            'color': 'all',
+            'category': firstOpen,
+            'wear': 'tops',
+            'page': 1,
+        }
+        setDataTops(data);
+        setTopsArray([]);
+        setTopsSel(data);
+        getTops(data);
+        setShowTops(0);
+        isFirstOpenTops.current = true;
+
+    }, [firstOpen, defaultGender]);
 
     return (
         <>
