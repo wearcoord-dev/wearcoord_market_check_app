@@ -1,6 +1,7 @@
-import { Button, Flex, Stack } from "@chakra-ui/react";
+import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { FC, memo, useCallback, useEffect, useState } from "react";
+import { Icon } from '@chakra-ui/react'
 import { useHistory } from "react-router-dom";
 import { DeleteModal } from "../../atoms/modal/modal";
 import { useMessage } from "../../hooks/useMessage";
@@ -10,6 +11,11 @@ import { CapsComponent } from "../wearSect/topCoord/CapsComponent";
 import { PantsComponent } from "../wearSect/topCoord/PantsComponent";
 import { ShoesComponent } from "../wearSect/topCoord/ShoesComponent";
 import { TopsComponent } from "../wearSect/topCoord/TopsComponent";
+import { FaTshirt } from 'react-icons/fa';
+import { BiFace } from 'react-icons/bi';
+import { GiArmoredPants } from 'react-icons/gi';
+import { GiSonicShoes } from 'react-icons/gi';
+import { TopDrawerBtn } from "../../atoms/drawer/TopDrawerBtn";
 
 const style = {
     bgImg: {
@@ -43,6 +49,7 @@ export const TopCoord: FC = memo(() => {
     const [pantsId, setPantsId] = useState<string>();
     const [shoesId, setShoesId] = useState<string>();
     const history = useHistory();
+
 
     console.log(notLoginUser);
 
@@ -116,11 +123,12 @@ export const TopCoord: FC = memo(() => {
     )
 
 
+
     return (
         <div style={style.wrapper}>
             {notLoginUser ? (notLoginUser.mannequin ? (
-                <div onClick={onClickCreateCoord}>
-                    <div style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
+                <div>
+                    <div onClick={onClickCreateCoord} style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
                         <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} alt="" /></div>
 
                         <div style={{ display: "flex", position: "relative" }}>{capsComponent}</div>
@@ -132,6 +140,39 @@ export const TopCoord: FC = memo(() => {
 
                         <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
                     </div>
+
+                    <Stack direction='column' spacing={4} align='center' justifyContent='center'>
+                        <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
+                            マネキンを変更する
+                        </Button>
+                        <Button onClick={onClickCreateCoord} background='#216496' color='white' variant='solid'>
+                            コーデをつくる
+                        </Button>
+                        <DeleteModal onClickResetMannequin={onClickResetMannequin}>コーデをリセットする</DeleteModal>
+                    </Stack>
+
+                    <Flex flexDirection={'column'} display={'flex'} position={'absolute'} right={0} top={'100px'} height={'50vh'} justifyContent={'space-evenly'}>
+                        <TopDrawerBtn
+                            btnIcon={BiFace}
+                            wearId={capsId}
+                            type={'caps'}
+                        />
+                        <TopDrawerBtn
+                            btnIcon={FaTshirt}
+                            wearId={topsId}
+                            type={'tops'}
+                        />
+                        <TopDrawerBtn
+                            btnIcon={GiArmoredPants}
+                            wearId={pantsId}
+                            type={'pants'}
+                        />
+                        <TopDrawerBtn
+                            btnIcon={GiSonicShoes}
+                            wearId={shoesId}
+                            type={'shoes'}
+                        />
+                    </Flex>
                 </div>
             ) : (
                 <Stack>
@@ -163,17 +204,6 @@ export const TopCoord: FC = memo(() => {
                 </Stack>
             ) : null) : null}
 
-            {notLoginUser ? (notLoginUser.gender ? (
-                <Stack direction='column' spacing={4} align='center' justifyContent='center'>
-                    <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
-                        マネキンを変更する
-                    </Button>
-                    <Button onClick={onClickCreateCoord} background='#216496' color='white' variant='solid'>
-                        コーデをつくる
-                    </Button>
-                    <DeleteModal onClickResetMannequin={onClickResetMannequin}>コーデをリセットする</DeleteModal>
-                </Stack>
-            ) : null) : null}
         </div>
     )
 });
