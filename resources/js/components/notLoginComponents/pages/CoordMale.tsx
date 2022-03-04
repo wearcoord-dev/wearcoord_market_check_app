@@ -32,10 +32,10 @@ export const CoordMale: FC<Props> = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const [defaultMannequin, setDefaultMannequin] = useState<string>('');
     const [defaultGender, setDefaultGender] = useState<string>('');
-    const [defaultCaps, setDefaultCaps] = useState<string>('');
-    const [defaultTops, setDefaultTops] = useState<string>('');
-    const [defaultPants, setDefaultPants] = useState<string>('');
-    const [defaultShoes, setDefaultShoes] = useState<string>('');
+    const [defaultCaps, setDefaultCaps] = useState<string>(null);
+    const [defaultTops, setDefaultTops] = useState<string>('1070');
+    const [defaultPants, setDefaultPants] = useState<string>('436');
+    const [defaultShoes, setDefaultShoes] = useState<string>(null);
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
@@ -47,10 +47,10 @@ export const CoordMale: FC<Props> = memo(() => {
             } else if (notLoginUser.gender === 'female') {
                 setDefaultGender('male');
                 setDefaultMannequin('mens_170_model.png');
-                setDefaultCaps(null);
-                setDefaultTops(null);
-                setDefaultPants(null);
-                setDefaultShoes(null);
+                // setDefaultCaps(null);
+                // setDefaultTops('1070');
+                // setDefaultPants('436');
+                // setDefaultShoes(null);
             } else if (notLoginUser.gender === 'male') {
                 setDefaultGender('male');
                 setDefaultMannequin(notLoginUser.mannequin);

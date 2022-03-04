@@ -56,6 +56,11 @@ export const TopsCategory: FC<Props> = memo((props) => {
         isFirstRender.current = true
     }, [])
 
+    // 初回自動検索ボックス表示時の挙動対応
+    useEffect(() => {
+        setValueCategory(topsSel.category)
+    }, [topsSel.category])
+
     useEffect(() => {
 
         if (isFirstRender.current) {

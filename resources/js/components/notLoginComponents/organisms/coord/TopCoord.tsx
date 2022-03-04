@@ -176,7 +176,7 @@ export const TopCoord: FC = memo(() => {
                 </div>
             ) : (
                 <Stack>
-                    <Flex justifyContent='center' py={10}>マネキンを選ぶかコーデを作りましょう!</Flex>
+                    <Flex justifyContent='center' py={10}>コーデを作りましょう!</Flex>
                 </Stack>
             )
             ) : null}
