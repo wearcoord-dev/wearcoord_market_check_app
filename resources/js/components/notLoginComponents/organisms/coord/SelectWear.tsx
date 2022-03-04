@@ -462,16 +462,16 @@ export const SelectWear: FC<Props> = memo((props) => {
         if (showCaps == 1) {
             capsInfo = null;
         } else {
-            capsInfo = capsArray[activeIndexCaps];
+            capsInfo = capsArray[activeIndexCaps] ?? defaultCaps;
         }
 
         const obj = {
             gender: defaultGender,
             mannequin: defaultMannequin,
             caps: capsInfo,
-            tops: topsArray[activeIndexTops],
-            pants: pantsArray[activeIndexPants],
-            shoes: shoesArray[activeIndexShoes],
+            tops: topsArray[activeIndexTops] ?? defaultTops,
+            pants: pantsArray[activeIndexPants] ?? defaultPants,
+            shoes: shoesArray[activeIndexShoes] ?? defaultShoes,
         }
         registerWearLocal(obj);
         history.push({

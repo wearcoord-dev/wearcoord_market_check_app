@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useCallback } from "react";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 import { useMessage } from "./useMessage";
@@ -25,33 +27,85 @@ export const useRegisterWear = () => {
         let pantsId;
         let shoesId;
 
-        // @ts-ignore:next-line
-        if (!caps) {
-            capsId = null;
+        if (gender == notLoginUser.gender) {
+
+            // 既に登録済みの場合
+            if (caps) {
+                if (caps.id) {
+                    capsId = caps.id;
+                } else {
+                    capsId = caps;
+                }
+            } else {
+                capsId = notLoginUser.caps;
+            }
+            if (tops) {
+                if (tops.id) {
+                    topsId = tops.id;
+                } else {
+                    topsId = tops;
+                }
+            } else {
+                topsId = notLoginUser.tops;
+            }
+            if (pants) {
+                if (pants.id) {
+                    pantsId = pants.id;
+                } else {
+                    pantsId = pants;
+                }
+            } else {
+                pantsId = notLoginUser.pants;
+            }
+            if (shoes) {
+                if (shoes.id) {
+                    shoesId = shoes.id;
+                } else {
+                    shoesId = shoes;
+                }
+            } else {
+                shoesId = notLoginUser.shoes;
+            }
+
         } else {
-            // @ts-ignore:next-line
-            capsId = caps.id;
-        }
-        // @ts-ignore:next-line
-        if (!tops) {
-            topsId = null;
-        } else {
-            // @ts-ignore:next-line
-            topsId = tops.id;
-        }
-        // @ts-ignore:next-line
-        if (!pants) {
-            pantsId = null;
-        } else {
-            // @ts-ignore:next-line
-            pantsId = pants.id;
-        }
-        // @ts-ignore:next-line
-        if (!shoes) {
-            shoesId = null;
-        } else {
-            // @ts-ignore:next-line
-            shoesId = shoes.id;
+
+            // 新規作成の場合
+            if (caps) {
+                if (caps.id) {
+                    capsId = caps.id;
+                } else {
+                    capsId = caps;
+                }
+            } else {
+                capsId = null;
+            }
+            if (tops) {
+                if (tops.id) {
+                    topsId = tops.id;
+                } else {
+                    topsId = tops;
+                }
+            } else {
+                topsId = null;
+            }
+            if (pants) {
+                if (pants.id) {
+                    pantsId = pants.id;
+                } else {
+                    pantsId = pants;
+                }
+            } else {
+                pantsId = null;
+            }
+            if (shoes) {
+                if (shoes.id) {
+                    shoesId = shoes.id;
+                } else {
+                    shoesId = shoes;
+                }
+            } else {
+                shoesId = null;
+            }
         }
 
         try {
