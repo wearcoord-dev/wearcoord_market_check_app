@@ -1,6 +1,8 @@
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Icon, Image, Stack, useDisclosure } from "@chakra-ui/react";
 import { FC, memo, useEffect, useState } from "react";
 import { useGetShopifyItem } from "../../hooks/useGetShopifyItem";
+
+import numeral from "numeral";
 
 type Props = {
     btnIcon: any;
@@ -46,34 +48,85 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
             <Drawer onClose={onClose} isOpen={isOpen} size={'md'}>
                 <DrawerOverlay />
                 <DrawerContent>
-                    <DrawerHeader>{`${type} drawer contents`}</DrawerHeader>
-                    <DrawerHeader>{shopifyItem ? <p>{shopifyItem.title}</p> : null}</DrawerHeader>
-                    <DrawerHeader>{shopifyItem ? <p>{shopifyItem.vendor}</p> : null}</DrawerHeader>
+                    <DrawerHeader
+                        textAlign='center'
+                        py={8}
+                        fontSize='20px'
+                        color='#216496'
+                        fontWeight='bold'
+                    >{shopifyItem ? <>{shopifyItem.title}</> : null}</DrawerHeader>
+                    <DrawerHeader
+                        textAlign='center'
+                    >
+                        {shopifyItem ? (
+                            <>
+                                <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='80%' size='lg'>購入する</Button>
+                            </>
+                        ) : null}
+                    </DrawerHeader>
+                    {/* <DrawerHeader
+                        textAlign='end'
+                        fontWeight='bold'
+                        color='#484848'
+                    >{shopifyItem ? <>{shopifyItem.vendor}</> : null}</DrawerHeader> */}
                     <DrawerBody>
-                        {shopifyItem ? (
-                            <>
-                                <div dangerouslySetInnerHTML={{ __html: shopifyItem.descriptionHtml }}></div>
-                            </>
-                        ) : <p>null</p>}
-                        {shopifyItem ? (
-                            <>
-                                {shopifyItem.variants.edges[0].node.price}
-                            </>
-                        ) : <p>null</p>}
-                        {shopifyItem ? (
-                            <>
-                                {shopifyItem.images.edges.map((item) => (
-                                    < img src={item.node.originalSrc} key={item.node.id} />
-                                ))}
-                            </>
-                        ) : <p>null</p>}
-                        {shopifyItem ? (
-                            <>
-                                <DrawerFooter>
-                                    <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='whiteAlpha.700' variant='solid' target={'_blank'}>購入する</Button>
-                                </DrawerFooter>
-                            </>
-                        ) : <p>null</p>}
+                        <Stack>
+                            {shopifyItem ? (
+                                <>
+                                    <Box dangerouslySetInnerHTML={{ __html: shopifyItem.descriptionHtml }}></Box>
+                                </>
+                            ) : null}
+                            {shopifyItem ? (
+                                <>
+                                    <Box
+                                        textAlign='end'
+                                        fontWeight='bold'
+                                        color='#484848'
+                                        fontSize='16px'
+                                    >{shopifyItem.vendor}</Box>
+                                </>
+                            ) : null}
+                            {shopifyItem ? (
+                                <Box
+                                    textAlign='end'
+                                    fontWeight='bold'
+                                    color='orangered'
+                                    fontSize='16px'
+                                >
+                                    ¥{numeral(shopifyItem.variants.edges[0].node.price).format('0,0')} ~
+                                </Box>
+                            ) : null}
+                            {shopifyItem ? (
+                                <Box py={4}>
+                                    {shopifyItem.images.edges.map((item) => (
+                                        <Image
+                                        src={item.node.originalSrc}
+                                        alt={item.node.originalSrc} key={item.node.id}
+                                        py={4}
+                                        />
+                                    ))}
+                                </Box>
+                            ) : null}
+                            {shopifyItem ? (
+                                <>
+                                    <DrawerFooter
+                                    display='flex'
+                                    flexDirection='column'
+                                    py={10}
+                                    >
+                                        {shopifyItem ? (
+                                            <>
+                                            <Box
+                                            py={4}
+                                            fontWeight='bold'
+                                            >wearcoord公式ストアで購入する</Box>
+                                                <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='100%' size='lg'>購入する</Button>
+                                            </>
+                                        ) : null}
+                                    </DrawerFooter>
+                                </>
+                            ) : null}
+                        </Stack>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
