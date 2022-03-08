@@ -5,52 +5,13 @@ import { useNotLoginUser } from "../../../provider/NotLoginUserProvider";
 type Props = {
     defaultGender: string;
     itemId: string;
+    defaultCategory: string;
+    defaultUrl: string;
 }
-
-const colorList = [
-    'all',
-    'black',
-    'white',
-    'navy',
-    'pink',
-    'red',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'purple',
-    'gray',
-];
 
 export const ShoesComponent: FC<Props> = memo((props) => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
-    const { defaultGender, itemId } = props;
-
-    const [defaultCategory, setDefaultCategory] = useState();
-    const [defaultUrl, setDefaultUrl] = useState();
-
-    useEffect(() => {
-        if (notLoginUser) {
-            if (!defaultCategory) {
-                if (!defaultUrl) {
-                    axios.get("/api/getitemdetail", {
-                        params: {
-                            id: itemId,
-                            type: 'shoes',
-                        }
-                    }).then((res) => {
-                        setDefaultCategory(res.data.category);
-                        colorList.map((color) => {
-                            if (res.data[color] !== null)
-                                setDefaultUrl(res.data[color]);
-                        })
-                    }).catch(() => {
-                    }).finally(() => {
-                    });
-                }
-            }
-        }
-    }, [itemId, defaultCategory, defaultUrl]);
+    const { defaultGender, itemId, defaultCategory, defaultUrl } = props;
 
     return (
         <>

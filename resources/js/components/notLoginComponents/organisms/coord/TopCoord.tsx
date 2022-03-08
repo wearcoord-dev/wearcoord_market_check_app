@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { FC, memo, useCallback, useEffect, useState } from "react";
@@ -40,6 +42,21 @@ const style = {
     }
 } as const;
 
+const colorList = [
+    'all',
+    'black',
+    'white',
+    'navy',
+    'pink',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+    'gray',
+];
+
 export const TopCoord: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { showMessage } = useMessage();
@@ -50,8 +67,20 @@ export const TopCoord: FC = memo(() => {
     const [shoesId, setShoesId] = useState<string>();
     const history = useHistory();
 
+    const [defaultCategoryCaps, setDefaultCategoryCaps] = useState();
+    const [defaultUrlCaps, setDefaultUrlCaps] = useState();
+    const [defaultCategoryTops, setDefaultCategoryTops] = useState();
+    const [defaultUrlTops, setDefaultUrlTops] = useState();
+    const [defaultCategoryPants, setDefaultCategoryPants] = useState();
+    const [defaultUrlPants, setDefaultUrlPants] = useState();
+    const [defaultCategoryShoes, setDefaultCategoryShoes] = useState();
+    const [defaultUrlShoes, setDefaultUrlShoes] = useState();
+
+    const [getCoordData, setGetCoordData] = useState();
+
 
     console.log(notLoginUser);
+    console.log(getCoordData)
 
     useEffect(() => {
         if (notLoginUser) {
@@ -62,6 +91,53 @@ export const TopCoord: FC = memo(() => {
             setShoesId(notLoginUser.shoes);
         }
     }, [notLoginUser])
+
+    useEffect(() => {
+        if (notLoginUser) {
+            if (topsId ?? pantsId ?? shoesId) {
+                axios.get("/api/getcoord", {
+                    params: {
+                        capsId: capsId,
+                        topsId: topsId,
+                        pantsId: pantsId,
+                        shoesId: shoesId,
+                    }
+                }).then((res) => {
+                    // console.log(res.data)
+                    setGetCoordData(res.data);
+                }).catch(() => {
+                }).finally(() => {
+                });
+            }
+        }
+    }, [capsId, topsId, pantsId, shoesId]);
+
+    useEffect(() => {
+        if (getCoordData){
+            if (getCoordData.capsItem){
+                setDefaultCategoryCaps(getCoordData.capsItem.category)
+                colorList.map((color) => {
+                    if (getCoordData.capsItem[color] !== null)
+                        setDefaultUrlCaps(getCoordData.capsItem[color]);
+                })
+            }
+            setDefaultCategoryTops(getCoordData.topsItem.category);
+            colorList.map((color) => {
+                if (getCoordData.topsItem[color] !== null)
+                    setDefaultUrlTops(getCoordData.topsItem[color]);
+            })
+            setDefaultCategoryPants(getCoordData.pantsItem.category);
+            colorList.map((color) => {
+                if (getCoordData.pantsItem[color] !== null)
+                    setDefaultUrlPants(getCoordData.pantsItem[color]);
+            })
+            setDefaultCategoryShoes(getCoordData.shoesItem.category);
+            colorList.map((color) => {
+                if (getCoordData.shoesItem[color] !== null)
+                    setDefaultUrlShoes(getCoordData.shoesItem[color]);
+            })
+        }
+    }, [getCoordData])
 
     // const onClickToMannequin = (gender) => {
     //     history.push({
@@ -98,6 +174,8 @@ export const TopCoord: FC = memo(() => {
         <CapsComponent
             defaultGender={defaultGender}
             itemId={capsId}
+            defaultCategory={defaultCategoryCaps}
+            defaultUrl={defaultUrlCaps}
         />
     )
 
@@ -105,6 +183,8 @@ export const TopCoord: FC = memo(() => {
         <TopsComponent
             defaultGender={defaultGender}
             itemId={topsId}
+            defaultCategory={defaultCategoryTops}
+            defaultUrl={defaultUrlTops}
         />
     )
 
@@ -112,6 +192,8 @@ export const TopCoord: FC = memo(() => {
         <PantsComponent
             defaultGender={defaultGender}
             itemId={pantsId}
+            defaultCategory={defaultCategoryPants}
+            defaultUrl={defaultUrlPants}
         />
     )
 
@@ -119,6 +201,8 @@ export const TopCoord: FC = memo(() => {
         <ShoesComponent
             defaultGender={defaultGender}
             itemId={shoesId}
+            defaultCategory={defaultCategoryShoes}
+            defaultUrl={defaultUrlShoes}
         />
     )
 

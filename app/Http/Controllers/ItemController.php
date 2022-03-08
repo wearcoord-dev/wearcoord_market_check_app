@@ -42,4 +42,33 @@ class ItemController extends Controller
 
         return 'ok';
     }
+
+    public function getCoord(Request $request)
+    {
+        $request->validate([
+            'capsId' => ['nullable', 'string'],
+            'topsId' => ['nullable', 'string'],
+            'pantsId' => ['nullable', 'string'],
+            'shoesId' => ['nullable', 'string'],
+        ]);
+
+        $capsId = $request['capsId'];
+        $topsId = $request['topsId'];
+        $pantsId = $request['pantsId'];
+        $shoesId = $request['shoesId'];
+
+        $capsItem = DB::table('caps_rakuten_apis')->where('id', $capsId)->first();
+        $topsItem = DB::table('tops_rakuten_apis')->where('id', $topsId)->first();
+        $pantsItem = DB::table('pants_rakuten_apis')->where('id', $pantsId)->first();
+        $shoesItem = DB::table('shoes_rakuten_apis')->where('id', $shoesId)->first();
+
+        $userItem = ([
+            'capsItem' => $capsItem,
+            'topsItem' => $topsItem,
+            'pantsItem' => $pantsItem,
+            'shoesItem' => $shoesItem,
+        ]);
+
+        return response()->json($userItem);
+    }
 }

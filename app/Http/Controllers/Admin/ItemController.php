@@ -229,6 +229,7 @@ class ItemController extends Controller
             'available' => ['required', 'integer'],
             'id' => ['required', 'integer'],
             'type' => ['required', 'string'],
+            'shopify_id' => ['nullable', 'string'],
         ]);
 
         $id = $request->input('id');
@@ -236,6 +237,7 @@ class ItemController extends Controller
         $gender = $request->input('gender');
         $color = $request->color;
         $category = $request->category;
+        $shopify_id = $request->shopify_id;
 
         $imageFiles = $request->wearimg;
 
@@ -248,7 +250,7 @@ class ItemController extends Controller
 
         try {
             DB::transaction(
-                function () use ($request, $type, $id, $imageFiles, $color) {
+                function () use ($request, $type, $id, $imageFiles, $color, $shopify_id) {
 
                     // nullに変換
                     if ($request->available == '0') {
@@ -262,6 +264,7 @@ class ItemController extends Controller
                         $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
+                        $product->shopify_id = $shopify_id;
                         $oldColor = self::getColor($product);
 
                         if ($color) {
@@ -283,6 +286,7 @@ class ItemController extends Controller
                         $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
+                        $product->shopify_id = $shopify_id;
                         $oldColor = self::getColor($product);
 
                         if ($color) {
@@ -303,6 +307,7 @@ class ItemController extends Controller
                         $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
+                        $product->shopify_id = $shopify_id;
                         $oldColor = self::getColor($product);
 
                         if ($color) {
@@ -323,6 +328,7 @@ class ItemController extends Controller
                         $product->availability = $available;
                         $product->brand = $request->brand;
                         $product->itemId = $request->itemId;
+                        $product->shopify_id = $shopify_id;
                         $oldColor = self::getColor($product);
 
                         if ($color) {
