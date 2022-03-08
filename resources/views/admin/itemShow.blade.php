@@ -18,7 +18,6 @@
                             </ul>
                         </div>
                     </div>
-
                 @endif
                 <div class="card">
                     <div class="card-header">ウェア登録情報編集</div>
@@ -135,11 +134,21 @@
                             </div>
                         </div>
 
+                        {{-- shopify_id --}}
+                        <div class="form-group row p-3">
+                            <label for="shopify_id" class="col-sm-2 col-form-label">ShopifyアイテムID</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="shopify_id" name="shopify_id"
+                                    value="{{ $detail->shopify_id }}">
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-primary">変更内容を登録する</button>
                 </div>
                 </form>
 
-                <form method="post" action="{{ route('itemDelete', ['id' => $detail->id, 'type' => $type, 'gender' => $gender, 'category' => $detail->category, 'color' => $color]) }}">
+                <form method="post"
+                    action="{{ route('itemDelete', ['id' => $detail->id,'type' => $type,'gender' => $gender,'category' => $detail->category,'color' => $color]) }}">
                     @csrf
                     {{-- @method('delete') --}}
                     <div style="text-align: end;" class="p-2 w-full flex justify-around mt-32">

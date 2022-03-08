@@ -68,6 +68,9 @@ Route::get('/getcalcsize', [App\Http\Controllers\UserController::class, "getCalc
 
 Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class, "addAvailabilityDB"]);
 
+Route::get('/getcoord', [App\Http\Controllers\ItemController::class, "getCoord"])->name('getCoord');
+
+
 
 // ベストドレッサー
 

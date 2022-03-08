@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { FC, memo, useCallback, useEffect, useState } from "react";
@@ -40,6 +42,21 @@ const style = {
     }
 } as const;
 
+const colorList = [
+    'all',
+    'black',
+    'white',
+    'navy',
+    'pink',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+    'gray',
+];
+
 export const TopCoord: FC = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { showMessage } = useMessage();
@@ -50,8 +67,29 @@ export const TopCoord: FC = memo(() => {
     const [shoesId, setShoesId] = useState<string>();
     const history = useHistory();
 
+    const [defaultCategoryCaps, setDefaultCategoryCaps] = useState();
+    const [defaultUrlCaps, setDefaultUrlCaps] = useState();
+    const [defaultCategoryTops, setDefaultCategoryTops] = useState();
+    const [defaultUrlTops, setDefaultUrlTops] = useState();
+    const [defaultCategoryPants, setDefaultCategoryPants] = useState();
+    const [defaultUrlPants, setDefaultUrlPants] = useState();
+    const [defaultCategoryShoes, setDefaultCategoryShoes] = useState();
+    const [defaultUrlShoes, setDefaultUrlShoes] = useState();
 
-    console.log(notLoginUser);
+    const [shopifyIdCaps, setShopifyIdCaps] = useState();
+    const [shopifyIdTops, setShopifyIdTops] = useState();
+    const [shopifyIdPants, setShopifyIdPants] = useState();
+    const [shopifyIdShoes, setShopifyIdShoes] = useState();
+
+    const [getCoordData, setGetCoordData] = useState();
+    const [getDataCaps, setGetDataCaps] = useState();
+    const [getDataTops, setGetDataTops] = useState();
+    const [getDataPants, setGetDataPants] = useState();
+    const [getDataShoes, setGetDataShoes] = useState();
+
+
+    // console.log(notLoginUser);
+    // console.log(getCoordData)
 
     useEffect(() => {
         if (notLoginUser) {
@@ -62,6 +100,63 @@ export const TopCoord: FC = memo(() => {
             setShoesId(notLoginUser.shoes);
         }
     }, [notLoginUser])
+
+    useEffect(() => {
+        if (notLoginUser) {
+            if (topsId ?? pantsId ?? shoesId) {
+                axios.get("/api/getcoord", {
+                    params: {
+                        capsId: capsId,
+                        topsId: topsId,
+                        pantsId: pantsId,
+                        shoesId: shoesId,
+                    }
+                }).then((res) => {
+                    // console.log(res.data)
+                    setGetCoordData(res.data);
+                }).catch(() => {
+                }).finally(() => {
+                });
+            }
+        }
+    }, [capsId, topsId, pantsId, shoesId]);
+
+    useEffect(() => {
+        if (getCoordData){
+            if (getCoordData.capsItem){
+                setDefaultCategoryCaps(getCoordData.capsItem.category);
+                setShopifyIdCaps(getCoordData.capsItem.shopify_id);
+                colorList.map((color) => {
+                    if (getCoordData.capsItem[color] !== null)
+                        setDefaultUrlCaps(getCoordData.capsItem[color]);
+                })
+            }
+            setDefaultCategoryTops(getCoordData.topsItem.category);
+            setShopifyIdTops(getCoordData.topsItem.shopify_id);
+            colorList.map((color) => {
+                if (getCoordData.topsItem[color] !== null)
+                    setDefaultUrlTops(getCoordData.topsItem[color]);
+            })
+            setDefaultCategoryPants(getCoordData.pantsItem.category);
+            setShopifyIdPants(getCoordData.pantsItem.shopify_id);
+            colorList.map((color) => {
+                if (getCoordData.pantsItem[color] !== null)
+                    setDefaultUrlPants(getCoordData.pantsItem[color]);
+            })
+            setDefaultCategoryShoes(getCoordData.shoesItem.category);
+            setShopifyIdShoes(getCoordData.shoesItem.shopify_id);
+            colorList.map((color) => {
+                if (getCoordData.shoesItem[color] !== null)
+                    setDefaultUrlShoes(getCoordData.shoesItem[color]);
+            })
+            setGetDataCaps(getCoordData.capsItem)
+            setGetDataTops(getCoordData.topsItem)
+            setGetDataPants(getCoordData.pantsItem)
+            setGetDataShoes(getCoordData.shoesItem)
+        }
+    }, [getCoordData])
+
+    // console.log(getDataPants)
 
     // const onClickToMannequin = (gender) => {
     //     history.push({
@@ -98,6 +193,8 @@ export const TopCoord: FC = memo(() => {
         <CapsComponent
             defaultGender={defaultGender}
             itemId={capsId}
+            defaultCategory={defaultCategoryCaps}
+            defaultUrl={defaultUrlCaps}
         />
     )
 
@@ -105,6 +202,8 @@ export const TopCoord: FC = memo(() => {
         <TopsComponent
             defaultGender={defaultGender}
             itemId={topsId}
+            defaultCategory={defaultCategoryTops}
+            defaultUrl={defaultUrlTops}
         />
     )
 
@@ -112,6 +211,8 @@ export const TopCoord: FC = memo(() => {
         <PantsComponent
             defaultGender={defaultGender}
             itemId={pantsId}
+            defaultCategory={defaultCategoryPants}
+            defaultUrl={defaultUrlPants}
         />
     )
 
@@ -119,6 +220,8 @@ export const TopCoord: FC = memo(() => {
         <ShoesComponent
             defaultGender={defaultGender}
             itemId={shoesId}
+            defaultCategory={defaultCategoryShoes}
+            defaultUrl={defaultUrlShoes}
         />
     )
 
@@ -154,23 +257,27 @@ export const TopCoord: FC = memo(() => {
                     <Flex flexDirection={'column'} display={'flex'} position={'absolute'} right={0} top={'100px'} height={'50vh'} justifyContent={'space-evenly'}>
                         <TopDrawerBtn
                             btnIcon={BiFace}
-                            wearId={capsId}
+                            wearId={shopifyIdCaps}
                             type={'caps'}
+                            allData={getDataCaps}
                         />
                         <TopDrawerBtn
                             btnIcon={FaTshirt}
-                            wearId={topsId}
+                            wearId={shopifyIdTops}
                             type={'tops'}
+                            allData={getDataTops}
                         />
                         <TopDrawerBtn
                             btnIcon={GiArmoredPants}
-                            wearId={pantsId}
+                            wearId={shopifyIdPants}
                             type={'pants'}
+                            allData={getDataPants}
                         />
                         <TopDrawerBtn
                             btnIcon={GiSonicShoes}
-                            wearId={shoesId}
+                            wearId={shopifyIdShoes}
                             type={'shoes'}
+                            allData={getDataShoes}
                         />
                     </Flex>
                 </div>

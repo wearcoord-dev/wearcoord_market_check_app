@@ -29,5 +29,6 @@ class CapsRakutenApi extends Model
         'purple',
         'gray',
         'img',
+        'shopify_id',
     ];
 }
