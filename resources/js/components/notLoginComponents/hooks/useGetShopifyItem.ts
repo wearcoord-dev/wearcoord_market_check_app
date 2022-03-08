@@ -6,10 +6,12 @@ type Props = {
 }
 
 export const useGetShopifyItem = () => {
-    const [shopifyItem, setShopifyItem ] = useState<any>();
+    const [shopifyItem, setShopifyItem] = useState<any>();
+    const [loading, setLoading] = useState<Boolean>(false);
+
 
     const getShopifyItem = useCallback((shopifyId: Props) => {
-
+        setLoading(true);
         const btoaId = btoa(`gid://shopify/Product/${shopifyId}`);
 
         const query = `{
@@ -48,9 +50,11 @@ export const useGetShopifyItem = () => {
   }
 }`;
 
-    apiCall(query).then(response => {
-        setShopifyItem(response.data.node);
-    });
+        apiCall(query).then(response => {
+            setShopifyItem(response.data.node);
+        }).finally(() => {
+            setLoading(false);
+        });
 
     }, []);
 
@@ -65,5 +69,5 @@ export const useGetShopifyItem = () => {
         }).then(response => response.json());
     }
 
-    return { getShopifyItem, shopifyItem };
+    return { getShopifyItem, shopifyItem, loading };
 }

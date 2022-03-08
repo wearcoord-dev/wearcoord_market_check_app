@@ -82,6 +82,10 @@ export const TopCoord: FC = memo(() => {
     const [shopifyIdShoes, setShopifyIdShoes] = useState();
 
     const [getCoordData, setGetCoordData] = useState();
+    const [getDataCaps, setGetDataCaps] = useState();
+    const [getDataTops, setGetDataTops] = useState();
+    const [getDataPants, setGetDataPants] = useState();
+    const [getDataShoes, setGetDataShoes] = useState();
 
 
     // console.log(notLoginUser);
@@ -145,8 +149,14 @@ export const TopCoord: FC = memo(() => {
                 if (getCoordData.shoesItem[color] !== null)
                     setDefaultUrlShoes(getCoordData.shoesItem[color]);
             })
+            setGetDataCaps(getCoordData.capsItem)
+            setGetDataTops(getCoordData.topsItem)
+            setGetDataPants(getCoordData.pantsItem)
+            setGetDataShoes(getCoordData.shoesItem)
         }
     }, [getCoordData])
+
+    // console.log(getDataPants)
 
     // const onClickToMannequin = (gender) => {
     //     history.push({
@@ -249,21 +259,25 @@ export const TopCoord: FC = memo(() => {
                             btnIcon={BiFace}
                             wearId={shopifyIdCaps}
                             type={'caps'}
+                            allData={getDataCaps}
                         />
                         <TopDrawerBtn
                             btnIcon={FaTshirt}
                             wearId={shopifyIdTops}
                             type={'tops'}
+                            allData={getDataTops}
                         />
                         <TopDrawerBtn
                             btnIcon={GiArmoredPants}
                             wearId={shopifyIdPants}
                             type={'pants'}
+                            allData={getDataPants}
                         />
                         <TopDrawerBtn
                             btnIcon={GiSonicShoes}
                             wearId={shopifyIdShoes}
                             type={'shoes'}
+                            allData={getDataShoes}
                         />
                     </Flex>
                 </div>
