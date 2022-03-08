@@ -36,8 +36,8 @@ export const brandCapsList = [
     //     text: 'Underarmour'
     // },
     {
-        value: 'ellese',
-        text: 'ellese'
+        value: 'ellesse',
+        text: 'ellesse'
     },
     {
         value: 'bablat',
@@ -91,8 +91,8 @@ export const brandTopsList = [
         text: 'FILA'
     },
     {
-        value: 'ellese',
-        text: 'ellese'
+        value: 'ellesse',
+        text: 'ellesse'
     },
     {
         value: 'bablat',
@@ -120,7 +120,7 @@ export const brandTopsList = [
     },
     {
         value: 'yoxoi',
-        text: 'YOXIO'
+        text: 'YOXOI'
     },
 ];
 
@@ -158,8 +158,8 @@ export const brandTopsListFemale = [
         text: 'FILA'
     },
     {
-        value: 'ellese',
-        text: 'ellese'
+        value: 'ellesse',
+        text: 'ellesse'
     },
     {
         value: 'bablat',
@@ -195,7 +195,7 @@ export const brandTopsListFemale = [
     // },
     // {
     //     value: 'yoxoi',
-    //     text: 'YOXIO'
+    //     text: 'YOXOI'
     // },
 ];
 
@@ -233,8 +233,8 @@ export const brandPantsList = [
         text: 'FILA'
     },
     {
-        value: 'ellese',
-        text: 'ellese'
+        value: 'ellesse',
+        text: 'ellesse'
     },
     {
         value: 'bablat',
@@ -296,8 +296,8 @@ export const brandPantsListFemale = [
         text: 'FILA'
     },
     {
-        value: 'ellese',
-        text: 'ellese'
+        value: 'ellesse',
+        text: 'ellesse'
     },
     {
         value: 'bablat',

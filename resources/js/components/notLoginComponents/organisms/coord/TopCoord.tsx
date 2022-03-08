@@ -130,6 +130,7 @@ export const TopCoord: FC = memo(() => {
                     if (getCoordData.capsItem[color] !== null)
                         setDefaultUrlCaps(getCoordData.capsItem[color]);
                 })
+                setGetDataCaps(getCoordData.capsItem)
             }
             setDefaultCategoryTops(getCoordData.topsItem.category);
             setShopifyIdTops(getCoordData.topsItem.shopify_id);
@@ -143,16 +144,18 @@ export const TopCoord: FC = memo(() => {
                 if (getCoordData.pantsItem[color] !== null)
                     setDefaultUrlPants(getCoordData.pantsItem[color]);
             })
-            setDefaultCategoryShoes(getCoordData.shoesItem.category);
-            setShopifyIdShoes(getCoordData.shoesItem.shopify_id);
-            colorList.map((color) => {
-                if (getCoordData.shoesItem[color] !== null)
-                    setDefaultUrlShoes(getCoordData.shoesItem[color]);
-            })
-            setGetDataCaps(getCoordData.capsItem)
+
+            if (getCoordData.shoesItem) {
+                setDefaultCategoryShoes(getCoordData.shoesItem.category);
+                setShopifyIdShoes(getCoordData.shoesItem.shopify_id);
+                setGetDataShoes(getCoordData.shoesItem)
+                colorList.map((color) => {
+                    if (getCoordData.shoesItem[color] !== null)
+                        setDefaultUrlShoes(getCoordData.shoesItem[color]);
+                })
+            }
             setGetDataTops(getCoordData.topsItem)
             setGetDataPants(getCoordData.pantsItem)
-            setGetDataShoes(getCoordData.shoesItem)
         }
     }, [getCoordData])
 
