@@ -10,8 +10,10 @@ export const useGetShopifyItem = () => {
 
     const getShopifyItem = useCallback((shopifyId: Props) => {
 
+        const btoaId = btoa(`gid://shopify/Product/${shopifyId}`);
+
         const query = `{
-  node(id: "${shopifyId}") {
+  node(id: "${btoaId}") {
     id
     ... on Product {
                     title

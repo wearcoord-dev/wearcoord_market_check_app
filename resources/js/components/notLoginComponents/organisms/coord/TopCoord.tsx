@@ -76,11 +76,16 @@ export const TopCoord: FC = memo(() => {
     const [defaultCategoryShoes, setDefaultCategoryShoes] = useState();
     const [defaultUrlShoes, setDefaultUrlShoes] = useState();
 
+    const [shopifyIdCaps, setShopifyIdCaps] = useState();
+    const [shopifyIdTops, setShopifyIdTops] = useState();
+    const [shopifyIdPants, setShopifyIdPants] = useState();
+    const [shopifyIdShoes, setShopifyIdShoes] = useState();
+
     const [getCoordData, setGetCoordData] = useState();
 
 
-    console.log(notLoginUser);
-    console.log(getCoordData)
+    // console.log(notLoginUser);
+    // console.log(getCoordData)
 
     useEffect(() => {
         if (notLoginUser) {
@@ -115,23 +120,27 @@ export const TopCoord: FC = memo(() => {
     useEffect(() => {
         if (getCoordData){
             if (getCoordData.capsItem){
-                setDefaultCategoryCaps(getCoordData.capsItem.category)
+                setDefaultCategoryCaps(getCoordData.capsItem.category);
+                setShopifyIdCaps(getCoordData.capsItem.shopify_id);
                 colorList.map((color) => {
                     if (getCoordData.capsItem[color] !== null)
                         setDefaultUrlCaps(getCoordData.capsItem[color]);
                 })
             }
             setDefaultCategoryTops(getCoordData.topsItem.category);
+            setShopifyIdTops(getCoordData.topsItem.shopify_id);
             colorList.map((color) => {
                 if (getCoordData.topsItem[color] !== null)
                     setDefaultUrlTops(getCoordData.topsItem[color]);
             })
             setDefaultCategoryPants(getCoordData.pantsItem.category);
+            setShopifyIdPants(getCoordData.pantsItem.shopify_id);
             colorList.map((color) => {
                 if (getCoordData.pantsItem[color] !== null)
                     setDefaultUrlPants(getCoordData.pantsItem[color]);
             })
             setDefaultCategoryShoes(getCoordData.shoesItem.category);
+            setShopifyIdShoes(getCoordData.shoesItem.shopify_id);
             colorList.map((color) => {
                 if (getCoordData.shoesItem[color] !== null)
                     setDefaultUrlShoes(getCoordData.shoesItem[color]);
@@ -238,22 +247,22 @@ export const TopCoord: FC = memo(() => {
                     <Flex flexDirection={'column'} display={'flex'} position={'absolute'} right={0} top={'100px'} height={'50vh'} justifyContent={'space-evenly'}>
                         <TopDrawerBtn
                             btnIcon={BiFace}
-                            wearId={capsId}
+                            wearId={shopifyIdCaps}
                             type={'caps'}
                         />
                         <TopDrawerBtn
                             btnIcon={FaTshirt}
-                            wearId={topsId}
+                            wearId={shopifyIdTops}
                             type={'tops'}
                         />
                         <TopDrawerBtn
                             btnIcon={GiArmoredPants}
-                            wearId={pantsId}
+                            wearId={shopifyIdPants}
                             type={'pants'}
                         />
                         <TopDrawerBtn
                             btnIcon={GiSonicShoes}
-                            wearId={shoesId}
+                            wearId={shopifyIdShoes}
                             type={'shoes'}
                         />
                     </Flex>

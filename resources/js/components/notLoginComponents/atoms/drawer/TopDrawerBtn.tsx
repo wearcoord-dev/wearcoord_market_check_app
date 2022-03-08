@@ -4,7 +4,7 @@ import { useGetShopifyItem } from "../../hooks/useGetShopifyItem";
 
 type Props = {
     btnIcon: any;
-    wearId: string;
+    wearId: any;
     type: string;
 }
 
@@ -14,24 +14,12 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
     const [shopifyId, setShopifyId] = useState<any>();
     const { getShopifyItem, shopifyItem } = useGetShopifyItem();
 
-    const shopifyItemNum = 7032136138938;
-
     const handleClick = () => {
         onOpen()
-
-        if (shopifyId) {
-            getShopifyItem(shopifyId);
-        }
+        getShopifyItem(wearId);
     }
-    // console.log(btoa("gid://shopify/Product/7032136138938"));
-    // console.log(atob("Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzcwMzIxMzYxMzg5Mzg="));
 
     console.log(shopifyItem)
-
-
-    useEffect(() => {
-        setShopifyId(btoa(`gid://shopify/Product/${shopifyItemNum}`));
-    }, [shopifyId])
 
     const shopifyImg = (
         <>
@@ -81,9 +69,9 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
                         ) : <p>null</p>}
                         {shopifyItem ? (
                             <>
-                                    <DrawerFooter>
-                                        <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='whiteAlpha.700' variant='solid' target={'_blank'}>購入する</Button>
-                                    </DrawerFooter>
+                                <DrawerFooter>
+                                    <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='whiteAlpha.700' variant='solid' target={'_blank'}>購入する</Button>
+                                </DrawerFooter>
                             </>
                         ) : <p>null</p>}
                     </DrawerBody>
