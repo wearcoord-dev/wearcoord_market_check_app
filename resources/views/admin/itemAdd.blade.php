@@ -87,6 +87,15 @@
                                 <textarea class="form-control" name="link" id="link" rows="3"></textarea>
                             </div>
 
+                            {{-- shopify_ID --}}
+                            <div class="form-group row p-3">
+                                <label for="shopify_id" class="col-sm-2 col-form-label">ShopifyアイテムID</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="shopify_id" name="shopify_id"
+                                        placeholder="00000000000">
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">登録する</button>
                         </div>
                     </form>

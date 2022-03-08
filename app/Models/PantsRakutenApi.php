@@ -29,5 +29,6 @@ class PantsRakutenApi extends Model
         'purple',
         'gray',
         'img',
+        'shopify_id',
     ];
 }
