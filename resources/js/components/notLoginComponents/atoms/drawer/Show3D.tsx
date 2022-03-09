@@ -1,19 +1,20 @@
 // @ts-nocheck
-import { FC, memo } from "react";
+import { FC, memo, ReactNode } from "react";
 import * as React from "react";
 import * as Fiber from '@react-three/fiber';
 import * as Drei from "@react-three/drei";
+import { CircularProgress, Flex } from "@chakra-ui/react";
 
 type Props = {
-    modelSrc: ReactNode;
+    modelSrc: string;
 }
 
 export const Show3D: FC<Props> = memo((props) => {
     const { modelSrc } = props;
 
     return (
-        <React.Suspense fallback={<span>loading...</span>}>
-            <Fiber.Canvas style={{ height: '30vh' }}>
+        <React.Suspense fallback={loadingBox}>
+            <Fiber.Canvas style={{ height: '70vh' }}>
 
                 <Drei.PerspectiveCamera makeDefault />
                 <Drei.OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
@@ -28,7 +29,7 @@ export const Show3D: FC<Props> = memo((props) => {
     );
 });
 
-export const Model3D: FC = memo((props) => {
+export const Model3D: FC<Props> = memo((props) => {
     const { modelSrc } = props;
 
     const { scene } = Drei.useGLTF(modelSrc);
@@ -39,3 +40,9 @@ export const Model3D: FC = memo((props) => {
         </group>
     );
 });
+
+const loadingBox = (
+    <Flex height='70vh' justifyContent='center' alignItems='center'>
+        <CircularProgress isIndeterminate color='#216496' />
+    </Flex>
+);

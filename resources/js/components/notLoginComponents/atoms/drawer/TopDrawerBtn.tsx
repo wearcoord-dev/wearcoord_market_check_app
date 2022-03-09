@@ -4,6 +4,7 @@ import { useGetShopifyItem } from "../../hooks/useGetShopifyItem";
 
 import numeral from "numeral";
 import { Show3D } from "./Show3D";
+import { ShowModal } from "./ShowModal";
 
 type Props = {
     btnIcon: any;
@@ -26,7 +27,7 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
         }
     }
 
-    // console.log(shopifyItem)
+    console.log(shopifyItem)
     // console.log(allData)
 
 
@@ -115,7 +116,10 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
                                                     shopifyItem.media.edges.map((item) => (
                                                         <>
                                                             {item.node.mediaContentType === 'MODEL_3D' ? (
-                                                                <Show3D
+                                                                // <Show3D
+                                                                //     modelSrc={item.node.sources[0].url}
+                                                                // />
+                                                                <ShowModal
                                                                     modelSrc={item.node.sources[0].url}
                                                                 />
                                                             ) : null}
