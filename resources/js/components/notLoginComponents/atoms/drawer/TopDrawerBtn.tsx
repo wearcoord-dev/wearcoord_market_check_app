@@ -3,6 +3,7 @@ import { FC, memo, useEffect, useState } from "react";
 import { useGetShopifyItem } from "../../hooks/useGetShopifyItem";
 
 import numeral from "numeral";
+import { Show3D } from "./Show3D";
 
 type Props = {
     btnIcon: any;
@@ -101,12 +102,30 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
                                                 {shopifyItem.images.edges.map((item) => (
                                                     <Image
                                                         src={item.node.originalSrc}
-                                                        alt={item.node.originalSrc} key={item.node.id}
+                                                        alt={item.node.originalSrc}
+                                                        key={item.node.id}
                                                         py={4}
                                                     />
                                                 ))}
                                             </Box>
                                         ) : null}
+                                        {shopifyItem.media ? (
+                                            <>
+                                                {
+                                                    shopifyItem.media.edges.map((item) => (
+                                                        <>
+                                                            {item.node.mediaContentType === 'MODEL_3D' ? (
+                                                                <Show3D
+                                                                    modelSrc={item.node.sources[0].url}
+                                                                />
+                                                            ) : null}
+                                                        </>
+                                                    )
+                                                    )
+                                                }
+                                            </>
+                                        ) : null}
+
                                         {shopifyItem.onlineStoreUrl ? (
                                             <>
                                                 <DrawerFooter

@@ -18,6 +18,15 @@ export const useGetShopifyItem = () => {
   node(id: "${btoaId}") {
     id
     ... on Product {
+                media(first: 10) {
+        edges {
+          node {
+            mediaContentType
+            alt
+            ...mediaFieldsByType
+          }
+        }
+      }
                     title
                     id
                     title
@@ -48,7 +57,19 @@ export const useGetShopifyItem = () => {
                               }
     }
   }
-}`;
+}
+
+fragment mediaFieldsByType on Media {
+  ...on Model3d {
+    sources {
+      url
+      mimeType
+      format
+      filesize
+    }
+  }
+}
+`;
 
         apiCall(query).then(response => {
             setShopifyItem(response.data.node);
