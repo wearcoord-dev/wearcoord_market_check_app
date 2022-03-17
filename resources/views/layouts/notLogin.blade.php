@@ -58,7 +58,7 @@
 @endif
 
 </head>
-<body style="overflow-y: hidden">
+<body style="overflow-y: hidden; position: relative;">
     <div id="notLogin"></div>
 </body>
 </html>
