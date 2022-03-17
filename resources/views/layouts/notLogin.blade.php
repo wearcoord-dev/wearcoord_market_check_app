@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="height: -webkit-fill-available;">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@
 @endif
 
 </head>
-<body style="overflow-y: hidden; position: relative;">
+<body style="overflow-y: hidden; min-height: 100vh; min-height: -webkit-fill-available;">
     <div id="notLogin"></div>
 </body>
 </html>
