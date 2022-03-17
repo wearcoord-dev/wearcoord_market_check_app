@@ -26,7 +26,6 @@ export const Header: FC = memo(() => {
                 padding={{ base: 3, md: 5 }}
             >
                 <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }} onClick={onClickHome}>
-                    {/* <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>wearcoord</Heading> */}
                     <Image w={3/12} src={logoImg} />
                 </Flex>
                 <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }}>

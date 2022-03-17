@@ -42,6 +42,28 @@ const style = {
         // alignItems: "center",
         // height: "100%",
         // flexDirection: "column",
+
+        // position: 'relative',
+        // display: 'table',
+        // width: '100%',
+        // height: '300px',
+        // backgroundColor: '#c2e035',
+        // marginTop: '20vw',
+
+    },
+    bg: {
+        display: 'table',
+        width: '100%',
+        height: '500px',
+        backgroundColor: '#e8a337',
+        transform: 'skewY(-10deg)',
+        marginTop: '10vw',
+        position: 'absolute',
+        bottom: '-10vh',
+        zIndex: '-100',
+        background: 'linear-gradient(320deg, rgba(144,192,229,0.3) 0%, rgba(162,186,203,.3) 35%, rgba(206,225,238,.3) 100%)',
+        borderTop: '30px solid transparent',
+        borderImage: 'radial-gradient(circle, rgba(245,245,245,0.2) 0%, rgba(148,187,233,0.2) 100%)',
     }
 } as const;
 
@@ -265,8 +287,8 @@ export const TopCoord: FC = memo(() => {
                         width={'100%'}
                     >
                         <Flex
-                         flexDirection={'column'}
-                         >
+                            flexDirection={'column'}
+                        >
                             <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
                                 <Icon w={8} h={8} color='white' as={GiPerson} />
                                 マネキンを変更する
@@ -310,6 +332,7 @@ export const TopCoord: FC = memo(() => {
                             allData={getDataShoes}
                         />
                     </Flex>
+                    <div style={style.bg}></div>
                 </div>
             ) : (
                 <Stack>
