@@ -15,8 +15,11 @@ import { ShoesComponent } from "../wearSect/topCoord/ShoesComponent";
 import { TopsComponent } from "../wearSect/topCoord/TopsComponent";
 import { FaTshirt } from 'react-icons/fa';
 import { BiFace } from 'react-icons/bi';
+import { MdOutlineChangeCircle } from 'react-icons/md';
+import { GiPerson } from 'react-icons/gi';
 import { GiArmoredPants } from 'react-icons/gi';
 import { GiSonicShoes } from 'react-icons/gi';
+import { AiFillDelete } from 'react-icons/ai';
 import { TopDrawerBtn } from "../../atoms/drawer/TopDrawerBtn";
 
 const style = {
@@ -122,8 +125,8 @@ export const TopCoord: FC = memo(() => {
     }, [capsId, topsId, pantsId, shoesId]);
 
     useEffect(() => {
-        if (getCoordData){
-            if (getCoordData.capsItem){
+        if (getCoordData) {
+            if (getCoordData.capsItem) {
                 setDefaultCategoryCaps(getCoordData.capsItem.category);
                 setShopifyIdCaps(getCoordData.capsItem.shopify_id);
                 colorList.map((color) => {
@@ -247,14 +250,38 @@ export const TopCoord: FC = memo(() => {
                         <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
                     </div>
 
-                    <Stack direction='column' spacing={4} align='center' justifyContent='center'>
-                        <Button onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
-                            マネキンを変更する
-                        </Button>
-                        <Button onClick={onClickCreateCoord} background='#216496' color='white' variant='solid'>
-                            コーデをつくる
-                        </Button>
-                        <DeleteModal onClickResetMannequin={onClickResetMannequin}>コーデをリセットする</DeleteModal>
+                    <Stack
+                        direction='column'
+                        spacing={4}
+                        align='center'
+                        justifyContent='center'
+                        position={'relative'}
+                        display={'flex'}
+                        flexDirection={'row'}
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                        position={'absolute'}
+                        bottom={'3vh'}
+                        width={'100%'}
+                    >
+                        <Flex
+                         flexDirection={'column'}
+                         >
+                            <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
+                                <Icon w={8} h={8} color='white' as={GiPerson} />
+                                マネキンを変更する
+                            </Button>
+                            <Button my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid'>
+                                <Icon w={8} h={8} color='white' as={MdOutlineChangeCircle} />
+                                コーデをつくる
+                            </Button>
+                        </Flex>
+                        <Flex>
+                            <DeleteModal onClickResetMannequin={onClickResetMannequin}>
+                                <Icon w={8} h={8} color='white' as={AiFillDelete} />
+                                コーデをリセット
+                            </DeleteModal>
+                        </Flex>
                     </Stack>
 
                     <Flex flexDirection={'column'} display={'flex'} position={'absolute'} right={0} top={'100px'} height={'50vh'} justifyContent={'space-evenly'}>
