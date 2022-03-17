@@ -33,8 +33,11 @@ const style = {
         backgroundPosition: "center",
         maxWidth: "400px",
         margin: "auto",
-        position: "relative",
+        position: "absolute",
         // backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
+        top: '40%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
     },
     wrapper: {
         // display: "flex",
