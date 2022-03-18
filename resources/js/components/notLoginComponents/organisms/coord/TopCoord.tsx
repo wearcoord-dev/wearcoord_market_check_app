@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, useDisclosure } from "@chakra-ui/react";
+import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import { Icon } from '@chakra-ui/react'
@@ -288,23 +288,26 @@ export const TopCoord: FC = memo(() => {
                         position={'absolute'}
                         bottom={'3vh'}
                         width={'100%'}
+                        // maxWidth={'800px'}
+                        // left={{md:'50%'}}
+                        // transform={{ md: 'translateX(-50%)'}}
                     >
                         <Flex
                             flexDirection={'column'}
                         >
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid'>
+                            <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={GiPerson} />
-                                マネキンを変更する
+                                <Text fontSize='lg' fontWeight={'bold'}>マネキンを変更する</Text>
                             </Button>
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid'>
+                            <Button my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={MdOutlineChangeCircle} />
-                                コーデをつくる
+                                <Text fontSize='lg' fontWeight={'bold'}>コーデをつくる</Text>
                             </Button>
                         </Flex>
                         <Flex>
                             <DeleteModal onClickResetMannequin={onClickResetMannequin}>
                                 <Icon w={8} h={8} color='white' as={AiFillDelete} />
-                                コーデをリセット
+                                <Text fontSize='lg' fontWeight={'bold'}>コーデをリセット</Text>
                             </DeleteModal>
                         </Flex>
                     </Stack>
