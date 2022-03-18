@@ -98,7 +98,7 @@ export const SearchCategorySelect: FC<Props> = memo((props) => {
     const group = getRootProps()
 
     return (
-        <HStack {...group} py={6}>
+        <HStack {...group} py={1}>
             {options.map((value) => {
                 const valueStr = value.value;
                 const radio = getRadioProps({ value: valueStr })
