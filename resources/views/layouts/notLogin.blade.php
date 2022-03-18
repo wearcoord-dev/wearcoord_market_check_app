@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="height: -webkit-fill-available;">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,9 +33,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined	" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
     {{-- font awesome --}}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 
 
     <!-- Styles -->
@@ -42,23 +48,33 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/components/mycoord/mycoord.css') }}" rel="stylesheet">
 
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto Sans JP', sans-serif !important;
+        }
+
+    </style>
+
     {{-- OGP --}}
+
     <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
-    <meta property="og:url" content="{{ config('app.url') }}">
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="wearcoord" />
-    <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
-    <meta property="og:site_name" content="wearcoord" />
-    <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
+        <meta property="og:url" content="{{ config('app.url') }}">
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="wearcoord" />
+        <meta property="og:description" content="wearcoordはオンラインでスポーツウェアのコーディネートを楽しめて購入できるアプリです" />
+        <meta property="og:site_name" content="wearcoord" />
+        <meta property="og:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
-@if(env('APP_ENV') == 'production')
-@include('layouts.parts.analytics')
-@endif
+        @if (env('APP_ENV') == 'production')
+            @include('layouts.parts.analytics')
+        @endif
 
-</head>
+    </head>
+
 <body style="overflow-y: hidden; min-height: 100vh; min-height: -webkit-fill-available;">
     <div id="notLogin"></div>
 </body>
+
 </html>

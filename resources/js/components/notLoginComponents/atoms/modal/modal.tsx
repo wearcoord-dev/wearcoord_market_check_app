@@ -10,7 +10,7 @@ export const DeleteModal: FC<Props> = memo((props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <>
-            <Button py={8} minWidth='150px' background='#216496' color='white' onClick={onOpen} justifyContent={'space-evenly'}>{children}</Button>
+            <Button maxWidth={'200px'} width={'20vw'} py={8} minWidth='150px' background='#216496' color='white' onClick={onOpen} justifyContent={'space-evenly'}>{children}</Button>
 
             <Modal isOpen={isOpen} onClose={onClose} isCentered>
                 <ModalOverlay />

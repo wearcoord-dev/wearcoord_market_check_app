@@ -88,7 +88,7 @@ export const SearchColorSelect: FC<Props> = memo((props) => {
     const group = getRootProps()
 
     return (
-        <HStack {...group} py={2}>
+        <HStack {...group} py={3}>
             {options.map((value) => {
                 const radio = getRadioProps({ value })
                 return (

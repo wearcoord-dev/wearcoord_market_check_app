@@ -113,8 +113,8 @@ export const ChangeMannequin: FC = memo(() => {
 function SubmitBtn(props) {
     const { children, EnterSubmit } = props;
     return (
-        <Stack direction='row' spacing={4} align='center' justifyContent='center' py={4}>
-            <Button type="button" bg='#216496' variant='solid' color='white' onClick={EnterSubmit}>
+        <Stack direction='row' spacing={4} align='center' justifyContent='center' py={2}>
+            <Button maxWidth={'300px'} fontSize={'12px'} w={'40%'} py={7} type="button" bg='#216496' variant='solid' color='white' onClick={EnterSubmit}>
                 {children}
             </Button>
         </Stack>

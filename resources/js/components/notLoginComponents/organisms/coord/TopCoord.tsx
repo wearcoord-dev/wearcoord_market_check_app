@@ -296,11 +296,11 @@ export const TopCoord: FC = memo(() => {
                         <Flex
                             flexDirection={'column'}
                         >
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
+                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={GiPerson} />
                                 <Text fontSize='lg' fontWeight={'bold'}>マネキンを変更する</Text>
                             </Button>
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
+                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={MdOutlineChangeCircle} />
                                 <Text fontSize='lg' fontWeight={'bold'}>コーデをつくる</Text>
                             </Button>
