@@ -22,7 +22,7 @@ const style = {
         right: "0",
         flexDirection: 'column',
         backgroundColor: 'ghostwhite',
-        padding: "0 20px 20px",
+        padding: "10px 20px",
         zIndex: 1000,
     },
     ul: {
