@@ -10,7 +10,7 @@ export const Header: FC = memo(() => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
 
-    const onClickHome = () => window.location.href = "/";
+    const onClickHome = () => window.location.href = "/sample";
     const onClickMale = useCallback(() => history.push("/sample/male"), []);
     const onClickFemale = useCallback(() => history.push("/sample/female"), []);
     const onClickCoord = useCallback(() => history.push("/sample"), []);
