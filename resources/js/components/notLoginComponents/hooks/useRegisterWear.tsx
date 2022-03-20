@@ -17,7 +17,7 @@ export const useRegisterWear = () => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
     const { showMessage } = useMessage();
 
-    console.log(notLoginUser)
+    // console.log(notLoginUser)
 
     const registerWearLocal = useCallback((props: Props) => {
         const { gender, mannequin, caps, tops, pants, shoes } = props;
@@ -33,8 +33,8 @@ export const useRegisterWear = () => {
             if (caps) {
                 if (caps.id) {
                     capsId = caps.id;
-                } else {
-                    capsId = caps;
+                } else if(caps == 'remove') {
+                    capsId = null;
                 }
             } else {
                 capsId = notLoginUser.caps;

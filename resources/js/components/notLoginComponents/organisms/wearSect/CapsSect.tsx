@@ -18,6 +18,7 @@ type Props = {
     getCaps: any;
     userCaps: any;
     defaultCaps?: string;
+    showCaps?: Number;
 }
 
 const colorList = [
@@ -37,9 +38,10 @@ const colorList = [
 
 export const CapsSect: FC<Props> = memo((props) => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
-    const { onClickCaps, defaultGender, setDataCaps, setCapsArray, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps, defaultCaps } = props;
+    const { onClickCaps, defaultGender, setDataCaps, setCapsArray, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps, defaultCaps, showCaps } = props;
     const { showMessage } = useMessage();
 
+    console.log(showCaps)
 
     // 検索結果のカウントを保持
     const [count, setCount] = useState<Number>(0);
@@ -144,12 +146,17 @@ export const CapsSect: FC<Props> = memo((props) => {
                 </Swiper>
             </>
 
-        ) : (defaultCaps ? (defaultUrl ? (
+        ) : (defaultCaps ? (defaultUrl ? (showCaps == 0 ? (
             <>
                 <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}>
                     <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ margin: 'auto' }} />
                 </div>
             </>
+        ) : (
+            <>
+                <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+            </>
+        )
         ) : (
             <div onClick={onClickCaps} style={{ width: "15%", height: "50px", margin: "auto" }}></div>
         )
