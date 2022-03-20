@@ -266,6 +266,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             userCaps={userCaps}
             getCaps={getCaps}
             defaultCaps={defaultCaps}
+            showCaps={showCaps}
         />
     )
 
@@ -460,7 +461,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
         // 非表示フラグが立っている場合は中身をnullにする
         if (showCaps == 1) {
-            capsInfo = null;
+            capsInfo = "remove";
         } else {
             capsInfo = capsArray[activeIndexCaps] ?? defaultCaps;
         }

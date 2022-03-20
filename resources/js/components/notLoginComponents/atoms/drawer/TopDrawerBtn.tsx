@@ -67,7 +67,7 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
                                 >
                                     {shopifyItem.onlineStoreUrl ? (
                                         <>
-                                            <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='80%' size='lg'>購入する</Button>
+                                            <Button h={14} as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='80%' size='lg'>購入する</Button>
                                         </>
                                     ) : null}
                                 </DrawerHeader>
@@ -143,7 +143,7 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
                                                                 py={4}
                                                                 fontWeight='bold'
                                                             >wearcoord公式ストアで購入する</Box>
-                                                            <Button as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='100%' size='lg'>購入する</Button>
+                                                                <Button h={14} as="a" href={shopifyItem.onlineStoreUrl} bg='#216496' color='white' variant='solid' target={'_blank'} w='100%' size='lg'>購入する</Button>
                                                         </>
                                                     ) : null}
                                                 </DrawerFooter>

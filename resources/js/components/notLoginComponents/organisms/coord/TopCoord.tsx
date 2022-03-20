@@ -5,7 +5,7 @@ import axios from "axios";
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import { Icon } from '@chakra-ui/react'
 import { useHistory } from "react-router-dom";
-import { DeleteModal } from "../../atoms/modal/modal";
+import { DeleteModal } from "../../atoms/modal/DeleteModal";
 import { useMessage } from "../../hooks/useMessage";
 import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
 import { NotLoginUser } from "../../types/NotLoginUser";
@@ -21,6 +21,7 @@ import { GiArmoredPants } from 'react-icons/gi';
 import { GiSonicShoes } from 'react-icons/gi';
 import { AiFillDelete } from 'react-icons/ai';
 import { TopDrawerBtn } from "../../atoms/drawer/TopDrawerBtn";
+import { BeforeCreateCoord } from "./components/BeforeCreateCoord";
 
 const style = {
     bgImg: {
@@ -289,18 +290,18 @@ export const TopCoord: FC = memo(() => {
                         position={'absolute'}
                         bottom={'3vh'}
                         width={'100%'}
-                        // maxWidth={'800px'}
-                        // left={{md:'50%'}}
-                        // transform={{ md: 'translateX(-50%)'}}
+                    // maxWidth={'800px'}
+                    // left={{md:'50%'}}
+                    // transform={{ md: 'translateX(-50%)'}}
                     >
                         <Flex
                             flexDirection={'column'}
                         >
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
+                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={GiPerson} />
                                 <Text fontSize='lg' fontWeight={'bold'}>マネキンを変更する</Text>
                             </Button>
-                            <Button my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
+                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
                                 <Icon w={8} h={8} color='white' as={MdOutlineChangeCircle} />
                                 <Text fontSize='lg' fontWeight={'bold'}>コーデをつくる</Text>
                             </Button>
@@ -342,8 +343,22 @@ export const TopCoord: FC = memo(() => {
                     <div style={style.bg}></div>
                 </div>
             ) : (
-                <Stack>
-                    <Flex justifyContent='center' py={10}>コーデを作りましょう!</Flex>
+                <Stack 
+                        h={'100vh'}
+                        display={'flex'}
+                        flexDirection={'column'}
+                        alignItems={'center'}
+                        justifyContent={'center'}
+                >
+                    <BeforeCreateCoord />
+                    <Stack direction='row' spacing={4} align='center' justifyContent='center'>
+                            <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
+                            男性ウェアを選ぶ
+                        </Button>
+                            <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('female')}>
+                            女性ウェアを選ぶ
+                        </Button>
+                    </Stack>
                 </Stack>
             )
             ) : null}
@@ -360,7 +375,7 @@ export const TopCoord: FC = memo(() => {
                 </Stack>
             ) : null) : null} */}
 
-            {notLoginUser ? (notLoginUser.gender === null ? (
+            {/* {notLoginUser ? (notLoginUser.gender === null ? (
                 <Stack direction='row' spacing={4} align='center' justifyContent='center'>
                     <Button bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
                         男性ウェアを選ぶ
@@ -369,7 +384,7 @@ export const TopCoord: FC = memo(() => {
                         女性ウェアを選ぶ
                     </Button>
                 </Stack>
-            ) : null) : null}
+            ) : null) : null} */}
 
         </div>
     )

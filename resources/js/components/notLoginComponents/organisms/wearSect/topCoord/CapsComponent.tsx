@@ -16,11 +16,11 @@ export const CapsComponent: FC<Props> = memo((props) => {
     return (
         <>
             {itemId && defaultCategory && defaultUrl ? (
-                <div style={{ width: "15%", height: "50px", margin: "auto" }}>
+                <div style={{ width: "30%", height: "50px", margin: "auto", maxWidth: '56px' }}>
                     <img className="wearImg" src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`} alt="" style={{ margin: 'auto' }} />
                 </div>
             ) : (
-                <div style={{ width: "15%", height: "50px", margin: "auto" }}></div>
+                <div style={{ width: "30%", height: "50px", margin: "auto", maxWidth: '56px' }}></div>
             )}
         </>
     )
