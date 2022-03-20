@@ -51,6 +51,7 @@
     <style>
         body {
             font-family: 'Roboto', 'Noto Sans JP', sans-serif !important;
+            color: '#484848';
         }
 
     </style>
