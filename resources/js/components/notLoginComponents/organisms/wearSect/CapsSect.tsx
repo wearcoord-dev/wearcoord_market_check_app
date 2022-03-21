@@ -41,8 +41,6 @@ export const CapsSect: FC<Props> = memo((props) => {
     const { onClickCaps, defaultGender, setDataCaps, setCapsArray, dataCaps, capsArray, getActiveIndexCaps, getCaps, userCaps, defaultCaps, showCaps } = props;
     const { showMessage } = useMessage();
 
-    console.log(showCaps)
-
     // 検索結果のカウントを保持
     const [count, setCount] = useState<Number>(0);
 

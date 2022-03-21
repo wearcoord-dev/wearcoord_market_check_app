@@ -29,6 +29,7 @@ type Props = {
     onClickFetchShoes: any;
     setShoesSel: any;
     shoesSel: any;
+    defaultBrand? : string;
 }
 
 const style = {
@@ -46,7 +47,7 @@ const style = {
 } as const;
 
 export const SearchBox: FC<Props> = memo((props) => {
-    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose, defaultGender, onClickRegisterWear, onClickFetchCaps, setCapsSel, capsSel, onClickFetchTops, setTopsSel, topsSel, onClickFetchPants, setPantsSel, pantsSel, onClickFetchShoes, setShoesSel, shoesSel } = props;
+    const { onClose, isOpen, onCloseTops, isOpenTops, onClosePants, isOpenPants, onCloseShoes, isOpenShoes, onClickAllClose, defaultGender, onClickRegisterWear, onClickFetchCaps, setCapsSel, capsSel, onClickFetchTops, setTopsSel, topsSel, onClickFetchPants, setPantsSel, pantsSel, onClickFetchShoes, setShoesSel, shoesSel, defaultBrand } = props;
 
     return (
         <>
@@ -58,6 +59,7 @@ export const SearchBox: FC<Props> = memo((props) => {
                     capsSel={capsSel}
                     defaultGender={defaultGender}
                     onClickRegisterWear={onClickRegisterWear}
+                    defaultBrand={defaultBrand}
                 />
             </Drawer>
             <Drawer onClose={onCloseTops} isOpen={isOpenTops}>
@@ -68,6 +70,7 @@ export const SearchBox: FC<Props> = memo((props) => {
                     topsSel={topsSel}
                     defaultGender={defaultGender}
                     onClickRegisterWear={onClickRegisterWear}
+                    defaultBrand={defaultBrand}
                 />
             </Drawer>
             <Drawer onClose={onClosePants} isOpen={isOpenPants}>
@@ -78,6 +81,7 @@ export const SearchBox: FC<Props> = memo((props) => {
                     pantsSel={pantsSel}
                     defaultGender={defaultGender}
                     onClickRegisterWear={onClickRegisterWear}
+                    defaultBrand={defaultBrand}
                 />
             </Drawer>
             <Drawer onClose={onCloseShoes} isOpen={isOpenShoes}>
@@ -88,6 +92,7 @@ export const SearchBox: FC<Props> = memo((props) => {
                     shoesSel={shoesSel}
                     defaultGender={defaultGender}
                     onClickRegisterWear={onClickRegisterWear}
+                    defaultBrand={defaultBrand}
                 />
             </Drawer>
         </>

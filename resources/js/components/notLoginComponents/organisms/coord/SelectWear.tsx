@@ -23,10 +23,11 @@ type Props = {
     defaultTops?: string;
     defaultPants?: string;
     defaultShoes?: string;
+    defaultBrand?: string;
 }
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes, defaultBrand } = props;
 
     const { registerWearLocal } = useRegisterWear();
     const history = useHistory();
@@ -66,6 +67,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
         // 最初に開いた場合はアイテムを事前に表示しておく
         let defaultCapsCategory: string;
+        let firstSetBrand: string;
 
         if (isFirstOpenCaps.current === false) {
 
@@ -75,8 +77,15 @@ export const SelectWear: FC<Props> = memo((props) => {
                 defaultCapsCategory = '565818';
             }
 
+            // ブランドがセットされている場合はそれだけに限定する
+            if (defaultBrand) {
+                firstSetBrand = defaultBrand;
+            } else {
+                firstSetBrand = 'all';
+            }
+
             const data = {
-                'brand': 'all',
+                'brand': firstSetBrand,
                 'color': 'all',
                 'category': defaultCapsCategory,
                 'wear': 'caps',
@@ -100,6 +109,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
         // 最初に開いた場合はアイテムを事前に表示しておく
         let defaultTopsCategory: string;
+        let firstSetBrand: string;
 
         if (isFirstOpenTops.current === false) {
 
@@ -108,14 +118,20 @@ export const SelectWear: FC<Props> = memo((props) => {
             } else if (defaultGender === 'female') {
                 defaultTopsCategory = '508803';
             }
+            if (defaultBrand) {
+                firstSetBrand = defaultBrand;
+            } else {
+                firstSetBrand = 'all';
+            }
 
             const data = {
-                'brand': 'all',
+                'brand': firstSetBrand,
                 'color': 'all',
                 'category': defaultTopsCategory,
                 'wear': 'tops',
                 'page': 1,
             }
+            console.log(data)
             setDataTops(data);
             setTopsArray([]);
             setTopsSel(data);
@@ -134,6 +150,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
         // 最初に開いた場合はアイテムを事前に表示しておく
         let defaultPantsCategory: string;
+        let firstSetBrand: string;
 
         if (isFirstOpenPants.current === false) {
 
@@ -143,8 +160,15 @@ export const SelectWear: FC<Props> = memo((props) => {
                 defaultPantsCategory = '508820';
             }
 
+            // ブランドがセットされている場合はそれだけに限定する
+            if (defaultBrand) {
+                firstSetBrand = defaultBrand;
+            } else {
+                firstSetBrand = 'all';
+            }
+
             const data = {
-                'brand': 'all',
+                'brand': firstSetBrand,
                 'color': 'all',
                 'category': defaultPantsCategory,
                 'wear': 'pants',
@@ -168,6 +192,7 @@ export const SelectWear: FC<Props> = memo((props) => {
 
         // 最初に開いた場合はアイテムを事前に表示しておく
         let defaultShoesCategory: string;
+        let firstSetBrand: string;
 
         if (isFirstOpenShoes.current === false) {
 
@@ -176,9 +201,16 @@ export const SelectWear: FC<Props> = memo((props) => {
             } else if (defaultGender === 'female') {
                 defaultShoesCategory = '565819';
             }
+            
+            // ブランドがセットされている場合はそれだけに限定する
+            if (defaultBrand) {
+                firstSetBrand = defaultBrand;
+            } else{
+                firstSetBrand = 'all';
+            }
 
             const data = {
-                'brand': 'all',
+                'brand': firstSetBrand,
                 'color': 'all',
                 'category': defaultShoesCategory,
                 'wear': 'shoes',
@@ -491,20 +523,29 @@ export const SelectWear: FC<Props> = memo((props) => {
         onCloseShoes();
 
         // 最初に開いた場合はアイテムを事前に表示しておく
+        let firstSetBrand: string;
 
         if (defaultGender === 'male') {
             setFirstOpen('508759');
         } else if (defaultGender === 'female') {
             setFirstOpen('508803');
         }
-        console.log(firstOpen, defaultGender)
+
+        // ブランドがセットされている場合はそれだけに限定する
+        if (defaultBrand) {
+            firstSetBrand = defaultBrand;
+        } else {
+            firstSetBrand = 'all';
+        }
+
         const data = {
-            'brand': 'all',
+            'brand': firstSetBrand,
             'color': 'all',
             'category': firstOpen,
             'wear': 'tops',
             'page': 1,
         }
+
         setDataTops(data);
         setTopsArray([]);
         setTopsSel(data);
@@ -550,6 +591,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 setShoesSel={setShoesSel}
                 shoesSel={shoesSel}
                 defaultGender={defaultGender}
+                defaultBrand={defaultBrand}
                 onClickRegisterWear={onClickRegisterWear}
             />
         </>

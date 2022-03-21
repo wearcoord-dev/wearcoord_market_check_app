@@ -1,4 +1,5 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { NotLoginUser } from "../types/NotLoginUser";
 
 export type NotLoginUserContextType = {
@@ -11,7 +12,10 @@ const NotLoginUserContext = createContext<NotLoginUserContextType>({} as NotLogi
 export const NotLoginUserProvider = (props: { children: ReactNode }) => {
     const { children } = props;
     const [notLoginUser, setNotLoginUser] = useState<NotLoginUser>(null);
+    const search = useLocation().search;
+    const getUrlParam = new URLSearchParams(search);
 
+    console.log(notLoginUser)
     // ローカルストレージに既に値があるか確認する
 
     useEffect(() => {
@@ -24,9 +28,14 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
                 tops: localStorage.getItem("tops") ?? null,
                 pants: localStorage.getItem("pants") ?? null,
                 shoes: localStorage.getItem("shoes") ?? null,
+                brand: localStorage.getItem("brand") ?? null,
             })
         } else {
-            setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null, caps: null, tops:null })
+            setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null, caps: null, tops: null, brand: getUrlParam.get('brand') })
+            if (getUrlParam.get('brand')) {
+                localStorage.setItem('flg', ('true'));
+                localStorage.setItem('brand', getUrlParam.get('brand'));
+            }
         }
     }, [])
 
@@ -57,6 +66,10 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
             if (notLoginUser.shoes) {
                 localStorage.setItem('flg', ('true'));
                 localStorage.setItem('shoes', (notLoginUser.shoes));
+            }
+            if (notLoginUser.brand) {
+                localStorage.setItem('flg', ('true'));
+                localStorage.setItem('brand', (notLoginUser.brand));
             }
         }
     }, [notLoginUser])

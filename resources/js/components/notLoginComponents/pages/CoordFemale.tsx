@@ -10,6 +10,7 @@ type Props = {
     defaultTops?: string;
     defaultPants?: string;
     defaultShoes?: string;
+    defaultBrand?: string;
 }
 
 const style = {
@@ -24,7 +25,6 @@ const style = {
         maxWidth: "400px",
         margin: "auto",
         position: "relative",
-        // backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
     }
 } as const;
 
@@ -36,6 +36,7 @@ export const CoordFemale: FC<Props> = memo(() => {
     const [defaultTops, setDefaultTops] = useState<string>('768');
     const [defaultPants, setDefaultPants] = useState<string>('236');
     const [defaultShoes, setDefaultShoes] = useState<string>(null);
+    const [defaultBrand, setDefaultBrand] = useState<string>(null);
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
@@ -80,6 +81,9 @@ export const CoordFemale: FC<Props> = memo(() => {
                     setDefaultShoes(notLoginUser.shoes);
                 }
             }
+            if (notLoginUser.brand !== null) {
+                setDefaultBrand(notLoginUser.brand);
+            }
         }
     }, [notLoginUser])
 
@@ -96,6 +100,7 @@ export const CoordFemale: FC<Props> = memo(() => {
                                 defaultTops={defaultTops}
                                 defaultPants={defaultPants}
                                 defaultShoes={defaultShoes}
+                                defaultBrand={defaultBrand}
                             />
                         </div>
                     )
@@ -111,7 +116,7 @@ export const CoordFemale: FC<Props> = memo(() => {
 });
 
 const SelectSection: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes } = props;
+    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes, defaultBrand } = props;
 
     return (
         <>
@@ -122,6 +127,7 @@ const SelectSection: FC<Props> = memo((props) => {
                 defaultTops={defaultTops}
                 defaultPants={defaultPants}
                 defaultShoes={defaultShoes}
+                defaultBrand={defaultBrand}
             />
         </>
     )
