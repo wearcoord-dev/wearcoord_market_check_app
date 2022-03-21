@@ -20,6 +20,21 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
 
     useEffect(() => {
         if (localStorage.getItem("flg")) {
+            // ブランドを管理
+            let currentBrand;
+
+            if (getUrlParam.get('brand')){
+                // paramが存在しローカルストレージと異なる場合はparamを使い、合っていればそのままローカルストレージから取ってくる
+                if (getUrlParam.get('brand') !== localStorage.getItem("brand")){
+                    currentBrand = getUrlParam.get('brand');
+                }else{
+                    currentBrand = localStorage.getItem("brand");
+                }
+            }else{
+                // paramが無ければローカルストレージに保存しているものを取ってくる
+                currentBrand = localStorage.getItem("brand")
+            }
+
             setNotLoginUser({
                 ...notLoginUser,
                 gender: localStorage.getItem("gender") ?? null,
@@ -28,7 +43,7 @@ export const NotLoginUserProvider = (props: { children: ReactNode }) => {
                 tops: localStorage.getItem("tops") ?? null,
                 pants: localStorage.getItem("pants") ?? null,
                 shoes: localStorage.getItem("shoes") ?? null,
-                brand: localStorage.getItem("brand") ?? null,
+                brand: currentBrand ?? null,
             })
         } else {
             setNotLoginUser({ ...notLoginUser, gender: null, mannequin: null, caps: null, tops: null, brand: getUrlParam.get('brand') })

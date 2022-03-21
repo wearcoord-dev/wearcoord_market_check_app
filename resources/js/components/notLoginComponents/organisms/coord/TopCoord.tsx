@@ -216,8 +216,16 @@ export const TopCoord: FC = memo(() => {
     const onClickChangeMannequin = useCallback(() => history.push("/sample/mannequin"), []);
 
     const onClickResetMannequin = () => {
+        let stockBrand;
+        if (localStorage.getItem('brand')) {
+            stockBrand = localStorage.getItem('brand');
+        }
         localStorage.clear();
         showMessage({ title: "コーデを削除しました", status: "success" });
+        if (stockBrand) {
+            localStorage.setItem('flg', 'true');
+            localStorage.setItem('brand', stockBrand);
+        }
         history.go(0);
     };
 
@@ -343,48 +351,25 @@ export const TopCoord: FC = memo(() => {
                     <div style={style.bg}></div>
                 </div>
             ) : (
-                <Stack 
-                        h={'100vh'}
-                        display={'flex'}
-                        flexDirection={'column'}
-                        alignItems={'center'}
-                        justifyContent={'center'}
+                <Stack
+                    h={'100vh'}
+                    display={'flex'}
+                    flexDirection={'column'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
                 >
                     <BeforeCreateCoord />
                     <Stack direction='row' spacing={4} align='center' justifyContent='center'>
-                            <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
+                        <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
                             男性ウェアを選ぶ
                         </Button>
-                            <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('female')}>
+                        <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('female')}>
                             女性ウェアを選ぶ
                         </Button>
                     </Stack>
                 </Stack>
             )
             ) : null}
-
-            {/* genderが選ばれていない時のマネキンリンクボタン */}
-            {/* {notLoginUser ? (notLoginUser.gender === null ? (
-                <Stack direction='row' spacing={4} align='center' justifyContent='center'>
-                    <Button bg='#216496' color='white' variant='solid' onClick={() => onClickToMannequin('male')}>
-                        男性マネキンを選ぶ
-                    </Button>
-                    <Button bg='#216496' color='white' variant='solid' onClick={() => onClickToMannequin('female')}>
-                        女性マネキンを選ぶ
-                    </Button>
-                </Stack>
-            ) : null) : null} */}
-
-            {/* {notLoginUser ? (notLoginUser.gender === null ? (
-                <Stack direction='row' spacing={4} align='center' justifyContent='center'>
-                    <Button bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
-                        男性ウェアを選ぶ
-                    </Button>
-                    <Button bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('female')}>
-                        女性ウェアを選ぶ
-                    </Button>
-                </Stack>
-            ) : null) : null} */}
 
         </div>
     )
