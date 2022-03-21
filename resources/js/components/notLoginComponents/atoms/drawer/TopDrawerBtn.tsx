@@ -27,7 +27,7 @@ export const TopDrawerBtn: FC<Props> = memo((props) => {
         }
     }
 
-    console.log(shopifyItem)
+    // console.log(shopifyItem)
     // console.log(allData)
 
 

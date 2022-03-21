@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Tag } from "@chakra-ui/react";
 import { FC, memo, useEffect, useRef, useState } from "react";
 import { SaveBtn } from "../../atoms/buttonGroup/SaveBtn";
 import { SearchBrandSelect } from "./select/SearchBrand";
@@ -12,6 +12,7 @@ type Props = {
     setTopsSel: any;
     topsSel: any;
     defaultGender: string;
+    defaultBrand?: string;
 }
 
 const style = {
@@ -45,7 +46,7 @@ const commoncss = {
 }
 
 export const TopsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose, onClickFetchTops, setTopsSel, topsSel, defaultGender, onClickRegisterWear } = props;
+    const { onClickAllClose, onClickFetchTops, setTopsSel, topsSel, defaultGender, onClickRegisterWear, defaultBrand } = props;
     const [value, setValue] = useState(topsSel.brand);
     const [valueColor, setValueColor] = useState(topsSel.color);
     const [valueCategory, setValueCategory] = useState(topsSel.category);
@@ -55,6 +56,9 @@ export const TopsCategory: FC<Props> = memo((props) => {
 
     useEffect(() => {
         isFirstRender.current = true
+        if (defaultBrand) {
+            setValue(defaultBrand);
+        }
     }, [])
 
     // 初回自動検索ボックス表示時の挙動対応
@@ -94,14 +98,21 @@ export const TopsCategory: FC<Props> = memo((props) => {
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}
-
             >
-                <SearchBrandSelect
-                    type={'tops'}
-                    setValue={setValue}
-                    valueBrand={value}
-                    defaultGender={defaultGender}
-                />
+                {defaultBrand ? (
+                    <Flex>
+                        <Tag size={'lg'} variant='solid' bg='#216496' py={3} my={1} fontSize={'lg'}>
+                            {`${defaultBrand}を選択中`}
+                        </Tag>
+                    </Flex>
+                ) : (
+                    <SearchBrandSelect
+                        type={'tops'}
+                        setValue={setValue}
+                        valueBrand={value}
+                        defaultGender={defaultGender}
+                    />
+                )}
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex } from "@chakra-ui/react";
+import { Button, ButtonGroup, Flex, Tag } from "@chakra-ui/react";
 import { FC, memo, ReactNode, useEffect, useRef, useState } from "react";
 import { SaveBtn } from "../../atoms/buttonGroup/SaveBtn";
 import { SearchBrandSelect } from "./select/SearchBrand";
@@ -12,6 +12,7 @@ type Props = {
     setCapsSel: any;
     capsSel: any;
     defaultGender: string;
+    defaultBrand?: string;
 }
 
 const style = {
@@ -46,7 +47,7 @@ const commoncss = {
 
 
 export const CapsCategory: FC<Props> = memo((props) => {
-    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender, onClickRegisterWear } = props;
+    const { onClickAllClose, onClickFetchCaps, setCapsSel, capsSel, defaultGender, onClickRegisterWear, defaultBrand } = props;
     const [value, setValue] = useState(capsSel.brand);
     const [valueColor, setValueColor] = useState(capsSel.color);
     const [valueCategory, setValueCategory] = useState(capsSel.category);
@@ -55,7 +56,10 @@ export const CapsCategory: FC<Props> = memo((props) => {
     const isFirstRender = useRef(false)
 
     useEffect(() => {
-        isFirstRender.current = true
+        isFirstRender.current = true;
+        if (defaultBrand) {
+            setValue(defaultBrand);
+        }
     }, [])
 
     useEffect(() => {
@@ -90,12 +94,20 @@ export const CapsCategory: FC<Props> = memo((props) => {
             <Flex as='ul' overflow='auto'
                 css={commoncss}
             >
-                <SearchBrandSelect
-                    type={'caps'}
-                    setValue={setValue}
-                    valueBrand={value}
-                    defaultGender={defaultGender}
-                />
+                {defaultBrand ? (
+                    <Flex>
+                        <Tag size={'lg'} variant='solid' bg='#216496' py={3} my={1} fontSize={'lg'}>
+                            {`${defaultBrand}を選択中`}
+                        </Tag>
+                    </Flex>
+                ):(
+                    <SearchBrandSelect
+                        type={'caps'}
+                        setValue={setValue}
+                        valueBrand={value}
+                        defaultGender={defaultGender}
+                    />
+                )}
             </Flex>
             <Flex as='ul' overflow='auto'
                 css={commoncss}
