@@ -34,7 +34,11 @@ export const useRegisterWear = () => {
                 if (caps.id) {
                     capsId = caps.id;
                 } else if(caps == 'remove') {
+                    // 脱ぐ
                     capsId = null;
+                }else{
+                    // 既存のまま
+                    capsId = caps;
                 }
             } else {
                 capsId = notLoginUser.caps;
