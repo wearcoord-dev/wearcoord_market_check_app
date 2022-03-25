@@ -325,3 +325,11 @@ Route::get('/sample', function () {
 Route::get('/sample/{any}', static function () {
     return view('layouts.notLogin');
 })->where('any', '.*');
+
+
+// コーデのカウント追加
+
+// Route::get('/countitems', function (Request $request) {
+// });
+
+// Route::post('/countitems', [App\Http\Controllers\Admin\CountController::class, "addItemCount"]);

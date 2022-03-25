@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import axios from "axios";
 import { useCallback } from "react";
 import { useNotLoginUser } from "../provider/NotLoginUserProvider";
 import { useMessage } from "./useMessage";
@@ -33,10 +34,10 @@ export const useRegisterWear = () => {
             if (caps) {
                 if (caps.id) {
                     capsId = caps.id;
-                } else if(caps == 'remove') {
+                } else if (caps == 'remove') {
                     // 脱ぐ
                     capsId = null;
-                }else{
+                } else {
                     // 既存のまま
                     capsId = caps;
                 }
@@ -112,9 +113,26 @@ export const useRegisterWear = () => {
             }
         }
 
+        const header = {
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        }
+
+        const url = '/api/countitems';
+
+        const setData = {
+            "caps": capsId,
+            "tops": topsId,
+            "pants": pantsId,
+            "shoes": shoesId
+        }
+
         try {
             // 実行される処理
             setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId, pants: pantsId, shoes: shoesId })
+            axios.post(url, setData, header);
+            // console.log({ "caps": capsId, "tops": topsId, "pants": pantsId, "shoes": shoesId })
             showMessage({ title: "コーデを保存しました", status: "success" });
         } catch (error) {
             // 例外が発生した場合に実行される処理
