@@ -87,3 +87,6 @@ Route::get('/bestdresser/getBDTourInfo', [App\Http\Controllers\BestDresserContro
 Route::get('/bestdresser/getOwnLike', [App\Http\Controllers\BestDresserController::class, "getOwnLike"]);
 
 Route::get('/bestdresser/calcLikeBD', [App\Http\Controllers\BestDresserController::class, "calcLikeBD"])->name('calcLikeBD');
+
+
+Route::post('/countitems', [App\Http\Controllers\Admin\CountController::class, "addItemCount"]);

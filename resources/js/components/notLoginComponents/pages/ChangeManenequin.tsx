@@ -41,7 +41,7 @@ export const ChangeMannequin: FC = memo(() => {
     const history = useHistory();
     const location = useLocation();
     const { showMessage } = useMessage();
-    console.log(notLoginUser);
+    // console.log(notLoginUser);
 
 
     // context保持している場合のアクセスはlocationを使わないのでここで確認
