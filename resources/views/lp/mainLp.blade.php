@@ -126,54 +126,6 @@
         </div>
     </section>
 
-    {{-- <section>
-    <div class="mannequinImg">
-        <div class="caps-container">
-            <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
-        </div>
-        <div class="swiper-container tops-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide slide-item">
-                    <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
-                </div>
-                <div class="swiper-slide slide-item">
-                    <img class="toplist" src="{{asset('img/lp/wearlist-top.png')}}" alt="">
-                </div>
-            </div>
-        </div>
-            <div class="pants-container">
-                <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
-            </div>
-            <div class="shoes-container">
-                <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
-            </div>
-        </div>
-    </div>
-
-    <div class="mannequinImg female">
-        <div class="caps-container">
-            <img class="capslist" src="{{asset('img/lp/wearlist-caps.png')}}" alt="">
-        </div>
-        <div class="swiper-container tops-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide slide-item">
-                    <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
-                </div>
-                <div class="swiper-slide slide-item">
-                    <img class="toplist" src="{{asset('img/lp/ladies_lp_item.png')}}" alt="">
-                </div>
-            </div>
-        </div>
-            <div class="pants-container">
-                <img class="pantslist" src="{{asset('img/lp/wearlist-pants.png')}}" alt="">
-            </div>
-            <div class="shoes-container">
-                <img class="shoeslist" src="{{asset('img/lp/wearlist-shoes.png')}}" alt="">
-            </div>
-        </div>
-    </div>
-</section> --}}
-
     <section id="top">
         <div class="skewed"></div>
     </section>
@@ -191,20 +143,6 @@
             <picture>
                 <img class="mockImg" src="{{ asset('img/lp/top_catch.png') }}" alt="">
             </picture>
-
-            {{-- <div class="notLoginLink">
-                <h2>会員登録せずに今すぐアプリを使ってみる!</h2>
-                <div class="linkCard">
-                    <a href="/sample/female">
-                        <img src={{ asset('img/lp/female_tennis.png') }} alt="">
-                        <p>女性向けウェアはこちら</p>
-                    </a>
-                    <a href="/sample/male">
-                        <img src={{ asset('img/lp/male_tennis.png') }} alt="">
-                        <p>男性向けウェアはこちら</p>
-                    </a>
-                </div>
-            </div> --}}
         </div>
     </section>
 
@@ -317,6 +255,15 @@
                 <p>「いつもウェア買う時は欲しいウェアと履いているシューズなどを合わせたコーデを頭で想像するしかなかったが、wearcoordがあるとちゃんと目で確認した上で購入できるのがありがたい！」
                 </p>
             </li>
+        </ul>
+    </section>
+
+    <section class="sect">
+        <div>
+            <h2 class="sectTitle">wearcoord公式instagram</h2>
+        </div>
+        <ul class="sectUl" id="insta">
+
         </ul>
     </section>
 
@@ -439,6 +386,8 @@
         }
         showNextTxt();
     </script>
+    <script src="{{ asset('js/sns/instagram.js') }}" defer></script>
+
 </body>
 
 </html>

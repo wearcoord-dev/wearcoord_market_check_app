@@ -504,6 +504,53 @@ footer ul li a {
   color: #fff;
 }
 
+#insta {
+  max-width: 1000px;
+  margin: auto;
+}
+
+#insta li {
+  padding: 0px;
+  margin: 10px;
+  position: relative;
+}
+
+#insta li a {
+  width: 100%;
+}
+
+#insta li a figure {
+  width: 100%;
+}
+
+#insta li a figure img {
+  width: 100%;
+  border-radius: 30px;
+}
+
+#insta li a div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#insta li a div span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+#insta li a div p {
+  color: white;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 800px) {
   .sect .sectUl li {
     margin: 20px;
@@ -538,5 +585,9 @@ footer ul li a {
   }
   .catchSect .catchText .notLoginLink .linkCard a {
     width: 80%;
+  }
+  #insta li {
+    max-width: 150px;
+    min-height: initial;
   }
 }
