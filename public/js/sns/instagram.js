@@ -17,7 +17,7 @@ $(function () {
 
                     // 一覧を変数listに格納
                     list +=
-                        `<li><a href="${item.permalink}"><figure><img class="" src="${media}" alt=""></figure><div><span class="material-icons-outlined">favorite_border</span><p>${item.like_count}</p></div></a></li>`;
+                        `<li><a href="${item.permalink}" target="_blank" rel="noopener"><figure><img class="" src="${media}" alt=""></figure><div><span class="material-icons-outlined">favorite_border</span><p>${item.like_count}</p></div></a></li>`;
                 }
 
             })
