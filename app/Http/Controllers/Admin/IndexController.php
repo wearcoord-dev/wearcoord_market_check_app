@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TopsRakutenApi;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\TopsCount;
+use Illuminate\Database\Eloquent\Builder;
 
 class IndexController extends Controller
 {
@@ -44,6 +46,8 @@ class IndexController extends Controller
             'purple',
             'gray',
         ];
+
+        // dd($items);
 
         return view('admin.itemIndex', compact('gender', 'items', 'category', 'brand', 'color', 'colorSets'));
     }
@@ -153,15 +157,63 @@ class IndexController extends Controller
     private  static function getItemsFromDB($type, $brand, $color, $category)
     {
         if ($brand && $color) {
-            $items = DB::table($type . '_rakuten_apis')->where('category', $category)->where('brand', $brand)->whereNotNull($color)->orderBy('id', 'desc')->paginate(30);
+            $right = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->where('brand', $brand)
+                ->whereNotNull($color)
+                ->rightJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId');
+            $items = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->where('brand', $brand)
+                ->whereNotNull($color)
+                ->leftJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId')
+                ->union($right)
+                ->orderBy('id', 'desc')
+                ->paginate(30);
         } elseif ($color) {
-            $items = DB::table($type . '_rakuten_apis')->where('category', $category)->whereNotNull($color)->orderBy('id', 'desc')->paginate(30);
+            $right = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->whereNotNull($color)
+                ->rightJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId');
+            $items = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->whereNotNull($color)
+                ->leftJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId')
+                ->union($right)
+                ->orderBy('id', 'desc')
+                ->paginate(30);
         } elseif ($brand) {
-            $items = DB::table($type . '_rakuten_apis')->where('category', $category)->where('brand', $brand)->orderBy('id', 'desc')->paginate(30);
+            $right = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->where('brand', $brand)
+                ->rightJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId');
+            $items = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->where('brand', $brand)
+                ->leftJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId')
+                ->union($right)
+                ->orderBy('id', 'desc')
+                ->paginate(30);
         } else {
-            $items = DB::table($type . '_rakuten_apis')->where('category', $category)->orderBy('id', 'desc')->paginate(30);
+            $right = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->rightJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId');
+            $items = DB::table($type . '_rakuten_apis')
+                ->select('*')
+                ->where('category', $category)
+                ->leftJoin($type . '_counts', $type . '_rakuten_apis.id', '=', $type . '_counts.wearId')
+                ->union($right)
+                ->orderBy('id', 'desc')
+                ->paginate(30);
         }
+
         return $items;
     }
-
 }
