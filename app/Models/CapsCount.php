@@ -9,6 +9,8 @@ class CapsCount extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'mainid';
+
     protected $fillable = [
         'wearId',
         'totalCount',

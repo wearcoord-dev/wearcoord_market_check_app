@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     @if ($gender == 'male')
-                    <div class="card-header bg-info text-white">{{ $gender }}ウェア一覧</div>
+                        <div class="card-header bg-info text-white">{{ $gender }}ウェア一覧</div>
                     @elseif($gender == 'female')
-                    <div class="card-header bg-warning text-dark">{{ $gender }}ウェア一覧</div>
+                        <div class="card-header bg-warning text-dark">{{ $gender }}ウェア一覧</div>
                     @endif
                     <form action="" method="get">
                         @csrf
@@ -35,10 +35,10 @@
                                 <div class="col-sm">
                                     <div class="card bg-light mt-2 mb-2" style="width: 300px">
                                         @foreach ($colorSets as $color)
-                                        @if ($item->$color !==null )
-                                        <img class="card-img-top"
-                                            src="{{ '/img/rakutenlist/' . $gender . '/' . $item->category . '/' . $item->$color }}"
-                                            alt="Card image cap">
+                                            @if ($item->$color !== null)
+                                                <img class="card-img-top"
+                                                    src="{{ '/img/rakutenlist/' . $gender . '/' . $item->category . '/' . $item->$color }}"
+                                                    alt="Card image cap">
                                             @endif
                                         @endforeach
                                         @if ($item->moshimoLink)
@@ -56,6 +56,24 @@
                                             @else
                                                 <p>状態 : <span>非表示</span></p>
                                             @endif
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">累計</th>
+                                                        <th scope="col">月</th>
+                                                        <th scope="col">週</th>
+                                                        <th scope="col">日</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $item->totalCount ? $item->totalCount : '0' }}</td>
+                                                        <td>{{ $item->month ? $item->month : '0' }}</td>
+                                                        <td>{{ $item->week ? $item->week : '0' }}</td>
+                                                        <td>{{ $item->day ? $item->day : '0' }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                             <a href="{{ route('itemShow', ['item' => $item->id, 'category' => $item->category, 'gender' => $gender]) }}"
                                                 class="btn btn-primary btn-block">編集</a>
                                         </div>

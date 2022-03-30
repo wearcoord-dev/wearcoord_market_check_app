@@ -12,6 +12,7 @@ class TopsRakutenApi extends Model
 
     public $timestamps = false;
 
+
     protected $fillable = [
         'itemId',
         'brand',
@@ -36,5 +37,10 @@ class TopsRakutenApi extends Model
     public function topsSizes()
     {
         return $this->hasMany(TopsSize::class, 'item_id', 'id');
+    }
+
+    public function counts()
+    {
+        return $this->hasMany('App\Models\TopsCount');
     }
 }
