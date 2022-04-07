@@ -68,7 +68,7 @@
                 <a href="{{ route('register') }}">新規登録</a>
             </div> --}}
             {{-- <div class="headerBtnItem" style="width: initial; padding: 0 20px"> --}}
-            <a href="/sample?brand=hydrogen" class="headerBtnItem" style="width: initial; padding: 0 20px">
+            <a href="{{ route('notLoginPage') }}" class="headerBtnItem" style="width: initial; padding: 0 20px">
                 <span style="font-weight: bold">今すぐアプリを使う</span>
             </a>
             {{-- </div> --}}
@@ -362,9 +362,21 @@
             </li> --}}
             <li>
                 <picture>
-                    <img class="" src="{{ asset('img/rakutenlist/male/508759/TECH ZIPPPED POLO 077 - white_black.png') }}" alt="">
+                    <img class="" src="{{ asset('img/brand/logo/hydrogen.jpeg') }}" alt="">
                 </picture>
                 <h3>Hydrogen</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/brand/logo/tenez.jpeg') }}" alt="">
+                </picture>
+                <h3>TENEZ</h3>
+            </li>
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/brand/logo/ralosso.png') }}" alt="">
+                </picture>
+                <h3>ralosso</h3>
             </li>
         </ul>
     </section>

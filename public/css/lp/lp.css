@@ -318,6 +318,7 @@ input {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: initial;
+  justify-content: initial;
 }
 
 .sect .sectUl.sectBrand li {
