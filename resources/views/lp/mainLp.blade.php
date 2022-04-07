@@ -68,7 +68,7 @@
                 <a href="{{ route('register') }}">新規登録</a>
             </div> --}}
             {{-- <div class="headerBtnItem" style="width: initial; padding: 0 20px"> --}}
-            <a href="/sample?brand=hydrogen" class="headerBtnItem" style="width: initial; padding: 0 20px">
+            <a href="{{ route('notLoginPage') }}" class="headerBtnItem" style="width: initial; padding: 0 20px">
                 <span style="font-weight: bold">今すぐアプリを使う</span>
             </a>
             {{-- </div> --}}
