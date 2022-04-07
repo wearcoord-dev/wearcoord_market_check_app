@@ -59,14 +59,19 @@
             </a>
         </div>
         <div class="headerBtn">
-            <div class="headerBtnItem">
+            {{-- <div class="headerBtnItem">
                 <a class="login" href="{{ route('login') }}">
                     ログイン
                 </a>
             </div>
             <div class="headerBtnItem signinBtn">
                 <a href="{{ route('register') }}">新規登録</a>
-            </div>
+            </div> --}}
+            {{-- <div class="headerBtnItem" style="width: initial; padding: 0 20px"> --}}
+            <a href="/sample?brand=hydrogen" class="headerBtnItem" style="width: initial; padding: 0 20px">
+                <span style="font-weight: bold">今すぐアプリを使う</span>
+            </a>
+            {{-- </div> --}}
         </div>
     </header>
 
@@ -140,8 +145,9 @@
                 <p>スポーツウェアを購入する前に自分に似合うかどうかわからなくて困ったことはありませんか？</p>
                 <p>wearcoordでは欲しいウェアの組み合わせを購入前に見える化することでスポーツウェアをより気軽に楽しく、普段のスポーツをよりワクワクしたものにするお手伝いをします。</p>
             </div>
-            <picture>
-                <img class="mockImg" src="{{ asset('img/lp/top_catch.png') }}" alt="">
+            <picture class="mockWrapper">
+                <img class="mockImg mock1" src="{{ asset('img/lp/top_catch2.png') }}" alt="">
+                <img class="mockImg mock2" src="{{ asset('img/lp/top_catch3.png') }}" alt="">
             </picture>
         </div>
     </section>
@@ -166,12 +172,19 @@
                 <p>購入したいウェアを組み合わせて、理想のコーディネートを作ることができます。</p>
             </li>
             </li>
-            <li>
+            {{-- <li>
                 <picture>
                     <img class="" src="{{ asset('img/lp/ref.png') }}" alt="">
                 </picture>
                 <h3>他人のコーデを参考に</h3>
                 <p>wearcoordアプリ上で他のユーザーが作った全身コーディネートを参照し、ワンクリックで試着できます。</p>
+            </li> --}}
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/lp/ref.png') }}" alt="">
+                </picture>
+                <h3>気に入ったウェアを買える</h3>
+                <p>アプリはwearcoord公式オンラインストアに直結。お気に入りのコーデを見つけたらすぐに購入できます。</p>
             </li>
         </ul>
     </section>
@@ -183,8 +196,8 @@
 
         <div class="funcBox leftBorder">
             <div class="wrapper">
-                <picture>
-                    <img src="{{ asset('img/lp/top_catch.png') }}" alt="">
+                <picture style="height: 300px">
+                    <img src="{{ asset('img/lp/top_catch3.png') }}" alt="">
                 </picture>
                 <div class="textBox">
                     <h3>コーディネートを直感的にできる！</h3>
@@ -203,7 +216,7 @@
             </div>
         </div>
 
-        <div class="funcBox rightBorder">
+        {{-- <div class="funcBox rightBorder">
             <div class="wrapper reverse">
                 <picture>
                     <img src="{{ asset('img/lp/size.png') }}" alt="">
@@ -217,6 +230,27 @@
                             <div class='arrow_box'>
                                 <p class="patent">※特許出願中！</p>
                                 <p class="patent">wearcoordだけの機能！</p>
+                            </div>
+                            <div class="img_tennis female_img"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
+        <div class="funcBox rightBorder">
+            <div class="wrapper reverse">
+                <picture style="height: 300px">
+                    <img src="{{ asset('img/lp/shopify.png') }}" alt="">
+                </picture>
+                <div class="textBox">
+                    <h3>気に入ったウェアはそのまま購入！</h3>
+                    <div class="description">
+                        <p>作ったコーデのウェアはすぐに確認できます。どんな素材か実際にモデルが着用している写真も、タップ一つで確認可能！</p>
+                        <p class="p20">そしてwearcoord公式オンラインストアで販売中のウェアは、すぐに購入できちゃいます！</p>
+                        <div>
+                            <div class='arrow_box'>
+                                <p class="patent">対象ウェア拡大中！</p>
                             </div>
                             <div class="img_tennis female_img"></div>
                         </div>
@@ -272,7 +306,7 @@
             <h2 class="sectTitle">wearcoordで取り扱うブランド一覧</h2>
         </div>
         <ul class="sectUl sectBrand">
-            <li>
+            {{-- <li>
                 <picture>
                     <img class="" src="{{ asset('img/lp/adidas.png') }}" alt="">
                 </picture>
@@ -325,6 +359,12 @@
                     <img class="" src="{{ asset('img/lp/nike.png') }}" alt="">
                 </picture>
                 <h3>Nike</h3>
+            </li> --}}
+            <li>
+                <picture>
+                    <img class="" src="{{ asset('img/rakutenlist/male/508759/TECH ZIPPPED POLO 077 - white_black.png') }}" alt="">
+                </picture>
+                <h3>Hydrogen</h3>
             </li>
         </ul>
     </section>
@@ -355,7 +395,6 @@
         </ul>
         <small>wearcoord,inc</small>
     </footer>
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

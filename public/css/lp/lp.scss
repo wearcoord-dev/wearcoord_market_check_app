@@ -250,13 +250,31 @@ input {
     }
 }
 
+.mockWrapper {
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+}
+
 .mockImg {
-    width: 100%;
-    height: 300px;
+    width: 50%;
+    // height: 300px;
     object-fit: cover;
     max-width: 400px;
     display: block;
     margin: auto;
+}
+
+.mock1 {
+    z-index: 1;
+    margin-left: 20px;
+}
+
+.mock2 {
+    position: absolute;
+    right: 0;
+    top: 10%;
 }
 
 .sect {
@@ -326,7 +344,7 @@ input {
             overflow-x: auto;
             white-space: nowrap;
             flex-wrap: initial;
-            justify-content: initial;
+            // justify-content: initial;
 
             li {
                 min-height: 200px;
@@ -343,7 +361,7 @@ input {
             overflow-x: auto;
             white-space: nowrap;
             flex-wrap: initial;
-            justify-content: initial;
+            // justify-content: initial;
 
             li {
                 width: 80%;

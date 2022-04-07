@@ -319,7 +319,7 @@ Route::middleware('auth:admin')->group(function () {
 
 Route::get('/sample', function () {
     return view('layouts.notLogin');
-});
+})->name('notLoginPage');
 
 // /main/以降にアクセスしても404にしない
 Route::get('/sample/{any}', static function () {

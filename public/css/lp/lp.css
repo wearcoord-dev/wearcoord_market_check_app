@@ -237,13 +237,30 @@ input {
   object-position: top;
 }
 
+.mockWrapper {
+  display: flex;
+  max-width: 400px;
+  margin: auto;
+  position: relative;
+}
+
 .mockImg {
-  width: 100%;
-  height: 300px;
+  width: 50%;
   object-fit: cover;
   max-width: 400px;
   display: block;
   margin: auto;
+}
+
+.mock1 {
+  z-index: 1;
+  margin-left: 20px;
+}
+
+.mock2 {
+  position: absolute;
+  right: 0;
+  top: 10%;
 }
 
 .sect .sectTitle {
@@ -301,7 +318,6 @@ input {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: initial;
-  justify-content: initial;
 }
 
 .sect .sectUl.sectBrand li {
@@ -318,7 +334,6 @@ input {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: initial;
-  justify-content: initial;
 }
 
 .sect .sectUl.sectColumn li {
