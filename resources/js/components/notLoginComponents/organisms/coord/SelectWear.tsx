@@ -201,7 +201,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             } else if (defaultGender === 'female') {
                 defaultShoesCategory = '565819';
             }
-            
+
             // ブランドがセットされている場合はそれだけに限定する
             if (defaultBrand) {
                 firstSetBrand = defaultBrand;
@@ -549,7 +549,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         setDataTops(data);
         setTopsArray([]);
         setTopsSel(data);
-        getTops(data);
+        // getTops(data);
         setShowTops(0);
         isFirstOpenTops.current = true;
 

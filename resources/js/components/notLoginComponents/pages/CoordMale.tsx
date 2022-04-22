@@ -33,8 +33,8 @@ export const CoordMale: FC<Props> = memo(() => {
     const [defaultMannequin, setDefaultMannequin] = useState<string>('');
     const [defaultGender, setDefaultGender] = useState<string>('');
     const [defaultCaps, setDefaultCaps] = useState<string>(null);
-    const [defaultTops, setDefaultTops] = useState<string>('1070');
-    const [defaultPants, setDefaultPants] = useState<string>('436');
+    const [defaultTops, setDefaultTops] = useState<string>(null);
+    const [defaultPants, setDefaultPants] = useState<string>(null);
     const [defaultShoes, setDefaultShoes] = useState<string>(null);
     const [defaultBrand, setDefaultBrand] = useState<string>(null);
 

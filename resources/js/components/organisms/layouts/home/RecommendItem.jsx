@@ -3,8 +3,6 @@ import { useGetUserCoord } from "../../../../hooks/home/useGetUserCoord";
 import { makeStyles } from '@material-ui/core/styles';
 import { UserContext } from "../../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
-import wearImg1 from "../../../../../../public/img/rakutenlist/male/506269/black_alpen_10360085.png"
-import wearImg2 from "../../../../../../public/img/rakutenlist/male/208025/yellow_jism_12877028.png"
 import { useGetRecommendItem } from "../../../../hooks/home/useGetRecommendItem";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Backdrop, Button, Fade, Modal } from "@material-ui/core";
