@@ -280,10 +280,10 @@ Route::get('/column/size', function () {
 // 管理画面
 
 Route::get('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'showAdminLoginForm']);
-Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
+// Route::get('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'showAdminRegisterForm']);
 
 Route::post('/admin/login', [App\Http\Controllers\AuthAdmin\LoginController::class, 'adminLogin']);
-Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
+// Route::post('/admin/register', [App\Http\Controllers\AuthAdmin\RegisterController::class, 'registerAdmin'])->name('admin-register');
 
 Route::view('/admin', 'admin')->middleware('auth:admin')->name('admin-home');
 
