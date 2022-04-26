@@ -46,9 +46,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/leglog/leglog.css') }}" rel="stylesheet">
 
-    @if(env('APP_ENV') == 'production')
+    {{-- @if(env('APP_ENV') == 'production')
     @include('layouts.parts.analytics')
-    @endif
+    @endif --}}
 </head>
 <body>
     <div id="default" style="position: relative;">
