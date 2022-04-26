@@ -1,8 +1,8 @@
 import { useDisclosure } from "@chakra-ui/react";
 import { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import { SearchBox } from "../../molecules/SearchBox";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 
 import { useAllCaps } from "../../../../hooks/selectwear/useAllCaps.jsx";
 import { useAllTops } from "../../../../hooks/selectwear/useAllTops.jsx";
@@ -24,39 +24,48 @@ type Props = {
     defaultPants?: string;
     defaultShoes?: string;
     defaultBrand?: string;
-}
+    ignoreSearch?: string;
+};
 
 export const SelectWear: FC<Props> = memo((props) => {
-    const { defaultGender, defaultMannequin, defaultCaps, defaultTops, defaultPants, defaultShoes, defaultBrand } = props;
+    const {
+        defaultGender,
+        defaultMannequin,
+        defaultCaps,
+        defaultTops,
+        defaultPants,
+        defaultShoes,
+        defaultBrand,
+        ignoreSearch,
+    } = props;
 
     const { registerWearLocal } = useRegisterWear();
     const history = useHistory();
+    const { showMessage } = useMessage();
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const {
         isOpen: isOpenTops,
         onOpen: onOpenTops,
-        onClose: onCloseTops
+        onClose: onCloseTops,
     } = useDisclosure();
     const {
         isOpen: isOpenPants,
         onOpen: onOpenPants,
-        onClose: onClosePants
+        onClose: onClosePants,
     } = useDisclosure();
     const {
         isOpen: isOpenShoes,
         onOpen: onOpenShoes,
-        onClose: onCloseShoes
+        onClose: onCloseShoes,
     } = useDisclosure();
-
 
     // 初回読み込み時のuseEffect管理
     const isFirstOpenCaps = useRef(false);
     const isFirstOpenTops = useRef(false);
     const isFirstOpenPants = useRef(false);
     const isFirstOpenShoes = useRef(false);
-
 
     // 選択したカテゴリー以外を閉じる
     const onClickCaps = useCallback(() => {
@@ -70,27 +79,26 @@ export const SelectWear: FC<Props> = memo((props) => {
         let firstSetBrand: string;
 
         if (isFirstOpenCaps.current === false) {
-
-            if (defaultGender === 'male') {
-                defaultCapsCategory = '506269';
-            } else if (defaultGender === 'female') {
-                defaultCapsCategory = '565818';
+            if (defaultGender === "male") {
+                defaultCapsCategory = "506269";
+            } else if (defaultGender === "female") {
+                defaultCapsCategory = "565818";
             }
 
             // ブランドがセットされている場合はそれだけに限定する
             if (defaultBrand) {
                 firstSetBrand = defaultBrand;
             } else {
-                firstSetBrand = 'all';
+                firstSetBrand = "all";
             }
 
             const data = {
-                'brand': firstSetBrand,
-                'color': 'all',
-                'category': defaultCapsCategory,
-                'wear': 'caps',
-                'page': 1,
-            }
+                brand: firstSetBrand,
+                color: "all",
+                category: defaultCapsCategory,
+                wear: "caps",
+                page: 1,
+            };
             setDataCaps(data);
             setCapsArray([]);
             setCapsSel(data);
@@ -101,7 +109,16 @@ export const SelectWear: FC<Props> = memo((props) => {
         }
     }, [defaultGender]);
 
-    const onClickTops = useCallback(() => {
+    const onClickTops = () => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "tops") {
+            showMessage({
+                title: "トップスアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
+
         onClose();
         onOpenTops();
         onClosePants();
@@ -112,26 +129,25 @@ export const SelectWear: FC<Props> = memo((props) => {
         let firstSetBrand: string;
 
         if (isFirstOpenTops.current === false) {
-
-            if (defaultGender === 'male') {
-                defaultTopsCategory = '508759';
-            } else if (defaultGender === 'female') {
-                defaultTopsCategory = '508803';
+            if (defaultGender === "male") {
+                defaultTopsCategory = "508759";
+            } else if (defaultGender === "female") {
+                defaultTopsCategory = "508803";
             }
             if (defaultBrand) {
                 firstSetBrand = defaultBrand;
             } else {
-                firstSetBrand = 'all';
+                firstSetBrand = "all";
             }
 
             const data = {
-                'brand': firstSetBrand,
-                'color': 'all',
-                'category': defaultTopsCategory,
-                'wear': 'tops',
-                'page': 1,
-            }
-            console.log(data)
+                brand: firstSetBrand,
+                color: "all",
+                category: defaultTopsCategory,
+                wear: "tops",
+                page: 1,
+            };
+            console.log(data);
             setDataTops(data);
             setTopsArray([]);
             setTopsSel(data);
@@ -140,9 +156,18 @@ export const SelectWear: FC<Props> = memo((props) => {
             // 初回の処理が終了
             isFirstOpenTops.current = true;
         }
-    }, [defaultGender]);
+    };
 
-    const onClickPants = useCallback(() => {
+    const onClickPants = () => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "pants") {
+            showMessage({
+                title: "パンツアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
+
         onClose();
         onCloseTops();
         onOpenPants();
@@ -153,27 +178,26 @@ export const SelectWear: FC<Props> = memo((props) => {
         let firstSetBrand: string;
 
         if (isFirstOpenPants.current === false) {
-
-            if (defaultGender === 'male') {
-                defaultPantsCategory = '508772';
-            } else if (defaultGender === 'female') {
-                defaultPantsCategory = '508820';
+            if (defaultGender === "male") {
+                defaultPantsCategory = "508772";
+            } else if (defaultGender === "female") {
+                defaultPantsCategory = "508820";
             }
 
             // ブランドがセットされている場合はそれだけに限定する
             if (defaultBrand) {
                 firstSetBrand = defaultBrand;
             } else {
-                firstSetBrand = 'all';
+                firstSetBrand = "all";
             }
 
             const data = {
-                'brand': firstSetBrand,
-                'color': 'all',
-                'category': defaultPantsCategory,
-                'wear': 'pants',
-                'page': 1,
-            }
+                brand: firstSetBrand,
+                color: "all",
+                category: defaultPantsCategory,
+                wear: "pants",
+                page: 1,
+            };
             setDataPants(data);
             setPantsArray([]);
             setPantsSel(data);
@@ -182,7 +206,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             // 初回の処理が終了
             isFirstOpenPants.current = true;
         }
-    }, [defaultGender]);
+    };
 
     const onClickShoes = useCallback(() => {
         onClose();
@@ -195,27 +219,26 @@ export const SelectWear: FC<Props> = memo((props) => {
         let firstSetBrand: string;
 
         if (isFirstOpenShoes.current === false) {
-
-            if (defaultGender === 'male') {
-                defaultShoesCategory = '208025';
-            } else if (defaultGender === 'female') {
-                defaultShoesCategory = '565819';
+            if (defaultGender === "male") {
+                defaultShoesCategory = "208025";
+            } else if (defaultGender === "female") {
+                defaultShoesCategory = "565819";
             }
 
             // ブランドがセットされている場合はそれだけに限定する
             if (defaultBrand) {
                 firstSetBrand = defaultBrand;
-            } else{
-                firstSetBrand = 'all';
+            } else {
+                firstSetBrand = "all";
             }
 
             const data = {
-                'brand': firstSetBrand,
-                'color': 'all',
-                'category': defaultShoesCategory,
-                'wear': 'shoes',
-                'page': 1,
-            }
+                brand: firstSetBrand,
+                color: "all",
+                category: defaultShoesCategory,
+                wear: "shoes",
+                page: 1,
+            };
             setDataShoes(data);
             setShoesArray([]);
             setShoesSel(data);
@@ -242,8 +265,19 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [activeIndexCaps, setActiveIndexCaps] = useState(0);
 
     // // 検索条件の保存管理
-    const [capsSel, setCapsSel] = useState({ brand: "", color: "", category: "", wear: "" });
-    const [dataCaps, setDataCaps] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [capsSel, setCapsSel] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+    });
+    const [dataCaps, setDataCaps] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+        page: null,
+    });
     const [capsArray, setCapsArray] = useState([]);
     const [showCaps, setShowCaps] = useState<Number>(0);
 
@@ -251,26 +285,30 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     const getActiveIndexCaps = (swiper) => {
         setActiveIndexCaps(swiper.activeIndex);
-    }
+    };
 
     // 条件に合ったウェアを探す
 
     const onClickFetchCaps = (props) => {
-
         const data = {
-            'brand': props.brand,
-            'color': props.color,
-            'category': props.category,
-            'wear': 'caps',
-            'page': 1,
-        }
+            brand: props.brand,
+            color: props.color,
+            category: props.category,
+            wear: "caps",
+            page: 1,
+        };
 
         // カテゴリーがnullなら着ているウェアに切り替え
         if (props.category) {
-
             // カテゴリーがremoveなら配列を空にして表示させない
-            if (props.category == 'remove') {
-                setDataCaps({ brand: "", color: "", category: "", wear: "", page: null });
+            if (props.category == "remove") {
+                setDataCaps({
+                    brand: "",
+                    color: "",
+                    category: "",
+                    wear: "",
+                    page: null,
+                });
                 setCapsArray([]);
                 setShowCaps(1);
             } else {
@@ -283,10 +321,9 @@ export const SelectWear: FC<Props> = memo((props) => {
             setCapsArray([]);
             setShowCaps(0);
         }
-    }
+    };
 
     const capsComponent = (
-
         <CapsSect
             onClickCaps={onClickCaps}
             defaultGender={defaultGender}
@@ -300,7 +337,7 @@ export const SelectWear: FC<Props> = memo((props) => {
             defaultCaps={defaultCaps}
             showCaps={showCaps}
         />
-    )
+    );
 
     // ここまでcaps
 
@@ -313,8 +350,19 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [activeIndexTops, setActiveIndexTops] = useState(0);
 
     // // 検索条件の保存管理
-    const [topsSel, setTopsSel] = useState({ brand: "", color: "", category: "", wear: "" });
-    const [dataTops, setDataTops] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [topsSel, setTopsSel] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+    });
+    const [dataTops, setDataTops] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+        page: null,
+    });
     const [topsArray, setTopsArray] = useState([]);
     const [showTops, setShowTops] = useState<Number>(0);
 
@@ -322,19 +370,27 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     const getActiveIndexTops = (swiper) => {
         setActiveIndexTops(swiper.activeIndex);
-    }
+    };
 
     // 条件に合ったウェアを探す
 
     const onClickFetchTops = (props) => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "tops") {
+            showMessage({
+                title: "トップスアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
 
         const data = {
-            'brand': props.brand,
-            'color': props.color,
-            'category': props.category,
-            'wear': 'tops',
-            'page': 1,
-        }
+            brand: props.brand,
+            color: props.color,
+            category: props.category,
+            wear: "tops",
+            page: 1,
+        };
 
         if (props.category) {
             setDataTops(data);
@@ -343,7 +399,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         } else {
             setTopsArray([]);
         }
-    }
+    };
 
     const topsComponent = (
         <>
@@ -360,7 +416,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 defaultTops={defaultTops}
             />
         </>
-    )
+    );
 
     // ここまでtops
 
@@ -373,8 +429,19 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [activeIndexPants, setActiveIndexPants] = useState(0);
 
     // // 検索条件の保存管理
-    const [pantsSel, setPantsSel] = useState({ brand: "", color: "", category: "", wear: "" });
-    const [dataPants, setDataPants] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [pantsSel, setPantsSel] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+    });
+    const [dataPants, setDataPants] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+        page: null,
+    });
     const [pantsArray, setPantsArray] = useState([]);
     const [showPants, setShowPants] = useState<Number>(0);
 
@@ -382,19 +449,27 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     const getActiveIndexPants = (swiper) => {
         setActiveIndexPants(swiper.activeIndex);
-    }
+    };
 
     // 条件に合ったウェアを探す
 
     const onClickFetchPants = (props) => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "pants") {
+            showMessage({
+                title: "パンツアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
 
         const data = {
-            'brand': props.brand,
-            'color': props.color,
-            'category': props.category,
-            'wear': 'pants',
-            'page': 1,
-        }
+            brand: props.brand,
+            color: props.color,
+            category: props.category,
+            wear: "pants",
+            page: 1,
+        };
 
         if (props.category) {
             setDataPants(data);
@@ -403,7 +478,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         } else {
             setPantsArray([]);
         }
-    }
+    };
 
     const pantsComponent = (
         <>
@@ -420,7 +495,7 @@ export const SelectWear: FC<Props> = memo((props) => {
                 defaultPants={defaultPants}
             />
         </>
-    )
+    );
 
     // ここまでpants
 
@@ -433,8 +508,19 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [activeIndexShoes, setActiveIndexShoes] = useState(0);
 
     // // 検索条件の保存管理
-    const [shoesSel, setShoesSel] = useState({ brand: "", color: "", category: "", wear: "" });
-    const [dataShoes, setDataShoes] = useState({ brand: "", color: "", category: "", wear: "", page: null });
+    const [shoesSel, setShoesSel] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+    });
+    const [dataShoes, setDataShoes] = useState({
+        brand: "",
+        color: "",
+        category: "",
+        wear: "",
+        page: null,
+    });
     const [shoesArray, setShoesArray] = useState([]);
     const [showShoes, setShowShoes] = useState<Number>(0);
 
@@ -442,19 +528,18 @@ export const SelectWear: FC<Props> = memo((props) => {
 
     const getActiveIndexShoes = (swiper) => {
         setActiveIndexShoes(swiper.activeIndex);
-    }
+    };
 
     // 条件に合ったウェアを探す
 
     const onClickFetchShoes = (props) => {
-
         const data = {
-            'brand': props.brand,
-            'color': props.color,
-            'category': props.category,
-            'wear': 'shoes',
-            'page': 1,
-        }
+            brand: props.brand,
+            color: props.color,
+            category: props.category,
+            wear: "shoes",
+            page: 1,
+        };
 
         if (props.category) {
             setDataShoes(data);
@@ -463,7 +548,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         } else {
             setShoesArray([]);
         }
-    }
+    };
 
     const shoesComponent = (
         <>
@@ -480,15 +565,13 @@ export const SelectWear: FC<Props> = memo((props) => {
                 defaultShoes={defaultShoes}
             />
         </>
-    )
+    );
 
     // ここまでshoes
-
 
     // 作成したコーデを保存
 
     const onClickRegisterWear = () => {
-
         let capsInfo = null;
 
         // 非表示フラグが立っている場合は中身をnullにする
@@ -505,18 +588,26 @@ export const SelectWear: FC<Props> = memo((props) => {
             tops: topsArray[activeIndexTops] ?? defaultTops,
             pants: pantsArray[activeIndexPants] ?? defaultPants,
             shoes: shoesArray[activeIndexShoes] ?? defaultShoes,
-        }
+        };
         registerWearLocal(obj);
         history.push({
-            pathname: '/sample',
+            pathname: "/sample",
             // state: { from: gender }
         });
-    }
+    };
 
     // 最初にページを開いた場合topsを自動的に表示
-    const [firstOpen, setFirstOpen] = useState('');
+    const [firstOpen, setFirstOpen] = useState("");
 
     useEffect(() => {
+        const getData = async () => {
+            // 検索しない場合はreturn
+            if (ignoreSearch === "tops") {
+                return;
+            }
+        };
+        getData();
+
         onClose();
         onOpenTops();
         onClosePants();
@@ -525,26 +616,26 @@ export const SelectWear: FC<Props> = memo((props) => {
         // 最初に開いた場合はアイテムを事前に表示しておく
         let firstSetBrand: string;
 
-        if (defaultGender === 'male') {
-            setFirstOpen('508759');
-        } else if (defaultGender === 'female') {
-            setFirstOpen('508803');
+        if (defaultGender === "male") {
+            setFirstOpen("508759");
+        } else if (defaultGender === "female") {
+            setFirstOpen("508803");
         }
 
         // ブランドがセットされている場合はそれだけに限定する
         if (defaultBrand) {
             firstSetBrand = defaultBrand;
         } else {
-            firstSetBrand = 'all';
+            firstSetBrand = "all";
         }
 
         const data = {
-            'brand': firstSetBrand,
-            'color': 'all',
-            'category': firstOpen,
-            'wear': 'tops',
-            'page': 1,
-        }
+            brand: firstSetBrand,
+            color: "all",
+            category: firstOpen,
+            wear: "tops",
+            page: 1,
+        };
 
         setDataTops(data);
         setTopsArray([]);
@@ -552,21 +643,46 @@ export const SelectWear: FC<Props> = memo((props) => {
         // getTops(data);
         setShowTops(0);
         isFirstOpenTops.current = true;
-
     }, [firstOpen, defaultGender]);
 
     return (
         <>
-            <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} alt="" /></div>
+            <div
+                data-html2canvas-ignore="true"
+                style={{
+                    width: "40px",
+                    position: "absolute",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    top: "24px",
+                }}
+            >
+                <img style={{ width: "100%", borderRadius: "50%" }} alt="" />
+            </div>
 
-            <div style={{ display: "flex", position: "relative" }}>{capsComponent}</div>
+            <div style={{ display: "flex", position: "relative" }}>
+                {capsComponent}
+            </div>
 
-            <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
+            <div
+                style={{ display: "flex", height: "115px", marginTop: "16px" }}
+            >
+                {topsComponent}
+            </div>
 
+            <div style={{ display: "flex", height: "140px" }}>
+                {pantsComponent}
+            </div>
 
-            <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
-
-            <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
+            <div
+                style={{
+                    display: "flex",
+                    overflowX: "scroll",
+                    marginTop: "-10px",
+                }}
+            >
+                {shoesComponent}
+            </div>
 
             <SearchBox
                 onClose={onClose}
@@ -595,5 +711,5 @@ export const SelectWear: FC<Props> = memo((props) => {
                 onClickRegisterWear={onClickRegisterWear}
             />
         </>
-    )
+    );
 });
