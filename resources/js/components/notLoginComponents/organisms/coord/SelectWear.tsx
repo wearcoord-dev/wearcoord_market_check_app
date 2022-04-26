@@ -109,7 +109,16 @@ export const SelectWear: FC<Props> = memo((props) => {
         }
     }, [defaultGender]);
 
-    const onClickTops = useCallback(() => {
+    const onClickTops = () => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "tops") {
+            showMessage({
+                title: "トップスアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
+
         onClose();
         onOpenTops();
         onClosePants();
@@ -147,13 +156,13 @@ export const SelectWear: FC<Props> = memo((props) => {
             // 初回の処理が終了
             isFirstOpenTops.current = true;
         }
-    }, [defaultGender]);
+    };
 
     const onClickPants = () => {
         // 検索しない場合はreturn
         if (ignoreSearch === "pants") {
             showMessage({
-                title: "アイテムが固定されています",
+                title: "パンツアイテムが固定されています",
                 status: "warning",
             });
             return;
@@ -366,6 +375,15 @@ export const SelectWear: FC<Props> = memo((props) => {
     // 条件に合ったウェアを探す
 
     const onClickFetchTops = (props) => {
+        // 検索しない場合はreturn
+        if (ignoreSearch === "tops") {
+            showMessage({
+                title: "トップスアイテムが固定されています",
+                status: "warning",
+            });
+            return;
+        }
+
         const data = {
             brand: props.brand,
             color: props.color,
@@ -439,7 +457,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         // 検索しない場合はreturn
         if (ignoreSearch === "pants") {
             showMessage({
-                title: "アイテムが固定されています",
+                title: "パンツアイテムが固定されています",
                 status: "warning",
             });
             return;
@@ -582,6 +600,15 @@ export const SelectWear: FC<Props> = memo((props) => {
     const [firstOpen, setFirstOpen] = useState("");
 
     useEffect(() => {
+
+        const getData = async () => {
+            // 検索しない場合はreturn
+            if (ignoreSearch === "tops") {
+                return;
+            }
+        };
+        getData();
+
         onClose();
         onOpenTops();
         onClosePants();
@@ -617,7 +644,7 @@ export const SelectWear: FC<Props> = memo((props) => {
         // getTops(data);
         setShowTops(0);
         isFirstOpenTops.current = true;
-    }, [firstOpen, defaultGender]);
+    }, [firstOpen, defaultGender, ignoreSearch]);
 
     return (
         <>
