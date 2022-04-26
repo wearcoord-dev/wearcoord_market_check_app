@@ -131,7 +131,7 @@ export const useRegisterWear = () => {
         try {
             // 実行される処理
             setNotLoginUser({ ...notLoginUser, mannequin: mannequin, gender: gender, caps: capsId, tops: topsId, pants: pantsId, shoes: shoesId })
-            axios.post(url, setData, header);
+            // axios.post(url, setData, header);
             showMessage({ title: "コーデを保存しました", status: "success" });
         } catch (error) {
             // 例外が発生した場合に実行される処理

@@ -14,6 +14,7 @@ export const Header: FC = memo(() => {
     const onClickMale = useCallback(() => history.push("/sample/male"), []);
     const onClickFemale = useCallback(() => history.push("/sample/female"), []);
     const onClickCoord = useCallback(() => history.push("/sample"), []);
+    const onClickItems = useCallback(() => history.push("/sample/items"), []);
 
     return (
         <>
@@ -25,17 +26,58 @@ export const Header: FC = memo(() => {
                 justify="space-between"
                 padding={{ base: 3, md: 5 }}
             >
-                <Flex w={3 / 12} maxWidth={'200px'} align="center" as="a" mr={8} _hover={{ cursor: "pointer" }} onClick={onClickHome}>
+                <Flex
+                    w={3 / 12}
+                    maxWidth={"200px"}
+                    align="center"
+                    as="a"
+                    mr={8}
+                    _hover={{ cursor: "pointer" }}
+                    onClick={onClickHome}
+                >
                     <Image src={logoImg} />
                 </Flex>
-                <Flex align="center" fontSize="sm" flexGrow={2} display={{ base: "none", md: "flex" }} justifyContent={{ md: 'end' }}>
-                    <Box pr={{base : 4, md: 8}}>
-                        <Link fontWeight={{ md: 'bold' }} fontSize={{ md: '16px' }} onClick={onClickCoord}>コーデを見る</Link>
+                <Flex
+                    align="center"
+                    fontSize="sm"
+                    flexGrow={2}
+                    display={{ base: "none", md: "flex" }}
+                    justifyContent={{ md: "end" }}
+                >
+                    <Box pr={{ base: 4, md: 8 }}>
+                        <Link
+                            fontWeight={{ md: "bold" }}
+                            fontSize={{ md: "16px" }}
+                            onClick={onClickCoord}
+                        >
+                            コーデを見る
+                        </Link>
                     </Box>
                     <Box pr={{ base: 4, md: 8 }}>
-                        <Link fontWeight={{ md: 'bold' }} fontSize={{ md: '16px' }} onClick={onClickMale}>男性向けウェア</Link>
+                        <Link
+                            fontWeight={{ md: "bold" }}
+                            fontSize={{ md: "16px" }}
+                            onClick={onClickItems}
+                        >
+                            アイテムから探す
+                        </Link>
                     </Box>
-                    <Link fontWeight={{ md: 'bold' }} fontSize={{ md: '16px' }} onClick={onClickFemale}>女性向けウェア</Link>
+                    <Box pr={{ base: 4, md: 8 }}>
+                        <Link
+                            fontWeight={{ md: "bold" }}
+                            fontSize={{ md: "16px" }}
+                            onClick={onClickMale}
+                        >
+                            男性向けウェア
+                        </Link>
+                    </Box>
+                    <Link
+                        fontWeight={{ md: "bold" }}
+                        fontSize={{ md: "16px" }}
+                        onClick={onClickFemale}
+                    >
+                        女性向けウェア
+                    </Link>
                 </Flex>
                 <MenuIconButton onOpen={onOpen} />
             </Flex>
@@ -46,7 +88,8 @@ export const Header: FC = memo(() => {
                 onClickMale={onClickMale}
                 onClickFemale={onClickFemale}
                 onClickCoord={onClickCoord}
+                onClickItems={onClickItems}
             />
         </>
-    )
+    );
 });
