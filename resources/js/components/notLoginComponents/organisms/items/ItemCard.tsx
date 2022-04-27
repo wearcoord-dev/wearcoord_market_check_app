@@ -84,7 +84,7 @@ export const ItemCard: FC<Props> = memo((props) => {
     const [selectBrand, setSelectBrand] = useState<string>('hydrogen');
     const [getData, setGetData] = useState<any>(null);
 
-    // 初回のAPI取得
+    // 初回のAPI取得とブランド更新時のAPI取得
 
     async function fetcher(url: string): Promise<boolean | null> {
         const response = await fetch(url);
@@ -109,11 +109,6 @@ export const ItemCard: FC<Props> = memo((props) => {
 
     const onClickBrand = (props) => {
         setSelectBrand(props.text);
-        const { data } = useSWR<any>(
-            `/api/getAllRegisterItems?gender=${gender}&type=${type}`,
-            fetcher,
-        );
-        setGetData(data);
     };
 
     return (

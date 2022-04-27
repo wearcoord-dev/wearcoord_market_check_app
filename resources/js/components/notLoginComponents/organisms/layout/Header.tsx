@@ -54,7 +54,7 @@ export const Header: FC = memo(() => {
                     <Box pr={{ base: 4, md: 8 }}>
                         <Link
                             fontWeight={{ md: "bold" }}
-                            fontSize={{ md: "16px" }}
+                            fontSize={{ md: "14px" }}
                             onClick={onClickCoord}
                         >
                             コーデを見る
@@ -63,7 +63,7 @@ export const Header: FC = memo(() => {
                     <Box pr={{ base: 4, md: 8 }}>
                         <Link
                             fontWeight={{ md: "bold" }}
-                            fontSize={{ md: "16px" }}
+                            fontSize={{ md: "14px" }}
                             onClick={onClickItems}
                         >
                             アイテムから探す
@@ -72,7 +72,7 @@ export const Header: FC = memo(() => {
                     <Box pr={{ base: 4, md: 8 }}>
                         <Link
                             fontWeight={{ md: "bold" }}
-                            fontSize={{ md: "16px" }}
+                            fontSize={{ md: "14px" }}
                             onClick={onClickMale}
                         >
                             男性向けウェア
@@ -80,7 +80,7 @@ export const Header: FC = memo(() => {
                     </Box>
                     <Link
                         fontWeight={{ md: "bold" }}
-                        fontSize={{ md: "16px" }}
+                        fontSize={{ md: "14px" }}
                         onClick={onClickFemale}
                     >
                         女性向けウェア

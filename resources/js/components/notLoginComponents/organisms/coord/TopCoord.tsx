@@ -1,18 +1,29 @@
 // @ts-nocheck
 
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, Stack, Text, useDisclosure } from "@chakra-ui/react";
-import axios from "axios";
-import { FC, memo, useCallback, useEffect, useState } from "react";
-import { Icon } from '@chakra-ui/react'
-import { useHistory } from "react-router-dom";
-import { DeleteModal } from "../../atoms/modal/DeleteModal";
-import { useMessage } from "../../hooks/useMessage";
-import { useNotLoginUser } from "../../provider/NotLoginUserProvider";
-import { NotLoginUser } from "../../types/NotLoginUser";
-import { CapsComponent } from "../wearSect/topCoord/CapsComponent";
-import { PantsComponent } from "../wearSect/topCoord/PantsComponent";
-import { ShoesComponent } from "../wearSect/topCoord/ShoesComponent";
-import { TopsComponent } from "../wearSect/topCoord/TopsComponent";
+import {
+    Button,
+    Drawer,
+    DrawerBody,
+    DrawerContent,
+    DrawerHeader,
+    DrawerOverlay,
+    Flex,
+    Stack,
+    Text,
+    useDisclosure,
+} from '@chakra-ui/react';
+import axios from 'axios';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
+import { Icon } from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
+import { DeleteModal } from '../../atoms/modal/DeleteModal';
+import { useMessage } from '../../hooks/useMessage';
+import { useNotLoginUser } from '../../provider/NotLoginUserProvider';
+import { NotLoginUser } from '../../types/NotLoginUser';
+import { CapsComponent } from '../wearSect/topCoord/CapsComponent';
+import { PantsComponent } from '../wearSect/topCoord/PantsComponent';
+import { ShoesComponent } from '../wearSect/topCoord/ShoesComponent';
+import { TopsComponent } from '../wearSect/topCoord/TopsComponent';
 import { FaTshirt } from 'react-icons/fa';
 import { BiFace } from 'react-icons/bi';
 import { MdOutlineChangeCircle } from 'react-icons/md';
@@ -20,26 +31,25 @@ import { GiPerson } from 'react-icons/gi';
 import { GiArmoredPants } from 'react-icons/gi';
 import { GiSonicShoes } from 'react-icons/gi';
 import { AiFillDelete } from 'react-icons/ai';
-import { TopDrawerBtn } from "../../atoms/drawer/TopDrawerBtn";
-import { BeforeCreateCoord } from "./components/BeforeCreateCoord";
+import { TopDrawerBtn } from '../../atoms/drawer/TopDrawerBtn';
+import { BeforeCreateCoord } from './components/BeforeCreateCoord';
 
 const style = {
-    bgImg: {
-    },
+    bgImg: {},
     mannequinImg: {
-        height: "400px",
-        objectFit: "cover",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        maxWidth: "400px",
-        margin: "auto",
-        position: "absolute",
+        height: '400px',
+        objectFit: 'cover',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        maxWidth: '400px',
+        margin: 'auto',
+        position: 'absolute',
         // backgroundImage: "url(../../../../../../img/mannequin/mens_170_model.png)",
         top: '40%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        cursor: 'pointer'
+        cursor: 'pointer',
     },
     wrapper: {
         // display: "flex",
@@ -47,14 +57,12 @@ const style = {
         // alignItems: "center",
         // height: "100%",
         // flexDirection: "column",
-
         // position: 'relative',
         // display: 'table',
         // width: '100%',
         // height: '300px',
         // backgroundColor: '#c2e035',
         // marginTop: '20vw',
-
     },
     bg: {
         display: 'table',
@@ -66,10 +74,12 @@ const style = {
         position: 'absolute',
         bottom: '-10vh',
         zIndex: '-100',
-        background: 'linear-gradient(320deg, rgba(144,192,229,0.3) 0%, rgba(162,186,203,.3) 35%, rgba(206,225,238,.3) 100%)',
+        background:
+            'linear-gradient(320deg, rgba(144,192,229,0.3) 0%, rgba(162,186,203,.3) 35%, rgba(206,225,238,.3) 100%)',
         borderTop: '30px solid transparent',
-        borderImage: 'radial-gradient(circle, rgba(245,245,245,0.2) 0%, rgba(148,187,233,0.2) 100%)',
-    }
+        borderImage:
+            'radial-gradient(circle, rgba(245,245,245,0.2) 0%, rgba(148,187,233,0.2) 100%)',
+    },
 } as const;
 
 const colorList = [
@@ -117,7 +127,6 @@ export const TopCoord: FC = memo(() => {
     const [getDataPants, setGetDataPants] = useState();
     const [getDataShoes, setGetDataShoes] = useState();
 
-
     // console.log(notLoginUser);
     // console.log(getCoordData)
 
@@ -129,24 +138,26 @@ export const TopCoord: FC = memo(() => {
             setPantsId(notLoginUser.pants);
             setShoesId(notLoginUser.shoes);
         }
-    }, [notLoginUser])
+    }, [notLoginUser]);
 
     useEffect(() => {
         if (notLoginUser) {
             if (topsId ?? pantsId ?? shoesId) {
-                axios.get("/api/getcoord", {
-                    params: {
-                        capsId: capsId,
-                        topsId: topsId,
-                        pantsId: pantsId,
-                        shoesId: shoesId,
-                    }
-                }).then((res) => {
-                    // console.log(res.data)
-                    setGetCoordData(res.data);
-                }).catch(() => {
-                }).finally(() => {
-                });
+                axios
+                    .get('/api/getcoord', {
+                        params: {
+                            capsId: capsId,
+                            topsId: topsId,
+                            pantsId: pantsId,
+                            shoesId: shoesId,
+                        },
+                    })
+                    .then((res) => {
+                        // console.log(res.data)
+                        setGetCoordData(res.data);
+                    })
+                    .catch(() => {})
+                    .finally(() => {});
             }
         }
     }, [capsId, topsId, pantsId, shoesId]);
@@ -159,35 +170,35 @@ export const TopCoord: FC = memo(() => {
                 colorList.map((color) => {
                     if (getCoordData.capsItem[color] !== null)
                         setDefaultUrlCaps(getCoordData.capsItem[color]);
-                })
-                setGetDataCaps(getCoordData.capsItem)
+                });
+                setGetDataCaps(getCoordData.capsItem);
             }
             setDefaultCategoryTops(getCoordData.topsItem.category);
             setShopifyIdTops(getCoordData.topsItem.shopify_id);
             colorList.map((color) => {
                 if (getCoordData.topsItem[color] !== null)
                     setDefaultUrlTops(getCoordData.topsItem[color]);
-            })
+            });
             setDefaultCategoryPants(getCoordData.pantsItem.category);
             setShopifyIdPants(getCoordData.pantsItem.shopify_id);
             colorList.map((color) => {
                 if (getCoordData.pantsItem[color] !== null)
                     setDefaultUrlPants(getCoordData.pantsItem[color]);
-            })
+            });
 
             if (getCoordData.shoesItem) {
                 setDefaultCategoryShoes(getCoordData.shoesItem.category);
                 setShopifyIdShoes(getCoordData.shoesItem.shopify_id);
-                setGetDataShoes(getCoordData.shoesItem)
+                setGetDataShoes(getCoordData.shoesItem);
                 colorList.map((color) => {
                     if (getCoordData.shoesItem[color] !== null)
                         setDefaultUrlShoes(getCoordData.shoesItem[color]);
-                })
+                });
             }
-            setGetDataTops(getCoordData.topsItem)
-            setGetDataPants(getCoordData.pantsItem)
+            setGetDataTops(getCoordData.topsItem);
+            setGetDataPants(getCoordData.pantsItem);
         }
-    }, [getCoordData])
+    }, [getCoordData]);
 
     // console.log(getDataPants)
 
@@ -211,24 +222,34 @@ export const TopCoord: FC = memo(() => {
                 // state: { from: gender }
             });
         }
-    }
+    };
 
-    const onClickChangeMannequin = useCallback(() => history.push("/sample/mannequin"), []);
+    const onClickChangeMannequin = useCallback(
+        () => history.push('/sample/mannequin'),
+        [],
+    );
+    const onClickItems = useCallback(() => history.push('/sample/items'), []);
 
     const onClickResetMannequin = () => {
+
+        localStorage.clear();
+        showMessage({ title: 'コーデを削除しました', status: 'success' });
+        history.go(0);
+    };
+
+    const onClickResetMannequinBrand = () => {
         let stockBrand;
         if (localStorage.getItem('brand')) {
             stockBrand = localStorage.getItem('brand');
         }
         localStorage.clear();
-        showMessage({ title: "コーデを削除しました", status: "success" });
+        showMessage({ title: 'コーデを削除しました', status: 'success' });
         if (stockBrand) {
             localStorage.setItem('flg', 'true');
             localStorage.setItem('brand', stockBrand);
         }
         history.go(0);
     };
-
 
     const capsComponent = (
         <CapsComponent
@@ -237,7 +258,7 @@ export const TopCoord: FC = memo(() => {
             defaultCategory={defaultCategoryCaps}
             defaultUrl={defaultUrlCaps}
         />
-    )
+    );
 
     const topsComponent = (
         <TopsComponent
@@ -246,7 +267,7 @@ export const TopCoord: FC = memo(() => {
             defaultCategory={defaultCategoryTops}
             defaultUrl={defaultUrlTops}
         />
-    )
+    );
 
     const pantsComponent = (
         <PantsComponent
@@ -255,7 +276,7 @@ export const TopCoord: FC = memo(() => {
             defaultCategory={defaultCategoryPants}
             defaultUrl={defaultUrlPants}
         />
-    )
+    );
 
     const shoesComponent = (
         <ShoesComponent
@@ -264,114 +285,252 @@ export const TopCoord: FC = memo(() => {
             defaultCategory={defaultCategoryShoes}
             defaultUrl={defaultUrlShoes}
         />
-    )
-
-
+    );
 
     return (
         <div style={style.wrapper}>
-            {notLoginUser ? (notLoginUser.mannequin ? (
-                <div>
-                    <div onClick={onClickCreateCoord} style={{ ...style.mannequinImg, backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})` }}>
-                        <div data-html2canvas-ignore="true" style={{ width: "40px", position: "absolute", left: "50%", transform: "translateX(-50%)", top: "24px" }}><img style={{ width: "100%", borderRadius: "50%" }} alt="" /></div>
+            {notLoginUser ? (
+                notLoginUser.mannequin ? (
+                    <div>
+                        <div
+                            onClick={onClickCreateCoord}
+                            style={{
+                                ...style.mannequinImg,
+                                backgroundImage: `url(../../../../../../img/mannequin/${notLoginUser.mannequin})`,
+                            }}
+                        >
+                            <div
+                                data-html2canvas-ignore="true"
+                                style={{
+                                    width: '40px',
+                                    position: 'absolute',
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    top: '24px',
+                                }}
+                            >
+                                <img
+                                    style={{
+                                        width: '100%',
+                                        borderRadius: '50%',
+                                    }}
+                                    alt=""
+                                />
+                            </div>
 
-                        <div style={{ display: "flex", position: "relative" }}>{capsComponent}</div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    position: 'relative',
+                                }}
+                            >
+                                {capsComponent}
+                            </div>
 
-                        <div style={{ display: "flex", height: "115px", marginTop: "16px" }}>{topsComponent}</div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    height: '115px',
+                                    marginTop: '16px',
+                                }}
+                            >
+                                {topsComponent}
+                            </div>
 
+                            <div style={{ display: 'flex', height: '140px' }}>
+                                {pantsComponent}
+                            </div>
 
-                        <div style={{ display: "flex", height: "140px" }}>{pantsComponent}</div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    overflowX: 'scroll',
+                                    marginTop: '-10px',
+                                }}
+                            >
+                                {shoesComponent}
+                            </div>
+                        </div>
 
-                        <div style={{ display: "flex", overflowX: "scroll", marginTop: "-10px" }}>{shoesComponent}</div>
-                    </div>
+                        <Stack
+                            direction="column"
+                            spacing={4}
+                            align="center"
+                            justifyContent="center"
+                            position={'relative'}
+                            display={'flex'}
+                            flexDirection={'row'}
+                            justifyContent={'space-between'}
+                            alignItems={'center'}
+                            position={'absolute'}
+                            bottom={'3vh'}
+                            width={'100%'}
+                            // maxWidth={'800px'}
+                            // left={{md:'50%'}}
+                            // transform={{ md: 'translateX(-50%)'}}
+                        >
+                            <Flex flexDirection={'column'}>
+                                <Button
+                                    maxWidth={'200px'}
+                                    width={'20vw'}
+                                    my={4}
+                                    py={8}
+                                    minWidth="150px"
+                                    onClick={onClickChangeMannequin}
+                                    background="#216496"
+                                    color="white"
+                                    variant="solid"
+                                    justifyContent={'space-evenly'}
+                                >
+                                    <Icon
+                                        w={8}
+                                        h={8}
+                                        color="white"
+                                        as={GiPerson}
+                                    />
+                                    <Text fontSize="lg" fontWeight={'bold'}>
+                                        マネキンを変更する
+                                    </Text>
+                                </Button>
+                                <Button
+                                    maxWidth={'200px'}
+                                    width={'20vw'}
+                                    my={4}
+                                    py={8}
+                                    minWidth="150px"
+                                    onClick={onClickCreateCoord}
+                                    background="#216496"
+                                    color="white"
+                                    variant="solid"
+                                    justifyContent={'space-evenly'}
+                                >
+                                    <Icon
+                                        w={8}
+                                        h={8}
+                                        color="white"
+                                        as={MdOutlineChangeCircle}
+                                    />
+                                    <Text fontSize="lg" fontWeight={'bold'}>
+                                        コーデをつくる
+                                    </Text>
+                                </Button>
+                            </Flex>
+                            <Flex>
+                                <DeleteModal
+                                    onClickResetMannequin={
+                                        onClickResetMannequin
+                                    }
+                                    onClickResetMannequinBrand={
+                                        onClickResetMannequinBrand
+                                    }
+                                >
+                                    <Icon
+                                        w={8}
+                                        h={8}
+                                        color="white"
+                                        as={AiFillDelete}
+                                    />
+                                    <Text fontSize="lg" fontWeight={'bold'}>
+                                        コーデをリセット
+                                    </Text>
+                                </DeleteModal>
+                            </Flex>
+                        </Stack>
 
-                    <Stack
-                        direction='column'
-                        spacing={4}
-                        align='center'
-                        justifyContent='center'
-                        position={'relative'}
-                        display={'flex'}
-                        flexDirection={'row'}
-                        justifyContent={'space-between'}
-                        alignItems={'center'}
-                        position={'absolute'}
-                        bottom={'3vh'}
-                        width={'100%'}
-                    // maxWidth={'800px'}
-                    // left={{md:'50%'}}
-                    // transform={{ md: 'translateX(-50%)'}}
-                    >
                         <Flex
                             flexDirection={'column'}
+                            display={'flex'}
+                            position={'absolute'}
+                            right={0}
+                            top={'100px'}
+                            height={'50vh'}
+                            justifyContent={'space-evenly'}
                         >
-                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickChangeMannequin} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
-                                <Icon w={8} h={8} color='white' as={GiPerson} />
-                                <Text fontSize='lg' fontWeight={'bold'}>マネキンを変更する</Text>
-                            </Button>
-                            <Button maxWidth={'200px'} width={'20vw'} my={4} py={8} minWidth='150px' onClick={onClickCreateCoord} background='#216496' color='white' variant='solid' justifyContent={'space-evenly'}>
-                                <Icon w={8} h={8} color='white' as={MdOutlineChangeCircle} />
-                                <Text fontSize='lg' fontWeight={'bold'}>コーデをつくる</Text>
-                            </Button>
+                            <TopDrawerBtn
+                                btnIcon={BiFace}
+                                wearId={shopifyIdCaps}
+                                type={'caps'}
+                                allData={getDataCaps}
+                            />
+                            <TopDrawerBtn
+                                btnIcon={FaTshirt}
+                                wearId={shopifyIdTops}
+                                type={'tops'}
+                                allData={getDataTops}
+                            />
+                            <TopDrawerBtn
+                                btnIcon={GiArmoredPants}
+                                wearId={shopifyIdPants}
+                                type={'pants'}
+                                allData={getDataPants}
+                            />
+                            <TopDrawerBtn
+                                btnIcon={GiSonicShoes}
+                                wearId={shopifyIdShoes}
+                                type={'shoes'}
+                                allData={getDataShoes}
+                            />
                         </Flex>
-                        <Flex>
-                            <DeleteModal onClickResetMannequin={onClickResetMannequin}>
-                                <Icon w={8} h={8} color='white' as={AiFillDelete} />
-                                <Text fontSize='lg' fontWeight={'bold'}>コーデをリセット</Text>
-                            </DeleteModal>
-                        </Flex>
+                        <div style={style.bg}></div>
+                    </div>
+                ) : (
+                    <Stack
+                        h={'100vh'}
+                        display={'flex'}
+                        flexDirection={'column'}
+                        alignItems={'center'}
+                        justifyContent={'center'}
+                    >
+                        <BeforeCreateCoord />
+                        <Stack
+                            direction="row"
+                            spacing={4}
+                            align="center"
+                            justifyContent="center"
+                        >
+                            <Button
+                                fontSize={'12px'}
+                                w={'40%'}
+                                px={10}
+                                py={7}
+                                bg="#216496"
+                                color="white"
+                                variant="solid"
+                                onClick={() => onClickCreateCoord('male')}
+                            >
+                                男性ウェアを選ぶ
+                            </Button>
+                            <Button
+                                fontSize={'12px'}
+                                w={'40%'}
+                                px={10}
+                                py={7}
+                                bg="#216496"
+                                color="white"
+                                variant="solid"
+                                onClick={() => onClickCreateCoord('female')}
+                            >
+                                女性ウェアを選ぶ
+                            </Button>
+                        </Stack>
+                        <Stack>
+                            <Button
+                                fontSize={'12px'}
+                                w={'100%'}
+                                px={10}
+                                py={7}
+                                my={4}
+                                bg="#216496"
+                                color="white"
+                                variant="solid"
+                                onClick={onClickItems}
+                            >
+                                アイテムから選ぶ
+                            </Button>
+                        </Stack>
                     </Stack>
-
-                    <Flex flexDirection={'column'} display={'flex'} position={'absolute'} right={0} top={'100px'} height={'50vh'} justifyContent={'space-evenly'}>
-                        <TopDrawerBtn
-                            btnIcon={BiFace}
-                            wearId={shopifyIdCaps}
-                            type={'caps'}
-                            allData={getDataCaps}
-                        />
-                        <TopDrawerBtn
-                            btnIcon={FaTshirt}
-                            wearId={shopifyIdTops}
-                            type={'tops'}
-                            allData={getDataTops}
-                        />
-                        <TopDrawerBtn
-                            btnIcon={GiArmoredPants}
-                            wearId={shopifyIdPants}
-                            type={'pants'}
-                            allData={getDataPants}
-                        />
-                        <TopDrawerBtn
-                            btnIcon={GiSonicShoes}
-                            wearId={shopifyIdShoes}
-                            type={'shoes'}
-                            allData={getDataShoes}
-                        />
-                    </Flex>
-                    <div style={style.bg}></div>
-                </div>
-            ) : (
-                <Stack
-                    h={'100vh'}
-                    display={'flex'}
-                    flexDirection={'column'}
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                >
-                    <BeforeCreateCoord />
-                    <Stack direction='row' spacing={4} align='center' justifyContent='center'>
-                        <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('male')}>
-                            男性ウェアを選ぶ
-                        </Button>
-                        <Button fontSize={'12px'} w={'40%'} px={10} py={7} bg='#216496' color='white' variant='solid' onClick={() => onClickCreateCoord('female')}>
-                            女性ウェアを選ぶ
-                        </Button>
-                    </Stack>
-                </Stack>
-            )
+                )
             ) : null}
-
         </div>
-    )
+    );
 });
-
