@@ -70,6 +70,8 @@ Route::get('/createAvailability', [App\Http\Controllers\MycoordController::class
 
 Route::get('/getcoord', [App\Http\Controllers\ItemController::class, "getCoord"])->name('getCoord');
 
+Route::get('/getAllRegisterItems', [App\Http\Controllers\ItemController::class, "getAllRegisterItems"])->name('getAllRegisterItems');
+
 
 
 // ベストドレッサー

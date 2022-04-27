@@ -74,7 +74,7 @@
 
     </head>
 
-<body style="overflow-y: hidden; min-height: 100vh; min-height: -webkit-fill-available;">
+<body style="min-height: 100vh; min-height: -webkit-fill-available;">
     <div id="notLogin"></div>
 </body>
 
