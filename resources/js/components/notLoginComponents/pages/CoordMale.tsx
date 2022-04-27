@@ -1,8 +1,8 @@
-import { Spinner, Stack } from "@chakra-ui/react";
-import { FC, memo, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { SelectWear } from "../organisms/coord/SelectWear";
-import { useNotLoginUser } from "../provider/NotLoginUserProvider";
+import { Spinner, Stack } from '@chakra-ui/react';
+import { FC, memo, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { SelectWear } from '../organisms/coord/SelectWear';
+import { useNotLoginUser } from '../provider/NotLoginUserProvider';
 
 type Props = {
     defaultGender?: string;
@@ -18,21 +18,21 @@ type Props = {
 const style = {
     bgImg: {},
     mannequinImg: {
-        height: "400px",
-        objectFit: "cover",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        maxWidth: "400px",
-        margin: "auto",
-        position: "relative",
+        height: '400px',
+        objectFit: 'cover',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        maxWidth: '400px',
+        margin: 'auto',
+        position: 'relative',
     },
 } as const;
 
 export const CoordMale: FC<Props> = memo(() => {
     const { notLoginUser, setNotLoginUser } = useNotLoginUser();
-    const [defaultMannequin, setDefaultMannequin] = useState<string>("");
-    const [defaultGender, setDefaultGender] = useState<string>("");
+    const [defaultMannequin, setDefaultMannequin] = useState<string>('');
+    const [defaultGender, setDefaultGender] = useState<string>('');
     const [defaultCaps, setDefaultCaps] = useState<string>(null);
     const [defaultTops, setDefaultTops] = useState<string>(null);
     const [defaultPants, setDefaultPants] = useState<string>(null);
@@ -48,34 +48,38 @@ export const CoordMale: FC<Props> = memo(() => {
     useEffect(() => {
         if (notLoginUser) {
             if (notLoginUser.gender === null) {
-                setDefaultGender("male");
-            } else if (notLoginUser.gender === "female") {
-                setDefaultGender("male");
-                setDefaultMannequin("mens_170_model.png");
-            } else if (notLoginUser.gender === "male") {
-                setDefaultGender("male");
+                setDefaultGender('male');
+            } else if (notLoginUser.gender === 'female') {
+                setDefaultGender('male');
+                setDefaultMannequin('mens_170_model.png');
+            } else if (notLoginUser.gender === 'male') {
+                setDefaultGender('male');
                 setDefaultMannequin(notLoginUser.mannequin);
             }
             if (notLoginUser.mannequin === null) {
-                setDefaultMannequin("mens_170_model.png");
+                setDefaultMannequin('mens_170_model.png');
             }
             if (notLoginUser.caps !== null) {
-                if (notLoginUser.gender === "male") {
+                if (notLoginUser.gender === 'male') {
                     setDefaultCaps(notLoginUser.caps);
                 }
             }
             if (notLoginUser.tops !== null) {
-                if (notLoginUser.gender === "male") {
+                if (notLoginUser.gender === 'male') {
                     setDefaultTops(notLoginUser.tops);
                 }
+            } else {
+                setDefaultTops(null);
             }
             if (notLoginUser.pants !== null) {
-                if (notLoginUser.gender === "male") {
+                if (notLoginUser.gender === 'male') {
                     setDefaultPants(notLoginUser.pants);
                 }
+            } else {
+                setDefaultPants(null);
             }
             if (notLoginUser.shoes !== null) {
-                if (notLoginUser.gender === "male") {
+                if (notLoginUser.gender === 'male') {
                     setDefaultShoes(notLoginUser.shoes);
                 }
             }
@@ -84,13 +88,13 @@ export const CoordMale: FC<Props> = memo(() => {
             }
 
             const fetchData = async () => {
-                if (getUrlParam.get("tops")) {
-                    await setDefaultTops(getUrlParam.get("tops"));
-                    await setIgnoreSearch("tops");
+                if (getUrlParam.get('tops')) {
+                    await setDefaultTops(getUrlParam.get('tops'));
+                    await setIgnoreSearch('tops');
                 }
-                if (getUrlParam.get("pants")) {
-                    await setDefaultPants(getUrlParam.get("pants"));
-                    await setIgnoreSearch("pants");
+                if (getUrlParam.get('pants')) {
+                    await setDefaultPants(getUrlParam.get('pants'));
+                    await setIgnoreSearch('pants');
                 }
             };
 
