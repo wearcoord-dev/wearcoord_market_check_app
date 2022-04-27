@@ -12,7 +12,6 @@ class TopsRakutenApi extends Model
 
     public $timestamps = false;
 
-
     protected $fillable = [
         'itemId',
         'brand',
@@ -32,6 +31,7 @@ class TopsRakutenApi extends Model
         'gray',
         'img',
         'shopify_id',
+        'showImg',
     ];
 
     public function topsSizes()

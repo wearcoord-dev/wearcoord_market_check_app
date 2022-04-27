@@ -10,6 +10,8 @@ use App\Http\Requests\UploadRequest;
 use App\Models\CapsRakutenApi;
 use App\Models\PantsRakutenApi;
 use App\Models\ShoesRakutenApi;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class ItemController extends Controller
 {
@@ -25,7 +27,6 @@ class ItemController extends Controller
      */
     public function index($gender)
     {
-
         return view('admin.itemAdd', compact('gender'));
     }
 
@@ -49,114 +50,125 @@ class ItemController extends Controller
     {
         $request->validate([
             'itemId' => ['required', 'string', 'max:200'],
-            'brand' => ['required', 'string',  'max:100'],
+            'brand' => ['required', 'string', 'max:100'],
             'category' => ['required', 'integer'],
             'color' => ['required', 'string'],
             'wearimg' => ['required', 'mimes:png', 'image'],
+            'showImg' => ['nullable', 'image'],
             'link' => ['nullable', 'string'],
             'available' => ['required', 'integer'],
             'shopify_id' => ['nullable', 'string'],
         ]);
 
+        // コーデ画像用
         $imageFiles = $request->wearimg;
         if (!is_null($imageFiles)) {
             $category = $request->category;
 
             // 画像の保存
             $filename = $request->wearimg->getClientOriginalName();
-            $img = $request->wearimg->storeAs('/img/rakutenlist/' . $gender . '/' . $category, $filename);
+            $img = $request->wearimg->storeAs(
+                '/img/rakutenlist/' . $gender . '/' . $category,
+                $filename
+            );
             // dd($request);
         }
 
+        // 一覧画像用
+        $imageFilesShow = $request->showImg;
+        if (!is_null($imageFilesShow)) {
+            // 画像の保存
+            $filenameShow = $request->showImg->getClientOriginalName();
+            $img = $request->showImg->storeAs('/img/showList/', $filenameShow);
+            // dd($request);
+        }
 
         try {
-            DB::transaction(
-                function () use ($request) {
+            DB::transaction(function () use ($request) {
+                // nullに変換
+                if ($request->available == '0') {
+                    $available = null;
+                } else {
+                    $available = $request->available;
+                }
 
-                    // nullに変換
-                    if ($request->available == '0') {
-                        $available = null;
-                    } else {
-                        $available = $request->available;
-                    }
+                $capsCategory = [
+                    506269 => true,
+                    565818 => true,
+                ];
 
-                    $capsCategory = [
-                        506269 => true,
-                        565818 => true,
-                    ];
+                $topsCategory = [
+                    508759 => true,
+                    565925 => true,
+                    508803 => true,
+                    565927 => true,
+                    500316 => true,
+                ];
 
-                    $topsCategory = [
-                        508759 => true,
-                        565925 => true,
-                        508803 => true,
-                        565927 => true,
-                        500316 => true,
-                    ];
+                $pantsCategory = [
+                    508820 => true,
+                    565928 => true,
+                    565816 => true,
+                    508772 => true,
+                    565926 => true,
+                ];
 
-                    $pantsCategory = [
-                        508820 => true,
-                        565928 => true,
-                        565816 => true,
-                        508772 => true,
-                        565926 => true,
-                    ];
+                $shoesCategory = [
+                    208025 => true,
+                    565819 => true,
+                ];
 
-                    $shoesCategory = [
-                        208025 => true,
-                        565819 => true,
-                    ];
-
-                    if (isset($topsCategory[$request->category])) {
-                        TopsRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                            'shopify_id' => $request->shopify_id,
-                        ]);
-                    } elseif (isset($capsCategory[$request->category])) {
-                        CapsRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                            'shopify_id' => $request->shopify_id,
-                        ]);
-                    } elseif (isset($pantsCategory[$request->category])) {
-                        PantsRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                            'shopify_id' => $request->shopify_id,
-                        ]);
-                    } elseif (isset($shoesCategory[$request->category])) {
-                        ShoesRakutenApi::create([
-                            'itemId' => $request->itemId,
-                            'brand' => $request->brand,
-                            'category' => $request->category,
-                            'moshimoLink' => $request->link,
-                            'availability' => $available,
-                            $request->color => $request->wearimg->getClientOriginalName(),
-                            'img' => $request->wearimg->getClientOriginalName(),
-                            'shopify_id' => $request->shopify_id,
-                        ]);
-                    }
-                },
-                2
-            );
-        } catch (
-            Throwable $e
-        ) {
+                if (isset($topsCategory[$request->category])) {
+                    TopsRakutenApi::create([
+                        'itemId' => $request->itemId,
+                        'brand' => $request->brand,
+                        'category' => $request->category,
+                        'moshimoLink' => $request->link,
+                        'availability' => $available,
+                        $request->color => $request->wearimg->getClientOriginalName(),
+                        'img' => $request->wearimg->getClientOriginalName(),
+                        'shopify_id' => $request->shopify_id,
+                        'showImg' => $request->showImg->getClientOriginalName(),
+                    ]);
+                } elseif (isset($capsCategory[$request->category])) {
+                    CapsRakutenApi::create([
+                        'itemId' => $request->itemId,
+                        'brand' => $request->brand,
+                        'category' => $request->category,
+                        'moshimoLink' => $request->link,
+                        'availability' => $available,
+                        $request->color => $request->wearimg->getClientOriginalName(),
+                        'img' => $request->wearimg->getClientOriginalName(),
+                        'shopify_id' => $request->shopify_id,
+                        'showImg' => $request->showImg->getClientOriginalName(),
+                    ]);
+                } elseif (isset($pantsCategory[$request->category])) {
+                    PantsRakutenApi::create([
+                        'itemId' => $request->itemId,
+                        'brand' => $request->brand,
+                        'category' => $request->category,
+                        'moshimoLink' => $request->link,
+                        'availability' => $available,
+                        $request->color => $request->wearimg->getClientOriginalName(),
+                        'img' => $request->wearimg->getClientOriginalName(),
+                        'shopify_id' => $request->shopify_id,
+                        'showImg' => $request->showImg->getClientOriginalName(),
+                    ]);
+                } elseif (isset($shoesCategory[$request->category])) {
+                    ShoesRakutenApi::create([
+                        'itemId' => $request->itemId,
+                        'brand' => $request->brand,
+                        'category' => $request->category,
+                        'moshimoLink' => $request->link,
+                        'availability' => $available,
+                        $request->color => $request->wearimg->getClientOriginalName(),
+                        'img' => $request->wearimg->getClientOriginalName(),
+                        'shopify_id' => $request->shopify_id,
+                        'showImg' => $request->showImg->getClientOriginalName(),
+                    ]);
+                }
+            }, 2);
+        } catch (Throwable $e) {
             Log::error($e);
             throw $e;
         }
@@ -193,7 +205,10 @@ class ItemController extends Controller
         $color = self::getColor($detail);
         $brand = $detail->brand;
 
-        return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color', 'type'));
+        return view(
+            'admin.itemShow',
+            compact('gender', 'detail', 'category', 'brand', 'color', 'type')
+        );
     }
 
     /**
@@ -216,15 +231,15 @@ class ItemController extends Controller
      */
     public function update(Request $request)
     {
-
         // dd($id, $type, $request);
 
         $request->validate([
             'itemId' => ['required', 'string', 'max:200'],
-            'brand' => ['required', 'string',  'max:100'],
+            'brand' => ['required', 'string', 'max:100'],
             'category' => ['required', 'integer'],
             'color' => ['required', 'string'],
             'wearimg' => ['mimes:png', 'image'],
+            'showImg' => ['nullable', 'image'],
             'link' => ['nullable', 'string'],
             'available' => ['required', 'integer'],
             'id' => ['required', 'integer'],
@@ -242,115 +257,140 @@ class ItemController extends Controller
         $imageFiles = $request->wearimg;
 
         if (!is_null($imageFiles)) {
-
             // 画像の保存
             $filename = $request->wearimg->getClientOriginalName();
-            $img = $request->wearimg->storeAs('/img/rakutenlist/' . $gender . '/' . $category, $filename);
+            $img = $request->wearimg->storeAs(
+                '/img/rakutenlist/' . $gender . '/' . $category,
+                $filename
+            );
+        }
+
+        // 一覧画像用
+        $imageFilesShow = $request->showImg;
+        if (!is_null($imageFilesShow)) {
+            // 画像の保存
+            $filenameShow = $request->showImg->getClientOriginalName();
+            $img = $request->showImg->storeAs('/img/showList/', $filenameShow);
         }
 
         try {
-            DB::transaction(
-                function () use ($request, $type, $id, $imageFiles, $color, $shopify_id) {
+            DB::transaction(function () use (
+                $request,
+                $type,
+                $id,
+                $imageFiles,
+                $imageFilesShow,
+                $color,
+                $shopify_id
+            ) {
+                // nullに変換
+                if ($request->available == '0') {
+                    $available = null;
+                } else {
+                    $available = $request->available;
+                }
 
-                    // nullに変換
-                    if ($request->available == '0') {
-                        $available = null;
-                    } else {
-                        $available = $request->available;
+                if ($type == 'tops') {
+                    $product = TopsRakutenApi::findOrFail($id);
+                    $product->availability = $available;
+                    $product->brand = $request->brand;
+                    $product->itemId = $request->itemId;
+                    $product->shopify_id = $shopify_id;
+                    $oldColor = self::getColor($product);
+
+                    if ($color) {
+                        $imgUrl = $product->$oldColor;
+                        $product->$oldColor = null;
+                        $product->$color = $imgUrl;
                     }
 
-                    if ($type == 'tops') {
-                        $product = TopsRakutenApi::findOrFail($id);
-                        $product->availability = $available;
-                        $product->brand = $request->brand;
-                        $product->itemId = $request->itemId;
-                        $product->shopify_id = $shopify_id;
-                        $oldColor = self::getColor($product);
-
-                        if ($color) {
-                            $imgUrl = $product->$oldColor;
-                            $product->$oldColor = null;
-                            $product->$color = $imgUrl;
-                        }
-
-                        if ($imageFiles) {
-                            $product->img = $request->wearimg->getClientOriginalName();
-                            $product->$color = $request->wearimg->getClientOriginalName();
-                        }
-                        if ($request->link) {
-                            $product->moshimoLink = $request->link;
-                        }
-                        $product->save();
-                    } elseif ($type == 'caps') {
-                        $product = CapsRakutenApi::findOrFail($id);
-                        $product->availability = $available;
-                        $product->brand = $request->brand;
-                        $product->itemId = $request->itemId;
-                        $product->shopify_id = $shopify_id;
-                        $oldColor = self::getColor($product);
-
-                        if ($color) {
-                            $imgUrl = $product->$oldColor;
-                            $product->$oldColor = null;
-                            $product->$color = $imgUrl;
-                        }
-                        if ($imageFiles) {
-                            $product->img = $request->wearimg->getClientOriginalName();
-                            $product->$color = $request->wearimg->getClientOriginalName();
-                        }
-                        if ($request->link) {
-                            $product->moshimoLink = $request->link;
-                        }
-                        $product->save();
-                    } elseif ($type == 'pants') {
-                        $product = PantsRakutenApi::findOrFail($id);
-                        $product->availability = $available;
-                        $product->brand = $request->brand;
-                        $product->itemId = $request->itemId;
-                        $product->shopify_id = $shopify_id;
-                        $oldColor = self::getColor($product);
-
-                        if ($color) {
-                            $imgUrl = $product->$oldColor;
-                            $product->$oldColor = null;
-                            $product->$color = $imgUrl;
-                        }
-                        if ($imageFiles) {
-                            $product->img = $request->wearimg->getClientOriginalName();
-                            $product->$color = $request->wearimg->getClientOriginalName();
-                        }
-                        if ($request->link) {
-                            $product->moshimoLink = $request->link;
-                        }
-                        $product->save();
-                    } elseif ($type == 'shoes') {
-                        $product = ShoesRakutenApi::findOrFail($id);
-                        $product->availability = $available;
-                        $product->brand = $request->brand;
-                        $product->itemId = $request->itemId;
-                        $product->shopify_id = $shopify_id;
-                        $oldColor = self::getColor($product);
-
-                        if ($color) {
-                            $imgUrl = $product->$oldColor;
-                            $product->$oldColor = null;
-                            $product->$color = $imgUrl;
-                        }
-                        if ($imageFiles) {
-                            $product->img = $request->wearimg->getClientOriginalName();
-                            $product->$color = $request->wearimg->getClientOriginalName();
-                        }
-                        if ($request->link) {
-                            $product->moshimoLink = $request->link;
-                        }
-                        $product->save();
+                    if ($imageFiles) {
+                        $product->img = $request->wearimg->getClientOriginalName();
+                        $product->$color = $request->wearimg->getClientOriginalName();
                     }
-                },
-                2
-            );
-        } catch (
-            Throwable $e
-        ) {
+                    if ($imageFilesShow) {
+                        $product->showImg = $request->showImg->getClientOriginalName();
+                    }
+                    if ($request->link) {
+                        $product->moshimoLink = $request->link;
+                    }
+                    $product->save();
+                } elseif ($type == 'caps') {
+                    $product = CapsRakutenApi::findOrFail($id);
+                    $product->availability = $available;
+                    $product->brand = $request->brand;
+                    $product->itemId = $request->itemId;
+                    $product->shopify_id = $shopify_id;
+                    $oldColor = self::getColor($product);
+
+                    if ($color) {
+                        $imgUrl = $product->$oldColor;
+                        $product->$oldColor = null;
+                        $product->$color = $imgUrl;
+                    }
+                    if ($imageFiles) {
+                        $product->img = $request->wearimg->getClientOriginalName();
+                        $product->$color = $request->wearimg->getClientOriginalName();
+                    }
+                    if ($imageFilesShow) {
+                        $product->showImg = $request->showImg->getClientOriginalName();
+                    }
+                    if ($request->link) {
+                        $product->moshimoLink = $request->link;
+                    }
+                    $product->save();
+                } elseif ($type == 'pants') {
+                    $product = PantsRakutenApi::findOrFail($id);
+                    $product->availability = $available;
+                    $product->brand = $request->brand;
+                    $product->itemId = $request->itemId;
+                    $product->shopify_id = $shopify_id;
+                    $oldColor = self::getColor($product);
+
+                    if ($color) {
+                        $imgUrl = $product->$oldColor;
+                        $product->$oldColor = null;
+                        $product->$color = $imgUrl;
+                    }
+                    if ($imageFiles) {
+                        $product->img = $request->wearimg->getClientOriginalName();
+                        $product->$color = $request->wearimg->getClientOriginalName();
+                    }
+                    if ($imageFilesShow) {
+                        $product->showImg = $request->showImg->getClientOriginalName();
+                    }
+                    if ($request->link) {
+                        $product->moshimoLink = $request->link;
+                    }
+                    $product->save();
+                } elseif ($type == 'shoes') {
+                    $product = ShoesRakutenApi::findOrFail($id);
+                    $product->availability = $available;
+                    $product->brand = $request->brand;
+                    $product->itemId = $request->itemId;
+                    $product->shopify_id = $shopify_id;
+                    $oldColor = self::getColor($product);
+
+                    if ($color) {
+                        $imgUrl = $product->$oldColor;
+                        $product->$oldColor = null;
+                        $product->$color = $imgUrl;
+                    }
+                    if ($imageFiles) {
+                        $product->img = $request->wearimg->getClientOriginalName();
+                        $product->$color = $request->wearimg->getClientOriginalName();
+                    }
+                    if ($imageFilesShow) {
+                        $product->showImg = $request->showImg->getClientOriginalName();
+                    }
+                    if ($request->link) {
+                        $product->moshimoLink = $request->link;
+                    }
+                    $product->save();
+                }
+            },
+            2);
+        } catch (Throwable $e) {
             Log::error($e);
             throw $e;
         }
@@ -359,10 +399,7 @@ class ItemController extends Controller
             $detail = self::getMaleItems($id, $category);
         }
         if ($gender == 'female') {
-            $detail = self::getFemaleItems(
-                $id,
-                $category
-            );
+            $detail = self::getFemaleItems($id, $category);
         }
 
         $type = $detail[1];
@@ -370,7 +407,10 @@ class ItemController extends Controller
         $color = self::getColor($detail);
         $brand = $detail->brand;
 
-        return view('admin.itemShow', compact('gender', 'detail', 'category', 'brand', 'color', 'type'));
+        return view(
+            'admin.itemShow',
+            compact('gender', 'detail', 'category', 'brand', 'color', 'type')
+        );
     }
 
     /**
@@ -381,7 +421,6 @@ class ItemController extends Controller
      */
     public function destroy(Request $request)
     {
-
         $id = $request->id;
         $type = $request->type;
         $gender = $request->gender;
@@ -407,7 +446,6 @@ class ItemController extends Controller
 
     private static function getMaleItems($item, $category)
     {
-
         if ($category == 506269) {
             // キャップス取得
             $items = self::getItemsFromDB('caps', $item, $category);
@@ -445,7 +483,6 @@ class ItemController extends Controller
 
     private static function getFemaleItems($item, $category)
     {
-
         if ($category == 565818) {
             // キャップス取得
             $items = self::getItemsFromDB('caps', $item, $category);
@@ -489,17 +526,17 @@ class ItemController extends Controller
         return $items;
     }
 
-    private  static function getItemsFromDB($type, $item, $category)
+    private static function getItemsFromDB($type, $item, $category)
     {
-
-        $items = DB::table($type . '_rakuten_apis')->where('id', $item)->first();
+        $items = DB::table($type . '_rakuten_apis')
+            ->where('id', $item)
+            ->first();
 
         return [$items, $type];
     }
 
     private static function getColor($items)
     {
-
         $colorSets = [
             'black',
             'white',
@@ -517,7 +554,7 @@ class ItemController extends Controller
         foreach ($colorSets as $set) {
             if ($items->$set !== null) {
                 return $set;
-            };
-        };
+            }
+        }
     }
 }

@@ -120,6 +120,19 @@
                             </div>
                         </div>
 
+                        {{-- 画像登録 --}}
+                            <div class="form-group p-3">
+                                <label for="showImg">表示用画像登録（アイテム一覧用画像）</label>
+                                <input type="file" class="form-control-file" id="showImg" name="showImg">
+                                @if ($detail->showImg === null)
+                                    <p class="text-danger">アイテム一覧表示用画像が設定されていません。</p>
+                                @else
+                                <figure style="text-align: center; margin: 50px 0;">
+                                    <img style="width: 30%; max-width: 250px;" src="{{'/img/showList/' . $detail->showImg}}" alt="">
+                                </figure>
+                                @endif
+                            </div>
+
                         {{-- アフィリエイトリンク --}}
                         <div class="form-group p-3">
                             <label for="link">アフィリエイトリンク</label>
@@ -129,7 +142,9 @@
                                     <p class="text-danger">アフィリエイトリンクが設定されていません</p>
                                 @else
                                     <p>設定中のアフィリエイトリンク</p>
-                                    <?= html_entity_decode($detail->moshimoLink) ?>
+                                    <?= html_entity_decode(
+                                        $detail->moshimoLink
+                                    ) ?>
                                 @endif
                             </div>
                         </div>

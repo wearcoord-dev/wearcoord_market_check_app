@@ -37,9 +37,12 @@ export const ItemCard: FC<Props> = memo((props) => {
         fetcher,
     );
 
-    console.log(data);
+    // console.log(data);
 
-    const onClickItem = useCallback((props) => history.push(`/sample/${gender}?${type}=${props}`), []);
+    const onClickItem = useCallback(
+        (props) => history.push(`/sample/${gender}?${type}=${props}`),
+        [],
+    );
 
     return (
         <>
@@ -54,72 +57,81 @@ export const ItemCard: FC<Props> = memo((props) => {
                             maxWidth="300px"
                             onClick={onClickItem.bind(this, item.id)}
                         >
-                            {item.black ? (
+                            {item.showImg ? (
                                 <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.black}`}
+                                    src={`/img/showList/${item.showImg}`}
                                     alt=""
                                 />
-                            ) : null}
-                            {item.white ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.white}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.blue ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.blue}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.red ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.red}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.green ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.green}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.yellow ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.yellow}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.navy ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.navy}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.pink ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.pink}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.orange ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.orange}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.purple ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.purple}`}
-                                    alt=""
-                                />
-                            ) : null}
-                            {item.gray ? (
-                                <Image
-                                    src={`/img/rakutenlist/${gender}/${item.category}/${item.gray}`}
-                                    alt=""
-                                />
-                            ) : null}
+                            ) : (
+                                <>
+                                    {item.black ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.black}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.white ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.white}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.blue ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.blue}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.red ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.red}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.green ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.green}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.yellow ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.yellow}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.navy ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.navy}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.pink ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.pink}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.orange ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.orange}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.purple ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.purple}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                    {item.gray ? (
+                                        <Image
+                                            src={`/img/rakutenlist/${gender}/${item.category}/${item.gray}`}
+                                            alt=""
+                                        />
+                                    ) : null}
+                                </>
+                            )}
                         </Box>
                     ))}
                 </SimpleGrid>

@@ -36,14 +36,13 @@
                                 <legend class="col-form-label col-sm-2 pt-0">アイテム表示</legend>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="available" id="show" value="1"
-                                            checked>
+                                        <input class="form-check-input" type="radio" name="available" id="show" value="1" {{old('available', '1')=='1' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="show">
                                             表示する
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="available" id="not" value="0">
+                                        <input class="form-check-input" type="radio" name="available" id="not" value="0" {{old('available')=='0' ? 'checked' : ''}}>
                                         <label class="form-check-label" for="not">
                                             表示しない
                                         </label>
@@ -71,28 +70,33 @@
                                 <label for="itemId" class="col-sm-2 col-form-label">アイテムID</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="itemId" name="itemId"
-                                        placeholder="アイテムID">
+                                        placeholder="アイテムID" value="{{old('itemId')}}">
                                 </div>
                             </div>
 
                             {{-- 画像登録 --}}
                             <div class="form-group p-3">
-                                <label for="wearimg">ウェア画像登録</label>
+                                <label for="wearimg">ウェア画像登録（コーデ用画像）</label>
                                 <input type="file" class="form-control-file" id="wearimg" name="wearimg">
+                            </div>
+
+                            {{-- 画像登録 --}}
+                            <div class="form-group p-3">
+                                <label for="showImg">表示用画像登録（アイテム一覧用画像）</label>
+                                <input type="file" class="form-control-file" id="showImg" name="showImg">
                             </div>
 
                             {{-- アフィリエイトリンク --}}
                             <div class="form-group p-3">
                                 <label for="link">アフィリエイトリンク</label>
-                                <textarea class="form-control" name="link" id="link" rows="3"></textarea>
+                                <textarea class="form-control" name="link" id="link" rows="3">{{ old('link') }}</textarea>
                             </div>
 
                             {{-- shopify_ID --}}
                             <div class="form-group row p-3">
                                 <label for="shopify_id" class="col-sm-2 col-form-label">ShopifyアイテムID</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="shopify_id" name="shopify_id"
-                                        placeholder="00000000000">
+                                    <input type="text" class="form-control" id="shopify_id" name="shopify_id" placeholder="00000000000" value="{{old('shopify_id')}}">
                                 </div>
                             </div>
 
