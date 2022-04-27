@@ -68,11 +68,15 @@ export const CoordFemale: FC<Props> = memo(() => {
                 if (notLoginUser.gender === "female") {
                     setDefaultTops(notLoginUser.tops);
                 }
+            } else {
+                setDefaultTops("768");
             }
             if (notLoginUser.pants !== null) {
                 if (notLoginUser.gender === "female") {
                     setDefaultPants(notLoginUser.pants);
                 }
+            } else {
+                setDefaultPants("236");
             }
             if (notLoginUser.shoes !== null) {
                 if (notLoginUser.gender === "female") {

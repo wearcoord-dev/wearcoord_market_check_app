@@ -34,8 +34,8 @@ export const CoordMale: FC<Props> = memo(() => {
     const [defaultMannequin, setDefaultMannequin] = useState<string>("");
     const [defaultGender, setDefaultGender] = useState<string>("");
     const [defaultCaps, setDefaultCaps] = useState<string>(null);
-    const [defaultTops, setDefaultTops] = useState<string>("1070");
-    const [defaultPants, setDefaultPants] = useState<string>("436");
+    const [defaultTops, setDefaultTops] = useState<string>(null);
+    const [defaultPants, setDefaultPants] = useState<string>(null);
     const [defaultShoes, setDefaultShoes] = useState<string>(null);
     const [defaultBrand, setDefaultBrand] = useState<string>(null);
     const [ignoreSearch, setIgnoreSearch] = useState<string>(null);
@@ -44,6 +44,7 @@ export const CoordMale: FC<Props> = memo(() => {
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
+    console.log(notLoginUser);
 
     useEffect(() => {
         if (notLoginUser) {
@@ -68,11 +69,15 @@ export const CoordMale: FC<Props> = memo(() => {
                 if (notLoginUser.gender === "male") {
                     setDefaultTops(notLoginUser.tops);
                 }
+            } else {
+                setDefaultTops("1070");
             }
             if (notLoginUser.pants !== null) {
                 if (notLoginUser.gender === "male") {
                     setDefaultPants(notLoginUser.pants);
                 }
+            } else {
+                setDefaultPants("436");
             }
             if (notLoginUser.shoes !== null) {
                 if (notLoginUser.gender === "male") {
