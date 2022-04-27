@@ -81,7 +81,11 @@ const style = {
 export const ItemCard: FC<Props> = memo((props) => {
     const history = useHistory();
     const { gender, type } = props;
-    const [selectBrand, setSelectBrand] = useState<string>('hydrogen');
+    const [selectBrand, setSelectBrand] = useState<string>(
+        localStorage.getItem('brand')
+            ? localStorage.getItem('brand')
+            : 'hydrogen',
+    );
     const [getData, setGetData] = useState<any>(null);
 
     // 初回のAPI取得とブランド更新時のAPI取得
@@ -122,15 +126,25 @@ export const ItemCard: FC<Props> = memo((props) => {
                     ブランド：{selectBrand}
                 </MenuButton>
                 <MenuList>
-                    {brandList.map((brand) => (
-                        <MenuItem
-                            key={brand.value}
-                            style={style.item}
-                            onClick={onClickBrand.bind(this, brand)}
-                        >
-                            {brand.text}
-                        </MenuItem>
-                    ))}
+                    {localStorage.getItem('brand') ? (
+                        <>
+                            <MenuItem key={selectBrand} style={style.item}>
+                                {selectBrand}
+                            </MenuItem>
+                        </>
+                    ) : (
+                        <>
+                            {brandList.map((brand) => (
+                                <MenuItem
+                                    key={brand.value}
+                                    style={style.item}
+                                    onClick={onClickBrand.bind(this, brand)}
+                                >
+                                    {brand.text}
+                                </MenuItem>
+                            ))}
+                        </>
+                    )}
                 </MenuList>
             </Menu>
 
