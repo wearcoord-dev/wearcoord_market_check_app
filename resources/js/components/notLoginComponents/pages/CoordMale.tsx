@@ -44,7 +44,6 @@ export const CoordMale: FC<Props> = memo(() => {
 
     // 訪れたユーザーのデフォルトウェアをstateで管理
     // 既に女性が登録されている場合は男性をセット
-    console.log(notLoginUser);
 
     useEffect(() => {
         if (notLoginUser) {
