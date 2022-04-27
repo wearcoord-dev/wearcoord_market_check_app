@@ -58,7 +58,7 @@ const style = {
     container: {
         position: 'absolute',
         bottom: '0',
-        height: '80vh',
+        height: '70%',
         overflow: 'auto',
     },
     button: {
