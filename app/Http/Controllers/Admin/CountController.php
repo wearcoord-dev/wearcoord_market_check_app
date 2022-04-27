@@ -18,10 +18,10 @@ class CountController extends Controller
     public function addItemCount(Request $request)
     {
         $request->validate([
-            'caps' => ['integer'],
+            'caps' => ['integer', 'nullable'],
             'tops' => ['integer'],
             'pants' => ['integer'],
-            'shoes' => ['integer'],
+            'shoes' => ['integer', 'nullable'],
         ]);
 
         $capsId = $request['caps'];

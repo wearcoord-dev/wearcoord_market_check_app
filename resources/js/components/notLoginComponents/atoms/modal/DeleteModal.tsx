@@ -44,17 +44,6 @@ export const DeleteModal: FC<Props> = memo((props) => {
                     <ModalCloseButton />
                     <ModalFooter pt={10}>
                         <Stack>
-                            <Button
-                                fontSize={'12px'}
-                                w={'80%'}
-                                px={10}
-                                py={7}
-                                colorScheme="red"
-                                mr={6}
-                                onClick={onClickResetMannequin}
-                            >
-                                全て削除する
-                            </Button>
                             {localStorage.getItem('brand') ? (
                                 <Button
                                     fontSize={'12px'}
@@ -68,6 +57,17 @@ export const DeleteModal: FC<Props> = memo((props) => {
                                     ブランド情報を残して削除する
                                 </Button>
                             ) : null}
+                            <Button
+                                fontSize={'12px'}
+                                w={'80%'}
+                                px={10}
+                                py={7}
+                                colorScheme="red"
+                                mr={6}
+                                onClick={onClickResetMannequin}
+                            >
+                                全て削除する
+                            </Button>
                             <Button
                                 fontSize={'12px'}
                                 w={'80%'}
