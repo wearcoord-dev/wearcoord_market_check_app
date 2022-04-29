@@ -203,6 +203,7 @@ details[open] .detailsBottom {
 
 #controller3 {
   width: 100%;
+  z-index: 2;
 }
 
 #controller3 .wearLi {
