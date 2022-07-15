@@ -32,6 +32,7 @@ class TopsRakutenApi extends Model
         'img',
         'shopify_id',
         'showImg',
+        'isSku',
     ];
 
     public function topsSizes()

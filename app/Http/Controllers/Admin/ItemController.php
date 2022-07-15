@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadRequest;
 use App\Models\CapsRakutenApi;
+use App\Models\ManageSkuList;
 use App\Models\PantsRakutenApi;
 use App\Models\ShoesRakutenApi;
 use Illuminate\Support\Facades\Log;
@@ -58,6 +59,8 @@ class ItemController extends Controller
             'link' => ['nullable', 'string'],
             'available' => ['required', 'integer'],
             'shopify_id' => ['nullable', 'string'],
+            'sku' => ['nullable', 'string'],
+            'isShowSku' => ['nullable', 'string'],
         ]);
 
         // コーデ画像用
@@ -83,8 +86,14 @@ class ItemController extends Controller
             // dd($request);
         }
 
+        $isSku = null;
+
+        if ($request->isShowSku) {
+            $isSku = true;
+        }
+
         try {
-            DB::transaction(function () use ($request) {
+            DB::transaction(function () use ($request, $isSku) {
                 // nullに変換
                 if ($request->available == '0') {
                     $available = null;
@@ -129,7 +138,19 @@ class ItemController extends Controller
                         'img' => $request->wearimg->getClientOriginalName(),
                         'shopify_id' => $request->shopify_id,
                         'showImg' => $request->showImg->getClientOriginalName(),
+                        'isSku' => $isSku,
                     ]);
+
+                    // SKUが入っているか見て処理
+                    if ($request->isShowSku) {
+                        $wearId = TopsRakutenApi::where(
+                            'itemId',
+                            $request->itemId
+                        )
+                            ->where('category', $request->category)
+                            ->value('id');
+                        self::storeSkuList($request, 'tops', $wearId);
+                    }
                 } elseif (isset($capsCategory[$request->category])) {
                     CapsRakutenApi::create([
                         'itemId' => $request->itemId,
@@ -200,6 +221,40 @@ class ItemController extends Controller
             $detail = self::getFemaleItems($id, $category);
         }
 
+        $skuData = null;
+
+        if ($detail[0]->isSku) {
+            $capsCategory = [
+                506269 => true,
+                565818 => true,
+            ];
+
+            $topsCategory = [
+                508759 => true,
+                565925 => true,
+                508803 => true,
+                565927 => true,
+                500316 => true,
+            ];
+
+            $pantsCategory = [
+                508820 => true,
+                565928 => true,
+                565816 => true,
+                508772 => true,
+                565926 => true,
+            ];
+
+            $shoesCategory = [
+                208025 => true,
+                565819 => true,
+            ];
+
+            if (isset($topsCategory[$request->category])) {
+                $skuData = self::getSkuData($detail[0]->id, 'tops');
+            }
+        }
+
         $type = $detail[1];
         $detail = $detail[0];
         $color = self::getColor($detail);
@@ -207,7 +262,15 @@ class ItemController extends Controller
 
         return view(
             'admin.itemShow',
-            compact('gender', 'detail', 'category', 'brand', 'color', 'type')
+            compact(
+                'gender',
+                'detail',
+                'category',
+                'brand',
+                'color',
+                'type',
+                'skuData'
+            )
         );
     }
 
@@ -245,6 +308,8 @@ class ItemController extends Controller
             'id' => ['required', 'integer'],
             'type' => ['required', 'string'],
             'shopify_id' => ['nullable', 'string'],
+            'sku' => ['nullable', 'string'],
+            'isShowSku' => ['nullable', 'string'],
         ]);
 
         $id = $request->input('id');
@@ -253,6 +318,7 @@ class ItemController extends Controller
         $color = $request->color;
         $category = $request->category;
         $shopify_id = $request->shopify_id;
+        $sku = $request->sku;
 
         $imageFiles = $request->wearimg;
 
@@ -273,6 +339,12 @@ class ItemController extends Controller
             $img = $request->showImg->storeAs('/img/showList/', $filenameShow);
         }
 
+        if ($request->isShowSku) {
+            $isSku = true;
+        } else {
+            $isSku = false;
+        }
+
         try {
             DB::transaction(function () use (
                 $request,
@@ -281,7 +353,9 @@ class ItemController extends Controller
                 $imageFiles,
                 $imageFilesShow,
                 $color,
-                $shopify_id
+                $shopify_id,
+                $sku,
+                $isSku
             ) {
                 // nullに変換
                 if ($request->available == '0') {
@@ -296,6 +370,9 @@ class ItemController extends Controller
                     $product->brand = $request->brand;
                     $product->itemId = $request->itemId;
                     $product->shopify_id = $shopify_id;
+                    if (!$product->isSku) {
+                        $product->isSku = $isSku;
+                    }
                     $oldColor = self::getColor($product);
 
                     if ($color) {
@@ -315,6 +392,13 @@ class ItemController extends Controller
                         $product->moshimoLink = $request->link;
                     }
                     $product->save();
+
+                    // SKUの更新
+                    $wearId = TopsRakutenApi::where('itemId', $request->itemId)
+                        ->where('category', $request->category)
+                        ->value('id');
+                    self::updateSkuData($request, $wearId, 'tops');
+                    
                 } elseif ($type == 'caps') {
                     $product = CapsRakutenApi::findOrFail($id);
                     $product->availability = $available;
@@ -402,6 +486,40 @@ class ItemController extends Controller
             $detail = self::getFemaleItems($id, $category);
         }
 
+        $skuData = null;
+
+        if ($detail[0]->isSku) {
+            $capsCategory = [
+                506269 => true,
+                565818 => true,
+            ];
+
+            $topsCategory = [
+                508759 => true,
+                565925 => true,
+                508803 => true,
+                565927 => true,
+                500316 => true,
+            ];
+
+            $pantsCategory = [
+                508820 => true,
+                565928 => true,
+                565816 => true,
+                508772 => true,
+                565926 => true,
+            ];
+
+            $shoesCategory = [
+                208025 => true,
+                565819 => true,
+            ];
+
+            if (isset($topsCategory[$request->category])) {
+                $skuData = self::getSkuData($detail[0]->id, 'tops');
+            }
+        }
+
         $type = $detail[1];
         $detail = $detail[0];
         $color = self::getColor($detail);
@@ -409,7 +527,15 @@ class ItemController extends Controller
 
         return view(
             'admin.itemShow',
-            compact('gender', 'detail', 'category', 'brand', 'color', 'type')
+            compact(
+                'gender',
+                'detail',
+                'category',
+                'brand',
+                'color',
+                'type',
+                'skuData'
+            )
         );
     }
 
@@ -427,6 +553,7 @@ class ItemController extends Controller
 
         if ($type == 'tops') {
             TopsRakutenApi::findOrFail($id)->delete();
+            self::deleteSkuData($id, 'tops');
         } elseif ($type == 'caps') {
             CapsRakutenApi::findOrFail($id)->delete();
         } elseif ($type == 'pants') {
@@ -556,5 +683,79 @@ class ItemController extends Controller
                 return $set;
             }
         }
+    }
+
+    // 外部埋め込みアプリ用のSKU登録処理
+    private static function storeSkuList($request, $type, $wearId)
+    {
+        $isValue = null;
+
+        if ($request->isShowSku == '1') {
+            $isValue = 1;
+        } else {
+            $isValue = 0;
+        }
+
+        try {
+            DB::transaction(function () use (
+                $request,
+                $type,
+                $isValue,
+                $wearId
+            ) {
+                ManageSkuList::create([
+                    'sku' => $request->sku,
+                    'isShow' => $isValue,
+                    'type' => $type,
+                    'wearId' => $wearId,
+                    'brand' => $request->brand,
+                ]);
+            },
+            2);
+        } catch (Throwable $e) {
+            Log::error($e);
+            throw $e;
+        }
+    }
+
+    // 登録してあるSKUデータを取得
+    private static function getSkuData($id, $type)
+    {
+        $skuData = ManageSkuList::where('wearId', $id)
+            ->where('type', $type)
+            ->first();
+
+        return $skuData;
+    }
+
+    // SKUデータをアップデートする
+    private static function updateSkuData($request, $id, $type)
+    {
+        $skuItem = ManageSkuList::where('wearId', $id)
+            ->where('type', $type)
+            ->first();
+
+        // SKUがある場合は更新して無い場合は新規作成
+        if ($skuItem) {
+            $skuItem->sku = $request->sku;
+            $skuItem->isShow = $request->isShowSku;
+            $skuItem->save();
+        } else {
+            ManageSkuList::create([
+                'sku' => $request->sku,
+                'isShow' => $request->isShowSku,
+                'type' => $type,
+                'wearId' => $id,
+                'brand' => $request->brand,
+            ]);
+        }
+    }
+
+    // SKUデータを削除する
+    private static function deleteSkuData($id, $type)
+    {
+        ManageSkuList::where('wearId', $id)
+            ->where('type', $type)
+            ->delete();
     }
 }
