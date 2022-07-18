@@ -31,5 +31,6 @@ class ShoesRakutenApi extends Model
         'img',
         'shopify_id',
         'showImg',
+        'isSku',
     ];
 }

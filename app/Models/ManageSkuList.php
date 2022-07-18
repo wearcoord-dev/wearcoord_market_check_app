@@ -9,5 +9,12 @@ class ManageSkuList extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sku', 'isShow', 'type', 'wearId', 'brand'];
+    protected $fillable = [
+        'sku',
+        'isShow',
+        'type',
+        'wearId',
+        'brand',
+        'gender',
+    ];
 }

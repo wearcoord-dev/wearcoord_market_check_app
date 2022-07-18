@@ -3,16 +3,19 @@ import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './notLoginComponents/router/Router';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function NotLogin() {
     return (
-        <ChakraProvider>
-            <BrowserRouter>
-                <Router>
-
-                </Router>
-            </BrowserRouter>
-        </ChakraProvider>
+        <QueryClientProvider client={queryClient}>
+            <ChakraProvider>
+                <BrowserRouter>
+                    <Router></Router>
+                </BrowserRouter>
+            </ChakraProvider>
+        </QueryClientProvider>
     );
 }
 

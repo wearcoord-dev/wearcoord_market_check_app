@@ -321,8 +321,16 @@ Route::get('/sample', function () {
     return view('layouts.notLogin');
 })->name('notLoginPage');
 
+// Route::get('/ec', function () {
+//     return view('layouts.notLogin');
+// })->name('notLoginPage');
+
 // /main/以降にアクセスしても404にしない
 Route::get('/sample/{any}', static function () {
+    return view('layouts.notLogin');
+})->where('any', '.*');
+
+Route::get('/ec/{any}', static function () {
     return view('layouts.notLogin');
 })->where('any', '.*');
 

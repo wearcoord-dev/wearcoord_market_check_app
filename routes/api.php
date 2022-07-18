@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManageSkuListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -92,3 +93,8 @@ Route::get('/bestdresser/calcLikeBD', [App\Http\Controllers\BestDresserControlle
 
 
 Route::post('/countitems', [App\Http\Controllers\Admin\CountController::class, "addItemCount"]);
+
+// SKUデータ関係
+Route::get('/sku/skuWearData', [App\Http\Controllers\ManageSkuListController::class, "getSkuWearData"]);
+Route::apiResource('/sku', ManageSkuListController::class);
+

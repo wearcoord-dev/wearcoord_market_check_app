@@ -19,6 +19,7 @@ class CreateManageSkuListsTable extends Migration
             $table->boolean('isShow')->nullable();
             $table->string('type');
             $table->string('brand');
+            $table->string('gender');
             $table->bigInteger('wearId');
             $table->timestamps();
         });

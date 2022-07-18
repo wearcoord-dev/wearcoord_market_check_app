@@ -31,5 +31,6 @@ class PantsRakutenApi extends Model
         'img',
         'shopify_id',
         'showImg',
+        'isSku',
     ];
 }
