@@ -92,7 +92,7 @@ export const ShoesEcCategory: FC<Props> = memo((props) => {
                     defaultGender={defaultGender}
                 />
             </Flex>
-            <Flex as="ul" overflow="auto" css={commoncss}>
+            {/* <Flex as="ul" overflow="auto" css={commoncss}>
                 {defaultBrand ? (
                     <Flex>
                         <Tag
@@ -114,7 +114,7 @@ export const ShoesEcCategory: FC<Props> = memo((props) => {
                         defaultGender={defaultGender}
                     />
                 )}
-            </Flex>
+            </Flex> */}
             <Flex as="ul" overflow="auto" css={commoncss}>
                 <SearchColorSelect
                     setValueColor={setValueColor}

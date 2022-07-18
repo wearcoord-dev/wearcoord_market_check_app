@@ -96,5 +96,6 @@ Route::post('/countitems', [App\Http\Controllers\Admin\CountController::class, "
 
 // SKUデータ関係
 Route::get('/sku/skuWearData', [App\Http\Controllers\ManageSkuListController::class, "getSkuWearData"]);
+Route::get('/sku/registerList', [App\Http\Controllers\ManageSkuListController::class, "getRegisterList"]);
 Route::apiResource('/sku', ManageSkuListController::class);
 

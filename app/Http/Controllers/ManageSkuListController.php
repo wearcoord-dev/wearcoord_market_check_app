@@ -91,8 +91,20 @@ class ManageSkuListController extends Controller
 
     public function getSkuWearData(Request $request)
     {
-        // $itemId = request('itemId');
-        // $type = request('type');
-        // dd($type, $itemId);
+        //
+    }
+
+    public function getRegisterList(Request $request)
+    {
+        $brand = request('brand');
+
+        $itemData = ManageSkuList::where('brand', $brand)->get('sku');
+
+        // オブジェクト内にある値を取り出して配列を作成
+        $itemData = $itemData->map(function ($item, $key) {
+            return $item['sku'];
+        });
+
+        return response()->json($itemData);
     }
 }
