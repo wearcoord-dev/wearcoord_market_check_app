@@ -6,10 +6,10 @@ import { useAllCaps } from '../../../../hooks/selectwear/useAllCaps.jsx';
 import { useAllTops } from '../../../../hooks/selectwear/useAllTops.jsx';
 import { useAllPants } from '../../../../hooks/selectwear/useAllPants.jsx';
 import { useAllShoes } from '../../../../hooks/selectwear/useAllShoes.jsx';
-import { SearchBox } from '../../molecules/SearchBox';
 import { CapsEcSect } from '../component/CapsEcSect';
 import { PantsEcSect } from '../component/PantsEcSect';
 import { ShoesEcSect } from '../component/ShoesEcSect';
+import { SearchEcBox } from '../component/SearchEcBox';
 
 type Props = {
     itemId: string;
@@ -660,7 +660,7 @@ export const CoordView: React.FC<Props> = (props) => {
                     {shoesComponent}
                 </div>
             </div>
-            {/* <SearchBox
+            <SearchEcBox
                 onClose={onClose}
                 isOpen={isOpen}
                 onCloseTops={onCloseTops}
@@ -684,7 +684,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 shoesSel={shoesSel}
                 defaultGender={defaultGender}
                 defaultBrand={brand}
-            /> */}
+            />
         </>
     );
 };
