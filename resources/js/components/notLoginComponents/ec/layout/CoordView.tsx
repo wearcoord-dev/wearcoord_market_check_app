@@ -16,6 +16,10 @@ type Props = {
     brand: string;
     ignoreSearch: string;
     defaultGender: string;
+    defaultCaps: string;
+    defaultTops: string;
+    defaultPants: string;
+    defaultShoes: string;
     defaultWear: string;
 };
 
@@ -33,7 +37,17 @@ const style = {
 } as const;
 
 export const CoordView: React.FC<Props> = (props) => {
-    const { itemId, brand, ignoreSearch, defaultGender, defaultWear } = props;
+    const {
+        itemId,
+        brand,
+        ignoreSearch,
+        defaultGender,
+        defaultWear,
+        defaultCaps,
+        defaultTops,
+        defaultPants,
+        defaultShoes,
+    } = props;
     const { showMessage } = useMessage();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const {
@@ -59,19 +73,33 @@ export const CoordView: React.FC<Props> = (props) => {
         onCloseShoes();
     }, []);
 
-    let defaultCaps;
-    let defaultTops;
-    let defaultPants;
-    let defaultShoes;
+    // 初期表示ウェアの設定
+
+    let initialCaps;
+    let initialTops;
+    let initialPants;
+    let initialShoes;
 
     if (ignoreSearch == 'tops') {
-        defaultTops = defaultWear;
+        initialTops = defaultWear;
+        initialCaps = defaultCaps;
+        initialPants = defaultPants;
+        initialShoes = defaultShoes;
     } else if (ignoreSearch == 'caps') {
-        defaultCaps = defaultWear;
+        initialCaps = defaultWear;
+        initialTops = defaultTops;
+        initialPants = defaultPants;
+        initialShoes = defaultShoes;
     } else if (ignoreSearch == 'pants') {
-        defaultPants = defaultWear;
+        initialPants = defaultWear;
+        initialCaps = defaultCaps;
+        initialTops = defaultTops;
+        initialShoes = defaultShoes;
     } else if (ignoreSearch == 'shoes') {
-        defaultShoes = defaultWear;
+        initialShoes = defaultWear;
+        initialCaps = defaultCaps;
+        initialTops = defaultTops;
+        initialPants = defaultPants;
     }
 
     // 初回読み込み時のuseEffect管理
@@ -559,7 +587,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 getActiveIndexTops={getActiveIndexTops}
                 userTops={userTops}
                 getTops={getTops}
-                defaultTops={defaultTops}
+                defaultTops={initialTops}
             />
         </>
     );
@@ -576,7 +604,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 getActiveIndexCaps={getActiveIndexCaps}
                 userCaps={userCaps}
                 getCaps={getCaps}
-                defaultCaps={defaultCaps}
+                defaultCaps={initialCaps}
                 showCaps={showCaps}
             />
         </>
@@ -594,7 +622,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 getActiveIndexPants={getActiveIndexPants}
                 userPants={userPants}
                 getPants={getPants}
-                defaultPants={defaultPants}
+                defaultPants={initialPants}
             />
         </>
     );
@@ -611,7 +639,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 getActiveIndexShoes={getActiveIndexShoes}
                 userShoes={userShoes}
                 getShoes={getShoes}
-                defaultShoes={defaultShoes}
+                defaultShoes={initialShoes}
             />
         </>
     );

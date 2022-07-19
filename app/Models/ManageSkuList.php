@@ -16,5 +16,6 @@ class ManageSkuList extends Model
         'wearId',
         'brand',
         'gender',
+        'isDefault',
     ];
 }

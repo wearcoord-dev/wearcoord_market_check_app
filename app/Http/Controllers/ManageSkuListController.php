@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ManageSkuList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ManageSkuListController extends Controller
 {
@@ -52,7 +53,21 @@ class ManageSkuListController extends Controller
             ->where('brand', $brand)
             ->first();
 
-        return response()->json($itemData);
+
+        $capsId = ManageSkuList::where('gender', $itemData->gender)->where('brand',$brand)->where('type','caps')->where('isDefault',1)->value('wearId');
+        $topsId = ManageSkuList::where('gender', $itemData->gender)->where('brand',$brand)->where('type','tops')->where('isDefault',1)->value('wearId');
+        $pantsId = ManageSkuList::where('gender', $itemData->gender)->where('brand',$brand)->where('type','pants')->where('isDefault',1)->value('wearId');
+        $shoesId = ManageSkuList::where('gender', $itemData->gender)->where('brand',$brand)->where('type','shoes')->where('isDefault',1)->value('wearId');
+
+        $itemList = Arr::collapse([
+            ['item' => $itemData],
+            ['capsId' => $capsId],
+            ['topsId' => $topsId],
+            ['pantsId' => $pantsId],
+            ['shoesId' => $shoesId],
+        ]);
+
+        return response()->json($itemList);
     }
 
     /**

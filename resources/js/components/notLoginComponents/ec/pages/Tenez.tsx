@@ -31,13 +31,17 @@ export const Tenez: React.FC = () => {
 
     return (
         <>
-            {data && (
+            {data && data.item && (
                 <CoordView
                     itemId={itemId}
                     brand={brand}
-                    defaultWear={data.wearId}
-                    defaultGender={data.gender}
-                    ignoreSearch={data.type}
+                    defaultWear={data.item.wearId}
+                    defaultGender={data.item.gender}
+                    ignoreSearch={data.item.type}
+                    defaultCaps={data.capsId}
+                    defaultTops={data.topsId}
+                    defaultPants={data.pantsId}
+                    defaultShoes={data.shoesId}
                 />
             )}
         </>

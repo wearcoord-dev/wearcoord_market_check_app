@@ -172,7 +172,12 @@ export const PantsEcSect: FC<Props> = memo((props) => {
             <>
                 <div
                     onClick={onClickPants}
-                    style={{ width: '100%', height: '170px', margin: 'auto' }}
+                    style={{
+                        width: '100%',
+                        height: '140px',
+                        margin: 'auto',
+                        overflowY: 'hidden',
+                    }}
                 >
                     <img
                         src={`/img/rakutenlist/${defaultGender}/${defaultCategory}/${defaultUrl}`}

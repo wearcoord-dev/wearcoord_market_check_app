@@ -126,6 +126,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            {{-- 外部APP埋め込み初期設定ウェア切り替え --}}
+                            <div class="row p-3">
+                                <legend class="col-form-label col-sm-2 pt-0">初期設定ウェア切り替え</legend>
+                                <div class="col-sm-10">
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            name="isShowDefaultWear" id="isShowDefaultWear" value="1">
+                                        <label class="form-check-label" for="isShowDefaultWear">初期設定ウェアにする</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
