@@ -131,7 +131,7 @@ export const CapsEcSect: FC<Props> = memo((props) => {
                 })
                 .then((res) => {
                     setDefaultCategory(res.data.category);
-                    colorList.map((color) => {
+                    colorList?.map((color) => {
                         if (res.data[color] !== null)
                             setDefaultUrl(res.data[color]);
                     });
@@ -150,7 +150,7 @@ export const CapsEcSect: FC<Props> = memo((props) => {
                 onSlideChangeTransitionEnd={getActiveIndexCaps}
                 onReachEnd={onChangeEndCaps}
             >
-                {capsArray.map((wear) => (
+                {capsArray?.map((wear) => (
                     <SwiperSlide
                         onClick={onClickCaps}
                         className="wearLi"

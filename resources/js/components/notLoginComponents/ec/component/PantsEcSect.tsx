@@ -132,7 +132,7 @@ export const PantsEcSect: FC<Props> = memo((props) => {
                 })
                 .then((res) => {
                     setDefaultCategory(res.data.category);
-                    colorList.map((color) => {
+                    colorList?.map((color) => {
                         if (res.data[color] !== null)
                             setDefaultUrl(res.data[color]);
                     });
@@ -151,7 +151,7 @@ export const PantsEcSect: FC<Props> = memo((props) => {
                 onSlideChangeTransitionEnd={getActiveIndexPants}
                 onReachEnd={onChangeEndPants}
             >
-                {pantsArray.map((wear) => (
+                {pantsArray?.map((wear) => (
                     <SwiperSlide
                         onClick={onClickPants}
                         className="wearLi"
