@@ -112,6 +112,7 @@
                                     <input type="text" class="form-control" id="sku" name="sku" placeholder="abc123"
                                         value="{{old('sku')}}">
                                 </div>
+                                <small class="fw-lighter text-info">以下のボタン内容を反映させるにはSKUを登録してください</small>
                             </div>
 
                             {{-- 外部APP埋め込みAPP表示切り替え --}}

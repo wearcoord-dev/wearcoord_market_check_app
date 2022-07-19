@@ -171,6 +171,7 @@
                                         <input type="text" class="form-control" id="sku" name="sku" @if ($skuData)
                                             value="{{$skuData->sku}}" @else @endif>
                                     </div>
+                                    <small class="fw-lighter text-info">以下のボタン内容を反映させるにはSKUを登録してください</small>
                                 </div>
 
                                 {{-- 外部APP埋め込みAPP表示切り替え --}}

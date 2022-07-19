@@ -89,8 +89,10 @@ class ItemController extends Controller
 
         $isSku = null;
 
-        if ($request->sku || $request->isSku) {
+        if ($request->sku) {
             $isSku = true;
+        } else {
+            $isSku = null;
         }
 
         try {
@@ -410,11 +412,11 @@ class ItemController extends Controller
             $img = $request->showImg->storeAs('/img/showList/', $filenameShow);
         }
 
-        // 外部Appに表示するかのboolean
-        if ($request->isShowSku) {
+        // 外部Appに表示する場合のflg
+        if ($request->sku) {
             $isSku = true;
         } else {
-            $isSku = false;
+            $isSku = null;
         }
 
         // デフォルトウェアにするかのboolean
@@ -475,16 +477,21 @@ class ItemController extends Controller
                     $product->save();
 
                     // SKUの更新
-                    $wearId = TopsRakutenApi::where('itemId', $request->itemId)
-                        ->where('category', $request->category)
-                        ->value('id');
-                    self::updateSkuData(
-                        $request,
-                        $wearId,
-                        'tops',
-                        $gender,
-                        $isShowDefaultWear
-                    );
+                    if ($isSku) {
+                        $wearId = TopsRakutenApi::where(
+                            'itemId',
+                            $request->itemId
+                        )
+                            ->where('category', $request->category)
+                            ->value('id');
+                        self::updateSkuData(
+                            $request,
+                            $wearId,
+                            'tops',
+                            $gender,
+                            $isShowDefaultWear
+                        );
+                    }
                 } elseif ($type == 'caps') {
                     $product = CapsRakutenApi::findOrFail($id);
                     $product->availability = $available;
@@ -514,16 +521,21 @@ class ItemController extends Controller
                     $product->save();
 
                     // SKUの更新
-                    $wearId = CapsRakutenApi::where('itemId', $request->itemId)
-                        ->where('category', $request->category)
-                        ->value('id');
-                    self::updateSkuData(
-                        $request,
-                        $wearId,
-                        'caps',
-                        $gender,
-                        $isShowDefaultWear
-                    );
+                    if ($isSku) {
+                        $wearId = CapsRakutenApi::where(
+                            'itemId',
+                            $request->itemId
+                        )
+                            ->where('category', $request->category)
+                            ->value('id');
+                        self::updateSkuData(
+                            $request,
+                            $wearId,
+                            'caps',
+                            $gender,
+                            $isShowDefaultWear
+                        );
+                    }
                 } elseif ($type == 'pants') {
                     $product = PantsRakutenApi::findOrFail($id);
                     $product->availability = $available;
@@ -553,16 +565,21 @@ class ItemController extends Controller
                     $product->save();
 
                     // SKUの更新
-                    $wearId = PantsRakutenApi::where('itemId', $request->itemId)
-                        ->where('category', $request->category)
-                        ->value('id');
-                    self::updateSkuData(
-                        $request,
-                        $wearId,
-                        'pants',
-                        $gender,
-                        $isShowDefaultWear
-                    );
+                    if ($isSku) {
+                        $wearId = PantsRakutenApi::where(
+                            'itemId',
+                            $request->itemId
+                        )
+                            ->where('category', $request->category)
+                            ->value('id');
+                        self::updateSkuData(
+                            $request,
+                            $wearId,
+                            'pants',
+                            $gender,
+                            $isShowDefaultWear
+                        );
+                    }
                 } elseif ($type == 'shoes') {
                     $product = ShoesRakutenApi::findOrFail($id);
                     $product->availability = $available;
@@ -592,16 +609,21 @@ class ItemController extends Controller
                     $product->save();
 
                     // SKUの更新
-                    $wearId = ShoesRakutenApi::where('itemId', $request->itemId)
-                        ->where('category', $request->category)
-                        ->value('id');
-                    self::updateSkuData(
-                        $request,
-                        $wearId,
-                        'shoes',
-                        $gender,
-                        $isShowDefaultWear
-                    );
+                    if ($isSku) {
+                        $wearId = ShoesRakutenApi::where(
+                            'itemId',
+                            $request->itemId
+                        )
+                            ->where('category', $request->category)
+                            ->value('id');
+                        self::updateSkuData(
+                            $request,
+                            $wearId,
+                            'shoes',
+                            $gender,
+                            $isShowDefaultWear
+                        );
+                    }
                 }
             },
             2);
