@@ -294,15 +294,13 @@ export const CoordView: React.FC<Props> = (props) => {
     // ドレスを選んでいるかチェック
     const [selectDress, setSelectDress] = useState<Boolean>(false);
 
-    console.log(selectDress);
-
     // 中心のウェアを取得
 
     const getActiveIndexTops = (swiper) => {
         setActiveIndexTops(swiper.activeIndex);
     };
 
-    const onClickTops = () => {
+    const onClickTops = useCallback(() => {
         // 検索しない場合はreturn
         if (ignoreSearch === 'tops') {
             showMessage({
@@ -317,19 +315,34 @@ export const CoordView: React.FC<Props> = (props) => {
         onClosePants();
         onCloseShoes();
 
+        // 既に初回検索を終えて別カテゴリー選択から戻って来た場合は、再度検索させずそのまま返す
+        if (topsArray.length > 0) {
+            return;
+        }
+
         // 最初に開いた場合はアイテムを事前に表示しておく
         let defaultTopsCategory: string;
         let firstSetBrand: string;
 
-        if (defaultGender === 'male') {
-            defaultTopsCategory = '508759';
-        } else if (defaultGender === 'female') {
-            defaultTopsCategory = '508803';
+        // 既に検索結果を持っている場合はそれを使いなければ初期値
+        if (!dataTops.category) {
+            if (defaultGender === 'male') {
+                defaultTopsCategory = '508759';
+            } else if (defaultGender === 'female') {
+                defaultTopsCategory = '508803';
+            }
+        } else {
+            defaultTopsCategory = dataTops.category;
         }
+
         if (brand) {
             firstSetBrand = brand;
         } else {
             firstSetBrand = 'all';
+        }
+
+        if (dataTops.brand) {
+            firstSetBrand = dataTops.brand;
         }
 
         const data = {
@@ -346,7 +359,7 @@ export const CoordView: React.FC<Props> = (props) => {
         setShowTops(0);
         // 初回の処理が終了
         isFirstOpenTops.current = true;
-    };
+    }, [dataTops]);
 
     // 条件に合ったウェアを探す
 
