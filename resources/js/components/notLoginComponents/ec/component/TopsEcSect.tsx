@@ -17,6 +17,7 @@ type Props = {
     getTops: any;
     userTops: any;
     defaultTops?: string;
+    selectDress?: Boolean;
 };
 
 const colorList = [
@@ -46,6 +47,7 @@ export const TopsEcSect: FC<Props> = memo((props) => {
         getTops,
         userTops,
         defaultTops,
+        selectDress,
     } = props;
     const { showMessage } = useMessage();
 
@@ -149,6 +151,7 @@ export const TopsEcSect: FC<Props> = memo((props) => {
                 centeredSlides={true}
                 onSlideChangeTransitionEnd={getActiveIndexTops}
                 onReachEnd={onChangeEndTops}
+                style={{ height: selectDress && '255px' }}
             >
                 {topsArray?.map((wear) => (
                     <SwiperSlide
@@ -160,7 +163,11 @@ export const TopsEcSect: FC<Props> = memo((props) => {
                             className="wearImg"
                             src={`/img/rakutenlist/${defaultGender}/${wear.category}/${wear.url}`}
                             alt=""
-                            style={{ margin: 'auto' }}
+                            style={{
+                                margin: 'auto',
+                                height: selectDress && '100%',
+                                objectFit: selectDress ? 'cover' : 'contain',
+                            }}
                         />
                     </SwiperSlide>
                 ))}

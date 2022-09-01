@@ -56,6 +56,10 @@ export const topsListFemale = [
         value: '565927',
         text: 'アウター'
     },
+    {
+        value: '500316',
+        text: 'ワンピース'
+    },
 ];
 
 export const pantsList = [

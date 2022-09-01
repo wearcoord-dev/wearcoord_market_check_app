@@ -291,6 +291,11 @@ export const CoordView: React.FC<Props> = (props) => {
     const [topsArray, setTopsArray] = useState([]);
     const [showTops, setShowTops] = useState<Number>(0);
 
+    // ドレスを選んでいるかチェック
+    const [selectDress, setSelectDress] = useState<Boolean>(false);
+
+    console.log(selectDress);
+
     // 中心のウェアを取得
 
     const getActiveIndexTops = (swiper) => {
@@ -334,7 +339,6 @@ export const CoordView: React.FC<Props> = (props) => {
             wear: 'tops',
             page: 1,
         };
-        console.log(data);
         setDataTops(data);
         setTopsArray([]);
         setTopsSel(data);
@@ -363,6 +367,13 @@ export const CoordView: React.FC<Props> = (props) => {
             wear: 'tops',
             page: 1,
         };
+
+        // ドレスを検索の場合はtrue
+        if (props.category == '500316') {
+            setSelectDress(true);
+        } else {
+            setSelectDress(false);
+        }
 
         if (props.category) {
             setDataTops(data);
@@ -588,6 +599,7 @@ export const CoordView: React.FC<Props> = (props) => {
                 userTops={userTops}
                 getTops={getTops}
                 defaultTops={initialTops}
+                selectDress={selectDress}
             />
         </>
     );
@@ -667,14 +679,19 @@ export const CoordView: React.FC<Props> = (props) => {
                 <div
                     style={{
                         display: 'flex',
-                        height: '115px',
+                        height: selectDress ? '255px' : '115px',
                         marginTop: '16px',
                     }}
                 >
                     {topsComponent}
                 </div>
 
-                <div style={{ display: 'flex', height: '140px' }}>
+                <div
+                    style={{
+                        display: selectDress ? 'none' : 'flex',
+                        height: '140px',
+                    }}
+                >
                     {pantsComponent}
                 </div>
 
