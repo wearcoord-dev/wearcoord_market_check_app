@@ -38,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
-    {{-- font awesome --}}
+    <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
         integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 
@@ -46,14 +46,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/components/mycoord/mycoord.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components/css/mycoord.css') }}" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Roboto', 'Noto Sans JP', sans-serif !important;
             color: '#484848';
         }
-
     </style>
 
     {{-- OGP --}}
@@ -69,7 +68,7 @@
         <meta name="twitter:image" content="{{ asset('img/logo/wearcoord-ogp.jpg') }}">
 
         {{-- @if (env('APP_ENV') == 'production')
-            @include('layouts.parts.analytics')
+        @include('layouts.parts.analytics')
         @endif --}}
 
     </head>

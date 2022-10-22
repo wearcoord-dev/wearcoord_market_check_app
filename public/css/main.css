@@ -1,5 +1,5 @@
 html {
-  font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
   font-size: 62.5%;
   color: #364A5C;
   height: -webkit-fill-available;
@@ -25,9 +25,11 @@ button {
   cursor: pointer;
   outline: none;
   padding: 0;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   font-size: 1.2rem;
-  font-family: 'Roboto', 'Noto Sans JP';
+  font-family: "Roboto", "Noto Sans JP";
   color: #484848;
 }
 
@@ -36,32 +38,40 @@ input {
   border: none;
   outline: none;
   padding: 0;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   font-size: 1.2rem;
-  font-family: 'Roboto', 'Noto Sans JP';
+  font-family: "Roboto", "Noto Sans JP";
   color: #484848;
 }
 
 .header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 50px;
-  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   width: 100%;
   z-index: 1000;
   background-color: #F9F9F9;
 }
-
 .header .titleIcon {
   padding-left: 10px;
   height: 70%;
 }
-
 .header .titleImg {
   height: 100%;
 }
-
 .header .settingIcon {
   padding-right: 10px;
   cursor: pointer;
@@ -74,4 +84,4 @@ input {
 
 .MuiBottomNavigationAction-root {
   min-width: initial !important;
-}
+}/*# sourceMappingURL=main.css.map */
