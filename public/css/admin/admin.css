@@ -42,8 +42,8 @@
 
 .mannequinTops .div img {
   width: 125px;
-  height: 125px;
-  object-fit: contain;
+  height: 160px;
+  object-fit: cover;
   z-index: 100;
   position: relative;
 }
