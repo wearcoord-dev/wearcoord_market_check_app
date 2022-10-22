@@ -6,7 +6,7 @@
     display: flex;
 }
 
-.relative{
+.relative {
     position: relative;
 }
 
@@ -38,7 +38,6 @@
 }
 
 // アコーディオン
-
 
 /* Chrome、Safari以外 */
 summary {
@@ -152,7 +151,7 @@ details[open] .detailsBottom {
     position: relative;
 }
 
-.clickCover{
+.clickCover {
     height: 400px;
     position: absolute;
     width: 100%;
@@ -303,7 +302,6 @@ details[open] .detailsBottom {
     }
 }
 
-
 // 検索BOX
 
 .MuiIcon-root {
@@ -322,28 +320,27 @@ details[open] .detailsBottom {
     display: inline-block;
     padding: 0.5rem 1rem;
     border-radius: 3px;
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .radioInputLabelColor {
     display: inline-block;
     border-radius: 3px;
-    transition: all .2s;
+    transition: all 0.2s;
     width: 50px;
     height: 20px;
     border: 1px solid lightgrey;
 }
 
-.radioInput:checked+.radioInputLabel {
+.radioInput:checked + .radioInputLabel {
     background: #216496;
     color: #fff;
-    box-shadow: 0 0 1px rgba(0, 0, 0, .7);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
     border: 1px solid #216496;
 }
 
-.radioInputColor:checked+.radioInputLabelColor {
-    box-shadow: 0 0 16px rgba(33, 100, 150, .7);
-
+.radioInputColor:checked + .radioInputLabelColor {
+    box-shadow: 0 0 16px rgba(33, 100, 150, 0.7);
 }
 
 .slide_x {
@@ -354,17 +351,16 @@ details[open] .detailsBottom {
     padding: 7px 0;
 }
 
-.MuiBox-root{
+.MuiBox-root {
     padding: 0 16px 16px 16px !important;
 }
 
 @media (max-height: 700px) {
-    .tabpanel{
+    .tabpanel {
         height: 160px;
         overflow: auto;
     }
-  }
-
+}
 
 /*スクロールバー全体*/
 ::-webkit-scrollbar {
@@ -379,9 +375,9 @@ details[open] .detailsBottom {
 
 /*スクロールバーの動く部分*/
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 50, .5);
+    background-color: rgba(0, 0, 50, 0.5);
     border-radius: 10px;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .searchTitle {
@@ -396,7 +392,7 @@ details[open] .detailsBottom {
 }
 
 .submitBtn {
-    background-color: #0080E4;
+    background-color: #0080e4;
     padding: 10px 0px;
     border-radius: 8px;
     color: white;
@@ -405,7 +401,7 @@ details[open] .detailsBottom {
 }
 
 @media (max-width: 320px) {
-    .centerContainer{
+    .centerContainer {
         min-width: 180px;
     }
-  }
+}
