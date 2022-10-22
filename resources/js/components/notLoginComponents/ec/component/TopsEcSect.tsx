@@ -185,8 +185,8 @@ export const TopsEcSect: FC<Props> = memo((props) => {
                         alt=""
                         style={{
                             width: '125px',
-                            height: '125px',
-                            objectFit: 'contain',
+                            height: '160px',
+                            objectFit: 'cover',
                             zIndex: 100,
                             position: 'relative',
                             margin: 'auto',
